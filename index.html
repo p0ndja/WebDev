@@ -51,10 +51,10 @@
         
         @media (pointer: coarse) and (hover: none) {
             header {
-                background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+                background: url('https://storage.pondja.com/Untitled%20Project.mp4') black no-repeat center center scroll;
             }
             header video {
-                display: none;
+                display: url('https://storage.pondja.com/Untitled%20Project.mp4');
             }
         }
     </style>
@@ -74,27 +74,44 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">หน้าหลัก <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 เกี่ยวกับ </a>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> เกี่ยวกับ </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="./info_history.html"> ประวัติโรงเรียน </a>
+                        <a class="dropdown-item" href="./info_history.html">ประวัติโรงเรียน</a>
+                        <a class="dropdown-item" href="#">ปรัชญา</a>
+                        <a class="dropdown-item" href="#">เป้าหมายเชิงกลยุทธ์</a>
+                        <a class="dropdown-item" href="#">คุณลักษณะอันพึงประสงค์</a>
+                        <a class="dropdown-item" href="#">คณะกรรมการประจำโรงเรียน</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"> ปรัชญา </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"> เป้าหมายเชิงกลยุทธ์ </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"> คุณลักษณะอันพึงประสงค์ </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"> คณะกรรมการประจำโรงเรียน </a>
+                        <a class="dropdown-item" href="#">โครงสร้างการบริหาร</a>
+                        <a class="dropdown-item" href="#">ทำเนียบผู้บริหาร</a>
+                        <a class="dropdown-item" href="#">คณะผู้บริหาร</a>
+                        <a class="dropdown-item" href="#">บุคลากร</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        หน่วยงาน </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#"> งานแผนและประกันคุณภาพ </a>
+                        <a class="dropdown-item" href="#"> งานแนะแนว </a>
+                        <a class="dropdown-item" href="#"> งานทะเบียน </a>
+                        <a class="dropdown-item" href="#"> งานพัฒนาบุคลิกภาพ </a>
+                        <a class="dropdown-item" href="#"> งานห้องสมุด </a>
+                        <a class="dropdown-item" href="#"> ชมรมผู้ปกครองและครู </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ปฏิทิน </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#"> ปฏิทินโรงเรียน </a>
+                        <a class="dropdown-item" href="#"> ตารางเรียน </a>
+                        <a class="dropdown-item" href="#"> ตารางสอบ </a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                    SMD Forum</a>
+                    <a class="nav-link" href="#">SMD Forum</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                    SMD Shop</a>
+                    <a class="nav-link" href="#">SMD Shop</a>
                 </li>
             </ul>
             <a class="btn btn-dark" href="./login">Login</a>
@@ -109,7 +126,7 @@
     <header>
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-              <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+              <source src="https://storage.pondja.com/Untitled%20Project.mp4" type="video/mp4">
             </video>
         <div class="container h-100">
             <div class="d-flex h-100 text-center align-items-center">
@@ -230,7 +247,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="card">
                             <img class="card-img-top" src="images/card-img.png" alt="Card image cap">
                             <div class="card-body">
@@ -247,27 +264,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="card">
                             <img class="card-img-top" src="images/card-img.png" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">ข่าวอีกข่าว</h5>
-                                <p class="card-text">Some text to build on the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Cras justo odio</li>
-                                <li class="list-group-item">Dapibus ac facilisis in</li>
-                            </ul>
-                            <div class="card-body">
-                                <a href="#" class="card-link">อ่านเพิ่มเติม..</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top" src="images/card-img.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">ข่าวๆๆๆๆ</h5>
                                 <p class="card-text">Some text to build on the card's content.</p>
                             </div>
                             <ul class="list-group list-group-flush">
