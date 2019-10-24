@@ -9,9 +9,6 @@
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 
-
-
-    
     <style>
         header {
             position: relative;
@@ -60,6 +57,24 @@
             header video {
                 display: none;
             }
+        }
+
+        @-webkit-keyframes blinker {
+            from {
+                opacity: 1.0;
+            }
+            to {
+                opacity: 0.0;
+            }
+        }
+        
+        .blink {
+            text-decoration: blink;
+            -webkit-animation-name: blinker;
+            -webkit-animation-duration: 0.6s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-direction: alternate;
         }
     </style>
     <!-- Bootstrap -->
@@ -117,6 +132,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">SMD Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ถ่ายทอดสด <sup class="notifi"><span class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE <span class="oi" data-glyph="video"></span></span></a></sup>
                 </li>
             </ul>
             <a class="btn btn-dark" href="./login">Login</a>
