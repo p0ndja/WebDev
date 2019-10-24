@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 
 <head>
     <meta charset="utf-8">
@@ -8,6 +8,7 @@
     <title>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
     <style>
         header {
             position: relative;
@@ -58,14 +59,25 @@
             }
         }
     </style>
+
+    <!-- Must be same here -->
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <title>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.3.1.css" rel="stylesheet">
+    <!-- For Callout -->
+    <link href="https://v4-alpha.getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+    <!-- Icon :: See More at https://useiconic.com/open/ -->
+    <link href="../icon/font/css/open-iconic.css" rel="stylesheet">
+    <!-- Icon :: See More at https://fontawesome.com/icons?d=gallery -->
+    <script src="https://kit.fontawesome.com/7454809de8.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body style="background-color: #ededed">
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #db6c24;">
-        <a class="navbar-brand" href="#"><span class="badge badge-light"><img src="http://www.kmutt.ac.th/jif/enett2015/images/logo/KKU.gif" width=20></span></a>
+        <a class="navbar-brand" href="#"><span class="badge badge-light"><img src="http://www.kmutt.ac.th/jif/enett2015/images/logo/KKU.gif" width="20"></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -76,13 +88,14 @@
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> เกี่ยวกับ </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="./info_history.html">ประวัติโรงเรียน</a>
-                        <a class="dropdown-item" href="#">ปรัชญา</a>
-                        <a class="dropdown-item" href="#">เป้าหมายเชิงกลยุทธ์</a>
-                        <a class="dropdown-item" href="#">คุณลักษณะอันพึงประสงค์</a>
-                        <a class="dropdown-item" href="#">คณะกรรมการประจำโรงเรียน</a>
+                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data09.png">ประวัติโรงเรียน</a>
+                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data010.png">ปรัชญา</a>
+                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data08.png">วิสัยทัศน์ พันธกิจ</a>
+                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data06.png">เป้าหมายเชิงกลยุทธ์</a>
+                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data07.png">คุณลักษณะอันพึงประสงค์</a>
+                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data12.png">คณะกรรมการประจำโรงเรียน</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">โครงสร้างการบริหาร</a>
+                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-58/managementstructure57.jpg">โครงสร้างการบริหาร</a>
                         <a class="dropdown-item" href="#">ทำเนียบผู้บริหาร</a>
                         <a class="dropdown-item" href="#">คณะผู้บริหาร</a>
                         <a class="dropdown-item" href="#">บุคลากร</a>
@@ -113,6 +126,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">SMD Shop</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ถ่ายทอดสด<sup class="notif blink"><span class="badge badge-warning
+                        badge-pill d-none d-lg-inline-block">LIVE</span>
+                    </sup></a>
+                </li>
+
             </ul>
             <a class="btn btn-dark" href="./login">Login</a>
         </div>
@@ -131,7 +150,9 @@
         <div class="container h-100">
             <div class="d-flex h-100 text-center align-items-center">
                 <div class="w-100 text-white">
-                    <h1 class="display-4">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</h1>
+                    <h1 class="display-4">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น</h1>
+                    <h1 class="display-4">ฝ่ายมัธยมศึกษา (มอดินแดง)</h1>
+                    <hr>
                     <h3>ประพฤติดี มีพลานามัย ใฝ่หาความรู้ เชิดชูคุณธรรม</h3>
                 </div>
             </div>
@@ -294,23 +315,87 @@
     </div>
     </div>
     <br>
-    <br>
-    <hr>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <footer class="text-center">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <p>Copyright 2019 © MyWebsite. By PondJa & Risaka .</p>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+    <footer style="background: #636363">
+        <div class="container">
+            <hr>
+            <div class="row">
+                <div class="col-12">
+                    <h4 style="color: white">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</h4>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <p style="color: white">เกี่ยวกับ</p>
+                    <ul>
+                        <li><a href="#" style="color: white">ประวัติโรงเรียน</a></li>
+                        <li><a href="#" style="color: white">ปรัชญา</a></li>
+                        <li><a href="#" style="color: white">เป้าหมายเชิงกลยุทธ์</a></li>
+                        <li><a href="#" style="color: white">คุณลักษณะอันพึงประสงค์</a></li>
+                        <li><a href="#" style="color: white">คณะกรรมการประจำโรงเรียน</a></li>
+                        <li><a href="#" style="color: white">โครงสร้างการบริหาร</a></li>
+                        <li><a href="#" style="color: white">ทำเนียบผู้บริหาร</a></li>
+                        <li><a href="#" style="color: white">คณะผู้บริหาร</a></li>
+                        <li><a href="#" style="color: white">บุคลากร</a></li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <p style="color: white">หน่วยงาน</p>
+                    <ul>
+                        <li><a style="color: white" href="#"> งานแผนและประกันคุณภาพ </a></li>
+                        <li><a style="color: white" href="#"> งานแนะแนว </a></li>
+                        <li><a style="color: white" href="#"> งานทะเบียน </a></li>
+                        <li><a style="color: white" href="#"> งานพัฒนาบุคลิกภาพ </a></li>
+                        <li><a style="color: white" href="#"> งานห้องสมุด </a></li>
+                        <li><a style="color: white" href="#"> ชมรมผู้ปกครองและครู </a></li>
+                    </ul>
+
+                </div>
+                <div class="col-4">
+                    <p style="color: white">ปฏิทิน</p>
+                    <ul>
+                        <li><a style="color: white" href="#"> ปฏิทินโรงเรียน </a></li>
+                        <li><a style="color: white" href="#"> ตารางเรียน </a></li>
+                        <li><a style="color: white" href="#"> ตารางสอบ </a></li>
+                    </ul>
+                    <a style="color: white" href="#"> SMD Forum </a></li>
+                    <br><a style="color: white" href="#"> SMD Shop </a></li>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-12">
+                    <center>
+                        <p style="color: white">Copyright 2019 © MyWebsite. By PondJa & Risaka .</center>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
+    </footer>
+    <footer style="background: #636363">
+        <div class="container">
+            <hr>
+            <div class="row">
+                <div class="col-2">
+                    <img src="https://tcas.pondja.com/smdlogo.png" width=100%>
+                </div>
+                <div class="col-10">
+                    <h4 style="color: white">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</h4>
+                    <hr>
+                    <p style="color: white">123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)<br>ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002<br>โทรศัพท์ / โทรสาร <a href="tel:+6643202044">043202044</a></p>
+
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-12">
+                    <center>
+                        <p style="color: white">Copyright 2019 © MyWebsite. By PondJa & Risaka .</center>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-3.3.1.min.js"></script>
