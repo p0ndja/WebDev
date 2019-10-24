@@ -59,10 +59,22 @@
             }
         }
         
-        @font-face {
-            font-family: "CustomFont";
-            src: url("CustomFont.eot");
-            src: url("CustomFont.woff") format("woff"), url("CustomFont.otf") format("opentype"), url("CustomFont.svg#filename") format("svg");
+        @-webkit-keyframes blinker {
+            from {
+                opacity: 1.0;
+            }
+            to {
+                opacity: 0.0;
+            }
+        }
+        
+        .blink {
+            text-decoration: blink;
+            -webkit-animation-name: blinker;
+            -webkit-animation-duration: 0.6s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-direction: alternate;
         }
     </style>
 
@@ -133,9 +145,7 @@
                     <a class="nav-link" href="#">SMD Shop</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">ถ่ายทอดสด<sup class="notif blink"><span class="badge badge-warning
-                        badge-pill d-none d-lg-inline-block">LIVE</span>
-                    </sup></a>
+                    <a class="nav-link" href="#">ถ่ายทอดสด <sup class="notifi"><span class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE <span class="oi" data-glyph="video"></span></span></a></sup>
                 </li>
 
             </ul>
@@ -312,8 +322,8 @@
             </div>
 
             <div class="col-md-4">
-                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSMD.KKU&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=2529205720433288" width="100%"
-                    height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSMD.KKU&tabs=timeline&width=340&height=489&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=2529205720433288" width="100%"
+                    height="489" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
             </div>
             <br>
             <br />
