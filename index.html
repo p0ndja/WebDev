@@ -109,7 +109,7 @@
     <!-- For Callout -->
     <link href="https://v4-alpha.getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
     <!-- Icon :: See More at https://useiconic.com/open/ -->
-    <link href="../icon/font/css/open-iconic.css" rel="stylesheet">
+    <link href="./icon/font/css/open-iconic.css" rel="stylesheet">
     <!-- Icon :: See More at https://fontawesome.com/icons?d=gallery -->
     <script src="https://kit.fontawesome.com/7454809de8.js" crossorigin="anonymous"></script>
     <!-- Font Awesome -->
@@ -388,16 +388,13 @@
                         <div class="card">
                             <img class="card-img-top" src="https://www.uppic.org/images/2019/10/24/CAA05982-C213-4BA1-8218-D8F2DFB54C72.jpg" alt="Card image cap">
                             <div class="card-body">
-                                <p class="card-text">24/10/2562</p>
+                                <p class="card-text"><span class="oi" data-glyph="calendar"></span> 24/10/2562</p>
                                 <h5 class="card-title">รางวัล GISTDA TOP VOTE</h5>
                                 <p class="card-text">เด็กสาธิตฯ เจ๋ง! คว้ารางวัล GISTDA TOP VOTE จากโครงการประกวดสื่อภูมิสารสนเทศ ครั้งที่ 8 ประจำปี 2562 ที่จัดขึ้นระหว่างวันที่ 28 สิงหาคม 2562 ณ อิมแพ็คฯ เมืองทองธานี ด้านอาจารย์ให้สัมภาษณ์ ปีนี้คือที่สุด <b><u>ย้ำ ปีหน้าไม่ส่งแล้ว</u></b><br>
                                     <span class="badge badge-secondary z-depth-0">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
                                 </p>
-
                             </div>
-                            <div class="card-footer text-right">
-                                <a href="#fuq" class="card-link">อ่านเพิ่มเติม</a>
-                            </div>
+                            <div class="card-footer text-right"><a href="#fuq" class="card-link">อ่านเพิ่มเติม</a></div>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -419,47 +416,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6">
-                        <!-- Card -->
-                        <div class="card">
-
-                            <!-- Card image -->
-                            <div class="view overlay">
-                                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg" alt="Card image cap">
-                                <a>
-                                    <div class="mask rgba-white-slight"></div>
-                                </a>
-                            </div>
-
-                            <!-- Button -->
-                            <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i class="fas fa-chevron-right pl-1"></i></a>
-
-                            <!-- Card content -->
-                            <div class="card-body">
-
-                                <!-- Title -->
-                                <h4 class="card-title">Card title</h4>
-                                <hr>
-                                <!-- Text -->
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-                            </div>
-
-                            <!-- Card footer -->
-                            <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                                <ul class="list-unstyled list-inline font-small">
-                                    <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
-                                    <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-comments pr-1"></i>12</a></li>
-                                    <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="fab fa-facebook-f pr-1"> </i>21</a></li>
-                                    <li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"> </i>5</a></li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <div class="col-md-4">
@@ -469,8 +425,31 @@
             <br>
             <br />
         </div>
+        <!-- Load Facebook SDK for JavaScript -->
+        <div id="fb-root"></div>
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    xfbml: true,
+                    version: 'v4.0'
+                });
+            };
+
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = 'https://connect.facebook.net/th_TH/sdk/xfbml.customerchat.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+        <!-- Your customer chat code -->
+        <div class="fb-customerchat" attribution=setup_tool page_id="228156047390057" theme_color="#ff7e29" logged_in_greeting="สวัสดีค่ะ สนใจสมัครเรียนสอบถามได้นะคะ ~❤" logged_out_greeting="สวัสดีค่ะ สนใจสมัครเรียนสอบถามได้นะคะ ~❤">
+        </div>
     </div>
-    <footer style="background: #636363">
+    <footer style="background-color: rgba(0, 0 , 0, 0.8);">
         <div class="container">
             <hr>
             <div class="row">
@@ -495,7 +474,6 @@
             </div>
         </div>
     </footer>
-    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-3.3.1.min.js"></script>
 
