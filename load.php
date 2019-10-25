@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
 
     <!-- KANIT FONT -->
     <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
@@ -14,6 +14,7 @@
         body {
             font-family: 'Kanit', sans-serif !important;
         }
+
         header {
             position: relative;
             background-color: black;
@@ -22,7 +23,7 @@
             width: 100%;
             overflow: hidden;
         }
-        
+
         header video {
             position: absolute;
             top: 50%;
@@ -37,12 +38,12 @@
             -webkit-transform: translateX(-50%) translateY(-50%);
             transform: translateX(-50%) translateY(-50%);
         }
-        
+
         header .container {
             position: relative;
             z-index: 2;
         }
-        
+
         header .overlay {
             position: absolute;
             top: 0;
@@ -53,11 +54,12 @@
             opacity: 0.5;
             z-index: 1;
         }
-        
+
         @media (pointer: coarse) and (hover: none) {
             header {
                 background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
             }
+
             header video {
                 display: none;
             }
@@ -67,11 +69,12 @@
             from {
                 opacity: 1.0;
             }
+
             to {
                 opacity: 0.0;
             }
         }
-        
+
         .blink {
             text-decoration: blink;
             -webkit-animation-name: blinker;
@@ -88,7 +91,8 @@
     <link rel="image_src" href="https://tcas.pondja.com/smdlogo.png" />
     <meta property="og:image" content="https://tcas.pondja.com/smdlogo.png" />
     <meta property="og:title" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
-    <meta property="og:description" content="123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002 โทรศัพท์ / โทรสาร 043202044" />
+    <meta property="og:description"
+        content="123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002 โทรศัพท์ / โทรสาร 043202044" />
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.3.1.css" rel="stylesheet">
     <!-- For Callout -->
@@ -111,8 +115,10 @@
 
 <body style="background-color: #ededed">
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #db6c24;">
-        <a class="navbar-brand" href="./#"><span class="badge badge-light"><img src="http://www.kmutt.ac.th/jif/enett2015/images/logo/KKU.gif" width=20></span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="./#"><span class="badge badge-light"><img
+                    src="http://www.kmutt.ac.th/jif/enett2015/images/logo/KKU.gif" width=20></span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -120,22 +126,32 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="./#">หน้าหลัก <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> เกี่ยวกับ </a>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> เกี่ยวกับ </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data09.png">ประวัติโรงเรียน</a>
-                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data010.png">ปรัชญา</a>
-                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data08.png">วิสัยทัศน์ พันธกิจ</a>
-                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data06.png">เป้าหมายเชิงกลยุทธ์</a>
-                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data07.png">คุณลักษณะอันพึงประสงค์</a>
-                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data12.png">คณะกรรมการประจำโรงเรียน</a>
+                        <a class="dropdown-item"
+                            href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data09.png">ประวัติโรงเรียน</a>
+                        <a class="dropdown-item"
+                            href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data010.png">ปรัชญา</a>
+                        <a class="dropdown-item"
+                            href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data08.png">วิสัยทัศน์
+                            พันธกิจ</a>
+                        <a class="dropdown-item"
+                            href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data06.png">เป้าหมายเชิงกลยุทธ์</a>
+                        <a class="dropdown-item"
+                            href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data07.png">คุณลักษณะอันพึงประสงค์</a>
+                        <a class="dropdown-item"
+                            href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data12.png">คณะกรรมการประจำโรงเรียน</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-58/managementstructure57.jpg">โครงสร้างการบริหาร</a>
+                        <a class="dropdown-item"
+                            href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-58/managementstructure57.jpg">โครงสร้างการบริหาร</a>
                         <a class="dropdown-item" href="#">ทำเนียบผู้บริหาร</a>
                         <a class="dropdown-item" href="#">คณะผู้บริหาร</a>
                         <a class="dropdown-item" href="#">บุคลากร</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         หน่วยงาน </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#"> งานแผนและประกันคุณภาพ </a>
@@ -144,9 +160,12 @@
                         <a class="dropdown-item" href="#"> งานพัฒนาบุคลิกภาพ </a>
                         <a class="dropdown-item" href="#"> งานห้องสมุด </a>
                         <a class="dropdown-item" href="#"> ชมรมผู้ปกครองและครู </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"> เอกสารประกอบการสอน </a>
                     </div>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ปฏิทิน </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#"> ปฏิทินโรงเรียน </a>
@@ -161,15 +180,26 @@
                     <a class="nav-link" href="#">SMD Shop</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">ถ่ายทอดสด <sup class="notifi"><span class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE <span class="oi" data-glyph="video"></span></span></a></sup>
+                    <a class="nav-link" href="#">ถ่ายทอดสด <sup class="notifi"><span
+                                class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE <span
+                                    class="oi" data-glyph="video"></span></span></a></sup>
                 </li>
             </ul>
+            <!-- Search form -->
+            <right>
+                <form method="GET" class="form-inline mr-auto align-right">
+                    <div class="md-form my-0">
+                        <input method="GET" class="form-control" type="text" placeholder="Search" aria-label="Search"
+                            id="test">
+                    </div>
+                </form>
+            </right>
             <a class="btn btn-dark" href="./login">Login</a>
         </div>
     </nav>
     <br>
-        <div class="container">
-            <div class="row text-center">
+    <div class="container">
+        <div class="row text-center">
             <?php
                 $i = $_GET['img'];
                 $s = $_GET['iframe'];
@@ -180,8 +210,8 @@
                 if ($s != null && $h != null) echo 'height="' . $h . '"></iframe>';
                 else echo '></iframe>';
             ?>
-            </div>
         </div>
+    </div>
     </div>
     <br>
     <br>

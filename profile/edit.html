@@ -124,11 +124,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://www.pondja.com/p0ndja.png" width="20"> พลภณ สุนทรภาส</a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#"> ลงทะเบียนวิชาเลือก </a>
-                        <a class="dropdown-item" href="#"> การเช็คชื่อ </a>
-                        <a class="dropdown-item" href="#"> ผลการเรียน (SGS) </a>
+                        <a class="dropdown-item" href="#"> ลงทะเบียนวิชาเลือก <span class="oi" data-glyph="file"></span></a>
+                        <a class="dropdown-item" href="#"> การเช็คชื่อ <span class="oi" data-glyph="task"></span></a>
+                        <a class="dropdown-item" href="#"> ผลการเรียน (SGS) <span class="oi" data-glyph="browser"></span></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../">ออกจากระบบ</a>
+                        <a class="dropdown-item" style="color: red" href="../">ออกจากระบบ <span class="oi" data-glyph="account-logout"></span></a>
                     </div>
                 </li>
             </ul>
@@ -144,7 +144,7 @@
                 <h5>Palapon Soontornpas</h5>
             </div>
             <div class="col-1">
-                <a class="btn btn-success float-right" href="./">บันทึก</a>
+                <a class="btn btn-success float-right" href="./"><span class="oi" data-glyph="check"></span></a>
             </div>
         </div>
         <hr>
@@ -207,14 +207,20 @@
                                 <hr>
                                 <div class="container">
                                     <div class="row text-center">
-                                        <div class="col-sm-4 col-12 p-0"><img class="img-thumbnail" src="images/300X200.gif" alt=""></div>
-                                        <div class="col-sm-4 col-12 p-0"><img class="img-thumbnail" src="images/300X200.gif" alt=""></div>
-                                        <div class="col-sm-4 col-12 p-0"><img class="img-thumbnail" src="images/300X200.gif" alt=""></div>
+                                        <div class="col-sm-6 col-12 p-0"><img class="img-thumbnail" src="images/300X200.gif" alt=""></div>
+                                        <div class="col-sm-6 col-12 p-0"><img class="img-thumbnail" src="images/300X200.gif" alt=""></div>
                                     </div>
                                     <div class="row text-center">
-                                        <div class="col-sm-4 col-12 p-0"><img class="img-thumbnail" src="images/300X200.gif" alt=""></div>
-                                        <div class="col-sm-4 col-12 p-0"><img class="img-thumbnail" src="images/300X200.gif" alt=""></div>
-                                        <div class="col-sm-4 col-12 p-0"><img class="img-thumbnail" src="images/300X200.gif" alt=""></div>
+                                        <div class="col-sm-6 col-12 p-0"><img class="img-thumbnail" src="images/300X200.gif" alt=""></div>
+                                        <div class="col-sm-6 col-12 p-0"><img class="img-thumbnail" src="images/300X200.gif" alt=""></div>
+                                    </div>
+                                    <div class="row text-center">
+                                        <div class="col-sm-6 col-12 p-0"><img class="img-thumbnail" src="images/300X200.gif" alt=""></div>
+                                        <div class="col-sm-6 col-12 p-0"><img class="img-thumbnail" src="images/300X200.gif" alt=""></div>
+                                    </div>
+                                    <div class="row text-center">
+                                        <div class="col-sm-6 col-12 p-0"><img class="img-thumbnail" src="images/300X200.gif" alt=""></div>
+                                        <div class="col-sm-6 col-12 p-0"><img class="img-thumbnail" src="images/300X200.gif" alt=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -240,30 +246,50 @@
                         <h2>ประวัติการศึกษา</h2>
                         <hr>
                         <div class="row">
-                            <div class="col-9">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="1">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</textarea>
+                            <div class="col-8">
+                                <input type="text" class="form-control" id="primary" rows="1" value="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)"></input>
                                 <h5><span class="badge badge-secondary">ระดับประถมศึกษา</span></h5>
                             </div>
-                            <div class="col-3">
-                                <p class="text-right"><textarea class="form-control" id="exampleFormControlTextarea1" rows="1">2008 - 2014</textarea></p>
+                            <div class="col-4">
+                                <div class="form-row">
+                                    <p class="text-center">
+                                        <div class="col-md-5 mb-2"><input type="number" class="form-control" id="primary1" rows="1" value="2008"></input>
+                                        </div> -
+                                        <div class="col-md-5 mb-2"><input type="number" class="form-control" id="primary2" rows="1" value="2014"></input>
+                                        </div>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-9">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="1">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</textarea>
+                            <div class="col-8">
+                                <input type="text" class="form-control" id="secondary1" rows="1" value="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)"></input>
                                 <h5><span class="badge badge-secondary">ระดับมัธยมศึกษาตอนต้น</span></h5>
                             </div>
-                            <div class="col-3">
-                                <p class="text-right"><textarea class="form-control" id="exampleFormControlTextarea1" rows="1">2014 - 2017</textarea></p>
+                            <div class="col-4">
+                                <div class="form-row">
+                                    <p class="text-center">
+                                        <div class="col-md-5 mb-2"><input type="number" class="form-control" id="secondary11" rows="1" value="2014"></input>
+                                        </div> -
+                                        <div class="col-md-5 mb-2"><input type="number" class="form-control" id="secondary12" rows="1" value="2017"></input>
+                                        </div>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-9">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="1">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</textarea>
+                            <div class="col-8">
+                                <input type="text" class="form-control" id="secondary2" rows="1" value="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)"></input>
                                 <h5><span class="badge badge-secondary">ระดับมัธยมศึกษาตอนปลาย</span></h5>
                             </div>
-                            <div class="col-3">
-                                <p class="text-right"><textarea class="form-control" id="exampleFormControlTextarea1" rows="1">2017 - ปัจจุบัน</textarea></p>
+                            <div class="col-4">
+                                <div class="form-row">
+                                    <p class="text-center">
+                                        <div class="col-md-5 mb-2"><input type="number" class="form-control" id="secondary21" rows="1" value="2017"></input>
+                                        </div> -
+                                        <div class="col-md-5 mb-2">ปัจจุบัน</div>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
