@@ -1,0 +1,8 @@
+        body {
+            font-family: 'Kanit', sans-serif !important;
+            background: url('http://smd-s.kku.ac.th/home/templates/satit09/images/Bottom_texture.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;
+        }
