@@ -77,22 +77,25 @@
             }
         }
         
-        .blink {
-            text-decoration: blink;
-            -webkit-animation-name: blinker;
-            -webkit-animation-duration: 0.6s;
-            -webkit-animation-iteration-count: infinite;
-            -webkit-animation-timing-function: ease-in-out;
-            -webkit-animation-direction: alternate;
+        .navbar {
+            background-color: transparent;
         }
         
-        .blink2 {
-            text-decoration: blink;
-            -webkit-animation-name: blinker;
-            -webkit-animation-duration: 0.2s;
-            -webkit-animation-iteration-count: infinite;
-            -webkit-animation-timing-function: ease-in-out;
-            -webkit-animation-direction: alternate;
+        .top-nav-collapse {
+            background-color: #db6c24;
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .navbar {
+                background-color: #db6c24;
+            }
+        }
+        
+        html,
+        body,
+        header,
+        .view {
+            height: 100%;
         }
     </style>
 
@@ -122,15 +125,19 @@
     <link href="css/style.css" rel="stylesheet">
     <!---->
 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
 </head>
 
 <body style="background-color: #ededed">
-
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #db6c24;">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark scrolling-navbar">
         <a class="navbar-brand" href="#"><span class="badge badge-light"><img src="http://www.kmutt.ac.th/jif/enett2015/images/logo/KKU.gif" width="20"></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -152,7 +159,7 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        หน่วยงาน </a>
+                                หน่วยงาน </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#"> งานแผนและประกันคุณภาพ </a>
                         <a class="dropdown-item" href="#"> งานแนะแนว </a>
@@ -165,7 +172,7 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        ปฏิทิน </a>
+                                ปฏิทิน </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#"> ปฏิทินโรงเรียน </a>
                         <a class="dropdown-item" href="#"> ตารางเรียน </a>
@@ -173,7 +180,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">SMD Forum</a>
+                    <a class="nav-link" href="./forum.html#">SMD Forum</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">SMD Shop</a>
@@ -187,10 +194,6 @@
         </div>
     </nav>
 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
     <header>
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
@@ -209,10 +212,9 @@
 
     </header>
     <hr>
-    <div class="container ">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
-
                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-interval="5000">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -446,7 +448,7 @@
         </script>
 
         <!-- Your customer chat code -->
-        <div class="fb-customerchat" attribution=setup_tool page_id="224318804364546" theme_color="#ff7e29" logged_in_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม" logged_out_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม">
+        <div class="fb-customerchat" attribution=setup_tool page_id="224318804364546" theme_color="#006AFF" logged_in_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม" logged_out_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม">
         </div>
 
     </div>
@@ -454,15 +456,47 @@
         <div class="container">
             <hr>
             <div class="row">
-                <div class="col-2">
-                    <img src="https://tcas.pondja.com/smdlogo.png" width=100%>
-                </div>
-                <div class="col-10">
+                <div class="col-12">
                     <h4 style="color: white">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</h4>
                     <hr>
-                    <p style="color: white">123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)<br>ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002<br>โทรศัพท์ / โทรสาร <a href="tel:+6643202044" style="color: white">043202044</a></p>
-                    <a href="./sitemap.html" style="color:tomato">Sitemap</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p style="color: white">เกี่ยวกับ</p>
+                    <ul>
+                        <li><a href="#" style="color: white">ประวัติโรงเรียน</a></li>
+                        <li><a href="#" style="color: white">ปรัชญา</a></li>
+                        <li><a href="#" style="color: white">เป้าหมายเชิงกลยุทธ์</a></li>
+                        <li><a href="#" style="color: white">คุณลักษณะอันพึงประสงค์</a></li>
+                        <li><a href="#" style="color: white">คณะกรรมการประจำโรงเรียน</a></li>
+                        <li><a href="#" style="color: white">โครงสร้างการบริหาร</a></li>
+                        <li><a href="#" style="color: white">ทำเนียบผู้บริหาร</a></li>
+                        <li><a href="#" style="color: white">คณะผู้บริหาร</a></li>
+                        <li><a href="#" style="color: white">บุคลากร</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <p style="color: white">หน่วยงาน</p>
+                    <ul>
+                        <li><a style="color: white" href="#"> งานแผนและประกันคุณภาพ </a></li>
+                        <li><a style="color: white" href="#"> งานแนะแนว </a></li>
+                        <li><a style="color: white" href="#"> งานทะเบียน </a></li>
+                        <li><a style="color: white" href="#"> งานพัฒนาบุคลิกภาพ </a></li>
+                        <li><a style="color: white" href="#"> งานห้องสมุด </a></li>
+                        <li><a style="color: white" href="#"> ชมรมผู้ปกครองและครู </a></li>
+                    </ul>
 
+                </div>
+                <div class="col-md-4">
+                    <p style="color: white">ปฏิทิน</p>
+                    <ul>
+                        <li><a style="color: white" href="#"> ปฏิทินโรงเรียน </a></li>
+                        <li><a style="color: white" href="#"> ตารางเรียน </a></li>
+                        <li><a style="color: white" href="#"> ตารางสอบ </a></li>
+                    </ul>
+                    <a style="color: white" href="#"> SMD Forum </a></li>
+                    <br><a style="color: white" href="#"> SMD Shop </a></li>
                 </div>
             </div>
             <hr>

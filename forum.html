@@ -104,6 +104,15 @@
             -webkit-animation-direction: alternate;
         }
         
+        .blink2 {
+            text-decoration: blink;
+            -webkit-animation-name: blinker;
+            -webkit-animation-duration: 0.25s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-direction: alternate;
+        }
+        
         .table-pointer {
             cursor: pointer;
         }
@@ -209,15 +218,16 @@
 
     <br>
     <div class="container">
-        <a class="btn text-white z-depth-1" href="#" style="background-color: #db6c24;">ประกาศจากทางโรงเรียน</a>
+        <a class="btn z-depth-1 text-white" href="#" style="background-color: #db6c24;">ประกาศจากทางโรงเรียน</a>
         <a class="btn z-depth-1 btn-warning" href="#">SMD Community</a>
         <a class="btn z-depth-1 btn-warning" href="#">Alumni Community</a>
         <div class="table-responsive">
-            <table class="table table-sm table-hover" style="background-color: white">
+            <table class="table table-sm table-hover table-bordered" style="background-color: white">
                 <thead class="table table-sm thead-dark">
                     <tr>
-                        <th scope="col" style="width: 1%"></th>
-                        <th scope="col" style="width: 52%">หัวข้อ</th>
+                        <th scope="col" style="width: 53%">
+                            <center>หัวข้อ</center>
+                        </th>
                         <th scope="col" style="width: 12%">
                             <center>ประเภท</center>
                         </th>
@@ -231,8 +241,8 @@
                 </thead>
                 <tbody>
                     <tr class="table-warning table-pointer" onclick="window.location='#';">
-                        <th><span class="oi" data-glyph="pin"></span></th>
-                        <td>รับสมัครผู้ช่วยพัฒนาเว็บไซด์ <span class="badge badge-danger z-depth-0">รับสมัครงาน</span><br>26/10/2562</td>
+                        <td>รับสมัครผู้ช่วยพัฒนาเว็บไซด์ <span class="badge badge-success z-depth-0">รับสมัครงาน</span> <span class="badge badge-danger z-depth-0 blink2"><span class="oi" data-glyph="pin"></span></span>
+                            </span><br>26/10/2562</td>
                         <td>
                             <center>รับสมัครงาน</center>
                         </td>
@@ -244,7 +254,6 @@
                         </td>
                     </tr>
                     <tr class="table-pointer" onclick="window.location='#';">
-                        <th></th>
                         <td>มันดูดี~ ที่สุดเลยเว้ยแก~ <span class="badge badge-primary z-depth-0">คำสั่ง</span><br>26/10/2562</td>
                         <td>
                             <center>ทั่วไป</center>
@@ -257,7 +266,6 @@
                         </td>
                     </tr>
                     <tr class="table-pointer" onclick="window.location='#';">
-                        <th></th>
                         <td>คำสั่ง คสช. ที่ 1/2562 <span class="badge badge-secondary z-depth-0">คำสั่ง</span><br>26/10/2562</td>
                         <td>
                             <center>คำสั่ง</center>
@@ -270,7 +278,6 @@
                         </td>
                     </tr>
                     <tr class="table-pointer" onclick="window.location='#';">
-                        <th></th>
                         <td>มันดูดี~ ที่สุดเลยเว้ยแก~ <span class="badge badge-primary z-depth-0">ทั่วไป</span><br>26/10/2562</td>
                         <td>
                             <center>ทั่วไป</center>
@@ -283,7 +290,6 @@
                         </td>
                     </tr>
                     <tr class="table-pointer" onclick="window.location='#';">
-                        <th></th>
                         <td>ว้าวววววววววววววววว <span class="badge badge-primary z-depth-0">ทั่วไป</span><br>26/10/2562</td>
                         <td>
                             <center>ทั่วไป</center>

@@ -58,6 +58,19 @@
     <link href="../css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="../css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        function fixAspect(img) {
+            var $img = $(img),
+                width = $img.width(),
+                height = $img.height(),
+                tallAndNarrow = width / height < 1;
+            if (tallAndNarrow) {
+                $img.addClass('tallAndNarrow');
+            }
+            $img.addClass('loaded');
+        }
+    </script>
 </head>
 
 <body style="background-color: #ededed">
@@ -108,7 +121,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"> SMD Forum </a>
+                    <a class="nav-link" href="../forum.html#"> SMD Forum </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"> SMD Shop </a>
@@ -148,7 +161,9 @@
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <div class="media">
-                    <img class="mr-3" src="https://www.pondja.com/p0ndja.png" width="100%" height=100% alt="Generic placeholder image">
+                    <div class="circle">
+                        <img src="https://tcas.pondja.com/31959055_1480846662024353_4037302681675497472_n.jpg" alt="Profile" onload="fixAspect(this);">
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-left">
