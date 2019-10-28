@@ -176,21 +176,25 @@
                         ปฏิทิน </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#"> ปฏิทินโรงเรียน </a>
-                        <a class="dropdown-item" href="#"> ตารางเรียน </a>
+                        <a class="dropdown-item" href="calendar.html"> ตารางเรียน </a>
                         <a class="dropdown-item" href="#"> ตารางสอบ </a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./forum.html#">SMD Forum</a>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> อื่น ๆ </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="./forum.html#">SMD Forum</a>
+                        <a class="dropdown-item" href="#">SMD Shop</a>
+                        <a class="dropdown-item" href="#">ถ่ายทอดสด <sup class="notifi"><span class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE <span class="oi" data-glyph="video"></span></span></a></sup>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">SMD Shop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">ถ่ายทอดสด <sup class="notifi"><span class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE <span class="oi" data-glyph="video"></span></span></a></sup>
-                </li>
-
             </ul>
+            <right>
+                <form method="GET" class="form-inline mr-auto align-right">
+                    <div class="md-form my-0">
+                        <input method="GET" class="form-control" type="text" placeholder="Search" aria-label="Search" id="test">
+                    </div>
+                </form>
+            </right>
             <a class="btn btn-dark" href="./login">Login</a>
         </div>
     </nav>
@@ -225,7 +229,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <p style="color: white">เกี่ยวกับ</p>
                     <ul>
                         <li><a href="#" style="color: white">ประวัติโรงเรียน</a></li>
@@ -239,7 +243,7 @@
                         <li><a href="#" style="color: white">บุคลากร</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <p style="color: white">หน่วยงาน</p>
                     <ul>
                         <li><a style="color: white" href="#"> งานแผนและประกันคุณภาพ </a></li>
@@ -251,14 +255,14 @@
                     </ul>
 
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <p style="color: white">ปฏิทิน</p>
                     <ul>
                         <li><a style="color: white" href="#"> ปฏิทินโรงเรียน </a></li>
-                        <li><a style="color: white" href="#"> ตารางเรียน </a></li>
+                        <li><a style="color: white" href="calendar.html"> ตารางเรียน </a></li>
                         <li><a style="color: white" href="#"> ตารางสอบ </a></li>
                     </ul>
-                    <a style="color: white" href="#"> SMD Forum </a></li>
+                    <a style="color: white" href="forum.html"> SMD Forum </a></li>
                     <br><a style="color: white" href="#"> SMD Shop </a></li>
                 </div>
             </div>
