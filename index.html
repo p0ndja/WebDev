@@ -129,10 +129,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
-
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 </head>
 
-<body style="background-color: #ededed">
+<body style="">
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark scrolling-navbar">
         <a class="navbar-brand" href="#"><span class="badge badge-light"><img src="http://www.kmutt.ac.th/jif/enett2015/images/logo/KKU.gif" width="20"></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -221,7 +221,7 @@
     <hr>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-6 col-md-12">
                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-interval="5000">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -391,23 +391,80 @@
         <hr>
         <h1>NEWS</h1>
         <div class="row">
+            <div class="col-4">
+                <!-- Rotating card -->
+                <div class="card-wrapper">
+                    <div id="card-1" class="card card-rotating text-center">
+
+                        <!-- Front Side -->
+                        <div class="face front">
+
+                            <!-- Image-->
+                            <div class="card-up">
+                                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/photo7.jpg" alt="Image with a photo of clouds.">
+                            </div>
+
+                            <!-- Avatar -->
+                            <div class="avatar mx-auto white"><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" class="rounded-circle" alt="Sample avatar image.">
+                            </div>
+
+                            <!-- Content -->
+                            <div class="card-body">
+                                <h4 class="font-weight-bold mb-3">Marie Johnson</h4>
+                                <p class="font-weight-bold blue-text">Web developer</p>
+                                <!-- Triggering button -->
+                                <a class="rotate-btn" data-card="card-1"><i class="fas fa-redo-alt"></i> Click here to rotate</a>
+                            </div>
+                        </div>
+                        <!-- Front Side -->
+
+                        <!-- Back Side -->
+                        <div class="face back">
+                            <div class="card-body">
+
+                                <!-- Content -->
+                                <h4 class="font-weight-bold mb-0">About me</h4>
+                                <hr>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat tenetur odio suscipit non commodi vel eius veniam maxime?
+                                    <hr>
+                                    <!-- Social Icons -->
+                                    <ul class="list-inline py-2">
+                                        <li class="list-inline-item"><a class="p-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a class="p-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a></li>
+                                        <li class="list-inline-item"><a class="p-2 fa-lg gplus-ic"><i class="fab fa-google-plus-g"></i></a></li>
+                                        <li class="list-inline-item"><a class="p-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a></li>
+                                    </ul>
+                                    <!-- Triggering button -->
+                                    <a class="rotate-btn" data-card="card-1"><i class="fas fa-undo"></i> Click here to rotate back</a>
+
+                            </div>
+                        </div>
+                        <!-- Back Side -->
+
+                    </div>
+                </div>
+                <!-- Rotating card -->
+            </div>
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card">
-                            <img class="card-img-top" src="https://www.uppic.org/images/2019/10/24/CAA05982-C213-4BA1-8218-D8F2DFB54C72.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text"><span class="oi" data-glyph="calendar"></span> 24/10/2562</p>
-                                <h5 class="card-title">รางวัล GISTDA TOP VOTE</h5>
-                                <p class="card-text">เด็กสาธิตฯ เจ๋ง! คว้ารางวัล GISTDA TOP VOTE จากโครงการประกวดสื่อภูมิสารสนเทศ ครั้งที่ 8 ประจำปี 2562 ที่จัดขึ้นระหว่างวันที่ 28 สิงหาคม 2562 ณ อิมแพ็คฯ เมืองทองธานี ด้านอาจารย์ให้สัมภาษณ์ ปีนี้คือที่สุด <b><u>ย้ำ ปีหน้าไม่ส่งแล้ว</u></b><br>
-                                    <span class="badge badge-secondary z-depth-0">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
-                                </p>
+                        <div class="card z-depth-0">
+                            <div class="hoverable view overlay zoom">
+                                <img class="card-img-top" src="https://www.uppic.org/images/2019/10/24/CAA05982-C213-4BA1-8218-D8F2DFB54C72.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text"><span class="oi" data-glyph="calendar"></span> 24/10/2562</p>
+                                    <h5 class="card-title">รางวัล GISTDA TOP VOTE</h5>
+                                    <p class="card-text">เด็กสาธิตฯ เจ๋ง! คว้ารางวัล GISTDA TOP VOTE จากโครงการประกวดสื่อภูมิสารสนเทศ ครั้งที่ 8 ประจำปี 2562 ที่จัดขึ้นระหว่างวันที่ 28 สิงหาคม 2562 ณ อิมแพ็คฯ เมืองทองธานี ด้านอาจารย์ให้สัมภาษณ์ ปีนี้คือที่สุด <b><u>ย้ำ ปีหน้าไม่ส่งแล้ว</u></b><br>
+                                        <span class="badge badge-secondary z-depth-0">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
+                                    </p>
+                                </div>
+                                <div class="card-footer text-right"><a href="#fuq" class="card-link">อ่านเพิ่มเติม</a></div>
                             </div>
-                            <div class="card-footer text-right"><a href="#fuq" class="card-link">อ่านเพิ่มเติม</a></div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card">
+                        <div class="card z-depth-0">
                             <img class="card-img-top" src="https://media1.giphy.com/media/9PwWklO9tSELtIhBka/source.gif" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">Web Developer Require! <span class="badge badge-danger blink2">HELP WANTED</span></h5>
@@ -428,8 +485,7 @@
             </div>
 
             <div class="col-md-4">
-                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSMD.KKU&tabs=timeline&width=340&height=489&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=2529205720433288" width="100%"
-                    height="489" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
             </div>
             <br>
             <br />
@@ -528,7 +584,7 @@
     <!-- JQuery -->
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <!-- Bootstrap core JavaScript -->
-    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- END HERE -->
