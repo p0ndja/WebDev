@@ -97,6 +97,208 @@
         .view {
             height: 100%;
         }
+        
+        .wrapper {
+            width: 100%;
+            position: relative;
+            background-color: #fff;
+        }
+        
+        .wrapper:after {
+            padding-top: 42.85714285714287%;
+            display: block;
+            content: '';
+        }
+        
+        .wrapper .column {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 14.2857142857142857%;
+            float: left;
+            padding: 6px;
+            box-sizing: border-box;
+        }
+        
+        .wrapper .column .inner {
+            width: 100%;
+            position: relative;
+        }
+        
+        .wrapper .column .inner:after {
+            padding-top: 100%;
+            /* ratio 1:1 */
+            display: block;
+            content: '';
+        }
+        
+        .wrapper .column .inner:before {
+            content: ' ';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            -webkit-transition: 300ms ease-in-out;
+            transition: 300ms ease-in-out;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .wrapper .column .inner:hover:before {
+            background-color: rgba(0, 0, 0, 0);
+        }
+        
+        .wrapper .column:nth-child(1) {
+            width: 28.5714285714285714%;
+        }
+        
+        .wrapper .column:nth-child(2) {
+            left: 28.5714285714285714%;
+        }
+        
+        .wrapper .column:nth-child(3) {
+            left: 28.5714285714285714%;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+        
+        .wrapper .column:nth-child(4) {
+            width: 28.5714285714285714%;
+            left: 42.85714285714286%;
+            top: 0;
+        }
+        
+        .wrapper .column:nth-child(4) .inner:after {
+            padding-top: 48.7%;
+        }
+        
+        .wrapper .column:nth-child(5) {
+            left: 71.42857142857143%;
+            top: 0;
+        }
+        
+        .wrapper .column:nth-child(6) {
+            left: auto;
+            right: 0;
+            top: 0;
+        }
+        
+        .wrapper .column:nth-child(7) {
+            left: 71.42857142857143%;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+        
+        .wrapper .column:nth-child(8) {
+            left: auto;
+            right: 0;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+        
+        .wrapper .column:nth-child(9) {
+            width: 28.5714285714285714%;
+            top: auto;
+            left: 0;
+            bottom: 0;
+        }
+        
+        .wrapper .column:nth-child(9) .inner:after {
+            padding-top: 48.7%;
+        }
+        
+        .wrapper .column:nth-child(10) {
+            left: 28.5714285714285714%;
+            top: auto;
+            bottom: 0;
+        }
+        
+        .wrapper .column:nth-child(11) {
+            left: 42.85714285714286%;
+            top: auto;
+            bottom: 0;
+            width: 28.5714285714285714%;
+        }
+        
+        .wrapper .column:nth-child(12) {
+            left: auto;
+            top: auto;
+            bottom: 0;
+            right: 0;
+            width: 28.5714285714285714%;
+        }
+        
+        .wrapper .column:nth-child(12) .inner:after {
+            padding-top: 48.7%;
+        }
+        /* BEAUTY */
+        
+        body,
+        html {
+            background-color: #fff;
+            padding: 0;
+        }
+        
+        .wrapper .column .inner {
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .wrapper .column:nth-child(1) .inner {
+            background-image: url('https://igcdn-photos-b-a.akamaihd.net/hphotos-ak-xfa1/t51.2885-15/11055800_1556880671238497_1776548525_n.jpg');
+        }
+        
+        .wrapper .column:nth-child(2) .inner {
+            background-image: url('https://igcdn-photos-h-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/11055816_932624596782983_529466754_n.jpg');
+        }
+        
+        .wrapper .column:nth-child(3) .inner {
+            background-image: url('https://igcdn-photos-g-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/11008257_1569363026647030_933015336_n.jpg');
+        }
+        
+        .wrapper .column:nth-child(4) .inner {
+            background-image: url('https://igcdn-photos-e-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/11056045_436886419818172_768672462_n.jpg');
+        }
+        
+        .wrapper .column:nth-child(5) .inner {
+            background-image: url('https://igcdn-photos-g-a.akamaihd.net/hphotos-ak-xfa1/t51.2885-15/11049260_1374759412847590_258656935_n.jpg');
+        }
+        
+        .wrapper .column:nth-child(6) .inner {
+            background-image: url('https://igcdn-photos-d-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/11005276_1414641038838035_1026684390_n.jpg');
+        }
+        
+        .wrapper .column:nth-child(7) .inner {
+            background-image: url('https://igcdn-photos-a-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/11032879_730451393737672_1900382729_n.jpg');
+        }
+        
+        .wrapper .column:nth-child(8) .inner {
+            background-image: url('https://igcdn-photos-h-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/11008309_1069768239717639_19410808_n.jpg');
+        }
+        
+        .wrapper .column:nth-child(9) .inner {
+            background-image: url('https://igcdn-photos-h-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/10919595_795737697170495_727510522_n.jpg');
+        }
+        
+        .wrapper .column:nth-child(10) .inner {
+            background-image: url('https://igcdn-photos-h-a.akamaihd.net/hphotos-ak-xfa1/t51.2885-15/11005073_763217610443223_1974563188_n.jpg');
+        }
+        
+        .wrapper .column:nth-child(11) .inner {
+            background-image: url('https://igcdn-photos-h-a.akamaihd.net/hphotos-ak-xaf1/t51.2885-15/10903752_533893980082103_132962602_n.jpg');
+        }
+        
+        .wrapper .column:nth-child(12) .inner {
+            background-image: url('https://igcdn-photos-f-a.akamaihd.net/hphotos-ak-xap1/t51.2885-15/10483464_355418301328333_1012884493_n.jpg');
+        }
+        
+        .wrapper .column:nth-child(13) .inner {
+            background-image: url('https://igcdn-photos-d-a.akamaihd.net/hphotos-ak-xap1/t51.2885-15/10483455_592335754230795_537719826_n.jpg');
+        }
     </style>
 
     <!-- Must be same here -->
@@ -390,6 +592,44 @@
         </div>
         <div class="container">
             <h1>Gallery</h1>
+            <div class="wrapper">
+                <div class="column">
+                    <div class="inner"></div>
+                </div>
+                <div class="column">
+                    <div class="inner"></div>
+                </div>
+                <div class="column">
+                    <div class="inner"></div>
+                </div>
+                <div class="column">
+                    <div class="inner"></div>
+                </div>
+                <div class="column">
+                    <div class="inner"></div>
+                </div>
+                <div class="column">
+                    <div class="inner"></div>
+                </div>
+                <div class="column">
+                    <div class="inner"></div>
+                </div>
+                <div class="column">
+                    <div class="inner"></div>
+                </div>
+                <div class="column">
+                    <div class="inner"></div>
+                </div>
+                <div class="column">
+                    <div class="inner"></div>
+                </div>
+                <div class="column">
+                    <div class="inner"></div>
+                </div>
+                <div class="column">
+                    <div class="inner"></div>
+                </div>
+            </div>
 
         </div>
         <div class="container">
