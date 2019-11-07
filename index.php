@@ -333,17 +333,24 @@
     <!------ Include the above in your HEAD tag ---------->
     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.3.1.min.js"></script>
 
-    <script>
-        $(function() {
-            var includes = $('[data-include]');
-            jQuery.each(includes, function() {
-                var file = 'global/' + $(this).data('include') + '.html';
-                $(this).load(file);
-            });
-        });
-    </script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.3.1.js"></script>
 
+    <!-- SCRIPT THAT ADD FROM MDBootstrap-->
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- END HERE -->
+    
 </head>
 
 <body style="">
@@ -721,29 +728,10 @@
     </script>
 
     <!-- Your customer chat code -->
-    <div class="fb-customerchat" attribution=setup_tool page_id="224318804364546" theme_color="#006AFF" logged_in_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม" logged_out_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม">
-    </div>
-
-    </div>
+    <div class="fb-customerchat" attribution=setup_tool page_id="224318804364546" theme_color="#006AFF" logged_in_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม" logged_out_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม"></div>
+    
 
     <?php include './global/footer.php'?>
-    
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap-4.3.1.js"></script>
-
-    <!-- SCRIPT THAT ADD FROM MDBootstrap-->
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-    <!-- END HERE -->
 
 </body>
 
