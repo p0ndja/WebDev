@@ -6,17 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- KANIT FONT -->
-    <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
-
     <style>
-        body {
-            font-family: 'Kanit', sans-serif !important;
-            background: url('http://smd-s.kku.ac.th/home/templates/satit09/images/Bottom_texture.jpg') no-repeat center center fixed;
+        .fluid-background {
+            background: url(http://www.outcomesstar.org.uk/wp-content/uploads/work-star-banner.jpg) no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
-            background-size: cover;
             -o-background-size: cover;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
         }
         
         header {
@@ -301,125 +299,13 @@
         }
     </style>
 
-    <!-- Must be same here -->
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <title>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
-    <link rel="image_src" href="https://tcas.pondja.com/smdlogo.png" />
-    <meta property="og:image" content="https://tcas.pondja.com/smdlogo.png" />
-    <meta property="og:title" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
-    <meta property="og:description" content="123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002 โทรศัพท์ / โทรสาร 043202044" />
-    <!-- Bootstrap -->
-    <link href="css/bootstrap-4.3.1.css" rel="stylesheet">
-    <!-- For Callout -->
-    <link href="https://v4-alpha.getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
-    <!-- Icon :: See More at https://useiconic.com/open/ -->
-    <link href="./icon/font/css/open-iconic.css" rel="stylesheet">
-    <!-- Icon :: See More at https://fontawesome.com/icons?d=gallery -->
-    <script src="https://kit.fontawesome.com/7454809de8.js" crossorigin="anonymous"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="css/style.css" rel="stylesheet">
-    <!---->
+    <?php include '../global/head.php'; ?>
 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
-    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-
-    
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap-4.3.1.js"></script>
-
-    <!-- SCRIPT THAT ADD FROM MDBootstrap-->
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-    <!-- END HERE -->
-    
 </head>
 
 <body style="">
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark scrolling-navbar">
-        <a class="navbar-brand" href="#"><span class="badge badge-light"><img src="http://www.kmutt.ac.th/jif/enett2015/images/logo/KKU.gif" width="20"></span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">หน้าหลัก <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> เกี่ยวกับ </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data09.png">ประวัติโรงเรียน</a>
-                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data010.png">ปรัชญา</a>
-                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data08.png">วิสัยทัศน์ พันธกิจ</a>
-                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data06.png">เป้าหมายเชิงกลยุทธ์</a>
-                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data07.png">คุณลักษณะอันพึงประสงค์</a>
-                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data12.png">คณะกรรมการประจำโรงเรียน</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="./load.php?img=http://smd-s.kku.ac.th/home/images/smd-58/managementstructure57.jpg">โครงสร้างการบริหาร</a>
-                        <a class="dropdown-item" href="#">ทำเนียบผู้บริหาร</a>
-                        <a class="dropdown-item" href="#">คณะผู้บริหาร</a>
-                        <a class="dropdown-item" href="#">บุคลากร</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                หน่วยงาน </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#"> งานแผนและประกันคุณภาพ </a>
-                        <a class="dropdown-item" href="#"> งานแนะแนว </a>
-                        <a class="dropdown-item" href="#"> งานทะเบียน </a>
-                        <a class="dropdown-item" href="#"> งานพัฒนาบุคลิกภาพ </a>
-                        <a class="dropdown-item" href="#"> งานห้องสมุด </a>
-                        <a class="dropdown-item" href="#"> ชมรมผู้ปกครองและครู </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"> เอกสารประกอบการสอน </a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                ปฏิทิน </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#"> ปฏิทินโรงเรียน </a>
-                        <a class="dropdown-item" href="calendar.html"> ตารางเรียน </a>
-                        <a class="dropdown-item" href="#"> ตารางสอบ </a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> อื่น ๆ </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="./forum.html#">SMD Forum</a>
-                        <a class="dropdown-item" href="#">SMD Shop</a>
-                        <a class="dropdown-item" href="#">ถ่ายทอดสด <sup class="notifi"><span class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE <span class="oi" data-glyph="video"></span></span></a></sup>
-                    </div>
-                </li>
-
-            </ul>
-            <right>
-                <form method="GET" class="form-inline mr-auto align-right">
-                    <div class="md-form my-0">
-                        <input method="GET" class="form-control" type="text" placeholder="Search" aria-label="Search" id="test">
-                    </div>
-                </form>
-            </right>
-            <a class="btn btn-dark" href="./login">Login</a>
-
-        </div>
-    </nav>
+    
+    <?php include '../global/navbar.php'; ?>
 
     <header>
         <div class="overlay"></div>
@@ -607,7 +493,7 @@
         </div>-->
         <hr>
     </div>
-    <div class="conrainer-fluid" style="background-image: url(http://www.outcomesstar.org.uk/wp-content/uploads/work-star-banner.jpg);">
+    <div class="container-fluid fluid-backgroundd" style="background-image: url(http://www.outcomesstar.org.uk/wp-content/uploads/work-star-banner.jpg);">
         <hr>
         <div class="container">
             <h1>Gallery</h1>
@@ -655,10 +541,7 @@
         </div>
         <hr>
     </div>
-
-    </div>
     <div class="container">
-
         <h1>NEWS</h1>
         <div class="row">
             <div class="col-md-8">
@@ -729,10 +612,7 @@
 
     <!-- Your customer chat code -->
     <div class="fb-customerchat" attribution=setup_tool page_id="224318804364546" theme_color="#006AFF" logged_in_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม" logged_out_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม"></div>
-    
 
-    <?php include './global/footer.php'?>
-
+    <?php include '../global/footer.php';?>
 </body>
-
 </html>
