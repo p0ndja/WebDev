@@ -7,6 +7,33 @@
             -o-background-size: cover;
         }
         
+        @-webkit-keyframes blinker {
+            from {
+                opacity: 1.0;
+            }
+            to {
+                opacity: 0.0;
+            }
+        }
+        
+        .navbar-normal {
+            background-color: #db6c24;
+        }
+        
+        .navbar-transparent {
+            background-color: transparent;
+        }
+        
+        .top-nav-collapse {
+            background-color: #db6c24;
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .navbar {
+                background-color: #db6c24;
+            }
+        }
+        
         .blink {
             text-decoration: blink;
             -webkit-animation-name: blinker;

@@ -2,10 +2,6 @@
 <html lang="th">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <style>
         .fluid-background {
             background: url(http://www.outcomesstar.org.uk/wp-content/uploads/work-star-banner.jpg) no-repeat center center fixed;
@@ -66,27 +62,8 @@
             }
         }
         
-        @-webkit-keyframes blinker {
-            from {
-                opacity: 1.0;
-            }
-            to {
-                opacity: 0.0;
-            }
-        }
-        
-        .navbar {
+        .navbar-transparent {
             background-color: transparent;
-        }
-        
-        .top-nav-collapse {
-            background-color: #db6c24;
-        }
-        
-        @media only screen and (max-width: 768px) {
-            .navbar {
-                background-color: #db6c24;
-            }
         }
         
         html,
@@ -305,7 +282,8 @@
 
 <body style="">
     
-    <?php include '../global/navbar.php'; ?>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark scrolling-navbar navbar-transparent">
+        <?php include '../global/navbar.php'; ?>
 
     <header>
         <div class="overlay"></div>
