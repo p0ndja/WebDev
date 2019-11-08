@@ -57,3 +57,16 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="../js/mdb.min.js"></script>
     <!-- END HERE -->
+
+    <script>
+        function fixAspect(img) {
+            var $img = $(img),
+                width = $img.width(),
+                height = $img.height(),
+                tallAndNarrow = width / height < 1;
+            if (tallAndNarrow) {
+                $img.addClass('tallAndNarrow');
+            }
+            $img.addClass('loaded');
+        }
+    </script>

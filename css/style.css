@@ -1,6 +1,6 @@
         body {
             font-family: 'Kanit', sans-serif !important;
-            background: url('http://smd-s.kku.ac.th/home/templates/satit09/images/Bottom_texture.jpg') no-repeat center center fixed;
+            background: url('https://storage.pondja.com/bg%20lightmode.jpg') no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             background-size: cover;
@@ -17,7 +17,9 @@
         }
         
         .navbar-normal {
-            background-color: #db6c24;
+            background-image: url('https://storage.pondja.com/bg%20darkmode.jpg');
+            background-repeat: no-repeat;
+            background-size: 100%;
         }
         
         .navbar-transparent {
@@ -25,12 +27,16 @@
         }
         
         .top-nav-collapse {
-            background-color: #db6c24;
+            background-image: url('https://storage.pondja.com/bg%20darkmode.jpg');
+            background-repeat: no-repeat;
+            background-size: 100%;
         }
         
         @media only screen and (max-width: 768px) {
             .navbar {
-                background-color: #db6c24;
+                background-image: url('https://storage.pondja.com/bg%20darkmode.jpg');
+                background-repeat: no-repeat;
+                background-size: 100%;
             }
         }
         

@@ -272,10 +272,6 @@
         .wrapper .column:nth-child(12) .inner {
             background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/73498078_2364964120299993_1412030022511755264_o.jpg?_nc_cat=101&_nc_oc=AQnkS1qSzAfh8NeS1hbBKzyXS2UGDXEs48q9b2D-ZW65Z7Brw_uB6eEIBNlfWg5f_Js&_nc_ht=scontent.fkkc2-1.fna&oh=b9728d20bae5f328daa24360bdc9cb2f&oe=5E45ACA7');
         }
-
-        .wrapper .column:nth-child(13) .inner {
-            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/s960x960/75226466_2365070780289327_5602759149432602624_o.jpg?_nc_cat=105&_nc_oc=AQn6LhzJ-QFd65sxMQ86Axh6Rt6fVzDnf41k1ipIt8XxFSOkNzhUY_iKxTSUDb_B6uw&_nc_ht=scontent.fkkc2-1.fna&oh=ca1614c8cff9504998fa1db1fc34cefe&oe=5E4774A7');
-        }
     </style>
 
     <?php include '../global/head.php'; ?>
@@ -309,7 +305,7 @@
     <hr>
     <div class="container">
         <div class="row">
-            <div class="col-6 col-md-12">
+            <div class="col-12 col-md-12">
                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-interval="5000">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -318,7 +314,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="images/1300x400.png" class="d-block w-100" alt="...">
+                            <img src="images/1300x400.png" width="1200" height="400" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>
                                     <p class="text-dark">First slide label</p>
@@ -327,14 +323,14 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="images/1300x400.png" class="d-block w-100" alt="...">
+                            <img src="images/1300x400.png" width="1200" height="400" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Second slide label</h5>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="images/1300x400.png" class="d-block w-100" alt="...">
+                            <img src="images/1300x400.png" width="1200" height="400" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Third slide label</h5>
                                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -356,11 +352,42 @@
     </div>
     <div class="container">
         <h1>หลักสูตรการเรียน</h1>
-        <h1>-----</h1>
-        <hr>
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <a href="#">
+                    <div class="view overlay zoom">
+                        <img src="https://www.uppic.org/images/2019/11/08/emsp.jpg" class="img-fluid"
+                            alt="smaple image">
+                        <div class="mask flex-center rgba-black-slight">
+
+                        </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <a href="#">
+                <div class="view overlay zoom">
+                    <img src="https://www.uppic.org/images/2019/11/08/normal.jpg" class="img-fluid" alt="smaple image">
+                    <div class="mask flex-center rgba-black-slight">
+                    </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-12 col-md-4">
+        <a href="#">
+            <div class="view overlay zoom">
+                <img src="https://www.uppic.org/images/2019/11/08/scius.jpg" class="img-fluid" alt="smaple image">
+                <div class="mask flex-center rgba-black-slight">
+                    <p class="white-text">Zoom effect</p>
+                </div>
+        </a>
+    </div>
+    </div>
+    </div>
+    <hr>
     </div>
     <div class="container-fluid fluid-backgroundd"
-        style="background-image: url(http://www.outcomesstar.org.uk/wp-content/uploads/work-star-banner.jpg);">
+        style="background-image: url('https://storage.pondja.com/bg.jpg'); background-repeat: no-repeat; background-size: 100%;">
         <hr>
         <div class="container">
         </div>
