@@ -356,6 +356,7 @@
     </div>
     <div class="container">
         <h1>หลักสูตรการเรียน</h1>
+        <h1>-----</h1>
         <hr>
     </div>
     <div class="container-fluid fluid-backgroundd"
