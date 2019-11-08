@@ -66,6 +66,7 @@
                                         class="oi" data-glyph="video"></span></span></a></sup>
                     </div>
                 </li>
+                <a href="https://storage.pondja.com/.show.php" class="btn btn-warning">ฝากไฟล์ (ชั่วคราวโว้ย)</a>
 
             </ul>
             <right>
@@ -78,5 +79,4 @@
             </right>
 
             <a href="" class="btn btn-dark" data-toggle="modal" data-target="#modalLoginForm">Login</a>
-            </a>
         </div>

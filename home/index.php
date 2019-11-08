@@ -4,7 +4,7 @@
 <head>
     <style>
         .fluid-background {
-            background: url(http://www.outcomesstar.org.uk/wp-content/uploads/work-star-banner.jpg) no-repeat center center fixed;
+            background: url(https://storage.pondja.com/long%20bar%201080.png) no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -271,6 +271,14 @@
         .wrapper .column:nth-child(12) .inner {
             background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/73498078_2364964120299993_1412030022511755264_o.jpg?_nc_cat=101&_nc_oc=AQnkS1qSzAfh8NeS1hbBKzyXS2UGDXEs48q9b2D-ZW65Z7Brw_uB6eEIBNlfWg5f_Js&_nc_ht=scontent.fkkc2-1.fna&oh=b9728d20bae5f328daa24360bdc9cb2f&oe=5E45ACA7');
         }
+
+        .notstick + .content {
+            padding-top: 20px;
+        }
+
+        .sticky + .content {
+            padding-top: 95px;
+        }
     </style>
 
     <?php include '../global/head.php'; ?>
@@ -279,11 +287,11 @@
 
         $(window).bind('scroll', function () {
             if ($(window).scrollTop() > $(window).height()) {
-                $('#nav').removeClass('navbar-top');
-                $('#nav').addClass('fixed-top');
+                $('#nav').removeClass('navbar-top notstick');
+                $('#nav').addClass('fixed-top sticky');
             } else {
-                $('#nav').removeClass('fixed-top');
-                $('#nav').addClass('navbar-top');
+                $('#nav').removeClass('fixed-top sticky');
+                $('#nav').addClass('navbar-top notstick');
             }
         });
     </script>
@@ -293,7 +301,7 @@
 <body style="">
 
     <?php include '../global/login.php'; ?>
-    <header>
+    <header id="header">
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
             <source src="https://storage.pondja.com/Untitled%20Project.mp4" type="video/mp4">
@@ -314,7 +322,7 @@
         role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <hr>
+    <div class="content"></div>
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-12">
@@ -393,7 +401,6 @@
             <div class="view overlay zoom">
                 <img src="https://www.uppic.org/images/2019/11/08/scius.jpg" class="img-fluid" alt="smaple image">
                 <div class="mask flex-center rgba-black-slight">
-                    <p class="white-text">Zoom effect</p>
                 </div>
         </a>
     </div>
@@ -402,7 +409,7 @@
     <hr>
     </div>
     <div class="container-fluid fluid-backgroundd"
-        style="background-image: url('https://storage.pondja.com/bg.jpg'); background-repeat: no-repeat; background-size: 100%;">
+        style="background: url('https://storage.pondja.com/long%20bar%201080.png') no-repeat center center scroll;">
         <hr>
         <div class="container">
         </div>
