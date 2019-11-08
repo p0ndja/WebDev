@@ -11,16 +11,16 @@
                 <div class="md-form mb-5">
                     <i class="fas fa-envelope prefix grey-text"></i>
                     <input type="text" id="defaultForm-email" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="defaultForm-email">รหัสนักเรียน / Username</label>
+                    <label data-error="wrong" for="defaultForm-email">รหัสนักเรียน / Username</label>
                 </div>
                 <div class="md-form mb-4">
                     <i class="fas fa-lock prefix grey-text"></i>
                     <input type="password" id="defaultForm-pass" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="defaultForm-pass">รหัสบัตรประชาชน / Password</label>
+                    <label data-error="wrong" for="defaultForm-pass">รหัสบัตรประชาชน / Password</label>
                 </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <button class="btn text-white" style="background-color: #db6c24;">เข้าสู่ระบบ</button>
+                <a class="btn text-white" style="background-color: #db6c24;" href="../profile">เข้าสู่ระบบ</a>
             </div>
         </div>
     </div>
