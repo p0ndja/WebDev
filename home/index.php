@@ -273,11 +273,11 @@
         }
 
         .notstick + .content {
-            padding-top: 20px;
+            padding-top: 19px;
         }
 
         .sticky + .content {
-            padding-top: 95px;
+            padding-top: 94px;
         }
     </style>
 
@@ -409,7 +409,7 @@
     <hr>
     </div>
     <div class="container-fluid fluid-backgroundd"
-        style="background: url('https://storage.pondja.com/long%20bar%201080.png') no-repeat center center scroll;">
+        style="background-image: url('https://storage.pondja.com/long%20bar%20png.png'); background-size: auto;">
         <hr>
         <div class="container">
         </div>
