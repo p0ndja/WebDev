@@ -275,15 +275,24 @@
 
     <?php include '../global/head.php'; ?>
 
+    <script>
+
+        $(window).bind('scroll', function () {
+            if ($(window).scrollTop() > $(window).height()) {
+                $('#nav').removeClass('navbar-top');
+                $('#nav').addClass('fixed-top');
+            } else {
+                $('#nav').removeClass('fixed-top');
+                $('#nav').addClass('navbar-top');
+            }
+        });
+    </script>
+
 </head>
 
 <body style="">
 
     <?php include '../global/login.php'; ?>
-
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark scrolling-navbar navbar-transparent">
-        <?php include '../global/navbar.php'; ?>
-    </nav>
     <header>
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
@@ -301,6 +310,10 @@
         </div>
 
     </header>
+    <nav class="navbar navbar-expand-lg navbar-top navbar-dark navbar-normal" id="nav"
+        role="navigation">
+        <?php include '../global/navbar.php'; ?>
+    </nav>
     <hr>
     <div class="container">
         <div class="row">
@@ -313,7 +326,8 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="http://smd-s.kku.ac.th/home/modules/mod_AutsonSlideShow/images/image3.jpg" width="1200" height="400" class="d-block w-100" alt="...">
+                            <img src="http://smd-s.kku.ac.th/home/modules/mod_AutsonSlideShow/images/image3.jpg"
+                                class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>
                                     <p class="text-dark">First slide label</p>
@@ -322,14 +336,16 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="http://smd-s.kku.ac.th/home/modules/mod_AutsonSlideShow/images/image5.jpg" width="1200" height="400" class="d-block w-100" alt="...">
+                            <img src="http://smd-s.kku.ac.th/home/modules/mod_AutsonSlideShow/images/image5.jpg"
+                                class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Second slide label</h5>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="http://smd-s.kku.ac.th/home/modules/mod_AutsonSlideShow/images/image4.jpg" width="1200" height="400" class="d-block w-100" alt="...">
+                            <img src="http://smd-s.kku.ac.th/home/modules/mod_AutsonSlideShow/images/image4.jpg"
+                                class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Third slide label</h5>
                                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
