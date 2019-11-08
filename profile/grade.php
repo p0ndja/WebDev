@@ -2,13 +2,25 @@
 <html lang="th">
 
 <head>
-    <?php include '../global/header.php'; ?>
+    <?php include '../global/head.php'; ?>
+    <script>
+        function fixAspect(img) {
+            var $img = $(img),
+                width = $img.width(),
+                height = $img.height(),
+                tallAndNarrow = width / height < 1;
+            if (tallAndNarrow) {
+                $img.addClass('tallAndNarrow');
+            }
+            $img.addClass('loaded');
+        }
+    </script>
 </head>
 
 <body style="background-color: #ededed">
-    <?php include '../global/login.php' ?>
+    <?php include '../global/login.php'; ?>
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark navbar-normal">
-        <?php include '../global/navbar.php';?>
+        <?php include '../global/navbar.php'; ?>
     </nav>
 
     <div class="container">
@@ -196,7 +208,7 @@
             </div>
         </div>
     </div>
-    <?php include '../global/footer.php' ?>
+    <?php include '../global/footer.php'; ?>
 </body>
 
 </html>

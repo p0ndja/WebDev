@@ -3,6 +3,18 @@
 
 <head>
     <?php include '../global/header.php'; ?>
+    <script>
+        function fixAspect(img) {
+            var $img = $(img),
+                width = $img.width(),
+                height = $img.height(),
+                tallAndNarrow = width / height < 1;
+            if (tallAndNarrow) {
+                $img.addClass('tallAndNarrow');
+            }
+            $img.addClass('loaded');
+        }
+    </script>
 </head>
 
 <body style="background-color: #ededed">
