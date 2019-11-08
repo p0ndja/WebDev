@@ -8,7 +8,9 @@
 <body style="background-color: #ededed">
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #db6c24;">
         <?php include '../global/navbar.php'; ?>
+    </nav>
     <div class="container">
+        <br>
         <div class="row">
             <div class="col-12">
                 <div class="text-center">
@@ -18,9 +20,8 @@
                 </div>
             </div>
         </div>
+        <br>
     </div>
-    <br>
-    <hr>
     <?php include '../global/footer.php';?>
 </body>
 

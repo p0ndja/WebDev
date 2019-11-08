@@ -8,11 +8,12 @@
 <body style="background-color: #ededed">
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark navbar-normal">
         <?php include '../global/navbar.php';?>
+    </nav>
     <div class="container">
         <div class="row text-center">
             <?php
-                echo '<img src="' . $_GET['img'] . '" width="100%" height="100%">';
-            ?>
+                    echo '<img src="' . $_GET['img'] . '" width="100%" height="100%">';
+                ?>
         </div>
     </div>
     <?php include '../global/footer.php' ?>
