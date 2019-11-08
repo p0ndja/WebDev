@@ -226,55 +226,55 @@
         }
 
         .wrapper .column:nth-child(1) .inner {
-            background-image: url('https://risaka.pondja.com/IMG_1069%20(1).JPG');
+            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/75474135_980070635669586_1403665681076977664_o.jpg?_nc_cat=109&_nc_oc=AQmI57slAejSEfqhFzKI-bp35m6TGKCS8TRqcOLKQLoFT5fEksZJ4VciM3HSkl8tlDI&_nc_ht=scontent.fkkc2-1.fna&oh=df2198ae3d2b9b029540958ce30a0177&oe=5E4FDC42');
         }
 
         .wrapper .column:nth-child(2) .inner {
-            background-image: url('https://risaka.pondja.com/IMG_7315%20(1).JPG');
+            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/75204386_980045625672087_3843565490161057792_o.jpg?_nc_cat=107&_nc_oc=AQnY5B8QF-er5laFNoX4qp930uxWGdTQmDpfxx9SsEhCvbgaOjoNhGkg6RoqSJMpyio&_nc_ht=scontent.fkkc2-1.fna&oh=7e9d938c0e7fd963d7837f9c964979c1&oe=5E4B4525');
         }
 
         .wrapper .column:nth-child(3) .inner {
-            background-image: url('https://risaka.pondja.com/IMG_8295.jpg');
+            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/74234644_980045689005414_1081478683597733888_o.jpg?_nc_cat=106&_nc_oc=AQmsx_rmsTXQ9Nj4QkHjHxQ_pXj7z1savGoPoybzXtZQ9qYKfLNIbfZt9dcnoudOytM&_nc_ht=scontent.fkkc2-1.fna&oh=80958959628b0572874b108386bcd65b&oe=5E4822AA');
         }
 
         .wrapper .column:nth-child(4) .inner {
-            background-image: url('https://risaka.pondja.com/DSC_0158.JPG');
+            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/73097183_980051145671535_4160425963689082880_o.jpg?_nc_cat=108&_nc_oc=AQkvCIP4mmxoJTROupSVDC4pyrqbwY1iGBPW8QU9ONadZnhPBsJKQI-IIwKLIMSfYRE&_nc_ht=scontent.fkkc2-1.fna&oh=f82f3f02a6e132f87fea1f91ed5f84bc&oe=5E44F9E6');
         }
 
         .wrapper .column:nth-child(5) .inner {
-            background-image: url('https://risaka.pondja.com/IMG_8717.jpg');
+            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/73482696_980045815672068_835440468434092032_o.jpg?_nc_cat=102&_nc_oc=AQnEdBnpgTxU7Vpk3dA0rxEIzRyHwTVIlgaLsoIqpWEWIPx3JNYAyYeY8CZt4jdP49g&_nc_ht=scontent.fkkc2-1.fna&oh=437ff38fd5cd163d9978cdf207b7afde&oe=5E518345');
         }
 
         .wrapper .column:nth-child(6) .inner {
-            background-image: url('https://risaka.pondja.com/IMG_1652.JPG');
+            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/73425135_980186435658006_1319608210407030784_o.jpg?_nc_cat=106&_nc_oc=AQmldPOa-zfsGVJN6G55ePfsKVpKp6NU72x0fI5zKTGgnFwk30R5i239elSezHz9KaE&_nc_ht=scontent.fkkc2-1.fna&oh=7ae06d540620ce0cb40948cb0674ef33&oe=5E652B3F');
         }
 
         .wrapper .column:nth-child(7) .inner {
-            background-image: url('https://risaka.pondja.com/IMG_8167.JPG');
+            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/74419887_980182215658428_7737382548656881664_o.jpg?_nc_cat=110&_nc_oc=AQl0oEvDoiVy-MJbITqrWZiIktwv3QARipamIGY322Xe9kqNEDMhCGuHVIHwKLmYR8A&_nc_ht=scontent.fkkc2-1.fna&oh=a638647700572d512b1b364c81173eb1&oe=5E4DB3E0');
         }
 
         .wrapper .column:nth-child(8) .inner {
-            background-image: url('https://risaka.pondja.com/IMG_1652.JPG');
+            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/75246813_980170685659581_2695018577248911360_o.jpg?_nc_cat=102&_nc_oc=AQkIg8ylZxB-VFCc9-RWjqZgKX_APw8CYkFwqUj-Cihoyck_BRUD_GKnjw76boUjNRI&_nc_ht=scontent.fkkc2-1.fna&oh=5effc202fc452204b10bcebcc5dc4091&oe=5E458F7E');
         }
 
         .wrapper .column:nth-child(9) .inner {
-            background-image: url('https://risaka.pondja.com/IMG_3574.JPG');
+            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/74353244_980171055659544_3391798513317707776_o.jpg?_nc_cat=111&_nc_oc=AQk631TpFAIudJPaQMsqXlzRrEuFDQ0NAgdbeDRqPN6ZFEMESOrGNXsnCeizvPvWOLM&_nc_ht=scontent.fkkc2-1.fna&oh=172c8e07838c88c1951e577659165402&oe=5E61508D');
         }
 
         .wrapper .column:nth-child(10) .inner {
-            background-image: url('https://risaka.pondja.com/IMG_8288.jpg');
+            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/74437574_2365099943619744_3925936224094650368_o.jpg?_nc_cat=104&_nc_oc=AQnxtaJDtTPbFuhdSsxq0BTnhvopKF94Z1mXUlt_n3ybO0eBqKOaNbbht2JvkCVY1m0&_nc_ht=scontent.fkkc2-1.fna&oh=c365babca09f4d8733007a45d5c72ab4&oe=5E60C0DE');
         }
 
         .wrapper .column:nth-child(11) .inner {
-            background-image: url('https://risaka.pondja.com/IMG_1266.JPG');
+            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/s960x960/74599515_2365070813622657_5056991960003248128_o.jpg?_nc_cat=105&_nc_oc=AQkDwdjjOsFtoOL8YdSOH7C6keqmHr5o3RIHLMvlsvL-D7NtKpEy2eXdnm5pEf8HGXY&_nc_ht=scontent.fkkc2-1.fna&oh=0e303dadd5536df5b9224e53bf1ff355&oe=5E5BE650');
         }
 
         .wrapper .column:nth-child(12) .inner {
-            background-image: url('https://risaka.pondja.com/DSCN0825_resize%20(1).JPG');
+            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/73498078_2364964120299993_1412030022511755264_o.jpg?_nc_cat=101&_nc_oc=AQnkS1qSzAfh8NeS1hbBKzyXS2UGDXEs48q9b2D-ZW65Z7Brw_uB6eEIBNlfWg5f_Js&_nc_ht=scontent.fkkc2-1.fna&oh=b9728d20bae5f328daa24360bdc9cb2f&oe=5E45ACA7');
         }
 
         .wrapper .column:nth-child(13) .inner {
-            background-image: url('https://risaka.pondja.com/FB_IMG_1536311202928%20(1).jpg');
+            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/s960x960/75226466_2365070780289327_5602759149432602624_o.jpg?_nc_cat=105&_nc_oc=AQn6LhzJ-QFd65sxMQ86Axh6Rt6fVzDnf41k1ipIt8XxFSOkNzhUY_iKxTSUDb_B6uw&_nc_ht=scontent.fkkc2-1.fna&oh=ca1614c8cff9504998fa1db1fc34cefe&oe=5E4774A7');
         }
     </style>
 
