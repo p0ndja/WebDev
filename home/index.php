@@ -216,7 +216,6 @@
 
         body,
         html {
-            background-color: #ededed;
             padding: 0;
         }
 
