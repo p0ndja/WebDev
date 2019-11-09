@@ -438,7 +438,6 @@
     </div>
     <div class="container-fluid fluid-backgroundd"
         style="background-image: url('https://storage.pondja.com/bg%20light.jpg'); background-size: auto;">
-        <hr>
         <div class="container">
         </div>
 
