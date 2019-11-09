@@ -1,5 +1,5 @@
         <a class="navbar-brand" href="../home"><span class="badge badge-light"><img
-                    src="http://www.kmutt.ac.th/jif/enett2015/images/logo/KKU.gif" width="20"></span></a>
+                    src="http://www.kmutt.ac.th/jif/enett2015/images/logo/KKU.gif" width="20" alt="SMD"></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
