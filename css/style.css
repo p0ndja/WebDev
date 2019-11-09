@@ -20,23 +20,18 @@
             padding-top: 88px;
         }
         
-        .navbar-normal {
-            background-image: url('https://storage.pondja.com/bg%20light.jpg');
-            background-repeat: no-repeat;
-            background-size: 100%;
-        }
-        
-        .top-nav-collapse {
-            background-image: url('https://storage.pondja.com/bg%20darkmode.jpg');
+        .navbar {
+            background-image: url('https://cdn.discordapp.com/attachments/526282483138822144/642721162157096982/bg_light.jpg');
             background-repeat: no-repeat;
             background-size: 100%;
         }
         
         @media only screen and (max-width: 768px) {
             .navbar {
-                background-image: url('https://storage.pondja.com/bg%20darkmode.jpg');
+                background-image: url('https://cdn.discordapp.com/attachments/526282483138822144/642721162157096982/bg_light.jpg');
                 background-repeat: no-repeat;
-                background-size: 100%;
+                background-size: cover;
+                background-position: fixed;
             }
         }
         

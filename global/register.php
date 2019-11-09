@@ -19,6 +19,11 @@
                     <input type="password" name="pass" class="form-control validate">
                     <label data-error="wrong" for="pass">รหัสบัตรประชาชน / Password</label>
                 </div>
+                <div class="md-form mb-5">
+                    <i class="fas fa-pencil-ruler prefix grey-text"></i>
+                    <input type="text" name="id" class="form-control validate">
+                    <label data-error="wrong" for="id">รหัสนักเรียน / Username</label>
+                </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
                 <p>aaaa<?php 

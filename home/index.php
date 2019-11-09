@@ -63,10 +63,6 @@
             }
         }
 
-        .navbar-transparent {
-            background-color: transparent;
-        }
-
         html,
         body,
         header,
@@ -272,16 +268,14 @@
             background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/73498078_2364964120299993_1412030022511755264_o.jpg?_nc_cat=101&_nc_oc=AQnkS1qSzAfh8NeS1hbBKzyXS2UGDXEs48q9b2D-ZW65Z7Brw_uB6eEIBNlfWg5f_Js&_nc_ht=scontent.fkkc2-1.fna&oh=b9728d20bae5f328daa24360bdc9cb2f&oe=5E45ACA7');
         }
 
-        .notstick + .content {
+        .notstick+.content {
             padding-top: 19px;
         }
-
     </style>
 
     <?php include '../global/head.php'; ?>
 
     <script>
-
         $(window).bind('scroll', function () {
             if ($(window).scrollTop() > $(window).height()) {
                 $('#nav').removeClass('navbar-top');
@@ -375,13 +369,13 @@
                             <img src="https://cdn.discordapp.com/attachments/601788363313512480/642628541145546762/slider_5.jpg"
                                 class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                                <h5>กิจกรรมสัมมนาและส่งเสริมศักยภาพความเป็นผู้นำของคณะกรรมการนักเรียนประจำปีการศึกษา 2562</h5>
+                                <h5>กิจกรรมสัมมนาและส่งเสริมศักยภาพความเป็นผู้นำของคณะกรรมการนักเรียนประจำปีการศึกษา
+                                    2562</h5>
                                 <p>ณ เขื่อนจุฬาภรณ์ ต.ทุ่งลุยลาย จ.ชัยภูมิ วันที่ 25-27 พฤษภาคม 2562</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="https://storage.pondja.com/1400x600.jpg"
-                                class="d-block w-100" alt="...">
+                            <img src="https://storage.pondja.com/1400x600.jpg" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block animated fadeInDown">
                                 <h5>Carousel Guide</h5>
                                 <p>ขนาดรูปที่แนะนำ: 1400(W) x 600(H)</p>
@@ -436,13 +430,14 @@
     </div>
     <hr>
     </div>
-    <div class="container-fluid fluid-backgroundd"
-        style="background-image: url('https://storage.pondja.com/bg%20light.jpg'); background-size: auto;">
+    <div class="container-fluid"
+        style=" background-image: url('https://cdn.discordapp.com/attachments/526282483138822144/642721162157096982/bg_light.jpg');
+                width: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;">
         <hr>
         <div class="container">
-        </div>
-
-        <div class=" container">
             <div class="wrapper">
                 <div class="column">
                     <div class="inner"></div>
@@ -487,60 +482,58 @@
     <div class="container">
         <h1>NEWS</h1>
         <div class="row">
-                    <div class="col-6 col-md-4">
-                        <div class="card z-depth-0">
-                            <div class="hoverable view overlay zoom">
-                                <img class="card-img-top"
-                                    src="https://www.uppic.org/images/2019/10/24/CAA05982-C213-4BA1-8218-D8F2DFB54C72.jpg"
-                                    alt="Card image cap">
-                                <div class="card-body">
-                                    <p class="card-text"><span class="oi" data-glyph="calendar"></span> 24/10/2562
-                                    </p>
-                                    
-                                    <h5 class="card-title">รางวัล GISTDA TOP VOTE</h5>
-                                    <p class="card-text">
-                                        <p class="d-none d-md-block">
-                                        เด็กสาธิตฯ เจ๋ง! คว้ารางวัล GISTDA TOP VOTE
-                                        จากโครงการประกวดสื่อภูมิสารสนเทศ ครั้งที่ 8 ประจำปี 2562
-                                        ที่จัดขึ้นระหว่างวันที่ 28 สิงหาคม 2562 ณ อิมแพ็คฯ เมืองทองธานี
-                                        ด้านอาจารย์ให้สัมภาษณ์ ปีนี้คือที่สุด
-                                        <b><u>ย้ำ ปีหน้าไม่ส่งแล้ว</u></b><br>
-                                        <span
-                                            class="badge badge-secondary z-depth-0">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
-    </p>
-                                    
-                                    </p>
-                                </div>
-                                <div class="card-footer text-right"><a href="#fuq" class="card-link">อ่านเพิ่มเติม</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4">
-                        <div class="card z-depth-0">
-                            <img class="card-img-top" src="https://media1.giphy.com/media/9PwWklO9tSELtIhBka/source.gif"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Web Developer Require! <span
-                                        class="badge badge-danger blink2">HELP WANTED</span></h5>
-                                <p class="card-text">We need your help~.
-                                    <br><b>Requirement: </b>
-                                    <br>- Full-stack programming skill
-                                    <br>- Able to create websites with Bootstrap, HTML, PHP
-                                    <br>- Able to read/write database with MySQL
-                                    <br>- Sleep more than 8 hours per night
+            <div class="col-6 col-md-4">
+                <div class="card z-depth-0">
+                    <div class="hoverable view overlay zoom">
+                        <img class="card-img-top"
+                            src="https://www.uppic.org/images/2019/10/24/CAA05982-C213-4BA1-8218-D8F2DFB54C72.jpg"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text"><span class="oi" data-glyph="calendar"></span> 24/10/2562
+                            </p>
+                            <h5 class="card-title">รางวัล GISTDA TOP VOTE</h5>
+                            <p class="card-text">
+                                <p class="d-none d-md-block">
+                                    เด็กสาธิตฯ เจ๋ง! คว้ารางวัล GISTDA TOP VOTE
+                                    จากโครงการประกวดสื่อภูมิสารสนเทศ ครั้งที่ 8 ประจำปี 2562
+                                    ที่จัดขึ้นระหว่างวันที่ 28 สิงหาคม 2562 ณ อิมแพ็คฯ เมืองทองธานี
+                                    ด้านอาจารย์ให้สัมภาษณ์ ปีนี้คือที่สุด
+                                    <b><u>ย้ำ ปีหน้าไม่ส่งแล้ว</u></b><br>
+                                    <span
+                                        class="badge badge-secondary z-depth-0">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
                                 </p>
-                            </div>
-                            <div class="card-footer text-right">
-                                <a href="https://m.me/p0ndja" class="btn btn-primary card-link">Register Your
-                                    Soul</a>
-                            </div>
+                            </p>
+                        </div>
+                        <div class="card-footer text-right"><a href="#fuq" class="card-link">อ่านเพิ่มเติม</a>
                         </div>
                     </div>
+                </div>
             </div>
-            <br>
-            <br />
+            <div class="col-6 col-md-4">
+                <div class="card z-depth-0">
+                    <img class="card-img-top" src="https://media1.giphy.com/media/9PwWklO9tSELtIhBka/source.gif"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Web Developer Require! <span class="badge badge-danger blink2">HELP
+                                WANTED</span></h5>
+                        <p class="card-text">We need your help~.
+                            <br><b>Requirement: </b>
+                            <br>- Full-stack programming skill
+                            <br>- Able to create websites with Bootstrap, HTML, PHP
+                            <br>- Able to read/write database with MySQL
+                            <br>- Sleep more than 8 hours per night
+                        </p>
+                    </div>
+                    <div class="card-footer text-right">
+                        <a href="https://m.me/p0ndja" class="btn btn-primary card-link">Register Your
+                            Soul</a>
+                    </div>
+                </div>
+            </div>
         </div>
+        <br>
+        <br />
+    </div>
     </div>
 
     <!-- Load Facebook SDK for JavaScript -->
