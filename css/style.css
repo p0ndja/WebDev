@@ -21,13 +21,9 @@
         }
         
         .navbar-normal {
-            background-image: url('https://storage.pondja.com/bg%20darkmode.jpg');
+            background-image: url('https://storage.pondja.com/bg%20light.jpg');
             background-repeat: no-repeat;
             background-size: 100%;
-        }
-        
-        .navbar-transparent {
-            background-color: transparent;
         }
         
         .top-nav-collapse {

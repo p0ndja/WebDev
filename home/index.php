@@ -437,7 +437,7 @@
     <hr>
     </div>
     <div class="container-fluid fluid-backgroundd"
-        style="background-image: url('https://storage.pondja.com/long%20bar%20png.png'); background-size: auto;">
+        style="background-image: url('https://storage.pondja.com/bg%20light.jpg'); background-size: auto;">
         <hr>
         <div class="container">
         </div>
