@@ -276,9 +276,6 @@
             padding-top: 19px;
         }
 
-        .sticky + .content {
-            padding-top: 88px;
-        }
     </style>
 
     <?php include '../global/head.php'; ?>
@@ -287,11 +284,16 @@
 
         $(window).bind('scroll', function () {
             if ($(window).scrollTop() > $(window).height()) {
-                $('#nav').removeClass('navbar-top notstick');
-                $('#nav').addClass('fixed-top sticky');
+                $('#nav').removeClass('navbar-top');
+                $('#nav').removeClass('notstick');
+                $('#nav').addClass('fixed-top');
+                $('#nav').addClass('sticky');
+
             } else {
-                $('#nav').removeClass('fixed-top sticky');
-                $('#nav').addClass('navbar-top notstick');
+                $('#nav').removeClass('fixed-top');
+                $('#nav').removeClass('sticky');
+                $('#nav').addClass('navbar-top');
+                $('#nav').addClass('notstick');
             }
         });
     </script>
@@ -318,8 +320,7 @@
         </div>
 
     </header>
-    <nav class="navbar navbar-expand-lg navbar-top navbar-dark navbar-normal" id="nav"
-        role="navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
     <div class="content"></div>

@@ -16,6 +16,10 @@
             }
         }
         
+        .sticky+.content {
+            padding-top: 88px;
+        }
+        
         .navbar-normal {
             background-image: url('https://storage.pondja.com/bg%20darkmode.jpg');
             background-repeat: no-repeat;

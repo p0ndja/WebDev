@@ -7,9 +7,10 @@
 
 <body style="background-color: #ededed">
     <?php include '../global/login.php' ?>
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark navbar-normal">
-        <?php include '../global/navbar.php';?>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top sticky" id="nav" role="navigation">
+        <?php include '../global/navbar.php'; ?>
     </nav>
+    <div class="content"></div>
     <div class="container">
         <div class="row text-center">
             <?php

@@ -63,7 +63,7 @@
                         <a class="dropdown-item" href="#">SMD Shop</a>
                         <a class="dropdown-item" href="#">ถ่ายทอดสด <sup class="notifi"><span
                                     class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE <span
-                                        class="oi" data-glyph="video"></span></span></a></sup>
+                                        class="oi" data-glyph="video"></span></span></sup></a>
                     </div>
                 </li>
                 <a href="https://storage.pondja.com/.show.php" target="_blank" class="btn btn-warning">ฝากไฟล์ <i>(ชั่วคราว)</i></a>
@@ -77,6 +77,5 @@
                     </div>
                 </form>
             </right>
-
-            <a href="" class="btn btn-dark" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+            <a href="" class="btn btn-dark" data-toggle="modal" data-target="#login">Login</a>
         </div>
