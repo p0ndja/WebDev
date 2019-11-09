@@ -7,7 +7,6 @@
 
 <body style="background-color: #ededed">
 
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #db6c24;">
     <?php include'../global/login.php'?>
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark navbar-normal">
        <?php include'../global/navbar.php'?>
@@ -23,13 +22,11 @@
                     <div class="col-12 col-md-3">
                         <div class="row">
                             <div class="col-4 col-md-12">
-                                <div class="circle">
-                                    <img src="https://tcas.pondja.com/31959055_1480846662024353_4037302681675497472_n.jpg" alt="Profile" onload="fixAspect(this);">
-                                </div>
+                                    <img src="https://tcas.pondja.com/31959055_1480846662024353_4037302681675497472_n.jpg" alt="Profile" class="img-fluid rounded-circle">
                             </div>
                             <div class="col-8 col-md-12">
                                 <p>
-                                    <a href="#">
+                                    <a href="../profile/?id=604019">
                                         <center>พลภณ สุนทรภาส</center>
                                     </a>
                                 </p>

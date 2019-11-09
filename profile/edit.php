@@ -2,7 +2,7 @@
 <html lang="th">
 
 <head>
-    <?php include '../global/header.php'; ?>
+    <?php include '../global/head.php'; ?>
     <script>
         function fixAspect(img) {
             var $img = $(img),
@@ -36,24 +36,10 @@
         <hr>
         <div class="row">
             <div class="col-md-4 col-sm-12">
-                <div class="media">
-                    <div class="circle">
-                        <img src="https://tcas.pondja.com/31959055_1480846662024353_4037302681675497472_n.jpg" alt="Profile" onload="fixAspect(this);">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-md-12">
-                        <div class="hovereffect">
-                            <div class="circle">
-                                <img src="https://tcas.pondja.com/31959055_1480846662024353_4037302681675497472_n.jpg" alt="Profile" onload="fixAspect(this);">
-                                <div class="overlay">
-                                    <h2>Hover effect 4</h2>
-                                    <a class="info" href="#">link here</a>
-                                </div>
-                            </div>
-
-                        </div>
-
+                <div class="media view overlay">
+                    <img src="https://tcas.pondja.com/31959055_1480846662024353_4037302681675497472_n.jpg" class="img-fluid rounded-circle" alt="Profile">
+                    <div class="mask flex-center">
+                        <p class="white-text">คลิํกเพื่อเปลี่ยนรูป</p>
                     </div>
                 </div>
                 <div class="row">
@@ -61,25 +47,13 @@
                         <hr>
                         <div class="card">
                             <div class="card-body">
-
                                 <strong>รหัสนักเรียน</strong> 604019<br>
                                 <strong>ระดับชั้น</strong> ม.6<br>
                                 <strong>ห้อง</strong> 1 (EMSP)<br>
                                 <strong>เบอร์โทรศัพท์</strong> 0908508007<br>
                                 <strong>อีเมล</strong>
                                 <a href="mailto:palapon2545@gmail.com">palapon2545@gmail.com</a>
-
                             </div>
-                        </div>
-                        <hr>
-                        <div class="bd-callout bd-callout-info">
-                            <h4 id="dealing-with-specificity">Dealing with specificity</h4>
-
-                            <p>Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element’s content in a <code class="highlighter-rouge">&lt;div&gt;</code> with
-                                the class.</p>
-                            <i class="fab fa-cc-jcb"></i>
-
-
                         </div>
                         <hr>
                         <div class="card">
@@ -206,7 +180,7 @@
                             <div class="col-md-12 col-sm-12">
                                 <div class="row">
                                     <div class="col-9">
-                                        <h4><button type="button" class="btn btn-danger btn-sm"><span class="oi" data-glyph="eye"></span></button> รางวัล GISTDA Top Vote </h4>
+                                        <h4><a class="btn btn-danger"><span class="oi" data-glyph="eye"></span></a> รางวัล GISTDA Top Vote </h4>
                                     </div>
                                     <div class="col-3">
                                         <h5 class="text-right"><span aria-hidden="true"></span>28/08/2562</h5>
@@ -224,7 +198,7 @@
                                 <div class="row">
                                     <div class="col-9">
 
-                                        <h4><button type="button" class="btn btn-success btn-sm"><span class="oi" data-glyph="eye"></span></button> รางวัลรองชนะเลิศอันดับ 1 การแข่งขัน Web Programming Competition ระดับมัธยมศึกษาตอนปลาย </h4>
+                                        <h4><a class="btn btn-success"><span class="oi" data-glyph="eye"></span></a> รางวัลรองชนะเลิศอันดับ 1 การแข่งขัน Web Programming Competition ระดับมัธยมศึกษาตอนปลาย </h4>
                                     </div>
                                     <div class="col-3">
                                         <h5 class="text-right"><span aria-hidden="true"></span>19/08/2562</h5>
@@ -241,7 +215,7 @@
                             <div class="col-md-12 col-sm-12">
                                 <div class="row">
                                     <div class="col-9">
-                                        <h4><button type="button" class="btn btn-success btn-sm"><span class="oi" data-glyph="eye"></span></button> รางวัลชนะเลิศการแข่งขันสร้างเว็บเพจ (Web editor) ระดับมัธยมศึกษาตอนปลาย</h4>
+                                        <h4><a class="btn btn-success"><span class="oi" data-glyph="eye"></span></a> รางวัลชนะเลิศการแข่งขันสร้างเว็บเพจ (Web editor) ระดับมัธยมศึกษาตอนปลาย</h4>
                                     </div>
                                     <div class="col-3">
                                         <h5 class="text-right"><span aria-hidden="true"></span>14/02/2562</h5>

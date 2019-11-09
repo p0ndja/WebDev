@@ -3,18 +3,6 @@
 
 <head>
     <?php include '../global/head.php'; ?>
-    <script>
-        function fixAspect(img) {
-            var $img = $(img),
-                width = $img.width(),
-                height = $img.height(),
-                tallAndNarrow = width / height < 1;
-            if (tallAndNarrow) {
-                $img.addClass('tallAndNarrow');
-            }
-            $img.addClass('loaded');
-        }
-    </script>
 </head>
 
 <body style="background-color: #ededed">
@@ -36,9 +24,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-12">
                 <div class="media">
-                    <div class="circle">
-                        <img src="https://tcas.pondja.com/31959055_1480846662024353_4037302681675497472_n.jpg" alt="Profile" onload="fixAspect(this);">
-                    </div>
+                        <img src="https://tcas.pondja.com/31959055_1480846662024353_4037302681675497472_n.jpg" alt="Profile" class="img-fluid rounded-circle">
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-left">
