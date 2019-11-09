@@ -277,7 +277,7 @@
         }
 
         .sticky + .content {
-            padding-top: 94px;
+            padding-top: 88px;
         }
     </style>
 
@@ -326,45 +326,72 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-12">
-                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-interval="5000">
+                <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel" data-slide-to="1"></li>
+                        <li data-target="#carousel" data-slide-to="2"></li>
+                        <li data-target="#carousel" data-slide-to="3"></li>
+                        <li data-target="#carousel" data-slide-to="4"></li>
+                        <li data-target="#carousel" data-slide-to="5"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="http://smd-s.kku.ac.th/home/modules/mod_AutsonSlideShow/images/image3.jpg"
+                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642620653115277322/slider_1.jpg"
                                 class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
+                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                                <h5>พิธีไหว้ครู</h5>
+                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 28 มิถุนายน 2561</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642621390935293952/slider_2.jpg"
+                                class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
                                 <h5>
-                                    <p class="text-dark">First slide label</p>
+                                    <p class="text-dark">กิจกรรมพาน้องไปวัด</p>
                                 </h5>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                <p class="text-dark">ณ ศูนย์ปฏิบัติธรรมสวนเวฬุวัน จ.ขอนแก่น วันที่ 1-5 พฤษภาคม 2561</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="http://smd-s.kku.ac.th/home/modules/mod_AutsonSlideShow/images/image5.jpg"
+                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642626173565927425/slider_4.jpg"
                                 class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Second slide label</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                                <h5>กิจกรรมพาน้องไปวัด</h5>
+                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 29 เมษายน 2561</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="http://smd-s.kku.ac.th/home/modules/mod_AutsonSlideShow/images/image4.jpg"
+                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642622165350481930/slider_3.jpg"
                                 class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Third slide label</h5>
-                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                                <h5>กิจกรรมวันสงกรานต์</h5>
+                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 10 เมษายน 2561</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642628541145546762/slider_5.jpg"
+                                class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                                <h5>กิจกรรมสัมมนาและส่งเสริมศักยภาพความเป็นผู้นำของคณะกรรมการนักเรียนประจำปีการศึกษา 2562</h5>
+                                <p>ณ เขื่อนจุฬาภรณ์ ต.ทุ่งลุยลาย จ.ชัยภูมิ วันที่ 25-27 พฤษภาคม 2562</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://storage.pondja.com/1400x600.jpg"
+                                class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                                <h5>Carousel Guide</h5>
+                                <p>ขนาดรูปที่แนะนำ: 1400(W) x 600(H)</p>
                             </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -476,6 +503,10 @@
                                         ที่จัดขึ้นระหว่างวันที่ 28 สิงหาคม 2562 ณ อิมแพ็คฯ เมืองทองธานี
                                         ด้านอาจารย์ให้สัมภาษณ์ ปีนี้คือที่สุด
                                         <b><u>ย้ำ ปีหน้าไม่ส่งแล้ว</u></b><br>
+                                        <div class="chip">
+  Tag 220
+  <i class="close fas fa-times"></i>
+</div>
                                         <span
                                             class="badge badge-secondary z-depth-0">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
                                     </p>
