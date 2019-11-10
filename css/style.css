@@ -1,10 +1,38 @@
         body {
             font-family: 'Kanit', sans-serif !important;
-            background: url('http://smd-s.kku.ac.th/home/templates/satit09/images/Bottom_texture.jpg') no-repeat center center fixed;
+            background: url('https://storage.pondja.com/bg%20lightmode.jpg') no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             background-size: cover;
             -o-background-size: cover;
+        }
+        
+        @-webkit-keyframes blinker {
+            from {
+                opacity: 1.0;
+            }
+            to {
+                opacity: 0.0;
+            }
+        }
+        
+        .sticky+.content {
+            padding-top: 88px;
+        }
+        
+        .navbar {
+            background-image: url('https://cdn.discordapp.com/attachments/526282483138822144/642721162157096982/bg_light.jpg');
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .navbar {
+                background-image: url('https://cdn.discordapp.com/attachments/526282483138822144/642721162157096982/bg_light.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: fixed;
+            }
         }
         
         .blink {
