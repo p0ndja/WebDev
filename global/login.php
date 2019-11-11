@@ -179,6 +179,3 @@
         </div>
     </div>
     </form>
-    <?php
-        mysqli_close($conn);
-    ?>
