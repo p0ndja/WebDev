@@ -12,9 +12,9 @@ create table struct (
 INSERT INTO struct (id, citizen_id, firstname, lastname, firstname_en, lastname_en, birthday) VALUES (604019, md5(1409903101427), 'พลภณ', 'สุนทรภาส', 'Palapon', 'Soontronpas', '2002-03-11')
 
 create table userdatabase (
+   id INT NOT NULL,
    username VARCHAR(50) NOT NULL,
    password VARCHAR(50) NOT NULL,
-   id INT NOT NULL,
    citizen_id BIGINT NOT NULL,
    firstname VARCHAR(50) NOT NULL,
    lastname VARCHAR(50) NOT NULL,
