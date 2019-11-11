@@ -31,7 +31,7 @@
                                     if (isset($_POST['login_submit'])) {
                                         $user = $_POST['login_username'];
                                         $pass = md5($_POST['login_password']);
-                                        $query = "SELECT * FROM `user` WHERE username = '$user' AND password = '$pass'";
+                                        $query = "SELECT * FROM `userdatabase` WHERE username = '$user' AND password = '$pass'";
                                         $result = mysqli_query($conn, $query);
 
                                         if (! $result) {
@@ -44,28 +44,40 @@
                                             $_SESSION['ln'] = $row['lastname'];
                                         }
                                         if (mysqli_num_rows($result) == 0) {
-                                            $_SESSION['login_error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
+                                            $_SESSION['error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
                                             session_destroy();
                                         }
                                     }
-                                    if (isset($_SESSION['register_submit'])) {
+                                    if (isset($_POST['register_submit'])) {
                                         $user = $_POST['register_username'];
                                         $pass = md5($_POST['register_password']);
                                         $id = $_POST['register_id'];
                                         $citizen_id = $_POST['register_citizen_id'];
                                         $firstname = $_POST['register_firstname'];
                                         $lastname = $_POST['register_lastname'];
-                                        $query = "SELECT * FROM `user` WHERE username = '$user'";
-                                        $result = mysqli_query($conn, $query);
+                                        $email = $_POST['register_email'];
+                                        $query1 = "SELECT * FROM `user` WHERE username = '$user'";
+                                        $query2 = "SELECT * FROM `user` WHERE citizen_id = '$citizen_id'";
+                                        $result1 = mysqli_query($conn, $query1);
+                                        $result2 = mysqli_query($conn, $query2);
 
-                                        if (! $result) {
+                                        if (! $result1) {
                                             die('Could not get data: ' . mysqli_error());
                                         }
 
-                                        if (mysqli_num_rows($result) == 0) {
-                                            
+                                        if (mysqli_num_rows($result1) == 1) {
+                                            $_SESSION['error'] = "มีชื่อผู้ใช้นี้อยู่แล้ว";
+                                        } else if (mysqli_num_rows($result2) == 1) {
+                                            $_SESSION['error'] = "รหัสบัตรประชาชนนี้ ได้ทำการสมัครสมาชิกอยู่แล้ว";
                                         } else {
-                                            $_SESSION['register_error'] = "มีชื่อผู้ใช้นี้อยู่แล้ว";
+                                            $query_final = "INSERT INTO `userdatabase` (id, username, password, citizen_id, firstname, lastname, email) VALUES ($id, '$user', '$pass', $citizen_id, '$firstname', '$lastname', '$email')";
+                                            $result_final = mysqli_query($conn, $query_final);
+                                            if ($result_final) {
+                                                $_SESSION['error'] = "สมัครผู้ใช้งานสำเร็จ";
+                                                $_SESSION['user'] = $user;
+                                                $_SESSION['fn'] = $_POST['register_firstname'];
+                                                $_SESSION['ln'] = $_POST['register_lastname'];
+                                            }
                                         }
 
 
@@ -80,13 +92,13 @@
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-user prefix"></i>
                                     <input type="text" name="login_username" id="login_username"
-                                        class="form-control form-control-sm validate" required>
+                                        class="form-control form-control-sm validate">
                                     <label for="login_username">Username</label>
                                 </div>
                                 <div class="md-form form-sm mb-4">
                                     <i class="fas fa-lock prefix"></i>
                                     <input type="password" name="login_password" id="login_password"
-                                        class="form-control form-control-sm validate" required>
+                                        class="form-control form-control-sm validate">
                                     <label for="login_password">Password</label>
                                 </div>
                             </div>
@@ -105,44 +117,44 @@
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix"></i>
                                     <input type="text" name="register_username" id="register_username"
-                                        class="form-control form-control-sm validate" required>
+                                        class="form-control form-control-sm validate">
                                     <label for="register_username">ชื่อผู้ใช้งาน</label>
                                 </div>
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix"></i>
                                     <input type="password" name="register_password" id="register_password"
-                                        class="form-control form-control-sm validate" required>
+                                        class="form-control form-control-sm validate">
                                     <label for="register_password">รหัสผ่าน</label>
                                 </div>
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-user prefix"></i>
                                     <input type="text" name="register_id" id="register_id"
-                                        class="form-control form-control-sm validate" required>
+                                        class="form-control form-control-sm validate">
                                     <label for="register_id">รหัสนักเรียน</label>
                                 </div>
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-lock prefix"></i>
                                     <input type="text" name="register_citizen_id" id="register_citizen_id"
-                                        class="form-control form-control-sm validate" required>
+                                        class="form-control form-control-sm validate">
                                     <label for="register_citizen_id">รหัสบัตรประชาชน</label>
                                 </div>
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-signature prefix"></i>
                                     <input type="text" name="register_firstname" id="register_firstname"
-                                        class="form-control form-control-sm validate" required>
+                                        class="form-control form-control-sm validate">
                                     <label for="register_firstname">ชื่อ</label>
                                 </div>
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-signature prefix"></i>
                                     <input type="text" name="register_lastname" id="register_lastname"
-                                        class="form-control form-control-sm validate" required>
+                                        class="form-control form-control-sm validate">
                                     <label for="register_lastname">นามสกุล</label>
                                 </div>
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix"></i>
                                     <input type="email" name="register_email" id="register_email"
-                                        class="form-control form-control-sm validate" required>
-                                    <label for="register_email" data-error="ต้องเป็น Email เท่านั้น">อีเมล</label>
+                                        class="form-control form-control-sm validate">
+                                    <label for="register_email">อีเมล</label>
                                 </div>
                             </div>
                             <!--Footer-->

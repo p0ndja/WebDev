@@ -1,6 +1,7 @@
 <?php 
-session_start(); 
+session_start();
 include '../global/connect.php';
+include '../global/popup.php';
 ?>
 
 <!DOCTYPE html>
@@ -296,7 +297,6 @@ include '../global/connect.php';
             }
         });
     </script>
-
 </head>
 
 <body style="">
