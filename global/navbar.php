@@ -1,5 +1,5 @@
         <a class="navbar-brand" href="../home"><span class="badge badge-light"><img
-                    src="http://www.kmutt.ac.th/jif/enett2015/images/logo/KKU.gif" width="20"></span></a>
+                    src="http://www.kmutt.ac.th/jif/enett2015/images/logo/KKU.gif" width="20" alt="SMD"></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -63,9 +63,10 @@
                         <a class="dropdown-item" href="#">SMD Shop</a>
                         <a class="dropdown-item" href="#">ถ่ายทอดสด <sup class="notifi"><span
                                     class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE <span
-                                        class="oi" data-glyph="video"></span></span></a></sup>
+                                        class="oi" data-glyph="video"></span></span></sup></a>
                     </div>
                 </li>
+                <a href="https://storage.pondja.com/.show.php" target="_blank" class="btn btn-warning">ฝากไฟล์ <i>(ชั่วคราว)</i></a>
 
             </ul>
             <right>
@@ -76,7 +77,5 @@
                     </div>
                 </form>
             </right>
-
-            <a href="" class="btn btn-dark" data-toggle="modal" data-target="#modalLoginForm">Login</a>
-            </a>
+            <a href="" class="btn btn-dark" data-toggle="modal" data-target="#login">Login</a>
         </div>

@@ -4,7 +4,7 @@
 <head>
     <style>
         .fluid-background {
-            background: url(http://www.outcomesstar.org.uk/wp-content/uploads/work-star-banner.jpg) no-repeat center center fixed;
+            background: url(https://storage.pondja.com/long%20bar%201080.png) no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -271,6 +271,11 @@
         .wrapper .column:nth-child(12) .inner {
             background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/73498078_2364964120299993_1412030022511755264_o.jpg?_nc_cat=101&_nc_oc=AQnkS1qSzAfh8NeS1hbBKzyXS2UGDXEs48q9b2D-ZW65Z7Brw_uB6eEIBNlfWg5f_Js&_nc_ht=scontent.fkkc2-1.fna&oh=b9728d20bae5f328daa24360bdc9cb2f&oe=5E45ACA7');
         }
+
+        .notstick + .content {
+            padding-top: 19px;
+        }
+
     </style>
 
     <?php include '../global/head.php'; ?>
@@ -280,10 +285,15 @@
         $(window).bind('scroll', function () {
             if ($(window).scrollTop() > $(window).height()) {
                 $('#nav').removeClass('navbar-top');
+                $('#nav').removeClass('notstick');
                 $('#nav').addClass('fixed-top');
+                $('#nav').addClass('sticky');
+
             } else {
                 $('#nav').removeClass('fixed-top');
+                $('#nav').removeClass('sticky');
                 $('#nav').addClass('navbar-top');
+                $('#nav').addClass('notstick');
             }
         });
     </script>
@@ -293,7 +303,7 @@
 <body style="">
 
     <?php include '../global/login.php'; ?>
-    <header>
+    <header id="header">
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
             <source src="https://storage.pondja.com/Untitled%20Project.mp4" type="video/mp4">
@@ -310,53 +320,79 @@
         </div>
 
     </header>
-    <nav class="navbar navbar-expand-lg navbar-top navbar-dark navbar-normal" id="nav"
-        role="navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <hr>
+    <div class="content"></div>
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-12">
-                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-interval="5000">
+                <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel" data-slide-to="1"></li>
+                        <li data-target="#carousel" data-slide-to="2"></li>
+                        <li data-target="#carousel" data-slide-to="3"></li>
+                        <li data-target="#carousel" data-slide-to="4"></li>
+                        <li data-target="#carousel" data-slide-to="5"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="http://smd-s.kku.ac.th/home/modules/mod_AutsonSlideShow/images/image3.jpg"
+                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642620653115277322/slider_1.jpg"
                                 class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
+                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                                <h5>พิธีไหว้ครู</h5>
+                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 28 มิถุนายน 2561</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642621390935293952/slider_2.jpg"
+                                class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
                                 <h5>
-                                    <p class="text-dark">First slide label</p>
+                                    <p class="text-dark">กิจกรรมพาน้องไปวัด</p>
                                 </h5>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                <p class="text-dark">ณ ศูนย์ปฏิบัติธรรมสวนเวฬุวัน จ.ขอนแก่น วันที่ 1-5 พฤษภาคม 2561</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="http://smd-s.kku.ac.th/home/modules/mod_AutsonSlideShow/images/image5.jpg"
+                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642626173565927425/slider_4.jpg"
                                 class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Second slide label</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                                <h5>กิจกรรมพาน้องไปวัด</h5>
+                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 29 เมษายน 2561</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="http://smd-s.kku.ac.th/home/modules/mod_AutsonSlideShow/images/image4.jpg"
+                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642622165350481930/slider_3.jpg"
                                 class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Third slide label</h5>
-                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                                <h5>กิจกรรมวันสงกรานต์</h5>
+                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 10 เมษายน 2561</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642628541145546762/slider_5.jpg"
+                                class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                                <h5>กิจกรรมสัมมนาและส่งเสริมศักยภาพความเป็นผู้นำของคณะกรรมการนักเรียนประจำปีการศึกษา 2562</h5>
+                                <p>ณ เขื่อนจุฬาภรณ์ ต.ทุ่งลุยลาย จ.ชัยภูมิ วันที่ 25-27 พฤษภาคม 2562</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://storage.pondja.com/1400x600.jpg"
+                                class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                                <h5>Carousel Guide</h5>
+                                <p>ขนาดรูปที่แนะนำ: 1400(W) x 600(H)</p>
                             </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -368,7 +404,7 @@
     <div class="container">
         <h1>หลักสูตรการเรียน</h1>
         <div class="row">
-            <div class="col-12 col-md-4">
+            <div class="col-4 col-md-4">
                 <a href="#">
                     <div class="view overlay zoom">
                         <img src="https://www.uppic.org/images/2019/11/08/emsp.jpg" class="img-fluid"
@@ -379,7 +415,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-12 col-md-4">
+        <div class="col-4 col-md-4">
             <a href="#">
                 <div class="view overlay zoom">
                     <img src="https://www.uppic.org/images/2019/11/08/normal.jpg" class="img-fluid" alt="smaple image">
@@ -388,12 +424,11 @@
             </a>
         </div>
     </div>
-    <div class="col-12 col-md-4">
+    <div class="col-4 col-md-4">
         <a href="#">
             <div class="view overlay zoom">
                 <img src="https://www.uppic.org/images/2019/11/08/scius.jpg" class="img-fluid" alt="smaple image">
                 <div class="mask flex-center rgba-black-slight">
-                    <p class="white-text">Zoom effect</p>
                 </div>
         </a>
     </div>
@@ -402,8 +437,7 @@
     <hr>
     </div>
     <div class="container-fluid fluid-backgroundd"
-        style="background-image: url('https://storage.pondja.com/bg.jpg'); background-repeat: no-repeat; background-size: 100%;">
-        <hr>
+        style="background-image: url('https://storage.pondja.com/bg%20light.jpg'); background-size: auto;">
         <div class="container">
         </div>
 
@@ -452,9 +486,7 @@
     <div class="container">
         <h1>NEWS</h1>
         <div class="row">
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-6 col-md-4">
                         <div class="card z-depth-0">
                             <div class="hoverable view overlay zoom">
                                 <img class="card-img-top"
@@ -463,14 +495,19 @@
                                 <div class="card-body">
                                     <p class="card-text"><span class="oi" data-glyph="calendar"></span> 24/10/2562
                                     </p>
+                                    
                                     <h5 class="card-title">รางวัล GISTDA TOP VOTE</h5>
-                                    <p class="card-text">เด็กสาธิตฯ เจ๋ง! คว้ารางวัล GISTDA TOP VOTE
+                                    <p class="card-text">
+                                        <p class="d-none d-md-block">
+                                        เด็กสาธิตฯ เจ๋ง! คว้ารางวัล GISTDA TOP VOTE
                                         จากโครงการประกวดสื่อภูมิสารสนเทศ ครั้งที่ 8 ประจำปี 2562
                                         ที่จัดขึ้นระหว่างวันที่ 28 สิงหาคม 2562 ณ อิมแพ็คฯ เมืองทองธานี
                                         ด้านอาจารย์ให้สัมภาษณ์ ปีนี้คือที่สุด
                                         <b><u>ย้ำ ปีหน้าไม่ส่งแล้ว</u></b><br>
                                         <span
                                             class="badge badge-secondary z-depth-0">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
+    </p>
+                                    
                                     </p>
                                 </div>
                                 <div class="card-footer text-right"><a href="#fuq" class="card-link">อ่านเพิ่มเติม</a>
@@ -478,7 +515,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-6 col-md-4">
                         <div class="card z-depth-0">
                             <img class="card-img-top" src="https://media1.giphy.com/media/9PwWklO9tSELtIhBka/source.gif"
                                 alt="Card image cap">
@@ -499,11 +536,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-
             </div>
             <br>
             <br />

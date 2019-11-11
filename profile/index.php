@@ -3,25 +3,14 @@
 
 <head>
     <?php include '../global/head.php'; ?>
-    <script>
-        function fixAspect(img) {
-            var $img = $(img),
-                width = $img.width(),
-                height = $img.height(),
-                tallAndNarrow = width / height < 1;
-            if (tallAndNarrow) {
-                $img.addClass('tallAndNarrow');
-            }
-            $img.addClass('loaded');
-        }
-    </script>
 </head>
 
 <body style="background-color: #ededed">
     <?php include '../global/login.php'; ?>
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark navbar-normal">
-        <?php include '../global/navbar.php';?>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top sticky" id="nav" role="navigation">
+        <?php include '../global/navbar.php'; ?>
     </nav>
+    <div class="content"></div>
     <div class="container">
         <hr>
         <div class="row">
@@ -30,17 +19,15 @@
                 <h5>Palapon Soontornpas</h5>
             </div>
             <div class="col-1">
-                <a class="btn btn-warning float-right" href="edit.html"><span class="oi" data-glyph="pencil"></span></a>
+                <a class="btn btn-warning float-right" href="edit.php"><span class="oi" data-glyph="pencil"></span></a>
             </div>
         </div>
         <hr>
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <div class="media">
-                    <div class="circle">
-                        <img src="https://tcas.pondja.com/31959055_1480846662024353_4037302681675497472_n.jpg"
-                            alt="Profile" onload="fixAspect(this);">
-                    </div>
+                        <img src="https://tcas.pondja.com/31959055_1480846662024353_4037302681675497472_n.jpg" class="img-fluid rounded-circle"
+                            alt="Profile">
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-left">
@@ -56,15 +43,6 @@
                                 <a href="mailto:palapon2545@gmail.com">palapon2545@gmail.com</a>
 
                             </div>
-                        </div>
-                        <hr>
-                        <div class="bd-callout bd-callout-info">
-                            <h4 id="dealing-with-specificity">Dealing with specificity</h4>
-
-                            <p>Sometimes contextual classes cannot be applied due to the specificity of another
-                                selector. In some cases, a sufficient workaround is to wrap your element’s content in a
-                                <code class="highlighter-rouge">&lt;div&gt;</code> with
-                                the class.</p>
                         </div>
                         <hr>
                         <div class="card">

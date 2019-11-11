@@ -5,15 +5,15 @@
     <?php include'../global/head.php'?>
 </head>
 
-<body style="background-color: #ededed">
-<?php include'../global/login.php'?>
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark navbar-normal">
-       <?php include'../global/navbar.php'?>
+<body>
+    <?php include'../global/login.php'?>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top sticky" id="nav" role="navigation">
+        <?php include '../global/navbar.php'; ?>
     </nav>
-
-    <br>
+    <div class="content"></div>
     <div class="container">
-        <a class="btn z-depth-1 text-white disabled" href="#" style="background-color: #db6c24;">ประกาศจากทางโรงเรียน</a>
+        <a class="btn z-depth-1 text-white disabled" href="#"
+            style="background-color: #db6c24;">ประกาศจากทางโรงเรียน</a>
         <a class="btn z-depth-1 text-white" href="#" style="background-color: #db6c24;">SMD Community</a>
         <a class="btn z-depth-1 text-white" href="#" style="background-color: #db6c24;">Alumni Community</a>
         <hr>
@@ -36,9 +36,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-warning table-pointer" onclick="window.location='post.html';">
+                    <tr class="table-warning" style="cursor: pointer;" onclick="window.location='./post.php';">
                         <td>
-                            <span class="badge badge-danger z-depth-0"><span class="oi" data-glyph="pin"></span></span> รับสมัครผู้ช่วยพัฒนาเว็บไซด์
+                            <span class="badge badge-danger z-depth-0"><span class="oi" data-glyph="pin"></span></span>
+                            รับสมัครผู้ช่วยพัฒนาเว็บไซด์
                             <span class="badge badge-success z-depth-0">รับสมัครงาน</span>
                             </span><br>26/10/2562</td>
                         <td>
@@ -52,7 +53,8 @@
                         </td>
                     </tr>
                     <tr class="table-pointer" onclick="window.location='#';">
-                        <td>มันดูดี~ ที่สุดเลยเว้ยแก~ <span class="badge badge-primary z-depth-0">คำสั่ง</span><br>26/10/2562</td>
+                        <td>มันดูดี~ ที่สุดเลยเว้ยแก~ <span
+                                class="badge badge-primary z-depth-0">คำสั่ง</span><br>26/10/2562</td>
                         <td>
                             <center>ทั่วไป</center>
                         </td>
@@ -64,7 +66,8 @@
                         </td>
                     </tr>
                     <tr class="table-pointer" onclick="window.location='#';">
-                        <td>คำสั่ง คสช. ที่ 1/2562 <span class="badge badge-secondary z-depth-0">คำสั่ง</span><br>26/10/2562</td>
+                        <td>คำสั่ง คสช. ที่ 1/2562 <span
+                                class="badge badge-secondary z-depth-0">คำสั่ง</span><br>26/10/2562</td>
                         <td>
                             <center>คำสั่ง</center>
                         </td>
@@ -76,7 +79,8 @@
                         </td>
                     </tr>
                     <tr class="table-pointer" onclick="window.location='#';">
-                        <td>มันดูดี~ ที่สุดเลยเว้ยแก~ <span class="badge badge-primary z-depth-0">ทั่วไป</span><br>26/10/2562</td>
+                        <td>มันดูดี~ ที่สุดเลยเว้ยแก~ <span
+                                class="badge badge-primary z-depth-0">ทั่วไป</span><br>26/10/2562</td>
                         <td>
                             <center>ทั่วไป</center>
                         </td>
@@ -88,7 +92,8 @@
                         </td>
                     </tr>
                     <tr class="table-pointer" onclick="window.location='#';">
-                        <td>ว้าวววววววววววววววว <span class="badge badge-primary z-depth-0">ทั่วไป</span><br>26/10/2562</td>
+                        <td>ว้าวววววววววววววววว <span class="badge badge-primary z-depth-0">ทั่วไป</span><br>26/10/2562
+                        </td>
                         <td>
                             <center>ทั่วไป</center>
                         </td>
