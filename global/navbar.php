@@ -86,7 +86,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img src="https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png" width="20"> ' . $_SESSION['fn'] . ' ' . $_SESSION['ln'] . '</a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item active" href="#"> ข้อมูลส่วนตัว <span class="oi" data-glyph="person"></span></a>
+                                    <a class="dropdown-item" href="#"> ข้อมูลส่วนตัว <span class="oi" data-glyph="person"></span></a>
                                     <a class="dropdown-item" href="#"> ลงทะเบียนวิชาเลือก <span class="oi" data-glyph="file"></span></a>
                                     <a class="dropdown-item" href="#"> การเช็คชื่อ <span class="oi" data-glyph="task"></span></a>
                                     <a class="dropdown-item" href="#"> ผลการเรียน (SGS) <span class="oi" data-glyph="browser"></span></a>

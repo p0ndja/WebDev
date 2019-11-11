@@ -1,3 +1,8 @@
+<?php 
+    include '../global/connect.php';
+    include '../global/popup.php';
+?>
+
 <!DOCTYPE html>
 <html lang="th">
 
