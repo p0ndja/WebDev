@@ -6,7 +6,7 @@
                 <!--Modal cascading tabs-->
                 <div class="modal-c-tabs">
                     <!-- Nav tabs -->
-                    <ul class="nav nav-tabs md-tabs tabs-2 light darken-3" role="tablist">
+                    <ul class="nav nav-tabs md-tabs tabs-2 white darken-3" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active black-text" data-toggle="tab" href="#panel7" role="tab" ><i
                                     class="fas fa-user mr-1"></i>
