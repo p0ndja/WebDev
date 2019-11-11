@@ -1,3 +1,8 @@
+<?php 
+session_start(); 
+include '../global/connect.php';
+?>
+
 <!DOCTYPE html>
 <html lang="th">
 

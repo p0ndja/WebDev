@@ -66,7 +66,8 @@
                                         class="oi" data-glyph="video"></span></span></sup></a>
                     </div>
                 </li>
-                <a href="https://storage.pondja.com/.show.php" target="_blank" class="btn btn-warning">ฝากไฟล์ <i>(ชั่วคราว)</i></a>
+                <a href="https://storage.pondja.com/.show.php" target="_blank" class="btn btn-warning">ฝากไฟล์
+                    <i>(ชั่วคราว)</i></a>
 
             </ul>
             <right>
@@ -77,5 +78,25 @@
                     </div>
                 </form>
             </right>
-            <a href="" class="btn btn-dark" data-toggle="modal" data-target="#login">Login</a>
+            <?php
+                if (isset($_SESSION['fn'])) {
+                    echo '
+                        <ul class="navbar-nav my-2 my-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png" width="20"> ' . $_SESSION['fn'] . ' ' . $_SESSION['ln'] . '</a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item active" href="#"> ข้อมูลส่วนตัว <span class="oi" data-glyph="person"></span></a>
+                                    <a class="dropdown-item" href="#"> ลงทะเบียนวิชาเลือก <span class="oi" data-glyph="file"></span></a>
+                                    <a class="dropdown-item" href="#"> การเช็คชื่อ <span class="oi" data-glyph="task"></span></a>
+                                    <a class="dropdown-item" href="#"> ผลการเรียน (SGS) <span class="oi" data-glyph="browser"></span></a>
+                                <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" style="color: red" href="../global/logout.php">ออกจากระบบ <span class="oi" data-glyph="account-logout"></span></a>
+                                </div>
+                            </li>
+                        </ul>';
+                } else {
+                    echo '<a href="" class="btn btn-dark" data-toggle="modal" data-target="#login">Login</a>';
+                }
+            ?>
         </div>

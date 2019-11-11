@@ -1,19 +1,12 @@
-<html>
-    <body>
 <?php
-    $host = "remotemysql.com:3306";
-    $user = "9SksUB0FHK";
-    $pass = "DnvUqpwKb0";
-    $conn = mysqli_connect($host,$user,$pass);
+    $dbhost = "remotemysql.com:3306";
+    $dbuser = "9SksUB0FHK";
+    $dbpass = "DnvUqpwKb0";
+    $dbdatabase = '9SksUB0FHK';
+    $conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbdatabase);
 
     if(! $conn ) {
         die('Could not connect: ' . mysqli_error());
     }
-    echo 'Connected successfully<br/>';
 
-    mysqli_select_db($conn , '9SksUB0FHK');
-
-    mysqli_close($conn);
 ?>
-</body>
-</html>
