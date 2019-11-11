@@ -435,7 +435,7 @@
     <hr>
     </div>
     <div class="container-fluid"
-        style=" background-image: url('https://cdn.discordapp.com/attachments/526282483138822144/642721162157096982/bg_light.jpg');
+        style=" background-image: url('https://cdn.discordapp.com/attachments/636478500206936094/643477428752351263/bg_light.jpg');
                 width: 100%;
                 background-position: center;
                 background-repeat: no-repeat;
