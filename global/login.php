@@ -42,6 +42,7 @@
                                             $_SESSION['user'] = $row['username'];
                                             $_SESSION['fn'] = $row['firstname'];
                                             $_SESSION['ln'] = $row['lastname'];
+                                            $_SESSION['id'] = $row['id'];
                                         }
                                         if (mysqli_num_rows($result) == 0) {
                                             $_SESSION['error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
@@ -103,6 +104,11 @@
                                     } else if (mysqli_num_rows($result2) == 1) {
                                         $_SESSION['error'] = "รหัสบัตรประชาชนนี้ ได้ทำการสมัครสมาชิกอยู่แล้ว";
                                     } else {
+                                        /* $filename = $_FILES['filUpload']['tmp_name'];
+                                        if($filename != "") {
+                                            move_uploaded_file($_FILES['filUpload']['tmp_name'], "../cache/".$_FILES['filUpload']['tmp_name']) or die( "Could not move file!");
+                                        } */
+                                        
                                         $query_final = "INSERT INTO `userdatabase` (id, username, password, citizen_id, firstname, lastname, email) VALUES ($id, '$user', '$pass', $citizen_id, '$firstname', '$lastname', '$email')";
                                         $result_final = mysqli_query($conn, $query_final);
                                         if ($result_final) {
@@ -161,6 +167,13 @@
                                             class="form-control form-control-sm validate" required>
                                         <label for="register_email">อีเมล</label>
                                     </div>
+                                    <!--
+                                    <div class="md-form form-sm mb-5">
+                                        <i class="fas fa-images prefix"></i>
+                                        <input type="file" name="filUpload" id="filUpload"
+                                            class="form-control form-control-sm validate" accept="image/png, image/jpeg">
+                                    </div>
+                                    -->
                                 </div>
                                 <!--Footer-->
                                 <div class="modal-footer">

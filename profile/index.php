@@ -8,6 +8,36 @@
 
 <head>
     <?php include '../global/head.php'; ?>
+    <?php
+     $id;
+     if (isset($_GET['search'])) {
+         $id = $_GET['search'];
+     } else {
+         $id = $_SESSION['id'];
+     }
+
+     $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
+     $result = mysqli_query($conn, $query);
+
+     if (! $result) {
+         die('Could not get data: ' . mysqli_error());
+     }
+     $profile_background = "https://storage.pondja.com/bg%20pastel%20mode.jpg";
+
+     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+     if ($row['profile_background'] != null) $profile_background = $row['profile_background'];
+     }
+    ?>
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif !important;
+            background: url(<?php echo $profile_background ?>) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;
+        }
+    </style>
 </head>
 
 <body style="background-color: #ededed">
@@ -16,12 +46,53 @@
         <?php include '../global/navbar.php'; ?>
     </nav>
     <div class="content"></div>
+    <?php if (isset($_GET['search']) || (isset($_SESSION['id']))) {
+
+        $id;
+        if (isset($_GET['search'])) {
+            $id = $_GET['search'];
+        } else {
+            $id = $_SESSION['id'];
+        }
+
+        $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
+        $result = mysqli_query($conn, $query);
+
+        if (! $result) {
+            die('Could not get data: ' . mysqli_error());
+        }
+
+        if (mysqli_num_rows($result) == 0) {
+            die('<center><h1>Profile Not Found</h1></center>');
+        }
+
+        $undefined = "<i>Undefined</i>";
+        $profile_name = "<i>Undefined Thai Name</i>";
+        $profile_name_en = "<i>Undefined English Name</i>";
+        $profile_id = $undefined;
+        $profile_grade = $undefined;
+        $profile_class = $undefined;
+        $profile_room = $undefined;
+        $profile_phone = $undefined;
+        $profile_email = $undefined;
+        $profile_displayText = $undefined;
+        $profile_image = "https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png";
+        $profile_background = "";
+       
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $profile_name = $row['firstname'] . ' ' . $row['lastname'];
+            $profile_id = $row['id'];
+            $profile_email = $row['email'];
+            if ($row['profile'] != null) $profile_image = $row['profile'];
+            if ($row['profile_background'] != null) $profile_background = $row['profile_background']; 
+        }        
+        ?>
     <div class="container">
         <hr>
         <div class="row">
             <div class="col-11">
-                <h1>พลภณ สุนทรภาส</h1>
-                <h5>Palapon Soontornpas</h5>
+                <h1> <?php echo $profile_name; ?></h1>
+                <h5> <?php echo $profile_name_en; ?></h5>
             </div>
             <div class="col-1">
                 <a class="btn btn-warning float-right" href="edit.php"><span class="oi" data-glyph="pencil"></span></a>
@@ -31,8 +102,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <div class="media">
-                        <img src="https://tcas.pondja.com/31959055_1480846662024353_4037302681675497472_n.jpg" class="img-fluid rounded-circle"
-                            alt="Profile">
+                    <img src="<?php echo $profile_image ?>" class="img-fluid rounded-circle" alt="Profile">
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-left">
@@ -40,12 +110,12 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <strong>รหัสนักเรียน</strong> 604019<br>
-                                <strong>ระดับชั้น</strong> ม.6<br>
-                                <strong>ห้อง</strong> 1 (EMSP)<br>
-                                <strong>เบอร์โทรศัพท์</strong> 0908508007<br>
+                                <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
+                                <strong>ระดับชั้น</strong> <?php echo $profile_grade ?><br>
+                                <strong>ห้อง</strong> <?php echo $profile_room ?> (<?php echo $profile_class ?>)<br>
+                                <strong>เบอร์โทรศัพท์</strong> <?php echo $profile_phone ?><br>
                                 <strong>อีเมล</strong>
-                                <a href="mailto:palapon2545@gmail.com">palapon2545@gmail.com</a>
+                                <a href="<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
 
                             </div>
                         </div>
@@ -83,10 +153,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <h2>(っ◔◡◔)っ ♥ PondJaTH ♥</h2>
-
-                        What's a meaning of life when we have no goal. ;-;?
-
+                        <h2><?php echo $profile_displayText ?></h2>
                     </div>
                 </div>
                 <hr>
@@ -189,6 +256,10 @@
             </div>
         </div>
     </div>
+    <?php } else {
+        header("Location: ../");
+    }
+        ?>
 
     <?php include '../global/footer.php' ?>
 </body>
