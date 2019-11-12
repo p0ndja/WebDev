@@ -44,3 +44,5 @@ create table profile (
 );
 
 INSERT INTO user (username, password, firstname, lastname, email) VALUES ('palapon2545', md5('P0ndJ@1103'), 'พลภณ', 'สุนทรภาส', 'palapon2545@gmail.com')
+
+INSERT INTO `post` (title, writer, time, isHidden, article, cover) VALUES ('เด็กสาธิตเจ๋ง ป้ายกีฬาสีฯ ทำนายกฯ หน้าสั่น', 'RisakaLogin', 'YYYY-MM-DD HH:MM:SS', false, '', 'xxx.jpg')
