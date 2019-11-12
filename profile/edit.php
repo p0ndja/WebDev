@@ -12,19 +12,24 @@
 <head>
     <?php include '../global/head.php'; ?>
     <?php
-     $id = $_SESSION['id'];
-     
+    $id = $_SESSION['id'];
+
      $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
      $result = mysqli_query($conn, $query);
-
-     if (! $result) {
-         die('Could not get data: ' . mysqli_error());
-     }
+     
+     if (!$result) {
+        die('Could not get data: ' . mysqli_error());
+    }
      $profile_background = "https://storage.pondja.com/bg%20pastel%20mode.jpg";
 
-     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-     if ($row['profile_background'] != null) $profile_background = $row['profile_background'];
+     $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
+     $result_profile = mysqli_query($conn, $query_profile);
+
+
+     while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
+     if ($row['background'] != null) $profile_background = $row['background'];
      }
+    
     ?>
     <style>
         body {
@@ -45,12 +50,11 @@
     </nav>
     <div class="content"></div>
     <?php
-        $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
-        $result = mysqli_query($conn, $query);
 
-        if (! $result) {
-            die('Could not get data: ' . mysqli_error());
-        }
+$query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
+$result = mysqli_query($conn, $query);
+$query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
+$result_profile = mysqli_query($conn, $query_profile);
 
         if (mysqli_num_rows($result) == 0) {
             die('<center><h1>Profile Not Found</h1></center>');
@@ -67,17 +71,34 @@
         $profile_email = $undefined;
         $profile_displayText = $undefined;
         $profile_image = "https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png";
-        $profile_background = "";
-
+       
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $profile_name = $row['firstname'] . ' ' . $row['lastname'];
             $profile_id = $row['id'];
-            $profile_email = $row['email'];
-            if ($row['profile'] != null) $profile_image = $row['profile'];
-        }        
+        }
+        
+        while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
+            if ($row['profile'] != null)
+                $profile_image = $row['profile'];
+            if ($row['tel'] != null)
+                $profile_phone = $row['tel'];
+            if ($row['email'] != null)
+                $profile_email = $row['email'];
+            if ($row['greetings'] != null)
+                $profile_displayText = $row['greetings'];
+            if ($row['profile'] != null)
+                $profile_image = $row['profile'];
+        }  
     ?>
     <div class="container">
-        <form method="POST" action="../profile">
+        <form method="POST" action="../profile/save.php">
+            <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">BACKGROUND IMAGE</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Press URL here" id="backgroundURL" name="backgroundURL" aria-label="backgroundURL"
+                    aria-describedby="addon-wrapping" value="<?php echo $profile_background;?>">
+            </div>
             <hr>
             <div class="row">
                 <div class="col-11">
@@ -85,16 +106,17 @@
                     <h5> <?php echo $profile_name_en; ?></h5>
                 </div>
                 <div class="col-1">
-                    <input type="submit" class="btn btn-success float-right" value="บันทึก"></input>
+                    <input type="submit" class="btn btn-success float-right" name="edit_submit" value="บันทึก"></input>
                 </div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-md-4 col-sm-12">
-                        <img src="<?php echo $profile_image; ?>" class="img-fluid w-100" alt="Profile">
-                        <div class="form-group">
-                            <input type="url" class="form-control" id="profileURL" placeholder="Press URL here" value="<?php echo $profile_image; ?>"></input>
-                        </div>
+                    <img src="<?php echo $profile_image; ?>" class="img-fluid w-100" alt="Profile">
+                    <div class="form-group">
+                        <input type="url" class="form-control" id="profileURL" name="profileURL" placeholder="Press URL here"
+                            value="<?php echo $profile_image; ?>"></input>
+                    </div>
                     <div class="row">
                         <div class="col-md-12 text-left">
                             <hr>
@@ -113,26 +135,7 @@
                                 <div class="card-body">
                                     <h2>Achievement</h2>
                                     <hr>
-                                    <div class="progress mt-4">
-                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85"
-                                            aria-valuemin="0" aria-valuemax="100" style="width: 85%"> Java</div>
-                                    </div>
-                                    <div class="progress mt-4">
-                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80"
-                                            aria-valuemin="0" aria-valuemax="100" style="width: 80%"> HTML</div>
-                                    </div>
-                                    <div class="progress mt-4">
-                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="70"
-                                            aria-valuemin="0" aria-valuemax="100" style="width: 70%"> PHP</div>
-                                    </div>
-                                    <div class="progress mt-4">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="60"
-                                            aria-valuemin="0" aria-valuemax="100" style="width: 60%"> Photoshop</div>
-                                    </div>
-                                    <div class="progress mt-4">
-                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="55"
-                                            aria-valuemin="0" aria-valuemax="100" style="width: 55%"> Bootstrap</div>
-                                    </div>
+                                    <p>-----</p>
                                 </div>
                             </div>
                             <hr>
@@ -144,8 +147,8 @@
                         <div class="card-body">
                             <form>
                                 <div class="form-group">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"
-                                        rows="3"><h2>(っ◔◡◔)っ ♥ PondJaTH ♥</h2>&#13;&#10;What's a meaning of life when we have no goal. ;-;?</textarea>
+                                    <textarea class="form-control" name="displayTextArea" id="displayTextArea"
+                                        rows="3"><?php echo $profile_displayText ?></textarea>
                                 </div>
                             </form>
 
@@ -302,6 +305,7 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
                 </div>
             </div>
         </form>

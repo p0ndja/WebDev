@@ -18,15 +18,20 @@
 
      $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
      $result = mysqli_query($conn, $query);
-
-     if (! $result) {
-         die('Could not get data: ' . mysqli_error());
-     }
+     
+     if (!$result) {
+        die('Could not get data: ' . mysqli_error());
+    }
      $profile_background = "https://storage.pondja.com/bg%20pastel%20mode.jpg";
 
-     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-     if ($row['profile_background'] != null) $profile_background = $row['profile_background'];
+     $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
+     $result_profile = mysqli_query($conn, $query_profile);
+
+
+     while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
+     if ($row['background'] != null) $profile_background = $row['background'];
      }
+    
     ?>
     <style>
         body {
@@ -48,19 +53,10 @@
     <div class="content"></div>
     <?php if (isset($_GET['search']) || (isset($_SESSION['id']))) {
 
-        $id;
-        if (isset($_GET['search'])) {
-            $id = $_GET['search'];
-        } else {
-            $id = $_SESSION['id'];
-        }
-
-        $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
-        $result = mysqli_query($conn, $query);
-
-        if (! $result) {
-            die('Could not get data: ' . mysqli_error());
-        }
+$query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
+$result = mysqli_query($conn, $query);
+$query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
+$result_profile = mysqli_query($conn, $query_profile);
 
         if (mysqli_num_rows($result) == 0) {
             die('<center><h1>Profile Not Found</h1></center>');
@@ -77,14 +73,24 @@
         $profile_email = $undefined;
         $profile_displayText = $undefined;
         $profile_image = "https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png";
-        $profile_background = "";
        
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $profile_name = $row['firstname'] . ' ' . $row['lastname'];
             $profile_id = $row['id'];
-            $profile_email = $row['email'];
-            if ($row['profile'] != null) $profile_image = $row['profile'];
-        }        
+        }
+        
+        while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
+            if ($row['profile'] != null)
+                $profile_image = $row['profile'];
+            if ($row['tel'] != null)
+                $profile_phone = $row['tel'];
+            if ($row['email'] != null)
+                $profile_email = $row['email'];
+            if ($row['greetings'] != null)
+                $profile_displayText = $row['greetings'];
+            if ($row['profile'] != null)
+                $profile_image = $row['profile'];
+        }
     ?>
     <div class="container">
         <hr>
@@ -111,37 +117,18 @@
                                 <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
                                 <strong>ระดับชั้น</strong> <?php echo $profile_grade ?><br>
                                 <strong>ห้อง</strong> <?php echo $profile_room ?> (<?php echo $profile_class ?>)<br>
-                                <strong>เบอร์โทรศัพท์</strong> <?php echo $profile_phone ?><br>
+                                <strong>เบอร์โทรศัพท์</strong> <a href="tel:<?php echo $profile_phone ?>"><?php echo $profile_phone ?></a><br>
                                 <strong>อีเมล</strong>
-                                <a href="<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
+                                <a href="mailto:<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
                             </div>
                         </div>
                         <hr>
                         <div class="card">
-                            <div class="card-body">
-                                <h2>Skill Set</h2>
-                                <hr>
-                                <div class="progress mt-4">
-                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: 85%"> Java</div>
+                        <div class="card-body">
+                                    <h2>Achievement</h2>
+                                    <hr>
+                                    <p>-----</p>
                                 </div>
-                                <div class="progress mt-4">
-                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: 80%"> HTML</div>
-                                </div>
-                                <div class="progress mt-4">
-                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="70"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: 70%"> PHP</div>
-                                </div>
-                                <div class="progress mt-4">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                        aria-valuemax="100" style="width: 60%"> Photoshop</div>
-                                </div>
-                                <div class="progress mt-4">
-                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="55"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: 55%"> Bootstrap</div>
-                                </div>
-                            </div>
                         </div>
                         <hr>
                     </div>

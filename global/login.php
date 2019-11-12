@@ -44,7 +44,7 @@
                                             $_SESSION['ln'] = $row['lastname'];
                                             $_SESSION['id'] = $row['id'];
                                         }
-                                        
+
                                         if (mysqli_num_rows($result) == 0) {
                                             $_SESSION['error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
                                             session_destroy();
@@ -91,8 +91,8 @@
                                     $firstname = $_POST['register_firstname'];
                                     $lastname = $_POST['register_lastname'];
                                     $email = $_POST['register_email'];
-                                    $query1 = "SELECT * FROM `user` WHERE username = '$user'";
-                                    $query2 = "SELECT * FROM `user` WHERE citizen_id = '$citizen_id'";
+                                    $query1 = "SELECT * FROM `userdatabase` WHERE username = '$user'";
+                                    $query2 = "SELECT * FROM `userdatabase` WHERE citizen_id = '$citizen_id'";
                                     $result1 = mysqli_query($conn, $query1);
                                     $result2 = mysqli_query($conn, $query2);
 
