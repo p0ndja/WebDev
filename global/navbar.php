@@ -66,8 +66,8 @@
                                         class="oi" data-glyph="video"></span></span></sup></a>
                     </div>
                 </li>
-                <a href="https://storage.pondja.com/.show.php" target="_blank" class="btn btn-warning">ฝากไฟล์
-                    <i>(ชั่วคราว)</i></a>
+                <a href="https://storage.pondja.com/.show.php" target="_blank" class="btn btn-warning"><i>ฝากไฟล์</i></a>
+                <a href="https://remotemysql.com/phpmyadmin/" target="_blank" class="btn btn-info"><i>MySQL</i></a>
 
             </ul>
             <right>

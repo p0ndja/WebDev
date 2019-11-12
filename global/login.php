@@ -44,6 +44,7 @@
                                             $_SESSION['ln'] = $row['lastname'];
                                             $_SESSION['id'] = $row['id'];
                                         }
+                                        
                                         if (mysqli_num_rows($result) == 0) {
                                             $_SESSION['error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
                                             session_destroy();

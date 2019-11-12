@@ -111,7 +111,7 @@
                             <hr>
                             <div class="card">
                                 <div class="card-body">
-                                    <h2>Skill Set</h2>
+                                    <h2>Achievement</h2>
                                     <hr>
                                     <div class="progress mt-4">
                                         <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85"
