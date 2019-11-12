@@ -84,9 +84,8 @@
             $profile_id = $row['id'];
             $profile_email = $row['email'];
             if ($row['profile'] != null) $profile_image = $row['profile'];
-            if ($row['profile_background'] != null) $profile_background = $row['profile_background']; 
         }        
-        ?>
+    ?>
     <div class="container">
         <hr>
         <div class="row">
@@ -102,21 +101,19 @@
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <div class="media">
-                    <img src="<?php echo $profile_image ?>" class="img-fluid rounded-circle" alt="Profile">
+                    <img src="<?php echo $profile_image; ?>" class="img-fluid w-100" alt="Profile">
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-left">
                         <hr>
                         <div class="card">
                             <div class="card-body">
-
                                 <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
                                 <strong>ระดับชั้น</strong> <?php echo $profile_grade ?><br>
                                 <strong>ห้อง</strong> <?php echo $profile_room ?> (<?php echo $profile_class ?>)<br>
                                 <strong>เบอร์โทรศัพท์</strong> <?php echo $profile_phone ?><br>
                                 <strong>อีเมล</strong>
                                 <a href="<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
-
                             </div>
                         </div>
                         <hr>

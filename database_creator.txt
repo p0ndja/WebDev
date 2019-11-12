@@ -22,4 +22,25 @@ create table userdatabase (
    PRIMARY KEY ( id )
 );
 
+create table post (
+   id INT NOT NULL AUTO_INCREMENT,
+   title LONGTEXT NOT NULL,
+   writer LONGTEXT NOT NULL,
+   time DATETIME,
+   isHidden BOOLEAN,
+   article LONGTEXT NOT NULL,
+   cover LONGTEXT,
+   PRIMARY KEY ( id )
+);
+
+create table profile (
+   id INT NOT NULL,
+   tel VARCHAR(20),
+   email MEDIUMTEXT,
+   greetings LONGTEXT,
+   profile LONGTEXT,
+   background LONGTEXT,
+   PRIMARY KEY ( id )
+);
+
 INSERT INTO user (username, password, firstname, lastname, email) VALUES ('palapon2545', md5('P0ndJ@1103'), 'พลภณ', 'สุนทรภาส', 'palapon2545@gmail.com')
