@@ -96,7 +96,7 @@
                         </ul>;
                         <?php
                 } else { ?>
-                    <a href="" class="btn btn-dark" data-toggle="modal" data-target="#login">Login</a>;
+                    <a href="" class="btn btn-dark" data-toggle="modal" data-target="#login">Login</a>
                     <?php
                 }
             ?>

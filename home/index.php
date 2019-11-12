@@ -682,7 +682,9 @@
                 </div>
                 <hr>
             </div>
-
+            <!--test add-->
+            <a href="../news" class="btn btn-dark">add news</a>
+            <!--test add-->
         </div>
         <br>
         <br />
