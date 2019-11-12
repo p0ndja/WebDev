@@ -566,4 +566,4 @@
     <?php include '../global/footer.php';?>
 </body>
 
-</html>
+</html> 
