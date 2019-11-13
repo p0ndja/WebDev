@@ -59,13 +59,22 @@
                 <a style="color: white" href="../forum"> SMD Forum </a></li>
                 <br><a style="color: white" href="#"> SMD Shop </a></li>
             </div>
+            <div class="col-md-3 justify-content-center">
+                <a href='http://www.counter-zaehler.de'>Internet Counter</a>
+                <script type='text/javascript'
+                    src='https://www.freevisitorcounters.com/auth.php?id=36647b67905b90b7fce71e8d8bee4c6a42e53ab9'>
+                </script>
+                <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/600036/t/0">
+                </script>
+            </div>
         </div>
         <hr>
         <div class="row">
             <div class="col-12">
                 <center>
                     <p style="color: white">
-                    Copyright 2019 © The demonstration school of Khon Kaen University (Modindaeng) by PondJa & Risaka
+                        Copyright 2019 © The demonstration school of Khon Kaen University (Modindaeng) by PondJa &
+                        Risaka
                     </p>
                 </center>
             </div>
