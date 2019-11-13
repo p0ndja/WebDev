@@ -48,6 +48,13 @@
                                         if (mysqli_num_rows($result) == 0) {
                                             $_SESSION['error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
                                             session_destroy();
+                                        } else {
+                                            $id = $_SESSION['id'];
+                                            $query_final = "SELECT * FROM `profile` WHERE id = '$id'";
+                                            $result_final = mysqli_query($conn, $query_final);
+                                            while ($row = mysqli_fetch_array($result_final, MYSQLI_ASSOC)) {
+                                                $_SESSION['pi'] = $row['profile'];
+                                            }
                                         }
                                     }
 

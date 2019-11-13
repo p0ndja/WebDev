@@ -84,8 +84,6 @@
                 $profile_email = $row['email'];
             if ($row['greetings'] != null)
                 $profile_displayText = $row['greetings'];
-            if ($row['profile'] != null)
-                $profile_image = $row['profile'];
         }  
     ?>
     <div class="container">

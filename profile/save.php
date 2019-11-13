@@ -17,5 +17,7 @@
         mysqli_query($conn, $query_final);
     }
 
+    $_SESSION['pi'] = $profile;
+
     header("Location: ../profile")
 ?>
