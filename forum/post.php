@@ -32,7 +32,7 @@
                             </div>
                             <div class="col-8 col-md-12">
                                 <p>
-                                    <a href="../profile/?id=604019">
+                                    <a href="../profile/?search=604019">
                                         <center>พลภณ สุนทรภาส</center>
                                     </a>
                                 </p>
