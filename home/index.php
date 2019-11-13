@@ -484,207 +484,50 @@
         <hr>
     </div>
     <div class="container">
-        <h1>NEWS</h1>
+        <h1 id="news" name="news">NEWS <a href="../news/post.php" class="btn btn-dark">add news</a></h1>
         <div class="row">
+        <?php
+            $query = "SELECT * FROM `post` ORDER by id DESC limit 6";
+            $result = mysqli_query($conn, $query);
+
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
             <div class="col-6 col-md-4">
                 <div class="card z-depth-0">
                     <div class="hoverable view overlay zoom">
                         <img class="card-img-top"
-                            src="https://www.uppic.org/images/2019/10/24/CAA05982-C213-4BA1-8218-D8F2DFB54C72.jpg"
-                            alt="Card image cap">
+                            src="<?php echo $row['cover']; ?>" alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text"><span class="oi" data-glyph="calendar"></span> 24/10/2562
+                            <p class="card-text"><span class="oi" data-glyph="calendar"></span>
+                            <?php
+                                $writer = null;
+                                $writer_id = $row['writer'];
+                                $query_final = "SELECT * FROM `userdatabase` WHERE id = '$writer_id'";
+                                $result_final = mysqli_query($conn, $query_final);
+                                while($row2 = mysqli_fetch_array($result_final, MYSQLI_ASSOC)) {
+                                    $writer = $row2['firstname'] . ' ' . $row2['lastname'] . ' (' . $row2['username'] . ')';
+                                }
+                                if ($writer != null)
+                                echo $row['time'] . ' โดย ' . '<a href="../profile/?search=' . $writer_id . '">' . $writer . '</a>'; 
+                            ?>
                             </p>
-                            <h5 class="card-title">รางวัล GISTDA TOP VOTE</h5>
+                            <h5 class="card-title"><?php echo $row['title']; ?></h5>
                             <p class="card-text">
                                 <p class="d-none d-md-block">
-                                    เด็กสาธิตฯ เจ๋ง! คว้ารางวัล GISTDA TOP VOTE
-                                    จากโครงการประกวดสื่อภูมิสารสนเทศ ครั้งที่ 8 ประจำปี 2562
-                                    ที่จัดขึ้นระหว่างวันที่ 28 สิงหาคม 2562 ณ อิมแพ็คฯ เมืองทองธานี
-                                    ด้านอาจารย์ให้สัมภาษณ์ ปีนี้คือที่สุด
-                                    <b><u>ย้ำ ปีหน้าไม่ส่งแล้ว</u></b><br>
+                                    <?php echo $row['article']; ?>
                                     <span
-                                        class="badge badge-secondary z-depth-0">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
+                                        class="badge badge-secondary z-depth-0"><?php if ($row['tags'] != null) echo $row['tags']; ?></span>
                                 </p>
                             </p>
                         </div>
-                        <div class="card-footer text-right"><a href="#fuq" class="card-link">อ่านเพิ่มเติม</a>
+                        <div class="card-footer text-right"><a href="#news" class="card-link">อ่านเพิ่มเติม</a>
                         </div>
                     </div>
                 </div>
                 <hr>
             </div>
-            <div class="col-6 col-md-4">
-                <div class="card z-depth-0">
-                    <div class="hoverable view overlay zoom">
-                        <img class="card-img-top"
-                            src="https://www.uppic.org/images/2019/10/24/CAA05982-C213-4BA1-8218-D8F2DFB54C72.jpg"
-                            alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text"><span class="oi" data-glyph="calendar"></span> 24/10/2562
-                            </p>
-                            <h5 class="card-title">รางวัล GISTDA TOP VOTE</h5>
-                            <p class="card-text">
-                                <p class="d-none d-md-block">
-                                    เด็กสาธิตฯ เจ๋ง! คว้ารางวัล GISTDA TOP VOTE
-                                    จากโครงการประกวดสื่อภูมิสารสนเทศ ครั้งที่ 8 ประจำปี 2562
-                                    ที่จัดขึ้นระหว่างวันที่ 28 สิงหาคม 2562 ณ อิมแพ็คฯ เมืองทองธานี
-                                    ด้านอาจารย์ให้สัมภาษณ์ ปีนี้คือที่สุด
-                                    <b><u>ย้ำ ปีหน้าไม่ส่งแล้ว</u></b><br>
-                                    <span
-                                        class="badge badge-secondary z-depth-0">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
-                                </p>
-                            </p>
-                        </div>
-                        <div class="card-footer text-right"><a href="#fuq" class="card-link">อ่านเพิ่มเติม</a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <div class="col-6 col-md-4">
-                <div class="card z-depth-0">
-                    <div class="hoverable view overlay zoom">
-                        <img class="card-img-top"
-                            src="https://www.uppic.org/images/2019/10/24/CAA05982-C213-4BA1-8218-D8F2DFB54C72.jpg"
-                            alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text"><span class="oi" data-glyph="calendar"></span> 24/10/2562
-                            </p>
-                            <h5 class="card-title">รางวัล GISTDA TOP VOTE</h5>
-                            <p class="card-text">
-                                <p class="d-none d-md-block">
-                                    เด็กสาธิตฯ เจ๋ง! คว้ารางวัล GISTDA TOP VOTE
-                                    จากโครงการประกวดสื่อภูมิสารสนเทศ ครั้งที่ 8 ประจำปี 2562
-                                    ที่จัดขึ้นระหว่างวันที่ 28 สิงหาคม 2562 ณ อิมแพ็คฯ เมืองทองธานี
-                                    ด้านอาจารย์ให้สัมภาษณ์ ปีนี้คือที่สุด
-                                    <b><u>ย้ำ ปีหน้าไม่ส่งแล้ว</u></b><br>
-                                    <span
-                                        class="badge badge-secondary z-depth-0">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
-                                </p>
-                            </p>
-                        </div>
-                        <div class="card-footer text-right"><a href="#fuq" class="card-link">อ่านเพิ่มเติม</a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <div class="col-6 col-md-4">
-                <div class="card z-depth-0">
-                    <div class="hoverable view overlay zoom">
-                        <img class="card-img-top"
-                            src="https://www.uppic.org/images/2019/10/24/CAA05982-C213-4BA1-8218-D8F2DFB54C72.jpg"
-                            alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text"><span class="oi" data-glyph="calendar"></span> 24/10/2562
-                            </p>
-                            <h5 class="card-title">รางวัล GISTDA TOP VOTE</h5>
-                            <p class="card-text">
-                                <p class="d-none d-md-block">
-                                    เด็กสาธิตฯ เจ๋ง! คว้ารางวัล GISTDA TOP VOTE
-                                    จากโครงการประกวดสื่อภูมิสารสนเทศ ครั้งที่ 8 ประจำปี 2562
-                                    ที่จัดขึ้นระหว่างวันที่ 28 สิงหาคม 2562 ณ อิมแพ็คฯ เมืองทองธานี
-                                    ด้านอาจารย์ให้สัมภาษณ์ ปีนี้คือที่สุด
-                                    <b><u>ย้ำ ปีหน้าไม่ส่งแล้ว</u></b><br>
-                                    <span
-                                        class="badge badge-secondary z-depth-0">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
-                                </p>
-                            </p>
-                        </div>
-                        <div class="card-footer text-right"><a href="#fuq" class="card-link">อ่านเพิ่มเติม</a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <div class="col-6 col-md-4">
-                <div class="card z-depth-0">
-                    <div class="hoverable view overlay zoom">
-                        <img class="card-img-top"
-                            src="https://www.uppic.org/images/2019/10/24/CAA05982-C213-4BA1-8218-D8F2DFB54C72.jpg"
-                            alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text"><span class="oi" data-glyph="calendar"></span> 24/10/2562
-                            </p>
-                            <h5 class="card-title">รางวัล GISTDA TOP VOTE</h5>
-                            <p class="card-text">
-                                <p class="d-none d-md-block">
-                                    เด็กสาธิตฯ เจ๋ง! คว้ารางวัล GISTDA TOP VOTE
-                                    จากโครงการประกวดสื่อภูมิสารสนเทศ ครั้งที่ 8 ประจำปี 2562
-                                    ที่จัดขึ้นระหว่างวันที่ 28 สิงหาคม 2562 ณ อิมแพ็คฯ เมืองทองธานี
-                                    ด้านอาจารย์ให้สัมภาษณ์ ปีนี้คือที่สุด
-                                    <b><u>ย้ำ ปีหน้าไม่ส่งแล้ว</u></b><br>
-                                    <span
-                                        class="badge badge-secondary z-depth-0">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
-                                </p>
-                            </p>
-                        </div>
-                        <div class="card-footer text-right"><a href="#fuq" class="card-link">อ่านเพิ่มเติม</a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <div class="col-6 col-md-4">
-                <div class="card z-depth-0">
-                    <div class="hoverable view overlay zoom">
-                        <img class="card-img-top"
-                            src="https://www.uppic.org/images/2019/10/24/CAA05982-C213-4BA1-8218-D8F2DFB54C72.jpg"
-                            alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text"><span class="oi" data-glyph="calendar"></span> 24/10/2562
-                            </p>
-                            <h5 class="card-title">รางวัล GISTDA TOP VOTE</h5>
-                            <p class="card-text">
-                                <p class="d-none d-md-block">
-                                    เด็กสาธิตฯ เจ๋ง! คว้ารางวัล GISTDA TOP VOTE
-                                    จากโครงการประกวดสื่อภูมิสารสนเทศ ครั้งที่ 8 ประจำปี 2562
-                                    ที่จัดขึ้นระหว่างวันที่ 28 สิงหาคม 2562 ณ อิมแพ็คฯ เมืองทองธานี
-                                    ด้านอาจารย์ให้สัมภาษณ์ ปีนี้คือที่สุด
-                                    <b><u>ย้ำ ปีหน้าไม่ส่งแล้ว</u></b><br>
-                                    <span
-                                        class="badge badge-secondary z-depth-0">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
-                                </p>
-                            </p>
-                        </div>
-                        <div class="card-footer text-right"><a href="#fuq" class="card-link">อ่านเพิ่มเติม</a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <div class="col-6 col-md-4">
-                <div class="card z-depth-0">
-                    <div class="hoverable view overlay zoom">
-                        <img class="card-img-top"
-                            src="https://www.uppic.org/images/2019/10/24/CAA05982-C213-4BA1-8218-D8F2DFB54C72.jpg"
-                            alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text"><span class="oi" data-glyph="calendar"></span> 24/10/2562
-                            </p>
-                            <h5 class="card-title">รางวัล GISTDA TOP VOTE</h5>
-                            <p class="card-text">
-                                <p class="d-none d-md-block">
-                                    เด็กสาธิตฯ เจ๋ง! คว้ารางวัล GISTDA TOP VOTE
-                                    จากโครงการประกวดสื่อภูมิสารสนเทศ ครั้งที่ 8 ประจำปี 2562
-                                    ที่จัดขึ้นระหว่างวันที่ 28 สิงหาคม 2562 ณ อิมแพ็คฯ เมืองทองธานี
-                                    ด้านอาจารย์ให้สัมภาษณ์ ปีนี้คือที่สุด
-                                    <b><u>ย้ำ ปีหน้าไม่ส่งแล้ว</u></b><br>
-                                    <span
-                                        class="badge badge-secondary z-depth-0">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
-                                </p>
-                            </p>
-                        </div>
-                        <div class="card-footer text-right"><a href="#fuq" class="card-link">อ่านเพิ่มเติม</a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <!--test add-->
-            <a href="../news" class="btn btn-dark">add news</a>
-            <!--test add-->
+            <?php }
+        ?>
+    </div>
         </div>
         <br>
         <br />
