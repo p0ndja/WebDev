@@ -434,8 +434,7 @@
     </div>
     <hr>
     </div>
-    <div class="container-fluid"
-        style=" background-image: url('https://cdn.discordapp.com/attachments/636478500206936094/643477428752351263/bg_light.jpg');
+    <div class="container-fluid" style=" background-image: url('https://cdn.discordapp.com/attachments/636478500206936094/643477428752351263/bg_light.jpg');
                 width: 100%;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -486,19 +485,18 @@
     <div class="container">
         <h1 id="news" name="news">NEWS <a href="../news/post.php" class="btn btn-dark">add news</a></h1>
         <div class="row">
-        <?php
-            $query = "SELECT * FROM `post` ORDER by id DESC limit 6";
+            <?php
+            $query = "SELECT * FROM `post` ORDER by time DESC limit 6";
             $result = mysqli_query($conn, $query);
 
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
             <div class="col-6 col-md-4">
                 <div class="card z-depth-0">
                     <div class="hoverable view overlay zoom">
-                        <img class="card-img-top"
-                            src="<?php echo $row['cover']; ?>" alt="Card image cap">
+                        <img class="card-img-top" src="<?php echo $row['cover']; ?>" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text"><span class="oi" data-glyph="calendar"></span>
-                            <?php
+                                <?php
                                 $writer = null;
                                 $writer_id = $row['writer'];
                                 $query_final = "SELECT * FROM `userdatabase` WHERE id = '$writer_id'";
@@ -527,10 +525,10 @@
             </div>
             <?php }
         ?>
-    </div>
         </div>
-        <br>
-        <br />
+    </div>
+    <br>
+    <br />
     </div>
     </div>
 
@@ -560,4 +558,4 @@
     <?php include '../global/footer.php';?>
 </body>
 
-</html> 
+</html>

@@ -73,9 +73,12 @@
                                 </div>
                                 <div class="col-8 col-md-12">
                                     <p>
+                                        <h5>
                                         <a href="../profile/?search=<?php echo $profile_id ?>">
                                             <center><?php echo $profile_name ?></center>
                                         </a>
+                                        <h5>
+                                            <h6><center>(Writer)</center></h6>
                                     </p>
                                 </div>
                             </div>
