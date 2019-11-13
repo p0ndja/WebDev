@@ -94,13 +94,18 @@ $result_profile = mysqli_query($conn, $query_profile);
     ?>
     <div class="container">
         <hr>
+        <div class="card">
+                <div class="card-body">
         <div class="row">
-            <div class="col-11">
-                <h1> <?php echo $profile_name; ?></h1>
-                <h5> <?php echo $profile_name_en; ?></h5>
-            </div>
-            <div class="col-1">
-                <a class="btn btn-warning float-right" href="edit.php"><span class="oi" data-glyph="pencil"></span></a>
+                    <div class="col-11">
+                        <h1> <?php echo $profile_name; ?></h1>
+                        <h5> <?php echo $profile_name_en; ?></h5>
+                    </div>
+                    <div class="col-1">
+                        <a class="btn btn-warning float-right" href="edit.php"><span class="oi"
+                                data-glyph="pencil"></span></a>
+                    </div>
+                </div>
             </div>
         </div>
         <hr>
@@ -117,18 +122,19 @@ $result_profile = mysqli_query($conn, $query_profile);
                                 <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
                                 <strong>ระดับชั้น</strong> <?php echo $profile_grade ?><br>
                                 <strong>ห้อง</strong> <?php echo $profile_room ?> (<?php echo $profile_class ?>)<br>
-                                <strong>เบอร์โทรศัพท์</strong> <a href="tel:<?php echo $profile_phone ?>"><?php echo $profile_phone ?></a><br>
+                                <strong>เบอร์โทรศัพท์</strong> <a
+                                    href="tel:<?php echo $profile_phone ?>"><?php echo $profile_phone ?></a><br>
                                 <strong>อีเมล</strong>
                                 <a href="mailto:<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
                             </div>
                         </div>
                         <hr>
                         <div class="card">
-                        <div class="card-body">
-                                    <h2>Achievement</h2>
-                                    <hr>
-                                    <p>-----</p>
-                                </div>
+                            <div class="card-body">
+                                <h2>Achievement</h2>
+                                <hr>
+                                <p>-----</p>
+                            </div>
                         </div>
                         <hr>
                     </div>

@@ -97,13 +97,18 @@
                     value="<?php echo $profile_background;?>">
             </div>
             <hr>
-            <div class="row">
-                <div class="col-11">
-                    <h1> <?php echo $profile_name; ?></h1>
-                    <h5> <?php echo $profile_name_en; ?></h5>
-                </div>
-                <div class="col-1">
-                    <input type="submit" class="btn btn-success float-right" name="edit_submit" value="บันทึก"></input>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-11">
+                            <h1> <?php echo $profile_name; ?></h1>
+                            <h5> <?php echo $profile_name_en; ?></h5>
+                        </div>
+                        <div class="col-1">
+                            <input type="submit" class="btn btn-success float-right" name="edit_submit"
+                                value="บันทึก"></input>
+                        </div>
+                    </div>
                 </div>
             </div>
             <hr>
