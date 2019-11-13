@@ -55,6 +55,14 @@ create table permission (
    PRIMARY KEY ( id )
 );
 
+create table achievement (
+username LONGTEXT NOT NULL,
+id INT NOT NULL,
+page404 BOOLEAN DEFAULT false,
+betaTester BOOLEAN DEFAULT false,
+PRIMARY KEY ( id )
+);
+
 INSERT INTO `permission` (username, id, isAdmin, isTeacher, isNewsReporter, isForumEditor, isRegistrator, isTimetableDesigner) VALUES ('palapon2545', 604019, true, true, true, true, true, true)
 
 INSERT INTO user (username, password, firstname, lastname, email) VALUES ('palapon2545', md5('P0ndJ@1103'), 'พลภณ', 'สุนทรภาส', 'palapon2545@gmail.com')
