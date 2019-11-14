@@ -150,7 +150,7 @@
                             <form>
                                 <div class="form-group">
                                     <textarea class="form-control" name="displayTextArea" id="displayTextArea"
-                                        rows="3"><?php echo $profile_displayText ?></textarea>
+                                        rows="3" placeholder="สามารถใช้ HTML, Bootstrap Format ได้"><?php echo $profile_displayText ?></textarea>
                                 </div>
                             </form>
 
@@ -158,6 +158,7 @@
                         </div>
                     </div>
                     <hr>
+                    <!--
                     <div class="card">
                         <div class="card-body">
                             <h2>ประวัติการศึกษา</h2>
@@ -307,7 +308,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr>
+                    <hr>-->
                 </div>
             </div>
         </form>

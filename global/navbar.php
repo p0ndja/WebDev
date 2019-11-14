@@ -28,45 +28,45 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item"
                     href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-58/managementstructure57.jpg">โครงสร้างการบริหาร</a>
-                <a class="dropdown-item" href="#">ทำเนียบผู้บริหาร</a>
-                <a class="dropdown-item" href="#">คณะผู้บริหาร</a>
-                <a class="dropdown-item" href="#">บุคลากร</a>
+                <a class="dropdown-item disabled" href="#">ทำเนียบผู้บริหาร</a>
+                <a class="dropdown-item disabled" href="#">คณะผู้บริหาร</a>
+                <a class="dropdown-item disabled" href="#">บุคลากร</a>
             </div>
         </li>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 หน่วยงาน </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#"> งานแผนและประกันคุณภาพ </a>
-                <a class="dropdown-item" href="#"> งานแนะแนว </a>
-                <a class="dropdown-item" href="#"> งานทะเบียน </a>
-                <a class="dropdown-item" href="#"> งานพัฒนาบุคลิกภาพ </a>
-                <a class="dropdown-item" href="#"> งานห้องสมุด </a>
-                <a class="dropdown-item" href="#"> ชมรมผู้ปกครองและครู </a>
+                <a class="dropdown-item disabled" href="#"> งานแผนและประกันคุณภาพ </a>
+                <a class="dropdown-item disabled" href="#"> งานแนะแนว </a>
+                <a class="dropdown-item disabled" href="#"> งานทะเบียน </a>
+                <a class="dropdown-item disabled" href="#"> งานพัฒนาบุคลิกภาพ </a>
+                <a class="dropdown-item disabled" href="#"> งานห้องสมุด </a>
+                <a class="dropdown-item disabled" href="#"> ชมรมผู้ปกครองและครู </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"> เอกสารประกอบการสอน </a>
+                <a class="dropdown-item disabled" href="#"> เอกสารประกอบการสอน </a>
             </div>
         </li>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 ปฏิทิน </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#"> ปฏิทินโรงเรียน </a>
-                <a class="dropdown-item" href="../calendar"> ตารางเรียน </a>
-                <a class="dropdown-item" href="#"> ตารางสอบ </a>
+                <a class="dropdown-item disabled" href="#"> ปฏิทินโรงเรียน </a>
+                <a class="dropdown-item disabled" href="../calendar"> ตารางเรียน </a>
+                <a class="dropdown-item disabled" href="#"> ตารางสอบ </a>
             </div>
         </li>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> อื่น ๆ </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="../forum">SMD Forum</a>
-                <a class="dropdown-item" href="#">SMD Shop</a>
-                <a class="dropdown-item" href="#">ถ่ายทอดสด <sup class="notifi"><span
+                <a class="dropdown-item disabled" href="#">SMD Shop</a>
+                <a class="dropdown-item disabled" href="#">ถ่ายทอดสด <sup class="notifi"><span
                             class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE <span class="oi"
                                 data-glyph="video"></span></span></sup></a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="https://images.pondja.com" target="_blank">ฝากรูป</a>
-                <a class="dropdown-item" href="https://remotemysql.com/phpmyadmin/" target="_blank">Database</a>
+                <a class="dropdown-item" href="https://ln1.metrabyte.cloud/phpmyadmin/" target="_blank">Database</a>
             </div>
         </li>
 
@@ -74,7 +74,7 @@
     <right>
         <form action="../profile/" method="GET" class="form-inline mr-auto align-right">
             <div class="md-form my-0">
-                <input method="GET" class="form-control" type="text" placeholder="Search" aria-label="Search"
+                <input method="GET" class="form-control" type="text" placeholder="Search ID (Ex. 604019)" aria-label="Search ID (Ex. 604019)"
                     id="search" name="search" value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>">
             </div>
         </form>
@@ -99,7 +99,7 @@
                         data-glyph="account-logout"></span></a>
             </div>
         </li>
-    </ul>;
+    </ul>
     <?php
                 } else { ?>
     <a href="" class="btn btn-dark" data-toggle="modal" data-target="#login">Login</a>

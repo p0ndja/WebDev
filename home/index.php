@@ -325,6 +325,39 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-12">
+                <div class="card text-white bg-danger mb-3 w-100">
+                    <div class="card-header"><h1>ถึงผู้ทดสอบ Beta ทุกท่าน <span
+                            class="badge badge-warning badge-pill d-none d-lg-inline-block blink"><i class="fas fa-exclamation-triangle"></i>
+</span></h1></div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <h4>ระบบที่เปิดให้เข้าชมตอนนี้จะไม่ใช่ทั้งหมดที่สามารถเข้าชมได้
+                                เนื่องจากยังอยู่ในช่วงของการพัฒนา</h4>
+                            <h3>หากพบบัคใด ๆ โปรดแจ้ง<a href="m.me/p0ndja">ที่นี่</a></h3>
+                            <hr>
+                            <h5>
+                                ระบบที่สามารถใช้งานได้ตอนนี้:
+                                <li>Homepage (หน้าหลักหน้านี้)</li>
+                                <li>Forum (ฟอรั่ม) *ใช้งานได้เฉพาะตัวอย่างเท่านั้น</li>
+                                <li>News (ข่าว) *อนุญาตให้เพิ่มข่าวเองได้ แต่จะทำการรีเซ็ตในภายหลัง (Login Required)*</li>
+                                <li>Profile (โปรไฟล์) สามารถแก้ไขรูปโปรไฟล์, รูปพื้นหลัง, ข้อความย่อ (Bio) ได้ (ส่วนอื่น ๆ ยังไม่เปิดให้แก้ไข)</li>
+                                <li>Search (ค้นหา) สามารถค้นหาได้เฉพาะรหัสนักเรียนเท่านั้น (เช่น 604019 จะขึ้นโปรไฟล์ของนักเรียนคนนั้น ๆ) </li>
+                                <li>Register - Login (เข้าสู่ระบบ) สามารถสมัคร, เข้าสู่ระบบได้ [UI บัคนิดหน่อย]</li>
+                            </h5>
+                            <hr>
+                            <h6>ทุกท่านที่สมัครในช่วง Beta จะได้รับ Achievement 'The Beta' ซึ่งเป็น Achievement
+                                ที่สามารถเก็บได้ในช่วงนี้เท่านั้น ทั้ง Username, Password และข้อมูลต่าง ๆ ที่กรอกมาจะเป็นข้อมูลที่นำไปใช้จริง เพราะฉะนั้น ขอความร่วมมือห้ามกรอกมั่วโดยเด็ดขาด</h6>
+                                <h1><span
+                            class="badge badge-danger badge-pill d-none d-lg-inline-block blink2">เฉพาะนักเรียนสาธิตเท่านั้น</h1></span>
+                                <h5>ผู้เยี่ยมชมอื่น ๆ สามารถเข้าใช้งานหน้าโปรไฟล์ได้ด้วยรหัสผู้ใช้งาน</h5>
+                                <h6>Username: guest</h6><h6>Password: guest</h6>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-12">
                 <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000">
                     <ol class="carousel-indicators">
                         <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -486,7 +519,7 @@
         <h1 id="news" name="news">NEWS
             <?php if (isset($_SESSION['id'])) { ?>
             <a href="../news/post.php" class="btn btn-dark">add news</a>
-        <?php }  ?>
+            <?php }  ?>
         </h1>
         <div class="row">
             <?php
@@ -513,15 +546,15 @@
                             ?>
                             </p>
                             <p class="card-title">
-                            <h5>
-                                <?php 
+                                <h5>
+                                    <?php 
                                     echo '<a href="#news" style="color: black"><u>' . $row['title'] . '</u></a></h5><h6>'; 
                                     $split = explode(",", $row['tags']);
                                     foreach ($split as $s) { ?>
-                                        <span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span>
+                                    <span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span>
                                     <?php }
                                 ?>
-                                </h6>
+                                    </h6>
                             </p>
                             <p class="card-text">
                                 <p class="d-none d-md-block">

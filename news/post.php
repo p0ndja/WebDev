@@ -101,7 +101,7 @@
                                     <h5>Article</h5>
                                 </label>
                                 <textarea class="form-control" rows="10" id="article" name="article"
-                                    required></textarea>
+                                    required placeholder="สามารถใช้ HTML, Bootstrap Format ได้"></textarea>
                             </div>
                             <div class="input-group flex-nowrap">
                                 <div class="input-group-prepend">

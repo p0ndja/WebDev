@@ -32,32 +32,32 @@
                     <li style="color: #ff6c00"><a
                             href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-58/managementstructure57.jpg"
                             style="color: white">โครงสร้างการบริหาร</a></li>
-                    <li style="color: #ff6c00"><a href="#" style="color: white">ทำเนียบผู้บริหาร</a></li>
-                    <li style="color: #ff6c00"><a href="#" style="color: white">คณะผู้บริหาร</a></li>
-                    <li style="color: #ff6c00"><a href="#" style="color: white">บุคลากร</a></li>
+                    <li style="color: #ff6c00"><a href="#" style="color: white" class="disabled">ทำเนียบผู้บริหาร</a></li>
+                    <li style="color: #ff6c00"><a href="#" style="color: white" class="disabled">คณะผู้บริหาร</a></li>
+                    <li style="color: #ff6c00"><a href="#" style="color: white" class="disabled">บุคลากร</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
                 <p style="color: white">หน่วยงาน</p>
                 <ul>
-                    <li style="color: #ff6c00"><a style="color: white" href="#"> งานแผนและประกันคุณภาพ </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#"> งานแนะแนว </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#"> งานทะเบียน </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#"> งานพัฒนาบุคลิกภาพ </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#"> งานห้องสมุด </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#"> ชมรมผู้ปกครองและครู </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานแผนและประกันคุณภาพ </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานแนะแนว </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานทะเบียน </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานพัฒนาบุคลิกภาพ </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานห้องสมุด </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ชมรมผู้ปกครองและครู </a></li>
                 </ul>
 
             </div>
             <div class="col-md-3">
                 <p style="color: white">ปฏิทิน</p>
                 <ul>
-                    <li style="color: #ff6c00"><a style="color: white" href="#"> ปฏิทินโรงเรียน </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="../calendar"> ตารางเรียน </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#"> ตารางสอบ </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ปฏิทินโรงเรียน </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="../calendar" class="disabled"> ตารางเรียน </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ตารางสอบ </a></li>
                 </ul>
                 <a style="color: white" href="../forum"> SMD Forum </a></li>
-                <br><a style="color: white" href="#"> SMD Shop </a></li>
+                <br><a style="color: white" href="#" class="disabled"> SMD Shop </a></li>
             </div>
             <div class="col-md-3 justify-content-center">
                 <a href='http://www.counter-zaehler.de'>Internet Counter</a>

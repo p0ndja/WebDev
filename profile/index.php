@@ -100,8 +100,10 @@ $result_profile = mysqli_query($conn, $query_profile);
                         <h5> <?php echo $profile_name_en; ?></h5>
                     </div>
                     <div class="col-1">
+                        <?php if(!isset($_GET['search'])) { ?>
                         <a class="btn btn-warning float-right" href="edit.php"><span class="oi"
                                 data-glyph="pencil"></span></a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -145,6 +147,7 @@ $result_profile = mysqli_query($conn, $query_profile);
                     </div>
                 </div>
                 <hr>
+                <!--
                 <div class="card">
                     <div class="card-body">
                         <h2>ประวัติการศึกษา</h2>
@@ -238,8 +241,7 @@ $result_profile = mysqli_query($conn, $query_profile);
                         </div>
                     </div>
                 </div>
-
-                <hr>
+                <hr>-->
 
             </div>
         </div>

@@ -57,7 +57,7 @@
                             <center>PondJa<br>26/10/2562</center>
                         </td>
                     </tr>
-                    <tr class="table-pointer" onclick="window.location='#';">
+                    <tr class="table-pointer" style="cursor: not-allowed;" onclick="window.location='#';">
                         <td>มันดูดี~ ที่สุดเลยเว้ยแก~ <span
                                 class="badge badge-primary z-depth-0">คำสั่ง</span><br>26/10/2562</td>
                         <td>
@@ -70,7 +70,7 @@
                             <center>-</center>
                         </td>
                     </tr>
-                    <tr class="table-pointer" onclick="window.location='#';">
+                    <tr class="table-pointer" style="cursor: not-allowed;" onclick="window.location='#';">
                         <td>คำสั่ง คสช. ที่ 1/2562 <span
                                 class="badge badge-secondary z-depth-0">คำสั่ง</span><br>26/10/2562</td>
                         <td>
@@ -83,7 +83,7 @@
                             <center>-</center>
                         </td>
                     </tr>
-                    <tr class="table-pointer" onclick="window.location='#';">
+                    <tr class="table-pointer" style="cursor: not-allowed;" onclick="window.location='#';">
                         <td>มันดูดี~ ที่สุดเลยเว้ยแก~ <span
                                 class="badge badge-primary z-depth-0">ทั่วไป</span><br>26/10/2562</td>
                         <td>
@@ -96,7 +96,7 @@
                             <center>-</center>
                         </td>
                     </tr>
-                    <tr class="table-pointer" onclick="window.location='#';">
+                    <tr class="table-pointer" style="cursor: not-allowed;" onclick="window.location='#';">
                         <td>ว้าวววววววววววววววว <span class="badge badge-primary z-depth-0">ทั่วไป</span><br>26/10/2562
                         </td>
                         <td>
