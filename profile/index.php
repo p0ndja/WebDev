@@ -20,7 +20,7 @@
      $result = mysqli_query($conn, $query);
      
      if (!$result) {
-        die('Could not get data: ' . mysqli_error());
+        die('Could not get data: ' . mysqli_error($conn));
     }
      $profile_background = "https://storage.pondja.com/bg%20pastel%20mode.jpg";
 
@@ -88,8 +88,6 @@ $result_profile = mysqli_query($conn, $query_profile);
                 $profile_email = $row['email'];
             if ($row['greetings'] != null)
                 $profile_displayText = $row['greetings'];
-            if ($row['profile'] != null)
-                $profile_image = $row['profile'];
         }
     ?>
     <div class="container">

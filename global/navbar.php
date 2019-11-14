@@ -86,7 +86,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img src="<?php echo $_SESSION['pi']; ?>"
+                <img src="<?php if(isset($_SESSION['pi']) && $_SESSION['pi'] != null) echo $_SESSION['pi']; else echo 'https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png'; ?>"
                     width="20"> <?php echo $_SESSION['fn'] . ' ' . $_SESSION['ln']; ?></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="../profile"> ข้อมูลส่วนตัว <span class="oi"

@@ -35,7 +35,7 @@
                                         $result = mysqli_query($conn, $query);
 
                                         if (! $result) {
-                                            die('Could not get data: ' . mysqli_error());
+                                            die('Could not get data: ' . mysqli_error($conn));
                                         }
                                        
                                         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -104,7 +104,7 @@
                                     $result2 = mysqli_query($conn, $query2);
 
                                     if (! $result1) {
-                                        die('Could not get data: ' . mysqli_error());
+                                        die('Could not get data: ' . mysqli_error($conn));
                                     }
 
                                     if (mysqli_num_rows($result1) == 1) {
@@ -119,11 +119,36 @@
                                         
                                         $query_final = "INSERT INTO `userdatabase` (id, username, password, citizen_id, firstname, lastname, email) VALUES ($id, '$user', '$pass', $citizen_id, '$firstname', '$lastname', '$email')";
                                         $result_final = mysqli_query($conn, $query_final);
+
+                                        $query_achi = "INSERT INTO `achievement` (username, id) VALUES ('$user', $id)";
+                                        $result_achi = mysqli_query($conn, $query_achi);
+
+                                        $query_profile = "INSERT INTO `profile` (id) VALUES ($id)";
+                                        $result_profile = mysqli_query($conn, $query_profile);
+
+                                        $query_permission = "INSERT INTO `permission` (username, id) VALUES ('$user', $id)";
+                                        $result_permission = mysqli_query($conn, $query_permission);
+
                                         if ($result_final) {
                                             $_SESSION['error'] = "สมัครผู้ใช้งานสำเร็จ";
                                             $_SESSION['user'] = $user;
+                                            $_SESSION['id'] = $id;
                                             $_SESSION['fn'] = $_POST['register_firstname'];
                                             $_SESSION['ln'] = $_POST['register_lastname'];
+                                        } else {
+                                            die('Could not register ' . mysqli_error($conn));
+                                        }
+
+                                        if (! $result_profile) {
+                                            die('Could not create profile ' . mysqli_error($conn));
+                                        }
+
+                                        if (! $result_achi) {
+                                            die('Could not add achievement ' . mysqli_error($conn));
+                                        }
+                                        
+                                        if (! $result_permission) {
+                                            die('Could not grant permission ' . mysqli_error($conn));
                                         }
                                     }
                                 }

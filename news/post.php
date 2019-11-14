@@ -74,11 +74,13 @@
                                 <div class="col-8 col-md-12">
                                     <p>
                                         <h5>
-                                        <a href="../profile/?search=<?php echo $profile_id ?>">
-                                            <center><?php echo $profile_name ?></center>
-                                        </a>
-                                        <h5>
-                                            <h6><center>(Writer)</center></h6>
+                                            <a href="../profile/?search=<?php echo $profile_id ?>">
+                                                <center><?php echo $profile_name ?></center>
+                                            </a>
+                                            <h5>
+                                                <h6>
+                                                    <center>(Writer)</center>
+                                                </h6>
                                     </p>
                                 </div>
                             </div>
@@ -95,17 +97,19 @@
                             </h6>
                             <hr>
                             <div class="form-group">
-                                <label for="article"><h5>Article</h5></label>
+                                <label for="article">
+                                    <h5>Article</h5>
+                                </label>
                                 <textarea class="form-control" rows="10" id="article" name="article"
                                     required></textarea>
                             </div>
-                            <h6>
+                            <div class="input-group flex-nowrap">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-tags">แท็ก</span>
                                 </div>
                                 <input type="text" class="form-control" id="tags" name="tags" aria-label="tags"
                                     aria-describedby="addon-tags" required>
-                            </h6>
+                            </div>
                         </div>
                     </div>
                     <div class="row justify-content-end">

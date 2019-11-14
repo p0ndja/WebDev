@@ -16,7 +16,10 @@
     </nav>
     <div class="content"></div>
     <div class="container">
-        <h1 id="news" name="news">NEWS <a href="../news/post.php" class="btn btn-dark">add news</a></h1>
+        <h1 id="news" name="news">NEWS
+            <?php if (isset($_SESSION['id'])) { ?>
+            <a href="../news/post.php" class="btn btn-dark">add news</a>
+        <?php }  ?> </h1>
         <div class="row">
             <?php
             $query = "SELECT * FROM `post` ORDER by time DESC limit 6";
@@ -61,6 +64,6 @@
         </div>
     </div>
     <?php include '../global/footer.php' ?>
-</body>
+    </body>
 
 </html>
