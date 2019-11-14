@@ -1,6 +1,5 @@
 <?php 
     include '../global/connect.php';
-    include '../global/popup.php';
 ?>
 
 <!DOCTYPE html>
@@ -295,12 +294,18 @@
                 $('#nav').addClass('notstick');
             }
         });
+
+        $(window).load(function(){        
+   $('#login').modal('show');
+    }); 
     </script>
 </head>
 
 <body>
 
-    <?php include '../global/login.php'; ?>
+    <?php include '../global/login.php';;
+?>
+    
     <header id="header">
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">

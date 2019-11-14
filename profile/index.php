@@ -53,6 +53,13 @@
     <div class="content"></div>
     <?php if (isset($_GET['search']) || (isset($_SESSION['id']))) {
 
+$id;
+if (isset($_GET['search'])) {
+    $id = $_GET['search'];
+} else {
+    $id = $_SESSION['id'];
+}
+
 $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
 $result = mysqli_query($conn, $query);
 $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
@@ -143,7 +150,7 @@ $result_profile = mysqli_query($conn, $query_profile);
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <h2><?php echo $profile_displayText ?></h2>
+                        <p><?php echo $profile_displayText ?></p>
                     </div>
                 </div>
                 <hr>
