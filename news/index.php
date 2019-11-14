@@ -44,12 +44,20 @@
                                 echo $row['time'] . ' โดย ' . '<a href="../profile/?search=' . $writer_id . '">' . $writer . '</a>'; 
                             ?>
                             </p>
-                            <h5 class="card-title"><?php echo $row['title']; ?></h5>
+                            <div class="card-title">
+                            <h5>
+                                <?php 
+                                    echo $row['title']; 
+                                    $split = explode(",", $row['tags']);
+                                    foreach ($split as $s) { ?>
+                                        <span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span>
+                                    <?php }
+                                ?>
+                                </h5>
+                                    </div>
                             <p class="card-text">
                                 <p class="d-none d-md-block">
                                     <?php echo $row['article']; ?>
-                                    <span
-                                        class="badge badge-secondary z-depth-0"><?php if ($row['tags'] != null) echo $row['tags']; ?></span>
                                 </p>
                             </p>
                         </div>

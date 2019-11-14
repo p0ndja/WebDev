@@ -515,7 +515,7 @@
                             <p class="card-title">
                             <h5>
                                 <?php 
-                                    echo $row['title'] . '</h5><h6>'; 
+                                    echo '<a href="#news" style="color: black"><u>' . $row['title'] . '</u></a></h5><h6>'; 
                                     $split = explode(",", $row['tags']);
                                     foreach ($split as $s) { ?>
                                         <span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span>
@@ -525,11 +525,18 @@
                             </p>
                             <p class="card-text">
                                 <p class="d-none d-md-block">
-                                    <?php echo iconv_substr($row['article'], 0,200, "UTF-8"); ?>
+                                    <?php $split = explode(" ", $row['article']); $i = 0; foreach($split as $s) {
+                                        $i++;
+                                        if ($i < 20 && $i > 0) {
+                                            echo ' ' . $s;
+                                        } else {
+                                            $i = -1;
+                                            break;
+                                        }
+                                    }  if ($i == -1) echo '... <a href="#news">ดูเพิ่มเติม</a>';
+                                    ?>
                                 </p>
                             </p>
-                        </div>
-                        <div class="card-footer text-right"><a href="#news" class="card-link">อ่านเพิ่มเติม</a>
                         </div>
                     </div>
                 </div>

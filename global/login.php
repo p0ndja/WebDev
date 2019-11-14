@@ -120,7 +120,7 @@
                                         $query_final = "INSERT INTO `userdatabase` (id, username, password, citizen_id, firstname, lastname, email) VALUES ($id, '$user', '$pass', $citizen_id, '$firstname', '$lastname', '$email')";
                                         $result_final = mysqli_query($conn, $query_final);
 
-                                        $query_achi = "INSERT INTO `achievement` (username, id) VALUES ('$user', $id)";
+                                        $query_achi = "INSERT INTO `achievement` (username, id, betaTester) VALUES ('$user', $id, true)";
                                         $result_achi = mysqli_query($conn, $query_achi);
 
                                         $query_profile = "INSERT INTO `profile` (id) VALUES ($id)";
