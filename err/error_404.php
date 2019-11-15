@@ -20,7 +20,7 @@
                 <div class="text-center">
                     <h3>404 Not Found</h3>
                     <h1>(╯°□°）╯︵ ┻━┻</h1>
-                    <img src="https://media.giphy.com/media/27rspbAAESlzzFtN2e/giphy.gif" width=400>
+                    <img src="https://i.imgur.com/okHmU2N.gif" width=400>
                 </div>
             </div>
         </div>

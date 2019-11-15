@@ -65,7 +65,6 @@
         $profile_grade = $undefined;
         $profile_class = $undefined;
         $profile_room = $undefined;
-        $profile_phone = $undefined;
         $profile_email = $undefined;
         $profile_displayText = $undefined;
         $profile_image = "https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png";
@@ -78,8 +77,6 @@
         while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
             if ($row['profile'] != null)
                 $profile_image = $row['profile'];
-            if ($row['tel'] != null)
-                $profile_phone = $row['tel'];
             if ($row['email'] != null)
                 $profile_email = $row['email'];
             if ($row['greetings'] != null)
@@ -127,7 +124,6 @@
                                     <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
                                     <strong>ระดับชั้น</strong> <?php echo $profile_grade ?><br>
                                     <strong>ห้อง</strong> <?php echo $profile_room ?> (<?php echo $profile_class ?>)<br>
-                                    <strong>เบอร์โทรศัพท์</strong> <?php echo $profile_phone ?><br>
                                     <strong>อีเมล</strong>
                                     <a href="<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
                                 </div>

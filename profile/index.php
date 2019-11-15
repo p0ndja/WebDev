@@ -64,6 +64,8 @@ $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
 $result = mysqli_query($conn, $query);
 $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
 $result_profile = mysqli_query($conn, $query_profile);
+$query_achi = "SELECT * FROM `achievement` WHERE id = '$id'";
+$result_achi = mysqli_query($conn, $query_achi);
 
         if (mysqli_num_rows($result) == 0) {
             die('<center><h1>Profile Not Found</h1></center>');
@@ -76,9 +78,9 @@ $result_profile = mysqli_query($conn, $query_profile);
         $profile_grade = $undefined;
         $profile_class = $undefined;
         $profile_room = $undefined;
-        $profile_phone = $undefined;
         $profile_email = $undefined;
         $profile_displayText = $undefined;
+        $profile_achi = "";
         $profile_image = "https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png";
        
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -89,12 +91,19 @@ $result_profile = mysqli_query($conn, $query_profile);
         while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
             if ($row['profile'] != null)
                 $profile_image = $row['profile'];
-            if ($row['tel'] != null)
-                $profile_phone = $row['tel'];
             if ($row['email'] != null)
                 $profile_email = $row['email'];
             if ($row['greetings'] != null)
                 $profile_displayText = $row['greetings'];
+        }
+
+        while ($row = mysqli_fetch_array($result_achi, MYSQLI_ASSOC)) {
+            if ($row['betaTester'])
+                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/beta-tester-icon-.gif" title="Beta Tester Achievement (LEGENDARY)" class="img-fluid w-100 justify-content-center"></div>';
+            if ($row['WebDevTycoon'])
+                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/Web_dev_tycoon_icon.gif" title="Web Dev Tycoon Achievement (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></div>';
+            if ($row['the4thFloor'])
+                $profile_achi = $profile_achi . '<div class=""><img src=""></div>';
         }
     ?>
     <div class="container">
@@ -129,8 +138,6 @@ $result_profile = mysqli_query($conn, $query_profile);
                                 <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
                                 <strong>ระดับชั้น</strong> <?php echo $profile_grade ?><br>
                                 <strong>ห้อง</strong> <?php echo $profile_room ?> (<?php echo $profile_class ?>)<br>
-                                <strong>เบอร์โทรศัพท์</strong> <a
-                                    href="tel:<?php echo $profile_phone ?>"><?php echo $profile_phone ?></a><br>
                                 <strong>อีเมล</strong>
                                 <a href="mailto:<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
                             </div>
@@ -140,7 +147,9 @@ $result_profile = mysqli_query($conn, $query_profile);
                             <div class="card-body">
                                 <h2>Achievement</h2>
                                 <hr>
-                                <p>-----</p>
+                                <div class="row">
+                                <?php echo $profile_achi; ?>
+                        </div>
                             </div>
                         </div>
                         <hr>

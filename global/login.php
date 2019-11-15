@@ -1,4 +1,5 @@
-    <div class="modal fade" name="login" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" name="login" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog cascading-modal" role="document">
             <!--Content-->
             <div class="modal-content">
@@ -8,7 +9,7 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs md-tabs tabs-2 grey lighten-2" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active black-text" data-toggle="tab" href="#panel7" role="tab" ><i
+                            <a class="nav-link active black-text" data-toggle="tab" href="#panel7" role="tab"><i
                                     class="fas fa-user mr-1"></i>
                                 Login</a>
                         </li>
@@ -158,48 +159,92 @@
                                 ?>
                                 <!--Body-->
                                 <div class="modal-body">
-                                    <div class="md-form form-sm mb-5">
+                                    <!-- Material form register -->
+                                    <div class="md-form form-sm mb-3">
                                         <i class="fas fa-envelope prefix"></i>
                                         <input type="text" name="register_username" id="register_username"
                                             class="form-control form-control-sm validate" required>
                                         <label for="register_username">ชื่อผู้ใช้งาน</label>
                                     </div>
-                                    <div class="md-form form-sm mb-5">
+                                    <div class="md-form form-sm mb-3">
                                         <i class="fas fa-envelope prefix"></i>
                                         <input type="password" name="register_password" id="register_password"
                                             class="form-control form-control-sm validate" required>
                                         <label for="register_password">รหัสผ่าน</label>
                                     </div>
-                                    <div class="md-form form-sm mb-5">
+                                    <div class="md-form form-sm mb-3">
                                         <i class="fas fa-user prefix"></i>
                                         <input type="text" name="register_id" id="register_id"
                                             class="form-control form-control-sm validate" required>
                                         <label for="register_id">รหัสนักเรียน</label>
                                     </div>
-                                    <div class="md-form form-sm mb-5">
+                                    <div class="md-form form-sm mb-3">
                                         <i class="fas fa-lock prefix"></i>
                                         <input type="text" name="register_citizen_id" id="register_citizen_id"
                                             class="form-control form-control-sm validate" required>
                                         <label for="register_citizen_id">รหัสบัตรประชาชน</label>
                                     </div>
-                                    <div class="md-form form-sm mb-5">
-                                        <i class="fas fa-signature prefix"></i>
-                                        <input type="text" name="register_firstname" id="register_firstname"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_firstname">ชื่อ</label>
+                                    <div class="form-row">
+                                        <div class="col-12 col-sm-2">
+                                            <label for="prefix_th">ข้อมูลส่วนตัว</label>
+                                            <select class="browser-default custom-select mb-4" id="prefix_th">
+                                                <option value="" disabled="" selected="">- คำนำหน้า -</option>
+                                                <option value="เด็กชาย">เด็กชาย</option>
+                                                <option value="เด็กหญิง">เด็กหญิง</option>
+                                                <option value="นาย">นาย</option>
+                                                <option value="นาง">นาง</option>
+                                                <option value="นางสาว">นางสาว</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-5">
+                                            <!-- First name -->
+                                            <div class="md-form">
+                                                <input type="text" id="register_firstname" class="form-control" required>
+                                                <label for="register_firstname">ชื่อ</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-5">
+                                            <!-- Last name -->
+                                            <div class="md-form">
+                                                <input type="text" id="register_lastname" class="form-control" required>
+                                                <label for="register_lastname">นามสกุล</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="md-form form-sm mb-5">
-                                        <i class="fas fa-signature prefix"></i>
-                                        <input type="text" name="register_lastname" id="register_lastname"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_lastname">นามสกุล</label>
+                                    <div class="form-row">
+                                        <div class="col-12 col-sm-4">
+                                            <label for="prefix_en"> </label>
+                                            <select class="browser-default custom-select mb-4" id="prefix_en">
+                                                <option value="" disabled="" selected="">- Prefix -</option>
+                                                <option value="เด็กชาย">เด็กชาย</option>
+                                                <option value="เด็กหญิง">เด็กหญิง</option>
+                                                <option value="นาย">นาย</option>
+                                                <option value="นาง">นาง</option>
+                                                <option value="นางสาว">นางสาว</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                            <!-- First name -->
+                                            <div class="md-form">
+                                                <input type="text" id="register_firstname_en" class="form-control" required>
+                                                <label for="register_firstname_en">First name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                            <!-- Last name -->
+                                            <div class="md-form">
+                                                <input type="text" id="register_lastname_en" class="form-control" required>
+                                                <label for="register_lastname_en">Last name</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="md-form form-sm mb-5">
+                                    <div class="md-form form-sm mb-3">
                                         <i class="fas fa-envelope prefix"></i>
                                         <input type="email" name="register_email" id="register_email"
                                             class="form-control form-control-sm validate" required>
                                         <label for="register_email">อีเมล</label>
                                     </div>
+
                                     <!--
                                     <div class="md-form form-sm mb-5">
                                         <i class="fas fa-images prefix"></i>
