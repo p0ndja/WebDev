@@ -7,6 +7,10 @@
             -o-background-size: cover;
         }
         
+        .disabled {
+            cursor: not-allowed;
+        }
+        
         @-webkit-keyframes blinker {
             from {
                 opacity: 1.0;

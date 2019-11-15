@@ -12,24 +12,22 @@
 <head>
     <?php include '../global/head.php'; ?>
     <?php
-    $id = $_SESSION['id'];
+        $id = $_SESSION['id'];
 
-     $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
-     $result = mysqli_query($conn, $query);
+        $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
+        $result = mysqli_query($conn, $query);
      
-     if (!$result) {
-        die('Could not get data: ' . mysqli_error());
-    }
-     $profile_background = "https://storage.pondja.com/bg%20pastel%20mode.jpg";
+        if (!$result) {
+            die('Could not get data: ' . mysqli_error($conn));
+        }
+        $profile_background = "https://storage.pondja.com/bg%20pastel%20mode.jpg";
 
-     $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
-     $result_profile = mysqli_query($conn, $query_profile);
+        $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
+        $result_profile = mysqli_query($conn, $query_profile);
 
-
-     while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
-     if ($row['background'] != null) $profile_background = $row['background'];
-     }
-    
+        while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
+            if ($row['background'] != null) $profile_background = $row['background'];
+        }
     ?>
     <style>
         body {
@@ -51,10 +49,10 @@
     <div class="content"></div>
     <?php
 
-$query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
-$result = mysqli_query($conn, $query);
-$query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
-$result_profile = mysqli_query($conn, $query_profile);
+        $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
+        $result = mysqli_query($conn, $query);
+        $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
+        $result_profile = mysqli_query($conn, $query_profile);
 
         if (mysqli_num_rows($result) == 0) {
             die('<center><h1>Profile Not Found</h1></center>');
@@ -86,8 +84,6 @@ $result_profile = mysqli_query($conn, $query_profile);
                 $profile_email = $row['email'];
             if ($row['greetings'] != null)
                 $profile_displayText = $row['greetings'];
-            if ($row['profile'] != null)
-                $profile_image = $row['profile'];
         }  
     ?>
     <div class="container">
@@ -96,17 +92,23 @@ $result_profile = mysqli_query($conn, $query_profile);
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="addon-wrapping">BACKGROUND IMAGE</span>
                 </div>
-                <input type="text" class="form-control" placeholder="Press URL here" id="backgroundURL" name="backgroundURL" aria-label="backgroundURL"
-                    aria-describedby="addon-wrapping" value="<?php echo $profile_background;?>">
+                <input type="text" class="form-control" placeholder="Press URL here" id="backgroundURL"
+                    name="backgroundURL" aria-label="backgroundURL" aria-describedby="addon-wrapping"
+                    value="<?php echo $profile_background;?>">
             </div>
             <hr>
-            <div class="row">
-                <div class="col-11">
-                    <h1> <?php echo $profile_name; ?></h1>
-                    <h5> <?php echo $profile_name_en; ?></h5>
-                </div>
-                <div class="col-1">
-                    <input type="submit" class="btn btn-success float-right" name="edit_submit" value="บันทึก"></input>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-11">
+                            <h1> <?php echo $profile_name; ?></h1>
+                            <h5> <?php echo $profile_name_en; ?></h5>
+                        </div>
+                        <div class="col-1">
+                            <input type="submit" class="btn btn-success float-right" name="edit_submit"
+                                value="บันทึก"></input>
+                        </div>
+                    </div>
                 </div>
             </div>
             <hr>
@@ -114,8 +116,8 @@ $result_profile = mysqli_query($conn, $query_profile);
                 <div class="col-md-4 col-sm-12">
                     <img src="<?php echo $profile_image; ?>" class="img-fluid w-100" alt="Profile">
                     <div class="form-group">
-                        <input type="url" class="form-control" id="profileURL" name="profileURL" placeholder="Press URL here"
-                            value="<?php echo $profile_image; ?>"></input>
+                        <input type="url" class="form-control" id="profileURL" name="profileURL"
+                            placeholder="Press URL here" value="<?php echo $profile_image; ?>"></input>
                     </div>
                     <div class="row">
                         <div class="col-md-12 text-left">
@@ -148,7 +150,7 @@ $result_profile = mysqli_query($conn, $query_profile);
                             <form>
                                 <div class="form-group">
                                     <textarea class="form-control" name="displayTextArea" id="displayTextArea"
-                                        rows="3"><?php echo $profile_displayText ?></textarea>
+                                        rows="3" placeholder="สามารถใช้ HTML, Bootstrap Format ได้"><?php echo $profile_displayText ?></textarea>
                                 </div>
                             </form>
 
@@ -156,6 +158,7 @@ $result_profile = mysqli_query($conn, $query_profile);
                         </div>
                     </div>
                     <hr>
+                    <!--
                     <div class="card">
                         <div class="card-body">
                             <h2>ประวัติการศึกษา</h2>
@@ -305,7 +308,7 @@ $result_profile = mysqli_query($conn, $query_profile);
                             </div>
                         </div>
                     </div>
-                    <hr>
+                    <hr>-->
                 </div>
             </div>
         </form>

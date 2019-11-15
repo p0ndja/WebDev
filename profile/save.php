@@ -13,9 +13,11 @@
         $profile = $_POST['profileURL'];
         $text = $_POST['displayTextArea'];
 
-        $query_final = "UPDATE `profile` SET background = '$bg', profile = '$profile', greetings = '$text' WHERE id = '$id'";
+        $query_final = "UPDATE `profile` SET background = '$bg', profile = '$profile', greetings = '$text' WHERE id = $id";
         mysqli_query($conn, $query_final);
     }
+
+    $_SESSION['pi'] = $profile;
 
     header("Location: ../profile")
 ?>

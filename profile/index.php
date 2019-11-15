@@ -20,7 +20,7 @@
      $result = mysqli_query($conn, $query);
      
      if (!$result) {
-        die('Could not get data: ' . mysqli_error());
+        die('Could not get data: ' . mysqli_error($conn));
     }
      $profile_background = "https://storage.pondja.com/bg%20pastel%20mode.jpg";
 
@@ -52,6 +52,13 @@
     </nav>
     <div class="content"></div>
     <?php if (isset($_GET['search']) || (isset($_SESSION['id']))) {
+
+$id;
+if (isset($_GET['search'])) {
+    $id = $_GET['search'];
+} else {
+    $id = $_SESSION['id'];
+}
 
 $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
 $result = mysqli_query($conn, $query);
@@ -88,19 +95,24 @@ $result_profile = mysqli_query($conn, $query_profile);
                 $profile_email = $row['email'];
             if ($row['greetings'] != null)
                 $profile_displayText = $row['greetings'];
-            if ($row['profile'] != null)
-                $profile_image = $row['profile'];
         }
     ?>
     <div class="container">
         <hr>
+        <div class="card">
+                <div class="card-body">
         <div class="row">
-            <div class="col-11">
-                <h1> <?php echo $profile_name; ?></h1>
-                <h5> <?php echo $profile_name_en; ?></h5>
-            </div>
-            <div class="col-1">
-                <a class="btn btn-warning float-right" href="edit.php"><span class="oi" data-glyph="pencil"></span></a>
+                    <div class="col-11">
+                        <h1> <?php echo $profile_name; ?></h1>
+                        <h5> <?php echo $profile_name_en; ?></h5>
+                    </div>
+                    <div class="col-1">
+                        <?php if(!isset($_GET['search'])) { ?>
+                        <a class="btn btn-warning float-right" href="edit.php"><span class="oi"
+                                data-glyph="pencil"></span></a>
+                        <?php } ?>
+                    </div>
+                </div>
             </div>
         </div>
         <hr>
@@ -117,18 +129,19 @@ $result_profile = mysqli_query($conn, $query_profile);
                                 <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
                                 <strong>ระดับชั้น</strong> <?php echo $profile_grade ?><br>
                                 <strong>ห้อง</strong> <?php echo $profile_room ?> (<?php echo $profile_class ?>)<br>
-                                <strong>เบอร์โทรศัพท์</strong> <a href="tel:<?php echo $profile_phone ?>"><?php echo $profile_phone ?></a><br>
+                                <strong>เบอร์โทรศัพท์</strong> <a
+                                    href="tel:<?php echo $profile_phone ?>"><?php echo $profile_phone ?></a><br>
                                 <strong>อีเมล</strong>
                                 <a href="mailto:<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
                             </div>
                         </div>
                         <hr>
                         <div class="card">
-                        <div class="card-body">
-                                    <h2>Achievement</h2>
-                                    <hr>
-                                    <p>-----</p>
-                                </div>
+                            <div class="card-body">
+                                <h2>Achievement</h2>
+                                <hr>
+                                <p>-----</p>
+                            </div>
                         </div>
                         <hr>
                     </div>
@@ -137,10 +150,11 @@ $result_profile = mysqli_query($conn, $query_profile);
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <h2><?php echo $profile_displayText ?></h2>
+                        <p><?php echo $profile_displayText ?></p>
                     </div>
                 </div>
                 <hr>
+                <!--
                 <div class="card">
                     <div class="card-body">
                         <h2>ประวัติการศึกษา</h2>
@@ -234,8 +248,7 @@ $result_profile = mysqli_query($conn, $query_profile);
                         </div>
                     </div>
                 </div>
-
-                <hr>
+                <hr>-->
 
             </div>
         </div>
