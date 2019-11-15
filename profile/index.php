@@ -84,24 +84,24 @@ $result_achi = mysqli_query($conn, $query_achi);
         $profile_image = "https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png";
        
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $profile_name = $row['firstname'] . ' ' . $row['lastname'];
+            $profile_name = $row['prefix'] . $row['firstname'] . ' ' . $row['lastname'];
+            $profile_name_en = $row['firstname_en'] . ' ' . $row['lastname_en'];
             $profile_id = $row['id'];
+            $profile_email = $row['email'];
         }
         
         while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
             if ($row['profile'] != null)
                 $profile_image = $row['profile'];
-            if ($row['email'] != null)
-                $profile_email = $row['email'];
             if ($row['greetings'] != null)
                 $profile_displayText = $row['greetings'];
         }
 
         while ($row = mysqli_fetch_array($result_achi, MYSQLI_ASSOC)) {
             if ($row['betaTester'])
-                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/beta-tester-icon-.gif" title="Beta Tester Achievement (LEGENDARY)" class="img-fluid w-100 justify-content-center"></div>';
+                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/beta-tester-icon_resize.gif" title="Beta Tester Achievement (LEGENDARY)" class="img-fluid w-100 justify-content-center"></div>';
             if ($row['WebDevTycoon'])
-                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/Web_dev_tycoon_icon.gif" title="Web Dev Tycoon Achievement (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></div>';
+                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/Web_dev_tycoon_icon_resize.gif" title="Web Dev Tycoon Achievement (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></div>';
             if ($row['the4thFloor'])
                 $profile_achi = $profile_achi . '<div class=""><img src=""></div>';
         }

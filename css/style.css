@@ -1,6 +1,6 @@
         body {
             font-family: 'Kanit', sans-serif !important;
-            background: url('https://storage.pondja.com/bg%20pastel%20mode.jpg') no-repeat center center fixed;
+            background: url('https://images.pondja.com/bg-pastel-mode_resize.jpg') no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             background-size: cover;
@@ -25,14 +25,14 @@
         }
         
         .navbar {
-            background-image: url('https://cdn.discordapp.com/attachments/636478500206936094/643477428752351263/bg_light.jpg');
+            background-image: url('https://images.pondja.com/bg_light_resize.jpg');
             background-repeat: no-repeat;
             background-size: 100%;
         }
         
         @media only screen and (max-width: 768px) {
             .navbar {
-                background-image: url('https://cdn.discordapp.com/attachments/636478500206936094/643477428752351263/bg_light.jpg');
+                background-image: url('https://images.pondja.com/bg_light_resize.jpg');
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-position: fixed;
