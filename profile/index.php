@@ -88,6 +88,17 @@ $result_achi = mysqli_query($conn, $query_achi);
             $profile_name_en = $row['firstname_en'] . ' ' . $row['lastname_en'];
             $profile_id = $row['id'];
             $profile_email = $row['email'];
+            $profile_grade = $row['grade'];
+            $profile_room = $row['class'];
+            if ($profile_room == 1) {
+                $profile_class = "EMSP";
+            } else if ($profile_room == 5) {
+                $profile_class = "วมว.";
+            } else if ($profile_room == 0) {
+                $profile_class = "-";
+            } else {
+                $profile_class = "ปกติ";
+            }
         }
         
         while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
@@ -136,8 +147,7 @@ $result_achi = mysqli_query($conn, $query_achi);
                         <div class="card">
                             <div class="card-body">
                                 <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
-                                <strong>ระดับชั้น</strong> <?php echo $profile_grade ?><br>
-                                <strong>ห้อง</strong> <?php echo $profile_room ?> (<?php echo $profile_class ?>)<br>
+                                <strong>ระดับชั้น</strong> <?php echo $profile_grade . '/' . $profile_room . ' (' . $profile_class . ')'?><br>
                                 <strong>อีเมล</strong>
                                 <a href="mailto:<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
                             </div>
