@@ -99,6 +99,11 @@
                                     $firstname = $_POST['register_firstname'];
                                     $lastname = $_POST['register_lastname'];
                                     $email = $_POST['register_email'];
+                                    $firstname_en = $_POST['register_firstname_en'];
+                                    $lastname_en = $_POST['register_lastname_en'];
+                                    $prefix = $_POST['register_prefix'];
+                                    $grade = $_POST['register_grade'];
+                                    $class = $_POST['register_class'];
                                     $query1 = "SELECT * FROM `userdatabase` WHERE username = '$user'";
                                     $query2 = "SELECT * FROM `userdatabase` WHERE citizen_id = '$citizen_id'";
                                     $result1 = mysqli_query($conn, $query1);
@@ -118,7 +123,7 @@
                                             move_uploaded_file($_FILES['filUpload']['tmp_name'], "../cache/".$_FILES['filUpload']['tmp_name']) or die( "Could not move file!");
                                         } */
                                         
-                                        $query_final = "INSERT INTO `userdatabase` (id, username, password, citizen_id, firstname, lastname, email) VALUES ($id, '$user', '$pass', $citizen_id, '$firstname', '$lastname', '$email')";
+                                        $query_final = "INSERT INTO `userdatabase` (id, username, password, citizen_id, prefix, firstname, lastname, firstname_en, lastname_en, email, grade, class) VALUES ($id, '$user', '$pass', $citizen_id, '$prefix', '$firstname', '$lastname', '$firstname_en', '$lastname_en', '$email', $grade, $class)";
                                         $result_final = mysqli_query($conn, $query_final);
 
                                         $query_achi = "INSERT INTO `achievement` (username, id, betaTester) VALUES ('$user', $id, true)";
@@ -159,35 +164,11 @@
                                 ?>
                                 <!--Body-->
                                 <div class="modal-body">
-                                    <!-- Material form register -->
-                                    <div class="md-form form-sm mb-3">
-                                        <i class="fas fa-envelope prefix"></i>
-                                        <input type="text" name="register_username" id="register_username"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_username">ชื่อผู้ใช้งาน</label>
-                                    </div>
-                                    <div class="md-form form-sm mb-3">
-                                        <i class="fas fa-envelope prefix"></i>
-                                        <input type="password" name="register_password" id="register_password"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_password">รหัสผ่าน</label>
-                                    </div>
-                                    <div class="md-form form-sm mb-3">
-                                        <i class="fas fa-user prefix"></i>
-                                        <input type="text" name="register_id" id="register_id"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_id">รหัสนักเรียน</label>
-                                    </div>
-                                    <div class="md-form form-sm mb-3">
-                                        <i class="fas fa-lock prefix"></i>
-                                        <input type="text" name="register_citizen_id" id="register_citizen_id"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_citizen_id">รหัสบัตรประชาชน</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-12 col-sm-2">
-                                            <label for="prefix_th">ข้อมูลส่วนตัว</label>
-                                            <select class="browser-default custom-select mb-4" id="prefix_th">
+                                    <div class="md-form form-sm form-row mb-1">
+                                        <div class="col-12 col-sm-12">
+                                            <select
+                                                class="browser-default custom-select form-control form-control-sm validate"
+                                                id="register_prefix" name="register_prefix" required>
                                                 <option value="" disabled="" selected="">- คำนำหน้า -</option>
                                                 <option value="เด็กชาย">เด็กชาย</option>
                                                 <option value="เด็กหญิง">เด็กหญิง</option>
@@ -196,54 +177,86 @@
                                                 <option value="นางสาว">นางสาว</option>
                                             </select>
                                         </div>
-                                        <div class="col-12 col-sm-5">
-                                            <!-- First name -->
-                                            <div class="md-form">
-                                                <input type="text" id="register_firstname" class="form-control" required>
-                                                <label for="register_firstname">ชื่อ</label>
-                                            </div>
+                                        <div class="col-6 col-sm-6">
+                                            <input type="text" id="register_firstname" name="register_firstname"
+                                                class="form-control form-control-sm validate" required>
+                                            <label for="register_firstname">ชื่อ</label>
                                         </div>
-                                        <div class="col-12 col-sm-5">
-                                            <!-- Last name -->
-                                            <div class="md-form">
-                                                <input type="text" id="register_lastname" class="form-control" required>
-                                                <label for="register_lastname">นามสกุล</label>
-                                            </div>
+                                        <div class="col-6 col-sm-6">
+                                            <input type="text" id="register_lastname" name="register_lastname"
+                                                class="form-control form-control-sm validate" required>
+                                            <label for="register_lastname">นามสกุล</label>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-12 col-sm-4">
-                                            <label for="prefix_en"> </label>
-                                            <select class="browser-default custom-select mb-4" id="prefix_en">
-                                                <option value="" disabled="" selected="">- Prefix -</option>
-                                                <option value="เด็กชาย">เด็กชาย</option>
-                                                <option value="เด็กหญิง">เด็กหญิง</option>
-                                                <option value="นาย">นาย</option>
-                                                <option value="นาง">นาง</option>
-                                                <option value="นางสาว">นางสาว</option>
-                                            </select>
+                                    <br>
+                                        <div class="col-6 col-sm-6">
+                                            <input type="text" id="register_firstname_en" name="register_firstname_en"
+                                                class="form-control form-control-sm validate" required>
+                                            <label for="register_firstname_en">Firstname</label>
                                         </div>
-                                        <div class="col-12 col-sm-4">
-                                            <!-- First name -->
-                                            <div class="md-form">
-                                                <input type="text" id="register_firstname_en" class="form-control" required>
-                                                <label for="register_firstname_en">First name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-4">
-                                            <!-- Last name -->
-                                            <div class="md-form">
-                                                <input type="text" id="register_lastname_en" class="form-control" required>
-                                                <label for="register_lastname_en">Last name</label>
-                                            </div>
+                                        <div class="col-6 col-sm-6">
+                                            <input type="text" id="register_lastname_en" name="register_lastname_en"
+                                                class="form-control form-control-sm validate" required>
+                                            <label for="register_lastname_en">Lastname</label>
                                         </div>
                                     </div>
-                                    <div class="md-form form-sm mb-3">
+                                    <div class="md-form form-sm mb-1">
+                                        <i class="fas fa-id-badge prefix"></i>
+                                        <input type="text" name="register_username" id="register_username"
+                                            class="form-control form-control-sm validate" required>
+                                        <label for="register_username">ชื่อผู้ใช้งาน</label>
+                                    </div>
+                                    <div class="md-form form-sm mb-1">
+                                        <i class="fas fa-key prefix"></i>
+                                        <input type="password" name="register_password" id="register_password"
+                                            class="form-control form-control-sm validate" required>
+                                        <label for="register_password">รหัสผ่าน</label>
+                                    </div>
+                                    <div class="md-form form-sm mb-1">
+                                        <i class="fas fa-user prefix"></i>
+                                        <input type="text" name="register_id" id="register_id"
+                                            class="form-control form-control-sm validate" required>
+                                        <label for="register_id">เลขประจำตัวนักเรียน</label>
+                                    </div>
+                                    <div class="md-form form-sm">
+                                        <i class="fas fa-id-card prefix"></i>
+                                        <input type="text" name="register_citizen_id" id="register_citizen_id"
+                                            class="form-control form-control-sm validate" required>
+                                        <label for="register_citizen_id">เลขประจำตัวประชาชน</label>
+                                    </div>
+                                    <div class="md-form form-sm mb-1">
                                         <i class="fas fa-envelope prefix"></i>
                                         <input type="email" name="register_email" id="register_email"
                                             class="form-control form-control-sm validate" required>
                                         <label for="register_email">อีเมล</label>
                                     </div>
+                                    <div class="md-form form-sm form-row mb-1">
+                                        <div class="col">
+                                            <select
+                                                class="browser-default custom-select form-control form-control-sm validate"
+                                                id="register_grade" name="register_grade" required>
+                                                <option value="" disabled="" selected="">- ระดับชั้น -</option>
+                                                <option value="1">ม.1</option>
+                                                <option value="2">ม.2</option>
+                                                <option value="3">ม.3</option>
+                                                <option value="4">ม.4</option>
+                                                <option value="5">ม.5</option>
+                                                <option value="6">ม.6</option>
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <select
+                                                class="browser-default custom-select form-control form-control-sm validate"
+                                                id="register_class" name="register_class" required>
+                                                <option value="" disabled="" selected="">- ห้อง -</option>
+                                                <option value="1">1 (IEC/EMSP)</option>
+                                                <option value="2">2 (ปกติ)</option>
+                                                <option value="3">3 (ปกติ)</option>
+                                                <option value="4">4 (ปกติ)</option>
+                                                <option value="5">5 (วมว.)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
 
                                     <!--
                                     <div class="md-form form-sm mb-5">
