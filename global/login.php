@@ -24,41 +24,11 @@
                     <div class="tab-content">
                         <!--Panel 7-->
                         <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-                            <form method="post">
+                            <form method="post" action="../global/save.php" enctype="multipart/form-data">
                                 <!--Body-->
                                 <div class="modal-body mb-1">
 
                                     <?php
-                                    if (isset($_POST['login_submit'])) {
-                                        $user = $_POST['login_username'];
-                                        $pass = md5($_POST['login_password']);
-                                        $query = "SELECT * FROM `userdatabase` WHERE username = '$user' AND password = '$pass'";
-                                        $result = mysqli_query($conn, $query);
-
-                                        if (! $result) {
-                                            die('Could not get data: ' . mysqli_error($conn));
-                                        }
-                                       
-                                        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                            $_SESSION['user'] = $row['username'];
-                                            $_SESSION['fn'] = $row['firstname'];
-                                            $_SESSION['ln'] = $row['lastname'];
-                                            $_SESSION['id'] = $row['id'];
-                                        }
-
-                                        if (mysqli_num_rows($result) == 0) {
-                                            $_SESSION['error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
-                                            session_destroy();
-                                        } else {
-                                            $id = $_SESSION['id'];
-                                            $query_final = "SELECT * FROM `profile` WHERE id = '$id'";
-                                            $result_final = mysqli_query($conn, $query_final);
-                                            while ($row = mysqli_fetch_array($result_final, MYSQLI_ASSOC)) {
-                                                $_SESSION['pi'] = $row['profile'];
-                                            }
-                                        }
-                                    }
-
                                     if (isset($_SESSION['error'])) {
                                         echo '<div class="alert alert-danger" role="alert">'. $_SESSION['error'] .'</div>';
                                     }
@@ -89,81 +59,14 @@
 
                         <!--Panel 8-->
                         <div class="tab-pane fade" id="panel8" role="tabpanel">
-                            <form method="post">
-                                <?php
-                                if (isset($_POST['register_submit'])) {
-                                    $user = $_POST['register_username'];
-                                    $pass = md5($_POST['register_password']);
-                                    $id = $_POST['register_id'];
-                                    $citizen_id = $_POST['register_citizen_id'];
-                                    $firstname = $_POST['register_firstname'];
-                                    $lastname = $_POST['register_lastname'];
-                                    $email = $_POST['register_email'];
-                                    $firstname_en = $_POST['register_firstname_en'];
-                                    $lastname_en = $_POST['register_lastname_en'];
-                                    $prefix = $_POST['register_prefix'];
-                                    $grade = $_POST['register_grade'];
-                                    $class = $_POST['register_class'];
-                                    $query1 = "SELECT * FROM `userdatabase` WHERE username = '$user'";
-                                    $query2 = "SELECT * FROM `userdatabase` WHERE citizen_id = '$citizen_id'";
-                                    $result1 = mysqli_query($conn, $query1);
-                                    $result2 = mysqli_query($conn, $query2);
-
-                                    if (! $result1) {
-                                        die('Could not get data: ' . mysqli_error($conn));
-                                    }
-
-                                    if (mysqli_num_rows($result1) == 1) {
-                                        $_SESSION['error'] = "มีชื่อผู้ใช้นี้อยู่แล้ว";
-                                    } else if (mysqli_num_rows($result2) == 1) {
-                                        $_SESSION['error'] = "รหัสบัตรประชาชนนี้ ได้ทำการสมัครสมาชิกอยู่แล้ว";
-                                    } else {
-                                        /* $filename = $_FILES['filUpload']['tmp_name'];
-                                        if($filename != "") {
-                                            move_uploaded_file($_FILES['filUpload']['tmp_name'], "../cache/".$_FILES['filUpload']['tmp_name']) or die( "Could not move file!");
-                                        } */
-                                        
-                                        $query_final = "INSERT INTO `userdatabase` (id, username, password, citizen_id, prefix, firstname, lastname, firstname_en, lastname_en, email, grade, class) VALUES ($id, '$user', '$pass', $citizen_id, '$prefix', '$firstname', '$lastname', '$firstname_en', '$lastname_en', '$email', $grade, $class)";
-                                        $result_final = mysqli_query($conn, $query_final);
-
-                                        $query_achi = "INSERT INTO `achievement` (username, id, betaTester) VALUES ('$user', $id, true)";
-                                        $result_achi = mysqli_query($conn, $query_achi);
-
-                                        $query_profile = "INSERT INTO `profile` (id) VALUES ($id)";
-                                        $result_profile = mysqli_query($conn, $query_profile);
-
-                                        $query_permission = "INSERT INTO `permission` (username, id) VALUES ('$user', $id)";
-                                        $result_permission = mysqli_query($conn, $query_permission);
-
-                                        if ($result_final) {
-                                            $_SESSION['error'] = "สมัครผู้ใช้งานสำเร็จ";
-                                            $_SESSION['user'] = $user;
-                                            $_SESSION['id'] = $id;
-                                            $_SESSION['fn'] = $_POST['register_firstname'];
-                                            $_SESSION['ln'] = $_POST['register_lastname'];
-                                        } else {
-                                            die('Could not register ' . mysqli_error($conn));
-                                        }
-
-                                        if (! $result_profile) {
-                                            die('Could not create profile ' . mysqli_error($conn));
-                                        }
-
-                                        if (! $result_achi) {
-                                            die('Could not add achievement ' . mysqli_error($conn));
-                                        }
-                                        
-                                        if (! $result_permission) {
-                                            die('Could not grant permission ' . mysqli_error($conn));
-                                        }
-                                    }
-                                }
+                        <form method="post" action="../global/save.php" enctype="multipart/form-data">
+                                <!--Body-->
+                                <div class="modal-body mb-1">
+                                    <?php
                                 if (isset($_SESSION['error'])) {
                                     echo '<div class="alert alert-danger" role="alert">'. $_SESSION['error'] .'</div>';
                                 }
                                 ?>
-                                <!--Body-->
-                                <div class="modal-body">
                                     <div class="md-form form-sm form-row mb-1">
                                         <div class="col-12 col-sm-12">
                                             <select
@@ -187,7 +90,7 @@
                                                 class="form-control form-control-sm validate" required>
                                             <label for="register_lastname">นามสกุล</label>
                                         </div>
-                                    <br>
+                                        <br>
                                         <div class="col-6 col-sm-6">
                                             <input type="text" id="register_firstname_en" name="register_firstname_en"
                                                 class="form-control form-control-sm validate" required>
@@ -257,14 +160,12 @@
                                         </div>
                                     </div>
 
-
-                                    <!--
                                     <div class="md-form form-sm mb-5">
                                         <i class="fas fa-images prefix"></i>
-                                        <input type="file" name="filUpload" id="filUpload"
-                                            class="form-control form-control-sm validate" accept="image/png, image/jpeg">
+                                        <input type="file" name="upload" id="upload"
+                                            class="form-control form-control-sm validate" required accept="image/png, image/jpeg">
                                     </div>
-                                    -->
+                                    
                                 </div>
                                 <!--Footer-->
                                 <div class="modal-footer">

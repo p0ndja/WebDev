@@ -72,26 +72,23 @@
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $profile_name = $row['firstname'] . ' ' . $row['lastname'];
             $profile_id = $row['id'];
+            $profile_email = $row['email'];
         }
         
         while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
             if ($row['profile'] != null)
                 $profile_image = $row['profile'];
-            if ($row['email'] != null)
-                $profile_email = $row['email'];
             if ($row['greetings'] != null)
                 $profile_displayText = $row['greetings'];
         }  
     ?>
     <div class="container">
-        <form method="POST" action="../profile/save.php">
-            <div class="input-group flex-nowrap">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="addon-wrapping">BACKGROUND IMAGE</span>
+        <form method="post" action="../profile/save.php" enctype="multipart/form-data">
+            <div class="card w-100">
+                <div class="card-body">
+                    <h6><b>Background Image: </b><input type="file" name="background_upload" id="background_upload"
+                    class="form-control-file validate" accept="image/png, image/jpeg"></h6>
                 </div>
-                <input type="text" class="form-control" placeholder="Press URL here" id="backgroundURL"
-                    name="backgroundURL" aria-label="backgroundURL" aria-describedby="addon-wrapping"
-                    value="<?php echo $profile_background;?>">
             </div>
             <hr>
             <div class="card">
@@ -111,10 +108,12 @@
             <hr>
             <div class="row">
                 <div class="col-md-4 col-sm-12">
-                    <img src="<?php echo $profile_image; ?>" class="img-fluid w-100" alt="Profile">
-                    <div class="form-group">
-                        <input type="url" class="form-control" id="profileURL" name="profileURL"
-                            placeholder="Press URL here" value="<?php echo $profile_image; ?>"></input>
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="<?php echo $profile_image; ?>" class="img-fluid w-100" alt="Profile">
+                            <br>
+                            <input type="file" name="profile_upload" id="profile_upload" class="form-control-file validate" accept="image/png, image/jpeg">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 text-left">
@@ -143,14 +142,10 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-body">
-                            <form>
-                                <div class="form-group">
-                                    <textarea class="form-control" name="displayTextArea" id="displayTextArea"
-                                        rows="3" placeholder="สามารถใช้ HTML, Bootstrap Format ได้"><?php echo $profile_displayText ?></textarea>
-                                </div>
-                            </form>
-
-
+                            <div class="form-group">
+                                <textarea class="form-control" name="displayTextArea" id="displayTextArea" rows="3"
+                                    placeholder="สามารถใช้ HTML, Bootstrap Format ได้"><?php echo $profile_displayText ?></textarea>
+                            </div>
                         </div>
                     </div>
                     <hr>
