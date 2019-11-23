@@ -10,6 +10,7 @@
 <html lang="th">
 
 <head>
+    
     <?php include '../global/head.php'; ?>
     <?php
         $id = $_SESSION['id'];
@@ -25,10 +26,24 @@
         $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
         $result_profile = mysqli_query($conn, $query_profile);
 
+        $profile_displayText = "";
+
         while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
             if ($row['background'] != null) $profile_background = $row['background'];
+            if ($row['greetings'] != null) $profile_displayText = $row['greetings'];
         }
+        
     ?>
+
+  <script type="text/javascript">
+    $(function () {
+      $('.summernote').summernote({
+        height: 200,
+      });
+      $('.summernote').summernote('code', '<?php echo $profile_displayText; ?>');
+    });
+  </script>
+
     <style>
         body {
             font-family: 'Kanit', sans-serif !important;
@@ -66,7 +81,6 @@
         $profile_class = $undefined;
         $profile_room = $undefined;
         $profile_email = $undefined;
-        $profile_displayText = $undefined;
         $profile_image = "https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png";
        
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -78,15 +92,14 @@
         while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
             if ($row['profile'] != null)
                 $profile_image = $row['profile'];
-            if ($row['greetings'] != null)
-                $profile_displayText = $row['greetings'];
         }  
     ?>
     <div class="container">
         <form method="post" action="../profile/save.php" enctype="multipart/form-data">
             <div class="card w-100">
                 <div class="card-body">
-                    <h6><b>Background Image: </b><input type="file" name="background_upload" id="background_upload"
+                    <h6><b>Background Image: </b>
+                    <input type="file" name="background_upload" id="background_upload"
                     class="form-control-file validate" accept="image/png, image/jpeg"></h6>
                 </div>
             </div>
@@ -142,10 +155,11 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-body">
+
                             <div class="form-group">
-                                <textarea class="form-control" name="displayTextArea" id="displayTextArea" rows="3"
-                                    placeholder="สามารถใช้ HTML, Bootstrap Format ได้"><?php echo $profile_displayText ?></textarea>
-                            </div>
+          <label for="contents">Contents</label>
+          <textarea name="text" class="summernote" id="contents" name="contents" title="Contents"></textarea>
+        </div>
                         </div>
                     </div>
                     <hr>

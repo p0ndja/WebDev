@@ -10,7 +10,7 @@
         }
 
         $user = $_SESSION['user'];
-        $text = $_POST['displayTextArea'];
+        $text = $_POST['text'];
 
         $re = mysqli_query($conn, "UPDATE `profile` set greetings = '$text' WHERE id = $id");
         if (! $re) {
