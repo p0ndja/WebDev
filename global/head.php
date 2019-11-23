@@ -25,8 +25,6 @@
     <script src="https://kit.fontawesome.com/7454809de8.js" crossorigin="anonymous"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="../css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
@@ -57,4 +55,7 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="../js/mdb.min.js"></script>
     <!-- END HERE -->
-    
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
