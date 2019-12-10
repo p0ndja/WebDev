@@ -72,10 +72,13 @@
         <div class="row">
             <div class="col-12">
                 <center>
-                    <p style="color: white">
-                        Copyright 2019 © The demonstration school of Khon Kaen University (Modindaeng) by PondJa &
-                        Risaka
-                    </p>
+                    <h6 style="color: white">
+                        Copyright 2019 © The demonstration school of Khon Kaen University (Modindaeng) by PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka
+                    </h6>
+                    <?php include 'config.php';
+                        if (isset($patch)) echo '<h6 style="color:white">' . $patch . '</h6>';
+                        ?>
+                    
                 </center>
             </div>
         </div>
