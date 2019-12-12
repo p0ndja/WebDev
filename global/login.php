@@ -9,14 +9,12 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs md-tabs tabs-2 grey lighten-2" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active black-text" data-toggle="tab" href="#panel7" role="tab"><i
-                                    class="fas fa-user mr-1"></i>
-                                Login</a>
+                            <a class="nav-link active black-text" data-toggle="tab" href="#panel7" role="tab">
+                                <i class="fas fa-user mr-1"></i> Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link black-text" data-toggle="tab" href="#panel8" role="tab"><i
-                                    class="fas fa-user-plus mr-1"></i>
-                                Register</a>
+                            <a class="nav-link black-text" data-toggle="tab" href="#panel8" role="tab">
+                                <i class="fas fa-user-plus mr-1"></i> Register</a>
                         </li>
                     </ul>
 
@@ -27,6 +25,8 @@
                             <form method="post" action="../global/save.php" enctype="multipart/form-data">
                                 <!--Body-->
                                 <div class="modal-body mb-1">
+
+
 
                                     <?php
                                     if (isset($_SESSION['error'])) {
@@ -59,7 +59,7 @@
 
                         <!--Panel 8-->
                         <div class="tab-pane fade" id="panel8" role="tabpanel">
-                        <form method="post" action="../global/save.php" enctype="multipart/form-data">
+                            <form method="post" action="../global/save.php" enctype="multipart/form-data">
                                 <!--Body-->
                                 <div class="modal-body mb-1">
                                     <?php
@@ -67,39 +67,45 @@
                                     echo '<div class="alert alert-danger" role="alert">'. $_SESSION['error'] .'</div>';
                                 }
                                 ?>
-                                    <div class="md-form form-sm form-row mb-1">
-                                        <div class="col-12 col-sm-12">
-                                            <select
-                                                class="browser-default custom-select form-control form-control-sm validate"
-                                                id="register_prefix" name="register_prefix" required>
-                                                <option value="" disabled="" selected="">- คำนำหน้า -</option>
-                                                <option value="เด็กชาย">เด็กชาย</option>
-                                                <option value="เด็กหญิง">เด็กหญิง</option>
-                                                <option value="นาย">นาย</option>
-                                                <option value="นาง">นาง</option>
-                                                <option value="นางสาว">นางสาว</option>
-                                            </select>
+                                    <div class="md-form form-sm mb-1">
+                                        <div class="form-row">
+                                            <div class="col">
+                                                <input type="text" id="register_firstname" name="register_firstname"
+                                                    class="form-control form-control-sm validate" required>
+                                                <label for="register_firstname">ชื่อ</label>
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" id="register_lastname" name="register_lastname"
+                                                    class="form-control form-control-sm validate" required>
+                                                <label for="register_lastname">นามสกุล</label>
+                                            </div>
                                         </div>
-                                        <div class="col-6 col-sm-6">
-                                            <input type="text" id="register_firstname" name="register_firstname"
-                                                class="form-control form-control-sm validate" required>
-                                            <label for="register_firstname">ชื่อ</label>
+                                        <div class="form-row">
+                                            <div class="col">
+                                                <input type="text" id="register_firstname_en"
+                                                    name="register_firstname_en"
+                                                    class="form-control form-control-sm validate" required>
+                                                <label for="register_firstname_en">Firstname</label>
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" id="register_lastname_en" name="register_lastname_en"
+                                                    class="form-control form-control-sm validate" required>
+                                                <label for="register_lastname_en">Lastname</label>
+                                            </div>
                                         </div>
-                                        <div class="col-6 col-sm-6">
-                                            <input type="text" id="register_lastname" name="register_lastname"
-                                                class="form-control form-control-sm validate" required>
-                                            <label for="register_lastname">นามสกุล</label>
-                                        </div>
-                                        <br>
-                                        <div class="col-6 col-sm-6">
-                                            <input type="text" id="register_firstname_en" name="register_firstname_en"
-                                                class="form-control form-control-sm validate" required>
-                                            <label for="register_firstname_en">Firstname</label>
-                                        </div>
-                                        <div class="col-6 col-sm-6">
-                                            <input type="text" id="register_lastname_en" name="register_lastname_en"
-                                                class="form-control form-control-sm validate" required>
-                                            <label for="register_lastname_en">Lastname</label>
+                                        <div class="form-row">
+                                            <div class="col">
+                                                <select
+                                                    class="browser-default custom-select form-control form-control-sm validate"
+                                                    id="register_prefix" name="register_prefix" required>
+                                                    <option value="" disabled="" selected="">- คำนำหน้า -</option>
+                                                    <option value="เด็กชาย">เด็กชาย</option>
+                                                    <option value="เด็กหญิง">เด็กหญิง</option>
+                                                    <option value="นาย">นาย</option>
+                                                    <option value="นาง">นาง</option>
+                                                    <option value="นางสาว">นางสาว</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="md-form form-sm mb-1">
@@ -163,9 +169,10 @@
                                     <div class="md-form form-sm mb-5">
                                         <i class="fas fa-images prefix"></i>
                                         <input type="file" name="upload" id="upload"
-                                            class="form-control form-control-sm validate" required accept="image/png, image/jpeg">
+                                            class="form-control form-control-sm validate" required
+                                            accept="image/png, image/jpeg">
                                     </div>
-                                    
+
                                 </div>
                                 <!--Footer-->
                                 <div class="modal-footer">
@@ -183,4 +190,9 @@
             <!--/.Content-->
         </div>
     </div>
-    </form>
+    <script>
+        // Material Select Initialization
+        $(document).ready(function () {
+            $('.mdb-select').materialSelect();
+        });
+    </script>

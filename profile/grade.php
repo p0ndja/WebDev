@@ -7,11 +7,10 @@
 
 <body style="background-color: #ededed">
     <?php include '../global/login.php'; ?>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top sticky" id="nav" role="navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <div class="content"></div>
-    <div class="container">
+    <div class="container" id="container" style="padding-top: 88px">
         <hr>
         <div class="row">
             <div class="col-12">
@@ -184,7 +183,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <a href="#" class="btn btn-secondary"><span class="oi" data-glyph="print"></span></a>
+                                <a href="#" class="btn btn-secondary"><i class="fas fa-print"></i></a>
                             </div>
                         </div>
                     </div>

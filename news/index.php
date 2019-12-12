@@ -11,11 +11,10 @@
 
 <body">
     <?php include '../global/login.php' ?>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top sticky" id="nav" role="navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <div class="content"></div>
-    <div class="container">
+    <div class="container" id="container" style="padding-top: 88px">
         <h1 id="news" name="news">NEWS
             <?php if (isset($_SESSION['id'])) { ?>
             <a href="../news/post.php" class="btn btn-dark">add news</a>
@@ -31,7 +30,7 @@
                     <div class="hoverable view">
                         <img class="card-img-top" src="<?php echo $row['cover']; ?>" alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text"><span class="oi" data-glyph="calendar"></span>
+                            <p class="card-text"><i class="far fa-clock"></i>
                                 <?php
                                 $writer = null;
                                 $writer_id = $row['writer'];

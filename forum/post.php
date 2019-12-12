@@ -12,11 +12,10 @@
 
 <body>
     <?php include'../global/login.php'?>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top sticky" id="nav" role="navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <div class="content"></div>
-    <div class="container">
+    <div class="container" id="container" style="padding-top: 88px">
         <div class="card mb-12">
             <div class="card-header bg-dark text-white">
                 <h5 style="color: #ffffff">รับสมัครผู้ช่วยพัฒนาเว็บไซด์ <span

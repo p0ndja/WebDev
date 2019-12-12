@@ -72,18 +72,26 @@
         <div class="row">
             <div class="col-12">
                 <center>
-                    <h6 style="color: white">
+                <h6 style="color: white">
                         Copyright 2019 © The demonstration school of Khon Kaen University (Modindaeng) by PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka
                     </h6>
                     <?php include 'config.php';
                         if (isset($patch)) echo '<h6 style="color:white">' . $patch . '</h6>';
                         ?>
-                    
                 </center>
             </div>
         </div>
     </div>
 </footer>
+    <!-- jQuery -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../js/mdb.min.js"></script>
+
 <?php
         mysqli_close($conn);
     ?>

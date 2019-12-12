@@ -1,5 +1,5 @@
-<a class="navbar-brand" href="../home"><span class="badge badge-light"><img
-            src="https://images.pondja.com/logokku.png" width="20" alt="SMD"></span></a>
+<a class="navbar-brand" href="../home"><span class="badge badge-light"><img src="https://images.pondja.com/logokku.png"
+            width="20" alt="SMD"></span></a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
         </li>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> เกี่ยวกับ </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item"
                     href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-55/data09.png">ประวัติโรงเรียน</a>
                 <a class="dropdown-item"
@@ -36,7 +36,7 @@
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 หน่วยงาน </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item disabled" href="#"> งานแผนและประกันคุณภาพ </a>
                 <a class="dropdown-item disabled" href="#"> งานแนะแนว </a>
                 <a class="dropdown-item disabled" href="#"> งานทะเบียน </a>
@@ -50,7 +50,7 @@
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 ปฏิทิน </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item disabled" href="#"> ปฏิทินโรงเรียน </a>
                 <a class="dropdown-item disabled" href="../calendar"> ตารางเรียน </a>
                 <a class="dropdown-item disabled" href="#"> ตารางสอบ </a>
@@ -58,7 +58,7 @@
         </li>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> อื่น ๆ </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="../forum">SMD Forum</a>
                 <a class="dropdown-item disabled" href="#">SMD Shop</a>
                 <a class="dropdown-item disabled" href="#">ถ่ายทอดสด <sup class="notifi"><span
@@ -71,39 +71,37 @@
         </li>
 
     </ul>
-    <right>
-        <form action="../profile/" method="GET" class="form-inline mr-auto align-right">
+    <ul class="nav navbar-nav nav-flex-icons ml-auto">
+        <form action="../profile/" method="GET" class="form-inline">
             <div class="md-form my-0">
-                <input method="GET" class="form-control" type="text" placeholder="Search ID (Ex. 604019)" aria-label="Search ID (Ex. 604019)"
-                    id="search" name="search" value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>">
+                <input method="GET" class="form-control" type="text" placeholder="Search ID (Ex. 604019)"
+                    aria-label="Search ID (Ex. 604019)" id="search" name="search"
+                    value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>">
             </div>
         </form>
-    </right>
-    <?php
+        <?php
         if (isset($_SESSION['fn'])) { 
     ?>
-    <ul class="navbar-nav my-2 my-lg-0">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <img src="<?php if(isset($_SESSION['pi']) && $_SESSION['pi'] != null) echo $_SESSION['pi']; else echo 'https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png'; ?>"
                     width="20"> <?php echo $_SESSION['fn'] . ' ' . $_SESSION['ln']; ?></a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="../profile"> ข้อมูลส่วนตัว <span class="oi"
-                        data-glyph="person"></span></a>
-                <a class="dropdown-item" href="#"> ลงทะเบียนวิชาเลือก <span class="oi" data-glyph="file"></span></a>
-                <a class="dropdown-item" href="#"> การเช็คชื่อ <span class="oi" data-glyph="task"></span></a>
-                <a class="dropdown-item" href="#"> ผลการเรียน (SGS) <span class="oi" data-glyph="browser"></span></a>
+            <div class="dropdown-menu dropdown-dark dropdown-menu dropdown-dark-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="../profile"> ข้อมูลส่วนตัว <i class="fas fa-user"></i></a>
+                <a class="dropdown-item" href="#"> ลงทะเบียนวิชาเลือก <i class="fas fa-tasks"></i></a>
+                <a class="dropdown-item" href="#"> การเช็คชื่อ <i class="fas fa-calendar-check"></i></a>
+                <a class="dropdown-item" href="#"> ผลการเรียน (SGS) <i class="fas fa-graduation-cap"></i></a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" style="color: red" href="../global/logout.php">ออกจากระบบ <span class="oi"
-                        data-glyph="account-logout"></span></a>
+                <a class="dropdown-item" style="color: red" href="../global/logout.php">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></a>
             </div>
         </li>
     </ul>
     <?php
                 } else { ?>
-    <a href="" class="btn btn-dark" data-toggle="modal" data-target="#login">Login</a>
+    <a href="" class="btn btn-rounded btn-dark" data-toggle="modal" data-target="#login">Login</a>
     <?php
                 }
             ?>
+    </ul>
 </div>

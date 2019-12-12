@@ -278,34 +278,13 @@
     </style>
 
     <?php include '../global/head.php'; ?>
-
-    <script>
-        $(window).bind('scroll', function () {
-            if ($(window).scrollTop() > $(window).height()) {
-                $('#nav').removeClass('navbar-top');
-                $('#nav').removeClass('notstick');
-                $('#nav').addClass('fixed-top');
-                $('#nav').addClass('sticky');
-
-            } else {
-                $('#nav').removeClass('fixed-top');
-                $('#nav').removeClass('sticky');
-                $('#nav').addClass('navbar-top');
-                $('#nav').addClass('notstick');
-            }
-        });
-
-        $(window).load(function(){        
-   $('#login').modal('show');
-    }); 
-    </script>
 </head>
 
 <body>
 
     <?php include '../global/login.php';;
 ?>
-    
+
     <header id="header">
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
@@ -326,36 +305,44 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <div class="content"></div>
-    <div class="container">
+    <div class="container" id="container">
         <div class="row">
             <div class="col-12 col-md-12">
                 <div class="card text-white bg-danger mb-3 w-100">
-                    <div class="card-header"><h1>ถึงผู้ทดสอบ Beta ทุกท่าน <span
-                            class="badge badge-warning badge-pill d-none d-lg-inline-block blink"><i class="fas fa-exclamation-triangle"></i>
-</span></h1></div>
+                    <div class="card-header">
+                        <h1>ถึงผู้ทดสอบ Beta ทุกท่าน <span
+                                class="badge badge-warning badge-pill d-none d-lg-inline-block blink"><i
+                                    class="fas fa-exclamation-triangle"></i>
+                            </span></h1>
+                    </div>
                     <div class="card-body">
                         <p class="card-text">
                             <h4>ระบบที่เปิดให้เข้าชมตอนนี้จะไม่ใช่ทั้งหมดที่สามารถเข้าชมได้
                                 เนื่องจากยังอยู่ในช่วงของการพัฒนา</h4>
-                            <h3>หากพบบัคใด ๆ โปรดแจ้ง<a href="m.me/p0ndja">ที่นี่</a></h3>
+                            <h3>หากพบบัคใด ๆ โปรดแจ้ง<a href="https://m.me/p0ndja">ที่นี่</a></h3>
                             <hr>
                             <h5>
                                 ระบบที่สามารถใช้งานได้ตอนนี้:
                                 <li>Homepage (หน้าหลักหน้านี้)</li>
                                 <li>Forum (ฟอรั่ม) *ใช้งานได้เฉพาะตัวอย่างเท่านั้น</li>
-                                <li>News (ข่าว) *อนุญาตให้เพิ่มข่าวเองได้ แต่จะทำการรีเซ็ตในภายหลัง (Login Required)*</li>
-                                <li>Profile (โปรไฟล์) สามารถแก้ไขรูปโปรไฟล์, รูปพื้นหลัง, ข้อความย่อ (Bio) ได้ (ส่วนอื่น ๆ ยังไม่เปิดให้แก้ไข)</li>
-                                <li>Search (ค้นหา) สามารถค้นหาได้เฉพาะรหัสนักเรียนเท่านั้น (เช่น 604019 จะขึ้นโปรไฟล์ของนักเรียนคนนั้น ๆ) </li>
+                                <li>News (ข่าว) *อนุญาตให้เพิ่มข่าวเองได้ แต่จะทำการรีเซ็ตในภายหลัง (Login Required)*
+                                </li>
+                                <li>Profile (โปรไฟล์) สามารถแก้ไขรูปโปรไฟล์, รูปพื้นหลัง, ข้อความย่อ (Bio) ได้ (ส่วนอื่น
+                                    ๆ ยังไม่เปิดให้แก้ไข)</li>
+                                <li>Search (ค้นหา) สามารถค้นหาได้เฉพาะรหัสนักเรียนเท่านั้น (เช่น 604019
+                                    จะขึ้นโปรไฟล์ของนักเรียนคนนั้น ๆ) </li>
                                 <li>Register - Login (เข้าสู่ระบบ) สามารถสมัคร, เข้าสู่ระบบได้ [UI บัคนิดหน่อย]</li>
                             </h5>
                             <hr>
                             <h6>ทุกท่านที่สมัครในช่วง Beta จะได้รับ Achievement 'The Beta' ซึ่งเป็น Achievement
-                                ที่สามารถเก็บได้ในช่วงนี้เท่านั้น ทั้ง Username, Password และข้อมูลต่าง ๆ ที่กรอกมาจะเป็นข้อมูลที่นำไปใช้จริง เพราะฉะนั้น ขอความร่วมมือห้ามกรอกมั่วโดยเด็ดขาด</h6>
-                                <h1><span
-                            class="badge badge-danger badge-pill d-none d-lg-inline-block blink2">เฉพาะนักเรียนสาธิตเท่านั้น</h1></span>
-                                <h5>ผู้เยี่ยมชมอื่น ๆ สามารถเข้าใช้งานหน้าโปรไฟล์ได้ด้วยรหัสผู้ใช้งาน</h5>
-                                <h6>Username: guest</h6><h6>Password: guest</h6>
+                                ที่สามารถเก็บได้ในช่วงนี้เท่านั้น ทั้ง Username, Password และข้อมูลต่าง ๆ
+                                ที่กรอกมาจะเป็นข้อมูลที่นำไปใช้จริง เพราะฉะนั้น ขอความร่วมมือห้ามกรอกมั่วโดยเด็ดขาด</h6>
+                            <h1><span
+                                    class="badge badge-danger badge-pill d-none d-lg-inline-block blink2">เฉพาะนักเรียนสาธิตเท่านั้น
+                            </h1></span>
+                            <h5>ผู้เยี่ยมชมอื่น ๆ สามารถเข้าใช้งานหน้าโปรไฟล์ได้ด้วยรหัสผู้ใช้งาน</h5>
+                            <h6>Username: guest</h6>
+                            <h6>Password: guest</h6>
                         </p>
                     </div>
                 </div>
@@ -537,7 +524,7 @@
                     <div class="hoverable view overlay zoom">
                         <img class="card-img-top" src="<?php echo $row['cover']; ?>" alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text"><span class="oi" data-glyph="calendar"></span>
+                            <p class="card-text"><i class="far fa-clock"></i>
                                 <?php
                                 $writer = null;
                                 $writer_id = $row['writer'];
@@ -588,7 +575,11 @@
     <br />
     </div>
     </div>
+    <!-- Your customer chat code -->
+    <div class="fb-customerchat" attribution=setup_tool page_id="224318804364546" theme_color="#006AFF"
+        logged_in_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม" logged_out_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม"></div>
 
+    <?php include '../global/footer.php';?>
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
     <script>
@@ -607,12 +598,27 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
+    
+    <script>
+        $(window).bind('scroll', function () {
+            if ($(window).scrollTop() > $(window).height()) {
+                $('#nav').removeClass('navbar-top');
+                $('#nav').addClass('fixed-top');
+                $('#nav').addClass('scrolling-navbar');
+                document.getElementById("container").style.paddingTop = "88px";
 
-    <!-- Your customer chat code -->
-    <div class="fb-customerchat" attribution=setup_tool page_id="224318804364546" theme_color="#006AFF"
-        logged_in_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม" logged_out_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม"></div>
+            } else {
+                $('#nav').removeClass('fixed-top');
+                $('#nav').removeClass('scrolling-navbar');
+                $('#nav').addClass('navbar-top');
+                document.getElementById("container").style.paddingTop = "19px";
 
-    <?php include '../global/footer.php';?>
+            }
+        });
+        $(window).on('load',function(){
+            $('#login').modal('show');
+        });
+    </script>
 </body>
 
 </html>

@@ -20,7 +20,7 @@
             }
         }
         
-        .sticky+.content {
+        .navbar+.container {
             padding-top: 88px;
         }
         

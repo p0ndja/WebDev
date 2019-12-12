@@ -12,11 +12,10 @@
 
 <body>
     <?php include'../global/login.php'?>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top sticky" id="nav" role="navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <div class="content"></div>
-    <div class="container">
+    <div class="container" id="container" style="padding-top: 88px">
         <a class="btn z-depth-1 text-white disabled" href="#"
             style="background-color: #db6c24;">ประกาศจากทางโรงเรียน</a>
         <a class="btn z-depth-1 text-white" href="#" style="background-color: #db6c24;">SMD Community</a>

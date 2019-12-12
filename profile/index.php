@@ -47,10 +47,9 @@
 
 <body style="background-color: #ededed">
     <?php include '../global/login.php'; ?>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top sticky" id="nav" role="navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <div class="content"></div>
     <?php if (isset($_GET['search']) || (isset($_SESSION['id']))) {
 
 $id;
@@ -117,7 +116,7 @@ $result_achi = mysqli_query($conn, $query_achi);
                 $profile_achi = $profile_achi . '<div class=""><img src=""></div>';
         }
     ?>
-    <div class="container">
+    <div class="container" id="container" style="padding-top: 88px">
         <hr>
         <div class="card">
                 <div class="card-body">
@@ -128,8 +127,7 @@ $result_achi = mysqli_query($conn, $query_achi);
                     </div>
                     <div class="col-1">
                         <?php if(!isset($_GET['search'])) { ?>
-                        <a class="btn btn-warning float-right" href="edit.php"><span class="oi"
-                                data-glyph="pencil"></span></a>
+                        <a class="btn btn-warning float-right" href="edit.php"><i class="fas fa-edit"></i></a>
                         <?php } ?>
                     </div>
                 </div>
@@ -173,7 +171,7 @@ $result_achi = mysqli_query($conn, $query_achi);
                     </div>
                 </div>
                 <hr>
-                <!--
+                <?php if ($id == '604019') { ?>
                 <div class="card">
                     <div class="card-body">
                         <h2>ประวัติการศึกษา</h2>
@@ -232,9 +230,8 @@ $result_achi = mysqli_query($conn, $query_achi);
                                 </p>
                                 <img src="https://webcontest.cs.kku.ac.th/2562/photo/award.jpg" width=100%>
                                 <br><a href="https://webcontest.cs.kku.ac.th/index.php?page=result&y=2562"
-                                    target="_blank"><span class="oi" data-glyph="external-link"></span></a>
-                                <a href="https://www.facebook.com/SMD.KKU/posts/2215982308531509" target="_blank"><span
-                                        class="oi" data-glyph="external-link"></span></a>
+                                    target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://www.facebook.com/SMD.KKU/posts/2215982308531509" target="_blank"><i class="fas fa-external-link-alt"></i></a>
                                 <hr>
                             </div>
                             <div class="col-md-12 col-sm-12">
@@ -258,16 +255,15 @@ $result_achi = mysqli_query($conn, $query_achi);
                                 </p>
                                 <img src="http://smd-s.kku.ac.th/home/images/smd-62/Computer_Education_Open_House_2018.jpg"
                                     width=100%>
-                                <a href="https://www.facebook.com/SMD.KKU/photos/?tab=album&album_id=1936354579827618"><span
-                                        class="oi" data-glyph="external-link"></span></a>
+                                <a href="https://www.facebook.com/SMD.KKU/photos/?tab=album&album_id=1936354579827618"><i class="fas fa-external-link-alt"></i></a>
                                 <a
-                                    href="http://smd-s.kku.ac.th/home/index.php/component/content/article/80-2012-09-14-02-08-54/421-computer-education-open-house-2018"><span
-                                        class="oi" data-glyph="external-link"></span></a>
+                                    href="http://smd-s.kku.ac.th/home/index.php/component/content/article/80-2012-09-14-02-08-54/421-computer-education-open-house-2018"><i class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <hr>-->
+                <hr>
+                        <?php } ?>
 
             </div>
         </div>

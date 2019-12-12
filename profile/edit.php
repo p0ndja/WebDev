@@ -38,7 +38,7 @@
   <script type="text/javascript">
     $(function () {
       $('.summernote').summernote({
-        height: 200,
+        height: 500,
       });
       $('.summernote').summernote('code', '<?php echo $profile_displayText; ?>');
     });
@@ -58,10 +58,9 @@
 
 <body style="background-color: #ededed">
     <?php include '../global/login.php' ?>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top sticky" id="nav" role="navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <div class="content"></div>
     <?php
 
         $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
@@ -94,7 +93,7 @@
                 $profile_image = $row['profile'];
         }  
     ?>
-    <div class="container">
+    <div class="container" id="container" style="padding-top: 88px">
         <form method="post" action="../profile/save.php" enctype="multipart/form-data">
             <div class="card w-100">
                 <div class="card-body">
@@ -163,7 +162,7 @@
                         </div>
                     </div>
                     <hr>
-                    <!--
+                    <?php if ($_SESSION['id'] == '604019') { ?>
                     <div class="card">
                         <div class="card-body">
                             <h2>ประวัติการศึกษา</h2>
@@ -234,7 +233,7 @@
                                 <div class="col-md-12 col-sm-12">
                                     <div class="row">
                                         <div class="col-9">
-                                            <h4><a class="btn btn-danger"><span class="oi" data-glyph="eye"></span></a>
+                                            <h4><a class="btn btn-danger"><i class="fas fa-eye-slash"></i></a>
                                                 รางวัล GISTDA Top Vote </h4>
                                         </div>
                                         <div class="col-3">
@@ -254,7 +253,7 @@
                                     <div class="row">
                                         <div class="col-9">
 
-                                            <h4><a class="btn btn-success"><span class="oi" data-glyph="eye"></span></a>
+                                            <h4><a class="btn btn-success"><i class="fas fa-eye"></i></a>
                                                 รางวัลรองชนะเลิศอันดับ 1 การแข่งขัน Web Programming Competition
                                                 ระดับมัธยมศึกษาตอนปลาย </h4>
                                         </div>
@@ -280,7 +279,7 @@
                                 <div class="col-md-12 col-sm-12">
                                     <div class="row">
                                         <div class="col-9">
-                                            <h4><a class="btn btn-success"><span class="oi" data-glyph="eye"></span></a>
+                                            <h4><a class="btn btn-success"><i class="fas fa-eye"></i></a>
                                                 รางวัลชนะเลิศการแข่งขันสร้างเว็บเพจ (Web editor) ระดับมัธยมศึกษาตอนปลาย
                                             </h4>
                                         </div>
@@ -313,7 +312,8 @@
                             </div>
                         </div>
                     </div>
-                    <hr>-->
+                    <hr>
+                    <?php } ?>
                 </div>
             </div>
         </form>
