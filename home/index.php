@@ -580,6 +580,9 @@
         logged_in_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม" logged_out_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม"></div>
 
     <?php include '../global/footer.php';?>
+    <?php include '../global/popup.php';?>
+
+    
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
     <script>
@@ -615,10 +618,18 @@
 
             }
         });
-        $(window).on('load',function(){
+        /*$(window).on('load',function(){
             $('#login').modal('show');
-        });
+        });*/
     </script>
+
+    <?php
+        if (isset($_SESSION['error'])) { ?>
+        <script> $('#login').modal('show'); </script>
+        <?php }
+        if (isset($_SESSION['success'])) { ?>
+        <script> $('#successPopup').modal('show'); </script>
+        <?php $_SESSION['success'] = null;}?>
 </body>
 
 </html>

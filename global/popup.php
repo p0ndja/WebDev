@@ -1,20 +1,12 @@
-<?php
-    if (isset($_SESSION['success']) || isset($_SESSION['error'])) { ?>
-<script>
-    $(document).ready(function () {
-        $('#popupModal').modal('show')
-    });
-</script>
-<div class="modal fade" id="popupModal" name="popupModal" tabindex="-1" role="dialog" aria-labelledby="popupModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="successPopup" name="successPopup" tabindex="-1" role="dialog" aria-labelledby="successPopup"
+    aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-success" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitle">
                     <?php 
                 if (isset($_SESSION['success']))
                 echo 'SUCCESS!';
-                else if (isset($_SESSION['error']))
-                echo 'ERROR!';
             ?>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -22,20 +14,20 @@
                 </button>
             </div>
             <div class="modal-body">
-                <?php
-        if (isset($_SESSION['success']))
+                <div class="text-center"><i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+                    <h4>
+
+                        <?php
+        if (isset($_SESSION['success'])) {
             echo $_SESSION['success'];
-        else if (isset($_SESSION['error']))
-            echo $_SESSION['error'];
-        ?>
+        }
+        ?></h4>
+                    <p>ยินดีต้อนรับ! <b><?php echo $_SESSION['fn'] . ' ' . $_SESSION ['ln']?></b></p>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-target="#login">Try Again</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">ปิดหน้าต่าง</button>
             </div>
         </div>
     </div>
 </div>
-<?php
-    }
-?>

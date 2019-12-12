@@ -27,7 +27,6 @@ if (isset($_POST['login_submit'])) {
     //ถ้าไม่เจอ User นี้ จะ return เป็น 0
     if (mysqli_num_rows($result) == 0) {
         $_SESSION['error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
-        session_destroy();
     } else {
         $id = $_SESSION['id'];
         $query_final = "SELECT * FROM `profile` WHERE id = '$id'";
@@ -35,6 +34,9 @@ if (isset($_POST['login_submit'])) {
         while ($row = mysqli_fetch_array($result_final, MYSQLI_ASSOC)) {
             $_SESSION['pi'] = $row['profile'];
         }
+
+        $_SESSION['error'] = null;
+        $_SESSION['success'] = "เข้าสู่ระบบสำเร็จ";
     }
 
     //ดีดกลับหน้าหลัก (url ในที่นี้เป็น /home/)
@@ -104,7 +106,8 @@ if (isset($_POST['register_submit'])) {
 
         //แสดงค่ากลับหาผู้ใช้
         if ($result_final) {
-            $_SESSION['error'] = "สมัครผู้ใช้งานสำเร็จ";
+            $_SESSION['error'] = null;
+            $_SESSION['success'] = "สมัครผู้ใช้งานสำเร็จ";
             $_SESSION['user'] = $user;
             $_SESSION['id'] = $id;
             $_SESSION['fn'] = $_POST['register_firstname'];
