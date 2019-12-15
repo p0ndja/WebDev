@@ -14,6 +14,10 @@
                 </button>
             </div>
             <div class="modal-body">
+            <div class="row">
+            <div class="col-md-4 col-6">
+            <img src="<?php echo $_SESSION['pi'];?>" class="img img-fluid"></div>
+            <div class="col-md-8 col-6">
                 <div class="text-center"><i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
                     <h4>
 
@@ -24,6 +28,8 @@
         ?></h4>
                     <p>ยินดีต้อนรับ! <b><?php echo $_SESSION['fn'] . ' ' . $_SESSION ['ln']?></b></p>
                 </div>
+            </div>
+            </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal">ปิดหน้าต่าง</button>
