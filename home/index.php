@@ -519,7 +519,7 @@
             $result = mysqli_query($conn, $query);
 
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-            <div class="col-6 col-md-4">
+            <div class="col-12 col-md-6">
                 <div class="card z-depth-0">
                     <div class="hoverable view overlay zoom">
                         <img class="card-img-top" src="<?php echo $row['cover']; ?>" alt="Card image cap">
@@ -558,7 +558,7 @@
                                             $i = -1;
                                             break;
                                         }
-                                    }  if ($i == -1) echo '... <a href="#news">ดูเพิ่มเติม</a>';
+                                    }  if ($i == -1) echo '... <a href="#news?news=' . $row['id'] . '" data-toggle="modal" data-target="#newsPopup">ดูเพิ่มเติม</a>';
                                     ?>
                                 </p>
                             </p>
@@ -581,6 +581,7 @@
 
     <?php include '../global/footer.php';?>
     <?php include '../global/popup.php';?>
+    <?php include '../global/news/popup.php';?>
 
     
     <!-- Load Facebook SDK for JavaScript -->

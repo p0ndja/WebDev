@@ -71,7 +71,8 @@
         </li>
 
     </ul>
-    <ul class="nav navbar-nav nav-flex-icons ml-auto">
+
+        <ul class="nav navbar-nav nav-flex-icons ml-auto">
         <form action="../profile/" method="GET" class="form-inline">
             <div class="md-form my-0">
                 <input method="GET" class="form-control" type="text" placeholder="Search ID (Ex. 604019)"
@@ -96,7 +97,6 @@
                 <a class="dropdown-item" style="color: red" href="../global/logout.php">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></a>
             </div>
         </li>
-    </ul>
     <?php
                 } else { ?>
     <a href="" class="btn btn-rounded btn-dark" data-toggle="modal" data-target="#login">Login</a>
