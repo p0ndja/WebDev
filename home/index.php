@@ -570,6 +570,7 @@
 
     <?php include '../global/footer.php';?>
     <?php include '../global/popup.php';?>
+    <?php include '../global/news/popup.php';?>
 
 
     <!-- Load Facebook SDK for JavaScript -->
