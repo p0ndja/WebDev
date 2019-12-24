@@ -282,8 +282,7 @@
 
 <body>
 
-    <?php include '../global/login.php';;
-?>
+    <?php include '../global/login.php'; ?>
 
     <header id="header">
         <div class="overlay"></div>
@@ -306,78 +305,79 @@
         <?php include '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container">
-                <div id="carousel" class="carousel slide carousel-fade z-depth-1" data-ride="carousel" data-interval="5000">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel" data-slide-to="1"></li>
-                        <li data-target="#carousel" data-slide-to="2"></li>
-                        <li data-target="#carousel" data-slide-to="3"></li>
-                        <li data-target="#carousel" data-slide-to="4"></li>
-                        <li data-target="#carousel" data-slide-to="5"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642620653115277322/slider_1.jpg"
-                                class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                                <h5>พิธีไหว้ครู</h5>
-                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 28 มิถุนายน 2561</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642621390935293952/slider_2.jpg"
-                                class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                                <h5>
-                                    <p class="text-dark">กิจกรรมพาน้องไปวัด</p>
-                                </h5>
-                                <p class="text-dark">ณ ศูนย์ปฏิบัติธรรมสวนเวฬุวัน จ.ขอนแก่น วันที่ 1-5 พฤษภาคม 2561</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642626173565927425/slider_4.jpg"
-                                class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                                <h5>กิจกรรมพาน้องไปวัด</h5>
-                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 29 เมษายน 2561</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642622165350481930/slider_3.jpg"
-                                class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                                <h5>กิจกรรมวันสงกรานต์</h5>
-                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 10 เมษายน 2561</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://cdn.discordapp.com/attachments/601788363313512480/642628541145546762/slider_5.jpg"
-                                class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                                <h5>กิจกรรมสัมมนาและส่งเสริมศักยภาพความเป็นผู้นำของคณะกรรมการนักเรียนประจำปีการศึกษา
-                                    2562</h5>
-                                <p>ณ เขื่อนจุฬาภรณ์ ต.ทุ่งลุยลาย จ.ชัยภูมิ วันที่ 25-27 พฤษภาคม 2562</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://storage.pondja.com/1400x600.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                                <h5>Carousel Guide</h5>
-                                <p>ขนาดรูปที่แนะนำ: 1400(W) x 600(H)</p>
-                            </div>
-                        </div>
+    <?php if($snow_effect) { ?><div class="alert alert-danger z-depth-1" role="alert"><h5 class="font-weight-bold">Alert from system</h5> Auto launch will not be able to launch because flag '$snow_effect' has been set to 'true'</div><?php } ?>
+        <div id="carousel" class="carousel slide carousel-fade z-depth-1" data-ride="carousel" data-interval="5000">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel" data-slide-to="1"></li>
+                <li data-target="#carousel" data-slide-to="2"></li>
+                <li data-target="#carousel" data-slide-to="3"></li>
+                <li data-target="#carousel" data-slide-to="4"></li>
+                <li data-target="#carousel" data-slide-to="5"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://cdn.discordapp.com/attachments/601788363313512480/642620653115277322/slider_1.jpg"
+                        class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                        <h5>พิธีไหว้ครู</h5>
+                        <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 28 มิถุนายน 2561</p>
                     </div>
-                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://cdn.discordapp.com/attachments/601788363313512480/642621390935293952/slider_2.jpg"
+                        class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                        <h5>
+                            <p class="text-dark">กิจกรรมพาน้องไปวัด</p>
+                        </h5>
+                        <p class="text-dark">ณ ศูนย์ปฏิบัติธรรมสวนเวฬุวัน จ.ขอนแก่น วันที่ 1-5 พฤษภาคม 2561</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://cdn.discordapp.com/attachments/601788363313512480/642626173565927425/slider_4.jpg"
+                        class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                        <h5>กิจกรรมพาน้องไปวัด</h5>
+                        <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 29 เมษายน 2561</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://cdn.discordapp.com/attachments/601788363313512480/642622165350481930/slider_3.jpg"
+                        class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                        <h5>กิจกรรมวันสงกรานต์</h5>
+                        <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 10 เมษายน 2561</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://cdn.discordapp.com/attachments/601788363313512480/642628541145546762/slider_5.jpg"
+                        class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                        <h5>กิจกรรมสัมมนาและส่งเสริมศักยภาพความเป็นผู้นำของคณะกรรมการนักเรียนประจำปีการศึกษา
+                            2562</h5>
+                        <p>ณ เขื่อนจุฬาภรณ์ ต.ทุ่งลุยลาย จ.ชัยภูมิ วันที่ 25-27 พฤษภาคม 2562</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://storage.pondja.com/1400x600.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                        <h5>Carousel Guide</h5>
+                        <p>ขนาดรูปที่แนะนำ: 1400(W) x 600(H)</p>
+                    </div>
                 </div>
             </div>
-        <hr>
+            <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <hr>
     </div>
     <div class="container">
         <h1 class="font-weight-bold">หลักสูตรการเรียน</h1>
