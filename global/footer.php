@@ -32,7 +32,8 @@
                     <li style="color: #ff6c00"><a
                             href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-58/managementstructure57.jpg"
                             style="color: white">โครงสร้างการบริหาร</a></li>
-                    <li style="color: #ff6c00"><a href="#" style="color: white" class="disabled">ทำเนียบผู้บริหาร</a></li>
+                    <li style="color: #ff6c00"><a href="#" style="color: white" class="disabled">ทำเนียบผู้บริหาร</a>
+                    </li>
                     <li style="color: #ff6c00"><a href="#" style="color: white" class="disabled">คณะผู้บริหาร</a></li>
                     <li style="color: #ff6c00"><a href="#" style="color: white" class="disabled">บุคลากร</a></li>
                 </ul>
@@ -40,20 +41,25 @@
             <div class="col-md-3">
                 <p style="color: white">หน่วยงาน</p>
                 <ul>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานแผนและประกันคุณภาพ </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานแผนและประกันคุณภาพ
+                        </a></li>
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานแนะแนว </a></li>
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานทะเบียน </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานพัฒนาบุคลิกภาพ </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานพัฒนาบุคลิกภาพ </a>
+                    </li>
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานห้องสมุด </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ชมรมผู้ปกครองและครู </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ชมรมผู้ปกครองและครู
+                        </a></li>
                 </ul>
 
             </div>
             <div class="col-md-3">
                 <p style="color: white">ปฏิทิน</p>
                 <ul>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ปฏิทินโรงเรียน </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="../calendar" class="disabled"> ตารางเรียน </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ปฏิทินโรงเรียน </a>
+                    </li>
+                    <li style="color: #ff6c00"><a style="color: white" href="../calendar" class="disabled"> ตารางเรียน
+                        </a></li>
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ตารางสอบ </a></li>
                 </ul>
                 <a style="color: white" href="../forum"> SMD Forum </a></li>
@@ -72,8 +78,9 @@
         <div class="row">
             <div class="col-12">
                 <center>
-                <h6 style="color: white">
-                        Copyright 2019 © The demonstration school of Khon Kaen University (Modindaeng) by PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka
+                    <h6 style="color: white">
+                        Copyright 2019 © The demonstration school of Khon Kaen University (Modindaeng) by PondJaᵀᴴ &
+                        ˢᵖᵉᶜᵗᵉʳRisaka
                     </h6>
                     <?php include 'config.php';
                         if (isset($patch)) echo '<h6 style="color:white">' . $patch . '</h6>';
@@ -83,15 +90,33 @@
         </div>
     </div>
 </footer>
-    <!-- jQuery -->
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="../js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="../js/mdb.min.js"></script>
+<!-- jQuery -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="../js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+</script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="../js/mdb.min.js"></script>
 
+<?php if(ISSET($snow_effect) && $snow_effect) { ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/h5ab-snow-flurry.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $(document).snowFlurry({
+            maxSize: 5,
+            numberOfFlakes: 50,
+            minSpeed: 10,
+            maxSpeed: 15,
+            color: '#fff',
+            timeout: 0
+        });
+    });
+</script>
+<?php } ?>
 <?php
         mysqli_close($conn);
     ?>

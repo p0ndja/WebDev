@@ -306,51 +306,7 @@
         <?php include '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container">
-        <div class="row">
-            <div class="col-12 col-md-12">
-                <div class="card text-white bg-danger mb-3 w-100">
-                    <div class="card-header">
-                        <h1>ถึงผู้ทดสอบ Beta ทุกท่าน <span
-                                class="badge badge-warning badge-pill d-none d-lg-inline-block blink"><i
-                                    class="fas fa-exclamation-triangle"></i>
-                            </span></h1>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            <h4>ระบบที่เปิดให้เข้าชมตอนนี้จะไม่ใช่ทั้งหมดที่สามารถเข้าชมได้
-                                เนื่องจากยังอยู่ในช่วงของการพัฒนา</h4>
-                            <h3>หากพบบัคใด ๆ โปรดแจ้ง<a href="https://m.me/p0ndja">ที่นี่</a></h3>
-                            <hr>
-                            <h5>
-                                ระบบที่สามารถใช้งานได้ตอนนี้:
-                                <li>Homepage (หน้าหลักหน้านี้)</li>
-                                <li>Forum (ฟอรั่ม) *ใช้งานได้เฉพาะตัวอย่างเท่านั้น</li>
-                                <li>News (ข่าว) *อนุญาตให้เพิ่มข่าวเองได้ แต่จะทำการรีเซ็ตในภายหลัง (Login Required)*
-                                </li>
-                                <li>Profile (โปรไฟล์) สามารถแก้ไขรูปโปรไฟล์, รูปพื้นหลัง, ข้อความย่อ (Bio) ได้ (ส่วนอื่น
-                                    ๆ ยังไม่เปิดให้แก้ไข)</li>
-                                <li>Search (ค้นหา) สามารถค้นหาได้เฉพาะรหัสนักเรียนเท่านั้น (เช่น 604019
-                                    จะขึ้นโปรไฟล์ของนักเรียนคนนั้น ๆ) </li>
-                                <li>Register - Login (เข้าสู่ระบบ) สามารถสมัคร, เข้าสู่ระบบได้ [UI บัคนิดหน่อย]</li>
-                            </h5>
-                            <hr>
-                            <h6>ทุกท่านที่สมัครในช่วง Beta จะได้รับ Achievement 'The Beta' ซึ่งเป็น Achievement
-                                ที่สามารถเก็บได้ในช่วงนี้เท่านั้น ทั้ง Username, Password และข้อมูลต่าง ๆ
-                                ที่กรอกมาจะเป็นข้อมูลที่นำไปใช้จริง เพราะฉะนั้น ขอความร่วมมือห้ามกรอกมั่วโดยเด็ดขาด</h6>
-                            <h1><span
-                                    class="badge badge-danger badge-pill d-none d-lg-inline-block blink2">เฉพาะนักเรียนสาธิตเท่านั้น
-                            </h1></span>
-                            <h5>ผู้เยี่ยมชมอื่น ๆ สามารถเข้าใช้งานหน้าโปรไฟล์ได้ด้วยรหัสผู้ใช้งาน</h5>
-                            <h6>Username: guest</h6>
-                            <h6>Password: guest</h6>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-md-12">
-                <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000">
+                <div id="carousel" class="carousel slide carousel-fade z-depth-1" data-ride="carousel" data-interval="5000">
                     <ol class="carousel-indicators">
                         <li data-target="#carousel" data-slide-to="0" class="active"></li>
                         <li data-target="#carousel" data-slide-to="1"></li>
@@ -421,41 +377,74 @@
                     </a>
                 </div>
             </div>
-        </div>
         <hr>
     </div>
     <div class="container">
-        <h1>หลักสูตรการเรียน</h1>
+        <h1 class="font-weight-bold">หลักสูตรการเรียน</h1>
         <div class="row">
-            <div class="col-4 col-md-4">
-                <a href="#">
-                    <div class="view overlay zoom">
-                        <img src="https://www.uppic.org/images/2019/11/08/emsp.jpg" class="img-fluid"
-                            alt="smaple image">
-                        <div class="mask flex-center rgba-black-slight">
-
-                        </div>
-                </a>
+            <div class="col-12 col-md-4">
+                <h2>มัธยมศึกษาตอนต้น</h2>
+                <hr>
+                <div class="row">
+                    <div class="col-4 col-md-6">
+                        <a href="#primary_normal">
+                            <div class="view overlay zoom z-depth-1">
+                                <img src="https://images.pondja.com/400px_p_normal.jpg" class="img-fluid"
+                                    alt="หลักสูตรทั่วไป (ม.ต้น)">
+                                <div class="mask flex-center rgba-black-slight">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-4 col-md-6">
+                        <a href="#primary_iec">
+                            <div class="view overlay zoom z-depth-1">
+                                <img src="https://images.pondja.com/400px_p_iec.jpg" class="img-fluid"
+                                    alt="หลักสูตร IEC (ม.ต้น)">
+                                <div class="mask flex-center rgba-black-slight">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <h2>มัธยมศึกษาตอนปลาย</h2>
+                <hr>
+                <div class="row">
+                    <div class="col-4 col-md-4">
+                        <a href="#secondary_normal">
+                            <div class="view overlay zoom z-depth-1">
+                                <img src="https://images.pondja.com/400px_s_normal.jpg" class="img-fluid"
+                                    alt="หลักสูตรทั่วไป (ม.ปลาย)">
+                                <div class="mask flex-center rgba-black-slight">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-4 col-md-4">
+                        <a href="#secondary_emsp">
+                            <div class="view overlay zoom z-depth-1">
+                                <img src="https://images.pondja.com/400px_s_emsp.jpg" class="img-fluid"
+                                    alt="หลักสูตร EMSP (ม.ปลาย)">
+                                <div class="mask flex-center rgba-black-slight">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-4 col-md-4">
+                        <a href="#secondary_scius">
+                            <div class="view overlay zoom z-depth-1">
+                                <img src="https://images.pondja.com/400px_s_scius.jpg" class="img-fluid"
+                                    alt="หลักสูตรวมว. (ม.ปลาย)">
+                                <div class="mask flex-center rgba-black-slight">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-4 col-md-4">
-            <a href="#">
-                <div class="view overlay zoom">
-                    <img src="https://www.uppic.org/images/2019/11/08/normal.jpg" class="img-fluid" alt="smaple image">
-                    <div class="mask flex-center rgba-black-slight">
-                    </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-4 col-md-4">
-        <a href="#">
-            <div class="view overlay zoom">
-                <img src="https://www.uppic.org/images/2019/11/08/scius.jpg" class="img-fluid" alt="smaple image">
-                <div class="mask flex-center rgba-black-slight">
-                </div>
-        </a>
-    </div>
-    </div>
     </div>
     <hr>
     </div>
@@ -508,7 +497,7 @@
         <hr>
     </div>
     <div class="container">
-        <h1 id="news" name="news">NEWS
+        <h1 id="news" name="news" class="font-weight-bold">NEWS
             <?php if (isset($_SESSION['id'])) { ?>
             <a href="../news/post.php" class="btn btn-dark">add news</a>
             <?php }  ?>
@@ -519,8 +508,8 @@
             $result = mysqli_query($conn, $query);
 
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-            <div class="col-6 col-md-4">
-                <div class="card z-depth-0">
+            <div class="col-12 col-md-6">
+                <div class="card">
                     <div class="hoverable view overlay zoom">
                         <img class="card-img-top" src="<?php echo $row['cover']; ?>" alt="Card image cap">
                         <div class="card-body">
@@ -558,7 +547,7 @@
                                             $i = -1;
                                             break;
                                         }
-                                    }  if ($i == -1) echo '... <a href="#news">ดูเพิ่มเติม</a>';
+                                    }  if ($i == -1) echo '... <a href="#news?news=' . $row['id'] . '" data-toggle="modal" data-target="#newsPopup">ดูเพิ่มเติม</a>';
                                     ?>
                                 </p>
                             </p>
@@ -582,7 +571,7 @@
     <?php include '../global/footer.php';?>
     <?php include '../global/popup.php';?>
 
-    
+
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
     <script>
@@ -601,7 +590,7 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
-    
+
     <script>
         $(window).bind('scroll', function () {
             if ($(window).scrollTop() > $(window).height()) {
@@ -625,11 +614,15 @@
 
     <?php
         if (isset($_SESSION['error'])) { ?>
-        <script> $('#login').modal('show'); </script>
-        <?php }
+    <script>
+        $('#login').modal('show');
+    </script>
+    <?php }
         if (isset($_SESSION['success'])) { ?>
-        <script> $('#successPopup').modal('show'); </script>
-        <?php $_SESSION['success'] = null;}?>
+    <script>
+        $('#successPopup').modal('show');
+    </script>
+    <?php $_SESSION['success'] = null;}?>
 </body>
 
 </html>
