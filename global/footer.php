@@ -92,19 +92,9 @@
         </div>
     </div>
 </footer>
-<!-- jQuery -->
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="../js/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-</script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="../js/mdb.min.js"></script>
+
 
 <?php if(ISSET($snow_effect) && $snow_effect) { ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/h5ab-snow-flurry.js"></script>
 <script>
     jQuery(document).ready(function ($) {
@@ -118,7 +108,16 @@
         });
     });
 </script>
+
 <?php } ?>
+
+<script type="text/javascript">
+    $(function () {
+      $('.summernote').summernote({
+        height: 200,
+      });
+    });
+  </script>
 <?php
         mysqli_close($conn);
     ?>
