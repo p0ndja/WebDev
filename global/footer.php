@@ -72,6 +72,8 @@
                 </script>
                 <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/600036/t/0">
                 </script>
+                <?php if ($snow_effect) { ?><br><img src="https://images.pondja.com/Webp.net-resizeimage%20(1).png"><?php } ?>
+
             </div>
         </div>
         <hr>

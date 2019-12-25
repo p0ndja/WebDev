@@ -281,7 +281,6 @@
 </head>
 
 <body>
-
     <?php include '../global/login.php'; ?>
 
     <header id="header">

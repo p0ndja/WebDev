@@ -109,11 +109,13 @@ $result_achi = mysqli_query($conn, $query_achi);
 
         while ($row = mysqli_fetch_array($result_achi, MYSQLI_ASSOC)) {
             if ($row['betaTester'])
-                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/beta-tester-icon_resize.gif" title="Beta Tester Achievement (LEGENDARY)" class="img-fluid w-100 justify-content-center"></div>';
+                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/beta-tester-icon_resize.gif" title="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></div>';
             if ($row['WebDevTycoon'])
-                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/Web_dev_tycoon_icon_resize.gif" title="Web Dev Tycoon Achievement (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></div>';
+                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/Web_dev_tycoon_icon_resize.gif" title="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></div>';
             if ($row['the4thFloor'])
-                $profile_achi = $profile_achi . '<div class=""><img src=""></div>';
+                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://cdn4.iconfinder.com/data/icons/business-plan-line-1/32/Stair-512.png" title="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></div>';
+            if ($row['Xmas'])
+                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/Webp.net-resizeimage.png" title="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></div>';
         }
     ?>
     <div class="container" id="container" style="padding-top: 88px">
@@ -165,13 +167,13 @@ $result_achi = mysqli_query($conn, $query_achi);
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="card">
+                <div class="card<?php if ($id == 604019) echo ' bg-dark';?>">
                     <div class="card-body">
                         <p><?php echo $profile_displayText ?></p>
                     </div>
                 </div>
                 <hr>
-                <?php if ($id == '604019') { ?>
+                <?php if ($id == 604019) { ?>
                 <div class="card">
                     <div class="card-body">
                         <h2>ประวัติการศึกษา</h2>
