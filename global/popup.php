@@ -55,10 +55,11 @@
             สอบถามรายละเอียดเพิ่มเติม โทร.<a href="tel:091-056-7871">091-056-7871</a></p>
             </div>
             </div>
-            <div class="modal-footer">
+            
+            <!--div class="modal-footer">
                 <a href="#" target="_blank" class="btn btn-warning">สมัครเข้าศึกษา</a>
                 <button type="button" class="btn btn-warning" data-dismiss="modal">ปิดหน้าต่าง</button>
-            </div>
+            </div-->
         </div>
     </div>
 </div>

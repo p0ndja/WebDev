@@ -1,3 +1,5 @@
+<?php include '../global/connect.php'; ?>
+
 <!DOCTYPE html>
 <html lang="th">
 
@@ -192,7 +194,9 @@
             </div>
         </div>
     </div>
-    <?php include '../global/footer.php'; ?>
 </body>
+
+<?php include '../global/footer.php'; ?>
+<?php include '../global/popup.php'; ?>
 
 </html>

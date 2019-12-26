@@ -57,5 +57,5 @@
             }
         }
     }
-    header("Location: ../profile")
+    header("Location: ../profile");
 ?>

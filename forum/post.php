@@ -1,17 +1,14 @@
-<?php 
-    include '../global/connect.php';
-    include '../global/popup.php';
-?>
+<?php include '../global/connect.php'; ?>
 
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    <?php include'../global/head.php'?>
+    <?php include'../global/head.php'; ?>
 </head>
 
 <body>
-    <?php include'../global/login.php'?>
+    <?php include'../global/login.php'; ?>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
@@ -100,7 +97,9 @@
         </div>
     </div>
     <br>
-    <?php include'../global/footer.php'?>
 </body>
+
+<?php include '../global/footer.php'; ?>
+<?php include '../global/popup.php'; ?>
 
 </html>

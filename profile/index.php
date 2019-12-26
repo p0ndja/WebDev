@@ -1,7 +1,4 @@
-<?php 
-    include '../global/connect.php';
-    include '../global/popup.php';
-?>
+<?php include '../global/connect.php'; ?>
 
 <!DOCTYPE html>
 <html lang="th">
@@ -270,12 +267,11 @@ $result_achi = mysqli_query($conn, $query_achi);
             </div>
         </div>
     </div>
-    <?php } else {
-        header("Location: ../");
-    }
-        ?>
+    <?php } else header("Location: ../"); ?>
 
-    <?php include '../global/footer.php' ?>
 </body>
+
+<?php include '../global/footer.php'; ?>
+<?php include '../global/popup.php'; ?>
 
 </html>

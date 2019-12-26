@@ -1,18 +1,16 @@
-<?php 
-    include '../global/connect.php';
-    include '../global/popup.php';
-?>
+<?php include '../global/connect.php'; ?>
 
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    <?php include'../global/head.php'?>
+    <?php include '../global/head.php'; ?>
 </head>
 
 <body>
-    <?php include'../global/login.php'?>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
+    <?php include '../global/login.php'; ?>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
+        role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
@@ -42,7 +40,7 @@
                 <tbody>
                     <tr class="table-warning" style="cursor: pointer;" onclick="window.location='./post.php';">
                         <td>
-                            <span class="badge badge-danger z-depth-0"><span class="oi" data-glyph="pin"></span></span>
+                            <span class="badge badge-danger z-depth-0"><i class="fas fa-thumbtack"></i></span>
                             รับสมัครผู้ช่วยพัฒนาเว็บไซด์
                             <span class="badge badge-success z-depth-0">รับสมัครงาน</span>
                             </span><br>26/10/2562</td>
@@ -112,10 +110,9 @@
             </table>
         </div>
     </div>
-    <br>
-
-    <?php include'../global/footer.php'?>
-
 </body>
+
+<?php include '../global/footer.php' ?>
+<?php include '../global/popup.php'; ?>
 
 </html>

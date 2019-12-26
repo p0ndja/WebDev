@@ -1,16 +1,14 @@
 <?php 
     include '../global/connect.php';
-    include '../global/popup.php';
-    if (!isset($_SESSION['id'])) {
+    if (!isset($_SESSION['id']))
         header("Location: ../");
-    }
 ?>
 
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    
+
     <?php include '../global/head.php'; ?>
     <?php
         $id = $_SESSION['id'];
@@ -35,14 +33,14 @@
         
     ?>
 
-  <script type="text/javascript">
-    $(function () {
-      $('.summernote').summernote({
-        height: 500,
-      });
-      $('.summernote').summernote('code', '<?php echo $profile_displayText; ?>');
-    });
-  </script>
+    <script type="text/javascript">
+        $(function () {
+            $('.summernote').summernote({
+                height: 500,
+            });
+            $('.summernote').summernote('code', '<?php echo $profile_displayText; ?>');
+        });
+    </script>
 
     <style>
         body {
@@ -57,8 +55,9 @@
 </head>
 
 <body style="background-color: #ededed">
-    <?php include '../global/login.php' ?>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
+    <?php include '../global/login.php'; ?>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
+        role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
     <?php
@@ -98,8 +97,8 @@
             <div class="card w-100">
                 <div class="card-body">
                     <h6><b>Background Image: </b>
-                    <input type="file" name="background_upload" id="background_upload"
-                    class="form-control-file validate" accept="image/png, image/jpeg"></h6>
+                        <input type="file" name="background_upload" id="background_upload"
+                            class="form-control-file validate" accept="image/png, image/jpeg"></h6>
                 </div>
             </div>
             <hr>
@@ -124,7 +123,8 @@
                         <div class="card-body">
                             <img src="<?php echo $profile_image; ?>" class="img-fluid w-100" alt="Profile">
                             <br>
-                            <input type="file" name="profile_upload" id="profile_upload" class="form-control-file validate" accept="image/png, image/jpeg">
+                            <input type="file" name="profile_upload" id="profile_upload"
+                                class="form-control-file validate" accept="image/png, image/jpeg">
                         </div>
                     </div>
                     <div class="row">
@@ -154,11 +154,11 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-body">
-
                             <div class="form-group">
-          <label for="contents">Contents</label>
-          <textarea name="text" class="summernote" id="contents" name="contents" title="Contents"></textarea>
-        </div>
+                                <label for="contents">Contents</label>
+                                <textarea name="text" class="summernote" id="contents" name="contents"
+                                    title="Contents"></textarea>
+                            </div>
                         </div>
                     </div>
                     <hr>
@@ -318,8 +318,9 @@
             </div>
         </form>
     </div>
-    <?php include '../global/footer.php' ?>
-
 </body>
+
+<?php include '../global/footer.php'; ?>
+<?php include '../global/popup.php'; ?>
 
 </html>

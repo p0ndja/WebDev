@@ -212,13 +212,6 @@
             padding-top: 48.7%;
         }
 
-        /* BEAUTY */
-
-        body,
-        html {
-            padding: 0;
-        }
-
         .wrapper .column .inner {
             background-size: cover;
             background-position: center;
@@ -270,10 +263,6 @@
 
         .wrapper .column:nth-child(12) .inner {
             background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/73498078_2364964120299993_1412030022511755264_o.jpg?_nc_cat=101&_nc_oc=AQnkS1qSzAfh8NeS1hbBKzyXS2UGDXEs48q9b2D-ZW65Z7Brw_uB6eEIBNlfWg5f_Js&_nc_ht=scontent.fkkc2-1.fna&oh=b9728d20bae5f328daa24360bdc9cb2f&oe=5E45ACA7');
-        }
-
-        .notstick+.content {
-            padding-top: 19px;
         }
 
         #countdown {
@@ -585,7 +574,9 @@
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
                 <div class="card mb-3">
                     <div class="hoverable view">
-                        <img class="view overlay card-img-top" src="<?php echo $row['cover']; ?>" alt="Card image cap">
+                        <?php if ($row['cover'] != NULL) { ?>
+                        <img class="view overlay card-img-top" src="<?php echo $row['cover']; ?>">
+                        <?php } ?>
                         <div class="card-body">
                             <p class="card-text"><i class="far fa-clock"></i>
                                 <?php
@@ -603,7 +594,7 @@
                             <p class="card-title">
                                 <h5>
                                     <?php 
-                                    echo '<a href="../news/?news=' . $row['id'] . '" style="color: black"><u>' . $row['title'] . '</u></a></h5><h6>'; 
+                                    echo '<a href="../news/?news=' . $row['id'] . '">' . $row['title'] . '</a></h5><h6>'; 
                                     $split = explode(",", $row['tags']);
                                     foreach ($split as $s) { ?>
                                     <span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span>
@@ -618,18 +609,14 @@
             </div>
             <div class="col-md-4 d-none d-md-block">
                 <div class="fb-page" data-href="https://www.facebook.com/SMD.KKU" data-tabs="timeline" data-width=""
-                    data-height="2000" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
-                    data-show-facepile="true">
+                    data-height="800" data-small-header="false" data-adapt-container-width="true"
+                    data-hide-cover="false" data-show-facepile="true">
                     <blockquote cite="https://www.facebook.com/SMD.KKU" class="fb-xfbml-parse-ignore"><a
                             href="https://www.facebook.com/SMD.KKU">สาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา
                             (มอดินแดง)</a></blockquote>
                 </div>
             </div>
         </div>
-    </div>
-    <br>
-    <br />
-    </div>
     </div>
     <!-- Your customer chat code -->
     <div class="fb-customerchat" attribution=setup_tool page_id="224318804364546" theme_color="#006AFF"
@@ -639,8 +626,7 @@
         src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v5.0&appId=2529205720433288&autoLogAppEvents=1">
     </script>
 
-    <?php include '../global/footer.php';?>
-    <?php include '../global/popup.php';?>
+    <?php include '../global/popup.php'; ?>
 
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
@@ -660,7 +646,6 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
-
     <script>
         $(window).bind('scroll', function () {
             if ($(window).scrollTop() > $(window).height()) {
@@ -677,11 +662,14 @@
 
             }
         });
-        $(window).on('load',function(){
-            $('#announcementPopup').modal('show');
-        });
     </script>
-
+    <?php if (!isset($_SESSION['isAnnouncementPopedUp'])) { ?>
+        <script>
+            $(window).on('load', function () {
+                $('#announcementPopup').modal('show');
+            });
+        </script>
+    <?php } ?>
     <?php
         if (isset($_SESSION['error'])) { ?>
     <script>
@@ -693,6 +681,10 @@
         $('#successPopup').modal('show');
     </script>
     <?php $_SESSION['success'] = null;}?>
+    <?php $_SESSION['isAnnouncementPopedUp'] = true; ?>
 </body>
+
+<!--เนื่องจากมี Script ที่ใช้ค่าของ popup.php ทำให้ต้องเอาไว้ด้านบนไม่เหมือนกับหน้าอื่น ๆ-->
+<?php include '../global/footer.php'; ?>
 
 </html>
