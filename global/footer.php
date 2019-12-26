@@ -11,55 +11,35 @@
             <div class="col-md-3">
                 <p style="color: white">เกี่ยวกับ</p>
                 <ul>
-                    <li style="color: #ff6c00"><a
-                            href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-55/data09.png"
-                            style="color: white">ประวัติโรงเรียน</a></li>
-                    <li style="color: #ff6c00"><a
-                            href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-55/data010.png"
-                            style="color: white">ปรัชญา</a></li>
-                    <li style="color: #ff6c00"><a
-                            href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-55/data08.png"
-                            style="color: white">วิสัยทัศน์ พันธกิจ</a>
-                    <li style="color: #ff6c00"><a
-                            href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-55/data06.png"
-                            style="color: white">เป้าหมายเชิงกลยุทธ์</a></li>
-                    <li style="color: #ff6c00"><a
-                            href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-55/data07.png"
-                            style="color: white">คุณลักษณะอันพึงประสงค์</a></li>
-                    <li style="color: #ff6c00"><a
-                            href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-55/data12.png"
-                            style="color: white">คณะกรรมการประจำโรงเรียน</a></li>
-                    <li style="color: #ff6c00"><a
-                            href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-58/managementstructure57.jpg"
-                            style="color: white">โครงสร้างการบริหาร</a></li>
-                    <li style="color: #ff6c00"><a href="#" style="color: white" class="disabled">ทำเนียบผู้บริหาร</a>
-                    </li>
-                    <li style="color: #ff6c00"><a href="#" style="color: white" class="disabled">คณะผู้บริหาร</a></li>
-                    <li style="color: #ff6c00"><a href="#" style="color: white" class="disabled">บุคลากร</a></li>
+                    <li style="color: #ff6c00"><a href="../news/?news=20" style="color: white">ประวัติโรงเรียน</a></li>
+                    <li style="color: #ff6c00"><a href="../news/?news=21" style="color: white">ปรัชญา</a></li>
+                    <li style="color: #ff6c00"><a href="../news/?news=22" style="color: white">วิสัยทัศน์ พันธกิจ</a>
+                    <li style="color: #ff6c00"><a href="../news/?news=23" style="color: white">เป้าหมายเชิงกลยุทธ์</a></li>
+                    <li style="color: #ff6c00"><a href="../news/?news=24" style="color: white">คุณลักษณะอันพึงประสงค์</a></li>
+                    <li style="color: #ff6c00"><a href="../news/?news=25" style="color: white">คณะกรรมการประจำโรงเรียน</a></li>
+                    <li style="color: #ff6c00"><a href="../news/?news=26" style="color: white">โครงสร้างการบริหาร</a></li>
+                    <li style="color: #ff6c00"><a href="../news/?news=29" style="color: white">ทำเนียบผู้บริหาร</a></li>
+                    <li style="color: #ff6c00"><a href="../news/?news=32" style="color: white">คณะผู้บริหาร</a></li>
+                    <li style="color: #ff6c00"><a href="../news/?news=37" style="color: white">บุคลากร</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
                 <p style="color: white">หน่วยงาน</p>
                 <ul>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานแผนและประกันคุณภาพ
-                        </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานแนะแนว </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานแผนและประกันคุณภาพ</a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="https://www.admissionpremium.com/gis/KKU/login"> งานแนะแนว </a></li>
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานทะเบียน </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานพัฒนาบุคลิกภาพ </a>
-                    </li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานพัฒนาบุคลิกภาพ </a></li>
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานห้องสมุด </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ชมรมผู้ปกครองและครู
-                        </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ชมรมผู้ปกครองและครู</a></li>
                 </ul>
 
             </div>
             <div class="col-md-3">
                 <p style="color: white">ปฏิทิน</p>
                 <ul>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ปฏิทินโรงเรียน </a>
-                    </li>
-                    <li style="color: #ff6c00"><a style="color: white" href="../calendar" class="disabled"> ตารางเรียน
-                        </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ปฏิทินโรงเรียน </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="../calendar" class="disabled"> ตารางเรียน</a></li>
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ตารางสอบ </a></li>
                 </ul>
                 <a style="color: white" href="../forum"> SMD Forum </a></li>
@@ -72,7 +52,8 @@
                 </script>
                 <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/600036/t/0">
                 </script>
-                <?php if ($snow_effect) { ?><br><img src="https://images.pondja.com/Webp.net-resizeimage%20(1).png"><?php } ?>
+                <?php if ($snow_effect) { ?><br><img
+                    src="https://images.pondja.com/Webp.net-resizeimage%20(1).png"><?php } ?>
 
             </div>
         </div>
@@ -113,11 +94,11 @@
 
 <script type="text/javascript">
     $(function () {
-      $('.summernote').summernote({
-        height: 200,
-      });
+        $('.summernote').summernote({
+            height: 200,
+        });
     });
-  </script>
+</script>
 <?php
         mysqli_close($conn);
     ?>

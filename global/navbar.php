@@ -12,25 +12,17 @@
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> เกี่ยวกับ </a>
             <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item"
-                    href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-55/data09.png">ประวัติโรงเรียน</a>
-                <a class="dropdown-item"
-                    href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-55/data010.png">ปรัชญา</a>
-                <a class="dropdown-item"
-                    href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-55/data08.png">วิสัยทัศน์
-                    พันธกิจ</a>
-                <a class="dropdown-item"
-                    href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-55/data06.png">เป้าหมายเชิงกลยุทธ์</a>
-                <a class="dropdown-item"
-                    href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-55/data07.png">คุณลักษณะอันพึงประสงค์</a>
-                <a class="dropdown-item"
-                    href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-55/data12.png">คณะกรรมการประจำโรงเรียน</a>
+                <a class="dropdown-item" href="../news/?news=20">ประวัติโรงเรียน</a>
+                <a class="dropdown-item" href="../news/?news=21">ปรัชญา</a>
+                <a class="dropdown-item" href="../news/?news=22">วิสัยทัศน์ พันธกิจ</a>
+                <a class="dropdown-item" href="../news/?news=23">เป้าหมายเชิงกลยุทธ์</a>
+                <a class="dropdown-item" href="../news/?news=24">คุณลักษณะอันพึงประสงค์</a>
+                <a class="dropdown-item" href="../news/?news=25">คณะกรรมการประจำโรงเรียน</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item"
-                    href="../temp_load/?img=http://smd-s.kku.ac.th/home/images/smd-58/managementstructure57.jpg">โครงสร้างการบริหาร</a>
-                <a class="dropdown-item disabled" href="#">ทำเนียบผู้บริหาร</a>
-                <a class="dropdown-item disabled" href="#">คณะผู้บริหาร</a>
-                <a class="dropdown-item disabled" href="#">บุคลากร</a>
+                <a class="dropdown-item" href="../news/?news=26">โครงสร้างการบริหาร</a>
+                <a class="dropdown-item" href="../news/?news=29">ทำเนียบผู้บริหาร</a>
+                <a class="dropdown-item" href="../news/?news=32">คณะผู้บริหาร</a>
+                <a class="dropdown-item" href="../news/?news=37">บุคลากร</a>
             </div>
         </li>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -38,7 +30,7 @@
                 หน่วยงาน </a>
             <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item disabled" href="#"> งานแผนและประกันคุณภาพ </a>
-                <a class="dropdown-item disabled" href="#"> งานแนะแนว </a>
+                <a class="dropdown-item" href="https://www.admissionpremium.com/gis/KKU/login"> งานแนะแนว </a>
                 <a class="dropdown-item disabled" href="#"> งานทะเบียน </a>
                 <a class="dropdown-item disabled" href="#"> งานพัฒนาบุคลิกภาพ </a>
                 <a class="dropdown-item disabled" href="#"> งานห้องสมุด </a>
@@ -72,7 +64,7 @@
 
     </ul>
 
-        <ul class="nav navbar-nav nav-flex-icons ml-auto">
+    <ul class="nav navbar-nav nav-flex-icons ml-auto">
         <form action="../profile/" method="GET" class="form-inline">
             <div class="md-form my-0">
                 <input method="GET" class="form-control" type="text" placeholder="Search ID (Ex. 604019)"
@@ -94,13 +86,14 @@
                 <a class="dropdown-item" href="#"> การเช็คชื่อ <i class="fas fa-calendar-check"></i></a>
                 <a class="dropdown-item" href="#"> ผลการเรียน (SGS) <i class="fas fa-graduation-cap"></i></a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" style="color: red" href="../global/logout.php">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></a>
+                <a class="dropdown-item" style="color: red" href="../global/logout.php">ออกจากระบบ <i
+                        class="fas fa-sign-out-alt"></i></a>
             </div>
         </li>
-    <?php
+        <?php
                 } else { ?>
-    <a href="" class="btn btn-rounded btn-dark" data-toggle="modal" data-target="#login">Login</a>
-    <?php
+        <a href="" class="btn btn-rounded btn-dark" data-toggle="modal" data-target="#login">Login</a>
+        <?php
                 }
             ?>
     </ul>
