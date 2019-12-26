@@ -1,16 +1,13 @@
-<?php 
-    include '../global/connect.php';
-    include '../global/popup.php';
-?>
+<?php include '../global/connect.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <?php include '../global/head.php';?>
+    <?php include '../global/head.php'; ?>
 </head>
 
 <body">
-    <?php include '../global/login.php' ?>
+    <?php include '../global/login.php'; ?>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
@@ -27,16 +24,17 @@
                 $postID = $_GET['news'];
                 $query = "SELECT * FROM `post` WHERE id = $postID";
             } else {
-                $query = "SELECT * FROM `post` ORDER by time DESC limit 6";
+                $query = "SELECT * FROM `post` ORDER by time DESC";//limit 6
             }
             
             $result = mysqli_query($conn, $query);
-
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
             <div class="col-12 col-md-12">
                 <div class="card mb-3">
                     <div class="hoverable view">
-                        <img class="card-img-top" src="<?php echo $row['cover']; ?>" alt="Card image cap">
+                    <?php if ($row['cover'] != null) { ?>
+                        <img class="card-img-top" src="<?php echo $row['cover']; ?>">
+                    <?php } ?>
                         <div class="card-body">
                             <p class="card-text"><i class="far fa-clock"></i>
                                 <?php
@@ -52,15 +50,15 @@
                             ?>
                             </p>
                             <div class="card-title">
-                            <h5>
+                            <h1>
                                 <?php 
-                                    echo $row['title']; 
+                                    echo '<a href="../news/?news=' . $row['id'] . '">' . $row['title'] . '</a></h1><h4>'; 
                                     $split = explode(",", $row['tags']);
                                     foreach ($split as $s) { ?>
                                         <span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span>
                                     <?php }
                                 ?>
-                                </h5>
+                                </h4>
                                     </div>
                             <p class="card-text">
                                 <p class="d-none d-md-block">
@@ -71,11 +69,13 @@
                     </div>
                 </div>
             </div>
-            <?php }
-        ?>
+            <?php }?>
         </div>
     </div>
-    <?php include '../global/footer.php' ?>
-    </body>
+
+</body>
+
+<?php include '../global/footer.php'; ?>
+<?php include '../global/popup.php'; ?>
 
 </html>

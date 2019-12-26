@@ -1,13 +1,10 @@
-<?php 
-    include '../global/connect.php';
-    include '../global/popup.php';
-?>
+<?php include '../global/connect.php'; ?>
 
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    <?php include'../global/head.php'?>
+    <?php include '../global/head.php'; ?>
     <script type="text/javascript">
     $(function () {
       $('.summernote').summernote({
@@ -19,7 +16,7 @@
 </head>
 
 <body>
-    <?php include'../global/login.php'?>
+    <?php include '../global/login.php'; ?>
     <?php
 
         date_default_timezone_set('Asia/Bangkok'); $date = date('Y-m-d H:i:s', time());
@@ -72,27 +69,6 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 col-md-3">
-                            <div class="row">
-                                <div class="col-4 col-md-12">
-                                    <img src="<?php echo $profile_image; ?>" alt="Profile" class="img-fluid w-100">
-                                </div>
-                                <div class="col-8 col-md-12">
-                                    <p>
-                                        <h5>
-                                            <a href="../profile/?search=<?php echo $profile_id ?>">
-                                                <center><?php echo $profile_name ?></center>
-                                            </a>
-                                            <h5>
-                                                <h6>
-                                                    <center>(Writer)</center>
-                                                </h6>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-9">
                             <h6>
                                 <div class="input-group flex-nowrap">
                                     <div class="input-group-prepend">
@@ -112,12 +88,10 @@
                                     <span class="input-group-text" id="addon-tags">แท็ก</span>
                                 </div>
                                 <input type="text" class="form-control" id="tags" name="tags" aria-label="tags"
-                                    aria-describedby="addon-tags" required>
+                                    aria-describedby="addon-tags">
                             </div>
-                        </div>
-                    </div>
                     <div class="row justify-content-end">
-                        <h6>เวลาที่เขียนข่าว: <?php echo $date . ' ' ?>
+                        <h6>เขียนโดย <?php echo $profile_name; ?> เมื่อ <?php echo $date . ' ' ?>
                             <input type="submit" class="btn btn-success" value="บันทึก" name="post_submit"></input>
                         </h6>
                     </div>
@@ -125,8 +99,9 @@
             </div>
         </form>
     </div>
-    <br>
-    <?php include'../global/footer.php'?>
 </body>
+
+<?php include '../global/footer.php'; ?>
+<?php include '../global/popup.php'; ?>
 
 </html>
