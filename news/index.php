@@ -15,18 +15,26 @@
         <?php include '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
+    <?php if (!isset($_GET['news'])) { ?>
         <h1 id="news" name="news">NEWS
             <?php if (isset($_SESSION['id'])) { ?>
             <a href="../news/post.php" class="btn btn-dark">add news</a>
         <?php }  ?> </h1>
+            <?php } ?>
         <div class="row">
             <?php
-            $query = "SELECT * FROM `post` ORDER by time DESC limit 6";
+            if (isset($_GET['news'])) {
+                $postID = $_GET['news'];
+                $query = "SELECT * FROM `post` WHERE id = $postID";
+            } else {
+                $query = "SELECT * FROM `post` ORDER by time DESC limit 6";
+            }
+            
             $result = mysqli_query($conn, $query);
 
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
             <div class="col-12 col-md-12">
-                <div class="card z-depth-0">
+                <div class="card mb-3">
                     <div class="hoverable view">
                         <img class="card-img-top" src="<?php echo $row['cover']; ?>" alt="Card image cap">
                         <div class="card-body">
@@ -60,11 +68,8 @@
                                 </p>
                             </p>
                         </div>
-                        <div class="card-footer text-right"><a href="#news" class="card-link">อ่านเพิ่มเติม</a>
-                        </div>
                     </div>
                 </div>
-                <hr>
             </div>
             <?php }
         ?>

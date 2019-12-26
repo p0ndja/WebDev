@@ -275,9 +275,60 @@
         .notstick+.content {
             padding-top: 19px;
         }
+
+        #countdown {
+            text-align: center;
+        }
+
+        .countdown-box {
+            display: inline-block;
+        }
+
+        .countdown-box p {
+            font-size: 6vw;
+            line-height: 6vw;
+            padding: 5px;
+            font-weight: bold;
+            margin: 0;
+            background: #be0071;
+            color: #fff;
+        }
+
+        .countdown-box span {
+            display: block;
+            font-size: 1vw;
+            line-height: 1vw;
+            background: #dedede;
+            padding: 5px;
+        }
     </style>
 
     <?php include '../global/head.php'; ?>
+
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                var endDate = new Date("Jan 1, 2020 00:00:01").getTime();
+                var x = setInterval(function () {
+                    var now = new Date().getTime(),
+                        distance = endDate - now,
+                        days = Math.floor(distance / (1000 * 60 * 60 * 24)),
+                        hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                        minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                        seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    $(".days").text(days);
+                    $(".hours").text(hours);
+                    $(".minutes").text(minutes);
+                    $(".seconds").text(seconds);
+                    if (distance < 0) {
+                        clearInterval(x);
+                        $("#countdown").text("EXPIRED")
+                    }
+                }, 1000);
+            });
+        })(jQuery);
+    </script>
+
 </head>
 
 <body>
@@ -304,7 +355,22 @@
         <?php include '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container">
-    <?php if($snow_effect) { ?><div class="alert alert-danger z-depth-1" role="alert"><h5 class="font-weight-bold">Alert from system</h5> Auto launch will not be able to launch because flag '$snow_effect' has been set to 'true'</div><?php } ?>
+        <div id="countdown">
+            <div class="countdown-box">
+                <p class="days"></p><span>days</span>
+            </div>
+            <div class="countdown-box">
+                <p class="hours"></p><span>hours</span>
+            </div>
+            <div class="countdown-box">
+                <p class="minutes"></p><span>minutes</span>
+            </div>
+            <div class="countdown-box">
+                <p class="seconds"></p><span>seconds</span>
+            </div>
+        </div>
+        <h1 align="center">Until the 2020 Year!</h1>
+        <hr>
         <div id="carousel" class="carousel slide carousel-fade z-depth-1" data-ride="carousel" data-interval="5000">
             <ol class="carousel-indicators">
                 <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -375,71 +441,80 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-    </div>
-    <hr>
+        <hr>
     </div>
     <div class="container">
-        <h1 class="font-weight-bold">หลักสูตรการเรียน</h1>
-        <div class="row">
-            <div class="col-12 col-md-4">
-                <h2>มัธยมศึกษาตอนต้น</h2>
-                <hr>
-                <div class="row">
-                    <div class="col-4 col-md-6">
-                        <a href="#primary_normal">
-                            <div class="view overlay zoom z-depth-1">
-                                <img src="https://images.pondja.com/p_normal.jpg" class="img-fluid"
-                                    alt="หลักสูตรทั่วไป (ม.ต้น)">
-                                <div class="mask flex-center rgba-black-slight">
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-4 col-md-6">
-                        <a href="#primary_iec">
-                            <div class="view overlay zoom z-depth-1">
-                                <img src="https://images.pondja.com/p_jems.jpg" class="img-fluid"
-                                    alt="หลักสูตร IEC (ม.ต้น)">
-                                <div class="mask flex-center rgba-black-slight">
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+        <div class="card" align="center">
+            <div class="card-body">
+                <div class="card-title">
+                    <h1 class="font-weight-bold">หลักสูตรการเรียน</h1>
                 </div>
-            </div>
-            <div class="col-12 col-md-6">
-                <h2>มัธยมศึกษาตอนปลาย</h2>
-                <hr>
-                <div class="row">
-                    <div class="col-4 col-md-4">
-                        <a href="#secondary_normal">
-                            <div class="view overlay zoom z-depth-1">
-                                <img src="https://images.pondja.com/s_normal.jpg" class="img-fluid"
-                                    alt="หลักสูตรทั่วไป (ม.ปลาย)">
-                                <div class="mask flex-center rgba-black-slight">
+                <div class="card-text text-dark">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-12 col-md-4">
+                            <h2>มัธยมศึกษาตอนต้น</h2>
+                            <hr>
+                            <div class="row">
+                                <div class="col-4 col-md-6">
+                                    <a href="#primary_normal">
+                                        <div class="view overlay zoom z-depth-1">
+                                            <img src="https://images.pondja.com/p_normal.jpg" class="img-fluid"
+                                                alt="หลักสูตรทั่วไป (ม.ต้น)">
+                                            <div class="mask flex-center rgba-black-slight">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-4 col-md-6">
+                                    <a href="#primary_iec">
+                                        <div class="view overlay zoom z-depth-1">
+                                            <img src="https://images.pondja.com/p_jems.jpg" class="img-fluid"
+                                                alt="หลักสูตร IEC (ม.ต้น)">
+                                            <div class="mask flex-center rgba-black-slight">
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                    <div class="col-4 col-md-4">
-                        <a href="#secondary_emsp">
-                            <div class="view overlay zoom z-depth-1">
-                                <img src="https://images.pondja.com/s_emsp.jpg" class="img-fluid"
-                                    alt="หลักสูตร EMSP (ม.ปลาย)">
-                                <div class="mask flex-center rgba-black-slight">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <h2>มัธยมศึกษาตอนปลาย</h2>
+                            <hr>
+                            <div class="row">
+                                <div class="col-4 col-md-4">
+                                    <a href="#secondary_normal">
+                                        <div class="view overlay zoom z-depth-1">
+                                            <img src="https://images.pondja.com/s_normal.jpg" class="img-fluid"
+                                                alt="หลักสูตรทั่วไป (ม.ปลาย)">
+                                            <div class="mask flex-center rgba-black-slight">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <a href="#secondary_emsp">
+                                        <div class="view overlay zoom z-depth-1">
+                                            <img src="https://images.pondja.com/s_emsp.jpg" class="img-fluid"
+                                                alt="หลักสูตร EMSP (ม.ปลาย)">
+                                            <div class="mask flex-center rgba-black-slight">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <a href="#secondary_scius">
+                                        <div class="view overlay zoom z-depth-1">
+                                            <img src="https://images.pondja.com/s_scius.jpg" class="img-fluid"
+                                                alt="หลักสูตรวมว. (ม.ปลาย)">
+                                            <div class="mask flex-center rgba-black-slight">
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                    <div class="col-4 col-md-4">
-                        <a href="#secondary_scius">
-                            <div class="view overlay zoom z-depth-1">
-                                <img src="https://images.pondja.com/s_scius.jpg" class="img-fluid"
-                                    alt="หลักสูตรวมว. (ม.ปลาย)">
-                                <div class="mask flex-center rgba-black-slight">
-                                </div>
-                            </div>
-                        </a>
+                        </div>
+                        <div class="col-md-1"></div>
                     </div>
                 </div>
             </div>
@@ -502,15 +577,15 @@
             <?php }  ?>
         </h1>
         <div class="row">
-            <?php
+            <div class="col-12 col-md-8">
+                <?php
             $query = "SELECT * FROM `post` ORDER by time DESC limit 6";
             $result = mysqli_query($conn, $query);
 
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-            <div class="col-12 col-md-6">
-                <div class="card">
-                    <div class="hoverable view overlay zoom">
-                        <img class="card-img-top" src="<?php echo $row['cover']; ?>" alt="Card image cap">
+                <div class="card mb-3">
+                    <div class="hoverable view">
+                        <img class="view overlay card-img-top" src="<?php echo $row['cover']; ?>" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text"><i class="far fa-clock"></i>
                                 <?php
@@ -528,7 +603,7 @@
                             <p class="card-title">
                                 <h5>
                                     <?php 
-                                    echo '<a href="#news" style="color: black"><u>' . $row['title'] . '</u></a></h5><h6>'; 
+                                    echo '<a href="../news/?news=' . $row['id'] . '" style="color: black"><u>' . $row['title'] . '</u></a></h5><h6>'; 
                                     $split = explode(",", $row['tags']);
                                     foreach ($split as $s) { ?>
                                     <span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span>
@@ -536,27 +611,20 @@
                                 ?>
                                     </h6>
                             </p>
-                            <p class="card-text">
-                                <p class="d-none d-md-block">
-                                    <?php $split = explode(" ", $row['article']); $i = 0; foreach($split as $s) {
-                                        $i++;
-                                        if ($i < 20 && $i > 0) {
-                                            echo ' ' . $s;
-                                        } else {
-                                            $i = -1;
-                                            break;
-                                        }
-                                    }  if ($i == -1) echo '... <a href="#news?news=' . $row['id'] . '" data-toggle="modal" data-target="#newsPopup">ดูเพิ่มเติม</a>';
-                                    ?>
-                                </p>
-                            </p>
                         </div>
                     </div>
                 </div>
-                <hr>
+                <?php } ?>
             </div>
-            <?php }
-        ?>
+            <div class="col-md-4 d-none d-md-block">
+                <div class="fb-page" data-href="https://www.facebook.com/SMD.KKU" data-tabs="timeline" data-width=""
+                    data-height="2000" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
+                    data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/SMD.KKU" class="fb-xfbml-parse-ignore"><a
+                            href="https://www.facebook.com/SMD.KKU">สาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา
+                            (มอดินแดง)</a></blockquote>
+                </div>
+            </div>
         </div>
     </div>
     <br>
@@ -566,6 +634,10 @@
     <!-- Your customer chat code -->
     <div class="fb-customerchat" attribution=setup_tool page_id="224318804364546" theme_color="#006AFF"
         logged_in_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม" logged_out_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม"></div>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v5.0&appId=2529205720433288&autoLogAppEvents=1">
+    </script>
 
     <?php include '../global/footer.php';?>
     <?php include '../global/popup.php';?>
@@ -605,9 +677,9 @@
 
             }
         });
-        /*$(window).on('load',function(){
-            $('#login').modal('show');
-        });*/
+        $(window).on('load',function(){
+            $('#announcementPopup').modal('show');
+        });
     </script>
 
     <?php

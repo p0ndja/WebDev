@@ -167,7 +167,7 @@ $result_achi = mysqli_query($conn, $query_achi);
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="card<?php if ($id == 604019) echo ' bg-dark';?>">
+                <div class="card">
                     <div class="card-body">
                         <p><?php echo $profile_displayText ?></p>
                     </div>
