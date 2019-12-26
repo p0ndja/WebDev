@@ -49,12 +49,48 @@ create table permission (
 );
 
 create table achievement (
-username LONGTEXT NOT NULL,
-id INT NOT NULL,
-page404 BOOLEAN DEFAULT false,
-betaTester BOOLEAN DEFAULT false,
-PRIMARY KEY ( id )
+   username LONGTEXT NOT NULL,
+   id INT NOT NULL,
+   page404 BOOLEAN DEFAULT false,
+   betaTester BOOLEAN DEFAULT false,
+   WebDevTycoon BOOLEAN DEFAULT false,
+   the4thFloor BOOLEAN DEFAULT false,
+   Xmas BOOLEAN DEFAULT false,
+   PRIMARY KEY ( id )
 );
+
+=================================================
+
+CONFIG TABLE
+
+create table config(
+   id INT NOT NULL AUTO_INCREMENT,
+   name LONGTEXT NOT NULL,
+   bool BOOLEAN,
+   msg LONGTEXT,
+   primary key (id)
+);
+insert into `config` (name, bool, msg) VALUES ('indexpg_showCarousel',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('indexpg_showLatestNews',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('indexpg_showCourse',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('indexpg_showPreviewGallery',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('indexpg_AlertMessage',false,NULL);
+insert into `config` (name, bool, msg) VALUES ('indexpg_Countdown',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('indexpg_CountdownDate',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('global_Livestream',true,'https://pondja.com');
+insert into `config` (name, bool, msg) VALUES ('global_useMDBoostrap',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('global_lastUpdate',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('global_snowEffect',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('global_achievementSystem',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('user_allowRegister',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('user_allowLogin',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('user_allowPostForum',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('user_profile_allowEditProfile',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('user_profile_allowEditBackground',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('user_profile_allowEditBio',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('user_profile_displayExperience',true,NULL);
+
+=================================================
 
 INSERT INTO `permission` (username, id, isAdmin, isTeacher, isNewsReporter, isForumEditor, isRegistrator, isTimetableDesigner) VALUES ('palapon2545', 604019, true, true, true, true, true, true)
 
