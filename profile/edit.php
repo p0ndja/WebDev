@@ -162,7 +162,7 @@
                         </div>
                     </div>
                     <hr>
-                    <?php if ($_SESSION['id'] == '604019') { ?>
+                    <?php if ($_SESSION['id'] == 604019) { ?>
                     <div class="card">
                         <div class="card-body">
                             <h2>ประวัติการศึกษา</h2>

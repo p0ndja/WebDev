@@ -22,9 +22,7 @@
         if (! $result_final) {
             die('Could not post ' . mysqli_error());
         }
-
-        echo $article;
     }
 
-    //header("Location: ../news")
+    header("Location: ../news")
 ?>

@@ -8,6 +8,14 @@
 
 <head>
     <?php include'../global/head.php'?>
+    <script type="text/javascript">
+    $(function () {
+      $('.summernote').summernote({
+        height: 500,
+      });
+      //$('.summernote').summernote('code', '<-?php echo $profile_displayText; ?>');
+    });
+  </script>
 </head>
 
 <body>
@@ -88,19 +96,16 @@
                             <h6>
                                 <div class="input-group flex-nowrap">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="addon-cover">รูปปก</span>
+                                        <span class="input-group-text" id="addon-cover">รูปปก (URL)</span>
                                     </div>
                                     <input type="text" class="form-control" id="cover" name="cover" aria-label="cover"
-                                        aria-describedby="addon-title" required>
+                                        aria-describedby="addon-title">
                                 </div>
                             </h6>
                             <hr>
                             <div class="form-group">
-                                <label for="article">
-                                    <h5>Article</h5>
-                                </label>
-                                <textarea class="form-control" rows="10" id="article" name="article"
-                                    required placeholder="สามารถใช้ HTML, Bootstrap Format ได้"></textarea>
+                                <label for="article"><h5>Article</h5></label>
+                                <textarea class="summernote" id="article" name="article"></textarea>
                             </div>
                             <div class="input-group flex-nowrap">
                                 <div class="input-group-prepend">
