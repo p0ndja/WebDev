@@ -55,7 +55,7 @@
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
         <form method="POST" action="../news/save.php">
-            <div class="card mb-12">
+            <div class="card mb-3">
                 <div class="card-header bg-dark text-white">
                     <h5 style="color: white">
                         <div class="input-group flex-nowrap">
