@@ -54,8 +54,7 @@
     </style>
 </head>
 
-<body style="background-color: #ededed">
-    <?php include '../global/login.php'; ?>
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
         role="navigation">
         <?php include '../global/navbar.php'; ?>

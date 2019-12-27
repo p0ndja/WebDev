@@ -1,6 +1,4 @@
-<?php 
-    include '../global/connect.php';
-?>
+<?php include '../global/connect.php'; ?>
 
 <!DOCTYPE html>
 <html lang="th">
@@ -9,11 +7,11 @@
     <?php include '../global/head.php'; ?>
 </head>
 
-<body style="background-color: #ededed">
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #db6c24;">
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <div class="container">
+    <div class="container" id="container" style="padding-top: 88px">
         <br>
         <div class="row">
             <div class="col-12">
@@ -26,7 +24,8 @@
         </div>
         <br>
     </div>
-    <?php include '../global/footer.php';?>
 </body>
+<?php include '../global/footer.php';?>
+<?php include '../global/popup.php';?>
 
 </html>

@@ -1,198 +1,136 @@
-    <div class="modal fade" name="login" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog cascading-modal" role="document">
-            <!--Content-->
-            <div class="modal-content">
+<?php
+    include '../global/connect.php';
 
-                <!--Modal cascading tabs-->
-                <div class="modal-c-tabs">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs md-tabs tabs-2 grey lighten-2" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active black-text" data-toggle="tab" href="#panel7" role="tab">
-                                <i class="fas fa-user mr-1"></i> Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link black-text" data-toggle="tab" href="#panel8" role="tab">
-                                <i class="fas fa-user-plus mr-1"></i> Register</a>
-                        </li>
-                    </ul>
+    //กรณี Login
+if (isset($_POST['login_submit'])) {
+    $user = $_POST['login_username'];
+    $pass = md5($_POST['login_password']);
 
-                    <!-- Tab panels -->
-                    <div class="tab-content">
-                        <!--Panel 7-->
-                        <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-                            <form method="post" action="../global/save.php" enctype="multipart/form-data">
-                                <!--Body-->
-                                <div class="modal-body mb-1">
+    //ดึงข้อมูลมาเช็คว่า $User ที่ตั้งรหัสผ่านเป็น $Pass มีในระบบรึเปล่า
+    $query = "SELECT * FROM `userdatabase` WHERE username = '$user' AND password = '$pass'";
+    
+    $result = mysqli_query($conn, $query);
 
+    if (! $result) {
+        die('Could not get data: ' . mysqli_error($conn));
+    }
+   
+    //ปกติค่านี้ ถ้าเจอในฐานข้อมูลจะ return ออกมา > 0
+    //ตั้งค่าข้อมูลต่าง ๆ ของ User ใส่ SESSION
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $_SESSION['user'] = $row['username'];
+        $_SESSION['fn'] = $row['firstname'];
+        $_SESSION['ln'] = $row['lastname'];
+        $_SESSION['id'] = $row['id'];
+    }
 
+    //ถ้าไม่เจอ User นี้ จะ return เป็น 0
+    if (mysqli_num_rows($result) == 0) {
+        $_SESSION['error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
+    } else {
+        $id = $_SESSION['id'];
+        $query_final = "SELECT * FROM `profile` WHERE id = '$id'";
+        $result_final = mysqli_query($conn, $query_final);
+        while ($row = mysqli_fetch_array($result_final, MYSQLI_ASSOC)) {
+            $_SESSION['pi'] = $row['profile'];
+        }
 
-                                    <?php
-                                    if (isset($_SESSION['error'])) {
-                                        echo '<div class="alert alert-danger" role="alert">'. $_SESSION['error'] .'</div>';
-                                    }
-                                ?>
+        $_SESSION['error'] = null;
+        $_SESSION['success'] = "เข้าสู่ระบบสำเร็จ";
+    }
 
-                                    <div class="md-form form-sm mb-5">
-                                        <i class="fas fa-user prefix"></i>
-                                        <input type="text" name="login_username" id="login_username"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="login_username">Username</label>
-                                    </div>
-                                    <div class="md-form form-sm mb-4">
-                                        <i class="fas fa-lock prefix"></i>
-                                        <input type="password" name="login_password" id="login_password"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="login_password">Password</label>
-                                    </div>
-                                </div>
-                                <!--Footer-->
-                                <div class="modal-footer">
-                                    <input class="btn btn-success" type="submit" name="login_submit"
-                                        value="Login"></input>
-                                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-                            </form>
-                        </div>
-                        <!--/.Panel 7-->
+    //ดีดกลับหน้าหลัก (url ในที่นี้เป็น /home/)
+    header("Location: ../home");
+}
 
-                        <!--Panel 8-->
-                        <div class="tab-pane fade" id="panel8" role="tabpanel">
-                            <form method="post" action="../global/save.php" enctype="multipart/form-data">
-                                <!--Body-->
-                                <div class="modal-body mb-1">
-                                    <?php
-                                if (isset($_SESSION['error'])) {
-                                    echo '<div class="alert alert-danger" role="alert">'. $_SESSION['error'] .'</div>';
-                                }
-                                ?>
-                                    <div class="md-form form-sm mb-1">
-                                        <div class="form-row">
-                                            <div class="col">
-                                                <input type="text" id="register_firstname" name="register_firstname"
-                                                    class="form-control form-control-sm validate" required>
-                                                <label for="register_firstname">ชื่อ</label>
-                                            </div>
-                                            <div class="col">
-                                                <input type="text" id="register_lastname" name="register_lastname"
-                                                    class="form-control form-control-sm validate" required>
-                                                <label for="register_lastname">นามสกุล</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col">
-                                                <input type="text" id="register_firstname_en"
-                                                    name="register_firstname_en"
-                                                    class="form-control form-control-sm validate" required>
-                                                <label for="register_firstname_en">Firstname</label>
-                                            </div>
-                                            <div class="col">
-                                                <input type="text" id="register_lastname_en" name="register_lastname_en"
-                                                    class="form-control form-control-sm validate" required>
-                                                <label for="register_lastname_en">Lastname</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col">
-                                                <select
-                                                    class="browser-default custom-select form-control form-control-sm validate"
-                                                    id="register_prefix" name="register_prefix" required>
-                                                    <option value="" disabled="" selected="">- คำนำหน้า -</option>
-                                                    <option value="เด็กชาย">เด็กชาย</option>
-                                                    <option value="เด็กหญิง">เด็กหญิง</option>
-                                                    <option value="นาย">นาย</option>
-                                                    <option value="นาง">นาง</option>
-                                                    <option value="นางสาว">นางสาว</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="md-form form-sm mb-1">
-                                        <i class="fas fa-id-badge prefix"></i>
-                                        <input type="text" name="register_username" id="register_username"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_username">ชื่อผู้ใช้งาน</label>
-                                    </div>
-                                    <div class="md-form form-sm mb-1">
-                                        <i class="fas fa-key prefix"></i>
-                                        <input type="password" name="register_password" id="register_password"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_password">รหัสผ่าน</label>
-                                    </div>
-                                    <div class="md-form form-sm mb-1">
-                                        <i class="fas fa-user prefix"></i>
-                                        <input type="text" name="register_id" id="register_id"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_id">เลขประจำตัวนักเรียน</label>
-                                    </div>
-                                    <div class="md-form form-sm">
-                                        <i class="fas fa-id-card prefix"></i>
-                                        <input type="text" name="register_citizen_id" id="register_citizen_id"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_citizen_id">เลขประจำตัวประชาชน</label>
-                                    </div>
-                                    <div class="md-form form-sm mb-1">
-                                        <i class="fas fa-envelope prefix"></i>
-                                        <input type="email" name="register_email" id="register_email"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_email">อีเมล</label>
-                                    </div>
-                                    <div class="md-form form-sm form-row mb-1">
-                                        <div class="col">
-                                            <select
-                                                class="browser-default custom-select form-control form-control-sm validate"
-                                                id="register_grade" name="register_grade" required>
-                                                <option value="" disabled="" selected="">- ระดับชั้น -</option>
-                                                <option value="1">ม.1</option>
-                                                <option value="2">ม.2</option>
-                                                <option value="3">ม.3</option>
-                                                <option value="4">ม.4</option>
-                                                <option value="5">ม.5</option>
-                                                <option value="6">ม.6</option>
-                                            </select>
-                                        </div>
-                                        <div class="col">
-                                            <select
-                                                class="browser-default custom-select form-control form-control-sm validate"
-                                                id="register_class" name="register_class" required>
-                                                <option value="" disabled="" selected="">- ห้อง -</option>
-                                                <option value="1">1 (IEC/EMSP)</option>
-                                                <option value="2">2 (ปกติ)</option>
-                                                <option value="3">3 (ปกติ)</option>
-                                                <option value="4">4 (ปกติ)</option>
-                                                <option value="5">5 (วมว.)</option>
-                                            </select>
-                                        </div>
-                                    </div>
+    //กรณี Register
+if (isset($_POST['register_submit'])) {
+    $user = $_POST['register_username'];
+    $pass = md5($_POST['register_password']);
+    $id = $_POST['register_id'];
+    $citizen_id = $_POST['register_citizen_id'];
+    $firstname = $_POST['register_firstname'];
+    $lastname = $_POST['register_lastname'];
+    $email = $_POST['register_email'];
+    $firstname_en = $_POST['register_firstname_en'];
+    $lastname_en = $_POST['register_lastname_en'];
+    $prefix = $_POST['register_prefix'];
+    $grade = $_POST['register_grade'];
+    $class = $_POST['register_class'];
 
-                                    <div class="md-form form-sm mb-5">
-                                        <i class="fas fa-images prefix"></i>
-                                        <input type="file" name="upload" id="upload"
-                                            class="form-control form-control-sm validate" required
-                                            accept="image/png, image/jpeg">
-                                    </div>
+    //ลองเอาค่าต่าง ๆ ไปดูว่ามีผู้ใช้นี้อยู่ในระบบแล้วรึยัง
+    $query1 = "SELECT * FROM `userdatabase` WHERE username = '$user'";
+    $query2 = "SELECT * FROM `userdatabase` WHERE citizen_id = '$citizen_id'";
+    $result1 = mysqli_query($conn, $query1);
+    $result2 = mysqli_query($conn, $query2);
 
-                                </div>
-                                <!--Footer-->
-                                <div class="modal-footer">
-                                    <input class="btn btn-success" type="submit" name="register_submit"
-                                        value="Sign Up"></input>
-                                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-                            </form>
-                        </div>
-                        <!--/.Panel 8-->
-                    </div>
+    if (! $result1) {
+        die('Could not get data: ' . mysqli_error($conn));
+    }
 
-                </div>
-            </div>
-            <!--/.Content-->
-        </div>
-    </div>
-    <script>
-        // Material Select Initialization
-        $(document).ready(function () {
-            $('.mdb-select').materialSelect();
-        });
-    </script>
+    //กรณีมีข้อมูลอยู่แล้ว จะ return ค่าเป็น 1
+    if (mysqli_num_rows($result1) == 1) {
+        $_SESSION['error'] = "มีชื่อผู้ใช้นี้อยู่แล้ว";
+    } else if (mysqli_num_rows($result2) == 1) {
+        $_SESSION['error'] = "รหัสบัตรประชาชนนี้ ได้ทำการสมัครสมาชิกอยู่แล้ว";
+    } else {
+        //กรณีนี้ไม่เจอข้อมูลใด ๆ ตรงเลย เลยสามารถสมัครได้
+        $finaldir = "";
+
+        if(isset($_FILES['upload'])){
+            $name_file =  $_FILES['upload']['name'];
+            $tmp_name =  $_FILES['upload']['tmp_name'];
+
+            date_default_timezone_set('Asia/Bangkok'); $date = date('Y-m-d_H-i-s', time());
+            
+            $locate_img ="../cache/";
+            move_uploaded_file($tmp_name,$locate_img.$name_file);
+
+            rename($locate_img.$name_file, $locate_img.$user.'_'.$date.'_'.$name_file);
+
+            $finaldir = $locate_img.$user.'_'.$date.'_'.$name_file;
+
+        }
+        
+        $query_final = "INSERT INTO `userdatabase` (id, username, password, citizen_id, prefix, firstname, lastname, firstname_en, lastname_en, email, grade, class) VALUES ($id, '$user', '$pass', $citizen_id, '$prefix', '$firstname', '$lastname', '$firstname_en', '$lastname_en', '$email', $grade, $class)";
+        $result_final = mysqli_query($conn, $query_final);
+
+        $query_achi = "INSERT INTO `achievement` (username, id, betaTester) VALUES ('$user', $id, true)";
+        $result_achi = mysqli_query($conn, $query_achi);
+
+        $query_profile = "INSERT INTO `profile` (id, profile) VALUES ($id, '$finaldir')";
+        $result_profile = mysqli_query($conn, $query_profile);
+
+        $query_permission = "INSERT INTO `permission` (username, id) VALUES ('$user', $id)";
+        $result_permission = mysqli_query($conn, $query_permission);
+
+        //แสดงค่ากลับหาผู้ใช้
+        if ($result_final) {
+            $_SESSION['error'] = null;
+            $_SESSION['success'] = "สมัครผู้ใช้งานสำเร็จ";
+            $_SESSION['user'] = $user;
+            $_SESSION['id'] = $id;
+            $_SESSION['fn'] = $_POST['register_firstname'];
+            $_SESSION['ln'] = $_POST['register_lastname'];
+            $_SESSION['pi'] = $finaldir;
+        } else {
+            die('Could not register ' . mysqli_error($conn));
+        }
+
+        if (! $result_profile) {
+            die('Could not create profile ' . mysqli_error($conn));
+        }
+
+        if (! $result_achi) {
+            die('Could not add achievement ' . mysqli_error($conn));
+        }
+        
+        if (! $result_permission) {
+            die('Could not grant permission ' . mysqli_error($conn));
+        }
+    }
+    
+    //ดีดกลับหน้าหลัก (url ในที่นี้เป็น /home/)
+    header("Location: ../home");
+}
+?>

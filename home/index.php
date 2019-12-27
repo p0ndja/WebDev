@@ -311,7 +311,11 @@
                     $(".seconds").text(seconds);
                     if (distance < 0) {
                         clearInterval(x);
-                        $("#countdown").text("EXPIRED")
+                        $(".days").text("0");
+                        $(".hours").text("0");
+                        $(".minutes").text("0");
+                        $(".seconds").text("0");
+                        //$("#countdown").text("EXPIRED")
                     }
                 }, 1000);
             });
@@ -321,8 +325,6 @@
 </head>
 
 <body>
-    <?php include '../global/login.php'; ?>
-
     <header id="header">
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">

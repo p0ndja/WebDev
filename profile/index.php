@@ -42,9 +42,9 @@
     </style>
 </head>
 
-<body style="background-color: #ededed">
-    <?php include '../global/login.php'; ?>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
+        role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
     <?php if (isset($_GET['search']) || (isset($_SESSION['id']))) {
@@ -118,8 +118,8 @@ $result_achi = mysqli_query($conn, $query_achi);
     <div class="container" id="container" style="padding-top: 88px">
         <hr>
         <div class="card">
-                <div class="card-body">
-        <div class="row">
+            <div class="card-body">
+                <div class="row">
                     <div class="col-11">
                         <h1> <?php echo $profile_name; ?></h1>
                         <h5> <?php echo $profile_name_en; ?></h5>
@@ -144,7 +144,8 @@ $result_achi = mysqli_query($conn, $query_achi);
                         <div class="card">
                             <div class="card-body">
                                 <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
-                                <strong>ระดับชั้น</strong> <?php echo $profile_grade . '/' . $profile_room . ' (' . $profile_class . ')'?><br>
+                                <strong>ระดับชั้น</strong>
+                                <?php echo $profile_grade . '/' . $profile_room . ' (' . $profile_class . ')'?><br>
                                 <strong>อีเมล</strong>
                                 <a href="mailto:<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
                             </div>
@@ -155,8 +156,8 @@ $result_achi = mysqli_query($conn, $query_achi);
                                 <h2>Achievement</h2>
                                 <hr>
                                 <div class="row">
-                                <?php echo $profile_achi; ?>
-                        </div>
+                                    <?php echo $profile_achi; ?>
+                                </div>
                             </div>
                         </div>
                         <hr>
@@ -230,7 +231,8 @@ $result_achi = mysqli_query($conn, $query_achi);
                                 <img src="https://webcontest.cs.kku.ac.th/2562/photo/award.jpg" width=100%>
                                 <br><a href="https://webcontest.cs.kku.ac.th/index.php?page=result&y=2562"
                                     target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="https://www.facebook.com/SMD.KKU/posts/2215982308531509" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://www.facebook.com/SMD.KKU/posts/2215982308531509" target="_blank"><i
+                                        class="fas fa-external-link-alt"></i></a>
                                 <hr>
                             </div>
                             <div class="col-md-12 col-sm-12">
@@ -254,15 +256,17 @@ $result_achi = mysqli_query($conn, $query_achi);
                                 </p>
                                 <img src="http://smd-s.kku.ac.th/home/images/smd-62/Computer_Education_Open_House_2018.jpg"
                                     width=100%>
-                                <a href="https://www.facebook.com/SMD.KKU/photos/?tab=album&album_id=1936354579827618"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://www.facebook.com/SMD.KKU/photos/?tab=album&album_id=1936354579827618"><i
+                                        class="fas fa-external-link-alt"></i></a>
                                 <a
-                                    href="http://smd-s.kku.ac.th/home/index.php/component/content/article/80-2012-09-14-02-08-54/421-computer-education-open-house-2018"><i class="fas fa-external-link-alt"></i></a>
+                                    href="http://smd-s.kku.ac.th/home/index.php/component/content/article/80-2012-09-14-02-08-54/421-computer-education-open-house-2018"><i
+                                        class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <hr>
-                        <?php } ?>
+                <?php } ?>
 
             </div>
         </div>

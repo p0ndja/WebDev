@@ -1,8 +1,10 @@
+<?php include '../global/connect.php'; ?>
+
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    <?php include '../global/head.php';?>
+    <?php include '../global/head.php'; ?>
 
 </head>
 
@@ -92,7 +94,8 @@
         </div>
     </div>
     <br>
-    <?php include '../global/footer.php'; ?>
 </body>
+<?php include '../global/footer.php'; ?>
+<?php include '../global/popup.php'; ?>
 
 </html>
