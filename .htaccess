@@ -1,2 +1,3 @@
-ErrorDocument 404 https://satit.pondja.com/extra/404.php
+ErrorDocument 404 https://satit.pondja.com/home
+ErrorDocument 403 https://satit.pondja.com/home
 DirectoryIndex .index.php .index.html index.php index.html .redirect.html redirect.html .redirect.php redirect.php
