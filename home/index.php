@@ -450,7 +450,7 @@
                                 <div class="col-4 col-md-6">
                                     <a href="#primary_normal">
                                         <div class="view overlay zoom z-depth-1">
-                                            <img src="https://images.pondja.com/p_normal.jpg" class="img-fluid"
+                                            <img src="../assets/images/p_normal.jpg" class="img-fluid"
                                                 alt="หลักสูตรทั่วไป (ม.ต้น)">
                                             <div class="mask flex-center rgba-black-slight">
                                             </div>
@@ -460,7 +460,7 @@
                                 <div class="col-4 col-md-6">
                                     <a href="#primary_iec">
                                         <div class="view overlay zoom z-depth-1">
-                                            <img src="https://images.pondja.com/p_jems.jpg" class="img-fluid"
+                                            <img src="../assets/images/p_jems.jpg" class="img-fluid"
                                                 alt="หลักสูตร IEC (ม.ต้น)">
                                             <div class="mask flex-center rgba-black-slight">
                                             </div>
@@ -476,7 +476,7 @@
                                 <div class="col-4 col-md-4">
                                     <a href="#secondary_normal">
                                         <div class="view overlay zoom z-depth-1">
-                                            <img src="https://images.pondja.com/s_normal.jpg" class="img-fluid"
+                                            <img src="../assets/images/s_normal.jpg" class="img-fluid"
                                                 alt="หลักสูตรทั่วไป (ม.ปลาย)">
                                             <div class="mask flex-center rgba-black-slight">
                                             </div>
@@ -486,7 +486,7 @@
                                 <div class="col-4 col-md-4">
                                     <a href="#secondary_emsp">
                                         <div class="view overlay zoom z-depth-1">
-                                            <img src="https://images.pondja.com/s_emsp.jpg" class="img-fluid"
+                                            <img src="../assets/images/s_emsp.jpg" class="img-fluid"
                                                 alt="หลักสูตร EMSP (ม.ปลาย)">
                                             <div class="mask flex-center rgba-black-slight">
                                             </div>
@@ -496,7 +496,7 @@
                                 <div class="col-4 col-md-4">
                                     <a href="#secondary_scius">
                                         <div class="view overlay zoom z-depth-1">
-                                            <img src="https://images.pondja.com/s_scius.jpg" class="img-fluid"
+                                            <img src="../assets/images/s_scius.jpg" class="img-fluid"
                                                 alt="หลักสูตรวมว. (ม.ปลาย)">
                                             <div class="mask flex-center rgba-black-slight">
                                             </div>
