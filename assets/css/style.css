@@ -46,14 +46,16 @@
 
 body {
     font-family: 'Kanit', sans-serif !important;
-    background-color: #ededed;
-    /*
-    background: url('https://images.pondja.com/bg-pastel-mode_resize.jpg') no-repeat center center fixed;
+    background: url('https://images.pondja.com/Bottom_texture.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    */
+}
+
+body .admin {
+    font-family: 'Kanit', sans-serif !important;
+    background-color: #4b4b4b;
 }
 
 .row.make-columns {
@@ -101,9 +103,21 @@ body {
     background-size: 100%;
 }
 
+.admin {
+    background-image: url('https://images.pondja.com/bg_dark_resize.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
 @media only screen and (max-width: 768px) {
     .navbar {
         background-image: url('https://images.pondja.com/bg_light_resize.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: fixed;
+    }
+    .admin {
+        background-image: url('https://images.pondja.com/bg_dark_resize.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: fixed;
