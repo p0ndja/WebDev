@@ -89,8 +89,9 @@
                 <a class="dropdown-item" href="#"> การเช็คชื่อ <i class="fas fa-calendar-check"></i></a>
                 <a class="dropdown-item" href="#"> ผลการเรียน (SGS) <i class="fas fa-graduation-cap"></i></a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" style="color: red" href="../global/logout.php">ออกจากระบบ <i
-                        class="fas fa-sign-out-alt"></i></a>
+                <a class="dropdown-item text-secondary" href="../admin/"> ส่วนของแอดมิน <i class="fas fa-user-tie"></i></a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-danger" href="../global/logout.php">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></a>
             </div>
         </li>
         <?php
