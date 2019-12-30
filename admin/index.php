@@ -7,7 +7,7 @@
     <?php include '../global/head.php';?>
 </head>
 
-<body>
+<body class="admin">
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar admin" id="nav"
         role="navigation">
         <?php include '../global/navbar.php'; ?>
