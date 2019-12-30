@@ -33,7 +33,7 @@
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานห้องสมุด </a></li>
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ชมรมผู้ปกครองและครู</a></li>
                 </ul>
-
+                <a style="color: white" href="#" class="disabled"> เอกสารประกอบการสอน </a></li>
             </div>
             <div class="col-md-3">
                 <p style="color: white">ปฏิทิน</p>
@@ -42,8 +42,9 @@
                     <li style="color: #ff6c00"><a style="color: white" href="../calendar" class="disabled"> ตารางเรียน</a></li>
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ตารางสอบ </a></li>
                 </ul>
-                <a style="color: white" href="../forum"> SMD Forum </a></li>
-                <br><a style="color: white" href="#" class="disabled"> SMD Shop </a></li>
+                <a style="color: white" href="../news"> ข่าวสาร </a>
+                <br><a style="color: white" href="../forum"> SMD Forum </a>
+                <br><a style="color: white" href="#" class="disabled"> SMD Shop </a>
             </div>
             <div class="col-md-3 justify-content-center">
                 <a href='http://www.counter-zaehler.de'>Internet Counter</a>
