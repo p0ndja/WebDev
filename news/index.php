@@ -51,7 +51,7 @@
                             <div class="card-title">
                             <h1>
                                 <?php 
-                                    echo '<a href="../news/?news=' . $row['id'] . '">' . $row['title'] . '</a></h1><h4>'; 
+                                    echo '<a href="../news/?news=' . $row['id'] . '">' . $row['title'] . '</a> <a href="../news/post.php?news=' . $row['id'] . '"><i class="fas fa-pen-square"></i></a></h1><h4>'; 
                                     $split = explode(",", $row['tags']);
                                     foreach ($split as $s) { ?>
                                         <span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span>

@@ -5,12 +5,27 @@
 
 <head>
     <?php include '../global/head.php'; ?>
+    <?php
+    $title = ""; $tags = ""; $cover = ""; $article = "";
+            if (isset($_GET['news'])) {
+                $postID = $_GET['news'];
+                $query = "SELECT * FROM `post` WHERE id = $postID";
+                $result = mysqli_query($conn, $query);
+                if (mysqli_num_rows($result) == 0) die('Could not load data');
+                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    $article = $row['article'];
+                    $title = $row['title'];
+                    $cover = $row['cover'];
+                    $tags = $row['tags'];
+                }
+            }
+    ?>
     <script type="text/javascript">
     $(function () {
       $('.summernote').summernote({
         height: 500,
       });
-      //$('.summernote').summernote('code', '<-?php echo $profile_displayText; ?>');
+      $('.summernote').summernote('code', '<?php echo $article; ?>');
     });
   </script>
 </head>
@@ -24,29 +39,19 @@
 
         $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
         $result = mysqli_query($conn, $query);
-        $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
-        $result_profile = mysqli_query($conn, $query_profile);
-        
-        if (mysqli_num_rows($result) == 0) {
-            die('Could not load data');
-        }
-
-        $undefined = "<i>Undefined</i>";
-        $profile_name = "<i>Undefined Thai Name</i>";
-        $profile_name_en = "<i>Undefined English Name</i>";
-        $profile_id = $undefined;
-        $profile_image = "https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png";
-       
+        if (mysqli_num_rows($result) == 0) die('Could not load data');
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $profile_name = $row['firstname'] . ' ' . $row['lastname'];
             $profile_id = $row['id'];
         }
 
-        while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
-            if ($row['profile'] != null)
-                $profile_image = $row['profile'];
+        $query = "SELECT * FROM `profile` WHERE id = '$id'";
+        $result = mysqli_query($conn, $query);
+        if (mysqli_num_rows($result) == 0) die('Could not load data');
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $profile_image = $row['profile'];
         }
-        
+
         $_SESSION['time'] = $date;
         
     ?>
@@ -54,7 +59,7 @@
         <?php include '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
-        <form method="POST" action="../news/save.php">
+        <form method="POST" action="../news/save.php<?php if (isset($_GET['news'])) echo '?news=' . $_GET['news']; ?>">
             <div class="card mb-3">
                 <div class="card-header bg-dark text-white">
                     <h5 style="color: white">
@@ -63,7 +68,7 @@
                                 <span class="input-group-text" id="addon-title">หัวข้อ</span>
                             </div>
                             <input type="text" class="form-control" id="title" name="title" aria-label="title"
-                                aria-describedby="addon-title" required>
+                                aria-describedby="addon-title" required value="<?php echo $title; ?>">
                         </div>
                     </h5>
                 </div>
@@ -74,7 +79,7 @@
                                         <span class="input-group-text" id="addon-cover">รูปปก (URL)</span>
                                     </div>
                                     <input type="text" class="form-control" id="cover" name="cover" aria-label="cover"
-                                        aria-describedby="addon-title">
+                                        aria-describedby="addon-title" value="<?php echo $cover; ?>">
                                 </div>
                             </h6>
                             <hr>
@@ -87,11 +92,11 @@
                                     <span class="input-group-text" id="addon-tags">แท็ก</span>
                                 </div>
                                 <input type="text" class="form-control" id="tags" name="tags" aria-label="tags"
-                                    aria-describedby="addon-tags">
+                                    aria-describedby="addon-tags" value="<?php echo $tags; ?>">
                             </div>
                     <div class="row justify-content-end">
                         <h6>เขียนโดย <?php echo $profile_name; ?> เมื่อ <?php echo $date . ' ' ?>
-                            <input type="submit" class="btn btn-success" value="บันทึก" name="post_submit"></input>
+                            <input type="submit" class="btn btn-success" value="บันทึก" name="<?php if (isset($_GET['news'])) echo 'post_update'; else echo 'post_submit'; ?>"></input>
                         </h6>
                     </div>
                 </div>
