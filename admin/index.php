@@ -21,26 +21,32 @@
             <p>GLOBAL_OVERRIDE_CHECKING_ADMIN</p>
         </div>
         <?php } ?>
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-5">
             <div class="card card-body card-text mb-3">
-        <?php
-        $cor = mysqli_query($conn, "SELECT * FROM `config`");
-        while($get_config = mysqli_fetch_array($cor, MYSQLI_ASSOC)) {
-            $b = $get_config['bool'];
-            if ($b == true) {
-                $b = ' <span class="badge badge-success">true</span>';
-            } else {
-                $b = ' <span class="badge badge-danger">false</span>';
-                        }
-            echo '<p>' . $get_config['name'] . $b . '</p>';
-        }
-    ?>
-    </div>
+                <?php
+                    $cor = mysqli_query($conn, "SELECT * FROM `config`");
+                    while($get_config = mysqli_fetch_array($cor, MYSQLI_ASSOC)) {
+                        $b = $get_config['bool'];
+                        if ($b == true) $b = ' checked';
+                        else $b = ' ';
+                ?>
+                <!-- Material checked -->
+                <div class="switch switch-warning mb-1">
+                    <label>
+                        <input type="checkbox" id="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
+                        <span class="lever"></span>
+                        <a style="color: black;" class="material-tooltip-main" data-toggle="tooltip" title="<?php echo $get_config['description'] . ' (' . $get_config['name'] . ')';?>">
+                        <?php echo $get_config['title'];?>
+                        </a>
+                    </label>
+                </div>
+                <?php } ?>
+            </div>
         </div>
     </div>
 </body>
 
-<?php //include '../global/footer.php' ?>
+<?php include '../global/footer.php' ?>
 <?php include '../global/popup.php' ?>
 
 </html>
