@@ -104,18 +104,25 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-11">
+                        <div class="col-12 col-md-12">
                             <h1> <?php echo $profile_name; ?></h1>
                             <h5> <?php echo $profile_name_en; ?></h5>
-                        </div>
-                        <div class="col-1">
-                            <input type="submit" class="btn btn-success float-right" name="edit_submit"
-                                value="บันทึก"></input>
                         </div>
                     </div>
                 </div>
             </div>
             <hr>
+            <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
+            <input type="submit" class="btn btn-success" align="left" name="edit_submit"
+                                value="บันทึก"></input>
+
+                <!--ul class="list-unstyled">
+                    <li><a class="btn-floating red"><i class="fas fa-star"></i></a></li>
+                    <li><a class="btn-floating yellow darken-1"><i class="fas fa-user"></i></a></li>
+                    <li><a class="btn-floating green"><i class="fas fa-envelope"></i></a></li>
+                    <li><a class="btn-floating blue"><i class="fas fa-shopping-cart"></i></a></li>
+                </ul-->
+            </div>
             <div class="row">
                 <div class="col-md-4 col-sm-12">
                     <div class="card">

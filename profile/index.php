@@ -120,15 +120,15 @@ $result_achi = mysqli_query($conn, $query_achi);
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-11">
+                    <div class="col-12 col-md-12">
                         <h1> <?php echo $profile_name; ?></h1>
                         <h5> <?php echo $profile_name_en; ?></h5>
                     </div>
-                    <div class="col-1">
-                        <?php if(!isset($_GET['search'])) { ?>
-                        <a class="btn btn-warning float-right" href="edit.php"><i class="fas fa-edit"></i></a>
-                        <?php } ?>
-                    </div>
+                    <?php if(!isset($_GET['search'])) { ?>
+                        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                            <a class="btn-floating btn-lg btn-warning" href="edit.php"><i class="fas fa-pencil-alt"></i></a>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
