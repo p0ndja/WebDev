@@ -96,7 +96,7 @@
         </li>
         <?php
                 } else { ?>
-        <a href="" class="btn btn-rounded btn-dark" data-toggle="modal" data-target="#login">Login</a>
+        <a href="" class="btn btn-rounded peach-gradient text-dark font-weight-bold" data-toggle="modal" data-target="#login">Login</a>
         <?php
                 }
             ?>
