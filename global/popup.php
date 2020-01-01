@@ -80,7 +80,7 @@
                             <i class="fas fa-user mr-1"></i> Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link black-text" data-toggle="tab" href="#panel8" role="tab">
+                        <a class="nav-link black-text disabled" data-toggle="tab" href="#panel8" role="tab">
                             <i class="fas fa-user-plus mr-1"></i> Register</a>
                     </li>
                 </ul>
@@ -92,6 +92,7 @@
                         <form method="post" action="../global/login.php" enctype="multipart/form-data">
                             <!--Body-->
                             <div class="modal-body mb-1">
+                            <div class="alert alert-warning" role="alert"><u>ตอนนี้ไม่สามารถ Register เพิ่มนะครับ (ปิดระบบแล้ว)</u><br>*ผู้ใช้เก่าสามารถ Login ได้ตามปกติ*</div><br>
                                 <?php if (isset($_SESSION['error'])) echo '<div class="alert alert-danger" role="alert">'. $_SESSION['error'] .'</div>'; ?>
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-user prefix"></i>
