@@ -44,6 +44,50 @@
     bottom: 0;
 }
 
+
+/* Switch info */
+
+.switch-info label input[type=checkbox]:checked+.lever {
+    background-color: #33b5e5;
+}
+
+.switch-info label input[type=checkbox]:checked+.lever:after {
+    background-color: #0099CC;
+}
+
+
+/* Switch danger */
+
+.switch-danger label input[type=checkbox]:checked+.lever {
+    background-color: #ff4444;
+}
+
+.switch-danger label input[type=checkbox]:checked+.lever:after {
+    background-color: #CC0000;
+}
+
+
+/* Switch warning */
+
+.switch-warning label input[type=checkbox]:checked+.lever {
+    background-color: #ffbb33;
+}
+
+.switch-warning label input[type=checkbox]:checked+.lever:after {
+    background-color: #FF8800;
+}
+
+
+/* Switch success */
+
+.switch-success label input[type=checkbox]:checked+.lever {
+    background-color: #00C851;
+}
+
+.switch-success label input[type=checkbox]:checked+.lever:after {
+    background-color: #007E33;
+}
+
 body {
     font-family: 'Kanit', sans-serif !important;
     background: url('https://images.pondja.com/Bottom_texture.jpg') no-repeat center center fixed;
