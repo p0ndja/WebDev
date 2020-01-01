@@ -4,10 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitle">
-                    <?php 
-                if (isset($_SESSION['success']))
-                echo 'SUCCESS!';
-            ?>
+                    SUCCESS!
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -15,17 +12,14 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-4 col-6">
-                        <img src="<?php echo $_SESSION['pi'];?>" class="img img-fluid"></div>
-                    <div class="col-md-8 col-6">
-                        <div class="text-center"><i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
-                            <h4>
+                    <div class="col-md-5 col-6">
+                        <div class="text-center"><img src="<?php echo $_SESSION['pi'];?>" class="img img-fluid"></div>
+                    </div>
 
-                                <?php
-        if (isset($_SESSION['success'])) {
-            echo $_SESSION['success'];
-        }
-        ?></h4>
+                    <div class="col-md-7 col-6">
+
+                        <div class="text-center"><i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+                            <h4><?php echo $_SESSION['success']; ?></h4>
                             <p>ยินดีต้อนรับ! <b><?php echo $_SESSION['fn'] . ' ' . $_SESSION ['ln']?></b></p>
                         </div>
                     </div>
@@ -67,7 +61,8 @@
         </div>
     </div>
 </div>
-<div class="modal fade" name="login" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" name="login" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog cascading-modal" role="document">
         <!--Content-->
         <div class="modal-content">
@@ -92,7 +87,8 @@
                         <form method="post" action="../global/login.php" enctype="multipart/form-data">
                             <!--Body-->
                             <div class="modal-body mb-1">
-                            <div class="alert alert-warning" role="alert"><u>ตอนนี้ไม่สามารถ Register เพิ่มนะครับ (ปิดระบบแล้ว)</u><br>*ผู้ใช้เก่าสามารถ Login ได้ตามปกติ*</div><br>
+                                <div class="alert alert-warning" role="alert"><u>ตอนนี้ไม่สามารถ Register เพิ่มนะครับ
+                                        (ปิดระบบแล้ว)</u><br>*ผู้ใช้เก่าสามารถ Login ได้ตามปกติ*</div><br>
                                 <?php if (isset($_SESSION['error'])) echo '<div class="alert alert-danger" role="alert">'. $_SESSION['error'] .'</div>'; ?>
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-user prefix"></i>
