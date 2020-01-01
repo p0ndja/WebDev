@@ -68,6 +68,8 @@ create table config(
    name LONGTEXT NOT NULL,
    bool BOOLEAN,
    msg LONGTEXT,
+   call TEXT,
+   description TEXT,
    primary key (id)
 );
 insert into `config` (name, bool, msg) VALUES ('indexpg_showCarousel',true,NULL);
@@ -85,10 +87,13 @@ insert into `config` (name, bool, msg) VALUES ('global_achievementSystem',true,N
 insert into `config` (name, bool, msg) VALUES ('user_allowRegister',true,NULL);
 insert into `config` (name, bool, msg) VALUES ('user_allowLogin',true,NULL);
 insert into `config` (name, bool, msg) VALUES ('user_allowPostForum',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('user_profile_allowEditProfile',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('user_profile_allowEditBackground',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('user_profile_allowEditBio',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('user_profile_allowEdit_ProfilePic',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('user_profile_allowEdit_BackgroundPic',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('user_profile_allowEdit_Bio',true,NULL);
 insert into `config` (name, bool, msg) VALUES ('user_profile_displayExperience',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('global_override_checking_admin',false,NULL);
+insert into `config` (name, bool, msg) VALUES ('user_allowEditProfile',true,NULL);
+insert into `config` (name, bool, msg) VALUES ('global_userProfile',true,NULL);
 
 =================================================
 
