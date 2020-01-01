@@ -294,34 +294,6 @@
 
     <?php include '../global/head.php'; ?>
 
-    <script>
-        (function ($) {
-            $(document).ready(function () {
-                var endDate = new Date("Jan 1, 2020 00:00:01").getTime();
-                var x = setInterval(function () {
-                    var now = new Date().getTime(),
-                        distance = endDate - now,
-                        days = Math.floor(distance / (1000 * 60 * 60 * 24)),
-                        hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                        minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-                        seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                    $(".days").text(days);
-                    $(".hours").text(hours);
-                    $(".minutes").text(minutes);
-                    $(".seconds").text(seconds);
-                    if (distance < 0) {
-                        clearInterval(x);
-                        $(".days").text("0");
-                        $(".hours").text("0");
-                        $(".minutes").text("0");
-                        $(".seconds").text("0");
-                        //$("#countdown").text("EXPIRED")
-                    }
-                }, 1000);
-            });
-        })(jQuery);
-    </script>
-
 </head>
 
 <body>
@@ -346,22 +318,6 @@
         <?php include '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container">
-        <div id="countdown">
-            <div class="countdown-box">
-                <p class="days"></p><span>days</span>
-            </div>
-            <div class="countdown-box">
-                <p class="hours"></p><span>hours</span>
-            </div>
-            <div class="countdown-box">
-                <p class="minutes"></p><span>minutes</span>
-            </div>
-            <div class="countdown-box">
-                <p class="seconds"></p><span>seconds</span>
-            </div>
-        </div>
-        <h1 align="center">Until the 2020 Year!</h1>
-        <hr>
         <div id="carousel" class="carousel slide carousel-fade z-depth-1" data-ride="carousel" data-interval="5000">
             <ol class="carousel-indicators">
                 <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -596,7 +552,9 @@
                             <p class="card-title">
                                 <h5>
                                     <?php 
-                                    echo '<a href="../news/?news=' . $row['id'] . '">' . $row['title'] . '</a></h5><h6>'; 
+                                    echo '<a href="../news/?news=' . $row['id'] . '">' . $row['title'] . '</a> ';
+                                    if (isset($_SESSION['id'])) echo '<a href="../news/post.php?news=' . $row['id'] . '"><i class="fas fa-pen-square"></i></a></h1><h4>'; 
+                                    echo '</h5><h6>'; 
                                     $split = explode(",", $row['tags']);
                                     foreach ($split as $s) { ?>
                                     <span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span>
@@ -610,13 +568,25 @@
                 <?php } ?>
             </div>
             <div class="col-md-4 d-none d-md-block">
-                <div class="fb-page" data-href="https://www.facebook.com/SMD.KKU" data-tabs="timeline" data-width=""
+                <div class="fb-page mb-3" data-href="https://www.facebook.com/SMD.KKU" data-tabs="timeline" data-width="350"
                     data-height="800" data-small-header="false" data-adapt-container-width="true"
                     data-hide-cover="false" data-show-facepile="true">
                     <blockquote cite="https://www.facebook.com/SMD.KKU" class="fb-xfbml-parse-ignore"><a
                             href="https://www.facebook.com/SMD.KKU">สาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา
                             (มอดินแดง)</a></blockquote>
                 </div>
+                <div class="card mb-3">
+                <div class="hoverable view">
+                <div class="card-body">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1422.7832711614212!2d102.83013724920174!3d16.480603791462354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228aed02885aa5%3A0x107dbd3c7fe46020!2z4LmC4Lij4LiH4LmA4Lij4Li14Lii4LiZ4Liq4Liy4LiY4Li04LiV4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LiC4Lit4LiZ4LmB4LiB4LmI4LiZICjguKHguK3guJTguLTguJnguYHguJTguIcp!5e0!3m2!1sth!2sth!4v1577883715935!5m2!1sth!2sth"
+                     width="98%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                     <hr>
+                     <p class="card-text"><u>ที่อยู่</u> 123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง) ถ.มิตรภาพ ต.ในเมือง อ.เมือง จ.ขอนแก่น 40002</p>
+                     <p class="card-text"><u>โทรศัพท์</u> <a href="tel:043202044">043202044</a> / <u>โทรสาร</u> 043364504</p>
+                     </div>
+                     </div>
+                     </div>
             </div>
         </div>
     </div>
