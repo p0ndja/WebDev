@@ -48,24 +48,22 @@
         <?php include '../global/navbar.php'; ?>
     </nav>
     <?php if (isset($_GET['search']) || (isset($_SESSION['id']))) {
+        $id;
+        if (isset($_GET['search']))
+            $id = $_GET['search'];
+        else
+            $id = $_SESSION['id'];
 
-$id;
-if (isset($_GET['search'])) {
-    $id = $_GET['search'];
-} else {
-    $id = $_SESSION['id'];
-}
+        $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
+        $result = mysqli_query($conn, $query);
+        $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
+        $result_profile = mysqli_query($conn, $query_profile);
+        $query_achi = "SELECT * FROM `achievement` WHERE id = '$id'";
+        $result_achi = mysqli_query($conn, $query_achi);
 
-$query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
-$result = mysqli_query($conn, $query);
-$query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
-$result_profile = mysqli_query($conn, $query_profile);
-$query_achi = "SELECT * FROM `achievement` WHERE id = '$id'";
-$result_achi = mysqli_query($conn, $query_achi);
-
-        if (mysqli_num_rows($result) == 0) {
+        if (mysqli_num_rows($result) == 0)
             die('<center><h1>Profile Not Found</h1></center>');
-        }
+        
 
         $undefined = "<i>Undefined</i>";
         $profile_name = "<i>Undefined Thai Name</i>";
@@ -78,10 +76,22 @@ $result_achi = mysqli_query($conn, $query_achi);
         $profile_displayText = $undefined;
         $profile_achi = "";
         $profile_image = "https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png";
-       
+
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $profile_name = $row['prefix'] . $row['firstname'] . ' ' . $row['lastname'];
-            $profile_name_en = $row['firstname_en'] . ' ' . $row['lastname_en'];
+            $profile_prefix = $row['prefix'];
+
+            if ($profile_prefix == 'นาย')
+                $profile_prefix_en = 'Mr. ';
+            else if ($profile_prefix == 'นาง')
+                $profile_prefix_en = 'Mrs. ';
+            else if ($profile_prefix == 'เด็กชาย')
+                $profile_prefix_en = 'Master ';
+            else
+                $profile_prefix_en = 'Miss '; //นางสาวและเด็กหญิง
+
+
+            $profile_name = $profile_prefix . $row['firstname'] . ' ' . $row['lastname'];
+            $profile_name_en = $profile_prefix_en . $row['firstname_en'] . ' ' . $row['lastname_en'];
             $profile_id = $row['id'];
             $profile_email = $row['email'];
             $profile_grade = $row['grade'];
