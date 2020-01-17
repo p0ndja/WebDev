@@ -74,197 +74,6 @@
             height: 100%;
         }
 
-        .wrapper {
-            width: 100%;
-            position: relative;
-            background-color: #fff;
-        }
-
-        .wrapper:after {
-            padding-top: 42.85714285714287%;
-            display: block;
-            content: '';
-        }
-
-        .wrapper .column {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 14.2857142857142857%;
-            float: left;
-            padding: 6px;
-            box-sizing: border-box;
-        }
-
-        .wrapper .column .inner {
-            width: 100%;
-            position: relative;
-        }
-
-        .wrapper .column .inner:after {
-            padding-top: 100%;
-            /* ratio 1:1 */
-            display: block;
-            content: '';
-        }
-
-        .wrapper .column .inner:before {
-            content: ' ';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            -webkit-transition: 300ms ease-in-out;
-            transition: 300ms ease-in-out;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .wrapper .column .inner:hover:before {
-            background-color: rgba(0, 0, 0, 0);
-        }
-
-        .wrapper .column:nth-child(1) {
-            width: 28.5714285714285714%;
-        }
-
-        .wrapper .column:nth-child(2) {
-            left: 28.5714285714285714%;
-        }
-
-        .wrapper .column:nth-child(3) {
-            left: 28.5714285714285714%;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-        }
-
-        .wrapper .column:nth-child(4) {
-            width: 28.5714285714285714%;
-            left: 42.85714285714286%;
-            top: 0;
-        }
-
-        .wrapper .column:nth-child(4) .inner:after {
-            padding-top: 48.7%;
-        }
-
-        .wrapper .column:nth-child(5) {
-            left: 71.42857142857143%;
-            top: 0;
-        }
-
-        .wrapper .column:nth-child(6) {
-            left: auto;
-            right: 0;
-            top: 0;
-        }
-
-        .wrapper .column:nth-child(7) {
-            left: 71.42857142857143%;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-        }
-
-        .wrapper .column:nth-child(8) {
-            left: auto;
-            right: 0;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-        }
-
-        .wrapper .column:nth-child(9) {
-            width: 28.5714285714285714%;
-            top: auto;
-            left: 0;
-            bottom: 0;
-        }
-
-        .wrapper .column:nth-child(9) .inner:after {
-            padding-top: 48.7%;
-        }
-
-        .wrapper .column:nth-child(10) {
-            left: 28.5714285714285714%;
-            top: auto;
-            bottom: 0;
-        }
-
-        .wrapper .column:nth-child(11) {
-            left: 42.85714285714286%;
-            top: auto;
-            bottom: 0;
-            width: 28.5714285714285714%;
-        }
-
-        .wrapper .column:nth-child(12) {
-            left: auto;
-            top: auto;
-            bottom: 0;
-            right: 0;
-            width: 28.5714285714285714%;
-        }
-
-        .wrapper .column:nth-child(12) .inner:after {
-            padding-top: 48.7%;
-        }
-
-        .wrapper .column .inner {
-            background-size: cover;
-            background-position: center;
-        }
-
-        .wrapper .column:nth-child(1) .inner {
-            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/75474135_980070635669586_1403665681076977664_o.jpg?_nc_cat=109&_nc_oc=AQmI57slAejSEfqhFzKI-bp35m6TGKCS8TRqcOLKQLoFT5fEksZJ4VciM3HSkl8tlDI&_nc_ht=scontent.fkkc2-1.fna&oh=df2198ae3d2b9b029540958ce30a0177&oe=5E4FDC42');
-        }
-
-        .wrapper .column:nth-child(2) .inner {
-            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/75204386_980045625672087_3843565490161057792_o.jpg?_nc_cat=107&_nc_oc=AQnY5B8QF-er5laFNoX4qp930uxWGdTQmDpfxx9SsEhCvbgaOjoNhGkg6RoqSJMpyio&_nc_ht=scontent.fkkc2-1.fna&oh=7e9d938c0e7fd963d7837f9c964979c1&oe=5E4B4525');
-        }
-
-        .wrapper .column:nth-child(3) .inner {
-            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/74234644_980045689005414_1081478683597733888_o.jpg?_nc_cat=106&_nc_oc=AQmsx_rmsTXQ9Nj4QkHjHxQ_pXj7z1savGoPoybzXtZQ9qYKfLNIbfZt9dcnoudOytM&_nc_ht=scontent.fkkc2-1.fna&oh=80958959628b0572874b108386bcd65b&oe=5E4822AA');
-        }
-
-        .wrapper .column:nth-child(4) .inner {
-            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/73097183_980051145671535_4160425963689082880_o.jpg?_nc_cat=108&_nc_oc=AQkvCIP4mmxoJTROupSVDC4pyrqbwY1iGBPW8QU9ONadZnhPBsJKQI-IIwKLIMSfYRE&_nc_ht=scontent.fkkc2-1.fna&oh=f82f3f02a6e132f87fea1f91ed5f84bc&oe=5E44F9E6');
-        }
-
-        .wrapper .column:nth-child(5) .inner {
-            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/73482696_980045815672068_835440468434092032_o.jpg?_nc_cat=102&_nc_oc=AQnEdBnpgTxU7Vpk3dA0rxEIzRyHwTVIlgaLsoIqpWEWIPx3JNYAyYeY8CZt4jdP49g&_nc_ht=scontent.fkkc2-1.fna&oh=437ff38fd5cd163d9978cdf207b7afde&oe=5E518345');
-        }
-
-        .wrapper .column:nth-child(6) .inner {
-            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/73425135_980186435658006_1319608210407030784_o.jpg?_nc_cat=106&_nc_oc=AQmldPOa-zfsGVJN6G55ePfsKVpKp6NU72x0fI5zKTGgnFwk30R5i239elSezHz9KaE&_nc_ht=scontent.fkkc2-1.fna&oh=7ae06d540620ce0cb40948cb0674ef33&oe=5E652B3F');
-        }
-
-        .wrapper .column:nth-child(7) .inner {
-            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/74419887_980182215658428_7737382548656881664_o.jpg?_nc_cat=110&_nc_oc=AQl0oEvDoiVy-MJbITqrWZiIktwv3QARipamIGY322Xe9kqNEDMhCGuHVIHwKLmYR8A&_nc_ht=scontent.fkkc2-1.fna&oh=a638647700572d512b1b364c81173eb1&oe=5E4DB3E0');
-        }
-
-        .wrapper .column:nth-child(8) .inner {
-            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/75246813_980170685659581_2695018577248911360_o.jpg?_nc_cat=102&_nc_oc=AQkIg8ylZxB-VFCc9-RWjqZgKX_APw8CYkFwqUj-Cihoyck_BRUD_GKnjw76boUjNRI&_nc_ht=scontent.fkkc2-1.fna&oh=5effc202fc452204b10bcebcc5dc4091&oe=5E458F7E');
-        }
-
-        .wrapper .column:nth-child(9) .inner {
-            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/74353244_980171055659544_3391798513317707776_o.jpg?_nc_cat=111&_nc_oc=AQk631TpFAIudJPaQMsqXlzRrEuFDQ0NAgdbeDRqPN6ZFEMESOrGNXsnCeizvPvWOLM&_nc_ht=scontent.fkkc2-1.fna&oh=172c8e07838c88c1951e577659165402&oe=5E61508D');
-        }
-
-        .wrapper .column:nth-child(10) .inner {
-            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/74437574_2365099943619744_3925936224094650368_o.jpg?_nc_cat=104&_nc_oc=AQnxtaJDtTPbFuhdSsxq0BTnhvopKF94Z1mXUlt_n3ybO0eBqKOaNbbht2JvkCVY1m0&_nc_ht=scontent.fkkc2-1.fna&oh=c365babca09f4d8733007a45d5c72ab4&oe=5E60C0DE');
-        }
-
-        .wrapper .column:nth-child(11) .inner {
-            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/s960x960/74599515_2365070813622657_5056991960003248128_o.jpg?_nc_cat=105&_nc_oc=AQkDwdjjOsFtoOL8YdSOH7C6keqmHr5o3RIHLMvlsvL-D7NtKpEy2eXdnm5pEf8HGXY&_nc_ht=scontent.fkkc2-1.fna&oh=0e303dadd5536df5b9224e53bf1ff355&oe=5E5BE650');
-        }
-
-        .wrapper .column:nth-child(12) .inner {
-            background-image: url('https://scontent.fkkc2-1.fna.fbcdn.net/v/t1.0-9/73498078_2364964120299993_1412030022511755264_o.jpg?_nc_cat=101&_nc_oc=AQnkS1qSzAfh8NeS1hbBKzyXS2UGDXEs48q9b2D-ZW65Z7Brw_uB6eEIBNlfWg5f_Js&_nc_ht=scontent.fkkc2-1.fna&oh=b9728d20bae5f328daa24360bdc9cb2f&oe=5E45ACA7');
-        }
-
         #countdown {
             text-align: center;
         }
@@ -317,7 +126,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <div class="container" id="container">
+    <div class="container mb-3" id="container">
         <div id="carousel" class="carousel slide carousel-fade z-depth-1" data-ride="carousel" data-interval="5000">
             <ol class="carousel-indicators">
                 <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -388,134 +197,93 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-        <hr>
     </div>
-    <div class="container">
-        <div class="card" align="center">
-            <div class="card-body">
-                <div class="card-title">
-                    <h1 class="font-weight-bold">หลักสูตรการเรียน</h1>
-                </div>
-                <div class="card-text text-dark">
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        <div class="col-12 col-md-4">
-                            <h2>มัธยมศึกษาตอนต้น</h2>
-                            <hr>
-                            <div class="row">
-                                <div class="col-4 col-md-6">
-                                    <a href="#primary_normal">
-                                        <div class="view overlay zoom z-depth-1">
-                                            <img src="../assets/images/p_normal.jpg" class="img-fluid"
-                                                alt="หลักสูตรทั่วไป (ม.ต้น)">
-                                            <div class="mask flex-center rgba-black-slight">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-4 col-md-6">
-                                    <a href="#primary_iec">
-                                        <div class="view overlay zoom z-depth-1">
-                                            <img src="../assets/images/p_jems.jpg" class="img-fluid"
-                                                alt="หลักสูตร IEC (ม.ต้น)">
-                                            <div class="mask flex-center rgba-black-slight">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <h2>มัธยมศึกษาตอนปลาย</h2>
-                            <hr>
-                            <div class="row">
-                                <div class="col-4 col-md-4">
-                                    <a href="#secondary_normal">
-                                        <div class="view overlay zoom z-depth-1">
-                                            <img src="../assets/images/s_normal.jpg" class="img-fluid"
-                                                alt="หลักสูตรทั่วไป (ม.ปลาย)">
-                                            <div class="mask flex-center rgba-black-slight">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-4 col-md-4">
-                                    <a href="#secondary_emsp">
-                                        <div class="view overlay zoom z-depth-1">
-                                            <img src="../assets/images/s_emsp.jpg" class="img-fluid"
-                                                alt="หลักสูตร EMSP (ม.ปลาย)">
-                                            <div class="mask flex-center rgba-black-slight">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-4 col-md-4">
-                                    <a href="#secondary_scius">
-                                        <div class="view overlay zoom z-depth-1">
-                                            <img src="../assets/images/s_scius.jpg" class="img-fluid"
-                                                alt="หลักสูตรวมว. (ม.ปลาย)">
-                                            <div class="mask flex-center rgba-black-slight">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    </div>
-    <div class="container-fluid" style=" background-image: url('https://cdn.discordapp.com/attachments/636478500206936094/643477428752351263/bg_light.jpg');
+    <div class="container-fluid mb-3" style=" background-image: url('https://cdn.discordapp.com/attachments/636478500206936094/643477428752351263/bg_light.jpg');
                 width: 100%;
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;">
-        <hr>
         <div class="container">
-            <div class="wrapper">
-                <div class="column">
-                    <div class="inner"></div>
-                </div>
-                <div class="column">
-                    <div class="inner"></div>
-                </div>
-                <div class="column">
-                    <div class="inner"></div>
-                </div>
-                <div class="column">
-                    <div class="inner"></div>
-                </div>
-                <div class="column">
-                    <div class="inner"></div>
-                </div>
-                <div class="column">
-                    <div class="inner"></div>
-                </div>
-                <div class="column">
-                    <div class="inner"></div>
-                </div>
-                <div class="column">
-                    <div class="inner"></div>
-                </div>
-                <div class="column">
-                    <div class="inner"></div>
-                </div>
-                <div class="column">
-                    <div class="inner"></div>
-                </div>
-                <div class="column">
-                    <div class="inner"></div>
-                </div>
-                <div class="column">
-                    <div class="inner"></div>
+            <hr>
+            <div class="card" align="center" style="    background-color: rgba(255, 255, 255, 0.95);">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h1 class="font-weight-bold">หลักสูตรการเรียน</h1>
+                    </div>
+                    <div class="card-text text-dark">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-12 col-md-4 mb-3">
+                                <h2>มัธยมศึกษาตอนต้น</h2>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-2 d-block d-md-none"></div>
+                                    <div class="col-4 col-md-6">
+                                        <a href="#primary_normal">
+                                            <div class="view overlay zoom z-depth-1">
+                                                <img src="../assets/images/p_normal.jpg" class="img-fluid"
+                                                    alt="หลักสูตรทั่วไป (ม.ต้น)">
+                                                <div class="mask flex-center rgba-black-slight">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-4 col-md-6">
+                                        <a href="#primary_iec">
+                                            <div class="view overlay zoom z-depth-1">
+                                                <img src="../assets/images/p_jems.jpg" class="img-fluid"
+                                                    alt="หลักสูตร IEC (ม.ต้น)">
+                                                <div class="mask flex-center rgba-black-slight">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-2 d-block d-md-none"></div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <h2>มัธยมศึกษาตอนปลาย</h2>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-4 col-md-4">
+                                        <a href="#secondary_normal">
+                                            <div class="view overlay zoom z-depth-1">
+                                                <img src="../assets/images/s_normal.jpg" class="img-fluid"
+                                                    alt="หลักสูตรทั่วไป (ม.ปลาย)">
+                                                <div class="mask flex-center rgba-black-slight">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-4 col-md-4">
+                                        <a href="#secondary_emsp">
+                                            <div class="view overlay zoom z-depth-1">
+                                                <img src="../assets/images/s_sems.jpg" class="img-fluid"
+                                                    alt="หลักสูตร EMSP (ม.ปลาย)">
+                                                <div class="mask flex-center rgba-black-slight">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-4 col-md-4">
+                                        <a href="#secondary_scius">
+                                            <div class="view overlay zoom z-depth-1">
+                                                <img src="../assets/images/s_scius.jpg" class="img-fluid"
+                                                    alt="หลักสูตรวมว. (ม.ปลาย)">
+                                                <div class="mask flex-center rgba-black-slight">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <hr>
         </div>
-        <hr>
     </div>
     <div class="container">
         <h1 id="news" name="news" class="font-weight-bold">NEWS
@@ -540,7 +308,7 @@
                                 <?php
                                 $writer = null;
                                 $writer_id = $row['writer'];
-                                $query_final = "SELECT * FROM `userdatabase` WHERE id = '$writer_id'";
+                                $query_final = "SELECT * FROM `user` WHERE id = '$writer_id'";
                                 $result_final = mysqli_query($conn, $query_final);
                                 while($row2 = mysqli_fetch_array($result_final, MYSQLI_ASSOC)) {
                                     $writer = $row2['firstname'] . ' ' . $row2['lastname'] . ' (' . $row2['username'] . ')';
@@ -568,25 +336,27 @@
                 <?php } ?>
             </div>
             <div class="col-md-4 d-none d-md-block">
-                <div class="fb-page mb-3" data-href="https://www.facebook.com/SMD.KKU" data-tabs="timeline" data-width="350"
-                    data-height="800" data-small-header="false" data-adapt-container-width="true"
+                <div class="fb-page mb-3" data-href="https://www.facebook.com/SMD.KKU" data-tabs="timeline"
+                    data-width="350" data-height="800" data-small-header="false" data-adapt-container-width="true"
                     data-hide-cover="false" data-show-facepile="true">
                     <blockquote cite="https://www.facebook.com/SMD.KKU" class="fb-xfbml-parse-ignore"><a
                             href="https://www.facebook.com/SMD.KKU">สาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา
                             (มอดินแดง)</a></blockquote>
                 </div>
                 <div class="card mb-3">
-                <div class="hoverable view">
-                <div class="card-body">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1422.7832711614212!2d102.83013724920174!3d16.480603791462354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228aed02885aa5%3A0x107dbd3c7fe46020!2z4LmC4Lij4LiH4LmA4Lij4Li14Lii4LiZ4Liq4Liy4LiY4Li04LiV4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LiC4Lit4LiZ4LmB4LiB4LmI4LiZICjguKHguK3guJTguLTguJnguYHguJTguIcp!5e0!3m2!1sth!2sth!4v1577883715935!5m2!1sth!2sth"
-                     width="98%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                     <hr>
-                     <p class="card-text"><u>ที่อยู่</u> 123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง) ถ.มิตรภาพ ต.ในเมือง อ.เมือง จ.ขอนแก่น 40002</p>
-                     <p class="card-text"><u>โทรศัพท์</u> <a href="tel:043202044">043202044</a> / <u>โทรสาร</u> 043364504</p>
-                     </div>
-                     </div>
-                     </div>
+                    <div class="hoverable view">
+                        <div class="card-body">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1422.7832711614212!2d102.83013724920174!3d16.480603791462354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228aed02885aa5%3A0x107dbd3c7fe46020!2z4LmC4Lij4LiH4LmA4Lij4Li14Lii4LiZ4Liq4Liy4LiY4Li04LiV4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LiC4Lit4LiZ4LmB4LiB4LmI4LiZICjguKHguK3guJTguLTguJnguYHguJTguIcp!5e0!3m2!1sth!2sth!4v1577883715935!5m2!1sth!2sth"
+                                width="98%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                            <hr>
+                            <p class="card-text"><u>ที่อยู่</u> 123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น
+                                ฝ่ายมัธยมศึกษา (มอดินแดง) ถ.มิตรภาพ ต.ในเมือง อ.เมือง จ.ขอนแก่น 40002</p>
+                            <p class="card-text"><u>โทรศัพท์</u> <a href="tel:043202044">043202044</a> / <u>โทรสาร</u>
+                                043364504</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -636,11 +406,11 @@
         });
     </script>
     <?php if (!isset($_SESSION['isAnnouncementPopedUp'])) { ?>
-        <script>
-            $(window).on('load', function () {
-                $('#announcementPopup').modal('show');
-            });
-        </script>
+    <script>
+        $(window).on('load', function () {
+            $('#announcementPopup').modal('show');
+        });
+    </script>
     <?php } ?>
     <?php
         if (isset($_SESSION['error'])) { ?>
