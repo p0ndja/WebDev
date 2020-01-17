@@ -7,30 +7,27 @@ if (isset($_POST['login_submit'])) {
     $pass = md5($_POST['login_password']);
 
     //ดึงข้อมูลมาเช็คว่า $User ที่ตั้งรหัสผ่านเป็น $Pass มีในระบบรึเปล่า
-    $query = "SELECT * FROM `userdatabase` WHERE username = '$user' AND password = '$pass'";
-    
+    $query = "SELECT * FROM `user` WHERE username = '$user' AND password = '$pass'";
     $result = mysqli_query($conn, $query);
-
-    if (! $result) {
-        die('Could not get data: ' . mysqli_error($conn));
-    }
-   
-    //ปกติค่านี้ ถ้าเจอในฐานข้อมูลจะ return ออกมา > 0
-    //ตั้งค่าข้อมูลต่าง ๆ ของ User ใส่ SESSION
-    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        $_SESSION['user'] = $row['username'];
-        $_SESSION['fn'] = $row['firstname'];
-        $_SESSION['ln'] = $row['lastname'];
-        $_SESSION['id'] = $row['id'];
-    }
+    if (!$result) die('Could not get data: ' . mysqli_error($conn));
 
     //ถ้าไม่เจอ User นี้ จะ return เป็น 0
     if (mysqli_num_rows($result) == 0) {
         $_SESSION['error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
     } else {
+        //ปกติค่านี้ ถ้าเจอในฐานข้อมูลจะ return ออกมา > 0
+        //ตั้งค่าข้อมูลต่าง ๆ ของ User ใส่ SESSION
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $_SESSION['user'] = $row['username'];
+            $_SESSION['fn'] = $row['firstname'];
+            $_SESSION['ln'] = $row['lastname'];
+            $_SESSION['id'] = $row['id'];
+        }
+
         $id = $_SESSION['id'];
         $query_final = "SELECT * FROM `profile` WHERE id = '$id'";
         $result_final = mysqli_query($conn, $query_final);
+
         while ($row = mysqli_fetch_array($result_final, MYSQLI_ASSOC)) {
             $_SESSION['pi'] = $row['profile'];
         }
@@ -59,8 +56,8 @@ if (isset($_POST['register_submit'])) {
     $class = $_POST['register_class'];
 
     //ลองเอาค่าต่าง ๆ ไปดูว่ามีผู้ใช้นี้อยู่ในระบบแล้วรึยัง
-    $query1 = "SELECT * FROM `userdatabase` WHERE username = '$user'";
-    $query2 = "SELECT * FROM `userdatabase` WHERE citizen_id = '$citizen_id'";
+    $query1 = "SELECT * FROM `user` WHERE username = '$user'";
+    $query2 = "SELECT * FROM `user` WHERE citizen_id = '$citizen_id'";
     $result1 = mysqli_query($conn, $query1);
     $result2 = mysqli_query($conn, $query2);
 
@@ -92,17 +89,14 @@ if (isset($_POST['register_submit'])) {
 
         }
         
-        $query_final = "INSERT INTO `userdatabase` (id, username, password, citizen_id, prefix, firstname, lastname, firstname_en, lastname_en, email, grade, class) VALUES ($id, '$user', '$pass', $citizen_id, '$prefix', '$firstname', '$lastname', '$firstname_en', '$lastname_en', '$email', $grade, $class)";
+        $query_final = "INSERT INTO `user` (id, username, password, citizen_id, prefix, firstname, lastname, firstname_en, lastname_en, email, grade, class) VALUES ($id, '$user', '$pass', $citizen_id, '$prefix', '$firstname', '$lastname', '$firstname_en', '$lastname_en', '$email', $grade, $class)";
         $result_final = mysqli_query($conn, $query_final);
 
-        $query_achi = "INSERT INTO `achievement` (username, id, betaTester) VALUES ('$user', $id, true)";
+        $query_achi = "INSERT INTO `achievement` (username, id) VALUES ('$user', $id)";
         $result_achi = mysqli_query($conn, $query_achi);
 
         $query_profile = "INSERT INTO `profile` (id, profile) VALUES ($id, '$finaldir')";
         $result_profile = mysqli_query($conn, $query_profile);
-
-        $query_permission = "INSERT INTO `permission` (username, id) VALUES ('$user', $id)";
-        $result_permission = mysqli_query($conn, $query_permission);
 
         //แสดงค่ากลับหาผู้ใช้
         if ($result_final) {
@@ -123,10 +117,6 @@ if (isset($_POST['register_submit'])) {
 
         if (! $result_achi) {
             die('Could not add achievement ' . mysqli_error($conn));
-        }
-        
-        if (! $result_permission) {
-            die('Could not grant permission ' . mysqli_error($conn));
         }
     }
     
