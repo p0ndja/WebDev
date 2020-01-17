@@ -75,7 +75,6 @@
         $profile_email = $undefined;
         $profile_displayText = $undefined;
         $profile_achi = "";
-        $profile_image = "https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png";
 
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $profile_prefix = $row['prefix'];
@@ -116,13 +115,13 @@
 
         while ($row = mysqli_fetch_array($result_achi, MYSQLI_ASSOC)) {
             if ($row['betaTester'])
-                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/beta-tester-icon_resize.gif" title="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></div>';
+                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/beta-tester-icon_resize.gif" title="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></div>';
             if ($row['WebDevTycoon'])
-                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/Web_dev_tycoon_icon_resize.gif" title="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></div>';
+                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/Web_dev_tycoon_icon_resize.gif" title="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></div>';
             if ($row['the4thFloor'])
-                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://cdn4.iconfinder.com/data/icons/business-plan-line-1/32/Stair-512.png" title="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></div>';
+                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><img src="https://cdn4.iconfinder.com/data/icons/business-plan-line-1/32/Stair-512.png" title="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></div>';
             if ($row['Xmas'])
-                $profile_achi = $profile_achi . '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/Webp.net-resizeimage.png" title="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></div>';
+                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/Webp.net-resizeimage.png" title="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></div>';
         }
     ?>
     <div class="container" id="container" style="padding-top: 88px">
