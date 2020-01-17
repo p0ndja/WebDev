@@ -13,7 +13,7 @@
          $id = $_SESSION['id'];
      }
 
-     $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
+     $query = "SELECT * FROM `user` WHERE id = '$id'";
      $result = mysqli_query($conn, $query);
      
      if (!$result) {
@@ -54,7 +54,7 @@
         else
             $id = $_SESSION['id'];
 
-        $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
+        $query = "SELECT * FROM `user` WHERE id = '$id'";
         $result = mysqli_query($conn, $query);
         $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
         $result_profile = mysqli_query($conn, $query_profile);
@@ -85,8 +85,10 @@
                 $profile_prefix_en = 'Mrs. ';
             else if ($profile_prefix == 'เด็กชาย')
                 $profile_prefix_en = 'Master ';
+            else if ($profile_prefix == 'เด็กหญิง' || $profile_prefix == 'นางสาว')
+                $profile_prefix_en = 'Miss ';
             else
-                $profile_prefix_en = 'Miss '; //นางสาวและเด็กหญิง
+                $profile_prefix_en = "";
 
 
             $profile_name = $profile_prefix . $row['firstname'] . ' ' . $row['lastname'];

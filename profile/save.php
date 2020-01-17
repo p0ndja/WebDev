@@ -21,9 +21,9 @@
             $name_file =  $_FILES['profile_upload']['name'];
             $tmp_name =  $_FILES['profile_upload']['tmp_name'];
 
-            date_default_timezone_set('Asia/Bangkok'); $date = date('Y-m-d_H-i-s', time());
+            date_default_timezone_set('Asia/Bangkok'); $date = date('YmdHis', time());
             
-            $locate_img ="../cache/";
+            $locate_img ="../profile/images/";
             move_uploaded_file($tmp_name,$locate_img.$name_file);
 
             rename($locate_img.$name_file, $locate_img.$user.'_'.$date.'_'.$name_file);
