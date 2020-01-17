@@ -29,7 +29,7 @@
             $result = mysqli_query($conn, $query);
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
             <div class="col-12 col-md-12">
-                <div class="card mb-3">
+                <div class="card mb-4">
                     <div class="hoverable view">
                     <?php if ($row['cover'] != null) { ?>
                         <img class="card-img-top" src="<?php echo $row['cover']; ?>">
@@ -49,16 +49,17 @@
                             ?>
                             </p>
                             <div class="card-title">
-                            <h1>
+                            <h2 class="font-weight-bold">
                                 <?php 
                                     echo '<a href="../news/?news=' . $row['id'] . '">' . $row['title'] . '</a> ';
-                                    if (isset($_SESSION['id'])) echo '<a href="../news/post.php?news=' . $row['id'] . '"><i class="fas fa-pen-square"></i></a></h1><h4>'; 
+                                    if (isset($_SESSION['id'])) echo '<a href="../news/post.php?news=' . $row['id'] . '"><i class="fas fa-pen-square"></i></a></h2><h4>'; 
                                     $split = explode(",", $row['tags']);
                                     foreach ($split as $s) { ?>
                                         <span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span>
                                     <?php } ?>
                                 </h4>
                                     </div>
+                                    <hr>
                             <p class="card-text">
                                 <p class="d-none d-md-block">
                                     <?php echo $row['article']; ?>
