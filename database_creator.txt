@@ -1,4 +1,4 @@
-create table userdatabase (
+create table user (
    id INT NOT NULL,
    username LONGTEXT NOT NULL,
    password LONGTEXT NOT NULL,
@@ -11,6 +11,13 @@ create table userdatabase (
    grade INT NOT NULL,
    class INT NOT NULL,
    email LONGTEXT,
+   isAdmin BOOLEAN DEFAULT false,
+   isTeacher BOOLEAN DEFAULT false,
+   isNewsReporter BOOLEAN DEFAULT false,
+   isForumEditor BOOLEAN DEFAULT false,
+   isRegistrator BOOLEAN DEFAULT false,
+   isTimetableDesigner BOOLEAN DEFAULT false,
+   isSubjectRegistrator BOOLEAN DEFAULT false,
    PRIMARY KEY ( id )
 );
 
@@ -33,18 +40,6 @@ create table profile (
    greetings LONGTEXT,
    profile LONGTEXT,
    background LONGTEXT,
-   PRIMARY KEY ( id )
-);
-
-create table permission (
-   username LONGTEXT NOT NULL,
-   id INT NOT NULL,
-   isAdmin BOOLEAN DEFAULT false,
-   isTeacher BOOLEAN DEFAULT false,
-   isNewsReporter BOOLEAN DEFAULT false,
-   isForumEditor BOOLEAN DEFAULT false,
-   isRegistrator BOOLEAN DEFAULT false,
-   isTimetableDesigner BOOLEAN DEFAULT false,
    PRIMARY KEY ( id )
 );
 
