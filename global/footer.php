@@ -57,12 +57,9 @@
                 <br><a style="color: white" href="#" class="disabled"> SMD Shop </a>
             </div>
             <div class="col-md-3 justify-content-center">
-                <a href='http://www.counter-zaehler.de'>Internet Counter</a>
-                <script type='text/javascript'
-                    src='https://www.freevisitorcounters.com/auth.php?id=36647b67905b90b7fce71e8d8bee4c6a42e53ab9'>
-                </script>
-                <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/600036/t/0">
-                </script>
+                <a href="https://www.web-stat.com">
+                    <img alt="Web-Stat web statistics" src="https://wts.one/6s/3/1941813.gif">
+                </a>
                 <?php if ($snow_effect) { ?><br><img
                     src="https://images.pondja.com/Webp.net-resizeimage%20(1).png"><?php } ?>
             </div>
@@ -71,8 +68,10 @@
         <div class="row">
             <div class="col-12">
                 <center>
-                    <h6 style="color: white;">Copyright 2019 - 2020 &copy; The demonstration school of Khon Kaen University (Mo Din Daeng). All right reserved<h6>
-                    <h6 style="color: white;">Developed by PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka — <?php include 'config.php'; if (isset($patch)) echo $patch;?></h6>
+                    <h6 style="color: white;">Copyright 2019 - 2020 &copy; The demonstration school of Khon Kaen
+                        University (Mo Din Daeng). All right reserved<h6>
+                            <h6 style="color: white;">Developed by PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka —
+                                <?php include 'config.php'; if (isset($patch)) echo $patch;?></h6>
                 </center>
             </div>
         </div>
