@@ -54,10 +54,10 @@
                 </div>
             </div>
 
-            <!--div class="modal-footer">
-                <a href="#" target="_blank" class="btn btn-warning">สมัครเข้าศึกษา</a>
+            <div class="modal-footer">
+                <a href="http://smd-s.kku.ac.th/home/images/smd-63/announce3297.pdf" target="_blank" class="btn btn-warning">รายละเอียดเพิ่มเติม</a>
                 <button type="button" class="btn btn-warning" data-dismiss="modal">ปิดหน้าต่าง</button>
-            </div-->
+            </div>
         </div>
     </div>
 </div>
@@ -75,7 +75,7 @@
                             <i class="fas fa-user mr-1"></i> Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link black-text disabled" data-toggle="tab" href="#panel8" role="tab">
+                        <a class="nav-link black-text" data-toggle="tab" href="#panel8" role="tab">
                             <i class="fas fa-user-plus mr-1"></i> Register</a>
                     </li>
                 </ul>
@@ -219,14 +219,15 @@
                                         </select>
                                     </div>
                                 </div>
-
-                                <div class="md-form form-sm mb-5">
-                                    <i class="fas fa-images prefix"></i>
-                                    <input type="file" name="upload" id="upload"
-                                        class="form-control form-control-sm validate" required
-                                        accept="image/png, image/jpeg">
+                                <div class="md-form file-field mb-5">
+                                    <div class="btn btn-primary btn-sm float-left">
+                                        <span><i class="fas fa-file-upload"></i>  Browse</span>
+                                        <input type="file" name="upload" id="upload" class="validate" accept="image/*">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate disabled" type="text" placeholder="รูปโปรไฟล์ / Profile Image">
+                                    </div>
                                 </div>
-
                             </div>
                             <!--Footer-->
                             <div class="modal-footer">
