@@ -39,7 +39,7 @@
                                 <?php
                                 $writer = null;
                                 $writer_id = $row['writer'];
-                                $query_final = "SELECT * FROM `userdatabase` WHERE id = '$writer_id'";
+                                $query_final = "SELECT * FROM `user` WHERE id = '$writer_id'";
                                 $result_final = mysqli_query($conn, $query_final);
                                 while($row2 = mysqli_fetch_array($result_final, MYSQLI_ASSOC)) {
                                     $writer = $row2['firstname'] . ' ' . $row2['lastname'] . ' (' . $row2['username'] . ')';
