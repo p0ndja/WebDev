@@ -13,7 +13,7 @@
     <?php
         $id = $_SESSION['id'];
 
-        $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
+        $query = "SELECT * FROM `user` WHERE id = '$id'";
         $result = mysqli_query($conn, $query);
      
         if (!$result) {
@@ -61,7 +61,7 @@
     </nav>
     <?php
 
-        $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
+        $query = "SELECT * FROM `user` WHERE id = '$id'";
         $result = mysqli_query($conn, $query);
         $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
         $result_profile = mysqli_query($conn, $query_profile);
@@ -82,6 +82,7 @@
        
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $profile_name = $row['firstname'] . ' ' . $row['lastname'];
+            $profile_name_en = $row['firstname_en'] . ' ' . $row['lastname_en'];
             $profile_id = $row['id'];
             $profile_email = $row['email'];
         }
