@@ -109,4 +109,5 @@
 </script>
 <?php
         mysqli_close($conn);
+        if ($close) header("Location: ../extra/close.php");
     ?>
