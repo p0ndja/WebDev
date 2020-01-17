@@ -1,5 +1,4 @@
 # WebDev
------------------
 สำหรับโปรเจค WebDev นี้เป็นโปรเจคที่พัฒนาขึ้น บนภาษา **HTML, PHP, CSS, JavaScript, SQL** (รวมถึง Bootstrap 4.4.1) เพื่อสร้างเว็บไซต์โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง) ตามปณิธานของพวกเราที่ตั้งใจเอาไว้ว่าจะให้มันเป็นโปรเจคจบของพวกเรา **PondJaᵀᴴ และ ˢᵖᵉᶜᵗᵉʳRisaka**
 ซึ่งโปรเจคนี้ถือเป็นโปรเจคด้านเว็บไซต์แรกที่มีโอกาสได้ทำ ซึ่งถ้าหากมีข้อผิดพลาดหรือบัคใด ๆ ที่รู้สึกขัดใจ สามารถ Pull เข้ามาได้เลยนะครับ จะได้ทำการปรับแก้ไขให้
 
@@ -8,6 +7,8 @@ This is our first website project, if there's something which is not prefectly. 
 
 
 #### **This project has a 'GNU General Public License v3.0', please keep in mind that you'll need to opensource your edited code if you using our code.**
+
+
 
 #### Connect.php
 -----------------
@@ -42,6 +43,4 @@ but you follow this template:
 
 
 
-
-#### DEVELOPER
-### PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka
+#### PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka
