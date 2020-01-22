@@ -65,6 +65,8 @@
         $result = mysqli_query($conn, $query);
         $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
         $result_profile = mysqli_query($conn, $query_profile);
+        $query_achi = "SELECT * FROM `achievement` WHERE id = '$id'";
+        $result_achi = mysqli_query($conn, $query_achi);
 
         if (mysqli_num_rows($result) == 0) {
             die('<center><h1>Profile Not Found</h1></center>');
@@ -78,19 +80,55 @@
         $profile_class = $undefined;
         $profile_room = $undefined;
         $profile_email = $undefined;
-        $profile_image = "https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png";
+        $profile_achi = "";
        
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $profile_name = $row['firstname'] . ' ' . $row['lastname'];
-            $profile_name_en = $row['firstname_en'] . ' ' . $row['lastname_en'];
+            $profile_prefix = $row['prefix'];
+
+            if ($profile_prefix == 'นาย')
+                $profile_prefix_en = 'Mr. ';
+            else if ($profile_prefix == 'นาง')
+                $profile_prefix_en = 'Mrs. ';
+            else if ($profile_prefix == 'เด็กชาย')
+                $profile_prefix_en = 'Master ';
+            else if ($profile_prefix == 'เด็กหญิง' || $profile_prefix == 'นางสาว')
+                $profile_prefix_en = 'Miss ';
+            else
+                $profile_prefix_en = "";
+
+
+            $profile_name = $profile_prefix . $row['firstname'] . ' ' . $row['lastname'];
+            $profile_name_en = $profile_prefix_en . $row['firstname_en'] . ' ' . $row['lastname_en'];
             $profile_id = $row['id'];
             $profile_email = $row['email'];
+            $profile_grade = $row['grade'];
+            $profile_room = $row['class'];
+            if ($profile_room == 1) {
+                $profile_class = "EMSP";
+            } else if ($profile_room == 5) {
+                $profile_class = "วมว.";
+            } else if ($profile_room == 0) {
+                $profile_class = "-";
+            } else {
+                $profile_class = "ปกติ";
+            }
         }
         
         while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
             if ($row['profile'] != null)
                 $profile_image = $row['profile'];
         }  
+        
+        while ($row = mysqli_fetch_array($result_achi, MYSQLI_ASSOC)) {
+            if ($row['betaTester'])
+                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/beta-tester-icon_resize.gif" title="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></div>';
+            if ($row['WebDevTycoon'])
+                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/Web_dev_tycoon_icon_resize.gif" title="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></div>';
+            if ($row['the4thFloor'])
+                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><img src="https://cdn4.iconfinder.com/data/icons/business-plan-line-1/32/Stair-512.png" title="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></div>';
+            if ($row['Xmas'])
+                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><img src="https://images.pondja.com/Webp.net-resizeimage.png" title="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></div>';
+        }
     ?>
     <div class="container" id="container" style="padding-top: 88px">
         <form method="post" action="../profile/save.php" enctype="multipart/form-data">
@@ -128,7 +166,7 @@
                 <div class="col-md-4 col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <img src="<?php echo $profile_image; ?>" class="img-fluid w-100" alt="Profile">
+                            <img src="<?php echo $profile_image; ?>" class="img-fluid w-100" alt="Profile" id="profile_preview">
                             <br>
                             <input type="file" name="profile_upload" id="profile_upload"
                                 class="form-control-file validate" accept="image/png, image/jpeg">
@@ -138,20 +176,22 @@
                         <div class="col-md-12 text-left">
                             <hr>
                             <div class="card">
-                                <div class="card-body">
-                                    <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
-                                    <strong>ระดับชั้น</strong> <?php echo $profile_grade ?><br>
-                                    <strong>ห้อง</strong> <?php echo $profile_room ?> (<?php echo $profile_class ?>)<br>
-                                    <strong>อีเมล</strong>
-                                    <a href="<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
-                                </div>
+                            <div class="card-body">
+                                <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
+                                <strong>ระดับชั้น</strong>
+                                <?php echo $profile_grade . '/' . $profile_room . ' (' . $profile_class . ')'?><br>
+                                <strong>อีเมล</strong>
+                                <a href="mailto:<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
+                            </div>
                             </div>
                             <hr>
                             <div class="card">
                                 <div class="card-body">
                                     <h2>Achievement</h2>
                                     <hr>
-                                    <p>-----</p>
+                                    <div class="row">
+                                        <?php echo $profile_achi; ?>
+                                    </div>
                                 </div>
                             </div>
                             <hr>
@@ -325,7 +365,27 @@
             </div>
         </form>
     </div>
+    
+        <script>
+        document.getElementById("profile_upload").onchange = function () {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                // get loaded data and render thumbnail.
+                document.getElementById("profile_preview").src = e.target.result;
+            };
+
+            // read the image file as a data URL.
+            reader.readAsDataURL(this.files[0]);
+        };
+
+
+               // document.getElementByTagName("body")[0].style.background = "url(". e.target.result . ") no-repeat center center fixed";
+        
+    </script>
 </body>
+
+
 
 <?php include '../global/footer.php'; ?>
 <?php include '../global/popup.php'; ?>
