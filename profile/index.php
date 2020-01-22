@@ -75,6 +75,8 @@
         $profile_email = $undefined;
         $profile_displayText = $undefined;
         $profile_achi = "";
+        
+        $bool_rendergreetings = false;
 
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $profile_prefix = $row['prefix'];
@@ -101,18 +103,25 @@
                 $profile_class = "EMSP";
             } else if ($profile_room == 5) {
                 $profile_class = "วมว.";
-            } else if ($profile_room == 0) {
-                $profile_class = "-";
             } else {
                 $profile_class = "ปกติ";
             }
+            
+            if ($profile_grade < 1)
+            $profile_class_detail = "";
+            else if ($profile_grade > 6)
+            $profile_class_detail = "<strong>ศิษย์เก่า</strong><br>";
+            else
+            $profile_class_detail = "<strong>ระดับชั้น</strong> " . $profile_grade . "/" . $profile_room . " (" . $profile_class . ")<br>";
         }
         
         while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
             if ($row['profile'] != null)
                 $profile_image = $row['profile'];
-            if ($row['greetings'] != null)
+            if ($row['greetings'] != null) {
                 $profile_displayText = $row['greetings'];
+                $bool_rendergreetings = true;
+            }
         }
 
         while ($row = mysqli_fetch_array($result_achi, MYSQLI_ASSOC)) {
@@ -127,7 +136,6 @@
         }
     ?>
     <div class="container" id="container" style="padding-top: 88px">
-        <hr>
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -143,7 +151,7 @@
                 </div>
             </div>
         </div>
-        <hr>
+        <div class="mb-3"></div>
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <div class="media">
@@ -151,42 +159,43 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-left">
-                        <hr>
+                        <div class="mb-3"></div>
                         <div class="card">
                             <div class="card-body">
                                 <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
-                                <strong>ระดับชั้น</strong>
-                                <?php echo $profile_grade . '/' . $profile_room . ' (' . $profile_class . ')'?><br>
+                                <?php echo $profile_class_detail; ?>
                                 <strong>อีเมล</strong>
                                 <a href="mailto:<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
                             </div>
                         </div>
-                        <hr>
+                        <div class="mb-3"></div>
                         <div class="card">
                             <div class="card-body">
                                 <h2>Achievement</h2>
-                                <hr>
+                                <div class="mb-3"></div>
                                 <div class="row">
                                     <?php echo $profile_achi; ?>
                                 </div>
                             </div>
                         </div>
-                        <hr>
+                        <div class="mb-3"></div>
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
+            <?php if ($bool_rendergreetings) { ?>
                 <div class="card">
                     <div class="card-body">
                         <p><?php echo $profile_displayText ?></p>
                     </div>
                 </div>
-                <hr>
+                <div class="mb-3"></div>
+                <?php } ?>
                 <?php if ($id == 604019) { ?>
                 <div class="card">
                     <div class="card-body">
                         <h2>ประวัติการศึกษา</h2>
-                        <hr>
+                        <div class="mb-3"></div>
                         <div class="row">
                             <div class="col-9">
                                 <h4>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</h4>
@@ -217,11 +226,11 @@
                         <h5><span class="badge badge-secondary">ระดับมัธยมศึกษาตอนปลาย</span></h5>
                     </div>
                 </div>
-                <hr>
+                <div class="mb-3"></div>
                 <div class="card">
                     <div class="card-body">
                         <h2>ประสบการณ์</h2>
-                        <hr>
+                        <div class="mb-3"></div>
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
                                 <div class="row">
@@ -244,7 +253,7 @@
                                     target="_blank"><i class="fas fa-external-link-alt"></i></a>
                                 <a href="https://www.facebook.com/SMD.KKU/posts/2215982308531509" target="_blank"><i
                                         class="fas fa-external-link-alt"></i></a>
-                                <hr>
+                                <div class="mb-3"></div>
                             </div>
                             <div class="col-md-12 col-sm-12">
                                 <div class="row">
@@ -276,7 +285,7 @@
                         </div>
                     </div>
                 </div>
-                <hr>
+                <div class="mb-3"></div>
                 <?php } ?>
 
             </div>
