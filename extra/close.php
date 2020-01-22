@@ -3,6 +3,10 @@
 
 <head>
     <?php include '../global/head.php'; ?>
+    <?php
+        include '../global/config.php';
+        if(!$close) header("Location: ../home/");
+    ?>
     <style>
         .center {
             position: absolute;
@@ -19,7 +23,7 @@
                 <div class="text-center text-white">
                     <h3>ปิดปรับปรุงชั่วคราว</h3>
                     <h1>(╯°□°）╯︵ ┻━┻</h1>
-                    <img src="https://i.imgur.com/okHmU2N.gif" width=400>
+                    <img src="https://images.pondja.com/capoo_lazy_dev.gif">
                 </div>
             
         </div> 
