@@ -21,15 +21,18 @@ create table user (
    PRIMARY KEY ( id )
 );
 
+
+//FORUM & POST use same template except cover
 create table post (
    id INT NOT NULL AUTO_INCREMENT,
-   title LONGTEXT NOT NULL,
-   writer LONGTEXT NOT NULL,
-   time DATETIME,
-   isHidden BOOLEAN,
+   title TEXT NOT NULL,
+   writer INT NOT NULL,
+   time TINYTEXT,
    article LONGTEXT NOT NULL,
-   cover LONGTEXT,
-   tags LONGTEXT,
+   cover TEXT,
+   tags TEXT,
+   hide BOOL DEFAULT false,
+   pin BOOL DEFAULT false,
    PRIMARY KEY ( id )
 );
 
@@ -44,7 +47,6 @@ create table profile (
 );
 
 create table achievement (
-   username LONGTEXT NOT NULL,
    id INT NOT NULL,
    page404 BOOLEAN DEFAULT false,
    betaTester BOOLEAN DEFAULT false,
