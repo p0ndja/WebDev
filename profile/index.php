@@ -61,8 +61,9 @@
         $query_achi = "SELECT * FROM `achievement` WHERE id = '$id'";
         $result_achi = mysqli_query($conn, $query_achi);
 
+        $not_found = false;
         if (mysqli_num_rows($result) == 0)
-            die('<center><h1>Profile Not Found</h1></center>');
+            $not_found = true;
         
 
         $undefined = "<i>Undefined</i>";
@@ -136,6 +137,7 @@
         }
     ?>
     <div class="container" id="container" style="padding-top: 88px">
+        <?php if(!$not_found) {?>
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -290,6 +292,12 @@
 
             </div>
         </div>
+        <?php } else { ?>
+            <center><h3>ไม่พบโปรไฟล์สำหรับ</h3>
+            <h1>'<?php echo $_GET['search']; ?>'</h1>
+                <img src="https://images.pondja.com/capoo_sad.gif" class="img-fluid mb-5">
+                </center>
+        <?php } ?>
     </div>
     <?php } else header("Location: ../"); ?>
 
