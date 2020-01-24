@@ -27,7 +27,20 @@
             }
             
             $result = mysqli_query($conn, $query);
+            $count = 0;
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+            <?php
+                $tags_bool = false;
+                $tags_split = explode(",", $row['tags']);
+                if (isset($_GET['tags'])) {
+                    foreach ($tags_split as $s) {
+                        if ($s == $_GET['tags']) $tags_bool = true;
+                    }
+                }
+            ?>
+            <?php if ((isset($_GET['tags']) && $tags_bool) || !isset($_GET['tags'])) { 
+                    $count++;
+            ?>
             <div class="col-12 col-md-12">
                 <div class="card mb-4">
                     <div class="hoverable view">
@@ -52,10 +65,12 @@
                             <h2 class="font-weight-bold">
                                 <?php 
                                     echo '<a href="../news/?news=' . $row['id'] . '">' . $row['title'] . '</a> ';
-                                    if (isset($_SESSION['id'])) echo '<a href="../news/post.php?news=' . $row['id'] . '"><i class="fas fa-pen-square"></i></a></h2><h4>'; 
-                                    $split = explode(",", $row['tags']);
-                                    foreach ($split as $s) { ?>
+                                    if (isset($_SESSION['id'])) echo '<a href="../news/post.php?news=' . $row['id'] . '"><i class="fas fa-pen-square"></i></a>'; 
+                                    echo '</h2><h4>';
+                                    foreach ($tags_split as $s) { ?>
+                                        <a href="../news/?tags=<?php echo $s; ?>">
                                         <span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span>
+                                        </a>
                                     <?php } ?>
                                 </h4>
                                     </div>
@@ -69,8 +84,15 @@
                     </div>
                 </div>
             </div>
+            <?php } ?>
             <?php }?>
         </div>
+        <?php if ($count == 0) { ?>
+                <center><h3>ไม่พบแท็กสำหรับ</h3>
+            <h1>'<?php echo $_GET['tags']; ?>'</h1>
+                <img src="https://images.pondja.com/capoo_sad.gif" class="img-fluid mb-5">
+                </center>
+            <?php } ?>
     </div>
 
 </body>
