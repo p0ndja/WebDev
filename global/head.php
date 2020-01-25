@@ -5,11 +5,11 @@
 <!-- KANIT FONT -->
 <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
 
-<link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
-<link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../assets/images/logo/favicon.ico" type="image/x-icon">
+<link rel="icon" href="../assets/images/logo/favicon.ico" type="image/x-icon">
 <title>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
-<link rel="image_src" href="https://tcas.pondja.com/smdlogo.png" />
-<meta property="og:image" content="https://tcas.pondja.com/smdlogo.png" />
+<link rel="image_src" href="../assets/images/logo/smdlogo.png" />
+<meta property="og:image" content="../assets/images/logo/smdlogo.png" />
 <meta property="og:title" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
 <meta property="og:description" content="123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002 โทรศัพท์ / โทรสาร 043202044" />
 
