@@ -48,20 +48,19 @@
                 <ul>
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ปฏิทินโรงเรียน </a>
                     </li>
-                    <li style="color: #ff6c00"><a style="color: white" href="../calendar" class="disabled">
+                    <li style="color: #ff6c00"><a style="color: white" href="../calendar">
                             ตารางเรียน</a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ตารางสอบ </a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="https://www.facebook.com/SMD.KKU/posts/2526062130856857"> ตารางสอบ </a></li>
                 </ul>
                 <a style="color: white" href="../news"> ข่าวสาร </a>
                 <br><a style="color: white" href="../forum"> SMD Forum </a>
                 <br><a style="color: white" href="#" class="disabled"> SMD Shop </a>
             </div>
             <div class="col-md-3 justify-content-center">
-                <a href="https://www.web-stat.com">
-                    <img alt="Web-Stat web statistics" src="https://wts.one/6s/3/1941813.gif">
-                </a>
-                <?php if ($snow_effect) { ?><br><img
-                    src="https://images.pondja.com/Webp.net-resizeimage%20(1).png"><?php } ?>
+            <div class="d-block d-md-none mb-1"></div>
+                    <a href="https://www.web-stat.com">
+                        <img alt="Web-Stat web statistics" src="https://wts.one/6s/3/1941813.gif">
+                    </a>
             </div>
         </div>
         <hr>

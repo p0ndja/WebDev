@@ -59,9 +59,6 @@
                 <a class="dropdown-item disabled" href="#">ถ่ายทอดสด <sup class="notifi"><span
                             class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE <span class="oi"
                                 data-glyph="video"></span></span></sup></a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="https://images.pondja.com" target="_blank">ฝากรูป</a>
-                <a class="dropdown-item" href="https://ln1.metrabyte.cloud/phpmyadmin/" target="_blank">Database</a>
             </div>
         </li>
 
