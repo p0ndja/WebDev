@@ -44,12 +44,12 @@
     bottom: 0;
 }
 
-        .center {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
 
 
 /* Switch info */
@@ -97,7 +97,7 @@
 
 body {
     font-family: 'Kanit', sans-serif !important;
-    background: url('https://images.pondja.com/Bottom_texture.jpg') no-repeat center center fixed;
+    background: url('../images/background/background.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -212,7 +212,7 @@ body .admin {
     position: absolute;
     height: 100%;
     left: 50%;
-    transform: translateX( -50%);
+    transform: translateX(-50%);
     top: 0;
     right: 0;
     margin: 0 auto;
@@ -224,7 +224,7 @@ body .admin {
 .circle>img.tallAndNarrow {
     width: 100%;
     top: 50%;
-    transform: translateX(0) translateY( -50%);
+    transform: translateX(0) translateY(-50%);
     left: 0;
     height: auto;
 }
