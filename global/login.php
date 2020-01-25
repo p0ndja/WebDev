@@ -72,7 +72,7 @@ if (isset($_POST['register_submit'])) {
         $_SESSION['error'] = "รหัสบัตรประชาชนนี้ ได้ทำการสมัครสมาชิกอยู่แล้ว";
     } else {
         //กรณีนี้ไม่เจอข้อมูลใด ๆ ตรงเลย เลยสามารถสมัครได้
-        if(isset($_FILES['upload'])){
+        if(isset($_FILES['upload']) && $_FILES['upload']['name'] != ""){
             $name_file =  $_FILES['upload']['name'];
             $tmp_name =  $_FILES['upload']['tmp_name'];
 
@@ -85,12 +85,14 @@ if (isset($_POST['register_submit'])) {
 
             $finaldir = $locate_img.$user.'_'.$date.'_'.$name_file;
 
+        } else {
+            $finaldir = "../assets/images/default.png";
         }
         
         $query_final = "INSERT INTO `user` (id, username, password, citizen_id, prefix, firstname, lastname, firstname_en, lastname_en, email, grade, class) VALUES ($id, '$user', '$pass', $citizen_id, '$prefix', '$firstname', '$lastname', '$firstname_en', '$lastname_en', '$email', $grade, $class)";
         $result_final = mysqli_query($conn, $query_final);
 
-        $query_achi = "INSERT INTO `achievement` (username, id) VALUES ('$user', $id)";
+        $query_achi = "INSERT INTO `achievement` (id) VALUES ($id)";
         $result_achi = mysqli_query($conn, $query_achi);
 
         $query_profile = "INSERT INTO `profile` (id, profile) VALUES ($id, '$finaldir')";
