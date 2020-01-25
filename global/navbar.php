@@ -1,4 +1,4 @@
-<a class="navbar-brand" href="../home"><span class="badge badge-light"><img src="https://images.pondja.com/logokku.png"
+<a class="navbar-brand" href="../home"><span class="badge badge-light"><img src="../assets/images/logo/logokku_60px.png"
             width="20" alt="SMD"></span></a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,9 +43,9 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 ปฏิทิน </a>
             <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item disabled" href="#"> ปฏิทินโรงเรียน </a>
-                <a class="dropdown-item disabled" href="../calendar"> ตารางเรียน </a>
-                <a class="dropdown-item disabled" href="#"> ตารางสอบ </a>
+                <a class="dropdown-item" href="#"> ปฏิทินโรงเรียน </a>
+                <a class="dropdown-item" href="../calendar"> ตารางเรียน </a>
+                <a class="dropdown-item" href="https://www.facebook.com/SMD.KKU/posts/2526062130856857"> ตารางสอบ </a>
             </div>
         </li>
         <li class="nav-item">
