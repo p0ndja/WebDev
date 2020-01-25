@@ -22,7 +22,7 @@ create table user (
 );
 
 
-//FORUM & POST use same template except cover
+//FORUM & POST use same template except 'cover' and forum will have 'type'
 create table post (
    id INT NOT NULL AUTO_INCREMENT,
    title TEXT NOT NULL,
