@@ -5,97 +5,81 @@
 
 <head>
     <?php include '../global/head.php'; ?>
+    <?php
+    $title = ""; $tags = ""; $cover = ""; $article = "";
+            if (isset($_GET['post'])) {
+                $postID = $_GET['post'];
+                $query = "SELECT * FROM `forum` WHERE id = $postID";
+                $result = mysqli_query($conn, $query);
+                if (mysqli_num_rows($result) == 0) die('Could not load data');
+                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    $article = $row['article'];
+                    $title = $row['title'];
+                    $tags = $row['tags'];
+                }
+            }
+    ?>
+    <script type="text/javascript">
+        $(function () {
+            $('.summernote').summernote({
+                height: 500,
+            });
+            $('.summernote').summernote('code', '<?php echo $article; ?>');
+        });
+    </script>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
+    <?php
+        date_default_timezone_set('Asia/Bangkok'); $date = date('Y-m-d H:i:s', time());
+        $profile_name = $_SESSION['fn'] . ' ' . $_SESSION['ln'];
+        $profile_id = $_SESSION['id'];
+        $profile_image = $_SESSION['pi'];
+        $_SESSION['time'] = $date;
+    ?>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
+        role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
-        <div class="card mb-12">
-            <div class="card-header bg-dark text-white">
-                <h5 style="color: #ffffff">รับสมัครผู้ช่วยพัฒนาเว็บไซด์ <span
-                        class="badge badge-success z-depth-0">รับสมัครงาน</span></h5>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 col-md-3">
-                        <div class="row">
-                            <div class="col-4 col-md-12">
-                                <img src="https://tcas.pondja.com/31959055_1480846662024353_4037302681675497472_n.jpg"
-                                    alt="Profile" class="img-fluid rounded-circle">
+        <form method="POST" action="../forum/save.php<?php if (isset($_GET['post'])) echo '?post=' . $_GET['post']; ?>" enctype="multipart/form-data">
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">
+                    <h5 style="color: white">
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-title">หัวข้อ</span>
                             </div>
-                            <div class="col-8 col-md-12">
-                                <p>
-                                    <a href="../profile/?search=604019">
-                                        <center>พลภณ สุนทรภาส</center>
-                                    </a>
-                                </p>
+                            <input type="text" class="form-control" id="title" name="title" aria-label="title"
+                                aria-describedby="addon-title" required value="<?php echo $title; ?>">
+                        </div>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-group mb-4">
+                        <textarea class="summernote" id="article" name="article"></textarea>
+                        <hr>
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <div class="md-form input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text md-addon" id="addon-tags">แท็ก / Tags</span>
                             </div>
+                            <input type="text" class="form-control" id="tags" name="tags"
+                                placeholder="ใช้สำหรับแท็กหัวข้อเรื่องของข่าว / สามารถแท็กได้มากกว่า 1 หัวข้อโดยใช้เครื่องหมาย Comma (,) คั่น"
+                                aria-label="Tags" aria-describedby="addon-tags" value="<?php echo $tags; ?>">
                         </div>
                     </div>
-                    <div class="col-12 col-md-9">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Sed risus ultricies tristique nulla. Eu
-                            non diam phasellus vestibulum lorem sed. Nunc consequat interdum
-                            varius sit amet mattis vulputate enim nulla. Venenatis a condimentum vitae sapien. In tellus
-                            integer feugiat scelerisque varius morbi enim nunc. Purus sit amet luctus venenatis lectus
-                            magna fringilla urna porttitor. Quisque
-                            non tellus orci ac auctor augue mauris. At lectus urna duis convallis convallis tellus id.
-                            Adipiscing diam donec adipiscing tristique risus nec feugiat in fermentum. Purus viverra
-                            accumsan in nisl. Tristique nulla aliquet enim
-                            tortor at auctor urna nunc. Blandit cursus risus at ultrices mi tempus imperdiet. Vitae
-                            purus faucibus ornare suspendisse sed nisi. Aliquet nibh praesent tristique magna sit amet
-                            purus gravida. Vulputate dignissim suspendisse
-                            in est ante in nibh mauris. Aliquam ut porttitor leo a diam. Nunc non blandit massa enim nec
-                            dui. Eget arcu dictum varius duis at. Erat velit scelerisque in dictum. Aliquet lectus proin
-                            nibh nisl. Mauris cursus mattis molestie
-                            a iaculis. Tortor posuere ac ut consequat semper. Sed augue lacus viverra vitae congue eu
-                            consequat. Senectus et netus et malesuada fames ac. At urna condimentum mattis pellentesque
-                            id nibh tortor id aliquet. Porta nibh venenatis
-                            cras sed felis eget. Arcu cursus euismod quis viverra nibh cras pulvinar mattis. Faucibus
-                            pulvinar elementum integer enim. Sagittis eu volutpat odio facilisis. Nisi est sit amet
-                            facilisis magna. Erat nam at lectus urna duis.
-                            Commodo elit at imperdiet dui accumsan sit amet nulla facilisi. Morbi non arcu risus quis
-                            varius. At consectetur lorem donec massa sapien faucibus et. Vitae turpis massa sed
-                            elementum tempus egestas. Aenean euismod elementum
-                            nisi quis eleifend quam adipiscing. Pellentesque diam volutpat commodo sed egestas egestas
-                            fringilla phasellus. Arcu vitae elementum curabitur vitae nunc. Auctor elit sed vulputate mi
-                            sit amet mauris. Libero justo laoreet sit
-                            amet cursus sit amet dictum. Nisl nisi scelerisque eu ultrices vitae. Arcu risus quis varius
-                            quam quisque id. Scelerisque fermentum dui faucibus in ornare quam viverra orci sagittis.
-                            Ultricies mi eget mauris pharetra et ultrices
-                            neque ornare. Lectus arcu bibendum at varius. Donec enim diam vulputate ut pharetra sit amet
-                            aliquam. Ornare arcu odio ut sem nulla pharetra. Consequat interdum varius sit amet mattis
-                            vulputate enim nulla. Pellentesque diam
-                            volutpat commodo sed egestas egestas fringilla phasellus faucibus. Lectus vestibulum mattis
-                            ullamcorper velit sed. Commodo elit at imperdiet dui accumsan sit amet. Massa tempor nec
-                            feugiat nisl pretium fusce id velit ut. Amet
-                            facilisis magna etiam tempor orci eu. Lobortis mattis aliquam faucibus purus in. Vestibulum
-                            rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Vel pretium
-                            lectus quam id leo in vitae turpis massa.
-                            Cursus euismod quis viverra nibh cras pulvinar mattis nunc sed. Vulputate eu scelerisque
-                            felis imperdiet proin fermentum leo vel. In fermentum posuere urna nec tincidunt praesent
-                            semper feugiat nibh. Augue lacus viverra vitae
-                            congue eu consequat ac felis. Pellentesque pulvinar pellentesque habitant morbi tristique
-                            senectus et. Eget lorem dolor sed viverra. Ac feugiat sed lectus vestibulum mattis
-                            ullamcorper. Ornare massa eget egestas purus viverra
-                            accumsan in nisl nisi. Libero justo laoreet sit amet cursus sit amet. Sit amet mattis
-                            vulputate enim nulla aliquet porttitor. Commodo ullamcorper a lacus vestibulum sed arcu non
-                            odio. Eget felis eget nunc lobortis mattis aliquam
-                            faucibus purus in. Ullamcorper morbi tincidunt ornare massa eget. Consequat semper viverra
-                            nam libero justo. Cursus euismod quis viverra nibh cras. Mi bibendum neque egestas congue.
-                            In massa tempor nec feugiat nisl. Egestas
-                            pretium aenean pharetra magna. Blandit cursus risus at ultrices mi tempus imperdiet nulla. A
-                            arcu cursus vitae congue mauris rhoncus aenean vel elit. Quam pellentesque nec nam aliquam
-                            sem et tortor consequat. Tellus in metus
-                            vulputate eu scelerisque felis.</p>
+                    <div class="row justify-content-end">
+                        <h6>เขียนโดย <?php echo $profile_name; ?> เมื่อ <?php echo $date . ' ' ?>
+                            <input type="submit" class="btn btn-success" value="บันทึก"
+                                name="<?php if (isset($_GET['post'])) echo 'post_update'; else echo 'post_submit'; ?>"></input>
+                        </h6>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-    <br>
 </body>
 
 <?php include '../global/footer.php'; ?>
