@@ -7,16 +7,6 @@
 
 <head>
     <style>
-        .fluid-background {
-            background: url(https://storage.pondja.com/long%20bar%201080.png) no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            width: 100%;
-            height: 100%;
-        }
-
         header {
             position: relative;
             background-color: black;
@@ -59,11 +49,11 @@
 
         @media (pointer: coarse) and (hover: none) {
             header {
-                background: url('https://storage.pondja.com/Untitled%20Project.mp4') black no-repeat center center scroll;
+                background: url('../assets/images/header/thumbnail.mp4') black no-repeat center center scroll;
             }
 
             header video {
-                display: url('https://storage.pondja.com/Untitled%20Project.mp4');
+                display: url('../assets/images/header/thumbnail.mp4');
             }
         }
 
@@ -108,16 +98,23 @@
 <body>
     <header id="header">
         <div class="overlay"></div>
-        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-            <source src="https://storage.pondja.com/Untitled%20Project.mp4" type="video/mp4">
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="filter: blur(3px);
+  -webkit-filter: blur(3px);">
+            <source src="../assets/images/header/thumbnail.mp4" type="video/mp4">
         </video>
         <div class="container h-100">
             <div class="d-flex h-100 text-center align-items-center">
                 <div class="w-100 text-white">
-                    <h1 class="display-4">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น</h1>
-                    <h1 class="display-4">ฝ่ายมัธยมศึกษา (มอดินแดง)</h1>
+                    <div class="d-none d-md-block">
+                        <img src="../assets/images/logo/logokku_128px.png" class="img-fluid" style="width: 10%">
+                    </div>
+                    <div class="d-block d-md-none">
+                        <img src="../assets/images/logo/logokku_128px.png" class="img-fluid" style="width: 25%">
+                    </div>
+                    <h2 class="display-4">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น</h2>
+                    <h2 class="display-5">ฝ่ายมัธยมศึกษา (มอดินแดง)</h2>
                     <hr>
-                    <h3>ประพฤติดี มีพลานามัย ใฝ่หาความรู้ เชิดชูคุณธรรม</h3>
+                    <h3>ประพฤติดี มีพลานามัย <div class="d-block d-md-none mb-1"></div>ใฝ่หาความรู้ เชิดชูคุณธรรม</h3>
                 </div>
             </div>
         </div>
@@ -181,7 +178,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://storage.pondja.com/1400x600.jpg" class="d-block w-100" alt="...">
+                    <img src="../assets/images/default/default_carousel.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block animated fadeInDown">
                         <h5>Carousel Guide</h5>
                         <p>ขนาดรูปที่แนะนำ: 1400(W) x 600(H)</p>
@@ -198,14 +195,14 @@
             </a>
         </div>
     </div>
-    <div class="container-fluid mb-3" style=" background-image: url('https://cdn.discordapp.com/attachments/636478500206936094/643477428752351263/bg_light.jpg');
+    <div class="container-fluid mb-3" style=" background-image: url('../assets/images/background/bg_normal_resize.jpg');
                 width: 100%;
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;">
         <div class="container">
             <hr>
-            <div class="card" align="center" style="    background-color: rgba(255, 255, 255, 0.95);">
+            <div class="card" align="center" style="background-color: rgba(255, 255, 255, 0.95);">
                 <div class="card-body">
                     <div class="card-title">
                         <h1 class="font-weight-bold">หลักสูตรการเรียน</h1>
@@ -221,7 +218,7 @@
                                     <div class="col-4 col-md-6">
                                         <a href="#primary_normal">
                                             <div class="view overlay zoom z-depth-1">
-                                                <img src="../assets/images/p_normal.jpg" class="img-fluid"
+                                                <img src="../assets/images/course/p_normal.jpg" class="img-fluid"
                                                     alt="หลักสูตรทั่วไป (ม.ต้น)">
                                                 <div class="mask flex-center rgba-black-slight">
                                                 </div>
@@ -231,7 +228,7 @@
                                     <div class="col-4 col-md-6">
                                         <a href="#primary_iec">
                                             <div class="view overlay zoom z-depth-1">
-                                                <img src="../assets/images/p_jems.jpg" class="img-fluid"
+                                                <img src="../assets/images/course/p_jems.jpg" class="img-fluid"
                                                     alt="หลักสูตร IEC (ม.ต้น)">
                                                 <div class="mask flex-center rgba-black-slight">
                                                 </div>
@@ -248,7 +245,7 @@
                                     <div class="col-4 col-md-4">
                                         <a href="#secondary_normal">
                                             <div class="view overlay zoom z-depth-1">
-                                                <img src="../assets/images/s_normal.jpg" class="img-fluid"
+                                                <img src="../assets/images/course/s_normal.jpg" class="img-fluid"
                                                     alt="หลักสูตรทั่วไป (ม.ปลาย)">
                                                 <div class="mask flex-center rgba-black-slight">
                                                 </div>
@@ -258,7 +255,7 @@
                                     <div class="col-4 col-md-4">
                                         <a href="#secondary_emsp">
                                             <div class="view overlay zoom z-depth-1">
-                                                <img src="../assets/images/s_sems.jpg" class="img-fluid"
+                                                <img src="../assets/images/course/s_sems.jpg" class="img-fluid"
                                                     alt="หลักสูตร EMSP (ม.ปลาย)">
                                                 <div class="mask flex-center rgba-black-slight">
                                                 </div>
@@ -268,7 +265,7 @@
                                     <div class="col-4 col-md-4">
                                         <a href="#secondary_scius">
                                             <div class="view overlay zoom z-depth-1">
-                                                <img src="../assets/images/s_scius.jpg" class="img-fluid"
+                                                <img src="../assets/images/course/s_scius.jpg" class="img-fluid"
                                                     alt="หลักสูตรวมว. (ม.ปลาย)">
                                                 <div class="mask flex-center rgba-black-slight">
                                                 </div>
@@ -336,8 +333,8 @@
                 <?php } ?>
             </div>
             <div class="col-md-4 d-none d-md-block">
-                <div class="fb-page mb-3" data-href="https://www.facebook.com/SMD.KKU" data-tabs="timeline"
-                    data-width="350" data-height="800" data-small-header="false" data-adapt-container-width="true"
+                <div class="d-none d-xl-block fb-page mb-3" data-href="https://www.facebook.com/SMD.KKU" data-tabs="timeline"
+                    data-width="" data-height="850" data-small-header="false" data-adapt-container-width="true"
                     data-hide-cover="false" data-show-facepile="true">
                     <blockquote cite="https://www.facebook.com/SMD.KKU" class="fb-xfbml-parse-ignore"><a
                             href="https://www.facebook.com/SMD.KKU">สาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา
@@ -387,6 +384,34 @@
             js.src = 'https://connect.facebook.net/th_TH/sdk/xfbml.customerchat.js';
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script>
+        $(window).on('resize', function () {
+            setTimeout(function () {
+                CMSSpace.changeFBPagePlugin()
+            }, 500);
+        });
+
+        $(window).on('load', function () {
+            setTimeout(function () {
+                CMSSpace.changeFBPagePlugin()
+            }, 1500);
+        });
+        CMSSpace.changeFBPagePlugin = function () {
+            //getting parent box width
+            var container_width = (Number($('.fb-column').width()) - Number($('.fb-column').css('padding-left')
+                .replace("px", ""))).toFixed(0);
+            //getting parent box height
+            var container_height = (Number($('.fb-column').height()) - (Number($('.fb-column-header').height()) +
+                Number($('.fb-column-   header').css('margin-bottom').replace("px", "")) + Number(($(
+                    '.fb-column').css('padding-top').replace("px", "") * 2)))).toFixed(0);
+            if (!isNaN(container_width) && !isNaN(container_height)) {
+                $(".fb-page").attr("data-width", container_width).attr("data-height", container_height);
+            }
+            if (typeof FB !== 'undefined') {
+                FB.XFBML.parse();
+            }
+        }
     </script>
     <script>
         $(window).bind('scroll', function () {
