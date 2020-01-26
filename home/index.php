@@ -49,11 +49,11 @@
 
         @media (pointer: coarse) and (hover: none) {
             header {
-                background: url('../assets/images/header/thumbnail.mp4') black no-repeat center center scroll;
+                background: url('../assets/images/header/thumbnail-min.mp4') black no-repeat center center scroll;
             }
 
             header video {
-                display: url('../assets/images/header/thumbnail.mp4');
+                display: url('../assets/images/header/thumbnail-min.mp4');
             }
         }
 
@@ -100,7 +100,7 @@
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="filter: blur(3px);
   -webkit-filter: blur(3px);">
-            <source src="../assets/images/header/thumbnail.mp4" type="video/mp4">
+            <source src="../assets/images/header/thumbnail-min.mp4" type="video/mp4">
         </video>
         <div class="container h-100">
             <div class="d-flex h-100 text-center align-items-center">
