@@ -1,4 +1,4 @@
-<a class="navbar-brand" href="../home"><span class="badge badge-light"><img src="../assets/images/logo/logokku_60px.png"
+<a class="navbar-brand" href="../home"><span class="badge badge-light"><img src="../assets/images/logo/logokku_32px.png"
             width="20" alt="SMD"></span></a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,8 +78,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img src="<?php if(isset($_SESSION['pi']) && $_SESSION['pi'] != null) echo $_SESSION['pi']; else echo 'https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png'; ?>"
-                    width="20"> <?php echo $_SESSION['fn'] . ' ' . $_SESSION['ln']; ?></a>
+                <img src="<?php echo $_SESSION['pi']; ?>" width="20"> <?php echo $_SESSION['fn'] . ' ' . $_SESSION['ln']; ?></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="../profile"> ข้อมูลส่วนตัว <i class="fas fa-user"></i></a>
                 <a class="dropdown-item" href="#"> ลงทะเบียนวิชาเลือก <i class="fas fa-tasks"></i></a>
