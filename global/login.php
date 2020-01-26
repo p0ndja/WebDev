@@ -7,7 +7,7 @@ if (isset($_POST['login_submit'])) {
     $pass = md5($_POST['login_password']);
 
     //ดึงข้อมูลมาเช็คว่า $User ที่ตั้งรหัสผ่านเป็น $Pass มีในระบบรึเปล่า
-    $query = "SELECT * FROM `user` WHERE username = '$user' AND password = '$pass'";
+    $query = "SELECT * FROM `user` WHERE (username = '$user' OR id = '$user') AND password = '$pass'";
     $result = mysqli_query($conn, $query);
     if (!$result) die('Could not get data: ' . mysqli_error($conn));
 
@@ -29,7 +29,9 @@ if (isset($_POST['login_submit'])) {
         $result_final = mysqli_query($conn, $query_final);
 
         while ($row = mysqli_fetch_array($result_final, MYSQLI_ASSOC)) {
-            $_SESSION['pi'] = $row['profile'];
+            if ($row['profile'] != null)
+                $_SESSION['pi'] = $row['profile'];
+            else $_SESSION['pi'] = '../assets/images/default.png';
         }
 
         $_SESSION['error'] = null;
