@@ -5,6 +5,9 @@
 
 <head>
     <?php include '../global/head.php';?>
+    <?php if (isset($_POST['submit'])) {
+        
+    } ?>
 </head>
 
 <body class="admin">
@@ -21,8 +24,19 @@
             <p>GLOBAL_OVERRIDE_CHECKING_ADMIN</p>
         </div>
         <?php } ?>
-        <div class="col-12 col-md-5">
+        <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
+            <input type="submit" class="btn btn-success" align="left" name="submit"
+                                value="บันทึก"></input>
+                <!--ul class="list-unstyled">
+                    <li><a class="btn-floating red"><i class="fas fa-star"></i></a></li>
+                    <li><a class="btn-floating yellow darken-1"><i class="fas fa-user"></i></a></li>
+                    <li><a class="btn-floating green"><i class="fas fa-envelope"></i></a></li>
+                    <li><a class="btn-floating blue"><i class="fas fa-shopping-cart"></i></a></li>
+                </ul-->
+        </div>
+        <div class="col-12 col-md-6">
             <div class="card card-body card-text mb-3">
+            <form method="POST" action="../admin/">
                 <?php
                     $cor = mysqli_query($conn, "SELECT * FROM `config`");
                     while($get_config = mysqli_fetch_array($cor, MYSQLI_ASSOC)) {
@@ -33,7 +47,7 @@
                 <!-- Material checked -->
                 <div class="switch switch-warning mb-1">
                     <label>
-                        <input type="checkbox" id="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
+                        <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
                         <span class="lever"></span>
                         <a style="color: black;" class="material-tooltip-main" data-toggle="tooltip" title="<?php echo $get_config['description'] . ' (' . $get_config['name'] . ')';?>">
                         <?php echo $get_config['title'];?>
@@ -42,8 +56,17 @@
                 </div>
                 <?php } ?>
             </div>
+            </form>
         </div>
     </div>
+<script>
+$('.switch input[type="checkbox"]').on('change', function(e) {
+    console.log(e.target.checked);
+    console.log(e.target.name);
+    
+    $.post("save.php", {"value": $(e.target.name).val()}, {"status":e.target.checked});
+});
+</script>
 </body>
 
 <?php include '../global/footer.php' ?>
