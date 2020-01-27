@@ -69,7 +69,7 @@
                 <center>
                     <h6 style="color: white;">Copyright 2019 - 2020 &copy; The demonstration school of Khon Kaen
                         University (Mo Din Daeng). All right reserved<h6>
-                            <h6 style="color: white;">Developed by PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka —
+                            <h6 style="color: white;"><a href="../extra/about.php">Developed by PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka</a> —
                                 <?php include 'config.php'; if (isset($patch)) echo $patch;?></h6>
                 </center>
             </div>
