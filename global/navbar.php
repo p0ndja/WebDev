@@ -1,5 +1,5 @@
-<a class="navbar-brand" href="../home"><img src="../assets/images/logo/logokku_32px_s.png"
-            width="32" alt="SMD" class="img-fluid align-content-center"></a>
+<a class="navbar-brand" href="../home"><span class="badge badge-light"><img src="../assets/images/logo/logokku_32px.png"
+            width="20" alt="SMD"></span></a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
