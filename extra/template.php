@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-    <?php include '../global/head.php';?>
+    <?php include '../global/head.php'; ?>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
     </div>
 </body>
 
-<?php include '../global/footer.php' ?>
-<?php include '../global/popup.php' ?>
+<?php include '../global/footer.php'; ?>
+<?php include '../global/popup.php'; ?>
 
 </html>
