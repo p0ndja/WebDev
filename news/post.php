@@ -43,7 +43,8 @@
         <?php include '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
-        <form method="POST" action="../news/save.php<?php if (isset($_GET['news'])) echo '?news=' . $_GET['news']; ?>" enctype="multipart/form-data">
+        <form method="POST" action="../news/save.php<?php if (isset($_GET['news'])) echo '?news=' . $_GET['news']; ?>"
+            enctype="multipart/form-data">
             <div class="card mb-3">
                 <div class="card-header bg-dark text-white">
                     <h5 style="color: white">
@@ -68,7 +69,7 @@
                         </div>
                         <?php
                             if ($cover != null) $cover_src = $cover;
-                            else $cover_src = "../assets/images/default_post.jpg";
+                            else $cover_src = "../assets/images/default/default_post.jpg";
                         ?>
                         <img src=<?php echo $cover_src; ?> class=" img-fluid w-100" id="coverThumb">
                         <hr>
@@ -103,13 +104,9 @@
     <script>
         document.getElementById("cover").onchange = function () {
             var reader = new FileReader();
-
             reader.onload = function (e) {
-                // get loaded data and render thumbnail.
                 document.getElementById("coverThumb").src = e.target.result;
             };
-
-            // read the image file as a data URL.
             reader.readAsDataURL(this.files[0]);
         };
     </script>

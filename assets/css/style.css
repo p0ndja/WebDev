@@ -1,241 +1,240 @@
-.sf-snow-flake {
-    position: fixed;
-    top: -20px;
-    z-index: 99999;
-}
-
-.sf-snow-anim {
-    top: 110%;
-}
-
-.black-ribbon {
-    position: fixed;
-    z-index: 9999;
-    width: 70px;
-}
-
-.collapse-content .fa.fa-heart:hover {
-    color: #f44336 !important;
-}
-
-.collapse-content .fa.fa-share-alt:hover {
-    color: #0d47a1 !important;
-}
-
-@media only all and (min-width: 768px) {
+    .sf-snow-flake {
+        position: fixed;
+        top: -20px;
+        z-index: 99999;
+    }
+    
+    .sf-snow-anim {
+        top: 110%;
+    }
+    
     .black-ribbon {
-        width: auto;
+        position: fixed;
+        z-index: 9999;
+        width: 70px;
     }
-}
-
-.stick-left {
-    left: 0;
-}
-
-.stick-right {
-    right: 0;
-}
-
-.stick-top {
-    top: 0;
-}
-
-.stick-bottom {
-    bottom: 0;
-}
-
-.center {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-
-/* Switch info */
-
-.switch-info label input[type=checkbox]:checked+.lever {
-    background-color: #33b5e5;
-}
-
-.switch-info label input[type=checkbox]:checked+.lever:after {
-    background-color: #0099CC;
-}
-
-
-/* Switch danger */
-
-.switch-danger label input[type=checkbox]:checked+.lever {
-    background-color: #ff4444;
-}
-
-.switch-danger label input[type=checkbox]:checked+.lever:after {
-    background-color: #CC0000;
-}
-
-
-/* Switch warning */
-
-.switch-warning label input[type=checkbox]:checked+.lever {
-    background-color: #ffbb33;
-}
-
-.switch-warning label input[type=checkbox]:checked+.lever:after {
-    background-color: #FF8800;
-}
-
-
-/* Switch success */
-
-.switch-success label input[type=checkbox]:checked+.lever {
-    background-color: #00C851;
-}
-
-.switch-success label input[type=checkbox]:checked+.lever:after {
-    background-color: #007E33;
-}
-
-body {
-    font-family: 'Kanit', sans-serif !important;
-    background: url('../images/background/background.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
-
-body .admin {
-    font-family: 'Kanit', sans-serif !important;
-    background-color: #4b4b4b;
-}
-
-.row.make-columns {
-    -moz-column-width: 19em;
-    -webkit-column-width: 19em;
-    -moz-column-gap: 1em;
-    -webkit-column-gap: 1em;
-}
-
-.row.make-columns>div {
-    display: inline-block;
-    padding: .5rem;
-    width: 100%;
-}
-
-
-/* demo only* */
-
-.panel {
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-}
-
-.disabled {
-    cursor: not-allowed;
-}
-
-@-webkit-keyframes blinker {
-    from {
-        opacity: 1.0;
+    
+    .collapse-content .fa.fa-heart:hover {
+        color: #f44336 !important;
     }
-    to {
-        opacity: 0.0;
+    
+    .collapse-content .fa.fa-share-alt:hover {
+        color: #0d47a1 !important;
     }
-}
-
-.navbar+.container {
-    padding-top: 88px;
-}
-
-.navbar {
-    background-image: url('https://images.pondja.com/bg_light_resize.jpg');
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-.admin {
-    background-image: url('https://images.pondja.com/bg_dark_resize.jpg');
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-@media only screen and (max-width: 768px) {
+    
+    @media only all and (min-width: 768px) {
+        .black-ribbon {
+            width: auto;
+        }
+    }
+    
+    .stick-left {
+        left: 0;
+    }
+    
+    .stick-right {
+        right: 0;
+    }
+    
+    .stick-top {
+        top: 0;
+    }
+    
+    .stick-bottom {
+        bottom: 0;
+    }
+    
+    .center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    /* Switch info */
+    
+    .switch-info label input[type=checkbox]:checked+.lever {
+        background-color: #33b5e5;
+    }
+    
+    .switch-info label input[type=checkbox]:checked+.lever:after {
+        background-color: #0099CC;
+    }
+    /* Switch danger */
+    
+    .switch-danger label input[type=checkbox]:checked+.lever {
+        background-color: #ff4444;
+    }
+    
+    .switch-danger label input[type=checkbox]:checked+.lever:after {
+        background-color: #CC0000;
+    }
+    /* Switch warning */
+    
+    .switch-warning label input[type=checkbox]:checked+.lever {
+        background-color: #ffbb33;
+    }
+    
+    .switch-warning label input[type=checkbox]:checked+.lever:after {
+        background-color: #FF8800;
+    }
+    /* Switch success */
+    
+    .switch-success label input[type=checkbox]:checked+.lever {
+        background-color: #00C851;
+    }
+    
+    .switch-success label input[type=checkbox]:checked+.lever:after {
+        background-color: #007E33;
+    }
+    
+    .row.make-columns {
+        -moz-column-width: 19em;
+        -webkit-column-width: 19em;
+        -moz-column-gap: 1em;
+        -webkit-column-gap: 1em;
+    }
+    
+    .row.make-columns>div {
+        display: inline-block;
+        padding: .5rem;
+        width: 100%;
+    }
+    /* demo only* */
+    
+    .panel {
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .disabled {
+        cursor: not-allowed;
+    }
+    
+    @-webkit-keyframes blinker {
+        from {
+            opacity: 1.0;
+        }
+        to {
+            opacity: 0.0;
+        }
+    }
+    
+    .navbar+.container {
+        padding-top: 88px;
+    }
+    
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 'Kanit', sans-serif;
+        background: url('../images/background/background_removehead.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    
+    body .admin {
+        background-color: #4b4b4b;
+    }
+    
+    @media only screen and (max-width: 666px) {
+        body {
+            background: url('../images/background/background_mobile_verticle.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    }
+    
     .navbar {
         background-image: url('https://images.pondja.com/bg_light_resize.jpg');
         background-repeat: no-repeat;
-        background-size: cover;
-        background-position: fixed;
+        background-size: 100%;
     }
+    
     .admin {
         background-image: url('https://images.pondja.com/bg_dark_resize.jpg');
         background-repeat: no-repeat;
-        background-size: cover;
-        background-position: fixed;
+        background-size: 100%;
     }
-}
-
-.blink {
-    text-decoration: blink;
-    -webkit-animation-name: blinker;
-    -webkit-animation-duration: 0.6s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-direction: alternate;
-}
-
-.blink2 {
-    text-decoration: blink;
-    -webkit-animation-name: blinker;
-    -webkit-animation-duration: 0.2s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-direction: alternate;
-}
-
-.circle {
-    width: 100%;
-    position: relative;
-    border-radius: 50%;
-    overflow: hidden;
-    text-align: center;
-}
-
-.circle:before {
-    display: block;
-    content: "";
-    width: 100%;
-    padding-top: 100%;
-}
-
-.circle>img {
-    position: absolute;
-    height: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
-    right: 0;
-    margin: 0 auto;
-    bottom: 0;
-    opacity: 0;
-    transition: opacity .4s;
-}
-
-.circle>img.tallAndNarrow {
-    width: 100%;
-    top: 50%;
-    transform: translateX(0) translateY(-50%);
-    left: 0;
-    height: auto;
-}
-
-.circle>img.loaded {
-    opacity: 1;
-}
-
-footer hr {
-    height: 1px;
-    color: #ffffff;
-    background-color: #ffffff;
-    border: none;
-}
+    
+    @media only screen and (max-width: 768px) {
+        .navbar {
+            background-image: url('https://images.pondja.com/bg_light_resize.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: fixed;
+        }
+        .admin {
+            background-image: url('https://images.pondja.com/bg_dark_resize.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: fixed;
+        }
+    }
+    
+    .blink {
+        text-decoration: blink;
+        -webkit-animation-name: blinker;
+        -webkit-animation-duration: 0.6s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: ease-in-out;
+        -webkit-animation-direction: alternate;
+    }
+    
+    .blink2 {
+        text-decoration: blink;
+        -webkit-animation-name: blinker;
+        -webkit-animation-duration: 0.2s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: ease-in-out;
+        -webkit-animation-direction: alternate;
+    }
+    
+    .circle {
+        width: 100%;
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        text-align: center;
+    }
+    
+    .circle:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: 100%;
+    }
+    
+    .circle>img {
+        position: absolute;
+        height: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0;
+        right: 0;
+        margin: 0 auto;
+        bottom: 0;
+        opacity: 0;
+        transition: opacity .4s;
+    }
+    
+    .circle>img.tallAndNarrow {
+        width: 100%;
+        top: 50%;
+        transform: translateX(0) translateY(-50%);
+        left: 0;
+        height: auto;
+    }
+    
+    .circle>img.loaded {
+        opacity: 1;
+    }
+    
+    footer hr {
+        height: 1px;
+        color: #ffffff;
+        background-color: #ffffff;
+        border: none;
+    }

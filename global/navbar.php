@@ -36,7 +36,7 @@
                 <a class="dropdown-item disabled" href="#"> งานห้องสมุด </a>
                 <a class="dropdown-item disabled" href="#"> ชมรมผู้ปกครองและครู </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item disabled" href="#"> เอกสารประกอบการสอน </a>
+                <a class="dropdown-item" href="../subject"> เอกสารประกอบการสอน </a>
             </div>
         </li>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

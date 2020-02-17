@@ -32,7 +32,6 @@
     ?>
     <style>
         body {
-            font-family: 'Kanit', sans-serif !important;
             background: url(<?php echo $profile_background ?>) no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;

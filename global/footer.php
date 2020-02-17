@@ -41,7 +41,7 @@
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">
                             ชมรมผู้ปกครองและครู</a></li>
                 </ul>
-                <a style="color: white" href="#" class="disabled"> เอกสารประกอบการสอน </a></li>
+                <a style="color: white" href="../subject"> เอกสารประกอบการสอน </a></li>
             </div>
             <div class="col-md-3">
                 <p style="color: white">ปฏิทิน</p>
@@ -50,17 +50,18 @@
                     </li>
                     <li style="color: #ff6c00"><a style="color: white" href="../calendar">
                             ตารางเรียน</a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="https://www.facebook.com/SMD.KKU/posts/2526062130856857"> ตารางสอบ </a></li>
+                    <li style="color: #ff6c00"><a style="color: white"
+                            href="https://www.facebook.com/SMD.KKU/posts/2526062130856857"> ตารางสอบ </a></li>
                 </ul>
                 <a style="color: white" href="../news"> ข่าวสาร </a>
                 <br><a style="color: white" href="../forum"> SMD Forum </a>
                 <br><a style="color: white" href="#" class="disabled"> SMD Shop </a>
             </div>
             <div class="col-md-3 justify-content-center">
-            <div class="d-block d-md-none mb-1"></div>
-                    <a href="https://www.web-stat.com">
-                        <img alt="Web-Stat web statistics" src="https://wts.one/6s/3/1941813.gif">
-                    </a>
+                <div class="d-block d-md-none mb-1"></div>
+                <a href="https://www.web-stat.com">
+                    <img alt="Web-Stat web statistics" src="https://wts.one/6s/3/1941813.gif">
+                </a>
             </div>
         </div>
         <hr>
@@ -69,7 +70,8 @@
                 <center>
                     <h6 style="color: white;">Copyright 2019 - 2020 &copy; The demonstration school of Khon Kaen
                         University (Mo Din Daeng). All right reserved<h6>
-                            <h6 style="color: white;"><a href="../extra/about.php">Developed by PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka</a> —
+                            <h6 style="color: white;"><a href="../extra/about.php">Developed by PondJaᵀᴴ &
+                                    ˢᵖᵉᶜᵗᵉʳRisaka</a> —
                                 <?php include 'config.php'; if (isset($patch)) echo $patch;?></h6>
                 </center>
             </div>
