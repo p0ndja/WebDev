@@ -295,6 +295,7 @@
             $result = mysqli_query($conn, $query);
 
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+            <?php if (strpos($row['tags'], 'hidden') === false) { ?>
                 <div class="card mb-3">
                     <div class="hoverable view">
                         <?php if ($row['cover'] != NULL) { ?>
@@ -331,6 +332,7 @@
                     </div>
                 </div>
                 <?php } ?>
+            <?php } ?>
             </div>
             <div class="col-md-4 d-none d-md-block">
                 <div class="d-none d-xl-block fb-page mb-3" data-href="https://www.facebook.com/SMD.KKU"
