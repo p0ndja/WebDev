@@ -57,7 +57,7 @@
                 <br><a style="color: white" href="../forum"> SMD Forum </a>
                 <br><a style="color: white" href="#" class="disabled"> SMD Shop </a>
             </div>
-            <div class="col-md-3 justify-content-center">
+            <div class="col-md-3">
                 <div class="d-block d-md-none mb-1"></div>
                 <a href="https://www.web-stat.com">
                     <img alt="Web-Stat web statistics" src="https://wts.one/6s/3/1941813.gif">

@@ -215,6 +215,29 @@
         <!--/.Content-->
     </div>
 </div>
+<div class="modal fade" id="announcementPopup" name="announcementPopup" tabindex="-1" role="dialog" aria-labelledby="announcementPopup" aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-warning modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">ข่าวประชาสัมพันธ์</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="https://www.easyuppic.com/images/2020/02/17/regist63-min.jpg" class="img-fluid w-100 d-flex justify-content-center mb-3 z-depth-2">
+                <div class="modal-text">
+                    <p>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง) เปิดรับสมัครนักเรียนเพื่อสอบเข้าศึกษาต่อในระดับชั้นมัธยมศึกษาปีที่ 4 ประจำปีการศึกษา 2563 สามารถสมัครสอบผ่านระบบออนไลน์ที่เว็บไซต์ <a href="http://www.smd.kku.ac.th">www.smd.kku.ac.th</a>                        ระหว่างวันที่ 3 กุมภาพันธ์ – 3 มีนาคม 2563 สอบถามรายละเอียดเพิ่มเติม โทร.<a href="tel:091-056-7871">091-056-7871</a></p>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <a href="http://smd-s.kku.ac.th/home/images/smd-63/announce3297.pdf" target="_blank" class="btn btn-warning">รายละเอียดเพิ่มเติม</a>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">ปิดหน้าต่าง</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     // Material Select Initialization
     $(document).ready(function () {
