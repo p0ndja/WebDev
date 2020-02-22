@@ -20,11 +20,11 @@
         <?php } ?>
         <?php
             
-            $perpage = 5;
+            $perpage = 6;
             $page = 1;
-            if (isset($_GET['page'])) {
-                $page = $_GET['page'];
-            }
+            if (isset($_GET['page'])) $page = $_GET['page'];
+            else header("Location: ?page=1");
+            
             $start = ($page - 1) * $perpage;
 
             if (isset($_GET['news'])) {
@@ -33,7 +33,7 @@
             } else if (isset($_GET['page'])) {
                 $query = "SELECT * FROM `post` ORDER by time DESC limit {$start}, {$perpage}";
             } else {
-                $query = "SELECT * FROM `post` ORDER by time DESC";//limit 6
+                $query = "SELECT * FROM `post` ORDER by time DESC";
             }
             
             $result = mysqli_query($conn, $query);
@@ -94,6 +94,7 @@
             </div>
         </div>
         <?php } else { ?>
+            <?php $count++; ?>
         <div class="card mb-4">
             <div class="hoverable view">
                 <div class="card-body">
@@ -106,8 +107,15 @@
         <?php } //END ELSE ?>
         <?php } //END IF['tags'] ?>
         <?php } //END WHILE?>
-        <?php if (!isset($_GET['news'])) { ?>
-        <?php $total = mysqli_num_rows(mysqli_query($conn, "SELECT `id` FROM `post`")); $total_page = ceil($total / $perpage); ?>
+        <?php if (!isset($_GET['news'])) { //No pagination on '?news' methode
+        if (isset($_GET['tags'])) {
+            $t = $_GET['tags'];
+            $total = mysqli_num_rows(mysqli_query($conn, "SELECT `id` FROM `post` WHERE `tags` LIKE $t")); 
+        } else { //Cause Default
+            $total = mysqli_num_rows(mysqli_query($conn, "SELECT `id` FROM `post`")); 
+        }
+        
+        $total_page = ceil($total / $perpage); ?>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
