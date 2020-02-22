@@ -63,8 +63,20 @@
 $('.switch input[type="checkbox"]').on('change', function(e) {
     console.log(e.target.checked);
     console.log(e.target.name);
-    
-    $.post("save.php", {"value": $(e.target.name).val()}, {"status":e.target.checked});
+
+    $.ajax({
+        url: "save.php",  
+        type: "POST",
+          //pass data like this 
+          data: {name: e.target.name, col: "bool", val: e.target.checked},
+        cache: false,
+        success: function(data) {  
+            if (data=="S")
+                $('#message').html("<h2>Current balance has been updated!</h2>") 
+        } 
+
+    });
+
 });
 </script>
 </body>
