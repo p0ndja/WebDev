@@ -1,5 +1,7 @@
 <?php include '../global/connect.php'; ?>
 
+<?php if (!isset($_SESSION['id'])) header("Location: ../"); ?>
+
 <!DOCTYPE html>
 <html lang="th">
 
