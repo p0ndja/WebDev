@@ -7,8 +7,8 @@
     <?php include '../global/head.php'; ?>
     <?php
     $title = ""; $tags = ""; $cover = ""; $article = "";
-            if (isset($_GET['news'])) {
-                $postID = $_GET['news'];
+            if (isset($_GET['id'])) {
+                $postID = $_GET['id'];
                 $query = "SELECT * FROM `post` WHERE id = $postID";
                 $result = mysqli_query($conn, $query);
                 if (mysqli_num_rows($result) == 0) die('Could not load data');
@@ -43,7 +43,7 @@
         <?php include '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
-        <form method="POST" action="../news/save.php<?php if (isset($_GET['news'])) echo '?news=' . $_GET['news']; ?>"
+        <form method="POST" action="../news/save.php<?php if (isset($_GET['id'])) echo '?news=' . $_GET['id']; ?>"
             enctype="multipart/form-data">
             <div class="card mb-3">
                 <div class="card-header bg-dark text-white">
@@ -94,7 +94,7 @@
                     <div class="row justify-content-end">
                         <h6>เขียนโดย <?php echo $profile_name; ?> เมื่อ <?php echo $date . ' ' ?>
                             <input type="submit" class="btn btn-success" value="บันทึก"
-                                name="<?php if (isset($_GET['news'])) echo 'post_update'; else echo 'post_submit'; ?>"></input>
+                                name="<?php if (isset($_GET['id'])) echo 'post_update'; else echo 'post_submit'; ?>"></input>
                         </h6>
                     </div>
                 </div>
