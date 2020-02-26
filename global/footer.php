@@ -11,20 +11,20 @@
             <div class="col-md-3">
                 <p style="color: white">เกี่ยวกับ</p>
                 <ul>
-                    <li style="color: #ff6c00"><a href="../news/?news=20" style="color: white">ประวัติโรงเรียน</a></li>
-                    <li style="color: #ff6c00"><a href="../news/?news=21" style="color: white">ปรัชญา</a></li>
-                    <li style="color: #ff6c00"><a href="../news/?news=22" style="color: white">วิสัยทัศน์ พันธกิจ</a>
-                    <li style="color: #ff6c00"><a href="../news/?news=23" style="color: white">เป้าหมายเชิงกลยุทธ์</a>
+                    <li style="color: #ff6c00"><a href="../news/?id=20" style="color: white">ประวัติโรงเรียน</a></li>
+                    <li style="color: #ff6c00"><a href="../news/?id=21" style="color: white">ปรัชญา</a></li>
+                    <li style="color: #ff6c00"><a href="../news/?id=22" style="color: white">วิสัยทัศน์ พันธกิจ</a>
+                    <li style="color: #ff6c00"><a href="../news/?id=23" style="color: white">เป้าหมายเชิงกลยุทธ์</a>
                     </li>
-                    <li style="color: #ff6c00"><a href="../news/?news=24"
+                    <li style="color: #ff6c00"><a href="../news/?id=24"
                             style="color: white">คุณลักษณะอันพึงประสงค์</a></li>
-                    <li style="color: #ff6c00"><a href="../news/?news=25"
+                    <li style="color: #ff6c00"><a href="../news/?id=25"
                             style="color: white">คณะกรรมการประจำโรงเรียน</a></li>
-                    <li style="color: #ff6c00"><a href="../news/?news=26" style="color: white">โครงสร้างการบริหาร</a>
+                    <li style="color: #ff6c00"><a href="../news/?id=26" style="color: white">โครงสร้างการบริหาร</a>
                     </li>
-                    <li style="color: #ff6c00"><a href="../news/?news=29" style="color: white">ทำเนียบผู้บริหาร</a></li>
-                    <li style="color: #ff6c00"><a href="../news/?news=32" style="color: white">คณะผู้บริหาร</a></li>
-                    <li style="color: #ff6c00"><a href="../news/?news=37" style="color: white">บุคลากร</a></li>
+                    <li style="color: #ff6c00"><a href="../news/?id=29" style="color: white">ทำเนียบผู้บริหาร</a></li>
+                    <li style="color: #ff6c00"><a href="../news/?id=32" style="color: white">คณะผู้บริหาร</a></li>
+                    <li style="color: #ff6c00"><a href="../news/?id=37" style="color: white">บุคลากร</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
@@ -107,6 +107,10 @@
             $('[data-toggle="tooltip"]').tooltip()
         })
     });
+
+    $('.dropdown-menu').find('form').click(function (e) {
+    e.stopPropagation();
+  });
 </script>
 <?php
         mysqli_close($conn);

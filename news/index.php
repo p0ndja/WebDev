@@ -12,7 +12,7 @@
         <?php include '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
-        <?php if (!isset($_GET['news'])) { ?>
+        <?php if (!isset($_GET['id'])) { ?>
         <h1 id="news" name="news">NEWS
             <?php if (isset($_SESSION['id'])) { ?>
             <a href="../news/post.php" class="btn btn-dark">add news</a>
@@ -23,12 +23,13 @@
             $perpage = 6;
             $page = 1;
             if (isset($_GET['page'])) $page = $_GET['page'];
+            else if (isset($_GET['tags']) || isset($_GET['id'])) $page=1;
             else header("Location: ?page=1");
             
             $start = ($page - 1) * $perpage;
 
-            if (isset($_GET['news'])) {
-                $postID = $_GET['news'];
+            if (isset($_GET['id'])) {
+                $postID = $_GET['id'];
                 $query = "SELECT * FROM `post` WHERE id = $postID";
             } else if (isset($_GET['page'])) {
                 $query = "SELECT * FROM `post` ORDER by time DESC limit {$start}, {$perpage}";
@@ -50,7 +51,7 @@
             ?>
         <?php if ((isset($_GET['tags']) && $tags_bool) || !isset($_GET['tags'])) {
                 $count++;
-            if  (isset($_GET['news']) || (strpos($row['tags'],'hidden') === false) || (isset($_GET['tags']) && $_GET['tags'] == 'hidden')) {
+            if  (isset($_GET['id']) || (strpos($row['tags'],'hidden') === false) || (isset($_GET['tags']) && $_GET['tags'] == 'hidden')) {
             ?>
         <div class="card mb-4">
             <div class="hoverable view">
@@ -74,8 +75,8 @@
                     <div class="card-title">
                         <h2 class="font-weight-bold">
                             <?php 
-                                    echo '<a href="../news/?news=' . $row['id'] . '">' . $row['title'] . '</a> ';
-                                    if (isset($_SESSION['id'])) echo '<a href="../news/post.php?news=' . $row['id'] . '"><i class="fas fa-pen-square"></i></a>'; 
+                                    echo '<a href="../news/?id=' . $row['id'] . '">' . $row['title'] . '</a> ';
+                                    if (isset($_SESSION['id'])) echo '<a href="../news/post.php?id=' . $row['id'] . '"><i class="fas fa-pen-square"></i></a>'; 
                                     echo '</h2><h4>';
                                     foreach ($tags_split as $s) { ?>
                             <a href="../news/?tags=<?php echo $s; ?>">
@@ -107,7 +108,7 @@
         <?php } //END ELSE ?>
         <?php } //END IF['tags'] ?>
         <?php } //END WHILE?>
-        <?php if (!isset($_GET['news'])) { //No pagination on '?news' methode
+        <?php if (!isset($_GET['id'])) { //No pagination on '?news' methode
         if (isset($_GET['tags'])) {
             $t = $_GET['tags'];
             $total = mysqli_num_rows(mysqli_query($conn, "SELECT `id` FROM `post` WHERE `tags` LIKE $t")); 
