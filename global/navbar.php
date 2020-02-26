@@ -12,17 +12,17 @@
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> เกี่ยวกับ </a>
             <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="../news/?news=20">ประวัติโรงเรียน</a>
-                <a class="dropdown-item" href="../news/?news=21">ปรัชญา</a>
-                <a class="dropdown-item" href="../news/?news=22">วิสัยทัศน์ พันธกิจ</a>
-                <a class="dropdown-item" href="../news/?news=23">เป้าหมายเชิงกลยุทธ์</a>
-                <a class="dropdown-item" href="../news/?news=24">คุณลักษณะอันพึงประสงค์</a>
-                <a class="dropdown-item" href="../news/?news=25">คณะกรรมการประจำโรงเรียน</a>
+                <a class="dropdown-item" href="../news/?id=20">ประวัติโรงเรียน</a>
+                <a class="dropdown-item" href="../news/?id=21">ปรัชญา</a>
+                <a class="dropdown-item" href="../news/?id=22">วิสัยทัศน์ พันธกิจ</a>
+                <a class="dropdown-item" href="../news/?id=23">เป้าหมายเชิงกลยุทธ์</a>
+                <a class="dropdown-item" href="../news/?id=24">คุณลักษณะอันพึงประสงค์</a>
+                <a class="dropdown-item" href="../news/?id=25">คณะกรรมการประจำโรงเรียน</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../news/?news=26">โครงสร้างการบริหาร</a>
-                <a class="dropdown-item" href="../news/?news=29">ทำเนียบผู้บริหาร</a>
-                <a class="dropdown-item" href="../news/?news=32">คณะผู้บริหาร</a>
-                <a class="dropdown-item" href="../news/?news=37">บุคลากร</a>
+                <a class="dropdown-item" href="../news/?id=26">โครงสร้างการบริหาร</a>
+                <a class="dropdown-item" href="../news/?id=29">ทำเนียบผู้บริหาร</a>
+                <a class="dropdown-item" href="../news/?id=32">คณะผู้บริหาร</a>
+                <a class="dropdown-item" href="../news/?id=37">บุคลากร</a>
             </div>
         </li>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -71,13 +71,12 @@
                     value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>">
             </div>
         </form>
-        <?php
-        if (isset($_SESSION['fn'])) { 
-    ?>
+        <?php if (isset($_SESSION['fn'])) { ?>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img src="<?php echo $_SESSION['pi']; ?>" width="20"> <?php echo $_SESSION['fn'] . ' ' . $_SESSION['ln']; ?></a>
+                <img src="<?php echo $_SESSION['pi']; ?>" width="20">
+                <?php echo $_SESSION['fn'] . ' ' . $_SESSION['ln']; ?></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="../profile"> ข้อมูลส่วนตัว <i class="fas fa-user"></i></a>
                 <a class="dropdown-item" href="#"> ลงทะเบียนวิชาเลือก <i class="fas fa-tasks"></i></a>
@@ -89,11 +88,31 @@
                 <a class="dropdown-item text-danger" href="../global/logout.php">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></a>
             </div>
         </li>
-        <?php
-                } else { ?>
-        <a href="" class="btn btn-rounded peach-gradient text-dark font-weight-bold" data-toggle="modal" data-target="#login">Login</a>
-        <?php
-                }
-            ?>
+        <?php } else { ?>
+        <li class="dropdown order-1">
+            <button type="button" id="dropdownMenu1" data-toggle="dropdown"
+                class="btn btn-secondary dropdown-toggle">Login <span class="caret"></span></button>
+            <ul class="dropdown-menu dropdown-menu-right mt-1">
+                <li class="px-3 py-2">
+                    <form class="form" role="form">
+                        <div class="form-group">
+                            <input id="emailInput" placeholder="Email" class="form-control" type="text">
+                        </div>
+                        <div class="form-group">
+                            <input id="passwordInput" placeholder="Password" class="form-control" type="text">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-block">Login</button>
+                        </div>
+                        <div class="form-group text-center">
+                            <a href="#" data-toggle="modal" data-target="#modalPassword">Forgot password?</a>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </li>
+        <a href="" class="btn btn-rounded peach-gradient text-dark font-weight-bold" data-toggle="modal"
+            data-target="#login">Login</a>
+        <?php } ?>
     </ul>
 </div>
