@@ -318,8 +318,8 @@
                             <p class="card-title">
                                 <h5>
                                     <?php 
-                                    echo '<a href="../news/?news=' . $row['id'] . '">' . $row['title'] . '</a> ';
-                                    if (isset($_SESSION['id'])) echo '<a href="../news/post.php?news=' . $row['id'] . '"><i class="fas fa-pen-square"></i></a></h1><h4>'; 
+                                    echo '<a href="../news/?id=' . $row['id'] . '">' . $row['title'] . '</a> ';
+                                    if (isset($_SESSION['id'])) echo '<a href="../news/post.php?id=' . $row['id'] . '"><i class="fas fa-pen-square"></i></a></h1><h4>'; 
                                     echo '</h5><h6>'; 
                                     $split = explode(",", $row['tags']);
                                     foreach ($split as $s) { ?>
@@ -348,7 +348,6 @@
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1422.7832711614212!2d102.83013724920174!3d16.480603791462354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228aed02885aa5%3A0x107dbd3c7fe46020!2z4LmC4Lij4LiH4LmA4Lij4Li14Lii4LiZ4Liq4Liy4LiY4Li04LiV4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LiC4Lit4LiZ4LmB4LiB4LmI4LiZICjguKHguK3guJTguLTguJnguYHguJTguIcp!5e0!3m2!1sth!2sth!4v1577883715935!5m2!1sth!2sth"
                                 width="98%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                            <hr>
                             <p class="card-text"><u>ที่อยู่</u> 123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น
                                 ฝ่ายมัธยมศึกษา (มอดินแดง) ถ.มิตรภาพ ต.ในเมือง อ.เมือง จ.ขอนแก่น 40002</p>
                             <p class="card-text"><u>โทรศัพท์</u> <a href="tel:043202044">043202044</a> / <u>โทรสาร</u>
