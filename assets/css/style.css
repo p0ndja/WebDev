@@ -148,26 +148,26 @@
     }
     
     .navbar {
-        background-image: url('https://images.pondja.com/bg_light_resize.jpg');
+        background-image: url('../images/background/bg_normal_resize.jpg');
         background-repeat: no-repeat;
         background-size: 100%;
     }
     
     .admin {
-        background-image: url('https://images.pondja.com/bg_dark_resize.jpg');
+        background-image: url('../images/background/bg_dark_resize.jpg');
         background-repeat: no-repeat;
         background-size: 100%;
     }
     
     @media only screen and (max-width: 768px) {
         .navbar {
-            background-image: url('https://images.pondja.com/bg_light_resize.jpg');
+            background-image: url('../images/background/bg_normal_resize.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             background-position: fixed;
         }
         .admin {
-            background-image: url('https://images.pondja.com/bg_dark_resize.jpg');
+            background-image: url('../images/background/bg_dark_resize.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             background-position: fixed;
