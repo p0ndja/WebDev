@@ -117,6 +117,7 @@
         while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
             if ($row['profile'] != null)
                 $profile_image = $row['profile'];
+            else $profile_image = '../assets/images/default.png';
         }  
         
         while ($row = mysqli_fetch_array($result_achi, MYSQLI_ASSOC)) {
