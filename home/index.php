@@ -99,7 +99,7 @@
     <header id="header">
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="filter: blur(3px);
-  -webkit-filter: blur(3px);">
+  -webkit-filter: blur(4px);">
             <source src="../assets/images/header/thumbnail-min.mp4" type="video/mp4">
         </video>
         <div class="container h-100">
@@ -299,7 +299,7 @@
                 <div class="card mb-3">
                     <div class="hoverable view">
                         <?php if ($row['cover'] != NULL) { ?>
-                        <img class="view overlay card-img-top" src="<?php echo $row['cover']; ?>">
+                        <img class="card-img-top" src="<?php echo $row['cover']; ?>">
                         <?php } ?>
                         <div class="card-body">
                             <p class="card-text"><i class="far fa-clock"></i>
