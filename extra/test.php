@@ -13,10 +13,16 @@
         <?php include '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
-        <script>swal("TEST");</script>
+    <div id="summernote"><p>Hello Summernote</p>
+</div>
     </div>
-</body>
 
+</body>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+  </script>
 <?php include '../global/footer.php'; ?>
 <?php include '../global/popup.php'; ?>
 
