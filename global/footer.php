@@ -80,7 +80,7 @@
 </footer>
 
 
-<?php if(ISSET($snow_effect) && $snow_effect) { ?>
+<?php if(isset($snow_effect) && $snow_effect) { ?>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/h5ab-snow-flurry.js"></script>
 <script>
     jQuery(document).ready(function ($) {
@@ -112,7 +112,5 @@
     e.stopPropagation();
   });
 </script>
-<?php
-        mysqli_close($conn);
-        if ($close) header("Location: ../extra/close.php");
-    ?>
+
+<?php mysqli_close($conn); ?>
