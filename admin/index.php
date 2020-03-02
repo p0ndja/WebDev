@@ -15,15 +15,11 @@
         role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
+
+    <?php needLogin(); ?>
+    <?php needPermission('isAdmin', $conn); ?>
+
     <div class="container" id="container" style="padding-top: 88px">
-        <?php
-        $get_override_admin = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM `config` WHERE name = 'global_override_checking_admin'"), MYSQLI_ASSOC);
-        $conf_override_admin = $get_override_admin['bool'];
-        if ($conf_override_admin) { ?>
-        <div class="alert alert-warning" role="alert">
-            <p>GLOBAL_OVERRIDE_CHECKING_ADMIN</p>
-        </div>
-        <?php } ?>
         <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
             <input type="submit" class="btn btn-success" align="left" name="submit"
                                 value="บันทึก"></input>
@@ -34,9 +30,10 @@
                     <li><a class="btn-floating blue"><i class="fas fa-shopping-cart"></i></a></li>
                 </ul-->
         </div>
-        <div class="col-12 col-md-6">
-            <div class="card card-body card-text mb-3">
-            <form method="POST" action="../admin/">
+        <div class="col-12 col-md-12">
+            <div class="card">
+                <div class="card-body card-text mb-3">
+                <div class="card-title card-text"><h1>Global Variable</h1></div>
                 <?php
                     $cor = mysqli_query($conn, "SELECT * FROM `config`");
                     while($get_config = mysqli_fetch_array($cor, MYSQLI_ASSOC)) {
@@ -55,15 +52,14 @@
                     </label>
                 </div>
                 <?php } ?>
+                </div>
             </div>
-            </form>
         </div>
     </div>
 <script>
 $('.switch input[type="checkbox"]').on('change', function(e) {
     console.log(e.target.checked);
     console.log(e.target.name);
-
     $.ajax({
         url: "save.php",  
         type: "POST",
@@ -74,9 +70,7 @@ $('.switch input[type="checkbox"]').on('change', function(e) {
             if (data=="S")
                 $('#message').html("<h2>Current balance has been updated!</h2>") 
         } 
-
     });
-
 });
 </script>
 </body>
