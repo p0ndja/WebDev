@@ -1,4 +1,5 @@
 <?php include '../global/connect.php'; ?>
+<?php if (!getConfig('global_userProfile', 'bool', $conn)) { back(); } ?>
 
 <!DOCTYPE html>
 <html lang="th">
