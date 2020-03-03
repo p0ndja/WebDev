@@ -155,8 +155,10 @@
     
     .admin {
         background-image: url('../images/background/bg_dark_resize.jpg');
-        background-repeat: no-repeat;
-        background-size: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
     }
     
     @media only screen and (max-width: 768px) {
