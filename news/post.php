@@ -19,6 +19,7 @@
                     $title = $row['title'];
                     $cover = $row['cover'];
                     $tags = $row['tags'];
+                    $_SESSION['temp_cover'] = $cover;
                 }
             }
     ?>
