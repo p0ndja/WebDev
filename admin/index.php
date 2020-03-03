@@ -31,7 +31,7 @@
                 </ul-->
         </div>
         <div class="col-12 col-md-12">
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-body card-text mb-3">
                 <div class="card-title card-text"><h1>Global Variable</h1></div>
                 <?php
