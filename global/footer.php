@@ -41,7 +41,7 @@
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">
                             ชมรมผู้ปกครองและครู</a></li>
                 </ul>
-                <a style="color: white" href="../subject"> เอกสารประกอบการสอน </a></li>
+                <a style="color: white" href="../pages/subject.php"> เอกสารประกอบการสอน </a></li>
             </div>
             <div class="col-md-3">
                 <p style="color: white">ปฏิทิน</p>
@@ -70,7 +70,7 @@
                 <center>
                     <h6 style="color: white;">Copyright 2019 - 2020 &copy; The demonstration school of Khon Kaen
                         University (Mo Din Daeng). All right reserved<h6>
-                            <h6 style="color: white;"><a href="../extra/about.php">Developed by PondJaᵀᴴ &
+                            <h6 style="color: white;"><a href="../pages/about.php">Developed by PondJaᵀᴴ &
                                     ˢᵖᵉᶜᵗᵉʳRisaka</a> —
                                 <?php include 'config.php'; if (isset($patch)) echo $patch;?></h6>
                 </center>
