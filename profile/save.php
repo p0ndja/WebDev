@@ -1,5 +1,4 @@
 <?php 
-    include '../global/base64.php';
     include '../global/connect.php';
 
     if (isset($_POST['edit_submit'])) {
