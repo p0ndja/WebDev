@@ -89,3 +89,11 @@
         });
     </script>
     <?php die(); }} ?>
+<?php function back() { 
+    ?>
+    <script>
+    window.history.back();
+    </script>
+<?php die(); 
+} ?>
+    
