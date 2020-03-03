@@ -1,4 +1,4 @@
-<?php  declare(strict_types=1);
+<?php declare(strict_types=1);
 
     $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
@@ -7,7 +7,6 @@
         return false;
     }
 
-    if (isLogin()) {
         function getConfig($name, $col, $conn) {
             $getConfig_query="SELECT `$col` from `config` WHERE name = '$name'";
             $getConfig_result=mysqli_query($conn, $getConfig_query);
@@ -23,7 +22,6 @@
             return false;
         }
         //saveConfig('indexpg_showCarousel', 'bool', true, $conn);
-
         function getUserdata($id, $data, $conn) {
             $getUserdata_query="SELECT `$data` from `user` WHERE id = '$id'";
             $getUserdata_result=mysqli_query($conn, $getUserdata_query);
@@ -39,7 +37,6 @@
             return false;
         }
         //saveUserdata('604019', 'username', 'PondJaTH', $conn);
-    }
 ?>
 
 <?php
