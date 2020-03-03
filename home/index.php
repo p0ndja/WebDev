@@ -123,6 +123,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
+    <?php if (getConfig('indexpg_showCarousel', 'bool', $conn)) { ?>
     <div class="container mb-3" id="container">
         <div id="carousel" class="carousel slide carousel-fade z-depth-1" data-ride="carousel" data-interval="5000">
             <ol class="carousel-indicators">
@@ -195,6 +196,8 @@
             </a>
         </div>
     </div>
+    <?php } ?>
+    <?php if (getConfig('indexpg_showCourse', 'bool', $conn)) { ?>
     <div class="container-fluid mb-3" style=" background-image: url('../assets/images/background/bg_normal_resize.jpg');
                 width: 100%;
                 background-position: center;
@@ -282,6 +285,8 @@
             <hr>
         </div>
     </div>
+    <?php } ?>
+    <?php if (getConfig('indexpg_showLatestNews', 'bool', $conn)) { ?>
     <div class="container">
         <h1 id="news" name="news" class="font-weight-bold">NEWS
             <?php if (isset($_SESSION['id'])) { ?>
@@ -358,6 +363,7 @@
             </div>
         </div>
     </div>
+    <?php } ?>
     <!-- Your customer chat code -->
     <div class="fb-customerchat" attribution=setup_tool page_id="224318804364546" theme_color="#006AFF"
         logged_in_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม" logged_out_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม"></div>
