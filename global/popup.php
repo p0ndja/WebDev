@@ -217,7 +217,7 @@
     <div class="modal-dialog modal-notify modal-warning modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <iframe src="<?php echo $global_floating_pdf_url_val; ?>&embedded=true" height="500" class="w-100 h-100"></iframe>
+                <iframe src="https://docs.google.com/viewer?url=<?php echo $global_floating_pdf_url_val; ?>&embedded=true" height="500" class="w-100 h-100"></iframe>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning" data-dismiss="modal">ปิดหน้าต่าง</button>
