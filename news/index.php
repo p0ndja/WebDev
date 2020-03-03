@@ -4,149 +4,122 @@
 
 <head>
     <?php include '../global/head.php'; ?>
+    <style>
+    @media (min-width: 960px)
+        {
+        .card-columns {
+            -webkit-column-count: 2;
+            -moz-column-count: 2;
+            column-count: 2;
+        }
+    }
+
+    @media (max-width: 960px)
+        {
+        .card-columns {
+            -webkit-column-count: 1;
+            -moz-column-count: 1;
+            column-count: 1;
+        }
+    }
+    </style>
 </head>
 
-<body">
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
         role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <div class="container" id="container" style="padding-top: 88px">
-        <?php if (!isset($_GET['id'])) { ?>
-        <h1 id="news" name="news">NEWS
-            <?php if (isset($_SESSION['id'])) { ?>
-            <a href="../news/post.php" class="btn btn-dark">add news</a>
-            <?php } ?> </h1>
-        <?php } ?>
-        <?php
-            
-            $perpage = 6;
-            $page = 1;
-            if (isset($_GET['page'])) $page = $_GET['page'];
-            else if (isset($_GET['tags']) || isset($_GET['id'])) $page=1;
-            else header("Location: ?page=1");
-            
-            $start = ($page - 1) * $perpage;
+
+    <div class="container-fluid" id="container" style="padding-top: 88px">
+    <div class="row">
+    <div class="col-xl-1 d-none d-md-block"></div>
+    <div class="col-xl-10 col-12">
+        <?php if (!isset($_GET['id'])) { ?><h1 id="news" name="news">NEWS<?php } ?><?php if (isLogin()) { ?><a href="../news/post.php" class="btn btn-dark">add news</a><?php } ?></h1>
+
+        <?php 
+            $news_per_page = 6;
+            $cur_page = 1;
+            if (isset($_GET['page'])) $cur_page = $_GET['page'];
+
+            $start_id = ($cur_page - 1) * $news_per_page;
 
             if (isset($_GET['id'])) {
-                $postID = $_GET['id'];
-                $query = "SELECT * FROM `post` WHERE id = $postID";
-            } else if (isset($_GET['page'])) {
-                $query = "SELECT * FROM `post` ORDER by time DESC limit {$start}, {$perpage}";
-            } else {
-                $query = "SELECT * FROM `post` ORDER by time DESC";
-            }
-            
-            $result = mysqli_query($conn, $query);
-            $count = 0;
-            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-        <?php
-                $tags_bool = false;
-                $tags_split = explode(",", $row['tags']);
-                if (isset($_GET['tags'])) {
-                    foreach ($tags_split as $s) {
-                        if ($s == $_GET['tags']) $tags_bool = true;
-                    }
+                $news_ID = $_GET['id'];
+                $query = "SELECT * FROM `post` WHERE id = $news_ID";
+                $query_count = "SELECT `id` FROM `post` WHERE id = $news_ID";
+            } else if (isset($_GET['tags'])) { //Tags case
+                $t = $_GET['tags'];
+                if (strpos($t,"hidden") === false) {
+                    $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND tags NOT LIKE '%hidden%' ORDER by time DESC limit {$start_id}, {$news_per_page}";
+                    $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%' AND tags NOT LIKE '%hidden%'";
+                } else {
+                    $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' ORDER by time DESC limit {$start_id}, {$news_per_page}";
+                    $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%'";
                 }
-            ?>
-        <?php if ((isset($_GET['tags']) && $tags_bool) || !isset($_GET['tags'])) {
-                $count++;
-            if  (isset($_GET['id']) || (strpos($row['tags'],'hidden') === false) || (isset($_GET['tags']) && $_GET['tags'] == 'hidden')) {
-            ?>
-        <div class="card mb-4">
-            <div class="hoverable view">
-                <?php if ($row['cover'] != null) { ?>
-                <img class="card-img-top" src="<?php echo $row['cover']; ?>">
-                <?php } ?>
+            } else { //Normal Case
+                $query = "SELECT * FROM `post` WHERE tags NOT LIKE '%hidden%' ORDER by time DESC limit {$start_id}, {$news_per_page}";
+                $query_count = "SELECT `id` FROM `post` WHERE tags NOT LIKE '%hidden%'";
+            }
+
+            $result = mysqli_query($conn, $query); ?>
+            <?php if (!isset($_GET['id'])) { ?><div class="card-columns"><?php } ?>
+            <?php while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+                
+            <div class="card hoverable">
+                <?php if ($row['cover'] != null) { ?><img class="card-img-top" src="<?php echo $row['cover']; ?>"><?php } ?>
                 <div class="card-body">
                     <p class="card-text"><i class="far fa-clock"></i>
                         <?php
-                                $writer = null;
-                                $writer_id = $row['writer'];
-                                $query_final = "SELECT * FROM `user` WHERE id = '$writer_id'";
-                                $result_final = mysqli_query($conn, $query_final);
-                                while($row2 = mysqli_fetch_array($result_final, MYSQLI_ASSOC)) {
-                                    $writer = $row2['firstname'] . ' ' . $row2['lastname'] . ' (' . $row2['username'] . ')';
-                                }
-                                if ($writer != null)
-                                echo $row['time'] . ' โดย ' . '<a href="../profile/?search=' . $writer_id . '">' . $writer . '</a>'; 
-                            ?>
+                            $writer_id = $row['writer'];
+                            $writer_name = getUserdata($writer_id, 'firstname', $conn) . ' ' . getUserdata($writer_id, 'lastname', $conn) . ' (' . getUserdata($writer_id, 'username', $conn) . ')';
+                            echo $row['time'] . ' โดย ' . '<a href="../profile/?search=' . $writer_id . '">' . $writer_name . '</a>'; 
+                        ?>
                     </p>
                     <div class="card-title">
-                        <h2 class="font-weight-bold">
-                            <?php 
-                                    echo '<a href="../news/?id=' . $row['id'] . '">' . $row['title'] . '</a> ';
-                                    if (isset($_SESSION['id'])) echo '<a href="../news/post.php?id=' . $row['id'] . '"><i class="fas fa-pen-square"></i></a>'; 
-                                    echo '</h2><h4>';
-                                    foreach ($tags_split as $s) { ?>
-                            <a href="../news/?tags=<?php echo $s; ?>">
-                                <span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span>
-                            </a>
+                        <h4 class="font-weight-bold"><a href="../news/?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
+                        <?php if (isLogin()) { ?><a href="../news/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-pen-square"></i></a><?php } ?>
+                        </h4>
+                        <h5><?php foreach (explode(",", $row['tags']) as $s) { ?>
+                            <a href="../news/?tags=<?php echo $s; ?>"><span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span></a>
                             <?php } ?>
-                            </h4>
+                        </h5>
+
                     </div>
+                    <?php if (isset($_GET['id'])) { ?>
                     <hr>
-                    <p class="card-text">
-                        <p class="d-none d-md-block">
-                            <?php echo $row['article']; ?>
-                        </p>
-                    </p>
+                    <p class="card-text"><?php echo $row['article']; ?></p>
+                    <?php } ?>
                 </div>
             </div>
-        </div>
-        <?php } else { ?>
-            <?php $count++; ?>
-        <div class="card mb-4">
-            <div class="hoverable view">
-                <div class="card-body">
-                    <div class="card-text">
-                        <h3><i>Content ID <?php echo $row['id'];?> is hidden</i></h3>
-                    </div>
-                </div>
+            <?php } ?>
             </div>
         </div>
-        <?php } //END ELSE ?>
-        <?php } //END IF['tags'] ?>
-        <?php } //END WHILE?>
-        <?php if (!isset($_GET['id'])) { //No pagination on '?news' methode
-        if (isset($_GET['tags'])) {
-            $t = $_GET['tags'];
-            $total = mysqli_num_rows(mysqli_query($conn, "SELECT `id` FROM `post` WHERE `tags` LIKE $t")); 
-        } else { //Cause Default
-            $total = mysqli_num_rows(mysqli_query($conn, "SELECT `id` FROM `post`")); 
-        }
-        
-        $total_page = ceil($total / $perpage); ?>
+    <div class="col-xl-1 d-none d-md-block"></div>
+    </div>
+    <hr>
+        <?php
+            $total = mysqli_num_rows(mysqli_query($conn, $query_count));
+            $total_page = ceil($total / $news_per_page);?>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
-                    <a class="page-link" href="?page=1" aria-label="Previous">
+                    <a class="page-link" href="?page=1<?php if (isset($_GET['tags'])) echo '&tags=' . $_GET['tags']; ?>" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
                 <?php for($i=1;$i<=$total_page;$i++){ ?>
-                <li class="page-item"><a class="page-link" href="?page=<?php echo $i;?>"><?php echo $i; ?></a></li>
+                <li class="page-item"><a class="page-link" href="?page=<?php echo $i;?><?php if (isset($_GET['tags'])) echo '&tags=' . $_GET['tags']; ?>"><?php echo $i; ?></a></li>
                 <?php } ?>
                 <li class="page-item">
-                    <a class="page-link" href="?page=<?php echo $total_page;?>" aria-label="Next">
+                    <a class="page-link" href="?page=<?php echo $total_page;?><?php if (isset($_GET['tags'])) echo '&tags=' . $_GET['tags']; ?>" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
             </ul>
         </nav>
-        <?php } ?>
-        <?php if ($count == 0) { ?>
-        <center>
-            <h3>ไม่พบแท็กสำหรับ</h3>
-            <h1>'<?php echo $_GET['tags']; ?>'</h1>
-            <img src="https://images.pondja.com/capoo_sad.gif" class="img-fluid mb-5">
-        </center>
-        <?php } ?>
     </div>
-
-    </body>
-
+</body>
     <?php include '../global/footer.php'; ?>
     <?php include '../global/popup.php'; ?>
-
 </html>
