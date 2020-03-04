@@ -360,6 +360,27 @@
                         </div>
                     </div>
                 </div>
+                <div class="mb-3">
+                    <a data-toggle="collapse" href="#satitCollapse" aria-expanded="false" aria-controls="satitCollapse"><img class="img-fluid" src="../assets/images/logo/satitmenu-min.png" alt="SATIT"></a>
+                        <div class="collapse" id="satitCollapse">
+                            <div class="mb-1">
+                                <ul>
+                                <li><a href="//satit.kku.ac.th" target="_blank">สาธิตมหาวิทยาลัยขอนแก่น (ส่วนกลาง)</a></li>
+                                <li><a href="//anuban.satit.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายอนุบาล</a></li>
+                                <li><a href="//primary.satit.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายประถมศึกษา (ศึกษาศาสตร์)</a></li>
+                                <li><a href="//satitmo.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายประถมศึกษา (มอดินแดง)</a></li>
+                                <li><a href="//sec.satit.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายมัธยมศึกษา (ศึกษาศาสตร์)</a></li>
+                                <li><a href="//www.smd.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายมัธยมศึกษา (มอดินแดง)</a></li>
+                                <li><a href="//autistickku.com" target="_blank">สาธิตฯ ฝ่ายการศึกษาพิเศษ (ศูนย์วิจัยออทิสติก)</a></li>
+                                <ul>
+                            </div>
+                        </div>
+                    <a href="//th.kku.ac.th" target="_blank"><img class="img-fluid" src="../assets/images/logo/kkumenu-min.png" alt="KKU"></a>
+                    <a href="//ednet.kku.ac.th" target="_blank"><img class="img-fluid" src="../assets/images/logo/edmenu-min.png" alt="ED"></a>
+                    <a href="//kkumail.com" target="_blank"><img class="img-fluid" src="../assets/images/logo/mailmenu-min.png" alt="KKU Mail"></a>
+                    <a href="//home.kku.ac.th/account/satit" target="_blank"><img class="img-fluid" src="../assets/images/logo/netmenu-min.png" alt="KKU Net"></a>
+                    <a href="//edoffice.kku.ac.th" target="_blank"><img class="img-fluid" src="../assets/images/logo/edofficemenu-min.png" alt="ED-OFFICE"></a>
+                </div>
             </div>
         </div>
     </div>
