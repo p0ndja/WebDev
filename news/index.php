@@ -35,7 +35,7 @@
     <div class="row">
     <div class="col-xl-1 d-none d-md-block"></div>
     <div class="col-xl-10 col-12">
-        <?php if (!isset($_GET['id'])) { ?><h1 id="news" name="news">NEWS<?php } ?><?php if (isLogin()) { ?><a href="../news/post.php" class="btn btn-dark">add news</a><?php } ?></h1>
+        <?php if (!isset($_GET['id'])) { ?><h1 id="news" name="news">NEWS <?php if (isLogin()) { ?><a href="../news/post.php" class="btn btn-dark">add news</a><?php }} ?></h1>
 
         <?php 
             $news_per_page = 6;
@@ -97,6 +97,8 @@
         </div>
     <div class="col-xl-1 d-none d-md-block"></div>
     </div>
+    <div class="mb-3"></div>
+    <?php if (!isset($_GET['id'])) { ?>
     <hr>
         <?php
             $total = mysqli_num_rows(mysqli_query($conn, $query_count));
@@ -118,6 +120,7 @@
                 </li>
             </ul>
         </nav>
+    <?php } ?>
     </div>
 </body>
     <?php include '../global/footer.php'; ?>
