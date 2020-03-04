@@ -80,7 +80,7 @@
 </footer>
 
 
-<?php if(isset($snow_effect) && $snow_effect) { ?>
+<?php if(getConfig('global_snowEffect', 'bool', $conn)) { ?>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/h5ab-snow-flurry.js"></script>
 <script>
     jQuery(document).ready(function ($) {
