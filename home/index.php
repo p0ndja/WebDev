@@ -287,7 +287,7 @@
     <?php if (getConfig('indexpg_showLatestNews', 'bool', $conn)) { ?>
     <div class="container">
         <h1 id="news" name="news" class="font-weight-bold">NEWS
-            <?php if (isLogin()) { ?><a href="../news/post.php" class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
+            <?php if (isLogin() && needPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php" class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
         </h1>
         <div class="row">
             <div class="col-12 col-md-8">

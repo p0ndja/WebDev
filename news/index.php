@@ -35,8 +35,9 @@
     <div class="row">
     <div class="col-xl-1 d-none d-md-block"></div>
     <div class="col-xl-10 col-12">
-        <?php if (!isset($_GET['id'])) { ?><h1 id="news" name="news">NEWS <?php if (isLogin()) { ?><a href="../news/post.php" class="btn btn-dark">add news</a><?php }} ?></h1>
-
+        <h1 id="news" name="news" class="font-weight-bold">NEWS
+        <?php if (isLogin() && needPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php" class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
+        </h1>
         <?php 
             $news_per_page = 6;
             $cur_page = 1;
