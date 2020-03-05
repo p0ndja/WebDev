@@ -207,9 +207,7 @@
             <hr>
             <div class="card" align="center" style="background-color: rgba(255, 255, 255, 0.95);">
                 <div class="card-body">
-                    <div class="card-title">
-                        <h1 class="font-weight-bold">หลักสูตรการเรียน</h1>
-                    </div>
+                    <div class="card-title"><h1 class="font-weight-bold">หลักสูตรการเรียน</h1></div>
                     <div class="card-text text-dark">
                         <div class="row">
                             <div class="col-md-1"></div>
@@ -289,54 +287,37 @@
     <?php if (getConfig('indexpg_showLatestNews', 'bool', $conn)) { ?>
     <div class="container">
         <h1 id="news" name="news" class="font-weight-bold">NEWS
-            <?php if (isset($_SESSION['id'])) { ?>
-            <a href="../news/post.php" class="btn btn-dark">add news</a>
-            <?php }  ?>
+            <?php if (isLogin()) { ?><a href="../news/post.php" class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
         </h1>
         <div class="row">
             <div class="col-12 col-md-8">
-                <?php
-            $query = "SELECT * FROM `post` ORDER by time DESC limit 6";
-            $result = mysqli_query($conn, $query);
-
-            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-            <?php if (strpos($row['tags'], 'hidden') === false) { ?>
-                <div class="card mb-3">
-                    <div class="hoverable view">
-                        <?php if ($row['cover'] != NULL) { ?>
-                        <img class="card-img-top" src="<?php echo $row['cover']; ?>">
-                        <?php } ?>
+                <?php   $query = "SELECT * FROM `post` WHERE tags NOT LIKE '%hidden%' ORDER by time DESC limit 6";
+                        $result = mysqli_query($conn, $query);
+                        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+                <div class="card hoverable mb-3">
+                        <?php if ($row['cover'] != null) { ?><img class="card-img-top" src="<?php echo $row['cover']; ?>"><?php } ?>
                         <div class="card-body">
                             <p class="card-text"><i class="far fa-clock"></i>
                                 <?php
-                                $writer = null;
-                                $writer_id = $row['writer'];
-                                $query_final = "SELECT * FROM `user` WHERE id = '$writer_id'";
-                                $result_final = mysqli_query($conn, $query_final);
-                                while($row2 = mysqli_fetch_array($result_final, MYSQLI_ASSOC)) {
-                                    $writer = $row2['firstname'] . ' ' . $row2['lastname'] . ' (' . $row2['username'] . ')';
-                                }
-                                if ($writer != null)
-                                echo $row['time'] . ' โดย ' . '<a href="../profile/?search=' . $writer_id . '">' . $writer . '</a>'; 
-                            ?>
-                            </p>
-                            <p class="card-title">
-                                <h5>
-                                    <?php 
-                                    echo '<a href="../news/?id=' . $row['id'] . '">' . $row['title'] . '</a> ';
-                                    if (isset($_SESSION['id'])) echo '<a href="../news/post.php?id=' . $row['id'] . '"><i class="fas fa-pen-square"></i></a></h1><h4>'; 
-                                    echo '</h5><h6>'; 
-                                    $split = explode(",", $row['tags']);
-                                    foreach ($split as $s) { ?>
-                                    <span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span>
-                                    <?php }
+                                    $writer_id = $row['writer'];
+                                    $writer_name = getUserdata($writer_id, 'firstname', $conn) . ' ' . getUserdata($writer_id, 'lastname', $conn) . ' (' . getUserdata($writer_id, 'username', $conn) . ')';
+                                    echo $row['time'] . ' โดย ' . '<a href="../profile/?search=' . $writer_id . '">' . $writer_name . '</a>'; 
                                 ?>
-                                    </h6>
                             </p>
+                            <div class="card-title">
+                                <h5 class="font-weight-bold"><a href="../news/?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
+                                <?php if (isLogin() && needPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a onclick='
+                                    swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../news/delete.php?id=<?php echo $row["id"]; ?>";}});'>
+                                    <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
+                                </h5>
+                                <h6>
+                                <?php foreach (explode(",", $row['tags']) as $s) { ?>
+                                    <a href="../news/?tags=<?php echo $s; ?>"><span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span></a>
+                                <?php } ?>
+                                </h6>
+                            </div>
                         </div>
-                    </div>
                 </div>
-                <?php } ?>
             <?php } ?>
             </div>
             <div class="col-md-4 d-none d-md-block">

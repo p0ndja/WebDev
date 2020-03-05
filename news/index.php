@@ -66,7 +66,7 @@
             <?php if (!isset($_GET['id'])) { ?><div class="card-columns"><?php } ?>
             <?php while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
                 
-            <div class="card hoverable">
+            <div class="card hoverable mb-3">
                 <?php if ($row['cover'] != null) { ?><img class="card-img-top" src="<?php echo $row['cover']; ?>"><?php } ?>
                 <div class="card-body">
                     <p class="card-text"><i class="far fa-clock"></i>
@@ -77,18 +77,19 @@
                         ?>
                     </p>
                     <div class="card-title">
-                        <h4 class="font-weight-bold"><a href="../news/?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
-                        <?php if (isLogin()) { ?><a href="../news/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-pen-square"></i></a><?php } ?>
-                        </h4>
-                        <h5><?php foreach (explode(",", $row['tags']) as $s) { ?>
+                        <h5 class="font-weight-bold"><a href="../news/?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
+                        <?php if (isLogin() && needPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a onclick='
+                                    swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../news/delete.php?id=<?php echo $row["id"]; ?>";}});'>
+                                    <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
+                        </h5>
+                        <h6><?php foreach (explode(",", $row['tags']) as $s) { ?>
                             <a href="../news/?tags=<?php echo $s; ?>"><span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span></a>
                             <?php } ?>
-                        </h5>
-
+                        </h6>
                     </div>
                     <?php if (isset($_GET['id'])) { ?>
-                    <hr>
-                    <p class="card-text"><?php echo $row['article']; ?></p>
+                        <hr>
+                        <p class="card-text"><?php echo $row['article']; ?></p>
                     <?php } ?>
                 </div>
             </div>
