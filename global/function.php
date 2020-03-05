@@ -62,35 +62,38 @@
 <?php 
     function needLogin() {
     if (!isLogin()) {?>
-    <script>
+<script>
     swal({
         title: "ACCESS DENIED",
         text: "You need to logged-in!",
         icon: "error"
-    }).then(function() {
+    }).then(function () {
         window.history.back();
     });
-    </script>
-    <?php die(); }} ?>
+</script>
+<?php die(); }} ?>
 
 <?php 
     function needPermission($perm, $conn) {
-    if (!getUserdata($_SESSION['id'], $perm, $conn)) { ?>
-    <script>
-        swal({
-            title: "ACCESS DENIED",
-            text: "You don't have enough permission!",
-            icon: "warning"
-        }).then(function() {
-            window.history.back();
-        });
-    </script>
-    <?php die(); }} ?>
+    if (!isset($_SESSION['id'])) return false;
+    if (!getUserdata($_SESSION['id'], $perm, $conn) && !getUserdata($_SESSION['id'], 'isAdmin', $conn)) { ?>
+<script>
+    swal({
+        title: "ACCESS DENIED",
+        text: "You don't have enough permission!",
+        icon: "warning"
+    }).then(function () {
+        window.history.back();
+    });
+</script>
+<?php die(); return false;}
+        return true;
+    }
+?>
 <?php function back() { 
     ?>
-    <script>
+<script>
     window.history.back();
-    </script>
+</script>
 <?php die(); 
 } ?>
-    
