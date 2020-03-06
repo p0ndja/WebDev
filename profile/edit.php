@@ -1,4 +1,4 @@
-<?php 
+<?php
     include '../global/connect.php';
     if (!isset($_SESSION['id']))
         header("Location: ../");
@@ -15,7 +15,7 @@
 
         $query = "SELECT * FROM `user` WHERE id = '$id'";
         $result = mysqli_query($conn, $query);
-     
+
         if (!$result) {
             die('Could not get data: ' . mysqli_error($conn));
         }
@@ -30,7 +30,7 @@
             if ($row['background'] != null) $profile_background = $row['background'];
             if ($row['greetings'] != null) $profile_displayText = $row['greetings'];
         }
-        
+
     ?>
 
     <script type="text/javascript">
@@ -81,7 +81,7 @@
         $profile_room = $undefined;
         $profile_email = $undefined;
         $profile_achi = "";
-       
+
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $profile_prefix = $row['prefix'];
 
@@ -113,13 +113,13 @@
                 $profile_class = "ปกติ";
             }
         }
-        
+
         while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
             if ($row['profile'] != null)
                 $profile_image = $row['profile'];
             else $profile_image = '../assets/images/default.png';
-        }  
-        
+        }
+
         while ($row = mysqli_fetch_array($result_achi, MYSQLI_ASSOC)) {
             if ($row['betaTester'])
                 $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><img src="../assets/images/achievement/beta-tester-icon_resize.gif" title="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></div>';
@@ -366,23 +366,23 @@
             </div>
         </form>
     </div>
-    
+
         <script>
         document.getElementById("profile_upload").onchange = function () {
             var reader = new FileReader();
-
             reader.onload = function (e) {
-                // get loaded data and render thumbnail.
                 document.getElementById("profile_preview").src = e.target.result;
             };
-
-            // read the image file as a data URL.
             reader.readAsDataURL(this.files[0]);
         };
 
-
-               // document.getElementByTagName("body")[0].style.background = "url(". e.target.result . ") no-repeat center center fixed";
-        
+        document.getElementById("background_upload").onchange = function () {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.body.style.background = "url(" + e.target.result + ") no-repeat center center fixed";
+            };
+            reader.readAsDataURL(this.files[0]);
+        };
     </script>
 </body>
 
