@@ -37,8 +37,9 @@
         role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <?php needLogin(); ?>
+    <?php include '../global/popup.php' ?>
     <div class="container-fluid" id="container" style="padding-top: 88px">
+        <?php needLogin(); ?>
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
             <a class="btn-floating btn-lg green waves-effect waves-light"
                 onclick="toastr.success('บันทึกค่าทั้งหมดเรียบร้อยแล้ว')"><i class="fas fa-save"></i></a>
@@ -89,7 +90,7 @@
                         else $b = ' ';
                 ?>
                             <!-- Material checked -->
-                            <div class="switch switch-warning mb-1">
+                            <div class="switch switch-warning mb-1 ">
                                 <label>
                                     <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
                                     <span class="lever"></span>
@@ -101,7 +102,7 @@
                             </div>
                             <?php if ($get_config['haveVal']) { ?>
                             <input type="text" id="<?php echo $get_config['name']; ?>"
-                                name="<?php echo $get_config['name']; ?>" class="form-control form-control-sm validate"
+                                name="<?php echo $get_config['name']; ?>" class="form-control form-control-sm validate "
                                 <?php if (!$get_config['haveVal']) echo 'style="display: none"'; ?>
                                 value="<?php echo $get_config['val'];?>"
                                 placeholder="<?php echo $get_config['valDescription'];?>">
@@ -124,7 +125,7 @@
                         else $b = ' ';
                 ?>
                             <!-- Material checked -->
-                            <div class="switch switch-warning mb-1">
+                            <div class="switch switch-warning mb-1 ">
                                 <label>
                                     <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
                                     <span class="lever"></span>
@@ -136,7 +137,7 @@
                             </div>
                             <?php if ($get_config['haveVal']) { ?>
                             <input type="text" id="<?php echo $get_config['name']; ?>"
-                                name="<?php echo $get_config['name']; ?>" class="form-control form-control-sm validate"
+                                name="<?php echo $get_config['name']; ?>" class="form-control form-control-sm validate "
                                 <?php if (!$get_config['haveVal']) echo 'style="display: none"'; ?>
                                 value="<?php echo $get_config['val'];?>"
                                 placeholder="<?php echo $get_config['valDescription'];?>">
@@ -159,7 +160,7 @@
                         else $b = ' ';
                 ?>
                             <!-- Material checked -->
-                            <div class="switch switch-warning mb-1">
+                            <div class="switch switch-warning mb-1 ">
                                 <label>
                                     <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
                                     <span class="lever"></span>
@@ -171,7 +172,7 @@
                             </div>
                             <?php if ($get_config['haveVal']) { ?>
                             <input type="text" id="<?php echo $get_config['name']; ?>"
-                                name="<?php echo $get_config['name']; ?>" class="form-control form-control-sm validate"
+                                name="<?php echo $get_config['name']; ?>" class="form-control form-control-sm validate "
                                 <?php if (!$get_config['haveVal']) echo 'style="display: none"'; ?>
                                 value="<?php echo $get_config['val'];?>"
                                 placeholder="<?php echo $get_config['valDescription'];?>">
@@ -194,7 +195,7 @@
                         else $b = ' ';
                 ?>
                             <!-- Material checked -->
-                            <div class="switch switch-warning mb-1">
+                            <div class="switch switch-warning mb-1 ">
                                 <label>
                                     <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
                                     <span class="lever"></span>
@@ -206,7 +207,7 @@
                             </div>
                             <?php if ($get_config['haveVal']) { ?>
                             <input type="text" id="<?php echo $get_config['name']; ?>"
-                                name="<?php echo $get_config['name']; ?>" class="form-control form-control-sm validate"
+                                name="<?php echo $get_config['name']; ?>" class="form-control form-control-sm validate "
                                 <?php if (!$get_config['haveVal']) echo 'style="display: none"'; ?>
                                 value="<?php echo $get_config['val'];?>"
                                 placeholder="<?php echo $get_config['valDescription'];?>">
@@ -281,6 +282,4 @@
 <footer class="d-none">
     <?php include '../global/footer.php' ?>
 </footer>
-<?php include '../global/popup.php' ?>
-
 </html>

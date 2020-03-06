@@ -29,7 +29,7 @@ if (isset($_POST['login_submit'])) {
     }
 
     //ดีดกลับหน้าหลัก (url ในที่นี้เป็น /home/)
-    header("Location: ../home");
+    back();
 }
 
     //กรณี Register
@@ -121,6 +121,6 @@ if (isset($_POST['register_submit'])) {
     }
     
     //ดีดกลับหน้าหลัก (url ในที่นี้เป็น /home/)
-    header("Location: ../home");
+    back();
 }
 ?>

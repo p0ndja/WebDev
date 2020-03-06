@@ -83,7 +83,8 @@
         text: "You need to logged-in!",
         icon: "error"
     }).then(function () {
-        window.history.back();
+        <?php $_SESSION['error'] = "กรุณาเข้าสู่ระบบก่อนดำเนินการต่อ"; ?>
+        window.location = "../home";
     });
 </script>
 <?php die(); }} ?>
@@ -98,7 +99,8 @@
         text: "You don't have enough permission!",
         icon: "warning"
     }).then(function () {
-        window.history.back();
+        <?php $_SESSION['error'] = "กรุณาเข้าสู่ระบบก่อนดำเนินการต่อ"; ?>
+        window.location = "../home";
     });
 </script>
 <?php die(); return false;}

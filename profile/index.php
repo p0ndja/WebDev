@@ -301,7 +301,9 @@
                 </center>
         <?php } ?>
     </div>
-    <?php } else header("Location: ../"); ?>
+    <?php } else {
+        needLogin();
+    } ?>
 
 </body>
 
