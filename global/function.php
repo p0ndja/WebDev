@@ -7,36 +7,51 @@
         return false;
     }
 
+    function getAnySQL($sql, $val, $key, $key_val, $conn) {
+        return mysqli_fetch_array(mysqli_query($conn, "SELECT `$val` from `$sql` WHERE $key = '$key_val'"), MYSQLI_ASSOC)[$val];
+    }
+
+    function saveAnySQL($sql, $col, $val, $key, $key_val, $conn) {
+        return mysqli_query($conn, "UPDATE `$sql` SET $col = $val WHERE $key = '$key_val'");
+    }
+
         function getConfig($name, $col, $conn) {
-            $getConfig_query="SELECT `$col` from `config` WHERE name = '$name'";
-            $getConfig_result=mysqli_query($conn, $getConfig_query);
-            $getConfig_array=mysqli_fetch_array($getConfig_result, MYSQLI_ASSOC);
-            return $getConfig_array[$col];
+            return getAnySQL('config', $col, 'name', $name, $conn);
         }  
         //getConfig('indexpg_showCarousel', 'bool', $conn);
 
         function saveConfig($name, $col, $val, $conn) {
-            $saveConfig_query="UPDATE `config` SET $col = '$val' WHERE name = '$name'";
-            $saveConfig_result=mysqli_query($conn, $saveConfig_query);
-            if ($saveConfig_result) return true;
+            if (saveAnySQL('config', $col, $val, 'name', $name, $conn)) return true;
             return false;
         }
         //saveConfig('indexpg_showCarousel', 'bool', true, $conn);
         function getUserdata($id, $data, $conn) {
-            $getUserdata_query="SELECT `$data` from `user` WHERE id = '$id'";
-            $getUserdata_result=mysqli_query($conn, $getUserdata_query);
-            $getUserdata_array=mysqli_fetch_array($getUserdata_result, MYSQLI_ASSOC);
-            return $getUserdata_array[$data];
+            return getAnySQL('user', $data, 'id', $id, $conn);
         }
         //getUserdata('604019', 'username', $conn);
 
         function saveUserdata($id, $data, $val, $conn) {
-            $saveUserdata_query="UPDATE `user` SET $data = '$val' WHERE id = '$id'";
-            $saveUserdata_result=mysqli_query($conn, $saveUserdata_query);
-            if ($saveUserdata_result) return true;
+            if (saveAnySQL('user', $data, $val, 'id', $id)) return true;
             return false;
         }
         //saveUserdata('604019', 'username', 'PondJaTH', $conn);
+
+        function getProfiledata($id, $data, $conn) {
+            return getAnySQL('profile', $data, 'id', $id, $conn);
+        }
+        //getProfiledata('604019', 'profile', $conn);
+
+        function saveProfiledata($id, $data, $val, $conn) {
+            if (mysqli_query($conn, "UPDATE `profile` SET $data = '$val' WHERE id = '$id'")) return true;
+            return false;
+        }
+        //saveProfiledata('604019', 'profile', '...', $conn);
+
+        function getProfilePicture($id, $conn) {
+            $_array = getProfiledata($id,'profile',$conn);
+            if ($_array != null) return $_array;
+            else return '../assets/images/default.png';
+        }
 ?>
 
 <?php
