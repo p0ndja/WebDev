@@ -57,7 +57,7 @@
                 <a class="dropdown-item" href="../forum">SMD Forum</a>
                 <a class="dropdown-item disabled" href="#">SMD Shop</a>
                 <?php if ( getConfig('global_Livestream', 'bool', $conn) ) { ?>
-                <a class="dropdown-item" href=<?php echo getConfig('global_Livestream', 'msg', $conn); ?>>ถ่ายทอดสด <sup class="notifi"><span
+                <a class="dropdown-item" href=<?php echo getConfig('global_Livestream', 'val', $conn); ?>>ถ่ายทอดสด <sup class="notifi"><span
                             class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE <span class="oi"
                                 data-glyph="video"></span></span></sup></a>
                 <?php } ?>
