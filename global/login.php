@@ -17,22 +17,12 @@ if (isset($_POST['login_submit'])) {
     } else {
         //ปกติค่านี้ ถ้าเจอในฐานข้อมูลจะ return ออกมา > 0
         //ตั้งค่าข้อมูลต่าง ๆ ของ User ใส่ SESSION
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $_SESSION['user'] = $row['username'];
-            $_SESSION['fn'] = $row['firstname'];
-            $_SESSION['ln'] = $row['lastname'];
-            $_SESSION['id'] = $row['id'];
-        }
+        $_SESSION['id'] = mysqli_fetch_array($result, MYSQLI_ASSOC)['id'];
+        $_SESSION['user'] = getUserdata($_SESSION['id'], 'username', $conn);
+        $_SESSION['fn'] = getUserdata($_SESSION['id'], 'firstname', $conn);
+        $_SESSION['ln'] = getUserdata($_SESSION['id'], 'lastname', $conn);
 
-        $id = $_SESSION['id'];
-        $query_final = "SELECT * FROM `profile` WHERE id = '$id'";
-        $result_final = mysqli_query($conn, $query_final);
-
-        while ($row = mysqli_fetch_array($result_final, MYSQLI_ASSOC)) {
-            if ($row['profile'] != null)
-                $_SESSION['pi'] = $row['profile'];
-            else $_SESSION['pi'] = '../assets/images/default.png';
-        }
+        $_SESSION['pi'] = getProfilePicture($_SESSION['id'], $conn);
 
         $_SESSION['error'] = null;
         $_SESSION['success'] = "เข้าสู่ระบบสำเร็จ";
@@ -74,6 +64,14 @@ if (isset($_POST['register_submit'])) {
         $_SESSION['error'] = "รหัสบัตรประชาชนนี้ ได้ทำการสมัครสมาชิกอยู่แล้ว";
     } else {
         //กรณีนี้ไม่เจอข้อมูลใด ๆ ตรงเลย เลยสามารถสมัครได้
+
+
+        if(isset($_FILES['upload']) && $_FILES['upload']['name'] != ""){
+            $finaldir = base64($_FILES['upload'], $user, 'image');
+        } else {
+            $finaldir = null;
+        }
+
         if(isset($_FILES['upload']) && $_FILES['upload']['name'] != ""){
             $name_file =  $_FILES['upload']['name'];
             $tmp_name =  $_FILES['upload']['tmp_name'];
