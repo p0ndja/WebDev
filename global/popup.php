@@ -73,6 +73,31 @@
         </div>
     </div>
 </div>
+<?php if (isLogin()) { ?>
+<div class="modal fade right" id="futureCpanel" tabindex="-1" role="dialog" aria-labelledby="cpanelTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-full-height modal-right" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cpanelTitle">สวัสดี!
+                    <?php echo $_SESSION['fn'] . ' (' . $_SESSION['user'] . ')'; ?></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <img src="<?php echo $_SESSION['pi']; ?>" class="w-50">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<?php } else {?>
 <div class="modal fade right" name="login" id="login" tabindex="-1" role="dialog" aria-hidden="true">
     <!--div class="modal-dialog cascading-modal" role="document"-->
     <div class="modal-dialog modal-full-height modal-right" role="document">
@@ -128,14 +153,30 @@
 
                     <!--Panel 8-->
                     <div class="tab-pane fade" id="panel8" role="tabpanel">
+
                         <form method="post" action="../global/login.php" enctype="multipart/form-data">
                             <!--Body-->
+
                             <div class="modal-body mb-1">
                                 <?php
                                 if (isset($_SESSION['error'])) {
                                     echo '<div class="alert alert-danger" role="alert">'. $_SESSION['error'] .'</div>';
                                 }
                                 ?>
+                                <div class="form-inline">
+                                    <div class="form-row">
+                                        <label for="register_prefix" class="col-form-label col-md-auto">คำนำหน้า </label>
+                                        <div class="align-items-center col-md-auto d-flex">
+                                            <select class="form-control" id="register_prefix" name="register_prefix" required>
+                                            <option value="เด็กชาย">เด็กชาย</option>
+                                                <option value="เด็กหญิง">เด็กหญิง</option>
+                                                <option value="นาย">นาย</option>
+                                                <option value="นาง">นาง</option>
+                                                <option value="นางสาว">นางสาว</option>
+                                                          </select>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="md-form form-sm mb-1">
                                     <div class="form-row">
                                         <div class="col">
@@ -159,20 +200,6 @@
                                             <input type="text" id="register_lastname_en" name="register_lastname_en"
                                                 class="form-control form-control-sm validate" required>
                                             <label for="register_lastname_en">Lastname</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col">
-                                            <select
-                                                class="browser-default custom-select form-control form-control-sm validate"
-                                                id="register_prefix" name="register_prefix" required>
-                                                <option value="" disabled="" selected="">- คำนำหน้า -</option>
-                                                <option value="เด็กชาย">เด็กชาย</option>
-                                                <option value="เด็กหญิง">เด็กหญิง</option>
-                                                <option value="นาย">นาย</option>
-                                                <option value="นาง">นาง</option>
-                                                <option value="นางสาว">นางสาว</option>
-                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -206,31 +233,32 @@
                                         class="form-control form-control-sm validate" required>
                                     <label for="register_email">อีเมล</label>
                                 </div>
-                                <div class="md-form form-sm form-row mb-1">
-                                    <div class="col">
-                                        <select
-                                            class="browser-default custom-select form-control form-control-sm validate"
-                                            id="register_grade" name="register_grade" required>
-                                            <option value="" disabled="" selected="">- ระดับชั้น -</option>
-                                            <option value="1">ม.1</option>
-                                            <option value="2">ม.2</option>
-                                            <option value="3">ม.3</option>
-                                            <option value="4">ม.4</option>
-                                            <option value="5">ม.5</option>
-                                            <option value="6">ม.6</option>
-                                        </select>
-                                    </div>
-                                    <div class="col">
-                                        <select
-                                            class="browser-default custom-select form-control form-control-sm validate"
-                                            id="register_class" name="register_class" required>
-                                            <option value="" disabled="" selected="">- ห้อง -</option>
-                                            <option value="1">1 (IEC/EMSP)</option>
-                                            <option value="2">2 (ปกติ)</option>
-                                            <option value="3">3 (ปกติ)</option>
-                                            <option value="4">4 (ปกติ)</option>
-                                            <option value="5">5 (วมว.)</option>
-                                        </select>
+                                <div class="form-inline">
+                                    <div class="form-row">
+                                        <label for="register_grade" class="col-form-label col-md-auto">ระดับชั้น
+                                        </label>
+                                        <div class="align-items-center col-md-auto d-flex">
+                                            <select class="form-control" id="register_grade" name="register_grade"
+                                                required>
+                                                <option value="1">ม.1</option>
+                                                <option value="2">ม.2</option>
+                                                <option value="3">ม.3</option>
+                                                <option value="4">ม.4</option>
+                                                <option value="5">ม.5</option>
+                                                <option value="6">ม.6</option>
+                                            </select>
+                                        </div>
+                                        <label for="register_class" class="col-form-label col-md-auto"> ห้อง </label>
+                                        <div class=" align-items-center col-md-auto d-flex">
+                                            <select class="form-control" id="register_class" name="register_class"
+                                                required>
+                                                <option value="1">1 (IEC/EMSP)</option>
+                                                <option value="2">2 (ปกติ)</option>
+                                                <option value="3">3 (ปกติ)</option>
+                                                <option value="4">4 (ปกติ)</option>
+                                                <option value="5">5 (วมว.)</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="md-form file-field mb-5">
@@ -258,29 +286,6 @@
             </div>
         </div>
         <!--/.Content-->
-    </div>
-</div>
-<?php if (isLogin()) { ?>
-<div class="modal fade right" id="futureCpanel" tabindex="-1" role="dialog" aria-labelledby="cpanelTitle" aria-hidden="true">
-    <div class="modal-dialog modal-full-height modal-right" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="cpanelTitle">สวัสดี!
-                    <?php echo $_SESSION['fn'] . ' (' . $_SESSION['user'] . ')'; ?></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="text-center">
-                <img src="<?php echo $_SESSION['pi']; ?>" class="w-50">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
     </div>
 </div>
 <?php } ?>
