@@ -94,7 +94,7 @@
 </script>
 
 <?php } ?>
-
+<script src="../assets/js/dark-mode-switch.min.js"></script>
 <script type="text/javascript">
     $(function () {
         $('.summernote').summernote({

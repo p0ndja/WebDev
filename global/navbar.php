@@ -57,22 +57,19 @@
                 <a class="dropdown-item" href="../forum">SMD Forum</a>
                 <a class="dropdown-item disabled" href="#">SMD Shop</a>
                 <?php if ( getConfig('global_Livestream', 'bool', $conn) ) { ?>
-                <a class="dropdown-item" href=<?php echo getConfig('global_Livestream', 'val', $conn); ?>>ถ่ายทอดสด <sup class="notifi"><span
-                            class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE <span class="oi"
-                                data-glyph="video"></span></span></sup></a>
+                <a class="dropdown-item" href=<?php echo getConfig('global_Livestream', 'val', $conn); ?>>ถ่ายทอดสด <sup
+                        class="notifi"><span class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE
+                            <span class="oi" data-glyph="video"></span></span></sup></a>
                 <?php } ?>
             </div>
         </li>
     </ul>
 
     <ul class="nav navbar-nav nav-flex-icons ml-auto">
-        <form action="../pages/search.php" method="GET" class="form-inline">
-            <div class="md-form my-0">
-                <input method="GET" class="form-control" type="text" placeholder="Search ID (Ex. 604019)"
-                    aria-label="Search ID (Ex. 604019)" id="search" name="search"
-                    value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>">
-            </div>
-        </form>
+    <div class="custom-control custom-switch">
+  <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+  <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+</div>
         <?php if (isset($_SESSION['fn'])) { ?>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -85,13 +82,15 @@
                 <a class="dropdown-item" href="#"> การเช็คชื่อ <i class="fas fa-calendar-check"></i></a>
                 <a class="dropdown-item" href="#"> ผลการเรียน (SGS) <i class="fas fa-graduation-cap"></i></a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-secondary" href="../admin/"> ส่วนของแอดมิน <i class="fas fa-user-tie"></i></a>
+                <a class="dropdown-item text-secondary" href="../admin/"> ส่วนของแอดมิน <i
+                        class="fas fa-user-tie"></i></a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="../global/logout.php">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></a>
+                <a class="dropdown-item text-danger" href="../global/logout.php">ออกจากระบบ <i
+                        class="fas fa-sign-out-alt"></i></a>
             </div>
         </li>
         <?php } else { ?>
-            <!--li class="dropdown order-1">
+        <!--li class="dropdown order-1">
             <button type="button" id="dropdownMenu1" data-toggle="dropdown"
                 class="btn btn-secondary dropdown-toggle">Login <span class="caret"></span></button>
             <ul class="dropdown-menu dropdown-menu-right mt-1">
