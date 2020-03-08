@@ -50,10 +50,10 @@
                         <div class="container justify-content-center">
                             <center>
                                 <h1>ผลการเรียน</h1>
-                                <form class="form-inlin justify-content-center">
+                                <form class="form-inline justify-content-center">
                                     <div class="form-row text-center justify-content-center">
                                         <label for="term" class="col-form-label col-md-auto">ภาคเรียนที่ </label>
-                                        <div class=" align-items-center col-md-auto d-flex">
+                                        <div class="align-items-center col-md-auto d-flex">
                                             <select class="form-control" id="term">
                                                             <option>1</option>
                                                             <option>2</option>
