@@ -7,8 +7,7 @@
     </nav>
 <?php
     if (isset($_GET['id'])) {
-        needLogin();
-        needPermission('isNewsReporter', $conn);
+        needLogin(); needPermission('isNewsReporter', $conn);
         $id = $_GET['id'];
         $q = "DELETE FROM `post` WHERE id = $id";
         $r = mysqli_query($conn, $q);

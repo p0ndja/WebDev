@@ -45,6 +45,7 @@
         role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
+    <?php needLogin(); needPermission('isNewsReporter', $conn); ?>
     <div class="container" id="container" style="padding-top: 88px">
         <form method="POST" action="../news/save.php<?php if (isset($_GET['id'])) echo '?news=' . $_GET['id']; ?>"
             enctype="multipart/form-data">
