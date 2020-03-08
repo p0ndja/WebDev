@@ -7,6 +7,12 @@
         return false;
     }
 
+    function isPermission($perm, $conn) {
+        if (!isset($_SESSION['id'])) return false;
+        if (!getUserdata($_SESSION['id'], $perm, $conn) && !getUserdata($_SESSION['id'], 'isAdmin', $conn)) return false;
+        return true;
+    }
+
     function getAnySQL($sql, $val, $key, $key_val, $conn) {
         return mysqli_fetch_array(mysqli_query($conn, "SELECT `$val` from `$sql` WHERE $key = '$key_val'"), MYSQLI_ASSOC)[$val];
     }
