@@ -7,10 +7,25 @@
     </nav>
 <?php
     if (isset($_GET['id'])) {
-        needLogin(); needPermission('isAdmin', $conn);
-        $_SESSION['id'] = $_GET['id'];
-        $_SESSION['fn'] = "โหมดปลอมตัว";
-        $_SESSION['ln'] = "Disguise Mode";
+        needLogin(); 
+        if ($_GET['id'] == $_SESSION['real_id']) {
+            $id = $_GET['id'];
+            $_SESSION['id'] = $id;
+            $_SESSION['pi'] = getProfilePicture($id, $conn);
+            $_SESSION['user'] = getUserdata($id, 'username', $conn);
+            $_SESSION['fn'] = getUserdata($id, 'firstname', $conn);
+            $_SESSION['ln'] = getUserdata($id, 'lastname', $conn);
+        } else {
+            needPermission('isAdmin', $conn);
+            $id = $_GET['id'];
+            $_SESSION['id'] = $id;
+            $_SESSION['pi'] = getProfilePicture($id, $conn);
+            $_SESSION['user'] = getUserdata($id, 'username', $conn);
+            $_SESSION['fn'] = '<i>' . getUserdata($id, 'firstname', $conn);
+            $_SESSION['ln'] = getUserdata($id, 'lastname', $conn). '</i>';
+        }
+        
+        
     }
     header("Location: ../home");
 ?>

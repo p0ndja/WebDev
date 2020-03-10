@@ -18,6 +18,7 @@ if (isset($_POST['login_submit'])) {
         //ปกติค่านี้ ถ้าเจอในฐานข้อมูลจะ return ออกมา > 0
         //ตั้งค่าข้อมูลต่าง ๆ ของ User ใส่ SESSION
         $_SESSION['id'] = mysqli_fetch_array($result, MYSQLI_ASSOC)['id'];
+        $_SESSION['real_id'] = $_SESSION['id'];
         $_SESSION['user'] = getUserdata($_SESSION['id'], 'username', $conn);
         $_SESSION['fn'] = getUserdata($_SESSION['id'], 'firstname', $conn);
         $_SESSION['ln'] = getUserdata($_SESSION['id'], 'lastname', $conn);
