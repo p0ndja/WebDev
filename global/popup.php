@@ -44,7 +44,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="announcementPopup" name="announcementPopup" tabindex="-1" role="dialog"
+<!--div class="modal fade" id="announcementPopup" name="announcementPopup" tabindex="-1" role="dialog"
     aria-labelledby="announcementTitle" aria-hidden="true">
     <div class="modal-dialog modal-notify modal-warning modal-lg" role="document">
         <div class="modal-content">
@@ -72,7 +72,7 @@
             </div>
         </div>
     </div>
-</div>
+</div-->
 <?php if (isLogin()) { ?>
 <div class="modal fade right" id="futureCpanel" tabindex="-1" role="dialog" aria-labelledby="cpanelTitle"
     aria-hidden="true">
