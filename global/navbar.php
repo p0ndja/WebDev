@@ -70,6 +70,13 @@
   <input type="checkbox" class="custom-control-input" id="darkSwitch" />
   <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
 </div>
+<form action="../pages/search.php" method="GET" class="form-inline">
+            <div class="md-form my-0">
+                <input method="GET" class="form-control" type="text" placeholder="Search ID (Ex. 604019)"
+                    aria-label="Search ID (Ex. 604019)" id="search" name="search"
+                    value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>">
+            </div>
+        </form>
         <?php if (isset($_SESSION['fn'])) { ?>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
