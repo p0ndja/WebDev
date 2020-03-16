@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <?php include 'config.php'; ?>
     <?php if ($use_mdbootstrap) {?> <link href="../assets/css/mdb.min.css" rel="stylesheet"> <?php } ?>
+    <!--link href="../assets/css/fonts.css" rel="stylesheet"-->
     <link href="../assets/css/style.css" rel="stylesheet">
     <link href="../assets/css/dark-mode.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7454809de8.js" crossorigin="anonymous"></script>

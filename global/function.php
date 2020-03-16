@@ -42,6 +42,11 @@
         }
         //saveUserdata('604019', 'username', 'PondJaTH', $conn);
 
+        function getPostdata($id, $data, $conn) {
+            return getAnySQL('post', $data, 'id', $id, $conn);
+        }
+        //getPostdata('1', 'article', $conn);
+
         function getProfiledata($id, $data, $conn) {
             return getAnySQL('profile', $data, 'id', $id, $conn);
         }
