@@ -1,7 +1,3 @@
 Options -Indexes
 IndexOptions -FancyIndexing
-ErrorDocument 404 /
-ErrorDocument 403 /
 DirectoryIndex .index.php .index.html index.php index.html .redirect.html redirect.html landing.html landing.php .landing.html .landing.php .redirect.php redirect.php
-php_value upload_max_filesize 1024M
-php_value post_max_size 1024M
