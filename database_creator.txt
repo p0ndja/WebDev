@@ -1,16 +1,121 @@
+=================================================
+
+ACHIEVEMENT's DATABASE
+
+create table achievement (
+	id INT NOT NULL,
+	page404 BOOLEAN DEFAULT false,
+	betaTester BOOLEAN DEFAULT false,
+	WebDevTycoon BOOLEAN DEFAULT false,
+	the4thFloor BOOLEAN DEFAULT false,
+	Xmas BOOLEAN DEFAULT false,
+	PRIMARY KEY ( id )
+);
+
+=================================================
+
+CONFIG's DATABASE
+
+create table config(
+	id INT NOT NULL AUTO_INCREMENT,
+	name LONGTEXT NOT NULL,
+	bool BOOLEAN,
+	title LONGTEXT,
+	description LONGTEXT,
+	haveVal BOOL DEFAULT FALSE,
+	val LONGTEXT,
+	valTitle LONGTEXT,
+	valDescription LONGTEXT,
+	primary key (id)
+);
+
+insert into `config` (name, bool) VALUES ('indexpg_showCarousel',true);
+insert into `config` (name, bool) VALUES ('indexpg_showLatestNews',true);
+insert into `config` (name, bool) VALUES ('indexpg_showCourse',true);
+insert into `config` (name, bool) VALUES ('indexpg_showPreviewGallery',true);
+insert into `config` (name, bool) VALUES ('indexpg_AlertMessage',false);
+insert into `config` (name, bool, haveVal, val) VALUES ('indexpg_Countdown',true,true,'Jan 1, 2020 00:00:00');
+insert into `config` (name, bool, haveVal, val) VALUES ('global_Livestream',true,true,'https://pondja.com');
+insert into `config` (name, bool, haveVal, val) VALUES ('global_lastUpdate',true,true,'ปรับปรุงครั้งล่าสุด...');
+insert into `config` (name, bool) VALUES ('global_snowEffect',true);
+insert into `config` (name, bool) VALUES ('global_override_checking_admin',false);
+insert into `config` (name, bool) VALUES ('global_userProfile',true);
+insert into `config` (name, bool) VALUES ('global_achievementSystem',true);
+insert into `config` (name, bool) VALUES ('user_allowRegister',true);
+insert into `config` (name, bool) VALUES ('user_allowLogin',true);
+insert into `config` (name, bool) VALUES ('user_allowPostForum',true);
+insert into `config` (name, bool) VALUES ('user_profile_allowEdit_ProfilePic',true);
+insert into `config` (name, bool) VALUES ('user_profile_allowEdit_BackgroundPic',true);
+insert into `config` (name, bool) VALUES ('user_profile_allowEdit_Bio',true);
+insert into `config` (name, bool) VALUES ('user_profile_displayExperience',true);
+insert into `config` (name, bool) VALUES ('user_allowEditProfile',true);
+
+=================================================
+
+FORUM's DATABASE [Legacy]
+//Comment: จะเปลี่ยนเป็น Database แยกออกมาจาก Database หลัก เพื่อให้สามารถเพิ่มฟีเจอร์ Comment ในแต่ละ Table ได้
+
+create table forum(
+	id INT NOT NULL,
+	title TEXT NOT NULL,
+	writer INT NOT NULL,
+	time TINYTEXT,
+	article LONGTEXT NOT NULL,
+	pin BOOL DEFAULT false,
+	type INT DEFAULT 1,
+	PRIMARY KEY (id)
+);
+
+=================================================
+
+NEWS's DATABASE [Maybe-Legacy]
+//Comment: จะเปลี่ยนเป็น Database แยกออกมาจาก Database หลัก เพื่อให้สามารถเพิ่มฟีเจอร์ Comment ในแต่ละ Table ได้
+
+create table post (
+   id INT NOT NULL AUTO_INCREMENT,
+   title TEXT NOT NULL,
+   writer INT NOT NULL,
+   time TINYTEXT NOT NULL,
+   article LONGTEXT NOT NULL,
+   cover TEXT DEFAULT NULL,
+   tags TEXT DEFAULT NULL,
+   hide BOOL DEFAULT false,
+   pin BOOL DEFAULT false,
+   PRIMARY KEY ( id )
+);
+
+DEMO: INSERT INTO `post` (title, writer, time, article, cover, tags, hide, pin) VALUES ('เด็กสาธิตเจ๋ง ป้ายกีฬาสีฯ ทำนายกฯ หน้าสั่น', '604029', 'YYYY-MM-DD HH:MM:SS', false, '', 'xxx.jpg', NULL, false, false);
+
+=================================================
+
+PROFILE's DATABASE [Legacy]
+//Comment: จะเปลี่ยนเป็น Database แยกออกมาจาก Database หลัก เพื่อให้สามารถเพิ่มฟีเจอร์ Graduation ในแต่ละ Table ได้
+
+create table profile (
+   id INT NOT NULL,
+   greetings LONGTEXT,
+   profile LONGTEXT,
+   background LONGTEXT,
+   PRIMARY KEY ( id )
+);
+
+=================================================
+
+USER's DATABASE
+
 create table user (
    id INT NOT NULL,
-   username LONGTEXT NOT NULL,
-   password LONGTEXT NOT NULL,
+   username TEXT NOT NULL,
+   password TEXT NOT NULL,
    citizen_id BIGINT NOT NULL,
    prefix VARCHAR(10) NOT NULL,
-   firstname LONGTEXT NOT NULL,
-   lastname LONGTEXT NOT NULL,
-   firstname_en LONGTEXT NOT NULL,
-   lastname_en LONGTEXT NOT NULL,
+   firstname TEXT NOT NULL,
+   lastname TEXT NOT NULL,
+   firstname_en TEXT NOT NULL,
+   lastname_en TEXT NOT NULL,
    grade INT NOT NULL,
    class INT NOT NULL,
-   email LONGTEXT,
+   email TEXT,
    isAdmin BOOLEAN DEFAULT false,
    isTeacher BOOLEAN DEFAULT false,
    isNewsReporter BOOLEAN DEFAULT false,
@@ -21,81 +126,6 @@ create table user (
    PRIMARY KEY ( id )
 );
 
-
-//FORUM & POST use same template except 'cover' and forum will have 'type'
-create table post (
-   id INT NOT NULL AUTO_INCREMENT,
-   title TEXT NOT NULL,
-   writer INT NOT NULL,
-   time TINYTEXT,
-   article LONGTEXT NOT NULL,
-   cover TEXT,
-   tags TEXT,
-   hide BOOL DEFAULT false,
-   pin BOOL DEFAULT false,
-   PRIMARY KEY ( id )
-);
-
-create table profile (
-   id INT NOT NULL,
-   tel VARCHAR(20),
-   email MEDIUMTEXT,
-   greetings LONGTEXT,
-   profile LONGTEXT,
-   background LONGTEXT,
-   PRIMARY KEY ( id )
-);
-
-create table achievement (
-   id INT NOT NULL,
-   page404 BOOLEAN DEFAULT false,
-   betaTester BOOLEAN DEFAULT false,
-   WebDevTycoon BOOLEAN DEFAULT false,
-   the4thFloor BOOLEAN DEFAULT false,
-   Xmas BOOLEAN DEFAULT false,
-   PRIMARY KEY ( id )
-);
+DEMO: INSERT INTO `user` (id, username, password, citizen_id, prefix, firstname, lastname, firstname_en, lastname_en, email, grade, class) VALUES ($id, '$user', '$pass', $citizen_id, '$prefix', '$firstname', '$lastname', '$firstname_en', '$lastname_en', '$email', $grade, $class)
 
 =================================================
-
-CONFIG TABLE
-
-create table config(
-   id INT NOT NULL AUTO_INCREMENT,
-   name LONGTEXT NOT NULL,
-   bool BOOLEAN,
-   msg LONGTEXT,
-   call TEXT,
-   description TEXT,
-   primary key (id)
-);
-insert into `config` (name, bool, msg) VALUES ('indexpg_showCarousel',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('indexpg_showLatestNews',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('indexpg_showCourse',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('indexpg_showPreviewGallery',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('indexpg_AlertMessage',false,NULL);
-insert into `config` (name, bool, msg) VALUES ('indexpg_Countdown',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('indexpg_CountdownDate',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('global_Livestream',true,'https://pondja.com');
-insert into `config` (name, bool, msg) VALUES ('global_useMDBoostrap',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('global_lastUpdate',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('global_snowEffect',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('global_achievementSystem',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('user_allowRegister',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('user_allowLogin',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('user_allowPostForum',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('user_profile_allowEdit_ProfilePic',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('user_profile_allowEdit_BackgroundPic',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('user_profile_allowEdit_Bio',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('user_profile_displayExperience',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('global_override_checking_admin',false,NULL);
-insert into `config` (name, bool, msg) VALUES ('user_allowEditProfile',true,NULL);
-insert into `config` (name, bool, msg) VALUES ('global_userProfile',true,NULL);
-
-=================================================
-
-INSERT INTO `permission` (username, id, isAdmin, isTeacher, isNewsReporter, isForumEditor, isRegistrator, isTimetableDesigner) VALUES ('palapon2545', 604019, true, true, true, true, true, true)
-
-INSERT INTO user (username, password, firstname, lastname, email) VALUES ('palapon2545', md5('P0ndJ@1103'), 'พลภณ', 'สุนทรภาส', 'palapon2545@gmail.com')
-
-INSERT INTO `post` (title, writer, time, isHidden, article, cover) VALUES ('เด็กสาธิตเจ๋ง ป้ายกีฬาสีฯ ทำนายกฯ หน้าสั่น', 'RisakaLogin', 'YYYY-MM-DD HH:MM:SS', false, '', 'xxx.jpg')
