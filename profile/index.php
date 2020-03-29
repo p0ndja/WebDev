@@ -61,9 +61,9 @@
         $query_achi = "SELECT * FROM `achievement` WHERE id = '$id'";
         $result_achi = mysqli_query($conn, $query_achi);
 
-        $not_found = false;
-        if (mysqli_num_rows($result) == 0)
-            $not_found = true;
+        if (mysqli_num_rows($result) == 0) {
+            header("Location: ../home");
+        }
         
 
         $undefined = "<i>Undefined</i>";
@@ -75,61 +75,36 @@
         $profile_room = $undefined;
         $profile_displayText = $undefined;
         $profile_achi = "";
+                    
+            $profile_prefix = getUserdata($id, 'prefix', $conn);
+            if ($profile_prefix == 'นาย') $profile_prefix_en = 'Mr. ';
+            else if ($profile_prefix == 'นาง') $profile_prefix_en = 'Mrs. ';
+            else if ($profile_prefix == 'เด็กชาย') $profile_prefix_en = 'Master ';
+            else if ($profile_prefix == 'เด็กหญิง' || $profile_prefix == 'นางสาว') $profile_prefix_en = 'Miss ';
+            else $profile_prefix_en = "";
+
+            $profile_name = $profile_prefix . getUserdata($id, 'firstname', $conn) . ' ' . getUserdata($id, 'lastname', $conn);
+            $profile_name_en = $profile_prefix_en . getUserdata($id, 'firstname_en', $conn) . ' ' . getUserdata($id, 'lastname_en', $conn);
+            $profile_id = $id;
+            $profile_grade = getUserdata($id, 'grade', $conn);
+
+            $profile_room = getUserdata($id, 'class', $conn);
+            if ($profile_room == 1) $profile_class = "EMSP";
+            else if ($profile_room == 5) $profile_class = "วมว.";
+            else $profile_class = "ปกติ";
+            if ($profile_grade > 6) $profile_class_detail = "<strong>ศิษย์เก่า</strong><br>";
+            else if ($profile_grade >= 1 && $profile_grade <= 6) $profile_class_detail = "<strong>ระดับชั้น</strong> " . $profile_grade . "/" . $profile_room . " (" . $profile_class . ")<br>";
+            else $profile_class_detail = "";
+
+            $profile_email = getUserdata($id, 'email', $conn);
+            if ($profile_email != null) {
+                $profile_email = '<strong>อีเมล</strong> <a href="mailto:' . $profile_email . '">'. $profile_email .'</a>';
+            }
         
-        $bool_rendergreetings = false;
+            $profile_image = getProfilePicture($id, $conn);
 
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $profile_prefix = $row['prefix'];
+            $profile_greets = getProfileData($id, 'greetings', $conn);
 
-            if ($profile_prefix == 'นาย')
-                $profile_prefix_en = 'Mr. ';
-            else if ($profile_prefix == 'นาง')
-                $profile_prefix_en = 'Mrs. ';
-            else if ($profile_prefix == 'เด็กชาย')
-                $profile_prefix_en = 'Master ';
-            else if ($profile_prefix == 'เด็กหญิง' || $profile_prefix == 'นางสาว')
-                $profile_prefix_en = 'Miss ';
-            else
-                $profile_prefix_en = "";
-
-
-            $profile_name = $profile_prefix . $row['firstname'] . ' ' . $row['lastname'];
-            $profile_name_en = $profile_prefix_en . $row['firstname_en'] . ' ' . $row['lastname_en'];
-            $profile_id = $row['id'];
-            $profile_grade = $row['grade'];
-
-            $profile_room = $row['class'];
-            if ($profile_room == 1) {
-                $profile_class = "EMSP";
-            } else if ($profile_room == 5) {
-                $profile_class = "วมว.";
-            } else {
-                $profile_class = "ปกติ";
-            }
-            
-            if ($profile_grade < 1)
-            $profile_class_detail = "";
-            else if ($profile_grade > 6)
-            $profile_class_detail = "<strong>ศิษย์เก่า</strong><br>";
-            else
-            $profile_class_detail = "<strong>ระดับชั้น</strong> " . $profile_grade . "/" . $profile_room . " (" . $profile_class . ")<br>";
-
-            $profile_email = "";
-            if ($row['email'] != null) {
-                $profile_email = '<strong>อีเมล</strong><a href="mailto:' . $row['email'] . '">'. $row['email'] .'</a>';
-            }
-        }
-        
-        while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
-            if ($row['profile'] != null)
-                $profile_image = $row['profile'];
-            else $profile_image = '../assets/images/default.png';
-            
-            if ($row['greetings'] != null) {
-                $profile_displayText = $row['greetings'];
-                $bool_rendergreetings = true;
-            }
-        }
 
         while ($row = mysqli_fetch_array($result_achi, MYSQLI_ASSOC)) {
             if ($row['betaTester'])
@@ -143,7 +118,6 @@
         }
     ?>
     <div class="container" id="container" style="padding-top: 88px">
-        <?php if(!$not_found) {?>
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -190,10 +164,10 @@
                 </div>
             </div>
             <div class="col-md-8">
-            <?php if ($bool_rendergreetings) { ?>
+            <?php if ($profile_greets != null) { ?>
                 <div class="card">
                     <div class="card-body">
-                        <p><?php echo $profile_displayText ?></p>
+                        <p><?php echo $profile_greets ?></p>
                     </div>
                 </div>
                 <div class="mb-3"></div>
@@ -297,20 +271,13 @@
 
             </div>
         </div>
-        <?php } else { ?>
-            <center><h3>ไม่พบโปรไฟล์สำหรับ</h3>
-            <h1>'<?php echo $_GET['search']; ?>'</h1>
-                <img src="https://images.pondja.com/capoo_sad.gif" class="img-fluid mb-5">
-                </center>
-        <?php } ?>
     </div>
     <?php } else {
         needLogin();
     } ?>
 
-</body>
-
 <?php include '../global/footer.php'; ?>
 <?php include '../global/popup.php'; ?>
+</body>
 
 </html>
