@@ -58,6 +58,17 @@
         }
         //saveProfiledata('604019', 'profile', '...', $conn);
 
+        function getAchievementdata($id, $data, $conn) {
+            return getAnySQL('achievement', $data, 'id', $id, $conn);
+        }
+        //getAchidata('604019', 'page404', $conn);
+
+        function saveAchidata($id, $data, $val, $conn) {
+            if (mysqli_query($conn, "UPDATE `achievement` SET $data = '$val' WHERE id = '$id'")) return true;
+            return false;
+        }
+        //saveAchidata('604019', 'page404', '...', $conn);
+
         function getProfilePicture($id, $conn) {
             $_array = getProfiledata($id,'profile',$conn);
             if ($_array != null) return $_array;
@@ -71,9 +82,14 @@
         else if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) return $_SERVER['HTTP_X_FORWARDED_FOR'];
         return $_SERVER['REMOTE_ADDR'];
     }
-?>
 
-<?php
+    function unformat_curTime() {
+        date_default_timezone_set('Asia/Bangkok'); return date('YmdHis', time());
+    }
+
+    function curTime() {
+        date_default_timezone_set('Asia/Bangkok'); return date('Y-m-d H:i:s', time());
+    }
 
     function base64($f, $user, $type) {
         $name=$f['name'];
