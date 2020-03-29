@@ -27,8 +27,8 @@
     }
     header("Location: ../home");
 ?>
-</body>
 <footer class="d-none">
 <?php include '../global/footer.php'; ?>
 </footer>
 <?php include '../global/popup.php'; ?>
+</body>

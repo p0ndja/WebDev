@@ -15,9 +15,8 @@
     <div class="container" id="container" style="padding-top: 88px">
 
     </div>
-</body>
-
 <?php include '../global/footer.php'; ?>
 <?php include '../global/popup.php'; ?>
+</body>
 
 </html>

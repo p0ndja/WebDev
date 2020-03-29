@@ -278,8 +278,8 @@
             });
         });
     </script>
-</body>
-<footer class="d-none">
+    <footer class="d-none">
     <?php include '../global/footer.php' ?>
 </footer>
+</body>
 </html>

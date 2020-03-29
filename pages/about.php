@@ -108,9 +108,8 @@
             </div>
         </p>
     </div>
-</body>
-
 <?php include '../global/footer.php'; ?>
 <?php include '../global/popup.php'; ?>
+</body>
 
 </html>

@@ -16,14 +16,14 @@
     <div id="summernote"><p>Hello Summernote</p>
 </div>
     </div>
-
+    <?php include '../global/footer.php'; ?>
+<?php include '../global/popup.php'; ?>
 </body>
 <script>
     $(document).ready(function() {
         $('#summernote').summernote();
     });
   </script>
-<?php include '../global/footer.php'; ?>
-<?php include '../global/popup.php'; ?>
+
 
 </html>

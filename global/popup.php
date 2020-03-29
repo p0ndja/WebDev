@@ -265,16 +265,12 @@
         $('.mdb-select').materialSelect();
     });
 </script>
-<?php if (isset($_SESSION['success'])) { ?>
-    <script>
-    swal({
-        title: "เข้าสู่ระบบสำเร็จ",
-        text: "ยินดีต้อนรับ! <?php echo $_SESSION['name']; ?>",
-        icon: "success"
-    });
-</script>
-    <?php $_SESSION['success'] = null;
-} ?>
+<?php 
+    if (isset($_SESSION['success'])) { 
+        signinSuccess($_SESSION['name']);
+        $_SESSION['success'] = null;
+    }
+?>
 <?php if (isset($_SESSION['error'])) { ?>
     <script>
         $('#login').modal('show');

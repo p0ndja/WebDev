@@ -26,7 +26,6 @@ if (isset($_POST['login_submit'])) {
         $_SESSION['success'] = "เข้าสู่ระบบสำเร็จ";
     }
 
-    //ดีดกลับหน้าหลัก (url ในที่นี้เป็น /home/)
     back();
 }
 
@@ -97,7 +96,6 @@ if (isset($_POST['register_submit'])) {
         }
     }
     
-    //ดีดกลับหน้าหลัก (url ในที่นี้เป็น /home/)
     back();
 }
 ?>

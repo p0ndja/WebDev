@@ -124,7 +124,7 @@
         </nav>
     <?php } ?>
     </div>
-</body>
-    <?php include '../global/footer.php'; ?>
     <?php include '../global/popup.php'; ?>
+    <?php include '../global/footer.php'; ?>
+</body>
 </html>

@@ -53,7 +53,7 @@
         //getProfiledata('604019', 'profile', $conn);
 
         function saveProfiledata($id, $data, $val, $conn) {
-            if (mysqli_query($conn, "UPDATE `profile` SET $data = '$val' WHERE id = '$id'")) return true;
+            if (saveAnySQL('profile', $data, $val, 'id', $id)) return true;
             return false;
         }
         //saveProfiledata('604019', 'profile', '...', $conn);
@@ -64,7 +64,7 @@
         //getAchidata('604019', 'page404', $conn);
 
         function saveAchidata($id, $data, $val, $conn) {
-            if (mysqli_query($conn, "UPDATE `achievement` SET $data = '$val' WHERE id = '$id'")) return true;
+            if (saveAnySQL('achievement', $data, $val, 'id', $id)) return true;
             return false;
         }
         //saveAchidata('604019', 'page404', '...', $conn);
@@ -73,6 +73,10 @@
             $_array = getProfiledata($id,'profile',$conn);
             if ($_array != null) return $_array;
             else return '../assets/images/default.png';
+        }
+
+        function isValidUserID($id, $conn) {
+            
         }
 ?>
 
@@ -149,3 +153,13 @@
 </script>
 <?php die(); 
 } ?>
+
+<?php function signinSuccess($name) { ?>
+    <script>
+    swal({
+        title: "เข้าสู่ระบบสำเร็จ",
+        text: "ยินดีต้อนรับ! <?php echo $name; ?>",
+        icon: "success"
+    });
+    </script>
+<?php } ?>

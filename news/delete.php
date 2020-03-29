@@ -15,8 +15,8 @@
         <script>swal("ลบโพสต์ข่าว ID : <?php echo $id; ?> เรียบร้อยแล้ว!", {icon: "success",}).then(setTimeout(function (){window.history.back()}, 1800)); </script>
     <?php }
 ?>
-</body>
 <footer class="d-none">
 <?php include '../global/footer.php'; ?>
 </footer>
 <?php include '../global/popup.php'; ?>
+</body>

@@ -102,9 +102,8 @@
             reader.readAsDataURL(this.files[0]);
         };
     </script>
-</body>
-
 <?php include '../global/footer.php'; ?>
 <?php include '../global/popup.php'; ?>
+</body>
 
 </html>
