@@ -1,7 +1,5 @@
 <?php include '../global/connect.php'; ?>
 
-<?php if (!isset($_SESSION['id'])) header("Location: ../"); ?>
-
 <!DOCTYPE html>
 <html lang="th">
 
@@ -39,12 +37,6 @@
         <?php include '../global/navbar.php'; ?>
     </nav>
     <?php needLogin(); needPermission('isNewsReporter', $conn); ?>
-    <?php
-        date_default_timezone_set('Asia/Bangkok'); $date = date('Y-m-d H:i:s', time());
-        $profile_name = $_SESSION['name'];
-        $profile_id = $_SESSION['id'];
-        $_SESSION['time'] = $date;
-    ?>
     <div class="container" id="container" style="padding-top: 88px">
         <form method="POST" action="../news/save.php<?php if (isset($_GET['id'])) echo '?news=' . $_GET['id']; ?>"
             enctype="multipart/form-data">
@@ -53,7 +45,7 @@
                     <h5 style="color: white">
                         <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-title">หัวข้อ</span>
+                                <span class="input-group-text" id="addon-title">หัวข้อ / Title</span>
                             </div>
                             <input type="text" class="form-control" id="title" name="title" aria-label="title"
                                 aria-describedby="addon-title" required value="<?php echo $title; ?>">
@@ -79,7 +71,7 @@
                     </div>
                     <div class="form-group mb-4">
                         <label for="article">
-                            <h4 class="font-weight-bold">เนื้อข่าว</h4>
+                            <h4 class="font-weight-bold">เนื้อข่าว / Article</h4>
                         </label>
                         <textarea class="summernote" id="article" name="article"></textarea>
                         <hr>
@@ -95,10 +87,7 @@
                         </div>
                     </div>
                     <div class="row justify-content-end">
-                        <h6>เขียนโดย <?php echo $profile_name; ?> เมื่อ <?php echo $date . ' ' ?>
-                            <input type="submit" class="btn btn-success" value="บันทึก"
-                                name="<?php if (isset($_GET['id'])) echo 'post_update'; else echo 'post_submit'; ?>"></input>
-                        </h6>
+                        <h6><input type="submit" class="btn btn-success" value="บันทึก" name="<?php if (isset($_GET['id'])) echo 'post_update'; else echo 'post_submit'; ?>"></input></h6>
                     </div>
                 </div>
             </div>
