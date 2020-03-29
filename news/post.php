@@ -34,18 +34,17 @@
 </head>
 
 <body>
-    <?php
-        date_default_timezone_set('Asia/Bangkok'); $date = date('Y-m-d H:i:s', time());
-        $profile_name = $_SESSION['fn'] . ' ' . $_SESSION['ln'];
-        $profile_id = $_SESSION['id'];
-        $profile_image = $_SESSION['pi'];
-        $_SESSION['time'] = $date;
-    ?>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
         role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
     <?php needLogin(); needPermission('isNewsReporter', $conn); ?>
+    <?php
+        date_default_timezone_set('Asia/Bangkok'); $date = date('Y-m-d H:i:s', time());
+        $profile_name = $_SESSION['name'];
+        $profile_id = $_SESSION['id'];
+        $_SESSION['time'] = $date;
+    ?>
     <div class="container" id="container" style="padding-top: 88px">
         <form method="POST" action="../news/save.php<?php if (isset($_GET['id'])) echo '?news=' . $_GET['id']; ?>"
             enctype="multipart/form-data">

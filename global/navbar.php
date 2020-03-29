@@ -77,12 +77,12 @@
                     value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>">
             </div>
         </form>
-        <?php if (isset($_SESSION['fn'])) { ?>
+        <?php if (isLogin()) { ?>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img src="<?php echo $_SESSION['pi']; ?>" width="20" alt="Profile">
-                <?php echo $_SESSION['fn'] . ' ' . $_SESSION['ln']; ?></a>
+                <img src="<?php echo getProfilePicture($_SESSION['id'], $conn); ?>" width="20" alt="Profile">
+                <?php echo $_SESSION['name']; ?></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="../profile"> ข้อมูลส่วนตัว <i class="fas fa-user"></i></a>
                 <a class="dropdown-item" href="#"> ลงทะเบียนวิชาเลือก <i class="fas fa-tasks"></i></a>
@@ -97,30 +97,7 @@
             </div>
         </li>
         <?php } else { ?>
-        <!--li class="dropdown order-1">
-            <button type="button" id="dropdownMenu1" data-toggle="dropdown"
-                class="btn btn-secondary dropdown-toggle">Login <span class="caret"></span></button>
-            <ul class="dropdown-menu dropdown-menu-right mt-1">
-                <li class="px-3 py-2">
-                    <form class="form" role="form">
-                        <div class="form-group">
-                            <input id="emailInput" placeholder="Email" class="form-control" type="text">
-                        </div>
-                        <div class="form-group">
-                            <input id="passwordInput" placeholder="Password" class="form-control" type="text">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-success btn-block">Login</button>
-                        </div>
-                        <div class="form-group text-center">
-                            <a href="#" data-toggle="modal" data-target="#modalPassword">Forgot password?</a>
-                        </div>
-                    </form>
-                </li>
-            </ul>
-        </li-->
-        <a href="" class="btn btn-rounded peach-gradient text-dark font-weight-bold" data-toggle="modal"
-            data-target="#login">Login</a>
+            <button class="btn btn-rounded peach-gradient text-dark font-weight-bold" data-toggle="modal" data-target="#login">Login</button>
         <?php } ?>
     </ul>
 </div>

@@ -30,17 +30,18 @@
 </head>
 
 <body>
-    <?php
-        date_default_timezone_set('Asia/Bangkok'); $date = date('Y-m-d H:i:s', time());
-        $profile_name = $_SESSION['fn'] . ' ' . $_SESSION['ln'];
-        $profile_id = $_SESSION['id'];
-        $profile_image = $_SESSION['pi'];
-        $_SESSION['time'] = $date;
-    ?>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
         role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
+    <?php needLogin(); ?>
+    <?php
+        date_default_timezone_set('Asia/Bangkok'); $date = date('Y-m-d H:i:s', time());
+        $profile_name = $_SESSION['name'];
+        $profile_id = $_SESSION['id'];
+        $profile_image = getProfilePicture($SESSION['id'], $conn);
+        $_SESSION['time'] = $date;
+    ?>
     <div class="container" id="container" style="padding-top: 88px">
         <form method="POST" action="../forum/save.php<?php if (isset($_GET['post'])) echo '?post=' . $_GET['post']; ?>" enctype="multipart/form-data">
             <div class="card mb-3">

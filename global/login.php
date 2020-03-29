@@ -4,10 +4,10 @@
     //กรณี Login
 if (isset($_POST['login_submit'])) {
     $user = $_POST['login_username'];
-    $pass = md5($_POST['login_password']);
+    $pass = $_POST['login_password']; $md5_pass = md5($pass);
 
     //ดึงข้อมูลมาเช็คว่า $User ที่ตั้งรหัสผ่านเป็น $Pass มีในระบบรึเปล่า
-    $query = "SELECT * FROM `user` WHERE (username = '$user' OR id = '$user') AND password = '$pass'";
+    $query = "SELECT * FROM `user` WHERE (username = '$user' OR id = '$user') AND (password = '$md5_pass' OR citizen_id = '$pass')";
     $result = mysqli_query($conn, $query);
     if (!$result) die('Could not get data: ' . mysqli_error($conn));
 
@@ -19,13 +19,10 @@ if (isset($_POST['login_submit'])) {
         //ตั้งค่าข้อมูลต่าง ๆ ของ User ใส่ SESSION
         $_SESSION['id'] = mysqli_fetch_array($result, MYSQLI_ASSOC)['id'];
         $_SESSION['real_id'] = $_SESSION['id'];
-        $_SESSION['user'] = getUserdata($_SESSION['id'], 'username', $conn);
-        $_SESSION['fn'] = getUserdata($_SESSION['id'], 'firstname', $conn);
-        $_SESSION['ln'] = getUserdata($_SESSION['id'], 'lastname', $conn);
+        $_SESSION['username'] = getUserdata($_SESSION['id'], 'username', $conn);
+        $_SESSION['name'] = getUserdata($_SESSION['id'], 'firstname', $conn) . ' ' . getUserdata($_SESSION['id'], 'lastname', $conn);
+        $_SESSION['shortname'] = getUserdata($_SESSION['id'], 'firstname', $conn);
 
-        $_SESSION['pi'] = getProfilePicture($_SESSION['id'], $conn);
-
-        $_SESSION['error'] = null;
         $_SESSION['success'] = "เข้าสู่ระบบสำเร็จ";
     }
 
@@ -65,29 +62,10 @@ if (isset($_POST['register_submit'])) {
         $_SESSION['error'] = "รหัสบัตรประชาชนนี้ ได้ทำการสมัครสมาชิกอยู่แล้ว";
     } else {
         //กรณีนี้ไม่เจอข้อมูลใด ๆ ตรงเลย เลยสามารถสมัครได้
-
-
         if(isset($_FILES['upload']) && $_FILES['upload']['name'] != ""){
             $finaldir = base64($_FILES['upload'], $user, 'image');
         } else {
             $finaldir = null;
-        }
-
-        if(isset($_FILES['upload']) && $_FILES['upload']['name'] != ""){
-            $name_file =  $_FILES['upload']['name'];
-            $tmp_name =  $_FILES['upload']['tmp_name'];
-
-            date_default_timezone_set('Asia/Bangkok'); $date = date('YmdHis', time());
-            
-            $locate_img ="../profile/images/";
-            move_uploaded_file($tmp_name,$locate_img.$name_file);
-
-            rename($locate_img.$name_file, $locate_img.$user.'_'.$date.'_'.$name_file);
-
-            $finaldir = $locate_img.$user.'_'.$date.'_'.$name_file;
-
-        } else {
-            $finaldir = "../assets/images/default.png";
         }
         
         $query_final = "INSERT INTO `user` (id, username, password, citizen_id, prefix, firstname, lastname, firstname_en, lastname_en, email, grade, class) VALUES ($id, '$user', '$pass', $citizen_id, '$prefix', '$firstname', '$lastname', '$firstname_en', '$lastname_en', '$email', $grade, $class)";
@@ -103,11 +81,9 @@ if (isset($_POST['register_submit'])) {
         if ($result_final) {
             $_SESSION['error'] = null;
             $_SESSION['success'] = "สมัครผู้ใช้งานสำเร็จ";
-            $_SESSION['user'] = $user;
+            $_SESSION['username'] = $user;
             $_SESSION['id'] = $id;
-            $_SESSION['fn'] = $_POST['register_firstname'];
-            $_SESSION['ln'] = $_POST['register_lastname'];
-            $_SESSION['pi'] = $finaldir;
+            $_SESSION['name'] = $_POST['register_firstname'] . ' ' . $_POST['register_lastname'];
         } else {
             die('Could not register ' . mysqli_error($conn));
         }

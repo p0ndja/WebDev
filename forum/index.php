@@ -27,11 +27,13 @@
         <div class="classic-tabs mx-2 mb-3">
 
             <ul class="nav tabs-orange" id="tab-orange" role="tablist">
+                <?php if (isLogin()) { ?>
                 <li class="nav-item">
-                    <a class="nav-link waves-light <?php if (!isset($_SESSION['id'])) echo 'disabled';?>"
+                    <a class="nav-link waves-light"
                         id="post-orange" data-toggle="tab" href="#post" role="tab" aria-controls="post"
                         aria-selected="false"><i class="fas fa-plus fa-2x pb-2" aria-hidden="true"></i><br>Post</a>
                 </li>
+                <?php } ?>
                 <li class="nav-item">
                     <a class="nav-link waves-light active show" id="announcement-orange" data-toggle="tab"
                         href="#announcement" role="tab" aria-controls="announcement" aria-selected="true"><i
@@ -176,13 +178,13 @@
                         assumenda est, omnis dolor repellendus. </p>
                 </div>
                 <?php
-                    if (isset($_SESSION['id'])) {
+                    if (isLogin()) {
                         date_default_timezone_set('Asia/Bangkok'); $date = date('Y-m-d H:i:s', time());
-                        $profile_name = $_SESSION['fn'] . ' ' . $_SESSION['ln'];
+                        $profile_name = $_SESSION['name'];
                         $profile_id = $_SESSION['id'];
-                        $profile_image = $_SESSION['pi'];
+                        $profile_image = getProfilePicture($profile_id, $conn);
                         $_SESSION['time'] = $date;
-                    }
+                    
                 ?>
                 <div class="tab-pane fade" id="post" role="tabpanel" aria-labelledby="post-orange">
                     <form method="POST" action="../forum/save.php" enctype="multipart/form-data">
@@ -215,6 +217,7 @@
                         </div>
                     </form>
                 </div>
+                    <?php } ?>
             </div>
 
         </div>

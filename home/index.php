@@ -446,17 +446,6 @@
         });
     </script>
     <?php } ?>
-    <?php
-        if (isset($_SESSION['error'])) { ?>
-    <script>
-        $('#login').modal('show');
-    </script>
-    <?php }
-        if (isset($_SESSION['success'])) { ?>
-    <script>
-        $('#successPopup').modal('show');
-    </script>
-    <?php $_SESSION['success'] = null;}?>
     <?php $_SESSION['isAnnouncementPopedUp'] = true; ?>
 </body>
 

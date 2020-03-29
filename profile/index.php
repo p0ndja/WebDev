@@ -73,7 +73,6 @@
         $profile_grade = $undefined;
         $profile_class = $undefined;
         $profile_room = $undefined;
-        $profile_email = $undefined;
         $profile_displayText = $undefined;
         $profile_achi = "";
         
@@ -97,8 +96,8 @@
             $profile_name = $profile_prefix . $row['firstname'] . ' ' . $row['lastname'];
             $profile_name_en = $profile_prefix_en . $row['firstname_en'] . ' ' . $row['lastname_en'];
             $profile_id = $row['id'];
-            $profile_email = $row['email'];
             $profile_grade = $row['grade'];
+
             $profile_room = $row['class'];
             if ($profile_room == 1) {
                 $profile_class = "EMSP";
@@ -114,6 +113,11 @@
             $profile_class_detail = "<strong>ศิษย์เก่า</strong><br>";
             else
             $profile_class_detail = "<strong>ระดับชั้น</strong> " . $profile_grade . "/" . $profile_room . " (" . $profile_class . ")<br>";
+
+            $profile_email = "";
+            if ($row['email'] != null) {
+                $profile_email = '<strong>อีเมล</strong><a href="mailto:' . $row['email'] . '">'. $row['email'] .'</a>';
+            }
         }
         
         while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
@@ -168,8 +172,7 @@
                             <div class="card-body">
                                 <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
                                 <?php echo $profile_class_detail; ?>
-                                <strong>อีเมล</strong>
-                                <a href="mailto:<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
+                                <?php echo $profile_email; ?>
                             </div>
                         </div>
                         <div class="mb-3"></div>
