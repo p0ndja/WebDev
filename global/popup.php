@@ -1,34 +1,3 @@
-<div class="modal fade" id="successPopup" name="successPopup" tabindex="-1" role="dialog" aria-labelledby="successTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-notify modal-success" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="successTitle">
-                    SUCCESS!
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-5 col-6">
-                        <div class="text-center"><img src="<?php echo $_SESSION['pi'];?>" class="img img-fluid"></div>
-                    </div>
-                    <div class="col-md-7 col-6">
-                        <div class="text-center"><i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
-                            <h4><?php echo $_SESSION['success']; ?></h4>
-                            <p>ยินดีต้อนรับ! <b><?php echo $_SESSION['fn'] . ' ' . $_SESSION ['ln']?></b></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">ปิดหน้าต่าง</button>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="modal fade" id="pdfViewer" name="pdfViewer" tabindex="-1" role="dialog" aria-labelledby="pdfViewer"
     aria-hidden="true">
     <div class="modal-dialog modal-notify modal-warning modal-lg" role="document">
@@ -80,14 +49,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="cpanelTitle">สวัสดี!
-                    <?php echo $_SESSION['fn'] . ' (' . $_SESSION['user'] . ')'; ?></h5>
+                    <?php echo $_SESSION['shortname'] . ' (' . $_SESSION['username'] . ')'; ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <img src="<?php echo $_SESSION['pi']; ?>" class="w-50">
+                    <img src="<?php echo getProfilePicture($_SESSION['id'], $conn); ?>" class="w-50">
                 </div>
             </div>
             <div class="modal-footer">
@@ -296,3 +265,19 @@
         $('.mdb-select').materialSelect();
     });
 </script>
+<?php if (isset($_SESSION['success'])) { ?>
+    <script>
+    swal({
+        title: "เข้าสู่ระบบสำเร็จ",
+        text: "ยินดีต้อนรับ! <?php echo $_SESSION['name']; ?>",
+        icon: "success"
+    });
+</script>
+    <?php $_SESSION['success'] = null;
+} ?>
+<?php if (isset($_SESSION['error'])) { ?>
+    <script>
+        $('#login').modal('show');
+    </script>
+<?php $_SESSION['error'] = null;
+} ?>
