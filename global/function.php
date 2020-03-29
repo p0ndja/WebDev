@@ -76,7 +76,10 @@
         }
 
         function isValidUserID($id, $conn) {
-            
+            $query = "SELECT * FROM `user` WHERE id = '$id'";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) return true;
+            return false;
         }
 ?>
 
