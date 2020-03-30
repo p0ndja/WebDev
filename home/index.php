@@ -207,7 +207,9 @@
             <hr>
             <div class="card" align="center" style="background-color: rgba(255, 255, 255, 0.95);">
                 <div class="card-body">
-                    <div class="card-title"><h1 class="font-weight-bold">หลักสูตรการเรียน</h1></div>
+                    <div class="card-title">
+                        <h1 class="font-weight-bold">หลักสูตรการเรียน</h1>
+                    </div>
                     <div class="card-text text-dark">
                         <div class="row">
                             <div class="col-md-1"></div>
@@ -287,7 +289,8 @@
     <?php if (getConfig('indexpg_showLatestNews', 'bool', $conn)) { ?>
     <div class="container">
         <h1 id="news" name="news" class="font-weight-bold">NEWS
-            <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php" class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
+            <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php"
+                class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
         </h1>
         <div class="row">
             <div class="col-12 col-md-8">
@@ -295,32 +298,38 @@
                         $result = mysqli_query($conn, $query);
                         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
                 <div class="card hoverable mb-3">
-                        <?php if ($row['cover'] != null) { ?><img class="card-img-top" src="<?php echo $row['cover']; ?>"><?php } ?>
-                        <div class="card-body">
-                            <p class="card-text"><i class="far fa-clock"></i>
-                                <?php
+                    <?php if ($row['cover'] != null) { ?><img class="card-img-top"
+                        src="<?php echo $row['cover']; ?>"><?php } ?>
+                    <div class="card-body">
+                        <p class="card-text"><i class="far fa-clock"></i>
+                            <?php
                                     $writer_id = $row['writer'];
                                     $writer_name = getUserdata($writer_id, 'firstname', $conn) . ' ' . getUserdata($writer_id, 'lastname', $conn) . ' (' . getUserdata($writer_id, 'username', $conn) . ')';
                                     echo $row['time'] . ' โดย ' . '<a href="../profile/?search=' . $writer_id . '">' . $writer_name . '</a>'; 
                                 ?>
-                            </p>
-                            <div class="card-title">
-                                <h5 class="font-weight-bold"><a href="../news/?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
-                                <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a onclick='
+                        </p>
+                        <div class="card-title">
+                            <h5 class="font-weight-bold"><a
+                                    href="../news/?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
+                                <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a
+                                    href="../news/post.php?id=<?php echo $row['id']; ?>"><i
+                                        class="fas fa-edit text-success"></i></a> <a
+                                    onclick='
                                     swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../news/delete.php?id=<?php echo $row["id"]; ?>";}});'>
                                     <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
-                                </h5>
-                                <h6>
+                            </h5>
+                            <h6>
                                 <?php foreach (explode(",", $row['tags']) as $s) { ?>
-                                    <a href="../news/?tags=<?php echo $s; ?>"><span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span></a>
+                                <a href="../news/?tags=<?php echo $s; ?>"><span
+                                        class="badge badge-secondary z-depth-0"><?php echo $s; ?></span></a>
                                 <?php } ?>
-                                </h6>
-                            </div>
+                            </h6>
                         </div>
+                    </div>
                 </div>
-            <?php } ?>
+                <?php } ?>
             </div>
-            <div class="col-md-4 d-none d-md-block">
+            <div class="col-md-4">
                 <div class="d-none d-xl-block fb-page mb-3" data-href="https://www.facebook.com/SMD.KKU"
                     data-tabs="timeline" data-width="" data-height="850" data-small-header="false"
                     data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
@@ -342,25 +351,38 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <a data-toggle="collapse" href="#satitCollapse" aria-expanded="false" aria-controls="satitCollapse"><img class="img-fluid" src="../assets/images/logo/satitmenu-min.png" alt="SATIT"></a>
-                        <div class="collapse" id="satitCollapse">
-                            <div class="mb-1">
-                                <ul>
-                                <li><a href="//satit.kku.ac.th" target="_blank">สาธิตมหาวิทยาลัยขอนแก่น (ส่วนกลาง)</a></li>
-                                <li><a href="//anuban.satit.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายอนุบาล</a></li>
-                                <li><a href="//primary.satit.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายประถมศึกษา (ศึกษาศาสตร์)</a></li>
-                                <li><a href="//satitmo.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายประถมศึกษา (มอดินแดง)</a></li>
-                                <li><a href="//sec.satit.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายมัธยมศึกษา (ศึกษาศาสตร์)</a></li>
-                                <li><a href="//www.smd.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายมัธยมศึกษา (มอดินแดง)</a></li>
-                                <li><a href="//autistickku.com" target="_blank">สาธิตฯ ฝ่ายการศึกษาพิเศษ (ศูนย์วิจัยออทิสติก)</a></li>
-                                <ul>
+                    <div class="row">
+                        <div class="col-6 col-md-12">
+                            <div class="d-none d-md-block">
+                                <a data-toggle="collapse" href="#satitCollapse" aria-expanded="false"
+                                    aria-controls="satitCollapse"><img class="img-fluid"
+                                        src="../assets/images/logo/satitmenu-min.png" alt="SATIT"></a>
+                                <div class="collapse" id="satitCollapse">
+                                    <div class="mb-1">
+                                        <div class="row">
+                                            <ul>
+                                                <li><a href="//satit.kku.ac.th" target="_blank">สาธิตมหาวิทยาลัยขอนแก่น (ส่วนกลาง)</a></li>
+                                                <li><a href="//anuban.satit.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายอนุบาล</a></li>
+                                                <li><a href="//primary.satit.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายประถมศึกษา (ศึกษาศาสตร์)</a></li>
+                                                <li><a href="//satitmo.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายประถมศึกษา (มอดินแดง)</a></li>
+                                                <li><a href="//sec.satit.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายมัธยมศึกษา (ศึกษาศาสตร์)</a></li>
+                                                <li><a href="//www.smd.kku.ac.th" target="_blank">สาธิตฯ ฝ่ายมัธยมศึกษา (มอดินแดง)</a></li>
+                                                <li><a href="//autistickku.com" target="_blank">สาธิตฯ ฝ่ายการศึกษาพิเศษ (ศูนย์วิจัยออทิสติก)</a></li>
+                                            <ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-block d-md-none">
+                                <a href="//satit.kku.ac.th" target="_blank"><img class="img-fluid" src="../assets/images/logo/satitmenu-min.png" alt="SATIT"></a>
                             </div>
                         </div>
-                    <a href="//th.kku.ac.th" target="_blank"><img class="img-fluid" src="../assets/images/logo/kkumenu-min.png" alt="KKU"></a>
-                    <a href="//ednet.kku.ac.th" target="_blank"><img class="img-fluid" src="../assets/images/logo/edmenu-min.png" alt="ED"></a>
-                    <a href="//kkumail.com" target="_blank"><img class="img-fluid" src="../assets/images/logo/mailmenu-min.png" alt="KKU Mail"></a>
-                    <a href="//home.kku.ac.th/account/satit" target="_blank"><img class="img-fluid" src="../assets/images/logo/netmenu-min.png" alt="KKU Net"></a>
-                    <a href="//edoffice.kku.ac.th" target="_blank"><img class="img-fluid" src="../assets/images/logo/edofficemenu-min.png" alt="ED-OFFICE"></a>
+                        <div class="col-6 col-md-12"><a href="//th.kku.ac.th" target="_blank"><img class="img-fluid" src="../assets/images/logo/kkumenu-min.png" alt="KKU"></a></div>
+                        <div class="col-6 col-md-12"><a href="//ednet.kku.ac.th" target="_blank"><img class="img-fluid" src="../assets/images/logo/edmenu-min.png" alt="ED"></a></div>
+                        <div class="col-6 col-md-12"><a href="//kkumail.com" target="_blank"><img class="img-fluid" src="../assets/images/logo/mailmenu-min.png" alt="KKU Mail"></a></div>
+                        <div class="col-6 col-md-12"><a href="//home.kku.ac.th/account/satit" target="_blank"><img class="img-fluid" src="../assets/images/logo/netmenu-min.png" alt="KKU Net"></a></div>
+                        <div class="col-6 col-md-12"><a href="//edoffice.kku.ac.th" target="_blank"><img class="img-fluid" src="../assets/images/logo/edofficemenu-min.png" alt="ED-OFFICE"></a></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -373,8 +395,6 @@
     <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v5.0&appId=2529205720433288&autoLogAppEvents=1">
     </script>
-
-    <?php include '../global/popup.php'; ?>
 
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
@@ -439,6 +459,12 @@
             }
         });
     </script>
+
+
+
+<?php include '../global/popup.php'; ?>
+<?php include '../global/footer.php'; ?>
+
     <?php if (!isset($_SESSION['isAnnouncementPopedUp'])) { ?>
     <script>
         $(window).on('load', function () {
@@ -448,8 +474,4 @@
     <?php } ?>
     <?php $_SESSION['isAnnouncementPopedUp'] = true; ?>
 </body>
-
-<!--เนื่องจากมี Script ที่ใช้ค่าของ popup.php ทำให้ต้องเอาไว้ด้านบนไม่เหมือนกับหน้าอื่น ๆ-->
-<?php include '../global/footer.php'; ?>
-
 </html>
