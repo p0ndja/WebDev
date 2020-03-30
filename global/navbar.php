@@ -1,3 +1,8 @@
+<?php if (isset($_SESSION['dark_mode']) && $_SESSION['dark_mode'] == true) { ?>
+    <script>document.body.setAttribute("data-theme", "dark")</script>
+<?php } else { ?>
+    <script>document.body.removeAttribute("data-theme")</script>
+<?php } ?>
 <a class="navbar-brand" href="../home"><span class="badge badge-light"><img src="../assets/images/logo/logokku_32px.png"
             width="20" alt="SMD"></span></a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -66,10 +71,6 @@
     </ul>
 
     <ul class="nav navbar-nav nav-flex-icons ml-auto">
-    <div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="darkSwitch" />
-  <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
-</div>
 <form action="../pages/search.php" method="GET" class="form-inline">
             <div class="md-form my-0">
                 <input method="GET" class="form-control" type="text" placeholder="Search ID (Ex. 604019)"
@@ -91,6 +92,13 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item text-secondary" href="../admin/"> ส่วนของแอดมิน <i
                         class="fas fa-user-tie"></i></a>
+                <div class="dropdown-divider"></div>
+                <?php if(!isset($_SESSION['dark_mode'])) $_SESSION['dark_mode'] = false; ?>
+                <?php if ($_SESSION['dark_mode'] == true) { ?>
+                <a class="dropdown-item" href="../pages/darkmode.php"> เปลี่ยนเป็นโหมดสว่าง <i class="far fa-lightbulb"></i></a>
+                <?php } else { ?>
+                    <a class="dropdown-item" href="../pages/darkmode.php"> เปลี่ยนเป็นโหมดมืด <i class="fas fa-lightbulb"></i></a>
+                <?php } ?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item text-danger" href="../global/logout.php">ออกจากระบบ <i
                         class="fas fa-sign-out-alt"></i></a>

@@ -95,7 +95,7 @@
 
 </head>
 
-<body class="body-darkmode">
+<body>
     <header id="header">
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="filter: blur(3px);
