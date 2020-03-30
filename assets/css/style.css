@@ -126,7 +126,7 @@
     
     body {
         font-family: 'Kanit', sans-serif;
-        background: url('../images/background/background_removehead.jpg') no-repeat center center fixed;
+        background: url('../images/background/bg_light_pastel.jpg') no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -139,7 +139,7 @@
     
     @media only screen and (max-width: 666px) {
         body {
-            background: url('../images/background/background_mobile_verticle.jpg') no-repeat center center fixed;
+            background: url('../images/background/bg_light_pastel.jpg') no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
