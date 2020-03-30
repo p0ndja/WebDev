@@ -16,8 +16,8 @@
     <div id="summernote"><p>Hello Summernote</p>
 </div>
     </div>
-    <?php include '../global/footer.php'; ?>
-<?php include '../global/popup.php'; ?>
+    <?php include '../global/popup.php'; ?>
+<?php include '../global/footer.php'; ?>
 </body>
 <script>
     $(document).ready(function() {

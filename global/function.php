@@ -63,7 +63,7 @@
         }
         //getAchidata('604019', 'page404', $conn);
 
-        function saveAchidata($id, $data, $val, $conn) {
+        function saveAchimentdata($id, $data, $val, $conn) {
             if (saveAnySQL('achievement', $data, $val, 'id', $id)) return true;
             return false;
         }

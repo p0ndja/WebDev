@@ -7,23 +7,22 @@
 <head>
     <?php include '../global/head.php'; ?>
     <?php
-     $id;
-     if (isset($_GET['search'])) {
-         $id = $_GET['search'];
-     } else {
-         $id = $_SESSION['id'];
-     }
+        if (isset($_GET['search'])) $id = $_GET['search'];
+        else $id = $_SESSION['id'];
 
-     $query = "SELECT * FROM `user` WHERE id = '$id'";
-     $result = mysqli_query($conn, $query);
+        if (!isValidUserID($id, $conn)) back();
+
+        $query = "SELECT * FROM `user` WHERE id = '$id'";
+        $result = mysqli_query($conn, $query);
      
-     if (!$result) {
-        die('Could not get data: ' . mysqli_error($conn));
-    }
-     $profile_background = "../assets/images/background/bg_light_pastel.jpg";
+        if (!$result) {
+            die('Could not get data: ' . mysqli_error($conn));
+        }
+        
+        $profile_background = "../assets/images/background/bg_light_pastel.jpg";
 
-     $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
-     $result_profile = mysqli_query($conn, $query_profile);
+        $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
+        $result_profile = mysqli_query($conn, $query_profile);
 
 
      while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
@@ -53,27 +52,7 @@
             $id = $_GET['search'];
         else
             $id = $_SESSION['id'];
-
-        $query = "SELECT * FROM `user` WHERE id = '$id'";
-        $result = mysqli_query($conn, $query);
-        $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
-        $result_profile = mysqli_query($conn, $query_profile);
-        $query_achi = "SELECT * FROM `achievement` WHERE id = '$id'";
-        $result_achi = mysqli_query($conn, $query_achi);
-
-        if (mysqli_num_rows($result) == 0) {
-            header("Location: ../home");
-        }
         
-
-        $undefined = "<i>Undefined</i>";
-        $profile_name = "<i>Undefined Thai Name</i>";
-        $profile_name_en = "<i>Undefined English Name</i>";
-        $profile_id = $undefined;
-        $profile_grade = $undefined;
-        $profile_class = $undefined;
-        $profile_room = $undefined;
-        $profile_displayText = $undefined;
         $profile_achi = "";
                     
             $profile_prefix = getUserdata($id, 'prefix', $conn);
@@ -106,16 +85,16 @@
             $profile_greets = getProfileData($id, 'greetings', $conn);
 
 
-        while ($row = mysqli_fetch_array($result_achi, MYSQLI_ASSOC)) {
-            if ($row['betaTester'])
+        
+            if (getAchievementdata($id, 'betaTester', $conn))
                 $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Beta Tester (LEGENDARY)"><img src="../assets/images/achievement/beta-tester-icon_resize.gif" alt="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></a></div>';
-            if ($row['WebDevTycoon'])
+            if (getAchievementdata($id, 'WebDevTycoon', $conn))
                 $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Web Dev Tycoon (UNOBTAINABLE)"><img src="../assets/images/achievement/Web_dev_tycoon_icon_resize.gif" alt="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></a></div>';
-            if ($row['the4thFloor'])
+            if (getAchievementdata($id, 'the4thFloor', $conn))
                 $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="The 4th Floor (RARE)"><img src="../assets/images/achievement/stair.png" alt="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></a></div>';
-            if ($row['Xmas'])
+            if (getAchievementdata($id, 'Xmas', $conn))
                 $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Merry Christmas~ (UNCOMMON)"><img src="../assets/images/achievement/xmas_resize.png" alt="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></a></div>';
-        }
+        
     ?>
     <div class="container" id="container" style="padding-top: 88px">
         <div class="card">
@@ -276,8 +255,8 @@
         needLogin();
     } ?>
 
-<?php include '../global/footer.php'; ?>
 <?php include '../global/popup.php'; ?>
+<?php include '../global/footer.php'; ?>
 </body>
 
 </html>
