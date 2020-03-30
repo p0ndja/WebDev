@@ -1,7 +1,7 @@
 <?php
     include '../global/connect.php';
     if (!isset($_SESSION['id']))
-        header("Location: ../");
+        home();
 ?>
 
 <!DOCTYPE html>

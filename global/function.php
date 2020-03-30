@@ -81,6 +81,13 @@
             if (mysqli_num_rows($result) > 0) return true;
             return false;
         }
+
+        function isValidNewsID($id, $conn) {
+            $query = "SELECT * FROM `post` WHERE id = '$id'";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) > 0) return true;
+            return false;
+        }
 ?>
 
 <?php
@@ -104,7 +111,7 @@
         $tmp_name=$f['tmp_name'];
         date_default_timezone_set('Asia/Bangkok');
         $date=date('YmdHis', time());
-        $locate_img="../cache/";
+        $locate_img="../file/cache/";
         move_uploaded_file($tmp_name, $locate_img.$name_file);
         rename($locate_img.$name_file, $locate_img.$user.'_'.$date.'_'.$name_file);
         $finaldir=$locate_img.$user.'_'.$date.'_'.$name_file;
@@ -155,6 +162,9 @@
     window.history.back();
 </script>
 <?php die(); 
+} ?>
+<?php function home() {
+    header("Location: ../home");
 } ?>
 
 <?php function signinSuccess($name) { ?>

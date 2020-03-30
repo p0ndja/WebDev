@@ -5,7 +5,7 @@
     <?php include '../global/head.php'; ?>
     <?php
         include '../global/config.php';
-        if(!$close) header("Location: ../home/");
+        if(!$close) home();
     ?>
     <style>
         .center {

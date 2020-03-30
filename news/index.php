@@ -31,13 +31,16 @@
         <?php include '../global/navbar.php'; ?>
     </nav>
 
+    <?php if (isset($_GET['id']) && !isValidNewsID($_GET['id'], $conn)) back(); ?>
+
     <div class="container-fluid" id="container" style="padding-top: 88px">
     <div class="row">
     <div class="col-xl-1 d-none d-md-block"></div>
     <div class="col-xl-10 col-12">
-        <h1 id="news" name="news" class="font-weight-bold">NEWS
+        <?php if(!isset($_GET['id'])) { ?><h1 id="news" name="news" class="font-weight-bold">NEWS
         <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php" class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
         </h1>
+        <?php } ?>
         <?php 
             $news_per_page = 6;
             $cur_page = 1;

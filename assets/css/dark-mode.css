@@ -14,3 +14,36 @@
 [data-theme="dark"] .bg-black {
     background-color: #eee !important;
 }
+
+[data-theme="dark"] .card {
+    background-color: #1c1c1c !important;
+}
+
+[data-theme="dark"] a
+,[data-theme="dark"] li .page-item {
+    color: #fff75f;
+}
+
+[data-theme="dark"] h1
+,[data-theme="dark"] h2
+,[data-theme="dark"] h3
+,[data-theme="dark"] h4
+,[data-theme="dark"] h5
+,[data-theme="dark"] p {
+    color: #ffc30f;
+}
+
+[data-theme="dark"] .carousel h1
+,[data-theme="dark"] .carousel h2
+,[data-theme="dark"] .carousel h3
+,[data-theme="dark"] .carousel h4
+,[data-theme="dark"] .carousel h5
+,[data-theme="dark"] .carousel p {
+    color: white;
+}
+
+[data-theme="dark"] .navbar {
+    background-image: url('../images/background/bg_dark_resize.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}

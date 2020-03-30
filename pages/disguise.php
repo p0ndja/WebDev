@@ -25,7 +25,7 @@
         
         
     }
-    header("Location: ../home");
+    home();
 ?>
 <footer class="d-none">
 <?php include '../global/footer.php'; ?>

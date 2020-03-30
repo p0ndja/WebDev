@@ -19,7 +19,7 @@ if (isset($_POST['post_submit']) || isset($_POST['post_update'])) {
     if(isset($_FILES['cover']) && $_FILES['cover']['name'] != ""){
         $name_file = $_FILES['cover']['name'];
         $tmp_name = $_FILES['cover']['tmp_name'];
-        $locate_img ="../news/images/";
+        $locate_img ="../file/news/images/";
         $date = unformat_curTime();
         move_uploaded_file($tmp_name,$locate_img.$name_file);
         rename($locate_img.$name_file, $locate_img.$date.'_'.$name_file);
