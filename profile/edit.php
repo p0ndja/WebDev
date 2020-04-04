@@ -19,7 +19,11 @@
         if (!$result) {
             die('Could not get data: ' . mysqli_error($conn));
         }
+        
+        if (!$_SESSION['dark_mode'])
         $profile_background = "../assets/images/background/bg_light_pastel.jpg";
+        else
+        $profile_background = "../assets/images/background/bg_dark_resize.jpg";
 
         $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
         $result_profile = mysqli_query($conn, $query_profile);

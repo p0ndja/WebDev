@@ -7,7 +7,7 @@
     background-color: #333 !important;
 }
 
-[data-theme="dark"] .bg-white {
+[data-theme="dark"] .bg-#eee {
     background-color: #000 !important;
 }
 
@@ -15,13 +15,22 @@
     background-color: #eee !important;
 }
 
-[data-theme="dark"] .card {
+[data-theme="dark"] .input-group-text
+,[data-theme="dark"] .file-path
+,[data-theme="dark"] .form-control {
+    color: #eee;
+    background-color: #333 !important;
+}
+
+[data-theme="dark"] .note-editable
+,[data-theme="dark"] .card
+,[data-theme="dark"] .input-group-text {
     background-color: #1c1c1c !important;
 }
 
 [data-theme="dark"] a
 ,[data-theme="dark"] li .page-item {
-    color: #fff75f;
+    color: #ffc30f;
 }
 
 [data-theme="dark"] h1
@@ -30,7 +39,7 @@
 ,[data-theme="dark"] h4
 ,[data-theme="dark"] h5
 ,[data-theme="dark"] p {
-    color: #ffc30f;
+    color: #eee;
 }
 
 [data-theme="dark"] .carousel h1
@@ -39,7 +48,7 @@
 ,[data-theme="dark"] .carousel h4
 ,[data-theme="dark"] .carousel h5
 ,[data-theme="dark"] .carousel p {
-    color: white;
+    color: #eee;
 }
 
 [data-theme="dark"] .navbar {
