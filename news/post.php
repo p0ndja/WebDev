@@ -14,7 +14,7 @@
                     $cover = getPostdata($postID, 'cover', $conn);
                     $tags = getPostdata($postID, 'tags', $conn);
                     $attached = getPostdata($postID, 'attachment', $conn);
-                    $_POST['temp_cover'] = $cover;
+                    $_SESSION['temp_cover'] = $cover;
             }
     ?>
     <script type="text/javascript">
@@ -89,7 +89,7 @@
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate disabled" type="text" id="attachmentURL" name="attachmentURL"
-                                placeholder="ไฟล์แนบท้าย" value=<?php echo $attached;?>>
+                                placeholder="ไฟล์แนบท้าย" value=<?php $_POST['attached_before'] = $attached; echo $attached;?>>
                         </div>
                     </div>
                     <div class="row justify-content-end">
