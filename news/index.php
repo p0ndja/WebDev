@@ -93,16 +93,15 @@
                     </div>
                     <?php if (isset($_GET['id'])) { ?>
                         <hr>
-                        <?php echo $row['article']; ?></p>
-                    <?php } ?>
-                    <?php if ($row['attachment'] != null) { ?>
+                        <p class="card-text"><?php echo $row['article']; ?></p>
+                        <?php if ($row['attachment'] != null) { ?>
                         <hr>
                         <h5 class="font-weight-bold">ไฟล์แนบท้าย</h5>
                             <?php foreach (explode(",", $row['attachment']) as $a) { ?>
                                 <li><a href="<?php echo $a; ?>" target="_blank"><?php echo str_replace("../file/news/attachment/" . $_GET['id'] . "/", "", $a); ?></a></li>
                             <?php } ?>
+                        <?php } ?>
                     <?php } ?>
-                    <hr>
                 </div>
             </div>
             <?php } ?>
