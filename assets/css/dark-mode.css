@@ -1,38 +1,40 @@
 [data-theme="dark"] {
-    background-color: #111;
-    color: white;
+    background-color: #111 !important;
+    color: white !important;
 }
 
 [data-theme="dark"] .bg-light {
-    background-color: #333;
+    background-color: #333 !important;
 }
 
 [data-theme="dark"] .bg-white {
-    background-color: #000;
+    background-color: #000 !important;
 }
 
 [data-theme="dark"] .bg-black {
-    background-color: #eee;
+    background-color: #eee !important;
 }
-
 
 [data-theme="dark"] .input-group-text
 ,[data-theme="dark"] .file-path
 ,[data-theme="dark"] .form-control {
-    color: white;
-    background-color: #333;
+    color: white !important;
+    background-color: #333 !important;
 }
 
-[data-theme="dark"] .note-editable
-,[data-theme="dark"] .card
+[data-theme="dark"] .note-editable {
+    background-color: #1c1c1c !important;
+}
+
+[data-theme="dark"] .card
 ,[data-theme="dark"] .card-body
 ,[data-theme="dark"] .input-group-text {
-    background-color: #1c1c1c;
+    background-color: #1c1c1c !important;
 }
 
 [data-theme="dark"] a
 ,[data-theme="dark"] li .page-item {
-    color: #ffc30f;
+    color: #ffc30f !important;
 }
 
 [data-theme="dark"] h1
@@ -41,7 +43,7 @@
 ,[data-theme="dark"] h4
 ,[data-theme="dark"] h5
 ,[data-theme="dark"] p {
-    color: white;
+    color: white !important;
 }
 
 [data-theme="dark"] .carousel h1
@@ -50,11 +52,11 @@
 ,[data-theme="dark"] .carousel h4
 ,[data-theme="dark"] .carousel h5
 ,[data-theme="dark"] .carousel p {
-    color: white;
+    color: white !important;
 }
 
 [data-theme="dark"] .navbar {
-    background-image: url('../images/background/bg_dark_resize.jpg');
-    background-repeat: no-repeat;
-    background-size: 100%;
+    background-image: url('../images/background/bg_dark_resize.jpg') !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% !important;
 }
