@@ -94,7 +94,7 @@
                                 <label>
                                     <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
                                     <span class="lever"></span>
-                                    <a style="color: black;" class="material-tooltip-main" data-toggle="tooltip"
+                                    <a class="material-tooltip-main" data-toggle="tooltip"
                                         title="<?php echo $get_config['description'] . ' (' . $get_config['name'] . ')';?>">
                                         <?php echo $get_config['title'];?>
                                     </a>
@@ -129,7 +129,7 @@
                                 <label>
                                     <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
                                     <span class="lever"></span>
-                                    <a style="color: black;" class="material-tooltip-main" data-toggle="tooltip"
+                                    <a class="material-tooltip-main" data-toggle="tooltip"
                                         title="<?php echo $get_config['description'] . ' (' . $get_config['name'] . ')';?>">
                                         <?php echo $get_config['title'];?>
                                     </a>
@@ -164,7 +164,7 @@
                                 <label>
                                     <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
                                     <span class="lever"></span>
-                                    <a style="color: black;" class="material-tooltip-main" data-toggle="tooltip"
+                                    <a class="material-tooltip-main" data-toggle="tooltip"
                                         title="<?php echo $get_config['description'] . ' (' . $get_config['name'] . ')';?>">
                                         <?php echo $get_config['title'];?>
                                     </a>
@@ -199,7 +199,7 @@
                                 <label>
                                     <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
                                     <span class="lever"></span>
-                                    <a style="color: black;" class="material-tooltip-main" data-toggle="tooltip"
+                                    <a class="material-tooltip-main" data-toggle="tooltip"
                                         title="<?php echo $get_config['description'] . ' (' . $get_config['name'] . ')';?>">
                                         <?php echo $get_config['title'];?>
                                     </a>
