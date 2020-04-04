@@ -89,9 +89,11 @@
                 <a class="dropdown-item" href="#"> ลงทะเบียนวิชาเลือก <i class="fas fa-tasks"></i></a>
                 <a class="dropdown-item" href="#"> การเช็คชื่อ <i class="fas fa-calendar-check"></i></a>
                 <a class="dropdown-item" href="#"> ผลการเรียน (SGS) <i class="fas fa-graduation-cap"></i></a>
+                <?php if (isPermission('isAdmin', $conn)) { ?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item text-secondary" href="../admin/"> ส่วนของแอดมิน <i
                         class="fas fa-user-tie"></i></a>
+                <?php } ?>
                 <div class="dropdown-divider"></div>
                 <?php if(!isset($_SESSION['dark_mode'])) $_SESSION['dark_mode'] = false; ?>
                 <?php if ($_SESSION['dark_mode'] == true) { ?>
