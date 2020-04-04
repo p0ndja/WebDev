@@ -33,10 +33,12 @@
 
     <?php if (isset($_GET['id']) && !isValidPostID($_GET['id'], $conn)) back(); ?>
 
-    <div class="container-fluid" id="container" style="padding-top: 88px">
+    <div class="<?php if (!isset($_GET['id'])) echo 'container-fluid'; else echo 'container'; ?>" id="container" style="padding-top: 88px">
+    <?php if (!isset($_GET['id'])) { ?>
     <div class="row">
     <div class="col-xl-1 d-none d-md-block"></div>
     <div class="col-xl-10 col-12">
+    <?php } ?>
         <?php if(!isset($_GET['id'])) { ?><h1 id="news" name="news" class="font-weight-bold">NEWS
         <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php" class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
         </h1>
@@ -106,9 +108,11 @@
             </div>
             <?php } ?>
             </div>
+            <?php if (!isset($_GET['id'])) { ?>
         </div>
     <div class="col-xl-1 d-none d-md-block"></div>
     </div>
+    <?php } ?>
     <div class="mb-3"></div>
     <?php if (!isset($_GET['id'])) { ?>
     <hr>
