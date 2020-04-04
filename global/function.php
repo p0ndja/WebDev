@@ -18,6 +18,7 @@
     }
 
     function saveAnySQL($sql, $col, $val, $key, $key_val, $conn) {
+        debug('mysqli_query($conn, "UPDATE `' . $sql . '` SET ' . $col.' = '.$val .' WHERE ' . $key . ' = ' . $key_val . '")');
         return mysqli_query($conn, "UPDATE `$sql` SET $col = $val WHERE $key = '$key_val'");
     }
 
@@ -37,7 +38,7 @@
         //getUserdata('604019', 'username', $conn);
 
         function saveUserdata($id, $data, $val, $conn) {
-            if (saveAnySQL('user', $data, $val, 'id', $id)) return true;
+            if (saveAnySQL('user', $data, $val, 'id', $id, $conn)) return true;
             return false;
         }
         //saveUserdata('604019', 'username', 'PondJaTH', $conn);
@@ -47,13 +48,19 @@
         }
         //getPostdata('1', 'article', $conn);
 
+        function savePostdata($id, $data, $val, $conn) {
+            if (saveAnySQL('post', $data, $val, 'id', $id, $conn)) return true;
+            return false;
+        }
+        //saveUserdata('604019', 'username', 'PondJaTH', $conn);
+
         function getProfiledata($id, $data, $conn) {
             return getAnySQL('profile', $data, 'id', $id, $conn);
         }
         //getProfiledata('604019', 'profile', $conn);
 
         function saveProfiledata($id, $data, $val, $conn) {
-            if (saveAnySQL('profile', $data, $val, 'id', $id)) return true;
+            if (saveAnySQL('profile', $data, $val, 'id', $id, $conn)) return true;
             return false;
         }
         //saveProfiledata('604019', 'profile', '...', $conn);
@@ -64,7 +71,7 @@
         //getAchidata('604019', 'page404', $conn);
 
         function saveAchimentdata($id, $data, $val, $conn) {
-            if (saveAnySQL('achievement', $data, $val, 'id', $id)) return true;
+            if (saveAnySQL('achievement', $data, $val, 'id', $id, $conn)) return true;
             return false;
         }
         //saveAchidata('604019', 'page404', '...', $conn);
@@ -82,7 +89,7 @@
             return false;
         }
 
-        function isValidNewsID($id, $conn) {
+        function isValidPostID($id, $conn) {
             $query = "SELECT * FROM `post` WHERE id = '$id'";
             $result = mysqli_query($conn, $query);
             if (mysqli_num_rows($result) > 0) return true;
@@ -95,6 +102,10 @@
         if(!empty($_SERVER['HTTP_CLIENT_IP'])) return $_SERVER['HTTP_CLIENT_IP'];
         else if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) return $_SERVER['HTTP_X_FORWARDED_FOR'];
         return $_SERVER['REMOTE_ADDR'];
+    }
+
+    function path_curTime() {
+        date_default_timezone_set('Asia/Bangkok'); return date('Y/m/d', time());
     }
 
     function unformat_curTime() {
@@ -176,3 +187,4 @@
     });
     </script>
 <?php } ?>
+<?php function debug($message) { echo $message; } ?>
