@@ -19,7 +19,7 @@
 ,[data-theme="dark"] .file-path
 ,[data-theme="dark"] .form-control {
     color: white !important;
-    background-color: #333 !important;
+    background-color: #333;
 }
 
 [data-theme="dark"] .note-editable {
@@ -29,12 +29,12 @@
 [data-theme="dark"] .card
 ,[data-theme="dark"] .card-body
 ,[data-theme="dark"] .input-group-text {
-    background-color: #1c1c1c !important;
+    background-color: #1c1c1c;
 }
 
 [data-theme="dark"] a
 ,[data-theme="dark"] li .page-item {
-    color: #ffc30f !important;
+    color: #ffc30f;
 }
 
 [data-theme="dark"] h1
@@ -57,6 +57,6 @@
 
 [data-theme="dark"] .navbar {
     background-image: url('../images/background/bg_dark_resize.jpg') !important;
-    background-repeat: no-repeat !important;
-    background-size: 100% !important;
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
