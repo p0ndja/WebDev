@@ -6,19 +6,15 @@
 <head>
     <?php include '../global/head.php'; ?>
     <?php
-    $title = ""; $tags = ""; $cover = ""; $article = "";
-            if (isset($_GET['id'])) {
+        $title = ""; $tags = ""; $cover = ""; $article = "";
+            if (isset($_GET['id']) && isValidPostID($_GET['id'], $conn)) {
                 $postID = $_GET['id'];
-                $query = "SELECT * FROM `post` WHERE id = $postID";
-                $result = mysqli_query($conn, $query);
-                if (mysqli_num_rows($result) == 0) die('Could not load data');
-                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                    $article = $row['article'];
-                    $title = $row['title'];
-                    $cover = $row['cover'];
-                    $tags = $row['tags'];
-                    $_SESSION['temp_cover'] = $cover;
-                }
+                    $article = getPostdata($postID, 'article', $conn);
+                    $title = getPostdata($postID, 'title', $conn);
+                    $cover = getPostdata($postID, 'cover', $conn);
+                    $tags = getPostdata($postID, 'tags', $conn);
+                    $attached = getPostdata($postID, 'attachment', $conn);
+                    $_POST['temp_cover'] = $cover;
             }
     ?>
     <script type="text/javascript">
@@ -76,14 +72,24 @@
                         <textarea class="summernote" id="article" name="article"></textarea>
                         <hr>
                     </div>
-                    <div class="input-group flex-nowrap">
-                        <div class="md-form input-group mb-3">
+                    <div class="input-group flex-nowrap mb-1">
+                        <div class="md-form input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text md-addon" id="addon-tags">แท็ก / Tags</span>
                             </div>
                             <input type="text" class="form-control" id="tags" name="tags"
                                 placeholder="ใช้สำหรับแท็กหัวข้อเรื่องของข่าว / สามารถแท็กได้มากกว่า 1 หัวข้อโดยใช้เครื่องหมาย Comma (,) คั่น"
                                 aria-label="Tags" aria-describedby="addon-tags" value="<?php echo $tags; ?>">
+                        </div>
+                    </div>
+                    <div class="md-form file-field mb-1">
+                        <div class="btn btn-primary btn-sm float-left">
+                            <span><i class="fas fa-file-upload"></i> Browse</span>
+                            <input type="file" name="attachment[]" id="attachment" class="validate" multiple>
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate disabled" type="text" id="attachmentURL" name="attachmentURL"
+                                placeholder="ไฟล์แนบท้าย" value=<?php echo $attached;?>>
                         </div>
                     </div>
                     <div class="row justify-content-end">
