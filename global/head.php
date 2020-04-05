@@ -6,8 +6,8 @@
     <link rel="shortcut icon" href="../assets/images/logo/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../assets/images/logo/favicon.ico" type="image/x-icon">
     <title>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
-    <link rel="image_src" href="../assets/images/logo/smdlogo.png" />
-    <meta property="og:image" content="../assets/images/logo/smdlogo.png" />
+    <link rel="image_src" href="../assets/images/default/thumbnail.jpg" />
+    <meta property="og:image" content="../assets/images/default/thumbnail.jpg" />
     <meta property="og:title" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
     <meta property="og:description" content="123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002 โทรศัพท์ / โทรสาร 043202044" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
