@@ -167,13 +167,12 @@
         return true;
     }
 ?>
-<?php function back() { 
-    ?>
-<script>
-    window.history.back();
-</script>
-<?php die(); 
-} ?>
+<?php function back() {    
+    if (isset($_SERVER["HTTP_REFERER"])) {
+        header("Location: " . $_SERVER["HTTP_REFERER"]);
+    }
+    die(); 
+    } ?>
 <?php function home() {
     header("Location: ../home");
 } ?>
