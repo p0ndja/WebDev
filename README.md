@@ -15,8 +15,7 @@ This is our first website project, if there's something which is not prefectly. 
 
 #### PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka
 
-### Technical Zone
------------------
+# Technical Zone
 
 #### Connect.php
 -----------------
