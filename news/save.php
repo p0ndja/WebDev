@@ -13,6 +13,11 @@ if (isset($_POST['post_submit']) || isset($_POST['post_update'])) {
     $writer = $id;
     $time = curTime();
     $tags = $_POST['tags'];
+
+    if (isset($_POST['makeHotlink']) && $_POST['makeHotlink'] == true)
+        $hotlink = $_POST['hotlinkField'];
+    else
+        $hotlink = null;
     
     $finaldir = null;
 
@@ -34,13 +39,13 @@ if (isset($_POST['post_submit']) || isset($_POST['post_update'])) {
     }
 
     if (isset($_POST['post_submit'])) {
-        $query_final = "INSERT INTO `post` (title, writer, time, article, tags, cover) VALUES ('$title', '$writer', '$time', '$article', '$tags', '$finaldir')";
+        $query_final = "INSERT INTO `post` (title, writer, time, article, tags, cover, hotlink) VALUES ('$title', '$writer', '$time', '$article', '$tags', '$finaldir', '$hotlink')";
         $result_final = mysqli_query($conn, $query_final);
         if (!$result_final) die('Could not post '.mysqli_error($conn));
         $news = mysqli_insert_id($conn);
     } else {
         $news = $_GET['news'];
-        $query_final = "UPDATE `post` SET title = '$title', writer = '$writer', time = '$time', article = '$article', tags = '$tags', cover = '$finaldir' WHERE id = $news";
+        $query_final = "UPDATE `post` SET title = '$title', writer = '$writer', time = '$time', article = '$article', tags = '$tags', cover = '$finaldir', hotlink = '$hotlink' WHERE id = $news";
         $result_final = mysqli_query($conn, $query_final);
         if (!$result_final) die('Could not post '.mysqli_error($conn));
     }

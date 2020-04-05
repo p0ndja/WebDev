@@ -6,7 +6,7 @@
 <head>
     <?php include '../global/head.php'; ?>
     <?php
-        $title = ""; $tags = ""; $cover = ""; $article = "";
+        $title = ""; $tags = ""; $cover = ""; $article = ""; $attached = null; $hotlink = null;
             if (isset($_GET['id']) && isValidPostID($_GET['id'], $conn)) {
                 $postID = $_GET['id'];
                     $article = getPostdata($postID, 'article', $conn);
@@ -14,6 +14,7 @@
                     $cover = getPostdata($postID, 'cover', $conn);
                     $tags = getPostdata($postID, 'tags', $conn);
                     $attached = getPostdata($postID, 'attachment', $conn);
+                    $hotlink = getPostdata($postID, 'hotlink', $conn);
                     $_SESSION['temp_cover'] = $cover;
             }
     ?>
@@ -65,6 +66,19 @@
                         <img src=<?php echo $cover_src; ?> class=" img-fluid w-100" id="coverThumb">
                         <hr>
                     </div>
+
+                            <div class="switch switch-warning mb-1">
+                                <label>
+                                    <?php if ($hotlink != null) $b = "checked"; else $b = ""?>
+                                    <input type="checkbox" name="makeHotlink" <?php echo $b; ?>>
+                                    <span class="lever"></span>
+                                    <a class="material-tooltip-main" data-toggle="tooltip" title="เนื้อข่าวและ Tag จะถูกตัดออกไป เหลือเพียง หัวข้อ, รูปภาพปก และ URL สำหรับ Hotlink">ทำให้โพสต์นี้เป็น Hotlink</a>
+                                </label>
+                            </div>
+
+                            <input type="text" id="hotlinkField" name="hotlinkField" class="form-control form-control-sm validate mb-4" <?php if ($hotlink != null) echo 'style="display: block"'; else echo 'style="display: none"'; ?> placeholder="Enter URL Here" value="<?php echo $hotlink; ?>">
+                    <div class="mb-5"></div>
+                    <div id="hotlinkHiddenZone" name="hotlinkHiddenZone" <?php if ($hotlink != null) echo 'style="display: none"'; else echo 'style="display: block"'; ?>>                    
                     <div class="form-group mb-4">
                         <label for="article">
                             <h4 class="font-weight-bold">เนื้อข่าว / Article</h4>
@@ -92,6 +106,7 @@
                                 placeholder="ไฟล์แนบท้าย" value=<?php $_POST['attached_before'] = $attached; echo $attached;?>>
                         </div>
                     </div>
+                    </div>
                     <div class="row justify-content-end">
                         <h6><input type="submit" class="btn btn-success" value="บันทึก" name="<?php if (isset($_GET['id'])) echo 'post_update'; else echo 'post_submit'; ?>"></input></h6>
                     </div>
@@ -107,6 +122,26 @@
             };
             reader.readAsDataURL(this.files[0]);
         };
+
+        $('.switch input[type="checkbox"]').on('change', function (e) {
+            var x = document.getElementById("hotlinkHiddenZone");
+            var y = document.getElementById("hotlinkField");
+            if (x != null) {
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+            
+            if (y != null) {
+                if (y.style.display === "block") {
+                    y.style.display = "none";
+                } else {
+                    y.style.display = "block";
+                }
+            }
+        });
     </script>
 <?php include '../global/popup.php'; ?>
 <?php include '../global/footer.php'; ?>

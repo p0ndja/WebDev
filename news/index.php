@@ -71,7 +71,7 @@
             $result = mysqli_query($conn, $query); ?>
             <?php if (!isset($_GET['id'])) { ?><div class="card-columns"><?php } ?>
             <?php while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                
+                <?php if (getPostdata($row['id'], 'hotlink', $conn) == null) { ?>
             <div class="card hoverable mb-3">
                 <?php if ($row['cover'] != null) { ?><img class="card-img-top" src="<?php echo $row['cover']; ?>"><?php } ?>
                 <div class="card-body">
@@ -94,18 +94,34 @@
                         </h6>
                     </div>
                     <?php if (isset($_GET['id'])) { ?>
-                        <hr>
+                        <?php if ($row['article'] != null) { ?><hr>
                         <p class="card-text"><?php echo $row['article']; ?></p>
-                        <?php if ($row['attachment'] != null) { ?>
+                        <?php } ?>
+                        <?php if ($row['attachment'] != null) { $aa = 0;?>
                         <hr>
                         <h5 class="font-weight-bold">ไฟล์แนบท้าย</h5>
-                            <?php foreach (explode(",", $row['attachment']) as $a) { ?>
+                            <?php foreach (explode(",", $row['attachment']) as $a) { $aa++;?>
                                 <li><a href="<?php echo $a; ?>" target="_blank"><?php echo str_replace("../file/news/attachment/" . $_GET['id'] . "/", "", $a); ?></a></li>
+                            <?php } ?>
+                            <?php if ($aa == 1 && strpos($row['attachment'], ".pdf")) { ?>
+                                <iframe src="https://docs.google.com/viewer?url=<?php echo str_replace("../" , "https://smd.pondja.com/" , $row['attachment']); ?>&embedded=true" width="100%" height="750"></iframe>
                             <?php } ?>
                         <?php } ?>
                     <?php } ?>
                 </div>
             </div>
+            <?php } else { // Case post is a hotlink ?>
+                <a href="<?php echo $row['hotlink']; ?>" target="_blank">
+                <div class="card hoverable">
+                    <?php if ($row['cover'] != null) { ?><img class="card-img-top" src="<?php echo $row['cover']; ?>"><?php } ?>
+                </div>
+                </a>
+                <p class="mb-3"><?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="<?php echo $row['hotlink']; ?>" target="_blank"><?php echo $row['title']; ?></a>
+                                <a href="../news/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a onclick='
+                                    swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../news/delete.php?id=<?php echo $row["id"]; ?>";}});'>
+                                    <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
+                                    </p>
+                    <?php } ?>
             <?php } ?>
             </div>
             <?php if (!isset($_GET['id'])) { ?>

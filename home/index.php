@@ -297,9 +297,9 @@
                 <?php   $query = "SELECT * FROM `post` WHERE tags NOT LIKE '%hidden%' ORDER by time DESC limit 6";
                         $result = mysqli_query($conn, $query);
                         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+                        <?php if (getPostdata($row['id'], 'hotlink', $conn) == null) { ?>
                 <div class="card hoverable mb-3">
-                    <?php if ($row['cover'] != null) { ?><img class="card-img-top"
-                        src="<?php echo $row['cover']; ?>"><?php } ?>
+                    <?php if ($row['cover'] != null) { ?><img class="card-img-top" src="<?php echo $row['cover']; ?>"><?php } ?>
                     <div class="card-body">
                         <p class="card-text"><i class="far fa-clock"></i>
                             <?php
@@ -327,6 +327,18 @@
                         </div>
                     </div>
                 </div>
+                    <?php } else { // Case post is a hotlink ?>
+                <a href="<?php echo $row['hotlink']; ?>" target="_blank">
+                <div class="card hoverable">
+                    <?php if ($row['cover'] != null) { ?><img class="card-img-top" src="<?php echo $row['cover']; ?>"><?php } ?>
+                </div>
+                </a>
+                <p class="mb-3"><?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="<?php echo $row['hotlink']; ?>" target="_blank"><?php echo $row['title']; ?></a>
+                                <a href="../news/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a onclick='
+                                    swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../news/delete.php?id=<?php echo $row["id"]; ?>";}});'>
+                                    <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
+                                    </p>
+                    <?php } ?>
                 <?php } ?>
             </div>
             <div class="col-md-4">
