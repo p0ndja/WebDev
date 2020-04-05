@@ -123,6 +123,9 @@
         date_default_timezone_set('Asia/Bangkok');
         $date=date('YmdHis', time());
         $locate_img="../file/cache/";
+        if (!file_exists($locate_img)) {
+            mkdir($locate_img);
+        }
         move_uploaded_file($tmp_name, $locate_img.$name_file);
         rename($locate_img.$name_file, $locate_img.$user.'_'.$date.'_'.$name_file);
         $finaldir=$locate_img.$user.'_'.$date.'_'.$name_file;
