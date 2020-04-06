@@ -65,6 +65,7 @@ create table post (
    hide BOOL DEFAULT false,
    pin BOOL DEFAULT false,
    attachment LONGTEXT DEFAULT NULL,
+   hotlink LONGTEXT DEFAULT NULL,
    PRIMARY KEY ( id )
 );
 
