@@ -79,11 +79,11 @@
                         <?php
                             $writer_id = $row['writer'];
                             $writer_name = getUserdata($writer_id, 'firstname', $conn) . ' ' . getUserdata($writer_id, 'lastname', $conn) . ' (' . getUserdata($writer_id, 'username', $conn) . ')';
-                            echo $row['time'] . ' โดย ' . '<a href="../profile/?search=' . $writer_id . '">' . $writer_name . '</a>'; 
+                            echo $row['time'] . ' โดย ' . '<a href="../profile/' . $writer_id . '">' . $writer_name . '</a>'; 
                         ?>
                     </p>
                     <div class="card-title">
-                        <h5 class="font-weight-bold"><a href="../news/?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
+                        <h5 class="font-weight-bold"><a href="../news/<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
                         <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a onclick='
                                     swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../news/delete.php?id=<?php echo $row["id"]; ?>";}});'>
                                     <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>

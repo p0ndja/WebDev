@@ -96,7 +96,46 @@
             return false;
         }
 ?>
+<?php
 
+    function changePrefixTHtoEN($text) {
+        if ($text == 'นาย') $text_en = 'Mr. ';
+        else if ($text == 'นาง') $text_en = 'Mrs. ';
+        else if ($text == 'เด็กชาย') $text_en = 'Master ';
+        else if ($text == 'เด็กหญิง' || $text == 'นางสาว') $text_en = 'Miss ';
+        else $text_en = "";
+
+        return $text_en;
+    }
+
+    function getDisplayName($id, $type, $conn) {
+        $profile_prefix = getUserdata($id, 'prefix', $conn);
+
+        if ($type == "EN" || $type == "en") return changePrefixTHtoEN($profile_prefix) . getUserdata($id, 'firstname_en', $conn) . ' ' . getUserdata($id, 'lastname_en', $conn);
+        else return $profile_prefix . getUserdata($id, 'firstname', $conn) . ' ' . getUserdata($id, 'lastname', $conn);
+    }
+
+    function generateInfoCard($id, $conn) {
+    
+        $profile_grade = getUserdata($id, 'grade', $conn);
+
+        $profile_room = getUserdata($id, 'class', $conn);
+        if ($profile_room == 1) $profile_class = "EMSP";
+        else if ($profile_room == 5) $profile_class = "วมว.";
+        else $profile_class = "ปกติ";
+        
+        if ($profile_grade > 6) $profile_class_detail = "<strong>ศิษย์เก่า</strong><br>";
+        else if ($profile_grade >= 1 && $profile_grade <= 6) $profile_class_detail = "<strong>ระดับชั้น</strong> " . $profile_grade . "/" . $profile_room . " (" . $profile_class . ")<br>";
+        else $profile_class_detail = "";
+
+        $profile_email = getUserdata($id, 'email', $conn);
+        if ($profile_email != null) {
+            $profile_email = '<strong>อีเมล</strong> <a href="mailto:' . $profile_email . '">'. $profile_email .'</a>';
+        }
+
+        return '<div class="card mb-3"><div class="card-body"><strong>รหัสนักเรียน</strong> ' . $id . '<br>' .$profile_class_detail . $profile_email . '</div></div>';
+    }
+?>
 <?php
     function getClientIP() {
         if(!empty($_SERVER['HTTP_CLIENT_IP'])) return $_SERVER['HTTP_CLIENT_IP'];
@@ -173,6 +212,8 @@
 <?php function back() {    
     if (isset($_SERVER["HTTP_REFERER"])) {
         header("Location: " . $_SERVER["HTTP_REFERER"]);
+    } else {
+        home();
     }
     die(); 
     } ?>

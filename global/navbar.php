@@ -17,17 +17,17 @@
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> เกี่ยวกับ </a>
             <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="../news/?id=20">ประวัติโรงเรียน</a>
-                <a class="dropdown-item" href="../news/?id=21">ปรัชญา</a>
-                <a class="dropdown-item" href="../news/?id=22">วิสัยทัศน์ พันธกิจ</a>
-                <a class="dropdown-item" href="../news/?id=23">เป้าหมายเชิงกลยุทธ์</a>
-                <a class="dropdown-item" href="../news/?id=24">คุณลักษณะอันพึงประสงค์</a>
-                <a class="dropdown-item" href="../news/?id=25">คณะกรรมการประจำโรงเรียน</a>
+                <a class="dropdown-item" href="../news/20">ประวัติโรงเรียน</a>
+                <a class="dropdown-item" href="../news/21">ปรัชญา</a>
+                <a class="dropdown-item" href="../news/22">วิสัยทัศน์ พันธกิจ</a>
+                <a class="dropdown-item" href="../news/23">เป้าหมายเชิงกลยุทธ์</a>
+                <a class="dropdown-item" href="../news/24">คุณลักษณะอันพึงประสงค์</a>
+                <a class="dropdown-item" href="../news/25">คณะกรรมการประจำโรงเรียน</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../news/?id=26">โครงสร้างการบริหาร</a>
-                <a class="dropdown-item" href="../news/?id=29">ทำเนียบผู้บริหาร</a>
-                <a class="dropdown-item" href="../news/?id=32">คณะผู้บริหาร</a>
-                <a class="dropdown-item" href="../news/?id=37">บุคลากร</a>
+                <a class="dropdown-item" href="../news/26">โครงสร้างการบริหาร</a>
+                <a class="dropdown-item" href="../news/29">ทำเนียบผู้บริหาร</a>
+                <a class="dropdown-item" href="../news/32">คณะผู้บริหาร</a>
+                <a class="dropdown-item" href="../news/37">บุคลากร</a>
             </div>
         </li>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -71,11 +71,11 @@
     </ul>
 
     <ul class="nav navbar-nav nav-flex-icons ml-auto">
-<form action="../pages/search.php" method="GET" class="form-inline">
+<form action="../search/" method="POST" class="form-inline">
             <div class="md-form my-0">
-                <input method="GET" class="form-control" type="text" placeholder="Search ID (Ex. 604019)"
+                <input method="POST" class="form-control" type="text" placeholder="Search ID (Ex. 604019)"
                     aria-label="Search ID (Ex. 604019)" id="search" name="search"
-                    value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>">
+                    value="<?php if (isset($_POST['search'])) echo $_POST['search']; ?>">
             </div>
         </form>
         <?php if (isLogin()) { ?>

@@ -1,18 +1,3 @@
-<div class="modal fade" id="pdfViewer" name="pdfViewer" tabindex="-1" role="dialog" aria-labelledby="pdfViewer"
-    aria-hidden="true">
-    <div class="modal-dialog modal-notify modal-warning modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <iframe
-                    src="https://docs.google.com/viewer?url=<?php echo $global_floating_pdf_url_val; ?>&embedded=true"
-                    height="500" class="w-100 h-100"></iframe>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal">ปิดหน้าต่าง</button>
-            </div>
-        </div>
-    </div>
-</div>
 <!--div class="modal fade" id="announcementPopup" name="announcementPopup" tabindex="-1" role="dialog"
     aria-labelledby="announcementTitle" aria-hidden="true">
     <div class="modal-dialog modal-notify modal-warning modal-lg" role="document">

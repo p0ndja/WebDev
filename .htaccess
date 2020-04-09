@@ -1,3 +1,20 @@
-Options -Indexes
-IndexOptions -FancyIndexing
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^news/([0-9]+)$ news/?id=$1
+RewriteRule ^news/edit-([0-9]+)$ news/post.php?id=$1
+
+RewriteRule ^darkmode/$ pages/darkmode.php
+
+RewriteRule ^profile/([0-9]+)$ profile/?id=$1
+RewriteRule ^profile/edit$ profile/edit.php
+
+RewriteRule ^search/$ pages/search.php
+
+RewriteRule ^storage/(.*)-(.*)/(.*)$ file/$1/attachment/$2/$3
+
+Options +FollowSymlinks
+Options +Indexes
+IndexOptions +FancyIndexing
 DirectoryIndex .index.php .index.html index.php index.html .redirect.html redirect.html landing.html landing.php .landing.html .landing.php .redirect.php redirect.php

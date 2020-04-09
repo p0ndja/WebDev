@@ -121,7 +121,7 @@
                                                 </div>
                                                 <div class="col-8 col-md-12">
                                                     <p>
-                                                        <a href="../profile/?search=<?php echo $writer; ?>">
+                                                        <a href="../profile/<?php echo $writer; ?>">
                                                             <center>
                                                                 <?php echo $writer_name . '<br>(' . $writer_user . ')'; ?>
                                                             </center>

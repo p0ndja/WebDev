@@ -7,8 +7,9 @@
 <head>
     <?php include '../global/head.php'; ?>
     <?php
-        if (isset($_GET['search'])) $id = $_GET['search'];
-        else $id = $_SESSION['id'];
+        if (isset($_GET['id'])) $id = $_GET['id'];
+        else if (isset($_SESSION['id'])) $id = $_SESSION['id'];
+        else back();
 
         if (!isValidUserID($id, $conn)) back();
 
@@ -49,46 +50,19 @@
         role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <?php if (isset($_GET['search']) || (isset($_SESSION['id']))) {
+    <?php if (isset($_GET['id']) || (isset($_SESSION['id']))) {
         $id;
-        if (isset($_GET['search']))
-            $id = $_GET['search'];
+        if (isset($_GET['id']))
+            $id = $_GET['id'];
         else
             $id = $_SESSION['id'];
         
-        $profile_achi = "";
+            $profile_achi = "";
                     
-            $profile_prefix = getUserdata($id, 'prefix', $conn);
-            if ($profile_prefix == 'นาย') $profile_prefix_en = 'Mr. ';
-            else if ($profile_prefix == 'นาง') $profile_prefix_en = 'Mrs. ';
-            else if ($profile_prefix == 'เด็กชาย') $profile_prefix_en = 'Master ';
-            else if ($profile_prefix == 'เด็กหญิง' || $profile_prefix == 'นางสาว') $profile_prefix_en = 'Miss ';
-            else $profile_prefix_en = "";
-
-            $profile_name = $profile_prefix . getUserdata($id, 'firstname', $conn) . ' ' . getUserdata($id, 'lastname', $conn);
-            $profile_name_en = $profile_prefix_en . getUserdata($id, 'firstname_en', $conn) . ' ' . getUserdata($id, 'lastname_en', $conn);
-            $profile_id = $id;
-            $profile_grade = getUserdata($id, 'grade', $conn);
-
-            $profile_room = getUserdata($id, 'class', $conn);
-            if ($profile_room == 1) $profile_class = "EMSP";
-            else if ($profile_room == 5) $profile_class = "วมว.";
-            else $profile_class = "ปกติ";
-            if ($profile_grade > 6) $profile_class_detail = "<strong>ศิษย์เก่า</strong><br>";
-            else if ($profile_grade >= 1 && $profile_grade <= 6) $profile_class_detail = "<strong>ระดับชั้น</strong> " . $profile_grade . "/" . $profile_room . " (" . $profile_class . ")<br>";
-            else $profile_class_detail = "";
-
-            $profile_email = getUserdata($id, 'email', $conn);
-            if ($profile_email != null) {
-                $profile_email = '<strong>อีเมล</strong> <a href="mailto:' . $profile_email . '">'. $profile_email .'</a>';
-            }
-        
             $profile_image = getProfilePicture($id, $conn);
 
             $profile_greets = getProfileData($id, 'greetings', $conn);
 
-
-        
             if (getAchievementdata($id, 'betaTester', $conn))
                 $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Beta Tester (LEGENDARY)"><img src="../assets/images/achievement/beta-tester-icon_resize.gif" alt="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></a></div>';
             if (getAchievementdata($id, 'WebDevTycoon', $conn))
@@ -104,8 +78,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-md-12">
-                        <h1> <?php echo $profile_name; ?></h1>
-                        <h5> <?php echo $profile_name_en; ?></h5>
+                        <h1> <?php echo getDisplayName($id, "TH", $conn); ?></h1>
+                        <h5> <?php echo getDisplayName($id, "en", $conn); ?></h5>
                     </div>
                     <?php if(!isset($_GET['search'])) { ?>
                         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
@@ -124,14 +98,7 @@
                 <div class="row">
                     <div class="col-md-12 text-left">
                         <div class="mb-3"></div>
-                        <div class="card">
-                            <div class="card-body">
-                                <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
-                                <?php echo $profile_class_detail; ?>
-                                <?php echo $profile_email; ?>
-                            </div>
-                        </div>
-                        <div class="mb-3"></div>
+                        <?php echo generateInfoCard($id, $conn); ?>
                         <div class="card">
                             <div class="card-body">
                                 <h2>Achievement</h2>

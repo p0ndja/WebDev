@@ -108,7 +108,7 @@
                     </div>
                     </div>
                     <div class="row justify-content-end">
-                        <h6><input type="submit" class="btn btn-success" value="บันทึก" name="<?php if (isset($_GET['id'])) echo 'post_update'; else echo 'post_submit'; ?>"></input></h6>
+                        <h6><a onclick="back();" class="btn btn-danger">ยกเลิก</a><input type="submit" class="btn btn-success" value="บันทึก" name="<?php if (isset($_GET['id'])) echo 'post_update'; else echo 'post_submit'; ?>"></input></h6>
                     </div>
                 </div>
             </div>

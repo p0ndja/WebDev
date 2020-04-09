@@ -61,7 +61,7 @@
         body,
         header,
         .view {
-            height: 100%;
+            height: 100% !important;
         }
 
         #countdown {
@@ -198,15 +198,11 @@
     </div>
     <?php } ?>
     <?php if (getConfig('indexpg_showCourse', 'bool', $conn)) { ?>
-    <div class="container-fluid mb-3" style=" background-image: url('../assets/images/background/bg_normal_resize.jpg');
-                width: 100%;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;">
+    <div class="container-fluid mb-3 course-bg">
         <div class="container">
             <hr>
-            <div class="card" align="center" style="background-color: rgba(255, 255, 255, 0.95);">
-                <div class="card-body">
+            <div class="card" align="center">
+                <div class="card-body course">
                     <div class="card-title">
                         <h1 class="font-weight-bold">หลักสูตรการเรียน</h1>
                     </div>
@@ -305,12 +301,12 @@
                             <?php
                                     $writer_id = $row['writer'];
                                     $writer_name = getUserdata($writer_id, 'firstname', $conn) . ' ' . getUserdata($writer_id, 'lastname', $conn) . ' (' . getUserdata($writer_id, 'username', $conn) . ')';
-                                    echo $row['time'] . ' โดย ' . '<a href="../profile/?search=' . $writer_id . '">' . $writer_name . '</a>'; 
+                                    echo $row['time'] . ' โดย ' . '<a href="../profile/' . $writer_id . '">' . $writer_name . '</a>'; 
                                 ?>
                         </p>
                         <div class="card-title">
                             <h5 class="font-weight-bold"><a
-                                    href="../news/?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
+                                    href="../news/<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
                                 <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a
                                     href="../news/post.php?id=<?php echo $row['id']; ?>"><i
                                         class="fas fa-edit text-success"></i></a> <a
