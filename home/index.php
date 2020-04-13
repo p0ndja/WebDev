@@ -204,18 +204,20 @@
             <div class="card" align="center">
                 <div class="card-body course">
                     <div class="card-title">
-                        <h1 class="font-weight-bold">หลักสูตรการเรียน</h1>
+                        <h1 class="font-weight-bold d-none d-md-block">หลักสูตรการเรียน</h1>
+                        <h2 class="font-weight-bold d-block d-md-none">หลักสูตรการเรียน</h2>
                     </div>
                     <div class="card-text text-dark">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-12 col-md-4 mb-3">
-                                <h2>มัธยมศึกษาตอนต้น</h2>
+                                <h2 class="d-none d-lg-block">มัธยมศึกษาตอนต้น</h2>
+                                <h4 class="d-block d-lg-none">มัธยมศึกษาตอนต้น</h4>
                                 <hr>
                                 <div class="row">
                                     <div class="col-2 d-block d-md-none"></div>
                                     <div class="col-4 col-md-6">
-                                        <a href="#primary_normal">
+                                        <a href="../file/news/attachment/41/_20200117160236_S__1310728.jpg" target="_blank">
                                             <div class="view overlay zoom z-depth-1">
                                                 <img src="../assets/images/course/p_normal.jpg" class="img-fluid"
                                                     alt="หลักสูตรทั่วไป (ม.ต้น)">
@@ -225,7 +227,7 @@
                                         </a>
                                     </div>
                                     <div class="col-4 col-md-6">
-                                        <a href="#primary_iec">
+                                        <a href="../file/news/attachment/41/_20200117160236_S__1310728.jpg" target="_blank">
                                             <div class="view overlay zoom z-depth-1">
                                                 <img src="../assets/images/course/p_jems.jpg" class="img-fluid"
                                                     alt="หลักสูตร IEC (ม.ต้น)">
@@ -238,11 +240,12 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
-                                <h2>มัธยมศึกษาตอนปลาย</h2>
+                                <h2 class="d-none d-lg-block">มัธยมศึกษาตอนปลาย</h2>
+                                <h4 class="d-block d-lg-none">มัธยมศึกษาตอนปลาย</h4>
                                 <hr>
                                 <div class="row">
                                     <div class="col-4 col-md-4">
-                                        <a href="#secondary_normal">
+                                        <a href="../file/news/attachment/41/_20200117160335_S__1310732.jpg" target="_blank">
                                             <div class="view overlay zoom z-depth-1">
                                                 <img src="../assets/images/course/s_normal.jpg" class="img-fluid"
                                                     alt="หลักสูตรทั่วไป (ม.ปลาย)">
@@ -252,7 +255,7 @@
                                         </a>
                                     </div>
                                     <div class="col-4 col-md-4">
-                                        <a href="#secondary_emsp">
+                                        <a href="../file/news/attachment/41/_20200117160335_S__1310732.jpg" target="_blank">
                                             <div class="view overlay zoom z-depth-1">
                                                 <img src="../assets/images/course/s_sems.jpg" class="img-fluid"
                                                     alt="หลักสูตร EMSP (ม.ปลาย)">
@@ -262,7 +265,7 @@
                                         </a>
                                     </div>
                                     <div class="col-4 col-md-4">
-                                        <a href="#secondary_scius">
+                                        <a href="../file/news/attachment/41/_20200117160335_S__1310732.jpg" target="_blank">
                                             <div class="view overlay zoom z-depth-1">
                                                 <img src="../assets/images/course/s_scius.jpg" class="img-fluid"
                                                     alt="หลักสูตรวมว. (ม.ปลาย)">
