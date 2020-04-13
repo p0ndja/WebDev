@@ -3,8 +3,7 @@
 <?php } else { ?>
     <script>document.body.removeAttribute("data-theme")</script>
 <?php } ?>
-<a class="navbar-brand" href="../home"><span class="badge badge-light"><img src="../assets/images/logo/logokku_32px.png"
-            width="20" alt="SMD"></span></a>
+<a class="navbar-brand" href="../home"><img src="../assets/images/logo/logokku_t_w_32px.png" width="20" alt="SMD" align="center"></a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -18,8 +17,8 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> เกี่ยวกับ </a>
             <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="../news/20">ประวัติโรงเรียน</a>
+                <a class="dropdown-item" href="../news/22">เกี่ยวกับโรงเรียน</a>
                 <a class="dropdown-item" href="../news/21">ปรัชญา</a>
-                <a class="dropdown-item" href="../news/22">วิสัยทัศน์ พันธกิจ</a>
                 <a class="dropdown-item" href="../news/23">เป้าหมายเชิงกลยุทธ์</a>
                 <a class="dropdown-item" href="../news/24">คุณลักษณะอันพึงประสงค์</a>
                 <a class="dropdown-item" href="../news/25">คณะกรรมการประจำโรงเรียน</a>
