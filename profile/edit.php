@@ -40,7 +40,8 @@
     <script type="text/javascript">
         $(function () {
             $('.summernote').summernote({
-                height: 500,
+                minHeight: 500,
+                fontNames: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman', 'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun', 'Kanit']
             });
             $('.summernote').summernote('code', '<?php echo $profile_displayText; ?>');
         });

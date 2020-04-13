@@ -16,12 +16,14 @@
                     $attached = getPostdata($postID, 'attachment', $conn);
                     $hotlink = getPostdata($postID, 'hotlink', $conn);
                     $_SESSION['temp_cover'] = $cover;
+                    $_POST['attached_before'] = $attached; 
             }
     ?>
     <script type="text/javascript">
         $(function () {
             $('.summernote').summernote({
-                height: 500,
+                minHeight: 500,
+                fontNames: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman', 'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun', 'Kanit']
             });
             $('.summernote').summernote('code', '<?php echo $article; ?>');
         });
@@ -103,7 +105,7 @@
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate disabled" type="text" id="attachmentURL" name="attachmentURL"
-                                placeholder="ไฟล์แนบท้าย" value=<?php $_POST['attached_before'] = $attached; echo $attached;?>>
+                                placeholder="ไฟล์แนบท้าย" value="<?php echo $attached;?>">
                         </div>
                     </div>
                     </div>

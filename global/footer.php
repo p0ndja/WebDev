@@ -95,16 +95,11 @@
 
 <?php } ?>
 <script type="text/javascript">
-    $(function () {
-        $('.summernote').summernote({
-            height: 200,
-        });
-        // Tooltips Initialization
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
+    // Tooltips Initialization
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
     });
-
+    
     $('.dropdown-menu').find('form').click(function (e) {
     e.stopPropagation();
   });
