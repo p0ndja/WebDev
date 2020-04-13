@@ -106,15 +106,17 @@
             <div class="d-flex h-100 text-center align-items-center">
                 <div class="w-100 text-white">
                     <div class="d-none d-md-block">
-                        <img src="../assets/images/logo/logokku_128px.png" class="img-fluid" style="width: 10%">
+                        <img src="../assets/images/logo/logokku_t_w_b.png" class="img-fluid" style="width: 10%">
                     </div>
                     <div class="d-block d-md-none">
-                        <img src="../assets/images/logo/logokku_128px.png" class="img-fluid" style="width: 25%">
+                        <img src="../assets/images/logo/logokku_t_w_b.png" class="img-fluid" style="width: 25%">
                     </div>
-                    <h2 class="display-4">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น</h2>
-                    <h2 class="display-5">ฝ่ายมัธยมศึกษา (มอดินแดง)</h2>
+                    <h2 class="display-4 d-none d-md-block">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น</h2>
+                    <h1 class="d-block d-md-none">โรงเรียนสาธิต<br>มหาวิทยาลัยขอนแก่น</h1>
+                    <h2 class="display-5 d-none d-md-block">ฝ่ายมัธยมศึกษา (มอดินแดง)</h2>
+                    <h4 class="d-block d-md-none">ฝ่ายมัธยมศึกษา (มอดินแดง)</h4>
                     <hr>
-                    <h3>ประพฤติดี มีพลานามัย <div class="d-block d-md-none mb-1"></div>ใฝ่หาความรู้ เชิดชูคุณธรรม</h3>
+                    <h3>ประพฤติดี มีพลานามัย <div class="d-block d-lg-none mb-1"></div>ใฝ่หาความรู้ เชิดชูคุณธรรม</h3>
                 </div>
             </div>
         </div>
@@ -286,7 +288,7 @@
     </div>
     <?php } ?>
     <?php if (getConfig('indexpg_showLatestNews', 'bool', $conn)) { ?>
-    <div class="container">
+    <div class="container content">
         <h1 id="news" name="news" class="font-weight-bold">NEWS
             <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php"
                 class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
