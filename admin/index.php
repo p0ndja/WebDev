@@ -116,9 +116,7 @@ else $b = ' ';
                             <?php if ($get_config['haveVal']) { ?>
                             <input type="text" id="<?php echo $get_config['name']; ?>"
                                 name="<?php echo $get_config['name']; ?>" class="form-control form-control-sm validate "
-                                <?php if (!$get_config['haveVal']) echo 'style="display: none"'; ?> value="
-                <?php echo $get_config['val'];?>" placeholder="
-                <?php echo $get_config['valDescription'];?>">
+                                <?php if (!$get_config['haveVal']) echo 'style="display: none"'; ?> value="<?php echo $get_config['val'];?>" placeholder="<?php echo $get_config['valDescription'];?>">
                             <?php } ?>
                             <hr>
                             <?php } ?>
@@ -153,9 +151,7 @@ else $b = ' ';
                             <?php if ($get_config['haveVal']) { ?>
                             <input type="text" id="<?php echo $get_config['name']; ?>"
                                 name="<?php echo $get_config['name']; ?>" class="form-control form-control-sm validate "
-                                <?php if (!$get_config['haveVal']) echo 'style="display: none"'; ?> value="
-                <?php echo $get_config['val'];?>" placeholder="
-                <?php echo $get_config['valDescription'];?>">
+                                <?php if (!$get_config['haveVal']) echo 'style="display: none"'; ?> value="<?php echo $get_config['val'];?>" placeholder="<?php echo $get_config['valDescription'];?>">
                             <?php } ?>
                             <hr>
                             <?php } ?>
@@ -190,9 +186,7 @@ else $b = ' ';
                             <?php if ($get_config['haveVal']) { ?>
                             <input type="text" id="<?php echo $get_config['name']; ?>"
                                 name="<?php echo $get_config['name']; ?>" class="form-control form-control-sm validate "
-                                <?php if (!$get_config['haveVal']) echo 'style="display: none"'; ?> value="
-                <?php echo $get_config['val'];?>" placeholder="
-                <?php echo $get_config['valDescription'];?>">
+                                <?php if (!$get_config['haveVal']) echo 'style="display: none"'; ?> value="<?php echo $get_config['val'];?>" placeholder="<?php echo $get_config['valDescription'];?>">
                             <?php } ?>
                             <hr>
                             <?php } ?>
@@ -227,9 +221,7 @@ else $b = ' ';
                             <?php if ($get_config['haveVal']) { ?>
                             <input type="text" id="<?php echo $get_config['name']; ?>"
                                 name="<?php echo $get_config['name']; ?>" class="form-control form-control-sm validate "
-                                <?php if (!$get_config['haveVal']) echo 'style="display: none"'; ?> value="
-                <?php echo $get_config['val'];?>" placeholder="
-                <?php echo $get_config['valDescription'];?>">
+                                <?php if (!$get_config['haveVal']) echo 'style="display: none"'; ?> value="<?php echo $get_config['val'];?>" placeholder="<?php echo $get_config['valDescription'];?>">
                             <?php } ?>
                             <hr>
                             <?php } ?>
