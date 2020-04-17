@@ -12,14 +12,8 @@
                 <p style="color: white">เกี่ยวกับ</p>
                 <ul>
                     <li style="color: #ff6c00"><a href="../news/20" style="color: white">ประวัติโรงเรียน</a></li>
-                    <li style="color: #ff6c00"><a href="../news/21" style="color: white">ปรัชญา</a></li>
-                    <li style="color: #ff6c00"><a href="../news/22" style="color: white">วิสัยทัศน์ พันธกิจ</a>
-                    <li style="color: #ff6c00"><a href="../news/23" style="color: white">เป้าหมายเชิงกลยุทธ์</a>
-                    </li>
-                    <li style="color: #ff6c00"><a href="../news/24"
-                            style="color: white">คุณลักษณะอันพึงประสงค์</a></li>
-                    <li style="color: #ff6c00"><a href="../news/25"
-                            style="color: white">คณะกรรมการประจำโรงเรียน</a></li>
+                    <li style="color: #ff6c00"><a href="../news/22" style="color: white">เกี่ยวกับโรงเรียน</a></li></li>
+                    <li style="color: #ff6c00"><a href="../news/25" style="color: white">คณะกรรมการประจำโรงเรียน</a></li>
                     <li style="color: #ff6c00"><a href="../news/26" style="color: white">โครงสร้างการบริหาร</a>
                     </li>
                     <li style="color: #ff6c00"><a href="../news/29" style="color: white">ทำเนียบผู้บริหาร</a></li>

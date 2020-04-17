@@ -18,9 +18,6 @@
             <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="../news/20">ประวัติโรงเรียน</a>
                 <a class="dropdown-item" href="../news/22">เกี่ยวกับโรงเรียน</a>
-                <a class="dropdown-item" href="../news/21">ปรัชญา</a>
-                <a class="dropdown-item" href="../news/23">เป้าหมายเชิงกลยุทธ์</a>
-                <a class="dropdown-item" href="../news/24">คุณลักษณะอันพึงประสงค์</a>
                 <a class="dropdown-item" href="../news/25">คณะกรรมการประจำโรงเรียน</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../news/26">โครงสร้างการบริหาร</a>
