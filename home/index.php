@@ -364,6 +364,9 @@
                     </div>
                 </div>
                 <div class="mb-3">
+                <iframe src="https://ptb.discordapp.com/widget?id=700717529068470353&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0" class="z-depth-3"></iframe>
+                </div>
+                <div class="mb-3">
                     <div class="row">
                         <div class="col-6 col-md-12">
                             <div class="d-none d-md-block">
