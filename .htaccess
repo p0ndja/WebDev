@@ -16,6 +16,8 @@ RewriteRule ^storage/(.*)-(.*)/(.*)$ file/$1/attachment/$2/$3
 
 RewriteRule ^p/(.*)$ pages/$1.php
 
+RewriteRule ^discord https://discord.gg/PWjHEV3
+
 Options +FollowSymlinks
 Options +Indexes
 IndexOptions +FancyIndexing
