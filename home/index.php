@@ -135,9 +135,18 @@
                 <li data-target="#carousel" data-slide-to="3"></li>
                 <li data-target="#carousel" data-slide-to="4"></li>
                 <li data-target="#carousel" data-slide-to="5"></li>
+                <li data-target="#carousel" data-slide-to="7"></li>
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
+                    <img src="https://cdn.discordapp.com/attachments/700717666540978266/701164374064365638/SMD_OLS_1.jpg"
+                        class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                        <h5>SMD Online School</h5>
+                        <p>สามารถเข้าร่วมได้ที่ Discord : <a href="https://smd.pondja.com/discord" style="color:yellow;" class="font-weight-bold">SMD Online School</a></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
                     <img src="https://cdn.discordapp.com/attachments/601788363313512480/642620653115277322/slider_1.jpg"
                         class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block animated fadeInDown">
@@ -344,7 +353,7 @@
             </div>
             <div class="col-md-4">
                 <div class="d-none d-xl-block fb-page mb-3" data-href="https://www.facebook.com/SMD.KKU"
-                    data-tabs="timeline" data-width="" data-height="850" data-small-header="false"
+                    data-tabs="timeline" data-width="100" data-height="850" data-small-header="false"
                     data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
                     <blockquote cite="https://www.facebook.com/SMD.KKU" class="fb-xfbml-parse-ignore"><a
                             href="https://www.facebook.com/SMD.KKU">สาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา
