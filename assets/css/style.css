@@ -1,3 +1,7 @@
+    html {
+        scroll-behavior: smooth;
+    }
+
     .sf-snow-flake {
         position: fixed;
         top: -20px;
@@ -142,11 +146,7 @@
 
     body {
         font-family: 'Kanit', sans-serif;
-        background-color: rgba(241,241,243);
-    }
-
-    .content {
-        background-color: rgba(255,255,255,0);
+        background-color: rgba(241, 241, 243);
     }
 
     body .admin {
@@ -155,12 +155,13 @@
 
     @media only screen and (max-width: 666px) {
         body {
-            background-color: rgba(241,241,243);
+            background-color: rgba(241, 241, 243);
         }
     }
 
+    /* https://cdn.discordapp.com/attachments/636478500206936094/696627513681772595/bg_light.jpg */
     .navbar {
-        background-image: url('https://cdn.discordapp.com/attachments/636478500206936094/696627513681772595/bg_light.jpg');
+        background-image: url('../images/background/bg_normal_resize.jpg');
         background-repeat: no-repeat;
         background-size: 100%;
     }
@@ -177,6 +178,11 @@
         background-color: rgba(255, 255, 255, 0.95) !important;
     }
 
+    .badge-smd {
+        color: white;
+        background-color: #fc6504 !important;
+    }
+
     .course-bg {
         background-image: url('https://cdn.discordapp.com/attachments/387191314552455192/696622897602625626/test.jpg');
         width: 100%;
@@ -187,7 +193,7 @@
 
     @media only screen and (max-width: 768px) {
         .navbar {
-            background-image: url('https://cdn.discordapp.com/attachments/636478500206936094/696627513681772595/bg_light.jpg');
+            background-image: url('../images/background/bg_normal_resize.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             background-position: fixed;
