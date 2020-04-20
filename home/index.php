@@ -117,6 +117,8 @@
                     <h4 class="d-block d-md-none">ฝ่ายมัธยมศึกษา (มอดินแดง)</h4>
                     <hr>
                     <h3>ประพฤติดี มีพลานามัย <div class="d-block d-lg-none mb-1"></div>ใฝ่หาความรู้ เชิดชูคุณธรรม</h3>
+                    <hr class="mb-5">
+                    <a class="scroll-btn" href="#nav"><img alt="Arrow Down Icon" class="animated infinite pulse delay-3s" src="../assets/images/arrow-down.png"></a>
                 </div>
             </div>
         </div>
@@ -209,7 +211,7 @@
     </div>
     <?php } ?>
     <?php if (getConfig('indexpg_showCourse', 'bool', $conn)) { ?>
-    <div class="container-fluid mb-3 course-bg">
+    <div class="container-fluid course-bg">
         <div class="container">
             <hr>
             <div class="card" align="center">
@@ -297,14 +299,15 @@
     </div>
     <?php } ?>
     <?php if (getConfig('indexpg_showLatestNews', 'bool', $conn)) { ?>
-    <div class="container content">
+    <div class="container">
+        <div class="mb-3"></div>
         <h1 id="news" name="news" class="font-weight-bold">NEWS
             <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php"
                 class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
         </h1>
         <div class="row">
             <div class="col-12 col-md-8">
-                <?php   $query = "SELECT * FROM `post` WHERE tags NOT LIKE '%hidden%' ORDER by time DESC limit 6";
+                <?php   $query = "SELECT * FROM `post` WHERE hide = 0 AND type = 'news' ORDER by time DESC limit 6";
                         $result = mysqli_query($conn, $query);
                         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
                         <?php if (getPostdata($row['id'], 'hotlink', $conn) == null) { ?>
@@ -331,7 +334,7 @@
                             <h6>
                                 <?php foreach (explode(",", $row['tags']) as $s) { ?>
                                 <a href="../news/?tags=<?php echo $s; ?>"><span
-                                        class="badge badge-secondary z-depth-0"><?php echo $s; ?></span></a>
+                                        class="badge badge-smd z-depth-0"><?php echo $s; ?></span></a>
                                 <?php } ?>
                             </h6>
                         </div>
@@ -353,11 +356,14 @@
             </div>
             <div class="col-md-4">
                 <div class="d-none d-xl-block fb-page mb-3" data-href="https://www.facebook.com/SMD.KKU"
-                    data-tabs="timeline" data-width="100" data-height="850" data-small-header="false"
+                    data-tabs="timeline" data-width="500" data-height="850" data-small-header="false"
                     data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
                     <blockquote cite="https://www.facebook.com/SMD.KKU" class="fb-xfbml-parse-ignore"><a
                             href="https://www.facebook.com/SMD.KKU">สาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา
                             (มอดินแดง)</a></blockquote>
+                </div>
+                <div class="mb-3">
+                    <iframe src="https://ptb.discordapp.com/widget?id=700717529068470353&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0" class="z-depth-3"></iframe>
                 </div>
                 <div class="card mb-3">
                     <div class="hoverable view">
@@ -371,9 +377,6 @@
                                 043364504</p>
                         </div>
                     </div>
-                </div>
-                <div class="mb-3">
-                <iframe src="https://ptb.discordapp.com/widget?id=700717529068470353&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0" class="z-depth-3"></iframe>
                 </div>
                 <div class="mb-3">
                     <div class="row">
@@ -484,9 +487,6 @@
             }
         });
     </script>
-
-
-
 <?php include '../global/popup.php'; ?>
 <?php include '../global/footer.php'; ?>
 
