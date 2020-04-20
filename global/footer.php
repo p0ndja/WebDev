@@ -1,9 +1,9 @@
-<footer class="footer" style="background-color: rgba(28, 28, 28, 0.95); flex-shrink: 0;">
+<footer class="footer" style="background-color: rgba(28, 28, 28, 0.97); flex-shrink: 0;">
     <div class="container">
         <br>
         <div class="row">
             <div class="col-12">
-                <h4 style="color: white">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</h4>
+                <h4 style="color: white"><img src="../assets/images/logo/logokku_t_w_b.png" height="32"> โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</h4>
                 <hr>
             </div>
         </div>
@@ -91,11 +91,12 @@
 <script type="text/javascript">
     // Tooltips Initialization
     $(document).ready(function(){
+        $('.mdb-select').materialSelect();
         $('[data-toggle="tooltip"]').tooltip();   
     });
     
     $('.dropdown-menu').find('form').click(function (e) {
-    e.stopPropagation();
-  });
+        e.stopPropagation();
+    });
 </script>
 <?php mysqli_close($conn); ?>
