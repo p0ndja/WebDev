@@ -243,13 +243,6 @@
     </div>
 </div>
 <?php } ?>
-<!-- Modal -->
-<script>
-    // Material Select Initialization
-    $(document).ready(function () {
-        $('.mdb-select').materialSelect();
-    });
-</script>
 <?php 
     if (isset($_SESSION['success'])) { 
         signinSuccess($_SESSION['name']);
