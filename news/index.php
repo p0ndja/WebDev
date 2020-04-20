@@ -57,15 +57,15 @@
             } else if (isset($_GET['tags'])) { //Tags case
                 $t = $_GET['tags'];
                 if (strpos($t,"hidden") === false) {
-                    $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND tags NOT LIKE '%hidden%' ORDER by time DESC limit {$start_id}, {$news_per_page}";
-                    $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%' AND tags NOT LIKE '%hidden%'";
+                    $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND hide = 0 ORDER by time DESC limit {$start_id}, {$news_per_page}";
+                    $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%' AND hide = 0";
                 } else {
                     $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' ORDER by time DESC limit {$start_id}, {$news_per_page}";
                     $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%'";
                 }
             } else { //Normal Case
-                $query = "SELECT * FROM `post` WHERE tags NOT LIKE '%hidden%' ORDER by time DESC limit {$start_id}, {$news_per_page}";
-                $query_count = "SELECT `id` FROM `post` WHERE tags NOT LIKE '%hidden%'";
+                $query = "SELECT * FROM `post` WHERE hide = 0 ORDER by time DESC limit {$start_id}, {$news_per_page}";
+                $query_count = "SELECT `id` FROM `post` WHERE hide = 0";
             }
 
             $result = mysqli_query($conn, $query); ?>
@@ -89,7 +89,7 @@
                                     <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
                         </h5>
                         <h6><?php foreach (explode(",", $row['tags']) as $s) { ?>
-                            <a href="../news/?tags=<?php echo $s; ?>"><span class="badge badge-secondary z-depth-0"><?php echo $s; ?></span></a>
+                            <a href="../news/?tags=<?php echo $s; ?>"><span class="badge badge-smd z-depth-0"><?php echo $s; ?></span></a>
                             <?php } ?>
                         </h6>
                     </div>
