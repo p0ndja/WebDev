@@ -78,8 +78,13 @@
             <li class="nav-item">
                 <a class="nav-link" id="forum-management-tab" data-toggle="tab" href="#forum-management" role="tab"
                     aria-controls="forum-management" aria-selected="false">Forum Administrator
-                    <i class="fas fa-comments">
-                    </i>
+                    <i class="fas fa-comments"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="page-management-tab" data-toggle="tab" href="#page-management" role="tab"
+                    aria-controls="page-management" aria-selected="false">Page Manager
+                    <i class="fas fa-file-alt"></i>
                 </a>
             </li>
         </ul>
@@ -268,6 +273,9 @@ else $b = ' ';
             </div>
             <div class="tab-pane fade" id="forum-management" role="tabpanel" aria-labelledby="forum-management-tab">
                 DDDDD
+            </div>
+            <div class="tab-pane fade" id="page-management" role="tabpanel" aria-labelledby="page-management-tab">
+                EEEEE
             </div>
         </div>
     </div>
