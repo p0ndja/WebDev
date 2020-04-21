@@ -14,7 +14,8 @@
     <?php include 'config.php'; ?>
     <?php if ($use_mdbootstrap) {?> <link href="../assets/css/mdb.min.css" rel="stylesheet"> <?php } ?>
     <link href="../assets/css/style.css" rel="stylesheet">
-    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <link href="../assets/css/fonts_morkhor.css" rel="stylesheet">
+    <link href="../assets/css/fonts_anakotmai.css" rel="stylesheet">
     <link href="../assets/css/dark-mode.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7454809de8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
