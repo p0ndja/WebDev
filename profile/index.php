@@ -61,7 +61,7 @@
             
             if(!isset($_GET['id'])) { ?>
     <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-        <a class="btn-floating btn-lg btn-warning" href="edit.php"><i class="fas fa-pencil-alt"></i></a>
+        <a class="btn-floating btn-lg btn-warning" href="./edit"><i class="fas fa-pencil-alt"></i></a>
     </div>
     <?php } 
     ?>
