@@ -21,5 +21,5 @@
         array_push($arr["user"], $item);
     }
 
-    echo json_encode($arr);
+    echo json_encode($arr, JSON_UNESCAPED_UNICODE);
 ?>
