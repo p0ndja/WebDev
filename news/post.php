@@ -27,7 +27,7 @@
                 minHeight: 500,
                 fontNames: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman', 'MorKhor',
                     'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun',
-                    'Kanit'
+                    'Kanit', 'anakotmai'
                 ]
             });
             $('.summernote').summernote('code', '<?php echo $article; ?>');
