@@ -13,27 +13,14 @@
     <?php
         $id = $_SESSION['id'];
 
-        $query = "SELECT * FROM `user` WHERE id = '$id'";
-        $result = mysqli_query($conn, $query);
-
-        if (!$result) {
-            die('Could not get data: ' . mysqli_error($conn));
-        }
+        $profile_background = getProfileData($id, 'background', $conn);
         
-        if (!$_SESSION['dark_mode'])
-        $profile_background = "../assets/images/background/bg_light_pastel.jpg";
-        else
-        $profile_background = "../assets/images/background/bg_dark_resize.jpg";
-
-        $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
-        $result_profile = mysqli_query($conn, $query_profile);
-
-        $profile_displayText = "";
-
-        while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
-            if ($row['background'] != null) $profile_background = $row['background'];
-            if ($row['greetings'] != null) $profile_displayText = $row['greetings'];
+        if (getProfileData($id, 'background', $conn) == null) {
+            if (!$_SESSION['dark_mode']) $profile_background = "../assets/images/background/bg_light_pastel.jpg";
+            else $profile_background = "../assets/images/background/bg_dark_resize.jpg";
         }
+
+        $profile_displayText = getProfileData($id, 'greetings', $conn);
 
     ?>
 
@@ -41,7 +28,10 @@
         $(function () {
             $('.summernote').summernote({
                 minHeight: 500,
-                fontNames: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman', 'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun', 'Kanit']
+                fontNames: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman',
+                    'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun',
+                    'Kanit'
+                ]
             });
             $('.summernote').summernote('code', '<?php echo $profile_displayText; ?>');
         });
@@ -63,78 +53,28 @@
         role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
-    <?php
+    <?php if (isset($_GET['id']) || (isset($_SESSION['id']))) {
+            $id = $_SESSION['id'];
+        
+            $profile_achi = "";
+                    
+            $profile_image = getProfilePicture($id, $conn);
 
-        $query = "SELECT * FROM `user` WHERE id = '$id'";
-        $result = mysqli_query($conn, $query);
-        $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
-        $result_profile = mysqli_query($conn, $query_profile);
-        $query_achi = "SELECT * FROM `achievement` WHERE id = '$id'";
-        $result_achi = mysqli_query($conn, $query_achi);
+            $profile_greets = getProfileData($id, 'greetings', $conn);
 
-        if (mysqli_num_rows($result) == 0) {
-            die('<center><h1>Profile Not Found</h1></center>');
-        }
-
-        $undefined = "<i>Undefined</i>";
-        $profile_name = "<i>Undefined Thai Name</i>";
-        $profile_name_en = "<i>Undefined English Name</i>";
-        $profile_id = $undefined;
-        $profile_grade = $undefined;
-        $profile_class = $undefined;
-        $profile_room = $undefined;
-        $profile_email = $undefined;
-        $profile_achi = "";
-
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $profile_prefix = $row['prefix'];
-
-            if ($profile_prefix == 'นาย')
-                $profile_prefix_en = 'Mr. ';
-            else if ($profile_prefix == 'นาง')
-                $profile_prefix_en = 'Mrs. ';
-            else if ($profile_prefix == 'เด็กชาย')
-                $profile_prefix_en = 'Master ';
-            else if ($profile_prefix == 'เด็กหญิง' || $profile_prefix == 'นางสาว')
-                $profile_prefix_en = 'Miss ';
-            else
-                $profile_prefix_en = "";
-
-
-            $profile_name = $profile_prefix . $row['firstname'] . ' ' . $row['lastname'];
-            $profile_name_en = $profile_prefix_en . $row['firstname_en'] . ' ' . $row['lastname_en'];
-            $profile_id = $row['id'];
-            $profile_email = $row['email'];
-            $profile_grade = $row['grade'];
-            $profile_room = $row['class'];
-            if ($profile_room == 1) {
-                $profile_class = "EMSP";
-            } else if ($profile_room == 5) {
-                $profile_class = "วมว.";
-            } else if ($profile_room == 0) {
-                $profile_class = "-";
-            } else {
-                $profile_class = "ปกติ";
-            }
-        }
-
-        while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
-            if ($row['profile'] != null)
-                $profile_image = $row['profile'];
-            else $profile_image = '../assets/images/default.png';
-        }
-
-        while ($row = mysqli_fetch_array($result_achi, MYSQLI_ASSOC)) {
-            if ($row['betaTester'])
-                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><img src="../assets/images/achievement/beta-tester-icon_resize.gif" title="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></div>';
-            if ($row['WebDevTycoon'])
-                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><img src="../assets/images/achievement/Web_dev_tycoon_icon_resize.gif" title="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></div>';
-            if ($row['the4thFloor'])
-                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><img src="../assets/images/achievement/stair.png" title="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></div>';
-            if ($row['Xmas'])
-                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><img src="../assets/images/achievement/xmas_resize.png" title="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></div>';
-        }
+            if (getAchievementdata($id, 'betaTester', $conn))
+                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Beta Tester (LEGENDARY)"><img src="../assets/images/achievement/beta-tester-icon_resize.gif" alt="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></a></div>';
+            if (getAchievementdata($id, 'WebDevTycoon', $conn))
+                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Web Dev Tycoon (UNOBTAINABLE)"><img src="../assets/images/achievement/Web_dev_tycoon_icon_resize.gif" alt="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></a></div>';
+            if (getAchievementdata($id, 'the4thFloor', $conn))
+                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="The 4th Floor (RARE)"><img src="../assets/images/achievement/stair.png" alt="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></a></div>';
+            if (getAchievementdata($id, 'Xmas', $conn))
+                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Merry Christmas~ (UNCOMMON)"><img src="../assets/images/achievement/xmas_resize.png" alt="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></a></div>';
+    }
     ?>
+    <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
+        <input type="submit" class="btn btn-success" align="left" name="edit_submit" value="บันทึก"></input>
+    </div>
     <div class="container" id="container" style="padding-top: 88px">
         <form method="post" action="../profile/save.php" enctype="multipart/form-data">
             <div class="card w-100">
@@ -145,61 +85,18 @@
                 </div>
             </div>
             <hr>
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 col-md-12">
-                            <h1> <?php echo $profile_name; ?></h1>
-                            <h5> <?php echo $profile_name_en; ?></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
-            <input type="submit" class="btn btn-success" align="left" name="edit_submit"
-                                value="บันทึก"></input>
-
-                <!--ul class="list-unstyled">
-                    <li><a class="btn-floating red"><i class="fas fa-star"></i></a></li>
-                    <li><a class="btn-floating yellow darken-1"><i class="fas fa-user"></i></a></li>
-                    <li><a class="btn-floating green"><i class="fas fa-envelope"></i></a></li>
-                    <li><a class="btn-floating blue"><i class="fas fa-shopping-cart"></i></a></li>
-                </ul-->
-            </div>
             <div class="row">
                 <div class="col-md-4 col-sm-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <img src="<?php echo $profile_image; ?>" class="img-fluid w-100" alt="Profile" id="profile_preview">
-                            <br>
-                            <input type="file" name="profile_upload" id="profile_upload"
-                                class="form-control-file validate" accept="image/png, image/jpeg">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 text-left">
-                            <hr>
-                            <div class="card">
+                    <div class="sticky-content mb-3">
+                        <img src="<?php echo $profile_image; ?>" class="w-100 mb-3" alt="Profile">
+                        <?php echo generateInfoCard($id, $conn); ?>
+                        <div class="card mb-3">
                             <div class="card-body">
-                                <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
-                                <strong>ระดับชั้น</strong>
-                                <?php echo $profile_grade . '/' . $profile_room . ' (' . $profile_class . ')'?><br>
-                                <strong>อีเมล</strong>
-                                <a href="mailto:<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
-                            </div>
-                            </div>
-                            <hr>
-                            <div class="card">
-                                <div class="card-body">
-                                    <h2>Achievement</h2>
-                                    <hr>
-                                    <div class="row">
-                                        <?php echo $profile_achi; ?>
-                                    </div>
+                                <h2 class="text-smd mb-3">Achievement</h2>
+                                <div class="row">
+                                    <?php echo $profile_achi; ?>
                                 </div>
                             </div>
-                            <hr>
                         </div>
                     </div>
                 </div>
@@ -371,7 +268,7 @@
         </form>
     </div>
 
-        <script>
+    <script>
         document.getElementById("profile_upload").onchange = function () {
             var reader = new FileReader();
             reader.onload = function (e) {
@@ -389,6 +286,6 @@
         };
     </script>
     <?php include '../global/popup.php'; ?>
-<?php include '../global/footer.php'; ?>
+    <?php include '../global/footer.php'; ?>
 </body>
 </html>

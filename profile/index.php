@@ -13,25 +13,12 @@
 
         if (!isValidUserID($id, $conn)) back();
 
-        $query = "SELECT * FROM `user` WHERE id = '$id'";
-        $result = mysqli_query($conn, $query);
-     
-        if (!$result) {
-            die('Could not get data: ' . mysqli_error($conn));
-        }
+        $profile_background = getProfileData($id, 'background', $conn);
         
-        if (!$_SESSION['dark_mode'])
-        $profile_background = "../assets/images/background/bg_light_pastel.jpg";
-        else
-        $profile_background = "../assets/images/background/bg_dark_resize.jpg";
-
-        $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
-        $result_profile = mysqli_query($conn, $query_profile);
-
-
-     while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
-     if ($row['background'] != null) $profile_background = $row['background'];
-     }
+        if (getProfileData($id, 'background', $conn) == null) {
+            if (!$_SESSION['dark_mode']) $profile_background = "../assets/images/background/bg_light_pastel.jpg";
+            else $profile_background = "../assets/images/background/bg_dark_resize.jpg";
+        }
     
     ?>
     <style>
@@ -64,56 +51,38 @@
             $profile_greets = getProfileData($id, 'greetings', $conn);
 
             if (getAchievementdata($id, 'betaTester', $conn))
-                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Beta Tester (LEGENDARY)"><img src="../assets/images/achievement/beta-tester-icon_resize.gif" alt="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></a></div>';
+                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Beta Tester (LEGENDARY)"><img src="../assets/images/achievement/beta-tester-icon_resize.gif" alt="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></a></div>';
             if (getAchievementdata($id, 'WebDevTycoon', $conn))
-                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Web Dev Tycoon (UNOBTAINABLE)"><img src="../assets/images/achievement/Web_dev_tycoon_icon_resize.gif" alt="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></a></div>';
+                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Web Dev Tycoon (UNOBTAINABLE)"><img src="../assets/images/achievement/Web_dev_tycoon_icon_resize.gif" alt="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></a></div>';
             if (getAchievementdata($id, 'the4thFloor', $conn))
-                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="The 4th Floor (RARE)"><img src="../assets/images/achievement/stair.png" alt="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></a></div>';
+                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="The 4th Floor (RARE)"><img src="../assets/images/achievement/stair.png" alt="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></a></div>';
             if (getAchievementdata($id, 'Xmas', $conn))
-                $profile_achi .= '<div class="col-4 col-sm-4 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Merry Christmas~ (UNCOMMON)"><img src="../assets/images/achievement/xmas_resize.png" alt="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></a></div>';
-        
+                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Merry Christmas~ (UNCOMMON)"><img src="../assets/images/achievement/xmas_resize.png" alt="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></a></div>';
+            
+            if(!isset($_GET['id'])) { ?>
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a class="btn-floating btn-lg btn-warning" href="edit.php"><i class="fas fa-pencil-alt"></i></a>
+    </div>
+    <?php } 
     ?>
     <div class="container" id="container" style="padding-top: 88px">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 col-md-12">
-                        <h1> <?php echo getDisplayName($id, "TH", $conn); ?></h1>
-                        <h5> <?php echo getDisplayName($id, "en", $conn); ?></h5>
-                    </div>
-                    <?php if(!isset($_GET['search'])) { ?>
-                        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-                            <a class="btn-floating btn-lg btn-warning" href="edit.php"><i class="fas fa-pencil-alt"></i></a>
-                        </div>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
-        <div class="mb-3"></div>
         <div class="row">
             <div class="col-md-4 col-sm-12">
-                <div class="media">
-                    <img src="<?php echo $profile_image; ?>" class="img-fluid w-100" alt="Profile">
-                </div>
-                <div class="row">
-                    <div class="col-md-12 text-left">
-                        <div class="mb-3"></div>
-                        <?php echo generateInfoCard($id, $conn); ?>
-                        <div class="card">
-                            <div class="card-body">
-                                <h2>Achievement</h2>
-                                <div class="mb-3"></div>
-                                <div class="row">
-                                    <?php echo $profile_achi; ?>
-                                </div>
+                <div class="sticky-content mb-3">
+                    <img src="<?php echo $profile_image; ?>" class="w-100 mb-3" alt="Profile">
+                    <?php echo generateInfoCard($id, $conn); ?>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h2 class="text-smd mb-3">Achievement</h2>
+                            <div class="row">
+                                <?php echo $profile_achi; ?>
                             </div>
                         </div>
-                        <div class="mb-3"></div>
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
-            <?php if ($profile_greets != null) { ?>
+                <?php if ($profile_greets != null) { ?>
                 <div class="card">
                     <div class="card-body">
                         <p><?php echo $profile_greets ?></p>
@@ -225,8 +194,8 @@
         needLogin();
     } ?>
 
-<?php include '../global/popup.php'; ?>
-<?php include '../global/footer.php'; ?>
+    <?php include '../global/popup.php'; ?>
+    <?php include '../global/footer.php'; ?>
 </body>
 
 </html>
