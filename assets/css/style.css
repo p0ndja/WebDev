@@ -144,6 +144,10 @@
         padding-top: 88px;
     }
 
+    .text-smd {
+        color: #fc6504;
+    }
+
     body {
         font-family: 'Kanit', sans-serif;
         background-color: rgba(241, 241, 243);
@@ -157,6 +161,14 @@
         body {
             background-color: rgba(241, 241, 243);
         }
+    }
+
+    .sticky-content {
+        position: sticky;
+        position: -webkit-sticky;
+        top: 68px;
+        justify-content: center;
+        align-items: center;
     }
 
     /* https://cdn.discordapp.com/attachments/636478500206936094/696627513681772595/bg_light.jpg */
