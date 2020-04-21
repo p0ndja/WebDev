@@ -133,7 +133,9 @@
             $profile_email = '<strong>อีเมล</strong> <a href="mailto:' . $profile_email . '">'. $profile_email .'</a>';
         }
 
-        return '<div class="card mb-3"><div class="card-body"><strong>รหัสนักเรียน</strong> ' . $id . '<br>' .$profile_class_detail . $profile_email . '</div></div>';
+        $d_th = getDisplayName($id, "TH", $conn);
+        $d_en = getDisplayName($id, "EN", $conn);
+        return '<div class="card mb-3"><div class="card-body"><h3 class="text-smd font-weight-bold">' . $d_th . '</h3><h5>' . $d_en . '</h5><hr><strong>รหัสนักเรียน</strong> ' . $id . '<br>' .$profile_class_detail . $profile_email . '</div></div>';
     }
 ?>
 <?php
