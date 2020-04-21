@@ -12,14 +12,14 @@
             $id = $_GET['id'];
             $_SESSION['id'] = $id;
             $_SESSION['username'] = getUserdata($id, 'username', $conn);
-            $_SESSION['name'] = getUserdata($id, 'firstname', $conn); . ' ' . getUserdata($id, 'lastname', $conn);
+            $_SESSION['name'] = getUserdata($id, 'firstname', $conn) . ' ' . getUserdata($id, 'lastname', $conn);
             $_SESSION['shortname'] = getUserdata($id, 'firstname', $conn);
         } else {
             needPermission('isAdmin', $conn);
             $id = $_GET['id'];
             $_SESSION['id'] = $id;
             $_SESSION['username'] = getUserdata($id, 'username', $conn);
-            $_SESSION['name'] = '<i>' . getUserdata($id, 'firstname', $conn); . ' ' . getUserdata($id, 'lastname', $conn) . '</i>';
+            $_SESSION['name'] = '<i>' . getUserdata($id, 'firstname', $conn) . ' ' . getUserdata($id, 'lastname', $conn) . '</i>';
             $_SESSION['shortname'] = '<i>' . getUserdata($id, 'firstname', $conn) . '</i>';
         }
         
