@@ -301,7 +301,7 @@
     <?php if (getConfig('indexpg_showLatestNews', 'bool', $conn)) { ?>
     <div class="container">
         <div class="mb-3"></div>
-        <h1 id="news" name="news" class="font-weight-bold">NEWS
+        <h1 id="news" name="news" class="font-weight-bold"><img src="../assets/images/element/news_header.png">
             <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php"
                 class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
         </h1>
