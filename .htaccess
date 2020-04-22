@@ -3,6 +3,7 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 
 RewriteRule ^news/([0-9]+)$ news/?id=$1
+RewriteRule ^news/post$ news/post.php
 RewriteRule ^news/edit-([0-9]+)$ news/post.php?id=$1
 
 RewriteRule ^darkmode/$ pages/darkmode.php
