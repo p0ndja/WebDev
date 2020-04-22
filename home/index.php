@@ -306,7 +306,7 @@
     <div class="container">
         <div class="mb-3"></div>
         <h1 id="news" name="news" class="font-weight-bold"><img src="../assets/images/element/news_header.png">
-            <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../post/post.php"
+            <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../post/create"
                 class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
         </h1>
         <div class="row">
@@ -329,7 +329,7 @@
                             <h5 class="font-weight-bold"><a
                                     href="../post/<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
                                 <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a
-                                    href="../post/post.php?id=<?php echo $row['id']; ?>"><i
+                                    href="../post/edit-<?php echo $row['id']; ?>"><i
                                         class="fas fa-edit text-success"></i></a> <a
                                     onclick='
                                     swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../post/delete.php?id=<?php echo $row["id"]; ?>";}});'>
@@ -351,7 +351,7 @@
                 </div>
                 </a>
                 <p class="mb-3"><?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="<?php echo $row['hotlink']; ?>" target="_blank"><?php echo $row['title']; ?></a>
-                                <a href="../post/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a onclick='
+                                <a href="../post/edit-<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a onclick='
                                     swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../post/delete.php?id=<?php echo $row["id"]; ?>";}});'>
                                     <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
                                     </p>

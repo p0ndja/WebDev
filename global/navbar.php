@@ -50,7 +50,7 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../news">ข่าวสาร </a>
+            <a class="nav-link" href="../category/news-1">ข่าวสาร </a>
         </li>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> อื่น ๆ </a>

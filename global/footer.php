@@ -50,7 +50,7 @@
                     <li style="color: #ff6c00"><a style="color: white"
                             href="https://www.facebook.com/SMD.KKU/posts/2526062130856857"> ตารางสอบ </a></li>
                 </ul>
-                <a style="color: white" href="../news"> ข่าวสาร </a>
+                <a style="color: white" href="../category/news-1"> ข่าวสาร </a>
                 <br><a style="color: white" href="../forum"> SMD Forum </a>
                 <br><a style="color: white" href="#" class="disabled"> SMD Shop </a>
             </div>
