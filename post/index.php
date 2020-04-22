@@ -40,7 +40,7 @@
     <div class="col-xl-10 col-12">
     <?php } ?>
         <?php if(!isset($_GET['id'])) { ?><h1 id="news" name="news" class="font-weight-bold">NEWS
-        <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php" class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
+        <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../post/post.php" class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
         </h1>
         <?php } ?>
         <?php 
@@ -83,13 +83,13 @@
                         ?>
                     </p>
                     <div class="card-title">
-                        <h5 class="font-weight-bold"><a href="../news/<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
-                        <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a onclick='
-                                    swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../news/delete.php?id=<?php echo $row["id"]; ?>";}});'>
+                        <h5 class="font-weight-bold"><a href="../post/<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
+                        <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../post/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a onclick='
+                                    swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../post/delete.php?id=<?php echo $row["id"]; ?>";}});'>
                                     <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
                         </h5>
                         <h6><?php foreach (explode(",", $row['tags']) as $s) { ?>
-                            <a href="../news/?tags=<?php echo $s; ?>"><span class="badge badge-smd z-depth-0"><?php echo $s; ?></span></a>
+                            <a href="../post/?tags=<?php echo $s; ?>"><span class="badge badge-smd z-depth-0"><?php echo $s; ?></span></a>
                             <?php } ?>
                         </h6>
                     </div>
@@ -101,7 +101,7 @@
                         <hr>
                         <h5 class="font-weight-bold">ไฟล์แนบท้าย</h5>
                             <?php foreach (explode(",", $row['attachment']) as $a) { $aa++;?>
-                                <li><a href="<?php echo $a; ?>" target="_blank"><?php echo str_replace("../file/news/attachment/" . $_GET['id'] . "/", "", $a); ?></a></li>
+                                <li><a href="<?php echo $a; ?>" target="_blank"><?php echo str_replace("../file/post/attachment/" . $_GET['id'] . "/", "", $a); ?></a></li>
                             <?php } ?>
                             <?php if ($aa == 1 && strpos($row['attachment'], ".pdf")) { ?>
                                 <iframe src="https://docs.google.com/viewer?url=<?php echo str_replace("../" , "https://smd.pondja.com/" , $row['attachment']); ?>&embedded=true" width="100%" height="750"></iframe>
@@ -117,8 +117,8 @@
                 </div>
                 </a>
                 <p class="mb-3"><?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="<?php echo $row['hotlink']; ?>" target="_blank"><?php echo $row['title']; ?></a>
-                                <a href="../news/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a onclick='
-                                    swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../news/delete.php?id=<?php echo $row["id"]; ?>";}});'>
+                                <a href="../post/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a onclick='
+                                    swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../post/delete.php?id=<?php echo $row["id"]; ?>";}});'>
                                     <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
                                     </p>
                     <?php } ?>

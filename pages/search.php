@@ -41,7 +41,7 @@
             echo '<h3>News: Found <b>' . mysqli_num_rows($r) . '</b> Record(s) that look like "' . $s . '"<br></h3><ul>';
 
             while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
-                echo '<li><a href="../news/' . $row['id'] . '">' . $row['title'] . ' by ' . $row['writer']. '</a></li>';
+                echo '<li><a href="../post/' . $row['id'] . '">' . $row['title'] . ' by ' . $row['writer']. '</a></li>';
             }
 
             if (isValidUserID($s, $conn)) {
@@ -52,7 +52,7 @@
                 $r = mysqli_query($conn, $q);
 
                 while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
-                    echo '<li><a href="../news/' . $row['id'] . '">' . $row['title'] . ' by ' . $row['writer']. '</a></li>';
+                    echo '<li><a href="../post/' . $row['id'] . '">' . $row['title'] . ' by ' . $row['writer']. '</a></li>';
                 }
             }
 

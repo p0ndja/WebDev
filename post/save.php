@@ -30,7 +30,7 @@ if (isset($_POST['post_submit']) || isset($_POST['post_update'])) {
     if(isset($_FILES['cover']) && $_FILES['cover']['name'] != ""){
         $name_file = $_FILES['cover']['name'];
         $tmp_name = $_FILES['cover']['tmp_name'];
-        $locate_img ="../file/news/images/";
+        $locate_img ="../file/post/images/";
         if (!file_exists($locate_img)) {
             mkdir($locate_img);
         }
@@ -59,14 +59,14 @@ if (isset($_POST['post_submit']) || isset($_POST['post_update'])) {
     $fileTotal = count($_FILES['attachment']['name']);
     $finalFilePath = null;
     if (is_uploaded_file($_FILES['attachment']['tmp_name'][0])) {
-        if (!file_exists("../file/news/attachment/" . $news . "/")) {
-            mkdir("../file/news/attachment/" . $news . "/");
+        if (!file_exists("../file/post/attachment/" . $news . "/")) {
+            mkdir("../file/post/attachment/" . $news . "/");
         }
         for ($i = 0; $i < $fileTotal; $i++) {
             if($_FILES['attachment']['tmp_name'][$i] != ""){
                 $name_file = $_FILES['attachment']['name'][$i];
                 $tmp_name = $_FILES['attachment']['tmp_name'][$i];
-                $locate_img ="../file/news/attachment/".$news.'/';
+                $locate_img ="../file/post/attachment/".$news.'/';
                 move_uploaded_file($tmp_name,$locate_img.$name_file);
                 rename($locate_img.$name_file, $locate_img.$name_file);
                 $finalFiledir = $locate_img.$name_file;
@@ -78,4 +78,4 @@ if (isset($_POST['post_submit']) || isset($_POST['post_update'])) {
         savePostdata($news, 'attachment', $finalFilePath, $conn); 
     }
 }
-header("Location: ../news/"); ?>
+header("Location: ../post/"); ?>

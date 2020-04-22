@@ -121,9 +121,6 @@
                     <a class="scroll-btn" href="#nav"><img alt="Arrow Down Icon" class="animated infinite pulse delay-3s" src="../assets/images/arrow-down.png"></a>
                     <hr class="mb-5">
                     <a class="scroll-btn" data-toggle="modal" data-target="#futureCpanel"><i class="fas fa-vial"></i></a>
-                    <hr class="mb-5">
-                    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-
                 </div>
             </div>
         </div>
@@ -220,7 +217,6 @@
     <?php if (getConfig('indexpg_showCourse', 'bool', $conn)) { ?>
     <div class="container-fluid course-bg">
         <div class="container">
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
             <hr>
             <div class="card" align="center">
                 <div class="card-body course">
@@ -238,7 +234,7 @@
                                 <div class="row">
                                     <div class="col-2 d-block d-md-none"></div>
                                     <div class="col-4 col-md-6">
-                                        <a href="../file/news/attachment/41/_20200117160236_S__1310728.jpg" target="_blank">
+                                        <a href="../file/post/attachment/41/_20200117160236_S__1310728.jpg" target="_blank">
                                             <div class="view overlay zoom z-depth-1">
                                                 <img src="../assets/images/course/p_normal.jpg" class="img-fluid"
                                                     alt="หลักสูตรทั่วไป (ม.ต้น)">
@@ -248,7 +244,7 @@
                                         </a>
                                     </div>
                                     <div class="col-4 col-md-6">
-                                        <a href="../file/news/attachment/41/_20200117160236_S__1310728.jpg" target="_blank">
+                                        <a href="../file/post/attachment/41/_20200117160236_S__1310728.jpg" target="_blank">
                                             <div class="view overlay zoom z-depth-1">
                                                 <img src="../assets/images/course/p_jems.jpg" class="img-fluid"
                                                     alt="หลักสูตร IEC (ม.ต้น)">
@@ -266,7 +262,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-4 col-md-4">
-                                        <a href="../file/news/attachment/41/_20200117160335_S__1310732.jpg" target="_blank">
+                                        <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg" target="_blank">
                                             <div class="view overlay zoom z-depth-1">
                                                 <img src="../assets/images/course/s_normal.jpg" class="img-fluid"
                                                     alt="หลักสูตรทั่วไป (ม.ปลาย)">
@@ -276,7 +272,7 @@
                                         </a>
                                     </div>
                                     <div class="col-4 col-md-4">
-                                        <a href="../file/news/attachment/41/_20200117160335_S__1310732.jpg" target="_blank">
+                                        <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg" target="_blank">
                                             <div class="view overlay zoom z-depth-1">
                                                 <img src="../assets/images/course/s_sems.jpg" class="img-fluid"
                                                     alt="หลักสูตร EMSP (ม.ปลาย)">
@@ -286,7 +282,7 @@
                                         </a>
                                     </div>
                                     <div class="col-4 col-md-4">
-                                        <a href="../file/news/attachment/41/_20200117160335_S__1310732.jpg" target="_blank">
+                                        <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg" target="_blank">
                                             <div class="view overlay zoom z-depth-1">
                                                 <img src="../assets/images/course/s_scius.jpg" class="img-fluid"
                                                     alt="หลักสูตรวมว. (ม.ปลาย)">
@@ -310,7 +306,7 @@
     <div class="container">
         <div class="mb-3"></div>
         <h1 id="news" name="news" class="font-weight-bold"><img src="../assets/images/element/news_header.png">
-            <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../news/post.php"
+            <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../post/post.php"
                 class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
         </h1>
         <div class="row">
@@ -331,17 +327,17 @@
                         </p>
                         <div class="card-title">
                             <h5 class="font-weight-bold"><a
-                                    href="../news/<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
+                                    href="../post/<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
                                 <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a
-                                    href="../news/post.php?id=<?php echo $row['id']; ?>"><i
+                                    href="../post/post.php?id=<?php echo $row['id']; ?>"><i
                                         class="fas fa-edit text-success"></i></a> <a
                                     onclick='
-                                    swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../news/delete.php?id=<?php echo $row["id"]; ?>";}});'>
+                                    swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../post/delete.php?id=<?php echo $row["id"]; ?>";}});'>
                                     <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
                             </h5>
                             <h6>
                                 <?php foreach (explode(",", $row['tags']) as $s) { ?>
-                                <a href="../news/?tags=<?php echo $s; ?>"><span
+                                <a href="../post/?tags=<?php echo $s; ?>"><span
                                         class="badge badge-smd z-depth-0"><?php echo $s; ?></span></a>
                                 <?php } ?>
                             </h6>
@@ -355,8 +351,8 @@
                 </div>
                 </a>
                 <p class="mb-3"><?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="<?php echo $row['hotlink']; ?>" target="_blank"><?php echo $row['title']; ?></a>
-                                <a href="../news/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a onclick='
-                                    swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../news/delete.php?id=<?php echo $row["id"]; ?>";}});'>
+                                <a href="../post/post.php?id=<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a onclick='
+                                    swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../post/delete.php?id=<?php echo $row["id"]; ?>";}});'>
                                     <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
                                     </p>
                     <?php } ?>

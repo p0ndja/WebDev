@@ -42,7 +42,7 @@
     </nav>
     <?php needLogin(); needPermission('isNewsReporter', $conn); ?>
     <div class="container" id="container" style="padding-top: 88px">
-        <form method="POST" action="../news/save.php<?php if (isset($_GET['id'])) echo '?news=' . $_GET['id']; ?>"
+        <form method="POST" action="../post/save.php<?php if (isset($_GET['id'])) echo '?news=' . $_GET['id']; ?>"
             enctype="multipart/form-data">
             <div class="card mb-3">
                 <div class="card-header bg-dark text-white">
