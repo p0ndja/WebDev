@@ -22,13 +22,20 @@
     background-color: #333;
 }
 
-[data-theme="dark"] .note-editable {
+[data-theme="dark"] .note-editable
+,[data-theme="dark"] .note-dropdown-menu {
     background-color: #1c1c1c !important;
+}
+
+
+[data-theme="dark"] .note-current-fontname {
+    color: #1c1c1c !important;
 }
 
 [data-theme="dark"] .card
 ,[data-theme="dark"] .card-body
-,[data-theme="dark"] .input-group-text {
+,[data-theme="dark"] .input-group-text
+,[data-theme="dark"] .modal-content {
     background-color: #1c1c1c;
 }
 

@@ -12,16 +12,16 @@
             <div class="col-md-3">
                 <p style="color: white">เกี่ยวกับ</p>
                 <ul>
-                    <li style="color: #ff6c00"><a href="../news/20" style="color: white">ประวัติโรงเรียน</a></li>
-                    <li style="color: #ff6c00"><a href="../news/22" style="color: white">เกี่ยวกับโรงเรียน</a></li>
+                    <li style="color: #ff6c00"><a href="../post/20" style="color: white">ประวัติโรงเรียน</a></li>
+                    <li style="color: #ff6c00"><a href="../post/22" style="color: white">เกี่ยวกับโรงเรียน</a></li>
                     </li>
-                    <li style="color: #ff6c00"><a href="../news/25" style="color: white">คณะกรรมการประจำโรงเรียน</a>
+                    <li style="color: #ff6c00"><a href="../post/25" style="color: white">คณะกรรมการประจำโรงเรียน</a>
                     </li>
-                    <li style="color: #ff6c00"><a href="../news/26" style="color: white">โครงสร้างการบริหาร</a>
+                    <li style="color: #ff6c00"><a href="../post/26" style="color: white">โครงสร้างการบริหาร</a>
                     </li>
-                    <li style="color: #ff6c00"><a href="../news/29" style="color: white">ทำเนียบผู้บริหาร</a></li>
-                    <li style="color: #ff6c00"><a href="../news/32" style="color: white">คณะผู้บริหาร</a></li>
-                    <li style="color: #ff6c00"><a href="../news/37" style="color: white">บุคลากร</a></li>
+                    <li style="color: #ff6c00"><a href="../post/29" style="color: white">ทำเนียบผู้บริหาร</a></li>
+                    <li style="color: #ff6c00"><a href="../post/32" style="color: white">คณะผู้บริหาร</a></li>
+                    <li style="color: #ff6c00"><a href="../post/37" style="color: white">บุคลากร</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
@@ -103,26 +103,5 @@
     $('.dropdown-menu').find('form').click(function (e) {
         e.stopPropagation();
     });
-</script>
-
-<script>
-
-    var isSideNav = false;
-
-    function openNav() {
-            
-            document.getElementById("mySidenav").style.width = "250px";
-            document.body.style.marginRight = "250px";
-            document.getElementById("nav").style.marginRight = "250px";
-            
-        
-    }
-
-    function closeNav() {
-            isSideNav = false;
-            document.getElementById("mySidenav").style.width = "0";
-            document.body.style.marginRight = "0";
-            document.getElementById("nav").style.marginRight = "0";
-    }
 </script>
 <?php mysqli_close($conn); ?>

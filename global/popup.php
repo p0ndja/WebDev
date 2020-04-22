@@ -27,33 +27,40 @@
         </div>
     </div>
 </div-->
-<div id="mySidenav" class="overlay sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>
 <?php if (isLogin()) { ?>
 <div class="modal fade right" id="futureCpanel" tabindex="-1" role="dialog" aria-labelledby="cpanelTitle"
     aria-hidden="true">
-    <div class="modal-dialog modal-full-height modal-right" role="document">
+    <div class="modal-dialog modal-full-height modal-right modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="cpanelTitle">สวัสดี!
-                    <?php echo $_SESSION['shortname'] . ' (' . $_SESSION['username'] . ')'; ?></h5>
+                    <?php echo $_SESSION['name'] . ' (' . $_SESSION['username'] . ')'; ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <img src="<?php echo getProfilePicture($_SESSION['id'], $conn); ?>" class="w-50">
+                    <img src="<?php echo getProfilePicture($_SESSION['id'], $conn); ?>" class="img-fluid">
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <hr>
+                <a class="dropdown-item" href="../profile"> ข้อมูลส่วนตัว <i class="fas fa-user"></i></a>
+                <a class="dropdown-item" href="#"> ลงทะเบียนวิชาเลือก <i class="fas fa-tasks"></i></a>
+                <a class="dropdown-item" href="#"> การเช็คชื่อ <i class="fas fa-calendar-check"></i></a>
+                <a class="dropdown-item" href="../profile/grade_lookup.php"> ผลการเรียน (SGS) <i class="fas fa-graduation-cap"></i></a>
+                <?php if (isPermission('isAdmin', $conn)) { ?>
+                <hr>
+                <a class="dropdown-item text-secondary" href="../admin/"> ส่วนของแอดมิน <i
+                        class="fas fa-user-tie"></i></a>
+                <?php } ?>
+                <hr>
+
+                <?php if(!isset($_SESSION['dark_mode'])) $_SESSION['dark_mode'] = false; ?>
+                <?php if ($_SESSION['dark_mode'] == true) { ?><a class="dropdown-item" href="../pages/darkmode.php"> เปลี่ยนเป็นโหมดสว่าง <i class="far fa-lightbulb"></i></a>
+                <?php } else { ?><a class="dropdown-item" href="../pages/darkmode.php"> เปลี่ยนเป็นโหมดมืด <i class="fas fa-lightbulb"></i></a><?php } ?>
+                
+                <hr>
+                <a class="dropdown-item text-danger" href="../global/logout.php">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></a>
             </div>
         </div>
     </div>

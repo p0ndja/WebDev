@@ -16,14 +16,14 @@
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="./#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> เกี่ยวกับ </a>
             <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="../news/20">ประวัติโรงเรียน</a>
-                <a class="dropdown-item" href="../news/22">เกี่ยวกับโรงเรียน</a>
-                <a class="dropdown-item" href="../news/25">คณะกรรมการประจำโรงเรียน</a>
+                <a class="dropdown-item" href="../post/20">ประวัติโรงเรียน</a>
+                <a class="dropdown-item" href="../post/22">เกี่ยวกับโรงเรียน</a>
+                <a class="dropdown-item" href="../post/25">คณะกรรมการประจำโรงเรียน</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../news/26">โครงสร้างการบริหาร</a>
-                <a class="dropdown-item" href="../news/29">ทำเนียบผู้บริหาร</a>
-                <a class="dropdown-item" href="../news/32">คณะผู้บริหาร</a>
-                <a class="dropdown-item" href="../news/37">บุคลากร</a>
+                <a class="dropdown-item" href="../post/26">โครงสร้างการบริหาร</a>
+                <a class="dropdown-item" href="../post/29">ทำเนียบผู้บริหาร</a>
+                <a class="dropdown-item" href="../post/32">คณะผู้บริหาร</a>
+                <a class="dropdown-item" href="../post/37">บุคลากร</a>
             </div>
         </li>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -100,7 +100,7 @@
             </div>
         </li>
         <?php } else { ?>
-            <button class="btn btn-sm btn-rounded peach-gradient text-dark font-weight-bold" data-toggle="modal" data-target="#login">Login</button>
+            <button class="btn btn-md btn-rounded peach-gradient text-dark font-weight-bold" data-toggle="modal" data-target="#login">Login</button>
         <?php } ?>
     </ul>
 </div>
