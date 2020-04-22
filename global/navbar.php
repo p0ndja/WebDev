@@ -58,9 +58,8 @@
                 <a class="dropdown-item" href="../forum">SMD Forum</a>
                 <a class="dropdown-item disabled" href="#">SMD Shop</a>
                 <?php if ( getConfig('global_Livestream', 'bool', $conn) ) { ?>
-                <a class="dropdown-item" href=<?php echo getConfig('global_Livestream', 'val', $conn); ?>>ถ่ายทอดสด <sup
-                        class="notifi"><span class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE
-                            <span class="oi" data-glyph="video"></span></span></sup></a>
+                <a class="dropdown-item" href=<?php echo getConfig('global_Livestream', 'val', $conn); ?>>ถ่ายทอดสด 
+                    <sup class="notifi"><span class="badge badge-danger badge-pill d-none d-lg-inline-block blink">LIVE</span></sup></a>
                 <?php } ?>
             </div>
         </li>
@@ -91,19 +90,17 @@
                         class="fas fa-user-tie"></i></a>
                 <?php } ?>
                 <div class="dropdown-divider"></div>
+
                 <?php if(!isset($_SESSION['dark_mode'])) $_SESSION['dark_mode'] = false; ?>
-                <?php if ($_SESSION['dark_mode'] == true) { ?>
-                <a class="dropdown-item" href="../pages/darkmode.php"> เปลี่ยนเป็นโหมดสว่าง <i class="far fa-lightbulb"></i></a>
-                <?php } else { ?>
-                    <a class="dropdown-item" href="../pages/darkmode.php"> เปลี่ยนเป็นโหมดมืด <i class="fas fa-lightbulb"></i></a>
-                <?php } ?>
+                <?php if ($_SESSION['dark_mode'] == true) { ?><a class="dropdown-item" href="../pages/darkmode.php"> เปลี่ยนเป็นโหมดสว่าง <i class="far fa-lightbulb"></i></a>
+                <?php } else { ?><a class="dropdown-item" href="../pages/darkmode.php"> เปลี่ยนเป็นโหมดมืด <i class="fas fa-lightbulb"></i></a><?php } ?>
+                
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="../global/logout.php">ออกจากระบบ <i
-                        class="fas fa-sign-out-alt"></i></a>
+                <a class="dropdown-item text-danger" href="../global/logout.php">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></a>
             </div>
         </li>
         <?php } else { ?>
-            <button class="btn btn-rounded peach-gradient text-dark font-weight-bold" data-toggle="modal" data-target="#login">Login</button>
+            <button class="btn btn-sm btn-rounded peach-gradient text-dark font-weight-bold" data-toggle="modal" data-target="#login">Login</button>
         <?php } ?>
     </ul>
 </div>

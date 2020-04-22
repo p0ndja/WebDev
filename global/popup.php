@@ -27,6 +27,13 @@
         </div>
     </div>
 </div-->
+<div id="mySidenav" class="overlay sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
 <?php if (isLogin()) { ?>
 <div class="modal fade right" id="futureCpanel" tabindex="-1" role="dialog" aria-labelledby="cpanelTitle"
     aria-hidden="true">

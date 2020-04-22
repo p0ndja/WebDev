@@ -119,14 +119,21 @@
                     <h3>ประพฤติดี มีพลานามัย <div class="d-block d-lg-none mb-1"></div>ใฝ่หาความรู้ เชิดชูคุณธรรม</h3>
                     <hr class="mb-5">
                     <a class="scroll-btn" href="#nav"><img alt="Arrow Down Icon" class="animated infinite pulse delay-3s" src="../assets/images/arrow-down.png"></a>
+                    <hr class="mb-5">
+                    <a class="scroll-btn" data-toggle="modal" data-target="#futureCpanel"><i class="fas fa-vial"></i></a>
+                    <hr class="mb-5">
+                    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+
                 </div>
             </div>
         </div>
 
     </header>
+    </body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal" id="nav" role="navigation">
         <?php include '../global/navbar.php'; ?>
     </nav>
+    <body>
     <?php if (getConfig('indexpg_showCarousel', 'bool', $conn)) { ?>
     <div class="container mb-3" id="container">
         <div id="carousel" class="carousel slide carousel-fade z-depth-1" data-ride="carousel" data-interval="5000">
@@ -213,6 +220,7 @@
     <?php if (getConfig('indexpg_showCourse', 'bool', $conn)) { ?>
     <div class="container-fluid course-bg">
         <div class="container">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
             <hr>
             <div class="card" align="center">
                 <div class="card-body course">
@@ -470,13 +478,19 @@
             }
         }
     </script>
-    <script>
+<?php include '../global/popup.php'; ?>
+<?php include '../global/footer.php'; ?>
+
+<script>
         $(window).bind('scroll', function () {
+            var stick = false;
             if ($(window).scrollTop() > $(window).height()) {
                 $('#nav').removeClass('navbar-top');
                 $('#nav').addClass('fixed-top');
                 $('#nav').addClass('scrolling-navbar');
                 document.getElementById("container").style.paddingTop = "88px";
+
+                stick = true;
 
             } else {
                 $('#nav').removeClass('fixed-top');
@@ -484,11 +498,11 @@
                 $('#nav').addClass('navbar-top');
                 document.getElementById("container").style.paddingTop = "19px";
 
+                stick = false;
+                
             }
         });
     </script>
-<?php include '../global/popup.php'; ?>
-<?php include '../global/footer.php'; ?>
 
     <?php if (!isset($_SESSION['isAnnouncementPopedUp'])) { ?>
     <script>

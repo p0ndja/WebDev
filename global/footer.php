@@ -3,7 +3,8 @@
         <br>
         <div class="row">
             <div class="col-12">
-                <h4 style="color: white"><img src="../assets/images/logo/logokku_t_w_b.png" height="32"> โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</h4>
+                <h4 style="color: white"><img src="../assets/images/logo/logokku_t_w_b.png" height="32">
+                    โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</h4>
                 <hr>
             </div>
         </div>
@@ -12,8 +13,10 @@
                 <p style="color: white">เกี่ยวกับ</p>
                 <ul>
                     <li style="color: #ff6c00"><a href="../news/20" style="color: white">ประวัติโรงเรียน</a></li>
-                    <li style="color: #ff6c00"><a href="../news/22" style="color: white">เกี่ยวกับโรงเรียน</a></li></li>
-                    <li style="color: #ff6c00"><a href="../news/25" style="color: white">คณะกรรมการประจำโรงเรียน</a></li>
+                    <li style="color: #ff6c00"><a href="../news/22" style="color: white">เกี่ยวกับโรงเรียน</a></li>
+                    </li>
+                    <li style="color: #ff6c00"><a href="../news/25" style="color: white">คณะกรรมการประจำโรงเรียน</a>
+                    </li>
                     <li style="color: #ff6c00"><a href="../news/26" style="color: white">โครงสร้างการบริหาร</a>
                     </li>
                     <li style="color: #ff6c00"><a href="../news/29" style="color: white">ทำเนียบผู้บริหาร</a></li>
@@ -64,7 +67,9 @@
                 <center>
                     <h6 style="color: white;">Copyright 2019 - 2020 &copy; The demonstration school of Khon Kaen
                         University (Mo Din Daeng). All right reserved<h6>
-                            <h6 style="color: white;"><a href="../pages/about.php">Developed by PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka</a><?php if (getConfig('global_lastUpdate', 'bool', $conn)) echo " — " . getConfig('global_lastUpdate', 'val', $conn); ?></h6>
+                            <h6 style="color: white;"><a href="../pages/about.php">Developed by PondJaᵀᴴ &
+                                    ˢᵖᵉᶜᵗᵉʳRisaka</a><?php if (getConfig('global_lastUpdate', 'bool', $conn)) echo " — " . getConfig('global_lastUpdate', 'val', $conn); ?>
+                            </h6>
                 </center>
             </div>
         </div>
@@ -90,13 +95,34 @@
 <?php } ?>
 <script type="text/javascript">
     // Tooltips Initialization
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('.mdb-select').materialSelect();
-        $('[data-toggle="tooltip"]').tooltip();   
+        $('[data-toggle="tooltip"]').tooltip();
     });
-    
+
     $('.dropdown-menu').find('form').click(function (e) {
         e.stopPropagation();
     });
+</script>
+
+<script>
+
+    var isSideNav = false;
+
+    function openNav() {
+            
+            document.getElementById("mySidenav").style.width = "250px";
+            document.body.style.marginRight = "250px";
+            document.getElementById("nav").style.marginRight = "250px";
+            
+        
+    }
+
+    function closeNav() {
+            isSideNav = false;
+            document.getElementById("mySidenav").style.width = "0";
+            document.body.style.marginRight = "0";
+            document.getElementById("nav").style.marginRight = "0";
+    }
 </script>
 <?php mysqli_close($conn); ?>
