@@ -89,6 +89,8 @@
                 <div class="col-md-4 col-sm-12">
                     <div class="sticky-content mb-3">
                         <img src="<?php echo $profile_image; ?>" class="w-100 mb-3" alt="Profile">
+                        <br>
+                        <input type="file" name="profile_upload" id="profile_upload" class="form-control-file validate mb-3" accept="image/png, image/jpeg">
                         <?php echo generateInfoCard($id, $conn); ?>
                         <div class="card mb-3">
                             <div class="card-body">
