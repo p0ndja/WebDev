@@ -28,4 +28,6 @@
     <script src="../assets/summernote/summernote-bs4.min.js"></script>
     <!--SweetAlert-->
     <script src="../assets/js/sweetalert.min.js"></script>
-    <link href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css" rel="stylesheet">
+    <!--Croppie-->
+    <link rel="stylesheet" href="../assets/croppie/croppie.css" />
+    <script src="../assets/croppie/croppie.js"></script>
