@@ -112,8 +112,9 @@
                             </div>
                             <!--Footer-->
                             <div class="modal-footer">
-                                <input class="btn btn-success" type="submit" name="login_submit" value="Login"></input>
                                 <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <input class="btn btn-success" type="submit" name="login_submit" value="Login"></input>
+                                
                             </div>
                         </form>
                     </div>
@@ -242,9 +243,9 @@
                             </div>
                             <!--Footer-->
                             <div class="modal-footer">
+                                <button class="btn btn-danger" data-dismiss="modal">Close</button>
                                 <input class="btn btn-success" type="submit" name="register_submit"
                                     value="Sign Up"></input>
-                                <button class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                         </form>
                     </div>
