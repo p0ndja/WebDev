@@ -1,4 +1,4 @@
-<footer class="footer" id="footer" style="background-color: rgba(28, 28, 28, 0.97); flex-shrink: 0;">
+<footer class="footer" id="footer" style="background-color: rgba(12, 12, 12, 0.95); flex-shrink: 0;">
     <div class="container">
         <br>
         <div class="row">
