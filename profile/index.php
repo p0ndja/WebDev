@@ -69,7 +69,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <div class="sticky-content mb-3">
-                    <img src="<?php echo $profile_image; ?>" class="w-100 mb-3" alt="Profile">
+                    <img src="<?php echo $profile_image; ?>" class="thumb-post w-100 mb-3" alt="Profile">
                     <?php echo generateInfoCard($id, $conn); ?>
                     <div class="card mb-3">
                         <div class="card-body">

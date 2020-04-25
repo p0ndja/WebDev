@@ -72,11 +72,12 @@
                 $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Merry Christmas~ (UNCOMMON)"><img src="../assets/images/achievement/xmas_resize.png" alt="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></a></div>';
     }
     ?>
-    <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
-        <input type="submit" class="btn btn-success" align="left" name="edit_submit" value="บันทึก"></input>
-    </div>
     <div class="container" id="container" style="padding-top: 88px">
+        <img id="bg_dump" style="display: none;">
         <form method="post" action="../profile/save.php" enctype="multipart/form-data">
+            <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
+                <input type="submit" class="btn btn-success" align="left" name="edit_submit" value="บันทึก"></input>
+            </div>
             <div class="card w-100">
                 <div class="card-body">
                     <h6><b>Background Image: </b>
@@ -88,9 +89,10 @@
             <div class="row">
                 <div class="col-md-4 col-sm-12">
                     <div class="sticky-content mb-3">
-                        <img src="<?php echo $profile_image; ?>" class="w-100 mb-3" alt="Profile">
+                        <img src="<?php echo $profile_image; ?>" class="w-100 mb-3 rounded-circle" alt="Profile" id="profile_preview">
                         <br>
-                        <input type="file" name="profile_upload" id="profile_upload" class="form-control-file validate mb-3" accept="image/png, image/jpeg">
+                        <input type="file" name="profile_upload" id="profile_upload"
+                            class="form-control-file validate mb-3" accept="image/png, image/jpeg">
                         <?php echo generateInfoCard($id, $conn); ?>
                         <div class="card mb-3">
                             <div class="card-body">
@@ -282,12 +284,78 @@
         document.getElementById("background_upload").onchange = function () {
             var reader = new FileReader();
             reader.onload = function (e) {
-                document.body.style.background = "url(" + e.target.result + ") no-repeat center center fixed";
+                $("body").css({
+                    "background": "url(" + e.target.result + ") no-repeat center center fixed",
+                    "-webkit-background-size": "cover",
+                    "-moz-background-size": "cover",
+                    "background-size": "cover",
+                    "-o-background-size": "cover"
+                });
             };
             reader.readAsDataURL(this.files[0]);
+            handleImages(this.files);
+
         };
+
+        function addImage(file) {
+            var element = document.createElement('div');
+            element.className = 'row';
+            element.innerHTML = '<img />';
+
+            var img = element.querySelector('img');
+            img.src = URL.createObjectURL(file);
+            img.onload = function () {
+                var rgb = getAverageColor(img);
+                console.log(rgb.r + "," + rgb.g + "," + rgb.b);
+                if (rgb.r > 128 || rgb.g > 128 || rgb.b > 128)
+                    document.body.removeAttribute("data-theme");
+                else
+                    document.body.setAttribute("data-theme", "dark");
+                //document.getElementById('testto').textContent = 
+
+            };
+
+        }
+
+        function getAverageColor(img) {
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            var width = canvas.width = img.naturalWidth;
+            var height = canvas.height = img.naturalHeight;
+
+            ctx.drawImage(img, 0, 0);
+
+            var imageData = ctx.getImageData(0, 0, width, height);
+            var data = imageData.data;
+            var r = 0;
+            var g = 0;
+            var b = 0;
+
+            for (var i = 0, l = data.length; i < l; i += 4) {
+                r += data[i];
+                g += data[i + 1];
+                b += data[i + 2];
+            }
+
+            r = Math.floor(r / (data.length / 4));
+            g = Math.floor(g / (data.length / 4));
+            b = Math.floor(b / (data.length / 4));
+
+            return {
+                r: r,
+                g: g,
+                b: b
+            };
+        }
+
+        function handleImages(files) {
+            for (var i = 0; i < files.length; i++) {
+                addImage(files[i]);
+            }
+        }
     </script>
     <?php include '../global/popup.php'; ?>
     <?php include '../global/footer.php'; ?>
 </body>
+
 </html>
