@@ -15,16 +15,24 @@
     background-color: #eee !important;
 }
 
-[data-theme="dark"] .input-group-text
-,[data-theme="dark"] .file-path
-,[data-theme="dark"] .form-control {
+[data-theme="dark"] .indexNews {
+    background-color: #151515 !important;
+}
+
+[data-theme="dark"] .input-group-text,
+[data-theme="dark"] .file-path,
+[data-theme="dark"] .form-control {
     color: white !important;
     background-color: #333;
 }
 
-[data-theme="dark"] .note-editable
-,[data-theme="dark"] .note-dropdown-menu {
+[data-theme="dark"] .note-editable,
+[data-theme="dark"] .note-dropdown-menu {
     background-color: #1c1c1c !important;
+}
+
+[data-theme="dark"] .text-smd {
+    color: #fc6504 !important;
 }
 
 
@@ -32,11 +40,15 @@
     color: #1c1c1c !important;
 }
 
-[data-theme="dark"] .card
-,[data-theme="dark"] .card-body
-,[data-theme="dark"] .input-group-text
-,[data-theme="dark"] .modal-content {
+[data-theme="dark"] .card,
+[data-theme="dark"] .card-body,
+[data-theme="dark"] .input-group-text,
+[data-theme="dark"] .modal-content {
     background-color: #1c1c1c;
+}
+
+[data-theme="dark"] .dropdown-content span {
+    color: #000000 !important;
 }
 
 [data-theme="dark"] .container {
@@ -48,56 +60,56 @@
 }
 
 [data-theme="dark"] .course-bg {
-    background-image: url('../images/background/bg_dark_resize.jpg');
+    background-image: url('https://cdn.discordapp.com/attachments/636478500206936094/704277379404660766/test_dm.png');
     width: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-[data-theme="dark"] a
-,[data-theme="dark"] li .page-item {
+[data-theme="dark"] a,
+[data-theme="dark"] li .page-item {
     color: #ffc30f;
 }
 
-[data-theme="dark"] h1
-,[data-theme="dark"] h2
-,[data-theme="dark"] h3
-,[data-theme="dark"] h4
-,[data-theme="dark"] h5
-,[data-theme="dark"] p
-,[data-theme="dark"] li
-,[data-theme="dark"] ul
-,[data-theme="dark"] table
-,[data-theme="dark"] blockquote
-,[data-theme="dark"] span {
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] p,
+[data-theme="dark"] li,
+[data-theme="dark"] ul,
+[data-theme="dark"] table,
+[data-theme="dark"] blockquote,
+[data-theme="dark"] span {
     color: white !important;
 }
 
-[data-theme="dark"] .table-hover tbody tr:hover td
-, [data-theme="dark"] .table-hover tbody tr:hover th {
+[data-theme="dark"] .table-hover tbody tr:hover td,
+[data-theme="dark"] .table-hover tbody tr:hover th {
     background-color: white;
 }
 
 
-[data-theme="dark"] .carousel h1
-,[data-theme="dark"] .carousel h2
-,[data-theme="dark"] .carousel h3
-,[data-theme="dark"] .carousel h4
-,[data-theme="dark"] .carousel h5
-,[data-theme="dark"] .carousel p {
+[data-theme="dark"] .carousel h1,
+[data-theme="dark"] .carousel h2,
+[data-theme="dark"] .carousel h3,
+[data-theme="dark"] .carousel h4,
+[data-theme="dark"] .carousel h5,
+[data-theme="dark"] .carousel p {
     color: white !important;
 }
 
 [data-theme="dark"] .navbar {
-    background-image: url('../images/background/bg_dark_resize.jpg') !important;
+    background-image: url('../images/background/bg_dark_new.png') !important;
     background-repeat: no-repeat;
     background-size: 100%;
 }
 
 @media only screen and (max-width: 768px) {
     [data-theme="dark"] .navbar {
-        background-image: url('../images/background/bg_normal_resize.jpg');
+        background-image: url('../images/background/bg_normal_new_new.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: fixed;

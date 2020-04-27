@@ -145,7 +145,11 @@
     }
 
     .text-smd {
-        color: #fc6504;
+        color: #fc6504 !important;
+    }
+
+    .indexNews {
+        background-color: white;
     }
 
     .bg-smd {
@@ -178,13 +182,13 @@
 
     /* https://cdn.discordapp.com/attachments/636478500206936094/696627513681772595/bg_light.jpg */
     .navbar {
-        background-image: url('../images/background/bg_normal_resize.jpg');
+        background-image: url('../images/background/bg_normal_new_new.jpg');
         background-repeat: no-repeat;
         background-size: 100%;
     }
 
     .admin {
-        background-image: url('../images/background/bg_dark_resize.jpg');
+        background-image: url('../images/background/bg_dark_new.png');
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -210,14 +214,14 @@
 
     @media only screen and (max-width: 768px) {
         .navbar {
-            background-image: url('../images/background/bg_normal_resize.jpg');
+            background-image: url('../images/background/bg_normal_new_new.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             background-position: fixed;
         }
 
         .admin {
-            background-image: url('../images/background/bg_dark_resize.jpg');
+            background-image: url('../images/background/bg_dark_new.png');
             background-repeat: no-repeat;
             background-size: cover;
             background-position: fixed;
@@ -289,13 +293,12 @@
         border: none;
     }
 
-    /*
-    .rounded-circle-image{ 
-        background-image:url("https://i.gyazo.com/da27f072059db48590e3b9da9d7789c2.jpg");
-        background-position:center;
-        background-size:cover;
+
+    .rounded-circle-image {
+        background-image: url("https://i.gyazo.com/da27f072059db48590e3b9da9d7789c2.jpg");
+        background-position: center;
+        background-size: cover;
         height: 120px;
         width: 120px;
         border-radius: 50%;
     }
-    */

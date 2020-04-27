@@ -226,63 +226,77 @@
         <div class="row mb-4">
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
-                    <img src="../assets/images/course/2_p_normal.jpg" class="img-fluid">
-                    <div class="mask flex-center rgba-orange-light">
-                    </div>
+                    <a href="../file/post/attachment/41/_20200117160236_S__1310728.jpg">
+                        <img src="../assets/images/course/2_p_normal.jpg" class="img-fluid">
+                        <div class="mask flex-center rgba-orange-light">
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
-                    <img src="../assets/images/course/2_p_jems.jpg" class="img-fluid">
-                    <div class="mask flex-center rgba-orange-light">
-                    </div>
+                    <a href="../file/post/attachment/41/_20200117160236_S__1310728.jpg">
+                        <img src="../assets/images/course/2_p_jems.jpg" class="img-fluid">
+                        <div class="mask flex-center rgba-orange-light">
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="col-2">
                 <div class="view overlay zoom z-depth-1">
-                    <img src="../assets/images/course/2_reg.jpg" class="img-fluid">
-                    <div class="mask flex-center rgba-orange-light">
-                    </div>
+                    <a href="http://www.smd.kku.ac.th/">
+                        <img src="../assets/images/course/2_reg.jpg" class="img-fluid">
+                        <div class="mask flex-center rgba-orange-light">
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="col-2">
                 <div class="view overlay zoom z-depth-1">
-                    <img src="../assets/images/course/2_contact.jpg" class="img-fluid">
-                    <div class="mask flex-center rgba-orange-light">
-                    </div>
+                    <a href="https://www.facebook.com/SMD.KKU">
+                        <img src="../assets/images/course/2_contact.jpg" class="img-fluid">
+                        <div class="mask flex-center rgba-orange-light">
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
-                    <img src="../assets/images/course/2_s_normal.jpg" class="img-fluid">
-                    <div class="mask flex-center rgba-orange-light">
-                    </div>
+                    <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg">
+                        <img src="../assets/images/course/2_s_normal.jpg" class="img-fluid">
+                        <div class="mask flex-center rgba-orange-light">
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
-                    <img src="../assets/images/course/2_s_sems.jpg" class="img-fluid">
-                    <div class="mask flex-center rgba-orange-light">
-                    </div>
+                    <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg">
+                        <img src="../assets/images/course/2_s_sems.jpg" class="img-fluid">
+                        <div class="mask flex-center rgba-orange-light">
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
-                    <img src="../assets/images/course/2_s_scius.jpg" class="img-fluid">
-                    <div class="mask flex-center rgba-orange-light">
-                    </div>
+                    <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg">
+                        <img src="../assets/images/course/2_s_scius.jpg" class="img-fluid">
+                        <div class="mask flex-center rgba-orange-light">
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
     <?php } ?>
     <?php if (getConfig('indexpg_showLatestNews', 'bool', $conn)) { ?>
-    <div style="background-color: white">
+    <div class="indexNews">
         <div class="container">
             <h1 id="news" name="news" class="font-weight-bold"><a href="../category/news-1"><img
-                        src="../assets/images/element/news_header.png"></a>
+                        src="../assets/images/element/news_header.png" class="img-fluid"></a>
                 <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../post/create"
                     class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
             </h1>

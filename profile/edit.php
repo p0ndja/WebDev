@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-md-4 col-sm-12">
                     <div class="sticky-content mb-3">
-                        <img src="<?php echo $profile_image; ?>" class="w-100 mb-3 rounded-circle" alt="Profile" id="profile_preview">
+                        <img src="<?php echo $profile_image; ?>" class="w-100 mb-3 img-thumbnail" alt="Profile" id="profile_preview">
                         <br>
                         <input type="file" name="profile_upload" id="profile_upload"
                             class="form-control-file validate mb-3" accept="image/png, image/jpeg">
