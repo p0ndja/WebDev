@@ -17,7 +17,7 @@
             <!--Table-->
             <div class="row">
                 <div class="col-12 col-md-5">
-                    <div class="card card-body card-text">
+                    <div class="card card-body card-text mb-3">
                         <h1 class="text-center font-weight-bold text-smd">ใบเช็คชื่อ</h1>
                         <div class="select-outline">
                             <select class="mdb-select md-form type" id="grade" name="grade" required>
@@ -42,13 +42,24 @@
                         </div>
                         <div class="md-form">
                             <input placeholder="กรุณาเลือกวัน" type="text" id="date-picker-example"
-                                class="form-control datepicker">
+                                class="form-control datepicker"
+                                <?php if (isset($_GET['date'])) echo 'value="' . $_GET['date'] . '"'; else echo 'value="' . curDate() . '"'; ?>>
                             <label for="date-picker-example" class="text-primary">วัน</label>
                         </div>
-                        <a class="btn btn-warning" id="btn_query" name="btn_query">ดึงข้อมูล</a>
+                        <a class="btn btn-warning btn-lg" id="btn_query" name="btn_query"><i class="fas fa-download"></i> ดึงข้อมูล</a>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-end">
+                        <a class="btn btn-success btn-lg text-right" id="btn_save" name="btn_save"><i class="fas fa-save"></i> บันทึก</a>
                     </div>
                 </div>
                 <div class="col-12 col-md-7">
+                    <?php if (isset($_GET['grade']) && isset($_GET['class']) && isset($_GET['date'])) { ?>
+                    <div class="text-center">
+                        <h2>คุณกำลังเช็คชื่อระดับชั้น ม.<?php echo $_GET['grade'] . '/' . $_GET['class']; ?></h2>
+                        <h4>ประจำวันที่ <?php echo $_GET['date']; ?></h4>
+                    </div>
+                    <?php }?>
                     <div class='table-responsive'>
                         <table id="tblData" class="table table-sm table-bordered">
                             <thead>
@@ -66,10 +77,22 @@
                             </thead>
                             <tbody>
                                 <?php
-                        $q = "SELECT * FROM `std` WHERE grade = 6 AND class = 1 ORDER BY `prefix` DESC,`id` ASC";
-                        $r = mysqli_query($conn, $q);
-                        $i = 0;
-                        while ($t = mysqli_fetch_array($r, MYSQLI_ASSOC)) { $i++; ?>
+                                if (!(isset($_GET['grade']) && isset($_GET['class']) && isset($_GET['date']))) {
+                                    $_GET['grade'] = 1; $_GET['class'] = 1; $_GET['date'] = curDate();
+                                }
+                                    $g = $_GET['grade']; $c = $_GET['class']; $d = "d" . str_replace("/", "", $_GET['date']);                                    
+                                    
+                                    $r = mysqli_query($conn, "ALTER TABLE `std_checktest` ADD COLUMN IF NOT EXISTS $d BOOL DEFAULT FALSE");
+                                    if (!$r) die('Could not alter data: '.mysqli_error($conn));
+                                
+                                    $r = mysqli_query($conn, "SELECT * FROM `std_checktest` WHERE grade = $g AND class = $c ORDER BY `prefix` DESC,`id` ASC");
+                                    if (!$r) die('Could not get data: '.mysqli_error($conn));
+
+                                    $checklist = array();
+
+                                    $i = 0;
+                                    while ($t = mysqli_fetch_array($r, MYSQLI_ASSOC)) { $i++; 
+                                    array_push($checklist, $t['id']); ?>
                                 <tr>
                                     <th scope="row"><?php echo $i; ?></th>
                                     <td class="text-center"><?php echo $t['id']; ?></td>
@@ -78,8 +101,8 @@
                                     <td class="text-nowrap"><?php echo $t['lastname']; ?></td>
                                     <td>
                                         <div class="custom-control custom-checkbox text-center">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="<?php echo $t['id']; ?>">
+                                            <input type="checkbox" class="custom-control-input thisisastudentcheck"
+                                                id="<?php echo $t['id']; ?>" name="<?php echo $t['id']; ?>">
                                             <label class="custom-control-label" for="<?php echo $t['id']; ?>"></label>
                                         </div>
                                     </td>
@@ -101,10 +124,32 @@
 
         $('#grade option[value=<?php if (isset($_GET['grade'])) echo $_GET['grade']; else echo 1; ?>]').attr('selected', 'selected');
         $('#class option[value=<?php if (isset($_GET['class'])) echo $_GET['class']; else echo 1; ?>]').attr('selected', 'selected');
-        $('#class option[value=<?php if (isset($_GET['date'])) echo $_GET['date']; ?>]').attr('selected', 'selected');
 
         $("#btn_query").click(function () {
-            window.location.href = "?grade=" + $("#grade").val() + "&class=" + $("#class").val() + "&date=" + $(".datepicker").val() ;
+            window.location.href = "?grade=" + $("#grade").val() + "&class=" + $("#class").val() + "&date=" + $(".datepicker").val();
+        });
+
+        $('input[type="checkbox"]').on('change', function (e) {
+            console.log(e.target.name + "@" + "<?php echo $d; ?>" + "=" + e.target.checked);
+            $.ajax({
+                url: "stdCheck_save.php",
+                type: "POST",
+                //pass data like this 
+                data: {
+                    name: e.target.name,
+                    col: "<?php echo $d; ?>",
+                    bool: e.target.checked
+                },
+                cache: false,
+                success: function (data) {
+                    if (data) {
+                        toastr.success("อัพเดทค่า '" + e.target.name + "' เป็น " + e.target
+                            .checked);
+                    } else {
+                        toastr.error("ไม่สามารถปรับค่าของ '" + e.target.name + "' ได้");
+                    }
+                }
+            });
         });
 
         $("#grade").change(function () {
@@ -114,6 +159,7 @@
                 $("#scius").prop('disabled', false);
             }
         });
+
         $('.datepicker').pickadate({
             format: 'dd/mm/yyyy',
             formatSubmit: 'yyyymmdd',
