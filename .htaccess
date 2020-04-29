@@ -21,7 +21,7 @@ RewriteRule ^p/(.*)$ pages/$1.php
 
 RewriteRule ^logout/$ global/logout.php
 
-RewriteRule ^discord https://discord.gg/PWjHEV3
+RewriteRule ^discord https://discord.gg/Xfcex7C
 
 Options +FollowSymlinks
 Options +Indexes
