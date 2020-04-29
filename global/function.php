@@ -76,6 +76,15 @@
         }
         //saveAchidata('604019', 'page404', '...', $conn);
 
+        function getStdCheckdata($id, $data, $conn) {
+            return getAnySQL('std_checktest', $data, 'id', $id, $conn);
+        }
+
+        function saveStdCheckdata($id, $data, $val, $conn) {
+            if (saveAnySQL('std_checktest', $data, $val, 'id', $id, $conn)) return true;
+            return false;
+        }
+
         function getProfilePicture($id, $conn) {
             $_array = getProfiledata($id,'profile',$conn);
             if ($_array != null) return $_array;
@@ -151,6 +160,10 @@
 
     function unformat_curTime() {
         date_default_timezone_set('Asia/Bangkok'); return date('YmdHis', time());
+    }
+
+    function curDate() {
+        date_default_timezone_set('Asia/Bangkok'); return date('d/m/Y', time());
     }
 
     function curTime() {
