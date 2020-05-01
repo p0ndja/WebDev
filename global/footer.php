@@ -7,18 +7,13 @@
                     โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</h4>
                 <hr>
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-3">
                 <p style="color: white">เกี่ยวกับ</p>
                 <ul>
                     <li style="color: #ff6c00"><a href="../post/20" style="color: white">ประวัติโรงเรียน</a></li>
                     <li style="color: #ff6c00"><a href="../post/22" style="color: white">เกี่ยวกับโรงเรียน</a></li>
-                    </li>
-                    <li style="color: #ff6c00"><a href="../post/25" style="color: white">คณะกรรมการประจำโรงเรียน</a>
-                    </li>
-                    <li style="color: #ff6c00"><a href="../post/26" style="color: white">โครงสร้างการบริหาร</a>
-                    </li>
+                    <li style="color: #ff6c00"><a href="../post/25" style="color: white">คณะกรรมการประจำโรงเรียน</a></li>
+                    <li style="color: #ff6c00"><a href="../post/26" style="color: white">โครงสร้างการบริหาร</a></li>
                     <li style="color: #ff6c00"><a href="../post/29" style="color: white">ทำเนียบผู้บริหาร</a></li>
                     <li style="color: #ff6c00"><a href="../post/32" style="color: white">คณะผู้บริหาร</a></li>
                     <li style="color: #ff6c00"><a href="../post/37" style="color: white">บุคลากร</a></li>
@@ -27,16 +22,12 @@
             <div class="col-md-3">
                 <p style="color: white">หน่วยงาน</p>
                 <ul>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">
-                            งานแผนและประกันคุณภาพ</a></li>
-                    <li style="color: #ff6c00"><a style="color: white"
-                            href="https://www.admissionpremium.com/gis/KKU/login"> งานแนะแนว </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานทะเบียน </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานพัฒนาบุคลิกภาพ </a>
-                    </li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> งานห้องสมุด </a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">
-                            ชมรมผู้ปกครองและครู</a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">งานแผนและประกันคุณภาพ</a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="https://www.admissionpremium.com/gis/KKU/login">งานแนะแนว</a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">งานทะเบียน</a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">งานพัฒนาบุคลิกภาพ</a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">งานห้องสมุด</a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">ชมรมผู้ปกครองและครู</a></li>
                 </ul>
                 <a style="color: white" href="../pages/subject.php"> เอกสารประกอบการสอน </a></li>
             </div>
