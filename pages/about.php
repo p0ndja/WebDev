@@ -14,7 +14,7 @@
     </nav>
     <div class="container mb-4" id="container" style="padding-top: 88px">
         <p>
-            <h1 class="font-weight-bold">WebDev</h1>
+            <h1 class="font-weight-bold text-smd">WebDev</h1>
             <h5>
                 <hr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 สำหรับโปรเจค WebDev นี้เป็นโปรเจคที่พัฒนาขึ้น บนภาษา HTML, PHP, CSS, JavaScript, SQL (รวมถึง Bootstrap
@@ -32,7 +32,7 @@
                 something which is not prefectly. Feel free to create a pull request to us.
 
                 <br><br>
-                <p class="font-weight-bold">This project has a 'GNU General Public License v3.0', please keep in mind
+                <p class="font-weight-bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This project has a 'GNU General Public License v3.0', please keep in mind
                     that
                     you'll need to opensource your edited code if you using our code.</p>
                 <h5>
@@ -49,18 +49,18 @@
             </div>
         </div>
         <p>
-            <h2 class="font-weight-bold">Contributor</h2>
+            <h2 class="font-weight-bold text-smd">Contributor</h2>
             <hr>
-            <h5 class="font-weight-bold">Developer</h5>
+            <h5 class="font-weight-bold text-smd">ผู้พัฒนา</h5>
             <ul>
-                <li>Palapon Soontornpas - Project Director: Full-stack Developer <a
+                <li>Palapon Soontornpas - Project Director + Full-stack Developer <a
                         href="https://www.facebook.com/p0ndja" target="_blank"> <i
                             class="fas fa-external-link-alt"></i></a></li>
                 <li>Sahatsawat Sudaphonrat - Art Director + Webpage Editor <a
                         href="https://www.facebook.com/Sahatsawat.Risaka" target="_blank"> <i
                             class="fas fa-external-link-alt"></i></a></li>
             </ul>
-            <h5 class="font-weight-bold">Consultant</h5>
+            <h5 class="font-weight-bold text-smd">Consultant</h5>
             <ul>
                 <li>Asst. Prof. Donchai Srisamran | Associate School Director of The demonstration school of Khon Kaen
                     University (Mo Din Daeng)</li>
@@ -70,7 +70,7 @@
             </ul>
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <h5 class="font-weight-bold">Beta Testers</h5>
+                    <h5 class="font-weight-bold text-smd">Beta Testers</h5>
                     <ul>
                         <li>Palapon Soontornpas</li>
                         <li>Sahatsawat Sudaphonrat</li>
@@ -93,7 +93,7 @@
                     </ul>
                 </div>
                 <div class="col-12 col-md-6">
-                    <h5 class="font-weight-bold">Special Thanks</h5>
+                    <h5 class="font-weight-bold text-smd">Special Thanks</h5>
                     <ul>
                         <li>Sireethorn Pintaraks</li>
                         <li>Peeranat Matsor</li>
@@ -104,6 +104,9 @@
                         <li>Mr. Akkarawat Srisawat</li>
                         <li>Mr. Chedtharat Kongrat</li>
                     </ul>
+                    <hr>
+                    <h5 class="font-weight-bold text-smd">Start Development Date</h5>
+                    <p>&nbsp;22 October 2019</p>
                 </div>
             </div>
         </p>
