@@ -9,6 +9,9 @@
     <!-- Webcustom -->
     <link rel="shortcut icon" href="../assets/images/logo/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../assets/images/logo/favicon.ico" type="image/x-icon">
+    <link rel="icon" sizes="192x192" href="../assets/images/logo/smdlogo_android192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../assets/images/logo/smdlogo_ios152.png">
+
     <title>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
     <link rel="image_src" href="../assets/images/default/thumbnail.jpg" />
     <meta property="og:image" content="../assets/images/default/thumbnail.jpg" />
