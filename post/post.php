@@ -6,7 +6,7 @@
 <head>
     <?php include '../global/head.php'; ?>
     <?php
-        $title = ""; $tags = ""; $cover = ""; $article = ""; $attached = null; $hotlink = null; $hide = false; $type = null;
+        $title = ""; $tags = ""; $cover = ""; $article = ""; $attached = null; $hotlink = null; $hide = false; $type = "news";
             if (isset($_GET['id']) && isValidPostID($_GET['id'], $conn)) {
                 $postID = $_GET['id'];
                     $article = getPostdata($postID, 'article', $conn);
@@ -95,11 +95,10 @@
                     <input type="text" id="hotlinkField" name="hotlinkField"
                         class="form-control form-control-sm validate mb-4"
                         <?php if ($hotlink != null) echo 'style="display: block"'; else echo 'style="display: none"'; ?>
-                        placeholder="Enter URL Here" value="<?php echo $hotlink; ?>">
-                    <div class="mb-5"></div>
+                        placeholder="Enter URL Here" value="<?php echo $hotlink; ?>">                    
                     <div id="hotlinkHiddenZone" name="hotlinkHiddenZone"
                         <?php if ($hotlink != null) echo 'style="display: none"'; else echo 'style="display: block"'; ?>>
-                        <div class="form-group mb-4">
+                        <div class="form-group mb-4 mt-5">
                             <label for="article">
                                 <h3 class="font-weight-bold">เนื้อข่าว / Article</h3>
                             </label>
@@ -116,7 +115,8 @@
                                     name="attachmentURL" placeholder="ไฟล์แนบท้าย" value="<?php echo $attached;?>">
                             </div>
                         </div>
-                        <div class="row">
+                    </div>
+                    <div class="row">
                             <div class="col-12 col-md-4">
                                 <div class="select-outline">
                                     <select class="mdb-select md-form type" id="type" name="type" required>
@@ -150,7 +150,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
                     <div class="row justify-content-end">
                         <h6><a onclick="back();" class="btn btn-danger">ยกเลิก</a><input type="submit"
                                 class="btn btn-success" value="บันทึก"
