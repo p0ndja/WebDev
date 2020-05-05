@@ -13,10 +13,7 @@
     <link rel="apple-touch-icon" sizes="152x152" href="../assets/images/logo/smdlogo_ios152.png">
 
     <title>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
-    <link rel="image_src" href="../assets/images/default/thumbnail.jpg" />
-    <meta property="og:image" content="../assets/images/default/thumbnail.jpg" />
-    <meta property="og:title" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
-    <meta property="og:description" content="123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002 โทรศัพท์ / โทรสาร 043202044" />
+    <?php generateOpenGraphMeta($conn); ?>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="../assets/bootstrap/bootstrap.min.css">

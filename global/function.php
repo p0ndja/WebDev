@@ -1,7 +1,4 @@
 <?php declare(strict_types=1);
-
-    $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
     function isLogin() {
         if (isset($_SESSION['id'])) return true;
         return false;
@@ -189,6 +186,28 @@
         $base64='data:'. $type . '/'. $type . ';base64,'. base64_encode($data);
         unlink($finaldir);
         return $base64;
+    }
+?>
+<?php
+    function generateOpenGraphMeta($conn) {
+        $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        if (strpos($current_url, "/post")) {
+            //Mean you're currently browsing in post page
+            if (isset($_GET['id']) && isValidPostID($_GET['id'], $conn)) {
+                $postID = $_GET['id'];
+                    $title = getPostdata($postID, 'title', $conn);
+                    $cover = getPostdata($postID, 'cover', $conn); ?>
+            <link rel="image_src" href="<?php echo $cover; ?>" />
+            <meta property="og:image" content="<?php echo $cover; ?>" />
+            <meta property="og:title" content="<?php echo $title;?>" />
+            <meta property="og:description" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
+            <?php }
+        } else { ?>
+            <link rel="image_src" href="../assets/images/default/thumbnail.jpg" />
+            <meta property="og:image" content="../assets/images/default/thumbnail.jpg" />
+            <meta property="og:title" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
+            <meta property="og:description" content="123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002 โทรศัพท์ / โทรสาร 043202044" />
+        <?php }
     }
 ?>
 <?php 
