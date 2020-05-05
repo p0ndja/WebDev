@@ -36,7 +36,7 @@
                                 <option value="2">ห้อง 2</option>
                                 <option value="3">ห้อง 3</option>
                                 <option value="4">ห้อง 4</option>
-                                <option value="5" id="scius" disabled>ห้อง 5</option>
+                                <option value="5" id="scius">ห้อง 5</option>
                             </select>
                             <label class="mdb-main-label">ห้อง</label>
                         </div>
