@@ -195,8 +195,12 @@
             //Mean you're currently browsing in post page
             if (isset($_GET['id']) && isValidPostID($_GET['id'], $conn)) {
                 $postID = $_GET['id'];
-                    $title = getPostdata($postID, 'title', $conn);
-                    $cover = getPostdata($postID, 'cover', $conn); ?>
+                $title = getPostdata($postID, 'title', $conn);
+                $cover = getPostdata($postID, 'cover', $conn);
+                if ($cover == null) {
+                    $cover = "../assets/images/default/thumbnail.jpg";
+                }
+                ?>
             <link rel="image_src" href="<?php echo $cover; ?>" />
             <meta property="og:image" content="<?php echo $cover; ?>" />
             <meta property="og:title" content="<?php echo $title;?>" />
