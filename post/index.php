@@ -141,19 +141,19 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
-                    <a class="page-link" href="?page=1<?php if (isset($_GET['tags'])) echo '&tags=' . $_GET['tags']; ?>"
+                    <a class="page-link" href="../category/<?php echo $_GET['category'] . "-1"?><?php if (isset($_GET['tags'])) echo '&tags=' . $_GET['tags']; ?>"
                         aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
                 <?php for($i=1;$i<=$total_page;$i++){ ?>
                 <li class="page-item"><a class="page-link"
-                        href="?page=<?php echo $i;?><?php if (isset($_GET['tags'])) echo '&tags=' . $_GET['tags']; ?>"><?php echo $i; ?></a>
+                        href="../category/<?php echo $_GET['category'] . "-" . $i;?><?php if (isset($_GET['tags'])) echo '&tags=' . $_GET['tags']; ?>"><?php echo $i; ?></a>
                 </li>
                 <?php } ?>
                 <li class="page-item">
                     <a class="page-link"
-                        href="?page=<?php echo $total_page;?><?php if (isset($_GET['tags'])) echo '&tags=' . $_GET['tags']; ?>"
+                        href="../category/<?php echo $_GET['category'] . "-" . $total_page;?><?php if (isset($_GET['tags'])) echo '&tags=' . $_GET['tags']; ?>"
                         aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
