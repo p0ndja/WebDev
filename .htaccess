@@ -6,7 +6,8 @@ RewriteRule ^post/([0-9]+)$ post/?id=$1
 RewriteRule ^post/create$ post/post.php
 RewriteRule ^post/edit-([0-9]+)$ post/post.php?id=$1
 
-RewriteRule ^category/(.*)-([0-9]+)$ post/index.php?catagory=$1&page=$2
+RewriteRule ^category/(.*)-([0-9]+)$ post/index.php?category=$1&page=$2
+RewriteRule ^category/(.*)-([0-9]+)-(.*)$ post/index.php?category=$1&page=$2&tags=$3
 
 RewriteRule ^darkmode/$ pages/darkmode.php
 
@@ -18,6 +19,7 @@ RewriteRule ^search/$ pages/search.php
 RewriteRule ^storage/(.*)-(.*)/(.*)$ file/$1/attachment/$2/$3
 
 RewriteRule ^p/(.*)$ pages/$1.php
+RewriteRule ^s/(.*)$ admin/$1.php
 
 RewriteRule ^logout/$ global/logout.php
 
