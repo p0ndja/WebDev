@@ -1,4 +1,6 @@
-<!--div class="modal fade" id="announcementPopup" name="announcementPopup" tabindex="-1" role="dialog"
+
+<!-- Announcement Modal -->
+<div class="modal animated jackInTheBox fadeOut" id="announcementPopup" name="announcementPopup" tabindex="-1" role="dialog"
     aria-labelledby="announcementTitle" aria-hidden="true">
     <div class="modal-dialog modal-notify modal-warning modal-lg" role="document">
         <div class="modal-content">
@@ -9,29 +11,27 @@
                 </button>
             </div>
             <div class="modal-body">
-                <img src="https://www.easyuppic.com/images/2020/02/17/regist63-min.jpg"
+                <img src="https://repository-images.githubusercontent.com/216790969/da52a000-7792-11ea-997b-7503371435f0"
                     class="img-fluid w-100 d-flex justify-content-center mb-3 z-depth-2">
                 <div class="modal-text">
-                    <p>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)
-                        เปิดรับสมัครนักเรียนเพื่อสอบเข้าศึกษาต่อในระดับชั้นมัธยมศึกษาปีที่ 4 ประจำปีการศึกษา 2563
-                        สามารถสมัครสอบผ่านระบบออนไลน์ที่เว็บไซต์ <a
-                            href="http://www.smd.kku.ac.th">www.smd.kku.ac.th</a> ระหว่างวันที่ 3 กุมภาพันธ์ – 3 มีนาคม
-                        2563 สอบถามรายละเอียดเพิ่มเติม โทร.<a href="tel:091-056-7871">091-056-7871</a></p>
+                    <p class="text-center">ทางผู้พัฒนาขอความร่วมมือจากผู้เข้าชมเว็บไซต์ทุก ๆ ท่าน ร่วมตอบแบบสอบถามความพึงพอใจในการใช้งานเว็บไซต์ <a href="https://smd.pondja.com">smd.pondja.com</a> / <a href="https://smd.p0nd.ga">smd.p0nd.ga</a></p>
+                    <a href="https://forms.gle/HfxaWmjVGKjARUR18" target="_blank" class="text-center text-smd"><h1 class="animated infinite pulse">ตอบแบบสอบถาม</h1></a>
                 </div>
             </div>
             <div class="modal-footer">
-                <a href="http://smd-s.kku.ac.th/home/images/smd-63/announce3297.pdf" target="_blank"
-                    class="btn btn-warning">รายละเอียดเพิ่มเติม</a>
-                <button type="button" class="btn btn-warning" data-dismiss="modal">ปิดหน้าต่าง</button>
+                <a class="btn btn-md btn-warning" data-dismiss="modal">ปิดหน้าต่าง</a>
             </div>
         </div>
     </div>
-</div-->
+</div>
+<!-- Announcement Modal -->
+
+<!-- Mobile Cpanel Modal -->
 <?php if (isLogin()) { ?>
 <div class="modal fade right" id="futureCpanel" tabindex="-1" role="dialog" aria-labelledby="cpanelTitle"
     aria-hidden="true">
-    <div class="modal-dialog modal-full-height modal-right modal-sm" role="document">
-        <div class="modal-content">
+    <div class="modal-dialog modal-dialog-full-width modal-right modal-sm" role="document">
+        <div class="modal-content-full-width modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="cpanelTitle">สวัสดี!
                     <?php echo $_SESSION['name'] . ' (' . $_SESSION['username'] . ')'; ?></h5>
@@ -40,10 +40,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="text-center">
-                    <img src="<?php echo getProfilePicture($_SESSION['id'], $conn); ?>" class="img-fluid">
-                </div>
-                <hr>
                 <a class="dropdown-item" href="../profile"> ข้อมูลส่วนตัว <i class="fas fa-user"></i></a>
                 <a class="dropdown-item" href="#"> ลงทะเบียนวิชาเลือก <i class="fas fa-tasks"></i></a>
                 <a class="dropdown-item" href="#"> การเช็คชื่อ <i class="fas fa-calendar-check"></i></a>
@@ -65,6 +61,10 @@
         </div>
     </div>
 </div>
+<!-- Mobile Cpanel Modal -->
+
+
+<!-- Login Modal -->
 <?php } else {?>
 <div class="modal fade right" name="login" id="login" tabindex="-1" role="dialog" aria-hidden="true">
     <!--div class="modal-dialog cascading-modal" role="document"-->
@@ -112,9 +112,8 @@
                             </div>
                             <!--Footer-->
                             <div class="modal-footer">
-                                <button class="btn btn-danger" data-dismiss="modal">Close</button>
                                 <input class="btn btn-success" type="submit" name="login_submit" value="Login"></input>
-                                
+                                <button class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                         </form>
                     </div>
@@ -125,7 +124,6 @@
 
                         <form method="post" action="../global/login.php" enctype="multipart/form-data">
                             <!--Body-->
-
                             <div class="modal-body mb-1">
                                 <?php
                                 if (isset($_SESSION['error'])) {
@@ -137,12 +135,12 @@
                                         <label for="register_prefix" class="col-form-label col-md-auto">คำนำหน้า </label>
                                         <div class="align-items-center col-md-auto d-flex">
                                             <select class="form-control" id="register_prefix" name="register_prefix" required>
-                                            <option value="เด็กชาย">เด็กชาย</option>
+                                                <option value="เด็กชาย">เด็กชาย</option>
                                                 <option value="เด็กหญิง">เด็กหญิง</option>
                                                 <option value="นาย">นาย</option>
                                                 <option value="นาง">นาง</option>
                                                 <option value="นางสาว">นางสาว</option>
-                                                          </select>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -243,9 +241,9 @@
                             </div>
                             <!--Footer-->
                             <div class="modal-footer">
-                                <button class="btn btn-danger" data-dismiss="modal">Close</button>
                                 <input class="btn btn-success" type="submit" name="register_submit"
                                     value="Sign Up"></input>
+                                <button class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                         </form>
                     </div>
@@ -257,6 +255,9 @@
         <!--/.Content-->
     </div>
 </div>
+<!-- Login Modal -->
+
+
 <?php } ?>
 <?php 
     if (isset($_SESSION['success'])) { 
