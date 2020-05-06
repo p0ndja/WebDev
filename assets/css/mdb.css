@@ -2,28 +2,28 @@
 
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB PRO 4.9.0
+ *   Version: MDB PRO 4.11.0
  * 
  * 
- * Copyright: Material Design for Bootstrap
- * https://mdbootstrap.com/
+ *   Copyright: Material Design for Bootstrap
+ *   https://mdbootstrap.com/
  * 
- * Read the license: https://mdbootstrap.com/general/license/
+ *   Read the license: https://mdbootstrap.com/general/license/
  * 
  * 
- * Documentation: https://mdbootstrap.com/
+ *   Documentation: https://mdbootstrap.com/
  * 
- * Getting started: https://mdbootstrap.com/docs/jquery/getting-started/download/
+ *   Getting started: https://mdbootstrap.com/docs/jquery/getting-started/download/
  * 
- * Tutorials: https://mdbootstrap.com/education/bootstrap/
+ *   Tutorials: https://mdbootstrap.com/education/bootstrap/
  * 
- * Templates: https://mdbootstrap.com/templates/
+ *   Templates: https://mdbootstrap.com/templates/
  * 
- * Support: https://mdbootstrap.com/support/
+ *   Support: https://mdbootstrap.com/support/
  * 
- * Contact: office@mdbootstrap.com
+ *   Contact: office@mdbootstrap.com
  * 
- * Attribution: Animate CSS, Twitter Bootstrap, Materialize CSS, Normalize CSS, Waves JS, WOW JS, Toastr, Chart.js
+ *   Attribution: Animate CSS, Twitter Bootstrap, Materialize CSS, Normalize CSS, Waves JS, WOW JS, Toastr, Chart.js
  */
 .mdb-color.lighten-5 {
     background-color: #d0d6e2 !important
@@ -2351,6 +2351,10 @@ a.text-light:focus {
 
 .font-small {
     font-size: .9rem
+}
+
+strong {
+    font-weight: 500
 }
 
 .view {
@@ -12771,8 +12775,19 @@ ul.stepper li.completed a .label {
     right: 35px;
     bottom: 35px;
     z-index: 998;
-    padding-top: 15px;
-    margin-bottom: 0
+    margin-bottom: 0;
+    overflow: hidden;
+    height: 500px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    padding: 15px 15px 15px 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px
 }
 
 .fixed-action-btn ul {
@@ -12787,12 +12802,14 @@ ul.stepper li.completed a .label {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    height: 64px;
+    height: 0;
     padding: 0;
     margin: 0 0 15px;
     text-align: center;
-    -webkit-transition: 400ms height;
-    transition: 400ms height
+    -webkit-transition: 400ms all;
+    transition: 400ms all;
+    opacity: 0;
+    margin-bottom: 0
 }
 
 .fixed-action-btn ul li {
@@ -12820,7 +12837,9 @@ ul.stepper li.completed a .label {
 }
 
 .fixed-action-btn.active ul {
-    height: 300px
+    height: 300px;
+    margin-bottom: 40px;
+    opacity: 1
 }
 
 button,
@@ -16806,6 +16825,29 @@ label.btn input[type="checkbox"]:disabled:checked+label:after {
     position: relative
 }
 
+.select-wrapper:not(.md-outline) .select-dropdown:focus {
+    border-bottom: 1px solid #4285f4;
+    -webkit-box-shadow: 0 1px 0 0 #4285f4;
+    box-shadow: 0 1px 0 0 #4285f4
+}
+
+.select-wrapper.active span.caret,
+.select-wrapper.active label.mdb-main-label {
+    color: #007bff
+}
+
+.select-wrapper.active+label {
+    color: #007bff
+}
+
+.select-wrapper input::-moz-selection {
+    background: transparent
+}
+
+.select-wrapper input::selection {
+    background: transparent
+}
+
 .select-wrapper input.select-dropdown {
     position: relative;
     z-index: 2;
@@ -16864,7 +16906,17 @@ label.btn input[type="checkbox"]:disabled:checked+label:after {
 
 .select-wrapper .search-wrap .md-form input {
     padding-bottom: .4rem;
-    margin-bottom: 0
+    margin-bottom: 0;
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0
+}
+
+.select-wrapper .search-wrap .md-form input:focus {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: 0 1px 0 0 #4285f4 !important;
+    box-shadow: 0 1px 0 0 #4285f4 !important
 }
 
 .select-wrapper span.caret {
@@ -16872,7 +16924,7 @@ label.btn input[type="checkbox"]:disabled:checked+label:after {
     top: .8rem;
     right: 0;
     font-size: .63rem;
-    color: initial
+    color: #495057
 }
 
 .select-wrapper span.caret.disabled {
@@ -16928,8 +16980,7 @@ label.btn input[type="checkbox"]:disabled:checked+label:after {
     left: 0;
     font-size: .8rem;
     -webkit-transform: translateY(-14px);
-    transform: translateY(-14px);
-    color: #4285f4
+    transform: translateY(-14px)
 }
 
 .select-wrapper>label.mdb-main-label.disabled {
@@ -16999,8 +17050,7 @@ label.btn input[type="checkbox"]:disabled:checked+label:after {
 
 .select-wrapper.md-form.md-outline span.caret {
     padding-right: .75rem;
-    padding-left: .75rem;
-    color: #495057 !important
+    padding-left: .75rem
 }
 
 .select-wrapper.md-form.md-outline span.caret.active {
@@ -17031,7 +17081,6 @@ label.btn input[type="checkbox"]:disabled:checked+label:after {
     padding-left: 5px;
     font-size: 13px;
     font-weight: 500;
-    color: #757575;
     background: #fff;
     -webkit-transform: translateY(40%);
     transform: translateY(40%)
@@ -17984,7 +18033,7 @@ button.mdb-autocomplete-clear svg {
 
 .side-nav.wide.slim {
     right: 3.75rem;
-    width: 3.75rem;
+    width: 3.75rem !important;
     -webkit-transition-timing-function: linear, linear, ease;
     transition-timing-function: linear, linear, ease;
     -webkit-transition-duration: .2s, .2s, .35s;
@@ -18504,6 +18553,11 @@ button.mdb-autocomplete-clear svg {
     margin-bottom: 5rem
 }
 
+.carousel-multi-item .carousel-inner {
+    padding-top: .5rem;
+    padding-bottom: 1rem
+}
+
 .carousel-multi-item .carousel-inner .carousel-item.active,
 .carousel-multi-item .carousel-item-next,
 .carousel-multi-item .carousel-item-prev {
@@ -18520,20 +18574,38 @@ button.mdb-autocomplete-clear svg {
 
 .carousel-multi-item .carousel-inner.v-2 .carousel-item-right.active,
 .carousel-multi-item .carousel-inner.v-2 .carousel-item-next {
-    -webkit-transform: translateX(33%);
-    transform: translateX(33%)
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%)
+}
+
+@media (min-width: 768px) {
+
+    .carousel-multi-item .carousel-inner.v-2 .carousel-item-right.active,
+    .carousel-multi-item .carousel-inner.v-2 .carousel-item-next {
+        -webkit-transform: translateX(33%);
+        transform: translateX(33%)
+    }
 }
 
 .carousel-multi-item .carousel-inner.v-2 .carousel-item-left.active,
 .carousel-multi-item .carousel-inner.v-2 .carousel-item-prev {
-    -webkit-transform: translateX(-33%);
-    transform: translateX(-33%)
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%)
+}
+
+@media (min-width: 768px) {
+
+    .carousel-multi-item .carousel-inner.v-2 .carousel-item-left.active,
+    .carousel-multi-item .carousel-inner.v-2 .carousel-item-prev {
+        -webkit-transform: translateX(-33%);
+        transform: translateX(-33%)
+    }
 }
 
 .carousel-multi-item .carousel-inner.v-2 .carousel-item-right,
 .carousel-multi-item .carousel-inner.v-2 .carousel-item-left {
-    -webkit-transform: translateX(0);
-    transform: translateX(0)
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%)
 }
 
 .carousel-multi-item .carousel-indicators li {
@@ -18562,7 +18634,7 @@ button.mdb-autocomplete-clear svg {
 }
 
 .carousel-multi-item .carousel-indicators {
-    margin-bottom: -2em
+    margin-bottom: -1em
 }
 
 .carousel-multi-item .card-cascade.narrower {
@@ -18571,10 +18643,8 @@ button.mdb-autocomplete-clear svg {
 }
 
 @media (min-width: 768px) {
-    .carousel-multi-item .col-md-4 {
-        float: left;
-        width: 33.333333%;
-        max-width: 100%
+    .carousel-multi-item [class*="col-"] {
+        float: left
     }
 }
 
@@ -26441,6 +26511,10 @@ ul.stepper li.completed a .grey-skin .circle {
 .datepicker.picker__input.picker__input--active,
 .timepicker.picker__input.picker__input--active {
     border-bottom: 1px solid #e3f2fd
+}
+
+.time-date-ghost {
+    display: none
 }
 
 .picker__list {

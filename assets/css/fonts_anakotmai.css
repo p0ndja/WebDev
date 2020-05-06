@@ -2,10 +2,10 @@
 
  @font-face {
      font-family: 'anakotmaimedium';
-     src: url('anakotmai-medium.woff2') format('woff2'),
-          url('anakotmai-medium.woff') format('woff'),
-          url('anakotmai-medium.ttf') format('truetype'),
-          url('anakotmai-medium.svg#anakotmaimedium') format('svg');
+     src: url('../font/anakotmai/anakotmai-medium.woff2') format('woff2'),
+          url('../font/anakotmai/anakotmai-medium.woff') format('woff'),
+          url('../font/anakotmai/anakotmai-medium.ttf') format('truetype'),
+          url('../font/anakotmai/anakotmai-medium.svg#anakotmaimedium') format('svg');
      font-weight: normal;
      font-style: normal;
  
