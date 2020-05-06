@@ -201,18 +201,20 @@
                     $cover = "../assets/images/default/thumbnail.jpg";
                 }
                 ?>
-            <link rel="image_src" href="<?php echo $cover; ?>" />
-            <meta property="og:image" content="<?php echo $cover; ?>" />
-            <meta property="og:title" content="<?php echo $title;?>" />
-            <meta property="og:description" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
+        <meta property="og:image" content="<?php echo $cover; ?>" />
+        <meta property="og:title" content="<?php echo $title;?>" />
+        <meta property="og:description" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
             <?php }
         } else { ?>
-            <link rel="image_src" href="../assets/images/default/thumbnail.jpg" />
-            <meta property="og:image" content="../assets/images/default/thumbnail.jpg" />
-            <meta property="og:title" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
-            <meta property="og:description" content="123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002 โทรศัพท์ / โทรสาร 043202044" />
-        <?php }
-    }
+        <meta property="og:image" content="../assets/images/default/thumbnail.jpg" />
+        <meta property="og:title" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
+        <meta property="og:description" content="123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002 โทรศัพท์ / โทรสาร 043202044" />
+        <?php } ?>
+        <link rel="image_src" href="../assets/images/logo/smdlogo.jpg" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="<?php echo $current_url; ?>" />
+        <meta property="fb:app_id" content="129081655091085" />
+    <?php }
 ?>
 <?php 
     function needLogin() {
