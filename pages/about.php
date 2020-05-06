@@ -14,7 +14,7 @@
     </nav>
     <div class="container mb-4" id="container" style="padding-top: 88px">
         <p>
-            <h1 class="font-weight-bold text-smd">WebDev</h1>
+            <div class="font-weight-bold text-smd text-center"><h1 class="animated tada">WebDev&nbsp;<a href="https://github.com/p0ndja/WebDev/" target="_blank" class="text-smd"><i class="fab fa-github"></i></a></h1></div>
             <h5>
                 <hr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 สำหรับโปรเจค WebDev นี้เป็นโปรเจคที่พัฒนาขึ้น บนภาษา HTML, PHP, CSS, JavaScript, SQL (รวมถึง Bootstrap
