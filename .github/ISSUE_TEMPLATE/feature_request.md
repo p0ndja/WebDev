@@ -1,20 +1,20 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: ''
+title: REQUEST
 labels: ''
-assignees: ''
+assignees: p0ndja
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
+## สิ่งที่ต้องการ / Your Request
+Somethings that you want..
+
+## ฟีเจอร์ที่ขอมาเป็นบัค / ปัญหาที่เกิดขึ้นหรือไม่ / Is your feature request related to a problem? Please describe.
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
-**Describe the solution you'd like**
+## โปรดอธิบายรูปแบบ - แนวทางคร่าว ๆ / Describe the solution you'd like
 A clear and concise description of what you want to happen.
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
-
-**Additional context**
+## อื่น ๆ / Additional context
 Add any other context or screenshots about the feature request here.
