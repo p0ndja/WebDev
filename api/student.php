@@ -1,9 +1,9 @@
 <?php
-    include '../global/connect.php';
+    require '../global/connect.php';
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json; charset=UTF-8");
 
-    $q = "SELECT * FROM `std`";
+    $q = "SELECT * FROM `std_2563`";
     $r = mysqli_query($conn, $q);
 
     $arr = array();
@@ -25,5 +25,7 @@
         array_push($arr["std"][$row['id']], $item);
     }
 
-    echo json_encode($arr, JSON_UNESCAPED_UNICODE);
+    print_r($arr);
+
+    //echo json_encode($arr, JSON_UNESCAPED_UNICODE);
 ?>

@@ -1,9 +1,9 @@
-<?php include '../global/connect.php'; ?>
+<?php require '../global/connect.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <?php include '../global/head.php';?>
+    <?php require '../global/head.php';?>
     <style>
         @media (min-width: 960px) {
             .card-columns {
@@ -34,9 +34,8 @@
 <body class="admin">
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar admin" id="nav"
         role="navigation">
-        <?php include '../global/navbar.php'; ?>
+        <?php require '../global/navbar.php'; ?>
     </nav>
-    <?php include '../global/popup.php' ?>
     <div class="container-fluid" id="container" style="padding-top: 88px">
         <?php needLogin(); ?>
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
@@ -82,10 +81,10 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <?php include ('settings.php'); ?>
+                <?php require ('settings.php'); ?>
             </div>
             <div class="tab-pane fade" id="user-management" role="tabpanel" aria-labelledby="user-management-tab">
-                <?php include ('users.php'); ?>
+                <?php require ('users.php'); ?>
             </div>
             <div class="tab-pane fade" id="news-management" role="tabpanel" aria-labelledby="news-management-tab">CCCC
             </div>
@@ -163,8 +162,9 @@
             });
         });
     </script>
+    <?php require '../global/popup.php'; ?>
     <footer class="d-none">
-        <?php include '../global/footer.php' ?>
+        <?php require '../global/footer.php' ?>
     </footer>
 </body>
 

@@ -15,7 +15,6 @@
     }
 
     function saveAnySQL($sql, $col, $val, $key, $key_val, $conn) {
-        debug('mysqli_query($conn, "UPDATE `' . $sql . '` SET ' . $col.' = '.$val .' WHERE ' . $key . ' = ' . $key_val . '")');
         return mysqli_query($conn, "UPDATE `$sql` SET $col = $val WHERE $key = '$key_val'");
     }
 
@@ -85,7 +84,7 @@
         function getProfilePicture($id, $conn) {
             $_array = getProfiledata($id,'profile',$conn);
             if ($_array != null) return $_array;
-            else return '../assets/images/default.png';
+            else return '../static/images/default.png';
         }
 
         function isValidUserID($id, $conn) {
@@ -143,8 +142,7 @@
         $d_en = getDisplayName($id, "EN", $conn);
         return '<div class="card mb-3" id="infocard"><div class="card-body"><h3 class="text-smd font-weight-bold">' . $d_th . '</h3><h5>' . $d_en . '</h5><hr><strong>รหัสนักเรียน</strong> ' . $id . '<br>' .$profile_class_detail . $profile_email . '</div></div>';
     }
-?>
-<?php
+
     function getClientIP() {
         if(!empty($_SERVER['HTTP_CLIENT_IP'])) return $_SERVER['HTTP_CLIENT_IP'];
         else if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) return $_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -187,8 +185,7 @@
         unlink($finaldir);
         return $base64;
     }
-?>
-<?php
+
     function generateOpenGraphMeta($conn) {
         $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         if (strpos($current_url, "/post")) {
@@ -198,7 +195,7 @@
                 $title = getPostdata($postID, 'title', $conn);
                 $cover = getPostdata($postID, 'cover', $conn);
                 if ($cover == null) {
-                    $cover = "../assets/images/default/thumbnail.jpg";
+                    $cover = "../static/images/default/thumbnail.jpg";
                 }
                 ?>
         <meta property="og:image" content="<?php echo $cover; ?>" />
@@ -206,16 +203,51 @@
         <meta property="og:description" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
             <?php }
         } else { ?>
-        <meta property="og:image" content="../assets/images/default/thumbnail.jpg" />
+        <meta property="og:image" content="../static/images/default/thumbnail.jpg" />
         <meta property="og:title" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
         <meta property="og:description" content="123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002 โทรศัพท์ / โทรสาร 043202044" />
         <?php } ?>
-        <link rel="image_src" href="../assets/images/logo/smdlogo.jpg" />
+        <link rel="image_src" href="../static/images/logo/smdlogo.jpg" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="<?php echo $current_url; ?>" />
         <meta property="fb:app_id" content="129081655091085" />
     <?php }
+
+    function addCategory($category, $conn) {
+
+    }
+
+    function removeCategory($category, $conn) {
+        
+    }
+
+    function listCategory($conn) {
+        $arr = array();
+        $unsplit_category = getConfig('global_categoryListThing', 'val', $conn);
+        foreach (explode("|", $unsplit_category) as $s) {
+            array_push($arr, $s);
+        }
+        return $arr;
+    }
+
+    function isValidCategory($category, $conn) {
+        foreach (listCategory($conn) as $a) {
+            if ($a == $category) return true;
+        }
+        return false;
+    }
+
+    function generateCategoryTitle($category) {
+        $path = "../static/images/header/$category.png";
+        if (file_exists($path)) {
+            return "<div><img src='../static/images/header/$category.png'/>";
+        } else {
+            return "<div class='display-4'>" . strtoupper($category);
+        }
+    }
+        
 ?>
+
 <?php 
     function needLogin() {
     if (!isLogin()) {?>
@@ -260,6 +292,35 @@
 <?php function home() {
     header("Location: ../home");
 } ?>
+<?php function logout() { ?>
+    <script>
+        swal({
+            title: "ออกจากระบบ ?",
+            text: "คุณต้องการออกจากระบบหรือไม่?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true}).then((willDelete) => { 
+                if (willDelete) { 
+                    window.location = "../global/logout.php";
+                }
+            });
+</script>
+<?php } ?>
+
+<?php function deletePost($id) { ?>
+    <script>
+        swal({
+            title: "ลบข่าวหรือไม่ ?",
+            text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true}).then((willDelete) => { 
+                if (willDelete) { 
+                    window.location = "../post/delete.php?id=<?php echo $id; ?>";
+                }
+            });
+    </script>
+<?php } ?>
 
 <?php function signinSuccess($name) { ?>
     <script>

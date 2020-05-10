@@ -1,5 +1,5 @@
 <?php
-    include '../global/connect.php';
+    require '../global/connect.php';
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json; charset=UTF-8");
 

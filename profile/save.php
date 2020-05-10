@@ -1,5 +1,5 @@
 <?php 
-    include '../global/connect.php';
+    require '../global/connect.php';
 
     if (isset($_POST['edit_submit'])) {
         $id = $_SESSION['id'];

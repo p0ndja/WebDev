@@ -1,6 +1,6 @@
 <html>
 <head>
-<?php include '../global/head.php'; ?>
+<?php require '../global/head.php'; ?>
 <style>
 
 #countdown{

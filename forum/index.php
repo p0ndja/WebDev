@@ -1,10 +1,10 @@
-<?php include '../global/connect.php'; ?>
+<?php require '../global/connect.php'; ?>
 
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    <?php include '../global/head.php'; ?>
+    <?php require '../global/head.php'; ?>
     <script type="text/javascript">
         $(function () {
             $('.summernote').summernote({
@@ -18,7 +18,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
         role="navigation">
-        <?php include '../global/navbar.php'; ?>
+        <?php require '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
         <div style="padding-top:10px"></div>
@@ -225,7 +225,7 @@
     </div>
 </body>
 
-<?php include '../global/footer.php' ?>
-<?php include '../global/popup.php'; ?>
+<?php require '../global/footer.php' ?>
+<?php require '../global/popup.php'; ?>
 
 </html>

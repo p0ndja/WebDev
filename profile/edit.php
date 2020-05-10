@@ -1,5 +1,5 @@
 <?php
-    include '../global/connect.php';
+    require '../global/connect.php';
     if (!isset($_SESSION['id']))
         home();
 ?>
@@ -9,15 +9,15 @@
 
 <head>
 
-    <?php include '../global/head.php'; ?>
+    <?php require '../global/head.php'; ?>
     <?php
         $id = $_SESSION['id'];
 
         $profile_background = getProfileData($id, 'background', $conn);
         
         if (getProfileData($id, 'background', $conn) == null) {
-            if (!$_SESSION['dark_mode']) $profile_background = "../assets/images/background/bg_light_pastel.jpg";
-            else $profile_background = "../assets/images/background/bg_dark_resize.jpg";
+            if (!$_SESSION['dark_mode']) $profile_background = "../static/images/background/bg_light_pastel.jpg";
+            else $profile_background = "../static/images/background/bg_dark_resize.jpg";
         }
 
         $profile_displayText = getProfileData($id, 'greetings', $conn);
@@ -51,7 +51,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
         role="navigation">
-        <?php include '../global/navbar.php'; ?>
+        <?php require '../global/navbar.php'; ?>
     </nav>
     <?php if (isset($_GET['id']) || (isset($_SESSION['id']))) {
             $id = $_SESSION['id'];
@@ -63,13 +63,13 @@
             $profile_greets = getProfileData($id, 'greetings', $conn);
 
             if (getAchievementdata($id, 'betaTester', $conn))
-                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Beta Tester (LEGENDARY)"><img src="../assets/images/achievement/beta-tester-icon_resize.gif" alt="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></a></div>';
+                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Beta Tester (LEGENDARY)"><img src="../static/images/achievement/beta-tester-icon_resize.gif" alt="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></a></div>';
             if (getAchievementdata($id, 'WebDevTycoon', $conn))
-                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Web Dev Tycoon (UNOBTAINABLE)"><img src="../assets/images/achievement/Web_dev_tycoon_icon_resize.gif" alt="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></a></div>';
+                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Web Dev Tycoon (UNOBTAINABLE)"><img src="../static/images/achievement/Web_dev_tycoon_icon_resize.gif" alt="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></a></div>';
             if (getAchievementdata($id, 'the4thFloor', $conn))
-                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="The 4th Floor (RARE)"><img src="../assets/images/achievement/stair.png" alt="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></a></div>';
+                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="The 4th Floor (RARE)"><img src="../static/images/achievement/stair.png" alt="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></a></div>';
             if (getAchievementdata($id, 'Xmas', $conn))
-                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Merry Christmas~ (UNCOMMON)"><img src="../assets/images/achievement/xmas_resize.png" alt="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></a></div>';
+                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Merry Christmas~ (UNCOMMON)"><img src="../static/images/achievement/xmas_resize.png" alt="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></a></div>';
     }
     ?>
     <div class="container" id="container" style="padding-top: 88px">
@@ -354,8 +354,8 @@
             }
         }
     </script>
-    <?php include '../global/popup.php'; ?>
-    <?php include '../global/footer.php'; ?>
+    <?php require '../global/popup.php'; ?>
+    <?php require '../global/footer.php'; ?>
 </body>
 
 </html>

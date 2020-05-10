@@ -3,7 +3,7 @@
 <?php } else { ?>
     <script>document.body.removeAttribute("data-theme")</script>
 <?php } ?>
-<a class="navbar-brand" href="../home"><img src="../assets/images/logo/logokku_t_w_32px.png" width="20" alt="SMD" align="center"></a>
+<a class="navbar-brand" href="../home"><img src="../static/images/logo/logokku_t_w_32px.png" width="20" alt="SMD" align="center"></a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -102,7 +102,7 @@
                     <?php } else { ?><a class="dropdown-item" href="../pages/darkmode.php"> เปลี่ยนเป็นโหมดมืด <i class="fas fa-lightbulb"></i></a><?php } ?>
                 
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="../global/logout.php">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></a>
+                <button class="dropdown-item text-danger" id="logoutBtn">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></button>
             </div>
         </li>
                     </div>

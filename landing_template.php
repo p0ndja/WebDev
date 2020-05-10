@@ -14,7 +14,7 @@
     <meta property="og:title" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
     <meta property="og:description" content="123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002 โทรศัพท์ / โทรสาร 043202044" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <?php include 'global/config.php'; ?>
+    <?php require 'global/config.php'; ?>
     <?php if ($use_mdbootstrap) {?> <link href="assets/css/mdb.min.css" rel="stylesheet"> <?php } ?>
     <link href="assets/css/style.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7454809de8.js" crossorigin="anonymous"></script>

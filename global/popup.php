@@ -257,7 +257,6 @@
 </div>
 <!-- Login Modal -->
 
-
 <?php } ?>
 <?php 
     if (isset($_SESSION['success'])) { 
@@ -271,3 +270,17 @@
     </script>
 <?php $_SESSION['error'] = null;
 } ?>
+<script>
+    $("#logoutBtn").click(function () {
+        swal({
+            title: "ออกจากระบบ ?",
+            text: "คุณต้องการออกจากระบบหรือไม่?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true}).then((willDelete) => { 
+                if (willDelete) { 
+                    window.location = "../global/logout.php";
+                }
+            });
+    });
+</script>

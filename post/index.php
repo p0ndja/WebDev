@@ -1,9 +1,9 @@
-<?php include '../global/connect.php'; ?>
+<?php require '../global/connect.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <?php include '../global/head.php'; ?>
+    <?php require '../global/head.php'; ?>
     <style>
         @media (min-width: 960px) {
             .card-columns {
@@ -26,16 +26,29 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
         role="navigation">
-        <?php include '../global/navbar.php'; ?>
+        <?php require '../global/navbar.php'; ?>
     </nav>
 
-    <?php if (isset($_GET['id']) && !isValidPostID($_GET['id'], $conn)) back(); ?>
+    <?php
+        if (isset($_GET['id']) && !isValidPostID($_GET['id'], $conn)) back();
+
+        if (isset($_GET['id']) && isValidPostID($_GET['id'], $conn) && getPostdata($_GET['id'], 'hotlink', $conn) != null)
+            header("Location: " . getPostdata($_GET['id'], 'hotlink', $conn));
+
+        if (!isset($_GET['id'])) {
+            if (isset($_GET['category'])) $category = $_GET['category'];
+            else header("Location: ../category/news-1");
+        }
+        
+        if ($category && !isValidCategory($category, $conn)) back();
+    ?>
 
     <div class="container" id="container" style="padding-top: 88px">
-        <?php if(!isset($_GET['id'])) { ?><h1 id="news" name="news" class="font-weight-bold">NEWS
+        
+        <?php if(!isset($_GET['id'])) { ?><?php echo generateCategoryTitle($category); ?>
             <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../post/create"
                 class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
-        </h1>
+                </div><hr>
         <?php } ?>
         <?php 
             $news_per_page = 6;
@@ -50,15 +63,16 @@
                 $query_count = "SELECT `id` FROM `post` WHERE id = $news_ID";
             } else if (isset($_GET['tags'])) { //Tags case
                 $t = $_GET['tags'];
+                $c = $_GET['category'];
                 if (strpos($t,"hidden") === false) {
-                    $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND hide = 0 ORDER by time DESC limit {$start_id}, {$news_per_page}";
+                    $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND type = '$category' AND hide = 0 ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
                     $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%' AND hide = 0";
                 } else {
-                    $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' ORDER by time DESC limit {$start_id}, {$news_per_page}";
+                    $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND type = '$category' ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
                     $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%'";
                 }
             } else { //Normal Case
-                $query = "SELECT * FROM `post` WHERE hide = 0 ORDER by time DESC limit {$start_id}, {$news_per_page}";
+                $query = "SELECT * FROM `post` WHERE hide = 0 AND type = '$category' ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
                 $query_count = "SELECT `id` FROM `post` WHERE hide = 0";
             }
 
@@ -93,6 +107,8 @@
                             <?php } ?>
                         </h6>
                     </div>
+
+                    <!-- Case post reader -->
                     <?php if (isset($_GET['id'])) { ?>
                     <?php if ($row['article'] != null) { ?>
                     <hr>
@@ -120,15 +136,14 @@
                 <div class="card hoverable">
                     <?php if ($row['cover'] != null) { ?><img class="card-img-top"
                         src="<?php echo $row['cover']; ?>"><?php } ?>
-                </div>
-            </a>
-            <p class="mb-3"><?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a
+                        <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><div class="card-body text-white p-2"><a
                     href="<?php echo $row['hotlink']; ?>" target="_blank"><?php echo $row['title']; ?></a>
                 <a href="../post/edit-<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a
                     onclick='
                                     swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../post/delete.php?id=<?php echo $row["id"]; ?>";}});'>
-                    <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
-            </p>
+                    <i class="fas fa-trash-alt text-danger"></i></a></div><?php } ?>
+                </div>
+            </a>
             <?php } ?>
             <?php } ?>
         </div>
@@ -162,8 +177,8 @@
         </nav>
         <?php } ?>
     </div>
-    <?php include '../global/popup.php'; ?>
-    <?php include '../global/footer.php'; ?>
+    <?php require '../global/popup.php'; ?>
+    <?php require '../global/footer.php'; ?>
 </body>
 
 </html>

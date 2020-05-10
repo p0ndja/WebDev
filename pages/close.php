@@ -2,9 +2,9 @@
 <html lang="th">
 
 <head>
-    <?php include '../global/head.php'; ?>
+    <?php require '../global/head.php'; ?>
     <?php
-        include '../global/config.php';
+        require '../global/config.php';
         if(!$close) home();
     ?>
     <style>

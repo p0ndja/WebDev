@@ -1,5 +1,5 @@
 <?php 
-    include '../global/connect.php';
+    require '../global/connect.php';
 ?>
 
 <!DOCTYPE html>
@@ -49,11 +49,11 @@
 
         @media (pointer: coarse) and (hover: none) {
             header {
-                background: url('../assets/images/header/thumbnail-min.mp4') black no-repeat center center scroll;
+                background: url('../static/images/header/thumbnail-min.mp4') black no-repeat center center scroll;
             }
 
             header video {
-                display: url('../assets/images/header/thumbnail-min.mp4');
+                display: url('../static/images/header/thumbnail-min.mp4');
             }
         }
 
@@ -91,7 +91,7 @@
         }
     </style>
 
-    <?php include '../global/head.php'; ?>
+    <?php require '../global/head.php'; ?>
 
 </head>
 
@@ -100,16 +100,16 @@
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="filter: blur(3px);
   -webkit-filter: blur(4px);">
-            <source src="../assets/images/header/thumbnail-min.mp4" type="video/mp4">
+            <source src="../static/images/header/thumbnail-min.mp4" type="video/mp4">
         </video>
         <div class="container h-100">
             <div class="d-flex h-100 text-center align-items-center">
                 <div class="w-100 text-white">
                     <div class="d-none d-md-block">
-                        <img src="../assets/images/logo/logokku_t_w_b.png" class="img-fluid" style="width: 10%">
+                        <img src="../static/images/logo/logokku_t_w_b.png" class="img-fluid" style="width: 10%">
                     </div>
                     <div class="d-block d-md-none">
-                        <img src="../assets/images/logo/logokku_t_w_b.png" class="img-fluid" style="width: 25%">
+                        <img src="../static/images/logo/logokku_t_w_b.png" class="img-fluid" style="width: 25%">
                     </div>
                     <h2 class="display-4 d-none d-md-block">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น</h2>
                     <h1 class="d-block d-md-none">โรงเรียนสาธิต<br>มหาวิทยาลัยขอนแก่น</h1>
@@ -119,7 +119,7 @@
                     <h3>ประพฤติดี มีพลานามัย <div class="d-block d-lg-none mb-1"></div>ใฝ่หาความรู้ เชิดชูคุณธรรม</h3>
                     <div class="mb-5"></div>
                     <a class="scroll-btn" href="#nav"><img alt="Arrow Down Icon"
-                            class="animated infinite pulse delay-3s" src="../assets/images/arrow-down.png"></a>
+                            class="animated infinite pulse delay-3s" src="../static/images/arrow-down.png"></a>
                     <div class="mb-5"></div>
                     <a class="scroll-btn" data-toggle="modal" data-target="#futureCpanel"><i
                             class="fas fa-vial"></i></a>
@@ -130,7 +130,7 @@
     </header>
 </body>
 <nav class="navbar navbar-expand-lg navbar-dark navbar-normal" id="nav" role="navigation">
-    <?php include '../global/navbar.php'; ?>
+    <?php require '../global/navbar.php'; ?>
 </nav>
 
 <body>
@@ -201,7 +201,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="../assets/images/default/default_carousel.jpg" class="d-block w-100" alt="...">
+                        <img src="../static/images/default/default_carousel.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block animated fadeInDown">
                             <h5>Carousel Guide</h5>
                             <p>ขนาดรูปที่แนะนำ: 1400(W) x 600(H)</p>
@@ -227,7 +227,7 @@
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
                     <a href="../file/post/attachment/41/_20200117160236_S__1310728.jpg">
-                        <img src="../assets/images/course/2_p_normal.jpg" class="img-fluid">
+                        <img src="../static/images/course/2_p_normal.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
                     </a>
@@ -236,7 +236,7 @@
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
                     <a href="../file/post/attachment/41/_20200117160236_S__1310728.jpg">
-                        <img src="../assets/images/course/2_p_jems.jpg" class="img-fluid">
+                        <img src="../static/images/course/2_p_jems.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
                     </a>
@@ -245,7 +245,7 @@
             <div class="col-2">
                 <div class="view overlay zoom z-depth-1">
                     <a href="http://www.smd.kku.ac.th/">
-                        <img src="../assets/images/course/2_reg.jpg" class="img-fluid">
+                        <img src="../static/images/course/2_reg.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
                     </a>
@@ -254,7 +254,7 @@
             <div class="col-2">
                 <div class="view overlay zoom z-depth-1">
                     <a href="https://www.facebook.com/SMD.KKU">
-                        <img src="../assets/images/course/2_contact.jpg" class="img-fluid">
+                        <img src="../static/images/course/2_contact.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
                     </a>
@@ -265,7 +265,7 @@
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
                     <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg">
-                        <img src="../assets/images/course/2_s_normal.jpg" class="img-fluid">
+                        <img src="../static/images/course/2_s_normal.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
                     </a>
@@ -274,7 +274,7 @@
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
                     <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg">
-                        <img src="../assets/images/course/2_s_sems.jpg" class="img-fluid">
+                        <img src="../static/images/course/2_s_sems.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
                     </a>
@@ -283,7 +283,7 @@
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
                     <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg">
-                        <img src="../assets/images/course/2_s_scius.jpg" class="img-fluid">
+                        <img src="../static/images/course/2_s_scius.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
                     </a>
@@ -296,13 +296,13 @@
     <div class="indexNews">
         <div class="container">
             <h1 id="news" name="news" class="font-weight-bold"><a href="../category/news-1"><img
-                        src="../assets/images/element/news_header.png" class="img-fluid"></a>
+                        src="../static/images/header/news_header.png" class="img-fluid"></a>
                 <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../post/create"
                     class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
             </h1>
             <div class="row">
                 <div class="col-12 col-md-8">
-                    <?php   $query = "SELECT * FROM `post` WHERE hide = 0 AND type = 'news' ORDER by time DESC limit 6";
+                    <?php   $query = "SELECT * FROM `post` WHERE hide = 0 AND type = 'news' ORDER by pin DESC, time DESC limit 6";
                         $result = mysqli_query($conn, $query);
                         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
                     <?php if (getPostdata($row['id'], 'hotlink', $conn) == null) { ?>
@@ -324,7 +324,7 @@
                                         href="../post/edit-<?php echo $row['id']; ?>"><i
                                             class="fas fa-edit text-success"></i></a> <a
                                         onclick='
-                                    swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../post/delete.php?id=<?php echo $row["id"]; ?>";}});'>
+                                swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../post/delete.php?id=<?php echo $row["id"]; ?>";}});'>
                                         <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
                                 </h5>
                                 <h6>
@@ -341,14 +341,15 @@
                         <div class="card hoverable">
                             <?php if ($row['cover'] != null) { ?><img class="card-img-top"
                                 src="<?php echo $row['cover']; ?>"><?php } ?>
-                        </div>
-                    </a>
-                    <p class="mb-3"><?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a
+                                <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><div class="card-body text-white p-2"><a
                             href="<?php echo $row['hotlink']; ?>" target="_blank"><?php echo $row['title']; ?></a>
-                        <a href="../post/edit-<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a
+                            <a href="../post/edit-<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a
                             onclick='
                                     swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../post/delete.php?id=<?php echo $row["id"]; ?>";}});'>
-                            <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
+                            <i class="fas fa-trash-alt text-danger"></i></a></div><?php } ?>
+                        </div>
+                    </a>
+                    <p class="mb-3">
                     </p>
                     <?php } ?>
                     <?php } ?>
@@ -389,7 +390,7 @@
                                 <div class="d-none d-md-block">
                                     <a data-toggle="collapse" href="#satitCollapse" aria-expanded="false"
                                         aria-controls="satitCollapse"><img class="img-fluid"
-                                            src="../assets/images/logo/satitmenu-min.png" alt="SATIT"></a>
+                                            src="../static/images/logo/satitmenu-min.png" alt="SATIT"></a>
                                     <div class="collapse" id="satitCollapse">
                                         <div class="mb-1">
                                             <div class="row">
@@ -419,20 +420,20 @@
                                 </div>
                                 <div class="d-block d-md-none">
                                     <a href="//satit.kku.ac.th" target="_blank"><img class="img-fluid"
-                                            src="../assets/images/logo/satitmenu-min.png" alt="SATIT"></a>
+                                            src="../static/images/logo/satitmenu-min.png" alt="SATIT"></a>
                                 </div>
                             </div>
                             <div class="col-6 col-md-12"><a href="//th.kku.ac.th" target="_blank"><img class="img-fluid"
-                                        src="../assets/images/logo/kkumenu-min.png" alt="KKU"></a></div>
+                                        src="../static/images/logo/kkumenu-min.png" alt="KKU"></a></div>
                             <div class="col-6 col-md-12"><a href="//ednet.kku.ac.th" target="_blank"><img
-                                        class="img-fluid" src="../assets/images/logo/edmenu-min.png" alt="ED"></a></div>
+                                        class="img-fluid" src="../static/images/logo/edmenu-min.png" alt="ED"></a></div>
                             <div class="col-6 col-md-12"><a href="//kkumail.com" target="_blank"><img class="img-fluid"
-                                        src="../assets/images/logo/mailmenu-min.png" alt="KKU Mail"></a></div>
+                                        src="../static/images/logo/mailmenu-min.png" alt="KKU Mail"></a></div>
                             <div class="col-6 col-md-12"><a href="//home.kku.ac.th/account/satit" target="_blank"><img
-                                        class="img-fluid" src="../assets/images/logo/netmenu-min.png" alt="KKU Net"></a>
+                                        class="img-fluid" src="../static/images/logo/netmenu-min.png" alt="KKU Net"></a>
                             </div>
                             <div class="col-6 col-md-12"><a href="//edoffice.kku.ac.th" target="_blank"><img
-                                        class="img-fluid" src="../assets/images/logo/edofficemenu-min.png"
+                                        class="img-fluid" src="../static/images/logo/edofficemenu-min.png"
                                         alt="ED-OFFICE"></a></div>
                         </div>
                     </div>
@@ -495,8 +496,8 @@
             }
         }
     </script>
-    <?php include '../global/popup.php'; ?>
-    <?php include '../global/footer.php'; ?>
+    <?php require '../global/popup.php'; ?>
+    <?php require '../global/footer.php'; ?>
 
     <script>
         $(window).bind('scroll', function () {

@@ -3,7 +3,7 @@
         <br>
         <div class="row">
             <div class="col-12">
-                <h4 style="color: white"><img src="../assets/images/logo/logokku_t_w_b.png" height="32">
+                <h4 style="color: white"><img src="../static/images/logo/logokku_t_w_b.png" height="32">
                     โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</h4>
                 <hr>
             </div>
@@ -54,14 +54,9 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-12">
-                <center>
-                    <h6 style="color: white;">Copyright 2019 - 2020 &copy; The demonstration school of Khon Kaen
-                        University (Mo Din Daeng). All right reserved<h6>
-                            <h6 style="color: white;"><a href="../pages/about.php">Developed by PondJaᵀᴴ &
-                                    ˢᵖᵉᶜᵗᵉʳRisaka</a><?php if (getConfig('global_lastUpdate', 'bool', $conn)) echo " — " . getConfig('global_lastUpdate', 'val', $conn); ?>
-                            </h6>
-                </center>
+            <div class="col-12 text-center">
+                <h6 style="color: white;">Copyright 2019 - 2020 &copy; The demonstration school of Khon Kaen University (Mo Din Daeng). All right reserved</h6>
+                <h6 style="color: white;"><a href="../pages/about.php">Developed by PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka</a> — Last Modified: <?php if (file_exists("/")) echo date("D, d F Y", filemtime("/")); ?></h6>
             </div>
         </div>
     </div>
@@ -82,8 +77,8 @@
         });
     });
 </script>
-
 <?php } ?>
+
 <script type="text/javascript">
     // Tooltips Initialization
     $(document).ready(function () {

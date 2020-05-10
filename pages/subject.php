@@ -1,10 +1,10 @@
-<?php include '../global/connect.php'; ?>
+<?php require '../global/connect.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <?php include '../global/head.php'; ?>
+    <?php require '../global/head.php'; ?>
     <style>
     @media (min-width: 960px)
         {
@@ -29,14 +29,14 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
         role="navigation">
-        <?php include '../global/navbar.php'; ?>
+        <?php require '../global/navbar.php'; ?>
     </nav>
     <div class="container-fluid" id="container" style="padding-top: 88px">
         <div class="card-columns">
             <div class="card mb-3 mx-auto">
                 <a href="#maths">
                     <div class="view overlay zoom">
-                        <img src="../assets/images/subject/Maths.jpg" class="img-fluid" alt="Maths" align="center">
+                        <img src="../static/images/subject/Maths.jpg" class="img-fluid" alt="Maths" align="center">
                         <div class="mask flex-center rgba-black-slight">
                         </div>
                     </div>
@@ -45,7 +45,7 @@
             <div class="card mb-3 mx-auto">
                 <a href="#sci">
                     <div class="view overlay zoom">
-                        <img src="../assets/images/subject/Science.jpg" class="img-fluid" alt="Science">
+                        <img src="../static/images/subject/Science.jpg" class="img-fluid" alt="Science">
                         <div class="mask flex-center rgba-black-slight">
                         </div>
                     </div>
@@ -54,7 +54,7 @@
             <div class="card mb-3 mx-auto">
                 <a href="#foreign">
                     <div class="view overlay zoom">
-                        <img src="../assets/images/subject/Foreign_Language.jpg" class="img-fluid"
+                        <img src="../static/images/subject/Foreign_Language.jpg" class="img-fluid"
                             alt="Foreign Language">
                         <div class="mask flex-center rgba-black-slight">
                         </div>
@@ -64,7 +64,7 @@
             <div class="card mb-3 mx-auto">
                 <a href="#thai">
                     <div class="view overlay zoom">
-                        <img src="../assets/images/subject/Thai.jpg" class="img-fluid" alt="Thai">
+                        <img src="../static/images/subject/Thai.jpg" class="img-fluid" alt="Thai">
                         <div class="mask flex-center rgba-black-slight">
                         </div>
                     </div>
@@ -73,7 +73,7 @@
             <div class="card mb-3 mx-auto">
                 <a href="#social">
                     <div class="view overlay zoom">
-                        <img src="../assets/images/subject/Social.jpg" class="img-fluid" alt="Social">
+                        <img src="../static/images/subject/Social.jpg" class="img-fluid" alt="Social">
                         <div class="mask flex-center rgba-black-slight">
                         </div>
                     </div>
@@ -82,7 +82,7 @@
             <div class="card mb-3 mx-auto">
                 <a href="#pe">
                     <div class="view overlay zoom">
-                        <img src="../assets/images/subject/PE.jpg" class="img-fluid" alt="PE">
+                        <img src="../static/images/subject/PE.jpg" class="img-fluid" alt="PE">
                         <div class="mask flex-center rgba-black-slight">
                         </div>
                     </div>
@@ -91,7 +91,7 @@
             <div class="card mb-3 mx-auto">
                 <a href="#tech">
                     <div class="view overlay zoom">
-                        <img src="../assets/images/subject/Technology.jpg" class="img-fluid" alt="Technology">
+                        <img src="../static/images/subject/Technology.jpg" class="img-fluid" alt="Technology">
                         <div class="mask flex-center rgba-black-slight">
                         </div>
                     </div>
@@ -100,7 +100,7 @@
             <div class="card mb-3 mx-auto">
                 <a href="#art">
                     <div class="view overlay zoom">
-                        <img src="../assets/images/subject/Art.jpg" class="img-fluid" alt="Art">
+                        <img src="../static/images/subject/Art.jpg" class="img-fluid" alt="Art">
                         <div class="mask flex-center rgba-black-slight">
                         </div>
                     </div>
@@ -109,7 +109,7 @@
             <div class="card mb-3 mx-auto">
                 <a href="#choose">
                     <div class="view overlay zoom">
-                        <img src="../assets/images/subject/Chosen.jpg" class="img-fluid" alt="Up-to-Student">
+                        <img src="../static/images/subject/Chosen.jpg" class="img-fluid" alt="Up-to-Student">
                         <div class="mask flex-center rgba-black-slight">
                         </div>
                     </div>
@@ -118,7 +118,7 @@
             <div class="card mb-3 mx-auto">
                 <a href="#club">
                     <div class="view overlay zoom">
-                        <img src="../assets/images/subject/Club.jpg" class="img-fluid" alt="Club">
+                        <img src="../static/images/subject/Club.jpg" class="img-fluid" alt="Club">
                         <div class="mask flex-center rgba-black-slight">
                         </div>
                     </div>
@@ -160,8 +160,8 @@ Nullam maximus ipsum sed massa tincidunt, vel tincidunt eros mattis. Vivamus pla
         </div>
     </div>
     
-<?php include '../global/popup.php'; ?>
-<?php include '../global/footer.php'; ?>
+<?php require '../global/popup.php'; ?>
+<?php require '../global/footer.php'; ?>
 </body>
 
 </html>

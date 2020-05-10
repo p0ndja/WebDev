@@ -1,10 +1,10 @@
-<?php include '../global/connect.php'; ?>
+<?php require '../global/connect.php'; ?>
 
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    <?php include '../global/head.php'; ?>
+    <?php require '../global/head.php'; ?>
     <?php
     $title = ""; $tags = ""; $cover = ""; $article = "";
             if (isset($_GET['post'])) {
@@ -32,7 +32,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
         role="navigation">
-        <?php include '../global/navbar.php'; ?>
+        <?php require '../global/navbar.php'; ?>
     </nav>
     <?php needLogin(); ?>
     <?php
@@ -81,8 +81,8 @@
             </div>
         </form>
     </div>
-<?php include '../global/popup.php'; ?>
-<?php include '../global/footer.php'; ?>
+<?php require '../global/popup.php'; ?>
+<?php require '../global/footer.php'; ?>
 </body>
 
 </html>

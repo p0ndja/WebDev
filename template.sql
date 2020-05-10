@@ -27,7 +27,7 @@ insert into config (name, bool) VALUES ('indexpg_showCourse',true);
 insert into config (name, bool) VALUES ('indexpg_showPreviewGallery',true);
 insert into config (name, bool) VALUES ('indexpg_AlertMessage',false);
 insert into config (name, bool, haveVal, val) VALUES ('indexpg_Countdown',true,true,'Jan 1, 2020 00:00:00');
-insert into config (name, bool, haveVal, val) VALUES ('indexpg_videoHeader',true,true,'../assets/images/header/thumbnail-min.mp4');
+insert into config (name, bool, haveVal, val) VALUES ('indexpg_videoHeader',true,true,'../static/images/header/thumbnail-min.mp4');
 insert into config (name, bool, haveVal, val) VALUES ('global_Livestream',true,true,'https://pondja.com');
 insert into config (name, bool, haveVal, val) VALUES ('global_lastUpdate',true,true,'ปรับปรุงครั้งล่าสุด...');
 insert into config (name, bool) VALUES ('global_snowEffect',true);
@@ -42,6 +42,7 @@ insert into config (name, bool) VALUES ('user_profile_allowEdit_BackgroundPic',t
 insert into config (name, bool) VALUES ('user_profile_allowEdit_Bio',true);
 insert into config (name, bool) VALUES ('user_profile_displayExperience',true);
 insert into config (name, bool) VALUES ('user_allowEditProfile',true);
+insert into config (name, bool, haveVal, val) VALUES ('global_categoryListThing',true,true,'news|order|announce|qa|advice|registration|personal|library|pta');
 
 create table forum(
 	id INT NOT NULL,

@@ -1,10 +1,10 @@
-<?php include '../global/connect.php'; ?>
+<?php require '../global/connect.php'; ?>
 
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    <?php include '../global/head.php'; ?>
+    <?php require '../global/head.php'; ?>
     <?php
         $title = ""; $tags = ""; $cover = ""; $article = ""; $attached = null; $hotlink = null; $hide = false; $type = "news";
             if (isset($_GET['id']) && isValidPostID($_GET['id'], $conn)) {
@@ -38,7 +38,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
         role="navigation">
-        <?php include '../global/navbar.php'; ?>
+        <?php require '../global/navbar.php'; ?>
     </nav>
     <?php needLogin(); needPermission('isNewsReporter', $conn); ?>
     <div class="container" id="container" style="padding-top: 88px">
@@ -68,7 +68,7 @@
                         </div>
                         <?php
                             if ($cover != null) $cover_src = $cover;
-                            else $cover_src = "../assets/images/default/default_post.jpg";
+                            else $cover_src = "../static/images/default/default_post.jpg";
                         ?>
                         <img src=<?php echo $cover_src; ?> class=" img-fluid w-100" id="coverThumb">
                         <hr>
@@ -191,8 +191,8 @@
             }
         };
     </script>
-    <?php include '../global/popup.php'; ?>
-    <?php include '../global/footer.php'; ?>
+    <?php require '../global/popup.php'; ?>
+    <?php require '../global/footer.php'; ?>
 </body>
 
 </html>

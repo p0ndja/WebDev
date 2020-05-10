@@ -1,5 +1,5 @@
 <?php
-    include '../global/connect.php';
+    require '../global/connect.php';
 
     //กรณี Login
 if (isset($_POST['login_submit'])) {

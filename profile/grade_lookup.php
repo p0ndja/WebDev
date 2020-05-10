@@ -1,15 +1,15 @@
-<?php include '../global/connect.php'; ?>
+<?php require '../global/connect.php'; ?>
 
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    <?php include '../global/head.php'; ?>
+    <?php require '../global/head.php'; ?>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
-        <?php include '../global/navbar.php'; ?>
+        <?php require '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
     <div class="center"><div class="card mb-3">
@@ -28,9 +28,9 @@
                 </div>
     </div>
                                 </div>
-<?php include '../global/popup.php'; ?>
+<?php require '../global/popup.php'; ?>
 <footer class="d-none">
-<?php include '../global/footer.php'; ?>
+<?php require '../global/footer.php'; ?>
                                 </footer>
 </body>
 

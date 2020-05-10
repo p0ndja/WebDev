@@ -1,16 +1,16 @@
-<?php include '../global/connect.php'; ?>
+<?php require '../global/connect.php'; ?>
 
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    <?php include '../global/head.php'; ?>
+    <?php require '../global/head.php'; ?>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
         role="navigation">
-        <?php include '../global/navbar.php'; ?>
+        <?php require '../global/navbar.php'; ?>
     </nav>
     <div class="container h-100 d-flex justify-content-center" id="container" style="padding-top: 88px">
         <br>
@@ -25,7 +25,7 @@
     </div>
     <div class="mb-5"></div>
 </body>
-<?php include '../global/footer.php';?>
-<?php include '../global/popup.php';?>
+<?php require '../global/footer.php';?>
+<?php require '../global/popup.php';?>
 
 </html>

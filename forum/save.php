@@ -1,5 +1,5 @@
 <?php
-include '../global/connect.php';
+require '../global/connect.php';
 
 if (isset($_POST['post_submit']) || isset($_POST['post_update'])) {
     $id = $_SESSION['id'];

@@ -1,9 +1,9 @@
-<?php include '../global/connect.php'; ?>
-<head><?php include '../global/head.php'; ?></head>
+<?php require '../global/connect.php'; ?>
+<head><?php require '../global/head.php'; ?></head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
         role="navigation">
-        <?php include '../global/navbar.php'; ?>
+        <?php require '../global/navbar.php'; ?>
     </nav>
 <?php
     if (isset($_GET['id'])) {
@@ -28,7 +28,7 @@
     home();
 ?>
 <footer class="d-none">
-<?php include '../global/footer.php'; ?>
+<?php require '../global/footer.php'; ?>
 </footer>
-<?php include '../global/popup.php'; ?>
+<?php require '../global/popup.php'; ?>
 </body>

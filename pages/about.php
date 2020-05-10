@@ -1,16 +1,16 @@
-<?php include '../global/connect.php'; ?>
+<?php require '../global/connect.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <?php include '../global/head.php';?>
+    <?php require '../global/head.php';?>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
         role="navigation">
-        <?php include '../global/navbar.php'; ?>
+        <?php require '../global/navbar.php'; ?>
     </nav>
     <div class="container mb-4" id="container" style="padding-top: 88px">
         <p>
@@ -51,7 +51,7 @@
         <p>
             <h2 class="font-weight-bold text-smd">Contributor</h2>
             <hr>
-            <h5 class="font-weight-bold text-smd">ผู้พัฒนา</h5>
+            <h5 class="font-weight-bold text-smd">Developer</h5>
             <ul>
                 <li>Palapon Soontornpas - Project Director + Full-stack Developer <a
                         href="https://www.facebook.com/p0ndja" target="_blank"> <i
@@ -104,15 +104,44 @@
                         <li>Mr. Akkarawat Srisawat</li>
                         <li>Mr. Chedtharat Kongrat</li>
                     </ul>
-                    <hr>
+                </div>
+            </div>
+            <h2 class="font-weight-bold text-smd">Infomation</h2><hr>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <h5 class="font-weight-bold text-smd">Develop-in-Language</h5>
+                    <ul>
+                        <li>HTML 5</li>
+                        <li>PHP 7.4.5</li>
+                        <li>JavaScript </li>
+                        <li>CSS 3</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4">
+                    <h5 class="font-weight-bold text-smd">Addon Library</h5>
+                    <ul>
+                        <li>Bootstrap 4.4.1</li>
+                        <li>MDBootstrap Pro 4.11.0</li>
+                        <li>JQuery 3.4.1</li>
+                        <li>Popper 1.16.0</li>
+                        <li>Summernote 0.8.16</li>
+                        <li>SweetAlert</li>
+                        <li>FontAwesome</li>
+                        <li>Croppie 2.6.4</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4">
                     <h5 class="font-weight-bold text-smd">Start Development Date</h5>
                     <p>&nbsp;22 October 2019</p>
+                    <hr class="d-none d-md-block">
+                    <h5 class="font-weight-bold text-smd">Last Modified Date</h5>
+                    <p>&nbsp;<?php if (file_exists("/")) echo date("d F Y", filemtime("/")); ?></p>
                 </div>
             </div>
         </p>
     </div>
-<?php include '../global/popup.php'; ?>
-<?php include '../global/footer.php'; ?>
+<?php require '../global/popup.php'; ?>
+<?php require '../global/footer.php'; ?>
 </body>
 
 </html>
