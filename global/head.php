@@ -26,8 +26,8 @@
     <link href="../static/css/dark-mode.css" rel="stylesheet">
     
     <!-- Bootstrap -->
+    <script src="../static/js/1.16.0-popper.min.js"></script>
     <script src="../static/js/3.4.1-jquery.min.js"></script>
-    <script src="../static/js/1.16.0-popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="../static/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="../static/js/mdb.min.js"></script>
 
