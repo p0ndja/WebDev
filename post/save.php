@@ -45,13 +45,13 @@ if (isset($_POST['post_submit']) || isset($_POST['post_update'])) {
     }
 
     if (isset($_POST['post_submit'])) {
-        $query_final = "INSERT INTO `post` (title, writer, time, article, tags, cover, hotlink, type, hide) VALUES ('$title', '$writer', '$time', '$article', '$tags', '$finaldir', '$hotlink', '$type', '$hide')";
+        $query_final = "INSERT INTO `post` (title, writer, time, article, tags, cover, hotlink, type, hide, pin) VALUES ('$title', '$writer', '$time', '$article', '$tags', '$finaldir', '$hotlink', '$type', '$hide', '$pinned')";
         $result_final = mysqli_query($conn, $query_final);
         if (!$result_final) die('Could not post '.mysqli_error($conn));
         $news = mysqli_insert_id($conn);
     } else {
         $news = $_GET['news'];
-        $query_final = "UPDATE `post` SET title = '$title', writer = '$writer', time = '$time', article = '$article', tags = '$tags', cover = '$finaldir', hotlink = '$hotlink', hide = '$hide', type = '$type' WHERE id = $news";
+        $query_final = "UPDATE `post` SET title = '$title', writer = '$writer', time = '$time', article = '$article', tags = '$tags', cover = '$finaldir', hotlink = '$hotlink', hide = '$hide', type = '$type', pin = '$pinned' WHERE id = $news";
         $result_final = mysqli_query($conn, $query_final);
         if (!$result_final) die('Could not post '.mysqli_error($conn));
     }

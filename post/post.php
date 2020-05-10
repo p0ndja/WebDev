@@ -6,7 +6,7 @@
 <head>
     <?php require '../global/head.php'; ?>
     <?php
-        $title = ""; $tags = ""; $cover = ""; $article = ""; $attached = null; $hotlink = null; $hide = false; $type = "news";
+        $title = ""; $tags = ""; $cover = ""; $article = ""; $attached = null; $hotlink = null; $hide = false; $type = "news"; $pinned = false;
             if (isset($_GET['id']) && isValidPostID($_GET['id'], $conn)) {
                 $postID = $_GET['id'];
                     $article = getPostdata($postID, 'article', $conn);
@@ -16,6 +16,7 @@
                     $attached = getPostdata($postID, 'attachment', $conn);
                     $hotlink = getPostdata($postID, 'hotlink', $conn);
                     $hide = getPostdata($postID, 'hide', $conn);
+                    $pinned = getPostdata($postID, 'pin', $conn);
                     $type = getPostdata($postID, 'type', $conn);
                     $_SESSION['temp_cover'] = $cover;
                     $_POST['attached_before'] = $attached; 
@@ -90,6 +91,15 @@
                             <span class="lever"></span>
                             <a class="material-tooltip-main" data-toggle="tooltip"
                                 title="การเปิดค่านี้จะทำให้โพสต์นี้สามารถเข้าได้ผ่าน Link โดยตรงเท่านั้น (จะไม่แสดงรวมกับโพสต์อื่น ๆ ในหน้าหลักและหน้าอื่น ๆ)">ซ่อนโพสต์</a>
+                        </label>
+                    </div>
+                    <div class="switch switch-warning mb-1">
+                        <label>
+                            <?php if ($pinned) $b = "checked"; else $b = ""?>
+                            <input type="checkbox" name="pinned" <?php echo $b; ?>>
+                            <span class="lever"></span>
+                            <a class="material-tooltip-main" data-toggle="tooltip"
+                                title="การเปิดค่านี้จะเป็นการปักหมุดโพสต์นี้ไว้บนสุด (เรียงตามลำดับการอัพเดทของโพสต์ปักหมุดด้วย)">ปักหมุดโพสต์</a>
                         </label>
                     </div>
                     <input type="text" id="hotlinkField" name="hotlinkField"
