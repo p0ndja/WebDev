@@ -87,7 +87,7 @@
                     <div class="switch switch-warning mb-1">
                         <label>
                             <?php if ($hide) $b = "checked"; else $b = ""?>
-                            <input type="checkbox" name="isHidden" <?php echo $b; ?>>
+                            <input type="checkbox" name="isHidden" id="isHidden" <?php echo $b; ?>>
                             <span class="lever"></span>
                             <a class="material-tooltip-main" data-toggle="tooltip"
                                 title="การเปิดค่านี้จะทำให้โพสต์นี้สามารถเข้าได้ผ่าน Link โดยตรงเท่านั้น (จะไม่แสดงรวมกับโพสต์อื่น ๆ ในหน้าหลักและหน้าอื่น ๆ)">ซ่อนโพสต์</a>
@@ -184,21 +184,14 @@
         document.getElementById("makeHotlink").onchange = function (e) {
             var x = document.getElementById("hotlinkHiddenZone");
             var y = document.getElementById("hotlinkField");
-            if (x != null) {
-                if (x.style.display === "none") {
-                    x.style.display = "block";
-                } else {
-                    x.style.display = "none";
-                }
-            }
 
-            if (y != null) {
-                if (y.style.display === "block") {
-                    y.style.display = "none";
-                } else {
+                if ($("#makeHotlink").is(":checked")) {
+                    x.style.display = "none";
                     y.style.display = "block";
+                } else {
+                    x.style.display = "block";
+                    y.style.display = "none";
                 }
-            }
         };
     </script>
     <?php require '../global/popup.php'; ?>
