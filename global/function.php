@@ -15,7 +15,7 @@
     }
 
     function saveAnySQL($sql, $col, $val, $key, $key_val, $conn) {
-        return mysqli_query($conn, "UPDATE `$sql` SET $col = $val WHERE $key = '$key_val'");
+        return mysqli_query($conn, "UPDATE `$sql` SET `$col` = $val WHERE `$key` = '$key_val'");
     }
 
         function getConfig($name, $col, $conn) {
@@ -143,6 +143,28 @@
         return '<div class="card mb-3" id="infocard"><div class="card-body"><h3 class="text-smd font-weight-bold">' . $d_th . '</h3><h5>' . $d_en . '</h5><hr><strong>รหัสนักเรียน</strong> ' . $id . '<br>' .$profile_class_detail . $profile_email . '</div></div>';
     }
 
+    function generateAchievementCard($id, $conn) {
+        $profile_achi = "";
+        if (getAchievementdata($id, 'betaTester', $conn))
+            $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Beta Tester (LEGENDARY)"><img src="../static/images/achievement/beta-tester-icon_resize.gif" alt="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></a></div>';
+        if (getAchievementdata($id, 'WebDevTycoon', $conn))
+            $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Web Dev Tycoon (UNOBTAINABLE)"><img src="../static/images/achievement/Web_dev_tycoon_icon_resize.gif" alt="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></a></div>';
+        if (getAchievementdata($id, 'the4thFloor', $conn))
+            $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="The 4th Floor (RARE)"><img src="../static/images/achievement/stair.png" alt="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></a></div>';
+        if (getAchievementdata($id, 'Xmas', $conn))
+            $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Merry Christmas~ (UNCOMMON)"><img src="../static/images/achievement/xmas_resize.png" alt="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></a></div>';
+        
+            return '<div class="card mb-3"><div class="card-body"><h2 class="text-smd mb-3">Achievement</h2><div class="row">' . $profile_achi . '</div></div></div>';
+    }
+
+    function isThisMyID($id, $conn) {
+        if (isLogin() && $_SESSION['id'] == $id) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     function getClientIP() {
         if(!empty($_SERVER['HTTP_CLIENT_IP'])) return $_SERVER['HTTP_CLIENT_IP'];
         else if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) return $_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -186,6 +208,54 @@
         return $base64;
     }
 
+    function addCategory($category, $conn) {
+        if (!isValidCategory($category, $conn)) { //This Category not exist
+            $arr = getConfig('global_categoryListThing', 'val', $conn) . "|" . $category;
+            if (saveConfig('global_categoryListThing', 'val', $arr, $conn)) {
+                echo "Y";
+            } else {
+                echo "N";
+            }
+            print_r(getConfig('global_categoryListThing', 'val', $conn));
+            echo "Y";
+        }
+    }
+
+    function removeCategory($category, $conn) {
+        
+    }
+
+    function listCategory($conn) {
+        $arr = array();
+        $unsplit_category = getConfig('global_categoryListThing', 'val', $conn);
+        foreach (explode("|", $unsplit_category) as $s) {
+            array_push($arr, $s);
+        }
+        return $arr;
+    }
+
+    function isValidCategory($category, $conn) {
+        foreach (listCategory($conn) as $a) {
+            if ($a == $category) return true;
+        }
+        return false;
+    }
+
+    function generateCategoryTitle($category) {
+        $path = "../static/images/element/$category.png";
+        if (file_exists($path)) {
+            return "<div><img src='../static/images/element/$category.png'/>";
+        } else {
+            return "<div class='display-4'>" . strtoupper($category);
+        }
+    }
+
+    function isDarkMode() {
+        if (isset($_SESSION['dark_mode']) && $_SESSION['dark_mode'] == true) return true;
+        else return false;
+    }
+
+    
     function generateOpenGraphMeta($conn) {
         $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         if (strpos($current_url, "/post")) {
@@ -212,39 +282,6 @@
         <meta property="og:url" content="<?php echo $current_url; ?>" />
         <meta property="fb:app_id" content="129081655091085" />
     <?php }
-
-    function addCategory($category, $conn) {
-
-    }
-
-    function removeCategory($category, $conn) {
-        
-    }
-
-    function listCategory($conn) {
-        $arr = array();
-        $unsplit_category = getConfig('global_categoryListThing', 'val', $conn);
-        foreach (explode("|", $unsplit_category) as $s) {
-            array_push($arr, $s);
-        }
-        return $arr;
-    }
-
-    function isValidCategory($category, $conn) {
-        foreach (listCategory($conn) as $a) {
-            if ($a == $category) return true;
-        }
-        return false;
-    }
-
-    function generateCategoryTitle($category) {
-        $path = "../static/images/header/$category.png";
-        if (file_exists($path)) {
-            return "<div><img src='../static/images/header/$category.png'/>";
-        } else {
-            return "<div class='display-4'>" . strtoupper($category);
-        }
-    }
         
 ?>
 
