@@ -7,9 +7,10 @@
 <head>
     <?php require '../global/head.php'; ?>
     <?php
+        $id;
         if (isset($_GET['id'])) $id = $_GET['id'];
         else if (isset($_SESSION['id'])) $id = $_SESSION['id'];
-        else back();
+        else needLogin();
 
         if (!isValidUserID($id, $conn)) back();
 
@@ -19,6 +20,9 @@
             if (!$_SESSION['dark_mode']) $profile_background = "../static/images/background/bg_light_pastel.jpg";
             else $profile_background = "../static/images/background/bg_dark_resize.jpg";
         }
+
+        $profile_image = getProfilePicture($id, $conn);
+        $profile_greets = getProfileData($id, 'greetings', $conn);
     
     ?>
     <style>
@@ -37,48 +41,18 @@
         role="navigation">
         <?php require '../global/navbar.php'; ?>
     </nav>
-    <?php if (isset($_GET['id']) || (isset($_SESSION['id']))) {
-        $id;
-        if (isset($_GET['id']))
-            $id = $_GET['id'];
-        else
-            $id = $_SESSION['id'];
-        
-            $profile_achi = "";
-                    
-            $profile_image = getProfilePicture($id, $conn);
-
-            $profile_greets = getProfileData($id, 'greetings', $conn);
-
-            if (getAchievementdata($id, 'betaTester', $conn))
-                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Beta Tester (LEGENDARY)"><img src="../static/images/achievement/beta-tester-icon_resize.gif" alt="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></a></div>';
-            if (getAchievementdata($id, 'WebDevTycoon', $conn))
-                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Web Dev Tycoon (UNOBTAINABLE)"><img src="../static/images/achievement/Web_dev_tycoon_icon_resize.gif" alt="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></a></div>';
-            if (getAchievementdata($id, 'the4thFloor', $conn))
-                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="The 4th Floor (RARE)"><img src="../static/images/achievement/stair.png" alt="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></a></div>';
-            if (getAchievementdata($id, 'Xmas', $conn))
-                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Merry Christmas~ (UNCOMMON)"><img src="../static/images/achievement/xmas_resize.png" alt="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></a></div>';
-            
-            if(!isset($_GET['id'])) { ?>
-    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-        <a class="btn-floating btn-lg btn-warning" href="./edit"><i class="fas fa-pencil-alt"></i></a>
-    </div>
-    <?php } 
-    ?>
     <div class="container" id="container" style="padding-top: 88px">
+    <?php if(isThisMyID($id, $conn)) { ?>
+        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+            <a class="btn-floating btn-lg btn-warning" href="./edit"><i class="fas fa-pencil-alt"></i></a>
+        </div>
+    <?php } ?>
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <div class="sticky-content mb-3">
                     <img src="<?php echo $profile_image; ?>" class="thumb-post w-100 mb-3" alt="Profile">
                     <?php echo generateInfoCard($id, $conn); ?>
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h2 class="text-smd mb-3">Achievement</h2>
-                            <div class="row">
-                                <?php echo $profile_achi; ?>
-                            </div>
-                        </div>
-                    </div>
+                    <?php echo generateAchievementCard($id, $conn); ?>
                 </div>
             </div>
             <div class="col-md-8">
@@ -190,9 +164,6 @@
             </div>
         </div>
     </div>
-    <?php } else {
-        needLogin();
-    } ?>
 
     <?php require '../global/popup.php'; ?>
     <?php require '../global/footer.php'; ?>

@@ -62,14 +62,6 @@
 
             $profile_greets = getProfileData($id, 'greetings', $conn);
 
-            if (getAchievementdata($id, 'betaTester', $conn))
-                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Beta Tester (LEGENDARY)"><img src="../static/images/achievement/beta-tester-icon_resize.gif" alt="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></a></div>';
-            if (getAchievementdata($id, 'WebDevTycoon', $conn))
-                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Web Dev Tycoon (UNOBTAINABLE)"><img src="../static/images/achievement/Web_dev_tycoon_icon_resize.gif" alt="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></a></div>';
-            if (getAchievementdata($id, 'the4thFloor', $conn))
-                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="The 4th Floor (RARE)"><img src="../static/images/achievement/stair.png" alt="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></a></div>';
-            if (getAchievementdata($id, 'Xmas', $conn))
-                $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Merry Christmas~ (UNCOMMON)"><img src="../static/images/achievement/xmas_resize.png" alt="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></a></div>';
     }
     ?>
     <div class="container" id="container" style="padding-top: 88px">
@@ -94,14 +86,7 @@
                         <input type="file" name="profile_upload" id="profile_upload"
                             class="form-control-file validate mb-3" accept="image/png, image/jpeg">
                         <?php echo generateInfoCard($id, $conn); ?>
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h2 class="text-smd mb-3">Achievement</h2>
-                                <div class="row">
-                                    <?php echo $profile_achi; ?>
-                                </div>
-                            </div>
-                        </div>
+                        <?php echo generateAchievementCard($id, $conn); ?>
                     </div>
                 </div>
                 <div class="col-md-8">
