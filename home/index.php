@@ -49,11 +49,11 @@
 
         @media (pointer: coarse) and (hover: none) {
             header {
-                background: url('../static/images/header/thumbnail-min.mp4') black no-repeat center center scroll;
+                background: url('../static/images/element/thumbnail-min.mp4') black no-repeat center center scroll;
             }
 
             header video {
-                display: url('../static/images/header/thumbnail-min.mp4');
+                display: url('../static/images/element/thumbnail-min.mp4');
             }
         }
 
@@ -100,7 +100,7 @@
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="filter: blur(3px);
   -webkit-filter: blur(4px);">
-            <source src="../static/images/header/thumbnail-min.mp4" type="video/mp4">
+            <source src="../static/images/element/thumbnail-min.mp4" type="video/mp4">
         </video>
         <div class="container h-100">
             <div class="d-flex h-100 text-center align-items-center">
@@ -227,7 +227,7 @@
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
                     <a href="../file/post/attachment/41/_20200117160236_S__1310728.jpg">
-                        <img src="../static/images/course/2_p_normal.jpg" class="img-fluid">
+                        <img src="../static/images/course/2_p_normal<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
                     </a>
@@ -236,7 +236,7 @@
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
                     <a href="../file/post/attachment/41/_20200117160236_S__1310728.jpg">
-                        <img src="../static/images/course/2_p_jems.jpg" class="img-fluid">
+                        <img src="../static/images/course/2_p_jems<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
                     </a>
@@ -245,7 +245,7 @@
             <div class="col-2">
                 <div class="view overlay zoom z-depth-1">
                     <a href="http://www.smd.kku.ac.th/">
-                        <img src="../static/images/course/2_reg.jpg" class="img-fluid">
+                        <img src="../static/images/course/2_reg<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
                     </a>
@@ -254,7 +254,7 @@
             <div class="col-2">
                 <div class="view overlay zoom z-depth-1">
                     <a href="https://www.facebook.com/SMD.KKU">
-                        <img src="../static/images/course/2_contact.jpg" class="img-fluid">
+                        <img src="../static/images/course/2_contact<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
                     </a>
@@ -265,7 +265,7 @@
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
                     <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg">
-                        <img src="../static/images/course/2_s_normal.jpg" class="img-fluid">
+                        <img src="../static/images/course/2_s_normal<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
                     </a>
@@ -274,7 +274,7 @@
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
                     <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg">
-                        <img src="../static/images/course/2_s_sems.jpg" class="img-fluid">
+                        <img src="../static/images/course/2_s_sems<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
                     </a>
@@ -283,7 +283,7 @@
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
                     <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg">
-                        <img src="../static/images/course/2_s_scius.jpg" class="img-fluid">
+                        <img src="../static/images/course/2_s_scius<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
                     </a>
@@ -296,7 +296,7 @@
     <div class="indexNews">
         <div class="container">
             <h1 id="news" name="news" class="font-weight-bold"><a href="../category/news-1"><img
-                        src="../static/images/header/news_header.png" class="img-fluid"></a>
+                        src="../static/images/element/news_header.png" class="img-fluid"></a>
                 <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../post/create"
                     class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
             </h1>
@@ -390,7 +390,7 @@
                                 <div class="d-none d-md-block">
                                     <a data-toggle="collapse" href="#satitCollapse" aria-expanded="false"
                                         aria-controls="satitCollapse"><img class="img-fluid"
-                                            src="../static/images/logo/satitmenu-min.png" alt="SATIT"></a>
+                                            src="../static/images/element/satitmenu-min.png" alt="SATIT"></a>
                                     <div class="collapse" id="satitCollapse">
                                         <div class="mb-1">
                                             <div class="row">
@@ -420,20 +420,20 @@
                                 </div>
                                 <div class="d-block d-md-none">
                                     <a href="//satit.kku.ac.th" target="_blank"><img class="img-fluid"
-                                            src="../static/images/logo/satitmenu-min.png" alt="SATIT"></a>
+                                            src="../static/images/element/satitmenu-min.png" alt="SATIT"></a>
                                 </div>
                             </div>
                             <div class="col-6 col-md-12"><a href="//th.kku.ac.th" target="_blank"><img class="img-fluid"
-                                        src="../static/images/logo/kkumenu-min.png" alt="KKU"></a></div>
+                                        src="../static/images/element/kkumenu-min.png" alt="KKU"></a></div>
                             <div class="col-6 col-md-12"><a href="//ednet.kku.ac.th" target="_blank"><img
-                                        class="img-fluid" src="../static/images/logo/edmenu-min.png" alt="ED"></a></div>
+                                        class="img-fluid" src="../static/images/element/edmenu-min.png" alt="ED"></a></div>
                             <div class="col-6 col-md-12"><a href="//kkumail.com" target="_blank"><img class="img-fluid"
-                                        src="../static/images/logo/mailmenu-min.png" alt="KKU Mail"></a></div>
+                                        src="../static/images/element/mailmenu-min.png" alt="KKU Mail"></a></div>
                             <div class="col-6 col-md-12"><a href="//home.kku.ac.th/account/satit" target="_blank"><img
-                                        class="img-fluid" src="../static/images/logo/netmenu-min.png" alt="KKU Net"></a>
+                                        class="img-fluid" src="../static/images/element/netmenu-min.png" alt="KKU Net"></a>
                             </div>
                             <div class="col-6 col-md-12"><a href="//edoffice.kku.ac.th" target="_blank"><img
-                                        class="img-fluid" src="../static/images/logo/edofficemenu-min.png"
+                                        class="img-fluid" src="../static/images/element/edofficemenu-min.png"
                                         alt="ED-OFFICE"></a></div>
                         </div>
                     </div>
