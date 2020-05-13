@@ -11,6 +11,7 @@ RewriteRule ^category/(.*)-([0-9]+)-(.*)$ post/index.php?category=$1&page=$2&tag
 
 RewriteRule ^darkmode/$ pages/darkmode.php
 
+RewriteRule ^profile/$ profile/index.php
 RewriteRule ^profile/([0-9]+)$ profile/?id=$1
 RewriteRule ^profile/edit$ profile/edit.php
 
