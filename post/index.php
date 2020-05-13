@@ -154,7 +154,7 @@
             $total = mysqli_num_rows(mysqli_query($conn, $query_count));
             $total_page = ceil($total / $news_per_page);?>
         <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
+            <ul class="pagination pagination-circle pg-amber justify-content-center">
                 <li class="page-item">
                     <a class="page-link" href="../category/<?php echo $_GET['category'] . "-1"?><?php if (isset($_GET['tags'])) echo '&tags=' . $_GET['tags']; ?>"
                         aria-label="Previous">
@@ -162,7 +162,7 @@
                     </a>
                 </li>
                 <?php for($i=1;$i<=$total_page;$i++){ ?>
-                <li class="page-item"><a class="page-link"
+                <li class="page-item <?php if ($_GET['page'] == $i) echo 'active';?>"><a class="page-link"
                         href="../category/<?php echo $_GET['category'] . "-" . $i;?><?php if (isset($_GET['tags'])) echo '&tags=' . $_GET['tags']; ?>"><?php echo $i; ?></a>
                 </li>
                 <?php } ?>

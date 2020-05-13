@@ -43,9 +43,18 @@
 [data-theme="dark"] .card,
 [data-theme="dark"] .card-body,
 [data-theme="dark"] .input-group-text,
-[data-theme="dark"] .modal-content {
+[data-theme="dark"] .modal-body {
     background-color: #1c1c1c;
 }
+
+[data-theme="dark"] .modal-header,
+[data-theme="dark"] .modal-footer {
+    background-color: #000000;
+}
+
+[data-theme="dark"] hr {
+    border-top: 1px solid white;
+  }
 
 [data-theme="dark"] .dropdown-content span {
     color: #000000 !important;
@@ -67,9 +76,22 @@
     background-size: cover;
 }
 
-[data-theme="dark"] a,
-[data-theme="dark"] li .page-item {
+[data-theme="dark"] a {
     color: #ffc30f;
+}
+
+[data-theme="dark"] .pagination > li > a
+{
+    color: white !important;
+}
+
+[data-theme="dark"] .pagination > li > a:focus,
+[data-theme="dark"] .pagination > li > a:hover,
+[data-theme="dark"] .pagination > li > span:focus,
+[data-theme="dark"] .pagination > li > span:hover
+{
+    color: #5a5a5a !important;
+    background-color: #eee !important;
 }
 
 [data-theme="dark"] h1,
