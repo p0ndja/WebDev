@@ -47,3 +47,12 @@
     
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/7454809de8.js" crossorigin="anonymous"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L21RYEJJXH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-L21RYEJJXH');
+    </script>
