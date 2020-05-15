@@ -52,8 +52,8 @@
                 <hr>
 
                 <?php if(!isset($_SESSION['dark_mode'])) $_SESSION['dark_mode'] = false; ?>
-                <?php if ($_SESSION['dark_mode'] == true) { ?><a class="dropdown-item" href="../pages/darkmode.php"> เปลี่ยนเป็นโหมดสว่าง <i class="far fa-lightbulb"></i></a>
-                <?php } else { ?><a class="dropdown-item" href="../pages/darkmode.php"> เปลี่ยนเป็นโหมดมืด <i class="fas fa-lightbulb"></i></a><?php } ?>
+                <?php if ($_SESSION['dark_mode'] == true) { ?><a class="dropdown-item" href="../global/darkmode.php"> เปลี่ยนเป็นโหมดสว่าง <i class="far fa-lightbulb"></i></a>
+                <?php } else { ?><a class="dropdown-item" href="../global/darkmode.php"> เปลี่ยนเป็นโหมดมืด <i class="fas fa-lightbulb"></i></a><?php } ?>
                 
                 <hr>
                 <a class="dropdown-item text-danger" href="../global/logout.php">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></a>

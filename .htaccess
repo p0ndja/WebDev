@@ -15,7 +15,7 @@ RewriteRule ^profile/$ profile/index.php
 RewriteRule ^profile/([0-9]+)$ profile/?id=$1
 RewriteRule ^profile/edit$ profile/edit.php
 
-RewriteRule ^search/$ pages/search.php
+RewriteRule ^search/$ global/search.php
 
 RewriteRule ^storage/(.*)-(.*)/(.*)$ file/$1/attachment/$2/$3
 
@@ -25,6 +25,7 @@ RewriteRule ^s/(.*)$ admin/$1.php
 RewriteRule ^logout/$ global/logout.php
 
 RewriteRule ^discord https://discord.gg/Xfcex7C
+RewriteRule ^discord/chem https://discord.gg/dHBsput
 
 Options +FollowSymlinks
 Options +Indexes

@@ -66,7 +66,7 @@
     </ul>
 
     <ul class="nav navbar-nav nav-flex-icons ml-auto">
-<form action="../search/" method="POST" class="form-inline">
+        <form action="../search/" method="POST" class="form-inline">
             <div class="md-form my-0">
                 <input method="POST" class="form-control" type="text" placeholder="Search ID (Ex. 604019)"
                     aria-label="Search ID (Ex. 604019)" id="search" name="search"
@@ -98,8 +98,8 @@
 
                 <div class="dropdown-divider"></div>
                     <?php if(!isset($_SESSION['dark_mode'])) $_SESSION['dark_mode'] = false; ?>
-                    <?php if ($_SESSION['dark_mode'] == true) { ?><a class="dropdown-item" href="../pages/darkmode.php"> เปลี่ยนเป็นโหมดสว่าง <i class="far fa-lightbulb"></i></a>
-                    <?php } else { ?><a class="dropdown-item" href="../pages/darkmode.php"> เปลี่ยนเป็นโหมดมืด <i class="fas fa-lightbulb"></i></a><?php } ?>
+                    <?php if ($_SESSION['dark_mode'] == true) { ?><a class="dropdown-item" href="../global/darkmode.php"> เปลี่ยนเป็นโหมดสว่าง <i class="far fa-lightbulb"></i></a>
+                    <?php } else { ?><a class="dropdown-item" href="../global/darkmode.php"> เปลี่ยนเป็นโหมดมืด <i class="fas fa-lightbulb"></i></a><?php } ?>
                 
                 <div class="dropdown-divider"></div>
                 <button class="dropdown-item text-danger" id="logoutBtn">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></button>
