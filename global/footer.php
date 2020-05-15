@@ -55,8 +55,8 @@
         <hr>
         <div class="row">
             <div class="col-12 text-center">
-                <h6 style="color: white;">Copyright 2019 - 2020 &copy; The demonstration school of Khon Kaen University (Mo Din Daeng). All right reserved</h6>
-                <h6 style="color: white;"><a href="../pages/about.php">Developed by PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka</a> — Last Modified: <?php if (file_exists("/")) echo date("D, d F Y", filemtime("/")); ?></h6>
+                <h6 style="color: white;">Copyright 2019 - 2020 &copy; The demonstration school of Khon Kaen University (Mo Din Daeng). All Right Reserved.</h6>
+                <h6 style="color: white;">Made with ❤ by <a href="../pages/about.php">PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka</a></h6>
             </div>
         </div>
     </div>

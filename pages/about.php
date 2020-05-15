@@ -120,9 +120,9 @@
                 <div class="col-12 col-md-4">
                     <h5 class="font-weight-bold text-smd">Addon Library</h5>
                     <ul>
-                        <li>Bootstrap 4.4.1</li>
+                        <li>Bootstrap 4.5.0</li>
                         <li>MDBootstrap Pro 4.11.0</li>
-                        <li>JQuery 3.4.1</li>
+                        <li>JQuery 3.5.1</li>
                         <li>Popper 1.16.0</li>
                         <li>Summernote 0.8.16</li>
                         <li>SweetAlert</li>
