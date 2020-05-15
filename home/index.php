@@ -120,9 +120,6 @@
                     <div class="mb-5"></div>
                     <a class="scroll-btn" href="#nav"><img alt="Arrow Down Icon"
                             class="animated infinite pulse delay-3s" src="../static/images/arrow-down.png"></a>
-                    <div class="mb-5"></div>
-                    <a class="scroll-btn" data-toggle="modal" data-target="#futureCpanel"><i
-                            class="fas fa-vial"></i></a>
                 </div>
             </div>
         </div>
