@@ -33,6 +33,22 @@
             background-size: cover;
             -o-background-size: cover;
         }
+        
+        @media (min-width: 960px) {
+            .card-columns {
+                -webkit-column-count: 2;
+                -moz-column-count: 2;
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 960px) {
+            .card-columns {
+                -webkit-column-count: 1;
+                -moz-column-count: 1;
+                column-count: 1;
+            }
+        }
     </style>
 </head>
 
@@ -48,27 +64,32 @@
         </div>
     <?php } ?>
         <div class="row">
-            <div class="col-md-4 col-sm-12">
-                <div class="sticky-content mb-3">
-                    <img src="<?php echo $profile_image; ?>" class="thumb-post w-100 mb-3" alt="Profile">
-                    <?php echo generateInfoCard($id, $conn); ?>
-                    <?php echo generateAchievementCard($id, $conn); ?>
+            <div class="col mb-3">
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <img src="<?php echo $profile_image; ?>" class="thumb-post img-fluid" alt="Profile">
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <?php echo generateInfoCard($id, $conn); ?>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-8">
+        </div>
+        <div class="row">
+            <div class="col">
+            <div class="card-columns">
                 <?php if ($profile_greets != null) { ?>
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-body">
                         <p><?php echo $profile_greets ?></p>
                     </div>
                 </div>
-                <div class="mb-3"></div>
+                <?php echo generateAchievementCard($id, $conn); ?>
                 <?php } ?>
                 <?php if ($id == 604019) { ?>
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-body">
                         <h2>ประวัติการศึกษา</h2>
-                        <div class="mb-3"></div>
                         <div class="row">
                             <div class="col-9">
                                 <h4>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</h4>
@@ -99,13 +120,12 @@
                         <h5><span class="badge badge-secondary">ระดับมัธยมศึกษาตอนปลาย</span></h5>
                     </div>
                 </div>
-                <div class="mb-3"></div>
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-body">
                         <h2>ประสบการณ์</h2>
                         <div class="mb-3"></div>
                         <div class="row">
-                            <div class="col-md-12 col-sm-12">
+                            <div class="col-md-12 col-sm-12 mb-3">
                                 <div class="row">
                                     <div class="col-9">
                                         <h4>รางวัลรองชนะเลิศอันดับ 1 การแข่งขัน Web Programming Competition
@@ -126,9 +146,8 @@
                                     target="_blank"><i class="fas fa-external-link-alt"></i></a>
                                 <a href="https://www.facebook.com/SMD.KKU/posts/2215982308531509" target="_blank"><i
                                         class="fas fa-external-link-alt"></i></a>
-                                <div class="mb-3"></div>
                             </div>
-                            <div class="col-md-12 col-sm-12">
+                            <div class="col-md-12 col-sm-12 mb-3">
                                 <div class="row">
                                     <div class="col-9">
                                         <h4>รางวัลชนะเลิศการแข่งขันสร้างเว็บเพจ (Web editor) ระดับมัธยมศึกษาตอนปลาย</h4>
@@ -158,9 +177,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="mb-3"></div>
                 <?php } ?>
-
+                </div>
             </div>
         </div>
     </div>

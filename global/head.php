@@ -43,7 +43,7 @@
     <script src="../static/croppie/croppie.js"></script>
 
     <!-- Dropzone -->
-    <script src="assets/dropzone/dropzone.js"></script>
+    <script src="../assets/dropzone/dropzone.js"></script>
     
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/7454809de8.js" crossorigin="anonymous"></script>

@@ -140,7 +140,7 @@
 
         $d_th = getDisplayName($id, "TH", $conn);
         $d_en = getDisplayName($id, "EN", $conn);
-        return '<div class="card mb-3" id="infocard"><div class="card-body"><h3 class="text-smd font-weight-bold">' . $d_th . '</h3><h5>' . $d_en . '</h5><hr><strong>รหัสนักเรียน</strong> ' . $id . '<br>' .$profile_class_detail . $profile_email . '</div></div>';
+        return '<h1 class="text-smd font-weight-bold">' . $d_th . '</h1><h4>' . $d_en . '</h4><hr><p><strong>รหัสนักเรียน</strong> ' . $id . '<br>' .$profile_class_detail . $profile_email . '</p>';
     }
 
     function generateAchievementCard($id, $conn) {
