@@ -27,7 +27,7 @@
     
     <!-- Bootstrap -->
     <script src="../static/js/1.16.0-popper.min.js"></script>
-    <script src="../static/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="../static/js/jquery-3.5.1.min.js"></script>
     <script src="../static/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="../static/js/mdb.min.js"></script>
 
