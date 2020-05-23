@@ -43,10 +43,10 @@
     <script src="../static/croppie/croppie.js"></script>
 
     <!-- Dropzone -->
-    <script src="../assets/dropzone/dropzone.js"></script>
+    <script src="../static/dropzone/dropzone.js"></script>
     
     <!-- Fontawesome -->
-    <script src="https://kit.fontawesome.com/7454809de8.js" crossorigin="anonymous"></script>
+    <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-L21RYEJJXH"></script>
