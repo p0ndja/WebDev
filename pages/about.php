@@ -108,7 +108,7 @@
             </div>
             <h2 class="font-weight-bold text-smd">Infomation</h2><hr>
             <div class="row">
-                <div class="col-12 col-md-4">
+                <div class="col">
                     <h5 class="font-weight-bold text-smd">Develop-in-Language</h5>
                     <ul>
                         <li>HTML 5</li>
@@ -117,7 +117,7 @@
                         <li>CSS 3</li>
                     </ul>
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="col">
                     <h5 class="font-weight-bold text-smd">Addon Library</h5>
                     <ul>
                         <li>Bootstrap 4.5.0</li>
@@ -125,12 +125,27 @@
                         <li>JQuery 3.5.1</li>
                         <li>Popper 1.16.0</li>
                         <li>Summernote 0.8.16</li>
-                        <li>SweetAlert</li>
-                        <li>FontAwesome</li>
-                        <li>Croppie 2.6.4</li>
+                        <li>SweetAlert.js</li>
+                        <li>FontAwesome 5.13.0</li>
+                        <li>Croppie.js 2.6.4</li>
+                        <li>Dropzone.js </li>
+                        <li>PDF.js 2.3.200</li>
                     </ul>
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="col">
+                    <h5 class="font-weight-bold text-smd">Supported Browser</h5>
+                    เว็บไซต์นี้สามารถใช้งานได้กับ Modern Browser ทุกโปรแกรม
+                    <br>Browser ที่ทดสอบ:
+                    <ul>
+                        <li>Google Chrome <div class="font-weight-bold">(Recommended)</div></li>
+                        <li>Mozilla Firefox</li>
+                        <li>Internet Explorer 10+</li>
+                        <li>Microsoft Edge</li>
+                        <li>Safari</li>
+                        <li>Opera</li>
+                    </ul>
+                </div>
+                <div class="col">
                     <h5 class="font-weight-bold text-smd">Start Development Date</h5>
                     <p>&nbsp;22 October 2019</p>
                     <hr class="d-none d-md-block">
