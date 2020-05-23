@@ -123,9 +123,7 @@
                     </li>
                     <?php } ?>
                     <?php if ($aa == 1 && strpos($row['attachment'], ".pdf")) { ?>
-                    <iframe
-                        src="https://docs.google.com/viewer?url=<?php echo str_replace("../" , "https://smd.pondja.com/" , $row['attachment']); ?>&embedded=true"
-                        width="100%" height="750"></iframe>
+                    <iframe src="../static/pdf.js/web/viewer.html?file=<?php echo '../../' .  $row['attachment']; ?>" width="100%" height="750"></iframe>
                     <?php } ?>
                     <?php } ?>
                     <?php } ?>
