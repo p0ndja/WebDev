@@ -22,6 +22,8 @@ RewriteRule ^storage/(.*)-(.*)/(.*)$ file/$1/attachment/$2/$3
 RewriteRule ^p/(.*)$ pages/$1.php
 RewriteRule ^s/(.*)$ admin/$1.php
 
+RewriteRule ^api/(.*)$ global/api/$1.php
+
 RewriteRule ^logout/$ global/logout.php
 
 RewriteRule ^discord https://discord.gg/Xfcex7C
