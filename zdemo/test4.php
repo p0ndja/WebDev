@@ -8,9 +8,9 @@
 
 </head>
 
-<body class="admin">
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-normal scrolling-navbar admin" id="nav" role="navigation">
-        <?php require '../global/navbar.php'; ?>
+        <?php require '../global/admin_navbar.php'; ?>
     </nav>
     <?php require '../global/admin_sideNav.php'; ?>
     <div class="container-fluid" id="main" style="padding-top: 19px">
