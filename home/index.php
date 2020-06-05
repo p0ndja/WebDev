@@ -355,6 +355,10 @@
                     </a>
                 </div>
                 <div class="col-md-4">
+                    <div class="mb-1">
+                        <h4 class="font-weight-bold">รายงานสถานการณ์ โควิด-19</h4>
+                        <iframe src="https://covid19.th-stat.com/th/share/dashboard" width="100%" height="350" frameborder="0"></iframe>
+                    </div>
                     <div class="d-none d-xl-block fb-page mb-3" data-href="https://www.facebook.com/SMD.KKU"
                         data-tabs="timeline" data-width="500" data-height="850" data-small-header="false"
                         data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
