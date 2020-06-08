@@ -16,7 +16,7 @@
     <?php generateOpenGraphMeta($conn); ?>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bootstrap/bootstrap.min.css">
     <link href="../static/css/mdb.min.css" rel="stylesheet">
     
     <!-- Custom Style -->
@@ -26,9 +26,9 @@
     <link href="../static/css/dark-mode.css" rel="stylesheet">
     
     <!-- Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="../static/js/1.16.0-popper.min.js"></script>
+    <script src="../static/js/jquery-3.5.1.min.js"></script>
+    <script src="../static/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="../static/js/mdb.min.js"></script>
 
     <!-- Summernote -->
