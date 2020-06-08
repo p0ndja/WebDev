@@ -29,8 +29,30 @@
                 fontNames: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman', 'MorKhor',
                     'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun',
                     'Kanit', 'anakotmai'
-                ]
+                ],
+                callbacks: {
+                    onImageUpload: function(files, editor, welEditable) {
+                        sendFile(files[0], editor, welEditable);
+                    }
+                }
             });
+
+            function sendFile(file, editor, welEditable) {
+                data = new FormData();
+                data.append("file", file);
+                $.ajax({
+                    data: data,
+                    type: "POST",
+                    url: "<>",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(url) {
+                        editor.insertImage(welEditable, url);
+                    }
+                });
+            }
+
             $('.summernote').summernote('code', '<?php echo $article; ?>');
         });
     </script>

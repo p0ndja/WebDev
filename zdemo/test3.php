@@ -14,9 +14,7 @@
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
 
-    <div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="http://smd.pondja.com/file/post/attachment/67/%E0%B8%84%E0%B8%93%E0%B8%B0%201-2.pdf" allowfullscreen></iframe>
-</div>
+    <?php echo md5(rand()); ?>
     </div>
     <?php require '../global/popup.php'; ?>
     <?php require '../global/footer.php'; ?>
