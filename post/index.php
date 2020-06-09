@@ -38,9 +38,8 @@
         if (!isset($_GET['id'])) {
             if (isset($_GET['category'])) $category = $_GET['category'];
             else header("Location: ../category/news-1");
+            if ($category && !isValidCategory($category, $conn)) back();
         }
-        
-        if ($category && !isValidCategory($category, $conn)) back();
     ?>
 
     <div class="container" id="container" style="padding-top: 88px">
