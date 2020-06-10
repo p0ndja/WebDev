@@ -34,49 +34,51 @@ if (isset($_POST['post_submit']) || isset($_POST['post_update'])) {
         $hotlink = $_POST['hotlinkField'];
     else
         $hotlink = null;
-    
-    $finaldir = null;
-
-    if(isset($_FILES['cover']) && $_FILES['cover']['name'] != ""){
-        $name_file = $_FILES['cover']['name'];
-        $tmp_name = $_FILES['cover']['tmp_name'];
-        $locate_img ="../file/post/images/";
-        if (!file_exists($locate_img)) {
-            mkdir($locate_img);
-        }
-        $date = unformat_curTime();
-        move_uploaded_file($tmp_name,$locate_img.$name_file);
-        rename($locate_img.$name_file, $locate_img.$date.'_'.$name_file);
-        $finaldir = $locate_img.$date.'_'.$name_file;
-    } else if (isset($_SESSION['temp_cover'])) {
-        $finaldir = $_SESSION['temp_cover'];
-    } else {
-        $finaldir = null;
-    }
 
     if (isset($_POST['post_submit'])) {
-        $query_final = "INSERT INTO `post` (title, writer, time, article, tags, cover, hotlink, type, hide, pin) VALUES ('$title', '$writer', '$time', '$article', '$tags', '$finaldir', '$hotlink', '$type', '$hide', $pinned)";
+        $query_final = "INSERT INTO `post` (title, writer, time, article, tags, hotlink, type, hide, pin) VALUES ('$title', '$writer', '$time', '$article', '$tags', '$hotlink', '$type', '$hide', $pinned)";
         $result_final = mysqli_query($conn, $query_final);
         if (!$result_final) die('Could not post '.mysqli_error($conn));
         $news = mysqli_insert_id($conn);
     } else {
         $news = $_GET['news'];
-        $query_final = "UPDATE `post` SET title = '$title', writer = '$writer', time = '$time', article = '$article', tags = '$tags', cover = '$finaldir', hotlink = '$hotlink', hide = '$hide', type = '$type', `pin` = $pinned WHERE id = '$news'";
+        $query_final = "UPDATE `post` SET title = '$title', writer = '$writer', time = '$time', article = '$article', tags = '$tags', hotlink = '$hotlink', hide = '$hide', type = '$type', `pin` = $pinned WHERE id = '$news'";
         $result_final = mysqli_query($conn, $query_final);
         if (!$result_final) die('Could not post '.mysqli_error($conn));
     }
 
+    if (!file_exists("../file/post/".$news."/")) {
+        mkdir("../file/post/".$news."/");
+    }
+
+    $finaldir = null;
+    if (isset($_FILES['cover']) && $_FILES['cover']['name'] != "") {
+        $name_file = $_FILES['cover']['name'];
+        $tmp_name = $_FILES['cover']['tmp_name'];
+        $locate_img ="../file/post/".$news."/"."thumbnail/";
+        if (!file_exists($locate_img)) {
+            mkdir($locate_img);
+        }
+        move_uploaded_file($tmp_name,$locate_img.$name_file);
+        $finaldir = $locate_img.$name_file;
+    } else if (isset($_SESSION['temp_cover'])) {
+        $finaldir = $_SESSION['temp_cover'];
+    }
+    $query_final = "UPDATE `post` SET cover = '$finaldir' WHERE id = '$news'";
+    $result_final = mysqli_query($conn, $query_final);
+    if (!$result_final) die('Could not post cover '.mysqli_error($conn));
+
     $fileTotal = count($_FILES['attachment']['name']);
     $finalFilePath = null;
     if (is_uploaded_file($_FILES['attachment']['tmp_name'][0])) {
-        if (!file_exists("../file/post/attachment/" . $news . "/")) {
-            mkdir("../file/post/attachment/" . $news . "/");
+        if (!file_exists("../file/post/" . $news . "/". "attachment/")) {
+            mkdir("../file/post/" . $news . "/". "attachment/");
         }
         for ($i = 0; $i < $fileTotal; $i++) {
             if($_FILES['attachment']['tmp_name'][$i] != ""){
                 $name_file = $_FILES['attachment']['name'][$i];
                 $tmp_name = $_FILES['attachment']['tmp_name'][$i];
-                $locate_img ="../file/post/attachment/".$news.'/';
+                $locate_img ="../file/post/".$news.'/'.'attachment/';
                 move_uploaded_file($tmp_name,$locate_img.$name_file);
                 rename($locate_img.$name_file, $locate_img.$name_file);
                 $finalFiledir = $locate_img.$name_file;
