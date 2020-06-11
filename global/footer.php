@@ -90,4 +90,5 @@
         e.stopPropagation();
     });
 </script>
+<?php $_SESSION['isDarkProfile'] = 0; ?>
 <?php mysqli_close($conn); ?>

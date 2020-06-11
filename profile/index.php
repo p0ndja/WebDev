@@ -23,7 +23,8 @@
 
         $profile_image = getProfilePicture($id, $conn);
         $profile_greets = getProfileData($id, 'greetings', $conn);
-    
+
+        $_SESSION['isDarkProfile'] = getProfileData($id, 'isDark', $conn);
     ?>
     <style>
         body {
@@ -58,11 +59,6 @@
         <?php require '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
-    <?php if(isThisMyID($id, $conn)) { ?>
-        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-            <a class="btn-floating btn-lg btn-warning" href="./edit"><i class="fas fa-pencil-alt"></i></a>
-        </div>
-    <?php } ?>
         <div class="row">
             <div class="col mb-3">
                 <div class="row">
@@ -171,8 +167,12 @@
                 </div>
             </div>
         </div>
+        <?php if(isThisMyID($id, $conn)) { ?>
+            <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
+                <a class="btn btn-warning" align="left" href="./edit">แก้ไข</a>
+            </div>
+        <?php } ?>
     </div>
-
     <?php require '../global/popup.php'; ?>
     <?php require '../global/footer.php'; ?>
 </body>

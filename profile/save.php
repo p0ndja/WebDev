@@ -22,7 +22,8 @@
 
         if(isset($_FILES['background_upload']) && $_FILES['background_upload']['name'] != ""){
             $base64 = base64($_FILES['background_upload'], $user, 'image');
-            $r = mysqli_query($conn, "UPDATE `profile` SET background = '$base64' WHERE id = $id");
+            $isDark = $_POST['isDark'];
+            $r = mysqli_query($conn, "UPDATE `profile` SET background = '$base64', isDark = $isDark WHERE id = $id");
             if (! $r) die("Could not set profile_background: " . mysqli_error($conn));
         }
     }

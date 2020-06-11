@@ -22,6 +22,7 @@
 
         $profile_displayText = getProfileData($id, 'greetings', $conn);
 
+        $_SESSION['isDarkProfile'] = getProfileData($id, 'isDark', $conn);
     ?>
 
     <script type="text/javascript">
@@ -67,9 +68,6 @@
     <div class="container" id="container" style="padding-top: 88px">
         <img id="bg_dump" style="display: none;">
         <form method="post" action="../profile/save.php" enctype="multipart/form-data">
-            <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
-                <input type="submit" class="btn btn-success" align="left" name="edit_submit" value="บันทึก"></input>
-            </div>
             <div class="card w-100">
                 <div class="card-body">
                     <h6><b>Background Image: </b>
@@ -254,6 +252,10 @@
                     <?php } ?>
                 </div>
             </div>
+            <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
+                <input class="d-none" id="isDark" name="isDark" value="0"></input>
+                <input type="submit" class="btn btn-success" align="left" name="edit_submit" value="บันทึก"></input>
+            </div>
         </form>
     </div>
 
@@ -279,7 +281,6 @@
             };
             reader.readAsDataURL(this.files[0]);
             handleImages(this.files);
-
         };
 
         function addImage(file) {
@@ -295,9 +296,11 @@
                 if ((rgb.r + rgb.g + rgb.b >= 400) || (rgb.g >= 220)) {
                     document.body.removeAttribute("data-theme");
                     console.log("bright");
+                    document.getElementById("isDark").value = 0;
                 } else {
                     document.body.setAttribute("data-theme", "dark");
                     console.log("dark");
+                    document.getElementById("isDark").value = 1;
                 }
                 //document.getElementById('testto').textContent = 
 
