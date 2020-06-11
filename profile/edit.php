@@ -292,10 +292,13 @@
             img.onload = function () {
                 var rgb = getAverageColor(img);
                 console.log(rgb.r + "," + rgb.g + "," + rgb.b);
-                if (rgb.r > 128 || rgb.g > 128 || rgb.b > 128)
+                if ((rgb.r + rgb.g + rgb.b >= 400) || (rgb.g >= 220)) {
                     document.body.removeAttribute("data-theme");
-                else
+                    console.log("bright");
+                } else {
                     document.body.setAttribute("data-theme", "dark");
+                    console.log("dark");
+                }
                 //document.getElementById('testto').textContent = 
 
             };

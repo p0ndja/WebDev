@@ -90,34 +90,24 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <h2>ประวัติการศึกษา</h2>
-                        <div class="row">
-                            <div class="col-9">
-                                <h4>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</h4>
-                            </div>
-                            <div class="col-3">
-                                <h5 class="text-right">2008 - 2014</h5>
-                            </div>
+                        <!-- 1 -->
+                        <div class="d-flex flex-nowrap">
+                            <div class="flex-grow-1"><h5>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</h5></div>
+                            <div class="text-nowrap">2008 - 2014</div>
                         </div>
-                        <h5><span class="badge badge-secondary">ระดับประถมศึกษา</span></h5>
-
-                        <div class="row">
-                            <div class="col-9">
-                                <h4>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</h4>
-                            </div>
-                            <div class="col-3">
-                                <h5 class="text-right">2014 - 2017</h5>
-                            </div>
+                        <h6><span class="badge badge-primary">ระดับประถมศึกษา</span></h6>
+                        <!-- 2 -->
+                        <div class="d-flex flex-nowrap">
+                            <div class="flex-grow-1"><h5>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</h5></div>
+                            <div class="text-nowrap">2014 - 2017</div>
                         </div>
-                        <h5><span class="badge badge-secondary">ระดับมัธยมศึกษาตอนต้น</span></h5>
-                        <div class="row">
-                            <div class="col-9">
-                                <h4>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</h4>
-                            </div>
-                            <div class="col-3">
-                                <h5 class="text-right">2017 - ปัจจุบัน</h5>
-                            </div>
+                        <h6><span class="badge badge-primary">ระดับมัธยศึกษาตอนต้น</span></h6>
+                        <!-- 3 -->
+                        <div class="d-flex flex-nowrap">
+                            <div class="flex-grow-1"><h5>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</h5></div>
+                            <div class="text-nowrap">2017 - 2020</div>
                         </div>
-                        <h5><span class="badge badge-secondary">ระดับมัธยมศึกษาตอนปลาย</span></h5>
+                        <h6><span class="badge badge-primary">ระดับมัธยมศึกษาตอนปลาย</span></h6>
                     </div>
                 </div>
                 <div class="card mb-3">
