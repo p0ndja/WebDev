@@ -32,23 +32,23 @@
                 ],
                 callbacks: {
                     onImageUpload: function(files, editor, welEditable) {
-                        sendFile(files[0], editor, welEditable);
+                        sendFile(files[0], this);
                     }
                 }
             });
 
-            function sendFile(file, editor, welEditable) {
+            function sendFile(file, el) {
                 data = new FormData();
                 data.append("file", file);
                 $.ajax({
                     data: data,
                     type: "POST",
-                    url: "<>",
+                    url: "upload.php",
                     cache: false,
                     contentType: false,
                     processData: false,
                     success: function(url) {
-                        editor.insertImage(welEditable, url);
+                        $(el).summernote('editor.insertImage', url);
                     }
                 });
             }
