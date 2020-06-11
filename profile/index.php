@@ -1,164 +1,95 @@
-<?php 
-    include '../global/connect.php';
-    include '../global/popup.php';
-?>
+<?php require '../global/connect.php'; ?>
+<?php if (!getConfig('global_userProfile', 'bool', $conn)) { back(); } ?>
 
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    <?php include '../global/head.php'; ?>
+    <?php require '../global/head.php'; ?>
     <?php
-     $id;
-     if (isset($_GET['search'])) {
-         $id = $_GET['search'];
-     } else {
-         $id = $_SESSION['id'];
-     }
+        $id;
+        if (isset($_GET['id'])) $id = $_GET['id'];
+        else if (isset($_SESSION['id'])) $id = $_SESSION['id'];
+        else needLogin();
 
-     $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
-     $result = mysqli_query($conn, $query);
-     
-     if (!$result) {
-        die('Could not get data: ' . mysqli_error($conn));
-    }
-     $profile_background = "https://storage.pondja.com/bg%20pastel%20mode.jpg";
+        if (!isValidUserID($id, $conn)) back();
 
-     $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
-     $result_profile = mysqli_query($conn, $query_profile);
+        $profile_background = getProfileData($id, 'background', $conn);
+        
+        if (getProfileData($id, 'background', $conn) == null) {
+            if (!$_SESSION['dark_mode']) $profile_background = "../static/images/background/bg_light_pastel.jpg";
+            else $profile_background = "../static/images/background/bg_dark_resize.jpg";
+        }
 
-
-     while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
-     if ($row['background'] != null) $profile_background = $row['background'];
-     }
+        $profile_image = getProfilePicture($id, $conn);
+        $profile_greets = getProfileData($id, 'greetings', $conn);
     
     ?>
     <style>
         body {
-            font-family: 'Kanit', sans-serif !important;
             background: url(<?php echo $profile_background ?>) no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             background-size: cover;
             -o-background-size: cover;
         }
+        
+        @media (min-width: 960px) {
+            .card-columns {
+                -webkit-column-count: 2;
+                -moz-column-count: 2;
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 960px) {
+            .card-columns {
+                -webkit-column-count: 1;
+                -moz-column-count: 1;
+                column-count: 1;
+            }
+        }
     </style>
 </head>
 
-<body style="background-color: #ededed">
-    <?php include '../global/login.php'; ?>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top sticky" id="nav" role="navigation">
-        <?php include '../global/navbar.php'; ?>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
+        role="navigation">
+        <?php require '../global/navbar.php'; ?>
     </nav>
-    <div class="content"></div>
-    <?php if (isset($_GET['search']) || (isset($_SESSION['id']))) {
-
-$id;
-if (isset($_GET['search'])) {
-    $id = $_GET['search'];
-} else {
-    $id = $_SESSION['id'];
-}
-
-$query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
-$result = mysqli_query($conn, $query);
-$query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
-$result_profile = mysqli_query($conn, $query_profile);
-
-        if (mysqli_num_rows($result) == 0) {
-            die('<center><h1>Profile Not Found</h1></center>');
-        }
-
-        $undefined = "<i>Undefined</i>";
-        $profile_name = "<i>Undefined Thai Name</i>";
-        $profile_name_en = "<i>Undefined English Name</i>";
-        $profile_id = $undefined;
-        $profile_grade = $undefined;
-        $profile_class = $undefined;
-        $profile_room = $undefined;
-        $profile_phone = $undefined;
-        $profile_email = $undefined;
-        $profile_displayText = $undefined;
-        $profile_image = "https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png";
-       
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $profile_name = $row['firstname'] . ' ' . $row['lastname'];
-            $profile_id = $row['id'];
-        }
-        
-        while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
-            if ($row['profile'] != null)
-                $profile_image = $row['profile'];
-            if ($row['tel'] != null)
-                $profile_phone = $row['tel'];
-            if ($row['email'] != null)
-                $profile_email = $row['email'];
-            if ($row['greetings'] != null)
-                $profile_displayText = $row['greetings'];
-        }
-    ?>
-    <div class="container">
-        <hr>
-        <div class="card">
-                <div class="card-body">
+    <div class="container" id="container" style="padding-top: 88px">
+    <?php if(isThisMyID($id, $conn)) { ?>
+        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+            <a class="btn-floating btn-lg btn-warning" href="./edit"><i class="fas fa-pencil-alt"></i></a>
+        </div>
+    <?php } ?>
         <div class="row">
-                    <div class="col-11">
-                        <h1> <?php echo $profile_name; ?></h1>
-                        <h5> <?php echo $profile_name_en; ?></h5>
+            <div class="col mb-3">
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <img src="<?php echo $profile_image; ?>" class="thumb-post img-fluid" alt="Profile">
                     </div>
-                    <div class="col-1">
-                        <?php if(!isset($_GET['search'])) { ?>
-                        <a class="btn btn-warning float-right" href="edit.php"><span class="oi"
-                                data-glyph="pencil"></span></a>
-                        <?php } ?>
+                    <div class="col-12 col-md-9">
+                        <?php echo generateInfoCard($id, $conn); ?>
                     </div>
                 </div>
             </div>
         </div>
-        <hr>
         <div class="row">
-            <div class="col-md-4 col-sm-12">
-                <div class="media">
-                    <img src="<?php echo $profile_image; ?>" class="img-fluid w-100" alt="Profile">
-                </div>
-                <div class="row">
-                    <div class="col-md-12 text-left">
-                        <hr>
-                        <div class="card">
-                            <div class="card-body">
-                                <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
-                                <strong>ระดับชั้น</strong> <?php echo $profile_grade ?><br>
-                                <strong>ห้อง</strong> <?php echo $profile_room ?> (<?php echo $profile_class ?>)<br>
-                                <strong>เบอร์โทรศัพท์</strong> <a
-                                    href="tel:<?php echo $profile_phone ?>"><?php echo $profile_phone ?></a><br>
-                                <strong>อีเมล</strong>
-                                <a href="mailto:<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="card">
-                            <div class="card-body">
-                                <h2>Achievement</h2>
-                                <hr>
-                                <p>-----</p>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="card">
+            <div class="col">
+            <div class="card-columns">
+                <?php if ($profile_greets != null) { ?>
+                <div class="card mb-3">
                     <div class="card-body">
-                        <p><?php echo $profile_displayText ?></p>
+                        <p><?php echo $profile_greets ?></p>
                     </div>
                 </div>
-                <hr>
-                <!--
-                <div class="card">
+                <?php echo generateAchievementCard($id, $conn); ?>
+                <?php } ?>
+                <?php if ($id == 604019) { ?>
+                <div class="card mb-3">
                     <div class="card-body">
                         <h2>ประวัติการศึกษา</h2>
-                        <hr>
                         <div class="row">
                             <div class="col-9">
                                 <h4>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</h4>
@@ -189,13 +120,12 @@ $result_profile = mysqli_query($conn, $query_profile);
                         <h5><span class="badge badge-secondary">ระดับมัธยมศึกษาตอนปลาย</span></h5>
                     </div>
                 </div>
-                <hr>
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-body">
                         <h2>ประสบการณ์</h2>
-                        <hr>
+                        <div class="mb-3"></div>
                         <div class="row">
-                            <div class="col-md-12 col-sm-12">
+                            <div class="col-md-12 col-sm-12 mb-3">
                                 <div class="row">
                                     <div class="col-9">
                                         <h4>รางวัลรองชนะเลิศอันดับ 1 การแข่งขัน Web Programming Competition
@@ -213,12 +143,11 @@ $result_profile = mysqli_query($conn, $query_profile);
                                 </p>
                                 <img src="https://webcontest.cs.kku.ac.th/2562/photo/award.jpg" width=100%>
                                 <br><a href="https://webcontest.cs.kku.ac.th/index.php?page=result&y=2562"
-                                    target="_blank"><span class="oi" data-glyph="external-link"></span></a>
-                                <a href="https://www.facebook.com/SMD.KKU/posts/2215982308531509" target="_blank"><span
-                                        class="oi" data-glyph="external-link"></span></a>
-                                <hr>
+                                    target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="https://www.facebook.com/SMD.KKU/posts/2215982308531509" target="_blank"><i
+                                        class="fas fa-external-link-alt"></i></a>
                             </div>
-                            <div class="col-md-12 col-sm-12">
+                            <div class="col-md-12 col-sm-12 mb-3">
                                 <div class="row">
                                     <div class="col-9">
                                         <h4>รางวัลชนะเลิศการแข่งขันสร้างเว็บเพจ (Web editor) ระดับมัธยมศึกษาตอนปลาย</h4>
@@ -239,26 +168,23 @@ $result_profile = mysqli_query($conn, $query_profile);
                                 </p>
                                 <img src="http://smd-s.kku.ac.th/home/images/smd-62/Computer_Education_Open_House_2018.jpg"
                                     width=100%>
-                                <a href="https://www.facebook.com/SMD.KKU/photos/?tab=album&album_id=1936354579827618"><span
-                                        class="oi" data-glyph="external-link"></span></a>
+                                <a href="https://www.facebook.com/SMD.KKU/photos/?tab=album&album_id=1936354579827618"><i
+                                        class="fas fa-external-link-alt"></i></a>
                                 <a
-                                    href="http://smd-s.kku.ac.th/home/index.php/component/content/article/80-2012-09-14-02-08-54/421-computer-education-open-house-2018"><span
-                                        class="oi" data-glyph="external-link"></span></a>
+                                    href="http://smd-s.kku.ac.th/home/index.php/component/content/article/80-2012-09-14-02-08-54/421-computer-education-open-house-2018"><i
+                                        class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <hr>-->
-
+                <?php } ?>
+                </div>
             </div>
         </div>
     </div>
-    <?php } else {
-        header("Location: ../");
-    }
-        ?>
 
-    <?php include '../global/footer.php' ?>
+    <?php require '../global/popup.php'; ?>
+    <?php require '../global/footer.php'; ?>
 </body>
 
 </html>

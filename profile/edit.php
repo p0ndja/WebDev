@@ -1,37 +1,44 @@
-<?php 
-    include '../global/connect.php';
-    include '../global/popup.php';
-    if (!isset($_SESSION['id'])) {
-        header("Location: ../");
-    }
+<?php
+    require '../global/connect.php';
+    if (!isset($_SESSION['id']))
+        home();
 ?>
 
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    <?php include '../global/head.php'; ?>
+
+    <?php require '../global/head.php'; ?>
     <?php
         $id = $_SESSION['id'];
 
-        $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
-        $result = mysqli_query($conn, $query);
-     
-        if (!$result) {
-            die('Could not get data: ' . mysqli_error($conn));
+        $profile_background = getProfileData($id, 'background', $conn);
+        
+        if (getProfileData($id, 'background', $conn) == null) {
+            if (!$_SESSION['dark_mode']) $profile_background = "../static/images/background/bg_light_pastel.jpg";
+            else $profile_background = "../static/images/background/bg_dark_resize.jpg";
         }
-        $profile_background = "https://storage.pondja.com/bg%20pastel%20mode.jpg";
 
-        $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
-        $result_profile = mysqli_query($conn, $query_profile);
+        $profile_displayText = getProfileData($id, 'greetings', $conn);
 
-        while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
-            if ($row['background'] != null) $profile_background = $row['background'];
-        }
     ?>
+
+    <script type="text/javascript">
+        $(function () {
+            $('.summernote').summernote({
+                minHeight: 500,
+                fontNames: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman',
+                    'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun',
+                    'Kanit'
+                ]
+            });
+            $('.summernote').summernote('code', '<?php echo $profile_displayText; ?>');
+        });
+    </script>
+
     <style>
         body {
-            font-family: 'Kanit', sans-serif !important;
             background: url(<?php echo $profile_background ?>) no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
@@ -41,124 +48,59 @@
     </style>
 </head>
 
-<body style="background-color: #ededed">
-    <?php include '../global/login.php' ?>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top sticky" id="nav" role="navigation">
-        <?php include '../global/navbar.php'; ?>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
+        role="navigation">
+        <?php require '../global/navbar.php'; ?>
     </nav>
-    <div class="content"></div>
-    <?php
-
-        $query = "SELECT * FROM `userdatabase` WHERE id = '$id'";
-        $result = mysqli_query($conn, $query);
-        $query_profile = "SELECT * FROM `profile` WHERE id = '$id'";
-        $result_profile = mysqli_query($conn, $query_profile);
-
-        if (mysqli_num_rows($result) == 0) {
-            die('<center><h1>Profile Not Found</h1></center>');
-        }
-
-        $undefined = "<i>Undefined</i>";
-        $profile_name = "<i>Undefined Thai Name</i>";
-        $profile_name_en = "<i>Undefined English Name</i>";
-        $profile_id = $undefined;
-        $profile_grade = $undefined;
-        $profile_class = $undefined;
-        $profile_room = $undefined;
-        $profile_phone = $undefined;
-        $profile_email = $undefined;
-        $profile_displayText = $undefined;
-        $profile_image = "https://d3ipks40p8ekbx.cloudfront.net/dam/jcr:3a4e5787-d665-4331-bfa2-76dd0c006c1b/user_icon.png";
-       
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $profile_name = $row['firstname'] . ' ' . $row['lastname'];
-            $profile_id = $row['id'];
-        }
+    <?php if (isset($_GET['id']) || (isset($_SESSION['id']))) {
+            $id = $_SESSION['id'];
         
-        while ($row = mysqli_fetch_array($result_profile, MYSQLI_ASSOC)) {
-            if ($row['profile'] != null)
-                $profile_image = $row['profile'];
-            if ($row['tel'] != null)
-                $profile_phone = $row['tel'];
-            if ($row['email'] != null)
-                $profile_email = $row['email'];
-            if ($row['greetings'] != null)
-                $profile_displayText = $row['greetings'];
-        }  
+            $profile_achi = "";
+                    
+            $profile_image = getProfilePicture($id, $conn);
+
+            $profile_greets = getProfileData($id, 'greetings', $conn);
+
+    }
     ?>
-    <div class="container">
-        <form method="POST" action="../profile/save.php">
-            <div class="input-group flex-nowrap">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="addon-wrapping">BACKGROUND IMAGE</span>
-                </div>
-                <input type="text" class="form-control" placeholder="Press URL here" id="backgroundURL"
-                    name="backgroundURL" aria-label="backgroundURL" aria-describedby="addon-wrapping"
-                    value="<?php echo $profile_background;?>">
+    <div class="container" id="container" style="padding-top: 88px">
+        <img id="bg_dump" style="display: none;">
+        <form method="post" action="../profile/save.php" enctype="multipart/form-data">
+            <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
+                <input type="submit" class="btn btn-success" align="left" name="edit_submit" value="บันทึก"></input>
             </div>
-            <hr>
-            <div class="card">
+            <div class="card w-100">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-11">
-                            <h1> <?php echo $profile_name; ?></h1>
-                            <h5> <?php echo $profile_name_en; ?></h5>
-                        </div>
-                        <div class="col-1">
-                            <input type="submit" class="btn btn-success float-right" name="edit_submit"
-                                value="บันทึก"></input>
-                        </div>
-                    </div>
+                    <h6><b>Background Image: </b>
+                        <input type="file" name="background_upload" id="background_upload"
+                            class="form-control-file validate" accept="image/png, image/jpeg"></h6>
                 </div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-md-4 col-sm-12">
-                    <img src="<?php echo $profile_image; ?>" class="img-fluid w-100" alt="Profile">
-                    <div class="form-group">
-                        <input type="url" class="form-control" id="profileURL" name="profileURL"
-                            placeholder="Press URL here" value="<?php echo $profile_image; ?>"></input>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 text-left">
-                            <hr>
-                            <div class="card">
-                                <div class="card-body">
-                                    <strong>รหัสนักเรียน</strong> <?php echo $profile_id ?><br>
-                                    <strong>ระดับชั้น</strong> <?php echo $profile_grade ?><br>
-                                    <strong>ห้อง</strong> <?php echo $profile_room ?> (<?php echo $profile_class ?>)<br>
-                                    <strong>เบอร์โทรศัพท์</strong> <?php echo $profile_phone ?><br>
-                                    <strong>อีเมล</strong>
-                                    <a href="<?php echo $profile_email ?>"><?php echo $profile_email ?></a>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="card">
-                                <div class="card-body">
-                                    <h2>Achievement</h2>
-                                    <hr>
-                                    <p>-----</p>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
+                    <div class="sticky-content mb-3">
+                        <img src="<?php echo $profile_image; ?>" class="w-100 mb-3 img-thumbnail" alt="Profile" id="profile_preview">
+                        <br>
+                        <input type="file" name="profile_upload" id="profile_upload"
+                            class="form-control-file validate mb-3" accept="image/png, image/jpeg">
+                        <?php echo generateInfoCard($id, $conn); ?>
+                        <?php echo generateAchievementCard($id, $conn); ?>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-body">
-                            <form>
-                                <div class="form-group">
-                                    <textarea class="form-control" name="displayTextArea" id="displayTextArea"
-                                        rows="3" placeholder="สามารถใช้ HTML, Bootstrap Format ได้"><?php echo $profile_displayText ?></textarea>
-                                </div>
-                            </form>
-
-
+                            <div class="form-group">
+                                <label for="contents">Contents</label>
+                                <textarea name="text" class="summernote" id="contents" name="contents"
+                                    title="Contents"></textarea>
+                            </div>
                         </div>
                     </div>
                     <hr>
-                    <!--
+                    <?php if ($_SESSION['id'] == 604019) { ?>
                     <div class="card">
                         <div class="card-body">
                             <h2>ประวัติการศึกษา</h2>
@@ -229,7 +171,7 @@
                                 <div class="col-md-12 col-sm-12">
                                     <div class="row">
                                         <div class="col-9">
-                                            <h4><a class="btn btn-danger"><span class="oi" data-glyph="eye"></span></a>
+                                            <h4><a class="btn btn-danger"><i class="fas fa-eye-slash"></i></a>
                                                 รางวัล GISTDA Top Vote </h4>
                                         </div>
                                         <div class="col-3">
@@ -249,7 +191,7 @@
                                     <div class="row">
                                         <div class="col-9">
 
-                                            <h4><a class="btn btn-success"><span class="oi" data-glyph="eye"></span></a>
+                                            <h4><a class="btn btn-success"><i class="fas fa-eye"></i></a>
                                                 รางวัลรองชนะเลิศอันดับ 1 การแข่งขัน Web Programming Competition
                                                 ระดับมัธยมศึกษาตอนปลาย </h4>
                                         </div>
@@ -275,7 +217,7 @@
                                 <div class="col-md-12 col-sm-12">
                                     <div class="row">
                                         <div class="col-9">
-                                            <h4><a class="btn btn-success"><span class="oi" data-glyph="eye"></span></a>
+                                            <h4><a class="btn btn-success"><i class="fas fa-eye"></i></a>
                                                 รางวัลชนะเลิศการแข่งขันสร้างเว็บเพจ (Web editor) ระดับมัธยมศึกษาตอนปลาย
                                             </h4>
                                         </div>
@@ -308,13 +250,97 @@
                             </div>
                         </div>
                     </div>
-                    <hr>-->
+                    <hr>
+                    <?php } ?>
                 </div>
             </div>
         </form>
     </div>
-    <?php include '../global/footer.php' ?>
 
+    <script>
+        document.getElementById("profile_upload").onchange = function () {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById("profile_preview").src = e.target.result;
+            };
+            reader.readAsDataURL(this.files[0]);
+        };
+
+        document.getElementById("background_upload").onchange = function () {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("body").css({
+                    "background": "url(" + e.target.result + ") no-repeat center center fixed",
+                    "-webkit-background-size": "cover",
+                    "-moz-background-size": "cover",
+                    "background-size": "cover",
+                    "-o-background-size": "cover"
+                });
+            };
+            reader.readAsDataURL(this.files[0]);
+            handleImages(this.files);
+
+        };
+
+        function addImage(file) {
+            var element = document.createElement('div');
+            element.className = 'row';
+            element.innerHTML = '<img />';
+
+            var img = element.querySelector('img');
+            img.src = URL.createObjectURL(file);
+            img.onload = function () {
+                var rgb = getAverageColor(img);
+                console.log(rgb.r + "," + rgb.g + "," + rgb.b);
+                if (rgb.r > 128 || rgb.g > 128 || rgb.b > 128)
+                    document.body.removeAttribute("data-theme");
+                else
+                    document.body.setAttribute("data-theme", "dark");
+                //document.getElementById('testto').textContent = 
+
+            };
+
+        }
+
+        function getAverageColor(img) {
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            var width = canvas.width = img.naturalWidth;
+            var height = canvas.height = img.naturalHeight;
+
+            ctx.drawImage(img, 0, 0);
+
+            var imageData = ctx.getImageData(0, 0, width, height);
+            var data = imageData.data;
+            var r = 0;
+            var g = 0;
+            var b = 0;
+
+            for (var i = 0, l = data.length; i < l; i += 4) {
+                r += data[i];
+                g += data[i + 1];
+                b += data[i + 2];
+            }
+
+            r = Math.floor(r / (data.length / 4));
+            g = Math.floor(g / (data.length / 4));
+            b = Math.floor(b / (data.length / 4));
+
+            return {
+                r: r,
+                g: g,
+                b: b
+            };
+        }
+
+        function handleImages(files) {
+            for (var i = 0; i < files.length; i++) {
+                addImage(files[i]);
+            }
+        }
+    </script>
+    <?php require '../global/popup.php'; ?>
+    <?php require '../global/footer.php'; ?>
 </body>
 
 </html>

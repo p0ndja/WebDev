@@ -1,2 +1,35 @@
-ErrorDocument 404 https://satit.pondja.com/err/error_404.php
-DirectoryIndex .index.php .index.html index.php index.html .redirect.html redirect.html .redirect.php redirect.php
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^post/([0-9]+)$ post/?id=$1
+RewriteRule ^post/create$ post/post.php
+RewriteRule ^post/edit-([0-9]+)$ post/post.php?id=$1
+
+RewriteRule ^category/(.*)-([0-9]+)$ post/index.php?category=$1&page=$2
+RewriteRule ^category/(.*)-([0-9]+)-(.*)$ post/index.php?category=$1&page=$2&tags=$3
+
+RewriteRule ^darkmode/$ pages/darkmode.php
+
+RewriteRule ^profile/$ profile/index.php
+RewriteRule ^profile/([0-9]+)$ profile/?id=$1
+RewriteRule ^profile/edit$ profile/edit.php
+
+RewriteRule ^search/$ global/search.php
+
+RewriteRule ^storage/(.*)-(.*)/(.*)$ file/$1/attachment/$2/$3
+
+RewriteRule ^p/(.*)$ pages/$1.php
+RewriteRule ^s/(.*)$ admin/$1.php
+
+RewriteRule ^api/(.*)$ global/api/$1.php
+
+RewriteRule ^logout/$ global/logout.php
+
+RewriteRule ^discord https://discord.gg/Xfcex7C
+RewriteRule ^discord/chem https://discord.gg/dHBsput
+
+Options +FollowSymlinks
+Options +Indexes
+IndexOptions +FancyIndexing
+DirectoryIndex .index.php .index.html index.php index.html .redirect.html redirect.html landing.html landing.php .landing.html .landing.php .redirect.php redirect.php

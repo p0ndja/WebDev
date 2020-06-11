@@ -1,17 +1,17 @@
+<?php require '../global/connect.php'; ?>
+
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    <?php include '../global/head.php'; ?>
+    <?php require '../global/head.php'; ?>
 </head>
 
-<body style="background-color: #ededed">
-    <?php include '../global/login.php'; ?>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top sticky" id="nav" role="navigation">
-        <?php include '../global/navbar.php'; ?>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav" role="navigation">
+        <?php require '../global/navbar.php'; ?>
     </nav>
-    <div class="content"></div>
-    <div class="container">
+    <div class="container" id="container" style="padding-top: 88px">
         <hr>
         <div class="row">
             <div class="col-12">
@@ -158,7 +158,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <a href="#" class="btn btn-secondary"><span class="oi" data-glyph="print"></span></a>
+                                <a href="#" class="btn btn-secondary"><i class="fas fa-print"></i></a>
                             </div>
                         </div>
                     </div>
@@ -167,79 +167,8 @@
             </div>
         </div>
     </div>
-
-    <footer style="background-color: rgba(0, 0 , 0, 0.8);">
-        <div class="container">
-            <hr>
-            <div class="row">
-                <div class="col-12">
-                    <h4 style="color: white">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</h4>
-                    <hr>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <p style="color: white">เกี่ยวกับ</p>
-                    <ul>
-                        <li><a href="../load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data09.png">ประวัติโรงเรียน</a></li>
-                        <li><a href="../load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data010.png">ปรัชญา</a></li>
-                        <li><a href="../load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data08.png">วิสัยทัศน์ พันธกิจ</a></li>
-                        <li><a href="../load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data06.png">เป้าหมายเชิงกลยุทธ์</a></li>
-                        <li><a href="../load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data07.png">คุณลักษณะอันพึงประสงค์</a></li>
-                        <li><a href="../load.php?img=http://smd-s.kku.ac.th/home/images/smd-55/data12.png">คณะกรรมการประจำโรงเรียน</a></li>
-                        <li><a href="../load.php?img=http://smd-s.kku.ac.th/home/images/smd-58/managementstructure57.jpg">โครงสร้างการบริหาร</a></li>
-                        <li><a href="#">ทำเนียบผู้บริหาร</a></li>
-                        <li><a href="#">คณะผู้บริหาร</a></li>
-                        <li><a href="#">บุคลากร</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <p style="color: white">หน่วยงาน</p>
-                    <ul>
-                        <li><a style="color: white" href="#"> งานแผนและประกันคุณภาพ </a></li>
-                        <li><a style="color: white" href="#"> งานแนะแนว </a></li>
-                        <li><a style="color: white" href="#"> งานทะเบียน </a></li>
-                        <li><a style="color: white" href="#"> งานพัฒนาบุคลิกภาพ </a></li>
-                        <li><a style="color: white" href="#"> งานห้องสมุด </a></li>
-                        <li><a style="color: white" href="#"> ชมรมผู้ปกครองและครู </a></li>
-                    </ul>
-
-                </div>
-                <div class="col-md-4">
-                    <p style="color: white">ปฏิทิน</p>
-                    <ul>
-                        <li><a style="color: white" href="#"> ปฏิทินโรงเรียน </a></li>
-                        <li><a style="color: white" href="../calendar.html"> ตารางเรียน </a></li>
-                        <li><a style="color: white" href="#"> ตารางสอบ </a></li>
-                    </ul>
-                    <a style="color: white" href="../forum.html"> SMD Forum </a></li>
-                    <br><a style="color: white" href="#"> SMD Shop </a></li>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-12">
-                    <center>
-                        <p style="color: white">Copyright 2019 © MyWebsite. By PondJa & Risaka .</center>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap-4.3.1.js"></script>
-    <!-- SCRIPT THAT ADD FROM MDBootstrap-->
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>
-            <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="../js/mdb.min.js"></script>
-    <!-- END HERE -->
+<?php require '../global/popup.php'; ?>
+<?php require '../global/footer.php'; ?>
 </body>
 
 </html>

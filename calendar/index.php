@@ -1,14 +1,16 @@
+<?php require '../global/connect.php'; ?>
+
 <!DOCTYPE html>
 <html lang="th">
 
 <head>
-    <?php include '../global/head.php';?>
+    <?php require '../global/head.php'; ?>
 
 </head>
 
 <body style="background-color: #ededed">
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark navbar-normal">
-        <?php include '../global/navbar.php'; ?>
+        <?php require '../global/navbar.php'; ?>
     </nav>
 
     <div class="container">
@@ -92,7 +94,8 @@
         </div>
     </div>
     <br>
-    <?php include '../global/footer.php'; ?>
+<?php require '../global/popup.php'; ?>
+<?php require '../global/footer.php'; ?>
 </body>
 
 </html>

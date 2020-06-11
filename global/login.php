@@ -1,227 +1,101 @@
-    <div class="modal fade" name="login" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog cascading-modal" role="document">
-            <!--Content-->
-            <div class="modal-content">
+<?php
+    require '../global/connect.php';
 
-                <!--Modal cascading tabs-->
-                <div class="modal-c-tabs">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs md-tabs tabs-2 grey lighten-2" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active black-text" data-toggle="tab" href="#panel7" role="tab" ><i
-                                    class="fas fa-user mr-1"></i>
-                                Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link black-text" data-toggle="tab" href="#panel8" role="tab"><i
-                                    class="fas fa-user-plus mr-1"></i>
-                                Register</a>
-                        </li>
-                    </ul>
+    //กรณี Login
+if (isset($_POST['login_submit'])) {
+    $user = $_POST['login_username'];
+    $pass = $_POST['login_password']; $md5_pass = md5($pass);
 
-                    <!-- Tab panels -->
-                    <div class="tab-content">
-                        <!--Panel 7-->
-                        <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-                            <form method="post">
-                                <!--Body-->
-                                <div class="modal-body mb-1">
+    //ดึงข้อมูลมาเช็คว่า $User ที่ตั้งรหัสผ่านเป็น $Pass มีในระบบรึเปล่า
+    $query = "SELECT * FROM `user` WHERE (username = '$user' OR id = '$user') AND (password = '$md5_pass' OR citizen_id = '$pass')";
+    $result = mysqli_query($conn, $query);
+    if (!$result) die('Could not get data: ' . mysqli_error($conn));
 
-                                    <?php
-                                    if (isset($_POST['login_submit'])) {
-                                        $user = $_POST['login_username'];
-                                        $pass = md5($_POST['login_password']);
-                                        $query = "SELECT * FROM `userdatabase` WHERE username = '$user' AND password = '$pass'";
-                                        $result = mysqli_query($conn, $query);
+    //ถ้าไม่เจอ User นี้ จะ return เป็น 0
+    if (mysqli_num_rows($result) == 0) {
+        $_SESSION['error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
+    } else {
+        //ปกติค่านี้ ถ้าเจอในฐานข้อมูลจะ return ออกมา > 0
+        //ตั้งค่าข้อมูลต่าง ๆ ของ User ใส่ SESSION
+        $_SESSION['id'] = mysqli_fetch_array($result, MYSQLI_ASSOC)['id'];
+        $_SESSION['real_id'] = $_SESSION['id'];
+        $_SESSION['username'] = getUserdata($_SESSION['id'], 'username', $conn);
+        $_SESSION['name'] = getUserdata($_SESSION['id'], 'firstname', $conn) . ' ' . getUserdata($_SESSION['id'], 'lastname', $conn);
+        $_SESSION['shortname'] = getUserdata($_SESSION['id'], 'firstname', $conn);
 
-                                        if (! $result) {
-                                            die('Could not get data: ' . mysqli_error($conn));
-                                        }
-                                       
-                                        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                                            $_SESSION['user'] = $row['username'];
-                                            $_SESSION['fn'] = $row['firstname'];
-                                            $_SESSION['ln'] = $row['lastname'];
-                                            $_SESSION['id'] = $row['id'];
-                                        }
+        $_SESSION['success'] = "เข้าสู่ระบบสำเร็จ";
+    }
 
-                                        if (mysqli_num_rows($result) == 0) {
-                                            $_SESSION['error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
-                                            session_destroy();
-                                        } else {
-                                            $id = $_SESSION['id'];
-                                            $query_final = "SELECT * FROM `profile` WHERE id = '$id'";
-                                            $result_final = mysqli_query($conn, $query_final);
-                                            while ($row = mysqli_fetch_array($result_final, MYSQLI_ASSOC)) {
-                                                $_SESSION['pi'] = $row['profile'];
-                                            }
-                                        }
-                                    }
+    back();
+}
 
-                                    if (isset($_SESSION['error'])) {
-                                        echo '<div class="alert alert-danger" role="alert">'. $_SESSION['error'] .'</div>';
-                                    }
-                                ?>
+    //กรณี Register
+if (isset($_POST['register_submit'])) {
+    $user = $_POST['register_username'];
+    $pass = md5($_POST['register_password']);
+    $id = $_POST['register_id'];
+    $citizen_id = $_POST['register_citizen_id'];
+    $firstname = $_POST['register_firstname'];
+    $lastname = $_POST['register_lastname'];
+    $email = $_POST['register_email'];
+    $firstname_en = $_POST['register_firstname_en'];
+    $lastname_en = $_POST['register_lastname_en'];
+    $prefix = $_POST['register_prefix'];
+    $grade = $_POST['register_grade'];
+    $class = $_POST['register_class'];
 
-                                    <div class="md-form form-sm mb-5">
-                                        <i class="fas fa-user prefix"></i>
-                                        <input type="text" name="login_username" id="login_username"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="login_username">Username</label>
-                                    </div>
-                                    <div class="md-form form-sm mb-4">
-                                        <i class="fas fa-lock prefix"></i>
-                                        <input type="password" name="login_password" id="login_password"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="login_password">Password</label>
-                                    </div>
-                                </div>
-                                <!--Footer-->
-                                <div class="modal-footer">
-                                    <input class="btn btn-success" type="submit" name="login_submit"
-                                        value="Login"></input>
-                                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-                            </form>
-                        </div>
-                        <!--/.Panel 7-->
+    //ลองเอาค่าต่าง ๆ ไปดูว่ามีผู้ใช้นี้อยู่ในระบบแล้วรึยัง
+    $query1 = "SELECT * FROM `user` WHERE username = '$user'";
+    $query2 = "SELECT * FROM `user` WHERE citizen_id = '$citizen_id'";
+    $result1 = mysqli_query($conn, $query1);
+    $result2 = mysqli_query($conn, $query2);
 
-                        <!--Panel 8-->
-                        <div class="tab-pane fade" id="panel8" role="tabpanel">
-                            <form method="post">
-                                <?php
-                                if (isset($_POST['register_submit'])) {
-                                    $user = $_POST['register_username'];
-                                    $pass = md5($_POST['register_password']);
-                                    $id = $_POST['register_id'];
-                                    $citizen_id = $_POST['register_citizen_id'];
-                                    $firstname = $_POST['register_firstname'];
-                                    $lastname = $_POST['register_lastname'];
-                                    $email = $_POST['register_email'];
-                                    $query1 = "SELECT * FROM `userdatabase` WHERE username = '$user'";
-                                    $query2 = "SELECT * FROM `userdatabase` WHERE citizen_id = '$citizen_id'";
-                                    $result1 = mysqli_query($conn, $query1);
-                                    $result2 = mysqli_query($conn, $query2);
+    if (! $result1) {
+        die('Could not get data: ' . mysqli_error($conn));
+    }
 
-                                    if (! $result1) {
-                                        die('Could not get data: ' . mysqli_error($conn));
-                                    }
+    //กรณีมีข้อมูลอยู่แล้ว จะ return ค่าเป็น 1
+    if (mysqli_num_rows($result1) == 1) {
+        $_SESSION['error'] = "มีชื่อผู้ใช้นี้อยู่แล้ว";
+    } else if (mysqli_num_rows($result2) == 1) {
+        $_SESSION['error'] = "รหัสบัตรประชาชนนี้ ได้ทำการสมัครสมาชิกอยู่แล้ว";
+    } else {
+        //กรณีนี้ไม่เจอข้อมูลใด ๆ ตรงเลย เลยสามารถสมัครได้
+        if(isset($_FILES['upload']) && $_FILES['upload']['name'] != ""){
+            $finaldir = base64($_FILES['upload'], $user, 'image');
+        } else {
+            $finaldir = null;
+        }
+        
+        $query_final = "INSERT INTO `user` (id, username, password, citizen_id, prefix, firstname, lastname, firstname_en, lastname_en, email, grade, class) VALUES ($id, '$user', '$pass', $citizen_id, '$prefix', '$firstname', '$lastname', '$firstname_en', '$lastname_en', '$email', $grade, $class)";
+        $result_final = mysqli_query($conn, $query_final);
 
-                                    if (mysqli_num_rows($result1) == 1) {
-                                        $_SESSION['error'] = "มีชื่อผู้ใช้นี้อยู่แล้ว";
-                                    } else if (mysqli_num_rows($result2) == 1) {
-                                        $_SESSION['error'] = "รหัสบัตรประชาชนนี้ ได้ทำการสมัครสมาชิกอยู่แล้ว";
-                                    } else {
-                                        /* $filename = $_FILES['filUpload']['tmp_name'];
-                                        if($filename != "") {
-                                            move_uploaded_file($_FILES['filUpload']['tmp_name'], "../cache/".$_FILES['filUpload']['tmp_name']) or die( "Could not move file!");
-                                        } */
-                                        
-                                        $query_final = "INSERT INTO `userdatabase` (id, username, password, citizen_id, firstname, lastname, email) VALUES ($id, '$user', '$pass', $citizen_id, '$firstname', '$lastname', '$email')";
-                                        $result_final = mysqli_query($conn, $query_final);
+        $query_achi = "INSERT INTO `achievement` (id) VALUES ($id)";
+        $result_achi = mysqli_query($conn, $query_achi);
 
-                                        $query_achi = "INSERT INTO `achievement` (username, id, betaTester) VALUES ('$user', $id, true)";
-                                        $result_achi = mysqli_query($conn, $query_achi);
+        $query_profile = "INSERT INTO `profile` (id, profile) VALUES ($id, '$finaldir')";
+        $result_profile = mysqli_query($conn, $query_profile);
 
-                                        $query_profile = "INSERT INTO `profile` (id) VALUES ($id)";
-                                        $result_profile = mysqli_query($conn, $query_profile);
+        //แสดงค่ากลับหาผู้ใช้
+        if ($result_final) {
+            $_SESSION['error'] = null;
+            $_SESSION['success'] = "สมัครผู้ใช้งานสำเร็จ";
+            $_SESSION['username'] = $user;
+            $_SESSION['id'] = $id;
+            $_SESSION['name'] = $_POST['register_firstname'] . ' ' . $_POST['register_lastname'];
+        } else {
+            die('Could not register ' . mysqli_error($conn));
+        }
 
-                                        $query_permission = "INSERT INTO `permission` (username, id) VALUES ('$user', $id)";
-                                        $result_permission = mysqli_query($conn, $query_permission);
+        if (! $result_profile) {
+            die('Could not create profile ' . mysqli_error($conn));
+        }
 
-                                        if ($result_final) {
-                                            $_SESSION['error'] = "สมัครผู้ใช้งานสำเร็จ";
-                                            $_SESSION['user'] = $user;
-                                            $_SESSION['id'] = $id;
-                                            $_SESSION['fn'] = $_POST['register_firstname'];
-                                            $_SESSION['ln'] = $_POST['register_lastname'];
-                                        } else {
-                                            die('Could not register ' . mysqli_error($conn));
-                                        }
-
-                                        if (! $result_profile) {
-                                            die('Could not create profile ' . mysqli_error($conn));
-                                        }
-
-                                        if (! $result_achi) {
-                                            die('Could not add achievement ' . mysqli_error($conn));
-                                        }
-                                        
-                                        if (! $result_permission) {
-                                            die('Could not grant permission ' . mysqli_error($conn));
-                                        }
-                                    }
-                                }
-                                if (isset($_SESSION['error'])) {
-                                    echo '<div class="alert alert-danger" role="alert">'. $_SESSION['error'] .'</div>';
-                                }
-                                ?>
-                                <!--Body-->
-                                <div class="modal-body">
-                                    <div class="md-form form-sm mb-5">
-                                        <i class="fas fa-envelope prefix"></i>
-                                        <input type="text" name="register_username" id="register_username"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_username">ชื่อผู้ใช้งาน</label>
-                                    </div>
-                                    <div class="md-form form-sm mb-5">
-                                        <i class="fas fa-envelope prefix"></i>
-                                        <input type="password" name="register_password" id="register_password"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_password">รหัสผ่าน</label>
-                                    </div>
-                                    <div class="md-form form-sm mb-5">
-                                        <i class="fas fa-user prefix"></i>
-                                        <input type="text" name="register_id" id="register_id"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_id">รหัสนักเรียน</label>
-                                    </div>
-                                    <div class="md-form form-sm mb-5">
-                                        <i class="fas fa-lock prefix"></i>
-                                        <input type="text" name="register_citizen_id" id="register_citizen_id"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_citizen_id">รหัสบัตรประชาชน</label>
-                                    </div>
-                                    <div class="md-form form-sm mb-5">
-                                        <i class="fas fa-signature prefix"></i>
-                                        <input type="text" name="register_firstname" id="register_firstname"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_firstname">ชื่อ</label>
-                                    </div>
-                                    <div class="md-form form-sm mb-5">
-                                        <i class="fas fa-signature prefix"></i>
-                                        <input type="text" name="register_lastname" id="register_lastname"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_lastname">นามสกุล</label>
-                                    </div>
-                                    <div class="md-form form-sm mb-5">
-                                        <i class="fas fa-envelope prefix"></i>
-                                        <input type="email" name="register_email" id="register_email"
-                                            class="form-control form-control-sm validate" required>
-                                        <label for="register_email">อีเมล</label>
-                                    </div>
-                                    <!--
-                                    <div class="md-form form-sm mb-5">
-                                        <i class="fas fa-images prefix"></i>
-                                        <input type="file" name="filUpload" id="filUpload"
-                                            class="form-control form-control-sm validate" accept="image/png, image/jpeg">
-                                    </div>
-                                    -->
-                                </div>
-                                <!--Footer-->
-                                <div class="modal-footer">
-                                    <input class="btn btn-success" type="submit" name="register_submit"
-                                        value="Sign Up"></input>
-                                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-                            </form>
-                        </div>
-                        <!--/.Panel 8-->
-                    </div>
-
-                </div>
-            </div>
-            <!--/.Content-->
-        </div>
-    </div>
-    </form>
+        if (! $result_achi) {
+            die('Could not add achievement ' . mysqli_error($conn));
+        }
+    }
+    
+    back();
+}
+?>
