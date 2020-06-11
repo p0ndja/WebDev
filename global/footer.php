@@ -8,7 +8,7 @@
                 <hr>
             </div>
             <div class="col-md-3">
-                <p style="color: white">เกี่ยวกับ</p>
+                <h5 style="color: white">เกี่ยวกับ</h5>
                 <ul>
                     <li style="color: #ff6c00"><a href="../post/20" style="color: white">ประวัติโรงเรียน</a></li>
                     <li style="color: #ff6c00"><a href="../post/22" style="color: white">เกี่ยวกับโรงเรียน</a></li>
@@ -20,7 +20,7 @@
                 </ul>
             </div>
             <div class="col-md-3">
-                <p style="color: white">หน่วยงาน</p>
+                <h5 style="color: white">หน่วยงาน</h5>
                 <ul>
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">งานแผนและประกันคุณภาพ</a></li>
                     <li style="color: #ff6c00"><a style="color: white" href="https://www.admissionpremium.com/gis/KKU/login">งานแนะแนว</a></li>
@@ -32,7 +32,7 @@
                 <a style="color: white" href="../pages/subject.php"> เอกสารประกอบการสอน </a></li>
             </div>
             <div class="col-md-3">
-                <p style="color: white">ปฏิทิน</p>
+                <h5 style="color: white">ปฏิทิน</h5>
                 <ul>
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ปฏิทินโรงเรียน </a>
                     </li>

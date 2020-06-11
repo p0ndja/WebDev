@@ -77,7 +77,7 @@
 }
 
 [data-theme="dark"] a {
-    color: #ffc30f;
+    color: white;
 }
 
 [data-theme="dark"] .pagination > li > a
@@ -99,13 +99,16 @@
 [data-theme="dark"] h3,
 [data-theme="dark"] h4,
 [data-theme="dark"] h5,
+[data-theme="dark"] span {
+    color: white !important;
+}
+
 [data-theme="dark"] p,
 [data-theme="dark"] li,
 [data-theme="dark"] ul,
 [data-theme="dark"] table,
-[data-theme="dark"] blockquote,
-[data-theme="dark"] span {
-    color: white !important;
+[data-theme="dark"] blockquote {
+    color: #bbbbbb !important;
 }
 
 [data-theme="dark"] .table-hover tbody tr:hover td,
