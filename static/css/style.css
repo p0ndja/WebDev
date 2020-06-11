@@ -148,6 +148,14 @@
         color: #fc6504 !important;
     }
 
+    p,
+    li,
+    ul,
+    table,
+    blockquote {
+        color: #595b60 !important;
+    }
+
     .dropdown .dropdown-menu.dropdown-smd .dropdown-item:hover,
     .dropdown .dropdown-menu.dropdown-smd .dropdown-item:active,
     .dropdown .dropdown-menu.dropdown-smd .dropdown-item.active,
