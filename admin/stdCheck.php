@@ -32,11 +32,10 @@
                         </div>
                         <div class="select-outline">
                             <select class="mdb-select md-form type" id="class" name="class" required>
-                                <option value="1">ห้อง 1</option>
+                                <option value="1" id="c1">ห้อง 1</option>
                                 <option value="2">ห้อง 2</option>
                                 <option value="3">ห้อง 3</option>
                                 <option value="4">ห้อง 4</option>
-                                <option value="5" id="scius">ห้อง 5</option>
                             </select>
                             <label class="mdb-main-label">ห้อง</label>
                         </div>
@@ -122,13 +121,16 @@
             $('input:checkbox').not(this).prop('checked', this.checked);
         });
 
+        //Get current selection grade,class
         $('#grade option[value=<?php if (isset($_GET['grade'])) echo $_GET['grade']; else echo 1; ?>]').attr('selected', 'selected');
         $('#class option[value=<?php if (isset($_GET['class'])) echo $_GET['class']; else echo 1; ?>]').attr('selected', 'selected');
 
+        //Query Data
         $("#btn_query").click(function () {
             window.location.href = "?grade=" + $("#grade").val() + "&class=" + $("#class").val() + "&date=" + $(".datepicker").val();
         });
 
+        //On check checkbox
         $('input[type="checkbox"]').on('change', function (e) {
             console.log(e.target.name + "@" + "<?php echo $d; ?>" + "=" + e.target.checked);
             $.ajax({
@@ -154,9 +156,17 @@
 
         $("#grade").change(function () {
             if ($(this).val() <= 3) {
-                $("#scius").prop('disabled', true);
+                $('#class option[value="5"]').remove();
             } else {
-                $("#scius").prop('disabled', false);
+                $('#class').append('<option value="5">ห้อง 5</option>');
+            }
+        });
+
+        $(document).ready(function() {
+            if ($("#grade").val() <= 3) {
+                $('#class option[value="5"]').remove();
+            } else {
+                $('#class').append('<option value="5">ห้อง 5</option>');
             }
         });
 
