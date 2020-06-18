@@ -1,8 +1,16 @@
-<?php if ((isset($_SESSION['dark_mode']) && $_SESSION['dark_mode']) || (isset($_SESSION['isDarkProfile']) && $_SESSION['isDarkProfile'])) { ?>
-    <script>document.body.setAttribute("data-theme", "dark")</script>
-<?php } else { ?>
-    <script>document.body.removeAttribute("data-theme")</script>
-<?php } ?>
+<?php   if ((isset($_SESSION['dark_mode']) && $_SESSION['dark_mode'])) { ?>
+            <script>document.body.setAttribute("data-theme", "dark")</script>
+<?php   } else { ?>
+            <script>document.body.removeAttribute("data-theme")</script>
+<?php   } ?>
+<?php   $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; 
+        if ((strpos($current_url, "/profile") !== false)) {
+            if ((isset($_SESSION['isDarkProfile']) && $_SESSION['isDarkProfile'])) { ?>
+            <script>document.body.setAttribute("data-theme", "dark")</script>
+        <?php } else { ?>
+            <script>document.body.removeAttribute("data-theme")</script>
+<?php   }} ?>
+
 <a class="navbar-brand" href="../home"><img src="../static/images/logo/logokku_t_w_32px.png" width="20" alt="SMD" align="center"></a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
