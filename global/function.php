@@ -10,6 +10,11 @@
         return true;
     }
 
+    function checkPermission($perm, $id, $conn) {
+        if (!getUserdata($id, $perm, $conn) && !getUserdata($id, 'isAdmin', $conn)) return false;
+        return true;
+    }
+
     function getAnySQL($sql, $val, $key, $key_val, $conn) {
         return mysqli_fetch_array(mysqli_query($conn, "SELECT `$val` from `$sql` WHERE $key = '$key_val'"), MYSQLI_ASSOC)[$val];
     }
@@ -129,7 +134,9 @@
         else if ($profile_room == 5) $profile_class = "วมว.";
         else $profile_class = "ปกติ";
         
-        if ($profile_grade > 6) $profile_class_detail = "<strong>ศิษย์เก่า</strong><br>";
+        if (checkPermission('isAdmin', $id, $conn)) $profile_class_detail = "<strong class='font-weight-bold text-danger'>แอดมิน</strong><br>";
+        else if (checkPermission('isTeacher', $id, $conn)) $profile_class_detail = "<strong class='font-weight-bold text-smd'>อาจารย์</strong><br>";
+        else if ($profile_grade > 6) $profile_class_detail = "<strong>ศิษย์เก่า</strong><br>";
         else if ($profile_grade >= 1 && $profile_grade <= 6) $profile_class_detail = "<strong>ระดับชั้น</strong> " . $profile_grade . "/" . $profile_room . " (" . $profile_class . ")<br>";
         else $profile_class_detail = "";
 
@@ -146,15 +153,15 @@
     function generateAchievementCard($id, $conn) {
         $profile_achi = "";
         if (getAchievementdata($id, 'betaTester', $conn))
-            $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Beta Tester (LEGENDARY)"><img src="../static/images/achievement/beta-tester-icon_resize.gif" alt="Beta Tester (LEGENDARY)" class="img-fluid w-100 justify-content-center"></a></div>';
+            $profile_achi .= '<a class="material-tooltip-main" data-toggle="tooltip" title="Beta Tester (LEGENDARY)"><img src="../static/images/achievement/beta-tester-icon_resize.gif" alt="Beta Tester (LEGENDARY)" width="50" class="justify-content-center"></a>&nbsp;';
         if (getAchievementdata($id, 'WebDevTycoon', $conn))
-            $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Web Dev Tycoon (UNOBTAINABLE)"><img src="../static/images/achievement/Web_dev_tycoon_icon_resize.gif" alt="Web Dev Tycoon (UNOBTAINABLE)" class="img-fluid w-100 justify-content-center"></a></div>';
+            $profile_achi .= '<a class="material-tooltip-main" data-toggle="tooltip" title="Web Dev Tycoon (UNOBTAINABLE)"><img src="../static/images/achievement/Web_dev_tycoon_icon_resize.gif" alt="Web Dev Tycoon (UNOBTAINABLE)" width="50" class="justify-content-center"></a>&nbsp;';
         if (getAchievementdata($id, 'the4thFloor', $conn))
-            $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="The 4th Floor (RARE)"><img src="../static/images/achievement/stair.png" alt="The 4th Floor (RARE)" class="img-fluid w-100 justify-content-center"></a></div>';
+            $profile_achi .= '<a class="material-tooltip-main" data-toggle="tooltip" title="The 4th Floor (RARE)"><img src="../static/images/achievement/stair.png" alt="The 4th Floor (RARE)" width="50" class="justify-content-center"></a>&nbsp;';
         if (getAchievementdata($id, 'Xmas', $conn))
-            $profile_achi .= '<div class="col-3 col-sm-3 mb-3"><a class="material-tooltip-main" data-toggle="tooltip" title="Merry Christmas~ (UNCOMMON)"><img src="../static/images/achievement/xmas_resize.png" alt="Merry Christmas~ (UNCOMMON)" class="img-fluid w-100 justify-content-center"></a></div>';
+            $profile_achi .= '<a class="material-tooltip-main" data-toggle="tooltip" title="Merry Christmas~ (UNCOMMON)"><img src="../static/images/achievement/xmas_resize.png" alt="Merry Christmas~ (UNCOMMON)" width="50" class="justify-content-center"></a>&nbsp;';
         
-            return '<div class="card mb-3"><div class="card-body"><h2 class="text-smd mb-3">Achievement</h2><div class="row">' . $profile_achi . '</div></div></div>';
+            return $profile_achi;
     }
 
     function isThisMyID($id, $conn) {
