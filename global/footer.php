@@ -91,4 +91,5 @@
     });
 </script>
 <?php $_SESSION['isDarkProfile'] = 0; ?>
+<?php isWebsiteClose($conn); ?>
 <?php mysqli_close($conn); ?>

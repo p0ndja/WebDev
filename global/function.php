@@ -384,3 +384,13 @@
     </script>
 <?php } ?>
 <?php function debug($message) { echo $message; } ?>
+
+<?php
+    function isWebsiteClose($conn) {        
+        if (getConfig('global_temporaryClose', 'bool', $conn))
+            if (!isPermission('isAdmin', $conn))
+                header("Location: ../pages/close.php");
+            //Else is admin so bypass, still can use website
+        //Else bypass
+    }
+?>
