@@ -50,7 +50,7 @@
                 </div><hr>
         <?php } ?>
         <?php 
-            $news_per_page = 6;
+            $news_per_page = 8;
             $cur_page = 1;
             if (isset($_GET['page'])) $cur_page = $_GET['page'];
 
