@@ -15,16 +15,17 @@
         if (!isValidUserID($id, $conn)) back();
 
         $profile_background = getProfileData($id, 'background', $conn);
+        $profile_image = getProfilePicture($id, $conn);
+        $profile_greets = getProfileData($id, 'greetings', $conn);
+        $_SESSION['isDarkProfile'] = getProfileData($id, 'isDark', $conn);
         
         if (getProfileData($id, 'background', $conn) == null) {
             if (!$_SESSION['dark_mode']) $profile_background = "../static/images/background/bg_light_pastel.jpg";
-            else $profile_background = "../static/images/background/bg_dark_resize.jpg";
+            else { 
+                $profile_background = "../static/images/background/bg_dark_resize.jpg";
+                $_SESSION['isDarkProfile'] = true;
+            }
         }
-
-        $profile_image = getProfilePicture($id, $conn);
-        $profile_greets = getProfileData($id, 'greetings', $conn);
-
-        $_SESSION['isDarkProfile'] = getProfileData($id, 'isDark', $conn);
     ?>
     <style>
         body {
@@ -67,6 +68,7 @@
                     </div>
                     <div class="col-12 col-md-9">
                         <?php echo generateInfoCard($id, $conn); ?>
+                        <?php echo generateAchievementCard($id, $conn); ?>
                     </div>
                 </div>
             </div>
@@ -80,7 +82,6 @@
                         <p><?php echo $profile_greets ?></p>
                     </div>
                 </div>
-                <?php echo generateAchievementCard($id, $conn); ?>
                 <?php } ?>
                 <?php if ($id == 604019) { ?>
                 <div class="card mb-3">

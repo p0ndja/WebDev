@@ -13,8 +13,6 @@
         $re = mysqli_query($conn, "UPDATE `profile` set greetings = '$text' WHERE id = $id");
         if (! $re) die('Could not update text: ' . mysqli_error($conn));
         
-
-            
         if(isset($_FILES['profile_upload']) && $_FILES['profile_upload']['name'] != ""){
             if ($_FILES['profile_upload']['name']) {
                 if (!$_FILES['profile_upload']['error']) {
