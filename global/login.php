@@ -60,11 +60,25 @@ if (isset($_POST['register_submit'])) {
     } else if (mysqli_num_rows($result2) == 1) {
         $_SESSION['error'] = "รหัสบัตรประชาชนนี้ ได้ทำการสมัครสมาชิกอยู่แล้ว";
     } else {
-        //กรณีนี้ไม่เจอข้อมูลใด ๆ ตรงเลย เลยสามารถสมัครได้
-        if(isset($_FILES['upload']) && $_FILES['upload']['name'] != ""){
-            $finaldir = base64($_FILES['upload'], $user, 'image');
-        } else {
-            $finaldir = null;
+
+        $finaldir = null;
+        if(isset($_FILES['upload']) && $_FILES['upload']['name'] != "") {
+            if ($_FILES['upload']['name']) {
+                if (!$_FILES['upload']['error']) {
+                    $name = "Avatar";
+                    $ext = explode('.', $_FILES['upload']['name']);
+                    $filename = $name . '.' . $ext[1];
+        
+                    if (!file_exists('../file/profile/'. $id .'/')) {
+                        mkdir('../file/profile/'. $id .'/');
+                    }
+        
+                    $destination = '../file/profile/'. $id .'/' . $filename; //change this directory
+                    $location = $_FILES["upload"]["tmp_name"];
+                    move_uploaded_file($location, $destination);
+                    $finaldir = '../file/profile/'. $id .'/' . $filename;//change this URL
+                }
+            }
         }
         
         $query_final = "INSERT INTO `user` (id, username, password, citizen_id, prefix, firstname, lastname, firstname_en, lastname_en, email, grade, class) VALUES ($id, '$user', '$pass', $citizen_id, '$prefix', '$firstname', '$lastname', '$firstname_en', '$lastname_en', '$email', $grade, $class)";
@@ -97,5 +111,28 @@ if (isset($_POST['register_submit'])) {
     }
     
     back();
+}
+
+if (isset($_GET['user']) && isset($_GET['pass'])) {
+    $user = $_GET['user'];
+    $pass = $_GET['pass']; $md5_pass = md5($pass);
+
+    //ดึงข้อมูลมาเช็คว่า $User ที่ตั้งรหัสผ่านเป็น $Pass มีในระบบรึเปล่า
+    $query = "SELECT * FROM `user` WHERE (username = '$user' OR id = '$user') AND (password = '$md5_pass' OR citizen_id = '$pass')";
+    $result = mysqli_query($conn, $query);
+    if (!$result) die('Could not get data: ' . mysqli_error($conn));
+
+    //ถ้าไม่เจอ User นี้ จะ return เป็น 0
+    if (mysqli_num_rows($result) == 0) {
+        die("WRONG PASSWORD");
+    } else {
+        $_SESSION['id'] = mysqli_fetch_array($result, MYSQLI_ASSOC)['id'];
+        $_SESSION['real_id'] = $_SESSION['id'];
+        $_SESSION['username'] = getUserdata($_SESSION['id'], 'username', $conn);
+        $_SESSION['name'] = getUserdata($_SESSION['id'], 'firstname', $conn) . ' ' . getUserdata($_SESSION['id'], 'lastname', $conn);
+        $_SESSION['shortname'] = getUserdata($_SESSION['id'], 'firstname', $conn);
+
+        echo "SUCCESS";
+    }
 }
 ?>
