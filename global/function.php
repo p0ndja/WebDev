@@ -393,4 +393,11 @@
             //Else is admin so bypass, still can use website
         //Else bypass
     }
+
+    function startsWith($haystack, $needle) {
+        return substr_compare($haystack, $needle, 0, strlen($needle)) === 0;
+    }
+    function endsWith($haystack, $needle) {
+        return substr_compare($haystack, $needle, -strlen($needle)) === 0;
+    }
 ?>
