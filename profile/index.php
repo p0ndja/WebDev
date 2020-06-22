@@ -83,26 +83,26 @@
                     </div>
                 </div>
                 <?php } ?>
-                <?php if ($id == 604019) { ?>
+                <?php if (1) { ?>
                 <div class="card mb-3">
                     <div class="card-body">
                         <h2>ประวัติการศึกษา</h2>
                         <!-- 1 -->
                         <div class="d-flex flex-nowrap">
-                            <div class="flex-grow-1"><h5>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</h5></div>
-                            <div class="text-nowrap">2008 - 2014</div>
+                            <div class="flex-grow-1"><h5>Undefined</h5></div>
+                            <div class="text-nowrap">Undefined</div>
                         </div>
                         <h6><span class="badge badge-primary">ระดับประถมศึกษา</span></h6>
                         <!-- 2 -->
                         <div class="d-flex flex-nowrap">
-                            <div class="flex-grow-1"><h5>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</h5></div>
-                            <div class="text-nowrap">2014 - 2017</div>
+                            <div class="flex-grow-1"><h5>Undefined</h5></div>
+                            <div class="text-nowrap">Undefined</div>
                         </div>
                         <h6><span class="badge badge-primary">ระดับมัธยศึกษาตอนต้น</span></h6>
                         <!-- 3 -->
                         <div class="d-flex flex-nowrap">
-                            <div class="flex-grow-1"><h5>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)</h5></div>
-                            <div class="text-nowrap">2017 - 2020</div>
+                            <div class="flex-grow-1"><h5>Undefined</h5></div>
+                            <div class="text-nowrap">Undefined</div>
                         </div>
                         <h6><span class="badge badge-primary">ระดับมัธยมศึกษาตอนปลาย</span></h6>
                     </div>
@@ -110,58 +110,20 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <h2>ประสบการณ์</h2>
-                        <div class="mb-3"></div>
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 mb-3">
-                                <div class="row">
-                                    <div class="col-9">
-                                        <h4>รางวัลรองชนะเลิศอันดับ 1 การแข่งขัน Web Programming Competition
-                                            ระดับมัธยมศึกษาตอนปลาย</h4>
+                        <?php
+                            $tagPostNoSplit = getProfiledata($id, 'tagPostID', $conn);
+                            $i = 0;
+                            foreach (explode("|", $tagPostNoSplit) as $s) { 
+                                if ($s != null) { $i++; ?>
+                                    <hr>
+                                    <div class="d-flex flex-nowrap">
+                                        <div class="flex-grow-1"><h5><a href="../post/<?php echo "$s"?>"><?php echo getPostdata($s, 'title', $conn); ?></a></h5></div>
+                                        <div class="text-nowrap"><?php echo str_replace("-", "/", substr(getPostdata($s, 'time', $conn), 0, -9)); ?></div>
                                     </div>
-                                    <div class="col-3">
-                                        <h5 class="text-right"><span aria-hidden="true"></span>19/08/2562</h5>
-                                    </div>
-                                </div>
-                                <h5><span class="badge badge-secondary">การแข่งขันในงานสัปดาห์วิทยาศาสตร์</span></h5>
-                                <p>ขอแสดงความยินดีกับนายพลภณ สุนทรภาส ชั้นมัธยมศึกษาปีที่ 6 อาจารย์ที่ปรึกษา
-                                    อาจารย์จุฬารัตน์ สียา ได้รับรางวัลที่ 2 จากการแข่งขัน Web Programming Competition
-                                    ระดับมัธยมศึกษาตอนปลาย ในกิจกรรมสัปดาห์วันวิทยาศาสตร์แห่งชาติ ประจำปี
-                                    พ.ศ. 2562 วันที่ 18-20 สิงหาคม 2562 ณ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น
-                                </p>
-                                <img src="https://webcontest.cs.kku.ac.th/2562/photo/award.jpg" width=100%>
-                                <br><a href="https://webcontest.cs.kku.ac.th/index.php?page=result&y=2562"
-                                    target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="https://www.facebook.com/SMD.KKU/posts/2215982308531509" target="_blank"><i
-                                        class="fas fa-external-link-alt"></i></a>
-                            </div>
-                            <div class="col-md-12 col-sm-12 mb-3">
-                                <div class="row">
-                                    <div class="col-9">
-                                        <h4>รางวัลชนะเลิศการแข่งขันสร้างเว็บเพจ (Web editor) ระดับมัธยมศึกษาตอนปลาย</h4>
-                                    </div>
-                                    <div class="col-3">
-                                        <h5 class="text-right"><span aria-hidden="true"></span>14/02/2562</h5>
-                                    </div>
-                                </div>
-                                <h5><span class="badge badge-secondary">Computer Education Open House 2018</span></h5>
-                                <p>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)
-                                    ขอแสดงความยินดีกับนักเรียนที่ได้รับรางวัลจากการเข้าร่วมกิจกรรม Computer Education
-                                    Open House 2018 สาขาคอมพิวเตอร์ศึกษา คณะศึกษาศาสตร์ มหาวิทยาลัยขอนแก่น เมื่อวันที่
-                                    14 กุมภาพันธ์ 2562 ที่ผ่านมา ซึ่งนักเรียนที่ได้รับรางวัลมีดังต่อไปนี้ นายวิชยุตม์
-                                    สุรินทร์ชมพู และนายธนภัทร เครือน้ำคำ ได้รับรางวัลชนะเลิศการแข่งขันสร้าง Infographics
-                                    ระดับมัธยมศึกษาตอนต้น นายรณกร ศรีพอ นายพลภณ สุนทรภาส
-                                    และนายสหัสวัต สุดาพรรัตน์ ได้รับรางวัลชนะเลิศการแข่งขันสร้างเว็บเพจ (Web editor)
-                                    ระดับมัธยมศึกษาตอนปลาย โดยมี นางสาวจุฬารัตน์ สียา เป็นอาจารย์ที่ปรึกษา
-                                </p>
-                                <img src="http://smd-s.kku.ac.th/home/images/smd-62/Computer_Education_Open_House_2018.jpg"
-                                    width=100%>
-                                <a href="https://www.facebook.com/SMD.KKU/photos/?tab=album&album_id=1936354579827618"><i
-                                        class="fas fa-external-link-alt"></i></a>
-                                <a
-                                    href="http://smd-s.kku.ac.th/home/index.php/component/content/article/80-2012-09-14-02-08-54/421-computer-education-open-house-2018"><i
-                                        class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
+                                    <?php if (getPostdata($s, 'cover', $conn) != null) {?><img src="<?php echo getPostdata($s, 'cover', $conn); ?>" class="img-fluid"/><?php } ?>
+                            <?php }
+                            } if ($i == 0) echo "<i>No Information</i>";
+                        ?>
                     </div>
                 </div>
                 <?php } ?>
