@@ -20,7 +20,9 @@ RewriteRule ^search/$ global/search.php
 RewriteRule ^storage/(.*)-(.*)/(.*)$ file/$1/attachment/$2/$3
 
 RewriteRule ^p/(.*)$ pages/$1.php
-RewriteRule ^s/(.*)$ admin/$1.php
+RewriteRule ^a/(.*)$ admin/$1.php
+RewriteRule ^s/(.*)$ student/$1.php
+RewriteRule ^d/(.*)$ zdemo/$1.php
 
 RewriteRule ^api/(.*)$ global/api/$1.php
 

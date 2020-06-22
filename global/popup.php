@@ -43,7 +43,15 @@
                 <a class="dropdown-item" href="../profile"> ข้อมูลส่วนตัว <i class="fas fa-user"></i></a>
                 <a class="dropdown-item" href="#"> ลงทะเบียนวิชาเลือก <i class="fas fa-tasks"></i></a>
                 <a class="dropdown-item" href="#"> การเช็คชื่อ <i class="fas fa-calendar-check"></i></a>
-                <a class="dropdown-item" href="../profile/grade_lookup.php"> ผลการเรียน (SGS) <i class="fas fa-graduation-cap"></i></a>
+                <a class="dropdown-item" href="../s/grade_lookup"> ผลการเรียน (SGS) <i class="fas fa-graduation-cap"></i></a>
+
+                <?php if (isPermission('isTeacher', $conn)) { ?>
+                <hr>
+                    <a class="dropdown-item" href="../a/stdCheck"> ระบบเช็คชื่อ <i class="fas fa-calendar-check"></i></a>
+                <?php } else { ?>
+                    <a class="dropdown-item" href="#"> ผลการเช็คชื่อ <i class="fas fa-calendar-check"></i></a>
+                <?php } ?>
+
                 <?php if (isPermission('isAdmin', $conn)) { ?>
                 <hr>
                 <a class="dropdown-item text-secondary" href="../admin/"> ส่วนของแอดมิน <i
