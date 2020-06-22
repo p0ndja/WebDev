@@ -118,7 +118,7 @@
                     <h5 class="font-weight-bold">ไฟล์แนบท้าย</h5>
                     <?php foreach (explode(",", $row['attachment']) as $a) { $aa++;?>
                     <li><a href="<?php echo $a; ?>"
-                            target="_blank"><?php echo str_replace("../file/post/attachment/" . $_GET['id'] . "/", "", $a); ?></a>
+                            target="_blank"><?php echo str_replace("../file/post/" . $_GET['id'] . "/" . "attachment/", "", $a); ?></a>
                     </li>
                     <?php } ?>
                     <?php if ($aa == 1 && strpos($row['attachment'], ".pdf")) { ?>

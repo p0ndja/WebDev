@@ -51,6 +51,22 @@ if (isset($_POST['post_submit']) || isset($_POST['post_update'])) {
         mkdir("../file/post/".$news."/");
     }
 
+    foreach (explode(",", $tags) as $s) {
+        $ss = trim($s);
+        if (startsWith($ss, "@")) {
+            $userID = str_replace("@", "", $ss);
+            if (isValidUserID($userID, $conn)) {
+                $tagBefore = getProfiledata($userID, 'tagPostID', $conn);
+                if (!strpos($tagBefore, "|" . $news . "|")) {
+                    if ($tagBefore == null) $tagBefore = "|" . $news . "|";
+                    else $tagBefore = "|" . $news . $tagBefore;
+    
+                    saveProfiledata($userID, 'tagPostID', "'" . $tagBefore . "'", $conn);
+                }
+            }
+        }
+    }
+
     $finaldir = null;
     if (isset($_FILES['cover']) && $_FILES['cover']['name'] != "") {
         $name_file = $_FILES['cover']['name'];
@@ -61,8 +77,9 @@ if (isset($_POST['post_submit']) || isset($_POST['post_update'])) {
         }
         move_uploaded_file($tmp_name,$locate_img.$name_file);
         $finaldir = $locate_img.$name_file;
-    } else if (isset($_SESSION['temp_cover'])) {
+    } else if (isset($_SESSION['temp_cover']) && $_SESSION['temp_cover'] != null) {
         $finaldir = $_SESSION['temp_cover'];
+        $_SESSION['temp_cover'] = null;
     }
     $query_final = "UPDATE `post` SET cover = '$finaldir' WHERE id = '$news'";
     $result_final = mysqli_query($conn, $query_final);
@@ -90,4 +107,5 @@ if (isset($_POST['post_submit']) || isset($_POST['post_update'])) {
         savePostdata($news, 'attachment', $finalFilePath, $conn); 
     }
 }
-header("Location: ../post/"); ?>
+header("Location: ../post/");
+?>
