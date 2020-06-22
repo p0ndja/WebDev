@@ -77,6 +77,7 @@ create table profile (
    profile LONGTEXT,
    background LONGTEXT,
    isDark BOOL DEFAULT FALSE,
+   tagPostID LONGTEXT DEFAULT NULL,
    PRIMARY KEY ( id )
 );
 
