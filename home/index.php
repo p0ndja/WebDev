@@ -223,7 +223,7 @@
         <div class="row mb-4">
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
-                    <a href="../file/post/attachment/41/_20200117160236_S__1310728.jpg">
+                    <a href="../file/post/41/attachment/_20200117160236_S__1310728.jpg">
                         <img src="../static/images/course/2_p_normal<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
@@ -232,7 +232,7 @@
             </div>
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
-                    <a href="../file/post/attachment/41/_20200117160236_S__1310728.jpg">
+                    <a href="../file/post/41/attachment/_20200117160236_S__1310728.jpg">
                         <img src="../static/images/course/2_p_jems<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
@@ -261,7 +261,7 @@
         <div class="row">
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
-                    <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg">
+                    <a href="../file/post/41/attachment/_20200117160335_S__1310732.jpg">
                         <img src="../static/images/course/2_s_normal<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
@@ -270,7 +270,7 @@
             </div>
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
-                    <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg">
+                    <a href="../file/post/41/attachment/_20200117160335_S__1310732.jpg">
                         <img src="../static/images/course/2_s_sems<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
@@ -279,7 +279,7 @@
             </div>
             <div class="col-4">
                 <div class="view overlay zoom z-depth-1">
-                    <a href="../file/post/attachment/41/_20200117160335_S__1310732.jpg">
+                    <a href="../file/post/41/attachment/_20200117160335_S__1310732.jpg">
                         <img src="../static/images/course/2_s_scius<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
                         <div class="mask flex-center rgba-orange-light">
                         </div>
