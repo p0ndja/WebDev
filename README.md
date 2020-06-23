@@ -107,6 +107,7 @@ insert into config (name, bool) VALUES ('user_profile_allowEdit_Bio',true);
 insert into config (name, bool) VALUES ('user_profile_displayExperience',true);
 insert into config (name, bool) VALUES ('user_allowEditProfile',true);
 insert into config (name, bool, haveVal, val) VALUES ('global_categoryListThing',true,true,'news|order|announce|qa|advice|registration|personal|library|pta');
+insert into config (name, bool) VALUES ('global_temporaryClose', false);
 
 create table forum(
 	id INT NOT NULL,
@@ -140,6 +141,9 @@ create table profile (
    greetings LONGTEXT,
    profile LONGTEXT,
    background LONGTEXT,
+   graduation LONGTEXT DEFAULT NULL,
+   isDark BOOL DEFAULT FALSE,
+   tagPostID LONGTEXT DEFAULT NULL,
    PRIMARY KEY ( id )
 );
 
