@@ -44,7 +44,10 @@
 
     <div class="container" id="container" style="padding-top: 88px">
         
-        <?php if(!isset($_GET['id'])) { ?><?php echo generateCategoryTitle($category); ?>
+        <?php if(!isset($_GET['id'])) {
+            if (isset($_GET['tags']) && startsWith($_GET['tags'] ,"@")) { ?>
+                <div class='display-5'>โพสต์ที่เกี่ยวข้องกับ '<?php echo getUserdata(str_replace("@", "", trim($_GET['tags'])), 'firstname', $conn) . ' ' . getUserdata(str_replace("@", "", trim($_GET['tags'])), 'lastname', $conn) . " (". str_replace("@", "", trim($_GET['tags'])) .")"; ?>'
+            <?php } else echo generateCategoryTitle($category); ?>
             <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../post/create"
                 class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
                 </div><hr>
@@ -66,18 +69,26 @@
                 if (strpos($t,"hidden") === false) {
                     $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND type = '$category' AND hide = 0 ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
                     $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%' AND hide = 0";
+                } else if (startsWith($t, "@") && isValidUserID(str_replace("@", "", trim($_GET['tags'])),$conn)) {
+                    $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND hide = 0 ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
+                    $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%' AND hide = 0";
                 } else {
                     $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND type = '$category' ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
                     $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%'";
                 }
+            } else if ($_GET['category'] == "$") {
+                $query = "SELECT * FROM `post` WHERE hide = 0 ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
+                $query_count = "SELECT `id` FROM `post` WHERE hide = 0";
             } else { //Normal Case
                 $query = "SELECT * FROM `post` WHERE hide = 0 AND type = '$category' ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
                 $query_count = "SELECT `id` FROM `post` WHERE hide = 0";
             }
 
+            $c = 0;
+
             $result = mysqli_query($conn, $query); ?>
         <?php if (!isset($_GET['id'])) { ?><div class="card-columns"><?php } ?>
-            <?php while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+            <?php while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { $c++; ?>
             <?php if (getPostdata($row['id'], 'hotlink', $conn) == null) { ?>
             <div class="card hoverable mb-3">
                 <?php if ($row['cover'] != null) { ?><img class="card-img-top"
@@ -101,7 +112,7 @@
                                 <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
                         </h5>
                         <h6><?php foreach (explode(",", $row['tags']) as $s) { ?>
-                            <a href="../post/?tags=<?php echo $s; ?>"><span
+                            <a href="../category/<?php echo $_GET['category'] . "-" . $_GET['page'] . "-" . $s; ?>"><span
                                     class="badge badge-smd z-depth-0"><?php echo $s; ?></span></a>
                             <?php } ?>
                         </h6>
@@ -145,7 +156,8 @@
             <?php } ?>
         </div>
         <div class="mb-3"></div>
-        <?php if (!isset($_GET['id'])) { ?>
+        <?php if (!isset($_GET['id'])) {
+            if ($c > 0) { ?>
         <hr>
         <?php
             $total = mysqli_num_rows(mysqli_query($conn, $query_count));
@@ -153,26 +165,29 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination pagination-circle pg-amber justify-content-center">
                 <li class="page-item">
-                    <a class="page-link" href="../category/<?php echo $_GET['category'] . "-1"?><?php if (isset($_GET['tags'])) echo '&tags=' . $_GET['tags']; ?>"
+                    <a class="page-link" href="../category/<?php echo $_GET['category'] . "-1"?><?php if (isset($_GET['tags'])) echo '-' . $_GET['tags']; ?>"
                         aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
                 <?php for($i=1;$i<=$total_page;$i++){ ?>
                 <li class="page-item <?php if ($_GET['page'] == $i) echo 'active';?>"><a class="page-link"
-                        href="../category/<?php echo $_GET['category'] . "-" . $i;?><?php if (isset($_GET['tags'])) echo '&tags=' . $_GET['tags']; ?>"><?php echo $i; ?></a>
+                        href="../category/<?php echo $_GET['category'] . "-" . $i;?><?php if (isset($_GET['tags'])) echo '-' . $_GET['tags']; ?>"><?php echo $i; ?></a>
                 </li>
                 <?php } ?>
                 <li class="page-item">
                     <a class="page-link"
-                        href="../category/<?php echo $_GET['category'] . "-" . $total_page;?><?php if (isset($_GET['tags'])) echo '&tags=' . $_GET['tags']; ?>"
+                        href="../category/<?php echo $_GET['category'] . "-" . $total_page;?><?php if (isset($_GET['tags'])) echo '-' . $_GET['tags']; ?>"
                         aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
             </ul>
         </nav>
-        <?php } ?>
+        <?php } else { ?>
+            <i class="display-6">No Data Found</i>
+        <?php }
+     } ?>
     </div>
     <?php require '../global/popup.php'; ?>
     <?php require '../global/footer.php'; ?>

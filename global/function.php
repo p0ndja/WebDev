@@ -242,6 +242,7 @@
     }
 
     function isValidCategory($category, $conn) {
+        if ($category == "$") return true;
         foreach (listCategory($conn) as $a) {
             if ($a == $category) return true;
         }
@@ -249,9 +250,9 @@
     }
 
     function generateCategoryTitle($category) {
-        $path = "../static/images/element/$category.png";
+        $path = "../static/images/element/header/$category.png";
         if (file_exists($path)) {
-            return "<div><img src='../static/images/element/$category.png'/>";
+            return "<div><img src='$path'/>";
         } else {
             return "<div class='display-4'>" . strtoupper($category);
         }
@@ -389,7 +390,7 @@
     function isWebsiteClose($conn) {        
         if (getConfig('global_temporaryClose', 'bool', $conn))
             if (!isPermission('isAdmin', $conn))
-                header("Location: ../pages/close.php");
+                header("Location: ../p/close");
             //Else is admin so bypass, still can use website
         //Else bypass
     }
