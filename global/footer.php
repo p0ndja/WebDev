@@ -1,4 +1,4 @@
-<footer class="footer" id="footer" style="background-color: rgba(12, 12, 12, 0.95); flex-shrink: 0;">
+<footer class="footer" id="footer">
     <div class="container">
         <br>
         <div class="row">
@@ -89,7 +89,12 @@
     $('.dropdown-menu').find('form').click(function (e) {
         e.stopPropagation();
     });
+
+    if ($(document.body).height() < $(window).height()) {
+        $('#footer').attr('style', 'position: fixed!important; bottom: 0px;');
+    }
 </script>
+
 <?php $_SESSION['isDarkProfile'] = 0; ?>
 <?php isWebsiteClose($conn); ?>
 <?php mysqli_close($conn); ?>
