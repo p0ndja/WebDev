@@ -31,6 +31,7 @@ but you follow this template:
 <?php
     ob_start();
     session_start();
+    if (!isset($_SESSION['dark_mode'])) $_SESSION['dark_mode'] = false;
 
     //ตรงนี้ให้ปรับค่าตามเซิฟเวอร์แต่ละเครื่องนะครับ // You need to update this information to match with your server
     //ข้อมูลในส่วนนี้เป็นความลับ ไม่สามารถเผยแพร่ลงสาธารณะได้ครับ // This one is secret, so I can't public.
