@@ -114,15 +114,20 @@
                             $tagPostNoSplit = getProfiledata($id, 'tagPostID', $conn);
                             $i = 0;
                             foreach (explode("|", $tagPostNoSplit) as $s) { 
-                                if ($s != null) { $i++; ?>
+                                if ($s != null) { 
+                                    $i++; 
+                                    if ($i <= 5) {?>
                                     <hr>
                                     <div class="d-flex flex-nowrap">
                                         <div class="flex-grow-1"><h5><a href="../post/<?php echo "$s"?>"><?php echo getPostdata($s, 'title', $conn); ?></a></h5></div>
                                         <div class="text-nowrap"><?php echo str_replace("-", "/", substr(getPostdata($s, 'time', $conn), 0, -9)); ?></div>
                                     </div>
                                     <?php if (getPostdata($s, 'cover', $conn) != null) {?><img src="<?php echo getPostdata($s, 'cover', $conn); ?>" class="img-fluid"/><?php } ?>
-                            <?php }
-                            } if ($i == 0) echo "<i>No Information</i>";
+                            <?php   }
+                                }
+                            } 
+                            if ($i == 0) echo "<i>No Information</i>";
+                            if ($i > 5) echo "<div class='d-flex flex-row-reverse'><div class='p-2'><a class='btn btn-primary btn-md mt-3' href='../category/$-1-@" . $id. "'>ดูเพิ่มเติม</a></div></div>";
                         ?>
                     </div>
                 </div>
