@@ -76,6 +76,7 @@ create table profile (
    greetings LONGTEXT,
    profile LONGTEXT,
    background LONGTEXT,
+   graduation LONGTEXT DEFAULT NULL,
    isDark BOOL DEFAULT FALSE,
    tagPostID LONGTEXT DEFAULT NULL,
    PRIMARY KEY ( id )
