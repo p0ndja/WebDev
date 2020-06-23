@@ -66,7 +66,10 @@
             } else if (isset($_GET['tags'])) { //Tags case
                 $t = $_GET['tags'];
                 $c = $_GET['category'];
-                if (strpos($t,"hidden") === false) {
+                if ($c == "~") {
+                    $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND hide = 0 ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
+                    $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%' AND hide = 0";
+                } else if (strpos($t,"hidden") === false) {
                     $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND type = '$category' AND hide = 0 ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
                     $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%' AND hide = 0";
                 } else if (startsWith($t, "@") && isValidUserID(str_replace("@", "", trim($_GET['tags'])),$conn)) {
@@ -76,9 +79,6 @@
                     $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND type = '$category' ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
                     $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%'";
                 }
-            } else if ($_GET['category'] == "$") {
-                $query = "SELECT * FROM `post` WHERE hide = 0 ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
-                $query_count = "SELECT `id` FROM `post` WHERE hide = 0";
             } else { //Normal Case
                 $query = "SELECT * FROM `post` WHERE hide = 0 AND type = '$category' ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
                 $query_count = "SELECT `id` FROM `post` WHERE hide = 0";
