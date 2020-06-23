@@ -75,63 +75,61 @@
         </div>
         <div class="row">
             <div class="col">
-            <div class="card-columns">
-                <?php if ($profile_greets != null) { ?>
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <p><?php echo $profile_greets ?></p>
-                    </div>
-                </div>
-                <?php } ?>
-                <?php if (1) { ?>
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h2>ประวัติการศึกษา</h2>
-                        <!-- 1 -->
-                        <div class="d-flex flex-nowrap">
-                            <div class="flex-grow-1"><h5>Undefined</h5></div>
-                            <div class="text-nowrap">Undefined</div>
+                <div class="card-columns">
+                    <?php if ($profile_greets != null) { ?>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <p><?php echo $profile_greets ?></p>
                         </div>
-                        <h6><span class="badge badge-primary">ระดับประถมศึกษา</span></h6>
-                        <!-- 2 -->
-                        <div class="d-flex flex-nowrap">
-                            <div class="flex-grow-1"><h5>Undefined</h5></div>
-                            <div class="text-nowrap">Undefined</div>
-                        </div>
-                        <h6><span class="badge badge-primary">ระดับมัธยศึกษาตอนต้น</span></h6>
-                        <!-- 3 -->
-                        <div class="d-flex flex-nowrap">
-                            <div class="flex-grow-1"><h5>Undefined</h5></div>
-                            <div class="text-nowrap">Undefined</div>
-                        </div>
-                        <h6><span class="badge badge-primary">ระดับมัธยมศึกษาตอนปลาย</span></h6>
                     </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h2>ประสบการณ์</h2>
-                        <?php
-                            $tagPostNoSplit = getProfiledata($id, 'tagPostID', $conn);
-                            $i = 0;
-                            foreach (explode("|", $tagPostNoSplit) as $s) { 
-                                if ($s != null) { 
-                                    $i++; 
-                                    if ($i <= 5) {?>
-                                    <hr>
-                                    <div class="d-flex flex-nowrap">
-                                        <div class="flex-grow-1"><h5><a href="../post/<?php echo "$s"?>"><?php echo getPostdata($s, 'title', $conn); ?></a></h5></div>
-                                        <div class="text-nowrap"><?php echo str_replace("-", "/", substr(getPostdata($s, 'time', $conn), 0, -9)); ?></div>
-                                    </div>
-                                    <?php if (getPostdata($s, 'cover', $conn) != null) {?><img src="<?php echo getPostdata($s, 'cover', $conn); ?>" class="img-fluid"/><?php } ?>
-                            <?php   }
-                                }
-                            } 
-                            if ($i == 0) echo "<i>No Information</i>";
-                            if ($i > 5) echo "<div class='d-flex flex-row-reverse'><div class='p-2'><a class='btn btn-primary btn-md mt-3' href='../category/$-1-@" . $id. "'>ดูเพิ่มเติม</a></div></div>";
-                        ?>
+                    <?php } ?>
+                    <?php
+                        $i = 0;
+                        $display = "";
+
+                        $graduation = array();
+
+                        foreach(explode("|", getProfiledata($id, 'graduation', $conn)) as $eachgra) {
+                            $i++;
+                            if ($i == 1 && $eachgra != null) {
+                                $display .= "<h5>" . $eachgra . "</h5><h6><span class='badge badge-primary'>ระดับประถมศึกษา</span></h6>";
+                            } else if ($i == 2 && $eachgra != null) {
+                                $display .= "<h5>" . $eachgra . "</h5><h6><span class='badge badge-primary'>ระดับมัธยมศึกษาตอนต้น</span></h6>";
+                            } else if ($i == 3 && $eachgra != null) {
+                                $display .= "<h5>" . $eachgra . "</h5><h6><span class='badge badge-primary'>ระดับมัธยมศึกษาตอนปลาย</span></h6>";
+                            }
+                        }
+                    ?>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h2>ประวัติการศึกษา</h2>
+                            <?php if ($display != null) echo $display; else echo "<i>No Information</i>" ?>
+                        </div>
                     </div>
-                </div>
-                <?php } ?>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h2>ประสบการณ์</h2>
+                            <?php
+                                $tagPostNoSplit = getProfiledata($id, 'tagPostID', $conn);
+                                $i = 0;
+                                foreach (explode("|", $tagPostNoSplit) as $s) { 
+                                    if ($s != null) { 
+                                        $i++; 
+                                        if ($i <= 5) {?>
+                                        <hr>
+                                        <div class="d-flex flex-nowrap">
+                                            <div class="flex-grow-1"><h5><a href="../post/<?php echo "$s"?>"><?php echo getPostdata($s, 'title', $conn); ?></a></h5></div>
+                                            <div class="text-nowrap"><?php echo str_replace("-", "/", substr(getPostdata($s, 'time', $conn), 0, -9)); ?></div>
+                                        </div>
+                                        <?php if (getPostdata($s, 'cover', $conn) != null) {?><img src="<?php echo getPostdata($s, 'cover', $conn); ?>" class="img-fluid"/><?php } ?>
+                                <?php   }
+                                    }
+                                } 
+                                if ($i == 0) echo "<i>No Information</i>";
+                                if ($i > 5) echo "<div class='d-flex flex-row-reverse'><div class='p-2'><a class='btn btn-primary btn-md mt-3' href='../category/~-1-@" . $id. "'>ดูเพิ่มเติม</a></div></div>";
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

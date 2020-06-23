@@ -134,7 +134,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="contents">Contents</label>
+                                    <h2>กล่องข้อมูล</h2>
                                     <textarea name="text" class="summernote" id="contents" name="contents"
                                         title="Contents"></textarea>
                                 </div>
@@ -143,146 +143,57 @@
                         <?php if ($_SESSION['id'] == 604019) { ?>
                         <div class="card">
                             <div class="card-body">
+                            <?php $graduation = array(); $i = 0; foreach(explode("|", getProfiledata($id, 'graduation', $conn)) as $eachgra) {  $graduation[$i] = $eachgra;  $i++; } ?>
                                 <h2>ประวัติการศึกษา</h2>
-                                <div class="row">
-                                    <div class="col-8">
-                                        <input type="text" class="form-control" id="primary" rows="1"
-                                            value="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)"></input>
-                                        <h5><span class="badge badge-secondary">ระดับประถมศึกษา</span></h5>
+                                <i>สามารถเว้นว่างไว้ได้ (การเว้นว่างจะไม่แสดงผลในรายการนั้น ๆ)</i>
+                                <div class="row mt-1">
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="grapri" id="grapri" rows="1"
+                                            value="<?php echo $graduation[0]; ?>" placeholder="ระดับประถมศึกษา | สามารถเว้นว่างไว้ได้"></input>
+                                        <h5><span class="badge badge-primary">ระดับประถมศึกษา</span></h5>
                                     </div>
-                                    <div class="col-4">
-                                        <div class="form-row">
-                                            <p class="text-center">
-                                                <div class="col-md-5 mb-2"><input type="number" class="form-control"
-                                                        id="primary1" rows="1" value="2008"></input>
-                                                </div> -
-                                                <div class="col-md-5 mb-2"><input type="number" class="form-control"
-                                                        id="primary2" rows="1" value="2014"></input>
-                                                </div>
-                                            </p>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <div class="row">
-                                    <div class="col-8">
-                                        <input type="text" class="form-control" id="secondary1" rows="1"
-                                            value="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)"></input>
-                                        <h5><span class="badge badge-secondary">ระดับมัธยมศึกษาตอนต้น</span></h5>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="grasecj" id="grasec1" rows="1"
+                                            value="<?php echo $graduation[1]; ?>" placeholder="ระดับมัธยมศึกษาตอนต้น | สามารถเว้นว่างไว้ได้"></input>
+                                        <h5><span class="badge badge-primary">ระดับมัธยมศึกษาตอนต้น</span></h5>
                                     </div>
-                                    <div class="col-4">
-                                        <div class="form-row">
-                                            <p class="text-center">
-                                                <div class="col-md-5 mb-2"><input type="number" class="form-control"
-                                                        id="secondary11" rows="1" value="2014"></input>
-                                                </div> -
-                                                <div class="col-md-5 mb-2"><input type="number" class="form-control"
-                                                        id="secondary12" rows="1" value="2017"></input>
-                                                </div>
-                                            </p>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <div class="row">
-                                    <div class="col-8">
-                                        <input type="text" class="form-control" id="secondary2" rows="1"
-                                            value="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)"></input>
-                                        <h5><span class="badge badge-secondary">ระดับมัธยมศึกษาตอนปลาย</span></h5>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="grasecs" id="grasecs" rows="1"
+                                            value="<?php echo $graduation[2]; ?>" placeholder="ระดับมัธยมศึกษาตอนปลาย | สามารถเว้นว่างไว้ได้"></input>
+                                        <h5><span class="badge badge-primary">ระดับมัธยมศึกษาตอนปลาย</span></h5>
                                     </div>
-                                    <div class="col-4">
-                                        <div class="form-row">
-                                            <p class="text-center">
-                                                <div class="col-md-5 mb-2"><input type="number" class="form-control"
-                                                        id="secondary21" rows="1" value="2017"></input>
-                                                </div> -
-                                                <div class="col-md-5 mb-2">ปัจจุบัน</div>
-                                            </p>
-                                        </div>
-                                    </div>
+                                
                                 </div>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-body">
                                 <h2>ประสบการณ์</h2>
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="row">
-                                            <div class="col-9">
-                                                <h4><a class="btn btn-danger"><i class="fas fa-eye-slash"></i></a>
-                                                    รางวัล GISTDA Top Vote </h4>
+                                <?php
+                                    $tagPostNoSplit = getProfiledata($id, 'tagPostID', $conn);
+                                    $i = 0;
+                                    foreach (explode("|", $tagPostNoSplit) as $s) { 
+                                        if ($s != null) { 
+                                            $i++; 
+                                            if ($i <= 5) { ?>
+                                            <hr>
+                                            <div class="d-flex flex-nowrap">
+                                                <div class="flex-grow-1"><h5><a href="../post/<?php echo "$s"?>"><?php echo getPostdata($s, 'title', $conn); ?></a></h5></div>
+                                                <div class="text-nowrap"><?php echo str_replace("-", "/", substr(getPostdata($s, 'time', $conn), 0, -9)); ?></div>
                                             </div>
-                                            <div class="col-3">
-                                                <h5 class="text-right"><span aria-hidden="true"></span>28/08/2562</h5>
-                                            </div>
-                                        </div>
-                                        <h5><span class="badge badge-secondary">การแข่งขันการประกวดสื่อภูมิสารสนเทศ</span>
-                                        </h5>
-                                        <p><i>No Info</i>
-                                        </p>
-                                        <img src="http://upic.me/i/8c/69420032_10157202432506265_8378946234844446720_o.jpg"
-                                            width=100%>
-                                        <a href="https://www.facebook.com/gistda/posts/10157202433771265">[1]</a>
-                                    </div>
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="row">
-                                            <div class="col-9">
-
-                                                <h4><a class="btn btn-success"><i class="fas fa-eye"></i></a>
-                                                    รางวัลรองชนะเลิศอันดับ 1 การแข่งขัน Web Programming Competition
-                                                    ระดับมัธยมศึกษาตอนปลาย </h4>
-                                            </div>
-                                            <div class="col-3">
-                                                <h5 class="text-right"><span aria-hidden="true"></span>19/08/2562</h5>
-                                            </div>
-                                        </div>
-                                        <h5><span class="badge badge-secondary">การแข่งขันในงานสัปดาห์วิทยาศาสตร์</span>
-                                        </h5>
-                                        <p>ขอแสดงความยินดีกับนายพลภณ สุนทรภาส ชั้นมัธยมศึกษาปีที่ 6 อาจารย์ที่ปรึกษา
-                                            อาจารย์จุฬารัตน์ สียา ได้รับรางวัลที่ 2 จากการแข่งขัน Web Programming
-                                            Competition
-                                            ระดับมัธยมศึกษาตอนปลาย ในกิจกรรมสัปดาห์วันวิทยาศาสตร์แห่งชาติ ประจำปี
-                                            พ.ศ. 2562 วันที่ 18-20 สิงหาคม 2562 ณ คณะวิทยาศาสตร์ มหาวิทยาลัยขอนแก่น
-                                        </p>
-                                        <img src="https://webcontest.cs.kku.ac.th/2562/photo/award.jpg" width=100%>
-                                        <br><a href="https://webcontest.cs.kku.ac.th/index.php?page=result&y=2562"
-                                            target="_blank">[1]</a> <a
-                                            href="https://www.facebook.com/SMD.KKU/posts/2215982308531509"
-                                            target="_blank">[2]</a>
-                                    </div>
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="row">
-                                            <div class="col-9">
-                                                <h4><a class="btn btn-success"><i class="fas fa-eye"></i></a>
-                                                    รางวัลชนะเลิศการแข่งขันสร้างเว็บเพจ (Web editor) ระดับมัธยมศึกษาตอนปลาย
-                                                </h4>
-                                            </div>
-                                            <div class="col-3">
-                                                <h5 class="text-right"><span aria-hidden="true"></span>14/02/2562</h5>
-                                            </div>
-                                        </div>
-                                        <h5><span class="badge badge-secondary">Computer Education Open House 2018</span>
-                                        </h5>
-                                        <p>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)
-                                            ขอแสดงความยินดีกับนักเรียนที่ได้รับรางวัลจากการเข้าร่วมกิจกรรม Computer
-                                            Education
-                                            Open House 2018 สาขาคอมพิวเตอร์ศึกษา คณะศึกษาศาสตร์ มหาวิทยาลัยขอนแก่น
-                                            เมื่อวันที่
-                                            14 กุมภาพันธ์ 2562 ที่ผ่านมา ซึ่งนักเรียนที่ได้รับรางวัลมีดังต่อไปนี้
-                                            นายวิชยุตม์
-                                            สุรินทร์ชมพู และนายธนภัทร เครือน้ำคำ ได้รับรางวัลชนะเลิศการแข่งขันสร้าง
-                                            Infographics
-                                            ระดับมัธยมศึกษาตอนต้น นายรณกร ศรีพอ นายพลภณ สุนทรภาส
-                                            และนายสหัสวัต สุดาพรรัตน์ ได้รับรางวัลชนะเลิศการแข่งขันสร้างเว็บเพจ (Web editor)
-                                            ระดับมัธยมศึกษาตอนปลาย โดยมี นางสาวจุฬารัตน์ สียา เป็นอาจารย์ที่ปรึกษา
-                                        </p>
-                                        <img src="http://smd-s.kku.ac.th/home/images/smd-62/Computer_Education_Open_House_2018.jpg"
-                                            width=100%>
-                                        <a
-                                            href="https://www.facebook.com/SMD.KKU/photos/?tab=album&album_id=1936354579827618">[1]</a>
-                                        <a
-                                            href="http://smd-s.kku.ac.th/home/index.php/component/content/article/80-2012-09-14-02-08-54/421-computer-education-open-house-2018">[2]</a>
-                                    </div>
-                                </div>
+                                            <?php if (getPostdata($s, 'cover', $conn) != null) {?><img src="<?php echo getPostdata($s, 'cover', $conn); ?>" class="img-fluid"/><?php } ?>
+                                <?php       }
+                                        }
+                                    } 
+                                    if ($i == 0) echo "<i>No Information</i>";
+                                    if ($i > 5) echo "<div class='d-flex flex-row-reverse'><div class='p-2'><a class='btn btn-primary btn-md mt-3' href='../category/$-1-@" . $id. "'>ดูเพิ่มเติม</a></div></div>";
+                                ?>
                             </div>
                         </div>
                         <?php } ?>

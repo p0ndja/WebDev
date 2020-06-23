@@ -242,7 +242,7 @@
     }
 
     function isValidCategory($category, $conn) {
-        if ($category == "$") return true;
+        if ($category == "~") return true;
         foreach (listCategory($conn) as $a) {
             if ($a == $category) return true;
         }

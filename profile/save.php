@@ -10,9 +10,11 @@
         $user = $_SESSION['username'];
         $text = $_POST['text'];
 
-        $re = mysqli_query($conn, "UPDATE `profile` set greetings = '$text' WHERE id = $id");
+        $graduatearray = $_POST['grapri'] . "|" . $_POST['grasecj'] . "|" . $_POST['grasecs'];
+
+        $re = mysqli_query($conn, "UPDATE `profile` set greetings = '$text', graduation = '$graduatearray' WHERE id = $id");
         if (! $re) die('Could not update text: ' . mysqli_error($conn));
-        
+
         if(isset($_FILES['profile_upload']) && $_FILES['profile_upload']['name'] != ""){
             if ($_FILES['profile_upload']['name']) {
                 if (!$_FILES['profile_upload']['error']) {
