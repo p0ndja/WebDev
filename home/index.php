@@ -293,7 +293,7 @@
     <div class="indexNews">
         <div class="container">
             <h1 id="news" name="news" class="font-weight-bold"><a href="../category/news-1"><img
-                        src="../static/images/element/news_header.png" class="img-fluid"></a>
+                        src="../static/images/element/header/news.png" class="img-fluid"></a>
                 <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../post/create"
                     class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
             </h1>
