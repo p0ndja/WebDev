@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /file/
+
+Sitemap: https://smd.pondja.com/sitemap.xml

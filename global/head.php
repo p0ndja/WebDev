@@ -12,7 +12,6 @@
     <link rel="icon" sizes="192x192" href="../static/images/logo/smdlogo_android192.png">
     <link rel="apple-touch-icon" sizes="152x152" href="../static/images/logo/smdlogo_ios152.png">
 
-    <title>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
     <?php generateOpenGraphMeta($conn); ?>
 
     <!-- Bootstrap -->
