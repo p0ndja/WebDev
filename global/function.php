@@ -78,12 +78,16 @@
         //saveAchidata('604019', 'page404', '...', $conn);
 
         function getStdCheckdata($id, $data, $conn) {
-            return getAnySQL('std_checktest', $data, 'id', $id, $conn);
+            return getAnySQL('std_2563_checktest', $data, 'id', $id, $conn);
         }
 
         function saveStdCheckdata($id, $data, $val, $conn) {
-            if (saveAnySQL('std_checktest', $data, $val, 'id', $id, $conn)) return true;
+            if (saveAnySQL('std_2563_checktest', $data, $val, 'id', $id, $conn)) return true;
             return false;
+        }
+
+        function saveStdCheckdataWholeClass($grade, $class, $date, $val, $conn) {
+            return mysqli_query($conn, "UPDATE `std_2563_checktest` SET `$date` = $val WHERE `grade` = '$grade' AND `class` = '$class'");
         }
 
         function getProfilePicture($id, $conn) {
@@ -278,11 +282,13 @@
                 ?>
         <meta property="og:image" content="<?php echo $cover; ?>" />
         <meta property="og:title" content="<?php echo $title;?>" />
+        <title><?php echo $title;?> | โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
         <meta property="og:description" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
             <?php }
         } else { ?>
         <meta property="og:image" content="../static/images/default/thumbnail.jpg" />
         <meta property="og:title" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
+        <title>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
         <meta property="og:description" content="123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002 โทรศัพท์ / โทรสาร 043202044" />
         <?php } ?>
         <link rel="image_src" href="../static/images/logo/smdlogo.jpg" />

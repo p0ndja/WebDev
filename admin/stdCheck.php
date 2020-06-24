@@ -17,7 +17,7 @@
             <!--Table-->
             <div class="row">
                 <div class="col-12 col-md-5">
-                    <div class="card card-body card-text mb-3">
+                    <div class="card card-body card-text">
                         <h1 class="text-center font-weight-bold text-smd">ใบเช็คชื่อ</h1>
                         <div class="select-outline">
                             <select class="mdb-select md-form type" id="grade" name="grade" required>
@@ -45,11 +45,10 @@
                                 <?php if (isset($_GET['date'])) echo 'value="' . $_GET['date'] . '"'; else echo 'value="' . curDate() . '"'; ?>>
                             <label for="date-picker-example" class="text-primary">วัน</label>
                         </div>
-                        <a class="btn btn-warning btn-lg" id="btn_query" name="btn_query"><i class="fas fa-download"></i> ดึงข้อมูล</a>
-                    </div>
-                    <hr>
-                    <div class="row justify-content-end">
-                        <a class="btn btn-success btn-lg text-right" id="btn_save" name="btn_save"><i class="fas fa-save"></i> บันทึก</a>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-warning btn-lg z-depth-0" id="btn_query" name="btn_query"><i class="fas fa-download"></i> ดึงข้อมูล</a>
+                            <a class="btn btn-success btn-lg z-depth-0" id="btn_save" name="btn_save"><i class="fas fa-save"></i> บันทึก</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-7">
@@ -59,7 +58,7 @@
                         <h4>ประจำวันที่ <?php echo $_GET['date']; ?></h4>
                     </div>
                     <?php }?>
-                    <div class='table-responsive'>
+                    <div class='table-responsive <?php if (!isset($_GET['grade'])) echo "d-none"?>'>
                         <table id="tblData" class="table table-sm table-bordered">
                             <thead>
                                 <tr>
@@ -68,7 +67,7 @@
                                     <th class="text-nowrap text-center" colspan="3">ชื่อ - สกุล</th>
                                     <th>
                                         <div class="custom-control custom-checkbox text-center">
-                                            <input type="checkbox" class="custom-control-input" id="checkAll">
+                                            <input type="checkbox" class="custom-control-input thisisawholeclasscheck" id="checkAll">
                                             <label class="custom-control-label" for="checkAll"></label>
                                         </div>
                                     </th>
@@ -81,11 +80,16 @@
                                 }
                                     $g = $_GET['grade']; $c = $_GET['class']; $d = "d" . str_replace("/", "", $_GET['date']);                                    
                                     
-                                    $r = mysqli_query($conn, "ALTER TABLE `std_checktest` ADD COLUMN IF NOT EXISTS $d BOOL DEFAULT FALSE");
+                                    $r = mysqli_query($conn, "ALTER TABLE `std_2563_checktest` ADD COLUMN IF NOT EXISTS $d BOOL DEFAULT FALSE");
                                     if (!$r) die('Could not alter data: '.mysqli_error($conn));
-                                
-                                    $r = mysqli_query($conn, "SELECT * FROM `std_checktest` WHERE grade = $g AND class = $c ORDER BY `prefix` DESC,`id` ASC");
-                                    if (!$r) die('Could not get data: '.mysqli_error($conn));
+
+                                    if ($g <= 3) {
+                                        $r = mysqli_query($conn, "SELECT * FROM `std_2563_checktest` WHERE grade = $g AND class = $c ORDER BY `prefix` ASC,`id` ASC");
+                                        if (!$r) die('Could not get data: '.mysqli_error($conn));
+                                    } else {
+                                        $r = mysqli_query($conn, "SELECT * FROM `std_2563_checktest` WHERE grade = $g AND class = $c ORDER BY `prefix` DESC,`id` ASC");
+                                        if (!$r) die('Could not get data: '.mysqli_error($conn));
+                                    }
 
                                     $checklist = array();
 
@@ -101,7 +105,7 @@
                                     <td>
                                         <div class="custom-control custom-checkbox text-center">
                                             <input type="checkbox" class="custom-control-input thisisastudentcheck"
-                                                id="<?php echo $t['id']; ?>" name="<?php echo $t['id']; ?>">
+                                                id="<?php echo $t['id']; ?>" name="<?php echo $t['id']; ?>" <?php if ($t[$d]) echo "checked";?>>
                                             <label class="custom-control-label" for="<?php echo $t['id']; ?>"></label>
                                         </div>
                                     </td>
@@ -117,7 +121,30 @@
     <?php require '../global/popup.php'; ?>
     <?php require '../global/footer.php'; ?>
     <script>
-        $("#checkAll").click(function () {
+        $('input.thisisawholeclasscheck[type="checkbox"]').click(function (e) {
+            $.ajax({
+                url: "stdCheck_save",
+                type: "POST",
+                //pass data like this 
+                data: {
+                    checkwhole_class: "<?php echo $c; ?>",
+                    checkwhole_grade: "<?php echo $g; ?>",
+                    checkwhole_date: "<?php echo $d; ?>",
+                    checkwhole_val: e.target.checked
+                },
+                cache: false,
+                success: function (data) {
+                    if (data) {
+                        if (e.target.checked) {
+                            toastr.success("ห้อง: ม.<?php echo "$g";?>/<?php echo "$c";?>" + "<br>สถานะ: เข้าเรียนทั้งห้อง");
+                        } else {
+                            toastr.warning("ห้อง: ม.<?php echo "$g";?>/<?php echo "$c";?>" + "<br>สถานะ: ไม่เข้าเรียนทั้งห้อง");
+                        }
+                    } else {
+                        toastr.error("ERROR - พบข้อผิดพลาด<br>ไม่สามารถปรับค่า 'checkWholeClass' ได้<br>กรุณาแจ้ง Webmaster");
+                    }
+                }
+            });
             $('input:checkbox').not(this).prop('checked', this.checked);
         });
 
@@ -131,10 +158,9 @@
         });
 
         //On check checkbox
-        $('input[type="checkbox"]').on('change', function (e) {
-            console.log(e.target.name + "@" + "<?php echo $d; ?>" + "=" + e.target.checked);
+        $('input.thisisastudentcheck[type="checkbox"]').on('change', function (e) {
             $.ajax({
-                url: "stdCheck_save.php",
+                url: "stdCheck_save",
                 type: "POST",
                 //pass data like this 
                 data: {
@@ -145,10 +171,13 @@
                 cache: false,
                 success: function (data) {
                     if (data) {
-                        toastr.success("อัพเดทค่า '" + e.target.name + "' เป็น " + e.target
-                            .checked);
+                        if (e.target.checked) {
+                            toastr.success("รหัสนักเรียน: " + e.target.name + " <br>สถานะ: เข้าเรียน");
+                        } else {
+                            toastr.warning("รหัสนักเรียน: " + e.target.name + " <br>สถานะ: ไม่เข้าเรียน");
+                        }
                     } else {
-                        toastr.error("ไม่สามารถปรับค่าของ '" + e.target.name + "' ได้");
+                        toastr.error("ERROR - พบข้อผิดพลาด<br>ไม่สามารถปรับค่า '" + e.target.name + "' ได้<br>กรุณาแจ้ง Webmaster");
                     }
                 }
             });

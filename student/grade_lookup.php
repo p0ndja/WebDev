@@ -19,7 +19,7 @@
                                 <h1>การตรวจสอบสอบผลการเรียน</h1>
                                 <form method="POST" action="https://smd-s.kku.ac.th/report/search-01.php">
                                     <label for="stidcard">เลขบัตรประชาชน</label>
-                                    <input type="text" id="stidcard" name="stidcard" class="form-control mb-3" required>
+                                    <input type="text" id="stidcard" name="stidcard" value="<?php if (isLogin()) echo getUserdata($_SESSION['id'], 'citizen_id', $conn);?>" class="form-control mb-3" required></input>
                                     <input type="submit" class="btn btn-success" value="Submit" name="submit"></input>
                                 </form>
                             </center>
