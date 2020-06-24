@@ -324,7 +324,7 @@
 
 <?php 
     function needPermission($perm, $conn) {
-    if (!isset($_SESSION['id'])) return false;
+    if (!isset($_SESSION['id']) || !isLogin()) { needLogin(); die(); return false; }
     if (!getUserdata($_SESSION['id'], $perm, $conn) && !getUserdata($_SESSION['id'], 'isAdmin', $conn)) { ?>
 <script>
     swal({

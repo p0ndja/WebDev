@@ -12,6 +12,7 @@
         role="navigation">
         <?php require '../global/navbar.php'; ?>
     </nav>
+    <?php needPermission('isTeacher', $conn); ?>
     <div class="container" id="container" style="padding-top: 88px">
         <div class="card card-body card-text mb-3">
             <!--Table-->

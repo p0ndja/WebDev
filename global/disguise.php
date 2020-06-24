@@ -6,8 +6,7 @@
         <?php require '../global/navbar.php'; ?>
     </nav>
 <?php
-    if (isset($_GET['id'])) {
-        needLogin(); 
+    if (isset($_GET['id']) && needLogin()) {
         if ($_GET['id'] == $_SESSION['real_id']) {
             $id = $_GET['id'];
             $_SESSION['id'] = $id;
