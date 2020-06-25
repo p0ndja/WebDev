@@ -29,7 +29,7 @@
                     <li style="color: #ff6c00"><a style="color: white" href="../category/lib-1">งานห้องสมุด</a></li>
                     <li style="color: #ff6c00"><a style="color: white" href="../category/pta-1">ชมรมผู้ปกครองและครู</a></li>
                 </ul>
-                <a style="color: white" href="../p/subject"> เอกสารประกอบการสอน </a></li>
+                <a style="color: white" href="../category/subject-1"> เอกสารประกอบการสอน </a></li>
             </div>
             <div class="col-md-3">
                 <h5 style="color: white">ปฏิทิน</h5>
