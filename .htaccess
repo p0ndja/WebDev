@@ -3,8 +3,8 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 
 RewriteRule ^post/([0-9]+)$ post/?id=$1
-RewriteRule ^post/create$ post/post.php
-RewriteRule ^post/edit-([0-9]+)$ post/post.php?id=$1
+RewriteRule ^post/create$ post/edit.php
+RewriteRule ^post/edit-([0-9]+)$ post/edit.php?id=$1
 
 RewriteRule ^category/(.*)-([0-9]+)$ post/index.php?category=$1&page=$2
 RewriteRule ^category/(.*)-([0-9]+)-(.*)$ post/index.php?category=$1&page=$2&tags=$3

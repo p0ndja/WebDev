@@ -27,20 +27,130 @@
 
     <script type="text/javascript">
         $(function () {
+            $.ajax({
+                url: 'https://api.github.com/emojis',
+                async: false 
+                }).then(function(data) {
+                window.emojis = Object.keys(data);
+                window.emojiUrls = data; 
+            });;
             $('.summernote').summernote({
                 minHeight: 500,
                 fontNames: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman', 'MorKhor',
                     'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun',
                     'Kanit', 'anakotmai'
                 ],
+                fontNamesIgnoreCheck: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman', 'MorKhor',
+                    'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun',
+                    'Kanit', 'anakotmai'
+                ],
+                codemirror: { // codemirror options
+                    theme: 'monokai'
+                },
                 callbacks: {
                     onImageUpload: function(files, editor, welEditable) {
-                        sendFile(files[0], this);
+                        sendPicFile(files[0], this);
+                    },
+                    onFileUpload: function(file) {
+                        sendRawFile(file[0]);
+                    }
+                },
+                toolbar: [
+                    ['misc', ['undo', 'redo']],
+                    ['style', ['style', 'height', 'fontname', 'fontsize']],
+                    ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript','subscript', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video', 'hr']],
+                    ['view', ['fullscreen', 'codeview', 'help']],
+                ],
+                hint: {
+                    match: /:([\-+\w]+)$/,
+                    search: function (keyword, callback) {
+                    callback($.grep(emojis, function (item) {
+                        return item.indexOf(keyword)  === 0;
+                    }));
+                    },
+                    template: function (item) {
+                    var content = emojiUrls[item];
+                    return '<img src="' + content + '" width="20" /> :' + item + ':';
+                    },
+                    content: function (item) {
+                    var url = emojiUrls[item];
+                    if (url) {
+                        return $('<img />').attr('src', url).css('width', 20)[0];
+                    }
+                    return '';
                     }
                 }
             });
 
-            function sendFile(file, el) {
+            function sendRawFile(file) {
+                let data = new FormData();
+                data.append("file", file);
+                $.ajax({
+                    data: data,
+                    type: "POST",
+                    url: "upload.php", //Your own back-end uploader
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    xhr: function() { //Handle progress upload
+                        let myXhr = $.ajaxSettings.xhr();
+                        if (myXhr.upload) myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
+                        return myXhr;
+                    },
+                    success: function(reponse) {
+                            let listMimeImg = ['image/png', 'image/jpeg', 'image/webp', 'image/gif', 'image/svg'];
+                            let listMimeAudio = ['audio/mpeg', 'audio/ogg'];
+                            let listMimeVideo = ['video/mpeg', 'video/mp4', 'video/webm'];
+                            let elem;
+
+                            if (listMimeImg.indexOf(file.type) > -1) {
+                                //Picture
+                                $('.summernote').summernote('editor.insertImage', reponse.filename);
+                            } else if (listMimeAudio.indexOf(file.type) > -1) {
+                                //Audio
+                                elem = document.createElement("audio");
+                                elem.setAttribute("src", reponse.filename);
+                                elem.setAttribute("controls", "controls");
+                                elem.setAttribute("preload", "metadata");
+                                $('.summernote').summernote('editor.insertNode', elem);
+                            } else if (listMimeVideo.indexOf(file.type) > -1) {
+                                //Video
+                                elem = document.createElement("video");
+                                elem.setAttribute("src", reponse.filename);
+                                elem.setAttribute("controls", "controls");
+                                elem.setAttribute("preload", "metadata");
+                                $('.summernote').summernote('editor.insertNode', elem);
+                            } else {
+                                //Other file type
+                                elem = document.createElement("a");
+                                let linkText = document.createTextNode(file.name);
+                                elem.appendChild(linkText);
+                                elem.title = file.name;
+                                elem.href = reponse.filename;
+                                $('.summernote').summernote('editor.insertNode', elem);
+                            }
+                        
+                    }
+                });
+            }
+
+            function progressHandlingFunction(e) {
+                if (e.lengthComputable) {
+                    //Log current progress
+                    console.log((e.loaded / e.total * 100) + '%');
+
+                    //Reset progress on complete
+                    if (e.loaded === e.total) {
+                        console.log("Upload finished.");
+                    }
+                }
+            }
+
+            function sendPicFile(file, el) {
                 data = new FormData();
                 data.append("file", file);
                 data.append("userID",'<?php echo $_SESSION['id'] ?>')
