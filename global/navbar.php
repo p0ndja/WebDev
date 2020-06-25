@@ -88,7 +88,10 @@
                 <?php echo $_SESSION['name']; ?></a>
             <div class="dropdown-menu dropdown-menu-right dropdown-smd" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="../profile"> ข้อมูลส่วนตัว <i class="fas fa-user"></i></a>
-                <a class="dropdown-item" href="#"> ลงทะเบียนวิชาเลือก <i class="fas fa-tasks"></i></a>
+                
+                <!-- Secret Reg-SMD Post Value -->
+                <a class="dropdown-item" href="../s/regsmd"> ลงทะเบียนวิชาเลือก <i class="fas fa-tasks"></i></a>
+
                 <a class="dropdown-item" href="../s/grade_lookup"> ผลการเรียน (SGS) <i class="fas fa-graduation-cap"></i></a>
                 
                 <?php if (isPermission('isTeacher', $conn)) { ?>
