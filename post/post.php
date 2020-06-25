@@ -156,13 +156,14 @@
                                             <option value="news">ข่าวสาร</option>
                                             <option value="order">คำสั่ง</option>
                                             <option value="announce">ประกาศ</option>
+                                            <option value="subject">เอกสารประกอบการสอน</option>
                                         </optgroup>
                                         <optgroup label="- หน่วยงาน -">
                                             <option value="qa">งานแผนและประกันคุณภาพ</option>
                                             <option value="advice">งานแนะแนว</option>
-                                            <option value="registration">งานทะเบียน</option>
-                                            <option value="personal">งานพัฒนาบุคลิกภาพและความเป็นสากล</option>
-                                            <option value="library">งานห้องสมุด</option>
+                                            <option value="reg">งานทะเบียน</option>
+                                            <option value="person">งานพัฒนาบุคลิกภาพและความเป็นสากล</option>
+                                            <option value="lib">งานห้องสมุด</option>
                                             <option value="pta">ชมรมผู้ปกครองและครู</option>
                                         </optgroup>
                                     </select>

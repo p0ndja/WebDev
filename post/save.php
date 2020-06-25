@@ -107,5 +107,5 @@ if (isset($_POST['post_submit']) || isset($_POST['post_update'])) {
         savePostdata($news, 'attachment', $finalFilePath, $conn); 
     }
 }
-header("Location: ../post/");
+header("Location: ../category/$type-1");
 ?>

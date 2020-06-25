@@ -77,11 +77,11 @@
                     $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%' AND hide = 0";
                 } else {
                     $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND type = '$category' ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
-                    $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%'";
+                    $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%' AND type = '$category'";
                 }
             } else { //Normal Case
                 $query = "SELECT * FROM `post` WHERE hide = 0 AND type = '$category' ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
-                $query_count = "SELECT `id` FROM `post` WHERE hide = 0";
+                $query_count = "SELECT `id` FROM `post` WHERE hide = 0 AND type = '$category'";
             }
 
             $c = 0;
@@ -185,7 +185,7 @@
             </ul>
         </nav>
         <?php } else { ?>
-            <i class="display-6">No Data Found</i>
+            <h4 class="text-center"><i>ไม่พบข้อมูล</i></h4>
         <?php }
      } ?>
     </div>

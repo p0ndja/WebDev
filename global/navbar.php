@@ -38,14 +38,14 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 หน่วยงาน </a>
             <div class="dropdown-menu dropdown-smd" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item disabled" href="#"> งานแผนและประกันคุณภาพ </a>
-                <a class="dropdown-item" href="https://www.admissionpremium.com/gis/KKU/login"> งานแนะแนว </a>
-                <a class="dropdown-item disabled" href="#"> งานทะเบียน </a>
-                <a class="dropdown-item disabled" href="#"> งานพัฒนาบุคลิกภาพ </a>
-                <a class="dropdown-item disabled" href="#"> งานห้องสมุด </a>
-                <a class="dropdown-item disabled" href="#"> ชมรมผู้ปกครองและครู </a>
+                <a class="dropdown-item" href="../category/qa-1"> งานแผนและประกันคุณภาพ </a>
+                <a class="dropdown-item" href="../category/advice-1"> งานแนะแนว </a>
+                <a class="dropdown-item" href="../category/reg-1"> งานทะเบียน </a>
+                <a class="dropdown-item" href="../category/person-1"> งานพัฒนาบุคลิกภาพ </a>
+                <a class="dropdown-item" href="../category/lib-1"> งานห้องสมุด </a>
+                <a class="dropdown-item" href="../category/pta-1"> ชมรมผู้ปกครองและครู </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../pages/subject.php"> เอกสารประกอบการสอน </a>
+                <a class="dropdown-item" href="../p/subject"> เอกสารประกอบการสอน </a>
             </div>
         </li>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

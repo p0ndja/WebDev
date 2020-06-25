@@ -22,14 +22,14 @@
             <div class="col-md-3">
                 <h5 style="color: white">หน่วยงาน</h5>
                 <ul>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">งานแผนและประกันคุณภาพ</a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="https://www.admissionpremium.com/gis/KKU/login">งานแนะแนว</a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">งานทะเบียน</a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">งานพัฒนาบุคลิกภาพ</a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">งานห้องสมุด</a></li>
-                    <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled">ชมรมผู้ปกครองและครู</a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="../category/qa-1">งานแผนและประกันคุณภาพ</a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="../category/advice-1">งานแนะแนว</a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="../category/reg-1">งานทะเบียน</a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="../category/person-1">งานพัฒนาบุคลิกภาพ</a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="../category/lib-1">งานห้องสมุด</a></li>
+                    <li style="color: #ff6c00"><a style="color: white" href="../category/pta-1">ชมรมผู้ปกครองและครู</a></li>
                 </ul>
-                <a style="color: white" href="../pages/subject.php"> เอกสารประกอบการสอน </a></li>
+                <a style="color: white" href="../p/subject"> เอกสารประกอบการสอน </a></li>
             </div>
             <div class="col-md-3">
                 <h5 style="color: white">ปฏิทิน</h5>
