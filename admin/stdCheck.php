@@ -13,6 +13,18 @@
         <?php require '../global/navbar.php'; ?>
     </nav>
     <?php needPermission('isTeacher', $conn); ?>
+    <?php if ($_SESSION['id'] != 604019) { ?>
+        <script>
+    swal({
+        title: "ACCESS DENIED",
+        text: "ปิดปรับปรุงระบบชั่วคราว",
+        icon: "error"
+    }).then(function () {
+        window.location = "../home";
+    });
+</script>
+
+    <?php die();} ?>
     <div class="container" id="container" style="padding-top: 88px">
         <div class="card card-body card-text mb-3">
             <!--Table-->
@@ -79,10 +91,11 @@
                                 if (!(isset($_GET['grade']) && isset($_GET['class']) && isset($_GET['date']))) {
                                     $_GET['grade'] = 1; $_GET['class'] = 1; $_GET['date'] = curDate();
                                 }
-                                    $g = $_GET['grade']; $c = $_GET['class']; $d = "d" . str_replace("/", "", $_GET['date']);                                    
+
+                                    $g = $_GET['grade']; $c = $_GET['class']; $d = "d" . str_replace("/", "", $_GET['date']) . "_" . $_SESSION['id'];                                    
                                     
-                                    $r = mysqli_query($conn, "ALTER TABLE `std_2563_checktest` ADD COLUMN IF NOT EXISTS $d BOOL DEFAULT FALSE");
-                                    if (!$r) die('Could not alter data: '.mysqli_error($conn));
+                                        $r = mysqli_query($conn, "ALTER TABLE `std_2563_checktest` ADD COLUMN IF NOT EXISTS $d BOOL DEFAULT FALSE");
+                                        if (!$r) die('Could not alter data: '.mysqli_error($conn));
 
                                     if ($g <= 3) {
                                         $r = mysqli_query($conn, "SELECT * FROM `std_2563_checktest` WHERE grade = $g AND class = $c ORDER BY `prefix` ASC,`id` ASC");

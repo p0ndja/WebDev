@@ -43,17 +43,17 @@
             height: 100%;
             width: 100%;
             background-color: black;
-            opacity: 0.5;
+            opacity: 0.36;
             z-index: 1;
         }
 
         @media (pointer: coarse) and (hover: none) {
             header {
-                background: url('../static/images/element/thumbnail-min.mp4') black no-repeat center center scroll;
+                background: url('../static/images/element/thumbnail2020.mp4') black no-repeat center center scroll;
             }
 
             header video {
-                display: url('../static/images/element/thumbnail-min.mp4');
+                display: url('../static/images/element/thumbnail2020.mp4');
             }
         }
 
@@ -98,9 +98,9 @@
 <body>
     <header id="header">
         <div class="overlay"></div>
-        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="filter: blur(3px);
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="filter: blur(4px);
   -webkit-filter: blur(4px);">
-            <source src="../static/images/element/thumbnail-min.mp4" type="video/mp4">
+            <source src="../static/images/element/thumbnail2020.mp4" type="video/mp4">
         </video>
         <div class="container h-100">
             <div class="d-flex h-100 text-center align-items-center">

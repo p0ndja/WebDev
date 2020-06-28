@@ -93,7 +93,7 @@ insert into config (name, bool) VALUES ('indexpg_showCourse',true);
 insert into config (name, bool) VALUES ('indexpg_showPreviewGallery',true);
 insert into config (name, bool) VALUES ('indexpg_AlertMessage',false);
 insert into config (name, bool, haveVal, val) VALUES ('indexpg_Countdown',true,true,'Jan 1, 2020 00:00:00');
-insert into config (name, bool, haveVal, val) VALUES ('indexpg_videoHeader',true,true,'../static/images/element/thumbnail-min.mp4');
+insert into config (name, bool, haveVal, val) VALUES ('indexpg_videoHeader',true,true,'../static/images/element/thumbnail2020-min.mp4');
 insert into config (name, bool, haveVal, val) VALUES ('global_Livestream',true,true,'https://pondja.com');
 insert into config (name, bool) VALUES ('global_snowEffect',true);
 insert into config (name, bool) VALUES ('global_override_checking_admin',false);

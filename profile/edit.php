@@ -250,7 +250,6 @@
                                 </div>
                             </div>
                         </div>
-                        <?php if ($_SESSION['id'] == 604019) { ?>
                         <div class="card">
                             <div class="card-body">
                             <?php $graduation = array(); $i = 0; foreach(explode("|", getProfiledata($id, 'graduation', $conn)) as $eachgra) {  $graduation[$i] = $eachgra;  $i++; } ?>
@@ -306,7 +305,6 @@
                                 ?>
                             </div>
                         </div>
-                        <?php } ?>
                     </div>
                 </div>
             </div>
