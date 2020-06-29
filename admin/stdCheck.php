@@ -13,18 +13,6 @@
         <?php require '../global/navbar.php'; ?>
     </nav>
     <?php needPermission('isTeacher', $conn); ?>
-    <?php if ($_SESSION['id'] != 604019) { ?>
-        <script>
-    swal({
-        title: "ACCESS DENIED",
-        text: "ปิดปรับปรุงระบบชั่วคราว",
-        icon: "error"
-    }).then(function () {
-        window.location = "../home";
-    });
-</script>
-
-    <?php die();} ?>
     <div class="container" id="container" style="padding-top: 88px">
         <div class="card card-body card-text mb-3">
             <!--Table-->
@@ -92,16 +80,29 @@
                                     $_GET['grade'] = 1; $_GET['class'] = 1; $_GET['date'] = curDate();
                                 }
 
-                                    $g = $_GET['grade']; $c = $_GET['class']; $d = "d" . str_replace("/", "", $_GET['date']) . "_" . $_SESSION['id'];                                    
+                                    $g = $_GET['grade']; $c = $_GET['class']; $d = str_replace("/", "-", $_GET['date']); $t = $_SESSION['id'];
                                     
-                                        $r = mysqli_query($conn, "ALTER TABLE `std_2563_checktest` ADD COLUMN IF NOT EXISTS $d BOOL DEFAULT FALSE");
-                                        if (!$r) die('Could not alter data: '.mysqli_error($conn));
+                                    $r = mysqli_query($conn, "ALTER TABLE `std_2563_check` ADD COLUMN IF NOT EXISTS `$t` LONGTEXT DEFAULT NULL");
+                                    if (!$r) die('Could not alter data: '.mysqli_error($conn));
+
+                                    $r = mysqli_query($conn, "SELECT * FROM `std_2563_check` WHERE `date` = '$d'");
+                                    if (!$r) die('Could not get data: '.mysqli_error($conn));
+
+                                    $whoontoday = null;
+                                    if (mysqli_num_rows($r) == 0) { //This date has not been created yet.
+                                        $r = mysqli_query($conn, "INSERT INTO `std_2563_check` (`date`) VALUES ('$d')");
+                                        if (!$r) die('Error! ' . mysqli_error($conn));
+                                    } else {
+                                        while ($q = mysqli_fetch_array($r, MYSQLI_ASSOC)) { 
+                                            $whoontoday .= $q[$t];
+                                        }
+                                    }
 
                                     if ($g <= 3) {
-                                        $r = mysqli_query($conn, "SELECT * FROM `std_2563_checktest` WHERE grade = $g AND class = $c ORDER BY `prefix` ASC,`id` ASC");
+                                        $r = mysqli_query($conn, "SELECT * FROM `std_2563` WHERE grade = $g AND class = $c ORDER BY `prefix` ASC,`id` ASC");
                                         if (!$r) die('Could not get data: '.mysqli_error($conn));
                                     } else {
-                                        $r = mysqli_query($conn, "SELECT * FROM `std_2563_checktest` WHERE grade = $g AND class = $c ORDER BY `prefix` DESC,`id` ASC");
+                                        $r = mysqli_query($conn, "SELECT * FROM `std_2563` WHERE grade = $g AND class = $c ORDER BY `prefix` DESC,`id` ASC");
                                         if (!$r) die('Could not get data: '.mysqli_error($conn));
                                     }
 
@@ -119,7 +120,7 @@
                                     <td>
                                         <div class="custom-control custom-checkbox text-center">
                                             <input type="checkbox" class="custom-control-input thisisastudentcheck"
-                                                id="<?php echo $t['id']; ?>" name="<?php echo $t['id']; ?>" <?php if ($t[$d]) echo "checked";?>>
+                                                id="<?php echo $t['id']; ?>" name="<?php echo $t['id']; ?>" <?php if ((strpos($whoontoday, $t['id']) !== false)) echo "checked";?>>
                                             <label class="custom-control-label" for="<?php echo $t['id']; ?>"></label>
                                         </div>
                                     </td>
@@ -186,9 +187,9 @@
                 success: function (data) {
                     if (data) {
                         if (e.target.checked) {
-                            toastr.success("รหัสนักเรียน: " + e.target.name + " <br>สถานะ: เข้าเรียน");
+                            toastr.success("รหัสนักเรียน: " + e.target.checked + e.target.name + " <br>สถานะ: เข้าเรียน");
                         } else {
-                            toastr.warning("รหัสนักเรียน: " + e.target.name + " <br>สถานะ: ไม่เข้าเรียน");
+                            toastr.warning("รหัสนักเรียน: "  + e.target.checked + e.target.name + " <br>สถานะ: ไม่เข้าเรียน");
                         }
                     } else {
                         toastr.error("ERROR - พบข้อผิดพลาด<br>ไม่สามารถปรับค่า '" + e.target.name + "' ได้<br>กรุณาแจ้ง Webmaster");

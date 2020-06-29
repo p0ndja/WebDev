@@ -44,6 +44,12 @@ insert into config (name, bool) VALUES ('user_allowEditProfile',true);
 insert into config (name, bool, haveVal, val) VALUES ('global_categoryListThing',true,true,'news|order|announce|qa|advice|registration|personal|library|pta');
 insert into config (name, bool) VALUES ('global_temporaryClose', false);
 
+create table std_2563(
+   id INT NOT NULL AUTO_INCREMENT,
+   date TEXT NOT NULL,
+   PRIMARY KEY (id)
+);
+
 create table forum(
 	id INT NOT NULL,
 	title TEXT NOT NULL,
