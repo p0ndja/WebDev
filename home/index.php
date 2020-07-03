@@ -134,7 +134,7 @@
     <?php if (getConfig('indexpg_showCarousel', 'bool', $conn)) { ?>
     <div class="container-fluid course-bg">
         <div class="container mb-3" id="container">
-            <div id="carousel" class="carousel slide carousel-fade z-depth-1" data-ride="carousel" data-interval="5000">
+            <div id="carousel" class="carousel carouselsmoothanimated slide carousel-fade z-depth-1" data-ride="carousel" data-interval="5000">
                 <ol class="carousel-indicators">
                     <li data-target="#carousel" data-slide-to="0" class="active"></li>
                     <li data-target="#carousel" data-slide-to="1"></li>
@@ -142,7 +142,7 @@
                     <li data-target="#carousel" data-slide-to="3"></li>
                     <li data-target="#carousel" data-slide-to="4"></li>
                     <li data-target="#carousel" data-slide-to="5"></li>
-                    <li data-target="#carousel" data-slide-to="7"></li>
+                    <li data-target="#carousel" data-slide-to="6"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -220,85 +220,200 @@
     <?php } ?>
     <?php if (getConfig('indexpg_showCourse', 'bool', $conn)) { ?>
     <div class="container mb-5 mt-5">
-        <div class="row mb-4">
-            <div class="col-4">
-                <div class="view overlay zoom z-depth-1">
-                    <a href="../file/post/41/attachment/_20200117160236_S__1310728.jpg">
-                        <img src="../static/images/course/2_p_normal<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
-                        <div class="mask flex-center rgba-orange-light">
-                        </div>
-                    </a>
+        <!-- New Course Style -->
+        <!--Carousel Wrapper-->
+        <div id="multi-item-example" class="carousel carouselCourse slide carousel-multi-item" data-ride="carousel">
+
+            <div class="d-none">
+                <!--Controls-->
+                <div class="controls-top">
+                    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i
+                            class="fas fa-chevron-left"></i></a>
+                    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+                            class="fas fa-chevron-right"></i></a>
                 </div>
+                <!--/.Controls-->
             </div>
-            <div class="col-4">
-                <div class="view overlay zoom z-depth-1">
-                    <a href="../file/post/41/attachment/_20200117160236_S__1310728.jpg">
-                        <img src="../static/images/course/2_p_jems<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
-                        <div class="mask flex-center rgba-orange-light">
+
+            <!--Indicators-->
+            <ol class="carousel-indicators">
+                <li data-target="#multi-item-example" data-slide-to="0" class="active"
+                    style="background-color: #fc6504"></li>
+                <li data-target="#multi-item-example" data-slide-to="1" style="background-color: #fc6504"></li>
+
+            </ol>
+            <!--/.Indicators-->
+
+            <!--Slides-->
+            <div class="carousel-inner" role="listbox">
+                <!--First slide-->
+                <div class="carousel-item active">
+                    <div class="col-md-4" style="float:left">
+                        <div class="card card-cascade wider mb-2">
+                            <div class="view view-cascade">
+                                <img class="card-img-top"
+                                    src="../static/images/course/temp/32262798_1702255009843331_7907980895921897472_o.jpg"
+                                    alt="Card image cap">
+                                <a href="#!">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+                            <div class="card-body card-body-cascade">
+                                <h4 class="card-title">หลักสูตรปกติ</h4>
+                                <h5><span class="badge badge-smd z-depth-0">มัธยมศึกษาตอนต้น</span></h5>
+                                <div class="collapse-content">
+                                    <p class="card-text collapse" id="pNormalCollapse">
+                                        มีเป้าหมายเพื่อให้นักเรียนมีความรู้พื้นฐานและทักษะการคิดที่จำเป็นในการดำเนินชีวิต
+                                        ใช้เทคโนโลยีเพื่อการสื่อสาร รู้และเข้าใจตนเองตลอดจนสังคมตระหนักถึงความเป็นพลโลก
+                                    </p>
+                                    <a class="btn btn-flat text-smd p-1 my-1 mr-0 mml-1 collapsed"
+                                        data-toggle="collapse" href="#pNormalCollapse" aria-expanded="false"
+                                        aria-controls="collapseContent"></a>
+                                </div>
+                            </div>
                         </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="view overlay zoom z-depth-1">
-                    <a href="http://www.smd.kku.ac.th/">
-                        <img src="../static/images/course/2_reg<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
-                        <div class="mask flex-center rgba-orange-light">
+                    </div>
+
+                    <div class="col-md-4" style="float:left">
+                        <div class="card card-cascade wider mb-2">
+                            <div class="view view-cascade">
+                                <img class="card-img-top"
+                                    src="../static/images/course/temp/32266858_1702256239843208_898557860412129280_o.jpg"
+                                    alt="Card image cap">
+                            </div>
+                            <div class="card-body card-body-cascade">
+                                <h4 class="card-title">หลักสูตร JEMS</h4>
+                                <h5><span class="badge badge-smd z-depth-0">มัธยมศึกษาตอนต้น</span></h5>
+                                <div class="collapse-content">
+                                    <p class="card-text collapse" id="pJEMSCollapse">
+                                        มีเป้าหมายเพื่อให้ผู้เรียนมีความรู้และทักษะการคิดที่จำเป็นในการดำเนินชีวิต
+                                        มีทักษะกระบวนการทางวิทยาศาสตร์ - คณิตศาสตร์ เชื่อมโยงและบูรณาการณศาสตร์
+                                        เพื่อสร้างชิ้นงาน / โครงงาน ใช้เทคโนโลยีและภาษาอังกฤษในการสื่อสารและสืบค้น
+                                        รู้และเข้าใจตนเองตลอดจนสังคม ตระหนักถึงความเป็นพลโลก</p>
+                                    <a class="btn btn-flat text-smd p-1 my-1 mr-0 mml-1 collapsed"
+                                        data-toggle="collapse" href="#pJEMSCollapse" aria-expanded="false"
+                                        aria-controls="collapseContent"></a>
+                                </div>
+                            </div>
                         </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="view overlay zoom z-depth-1">
-                    <a href="https://www.facebook.com/SMD.KKU">
-                        <img src="../static/images/course/2_contact<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
-                        <div class="mask flex-center rgba-orange-light">
+                    </div>
+
+                    <div class="col-md-4" style="float:left">
+                        <div class="card card-cascade wider mb-2">
+                            <div class="view view-cascade">
+                                <img class="card-img-top" src="../static/images/course/temp/32372968_1702243213177844_8687341048659181568_o.jpg"
+                                    alt="Card image cap">
+                            </div>
+                            <div class="card-body card-body-cascade">
+                                <div class="card-text">
+                                    <a class="btn-floating blue" href="https://www.facebook.com/SMD.KKU" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://www.facebook.com/SMD.KKU" target="_blank">SMD.KKU</a><br>
+                                    <a class="btn-floating green" href="tel:043202044"><i class="fas fa-phone"></i></a><a href="tel:043202044">(+66) 043202044</a>
+                                </div>
+                            </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
+                <!--/.First slide-->
+
+                <!--Second slide-->
+                <div class="carousel-item">
+
+                    <div class="col-md-4" style="float:left">
+                        <div class="card card-cascade wider mb-2">
+                            <div class="view view-cascade">
+                                <img class="card-img-top"
+                                    src="../static/images/course/temp/32463135_1702250333177132_5636889996108496896_o.jpg"
+                                    alt="Card image cap">
+                            </div>
+                            <div class="card-body card-body-cascade">
+                                <h4 class="card-title">หลักสูตรปกติ</h4>
+                                <h5><span class="badge red z-depth-0">มัธยมศึกษาตอนปลาย</span></h5>
+                                <div class="collapse-content">
+                                    <p class="card-text collapse" id="sNormalCollapse">
+                                        มีเป้าหมายเพื่อให้นักเรียนมีความรู้พื้นฐานและทักษะการคิด
+                                        มีทักษะกระบวนการทางวิทยาศาสตร์ - คณิตศาสตร์ ใช้เทคโนโลยีเพื่อการสื่อสาร
+                                        นักเรียนมีเป้าหมายในการศึกษาต่อและประกอบอาชีพตามความถนัดและความสนใจ
+                                        รู้และเข้าใจตนเอง ตลอดจนสังคม ตระหนักถึงความเป็นพลโลก</p>
+                                    <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed"
+                                        data-toggle="collapse" href="#sNormalCollapse" aria-expanded="false"
+                                        aria-controls="collapseContent"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" style="float:left">
+                        <div class="card card-cascade wider mb-2">
+                            <div class="view view-cascade">
+                                <img class="card-img-top"
+                                    src="../static/images/course/temp/32377662_1702248076510691_8551041704629633024_o.jpg"
+                                    alt="Card image cap">
+                            </div>
+                            <div class="card-body card-body-cascade">
+                                <h4 class="card-title">หลักสูตร SEMS</h4>
+                                <h5><span class="badge red z-depth-0">มัธยมศึกษาตอนปลาย</span></h5>
+                                <div class="collapse-content">
+                                    <p class="card-text collapse" id="sSEMSCollapse">
+                                        มีเป้าหมายเพื่อให้นักเรียนมีความรู้พื้นฐาน มีทักษะการคิด
+                                        มุ่งเน้นทักษะปฏิบัติการทางวิทยาศาสตร์ขั้นสูง ใช้ทักษะกระบวนการทางวิทยาศาสตร์ -
+                                        คณิตศาสตร์ เชื่อมโยงและบูรณาการณศาสตร์ เพื่อสร้างชิ้นงาน / โครงงาน
+                                        ใช้เทคโนโลยีและภาษาอังกฤษในการสื่อสารและสืบค้น มุ่งเน้นการพัฒนาทักษะภาษาอังกฤษ
+                                        เพื่อรองรับการเข้าสู่มาตรฐานระดับนานาชาติ รู้และเข้าใจตนเองตลอดจนสังคม
+                                        ตระหนักถึงความเป็นพลโลก</p>
+                                    <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed"
+                                        data-toggle="collapse" href="#sSEMSCollapse" aria-expanded="false"
+                                        aria-controls="collapseContent"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" style="float:left">
+                        <div class="card card-cascade wider mb-2">
+                            <div class="view view-cascade">
+                                <img class="card-img-top"
+                                    src="../static/images/course/temp/32414071_1702251376510361_873323149431668736_o.jpg"
+                                    alt="Card image cap">
+                            </div>
+                            <div class="card-body card-body-cascade">
+                                <h4 class="card-title">หลักสูตร วมว.</h4>
+                                <h5><span class="badge red z-depth-0">มัธยมศึกษาตอนปลาย</span></h5>
+                                <div class="collapse-content">
+                                    <p class="card-text collapse" id="sSCiUSCollapse">
+                                        เพื่อสนับสนุนการขยายฐานกำลังคนนักวิจัยด้านวิทยาศาสตร์และเทคโนโลยีที่มีศักยภาพตั้งแต่ระดับมัธยมศึกษาตอนปลาย
+                                        โดยมีจุดเน้นด้านวิทยาศาสตร์ธรรมชาติ วิทยาศาสตร์ประยุกต์
+                                        เทคโนโลยีชีวภาพและเทคโนโลยีการเกษตร
+                                        โดยการจัดการเรียนการสอนที่มุ่งเน้นทักษะกระบวนการทางวิทยาศาสตร์
+                                        ผ่านโครงงานและงานวิจัยทางวิทยาศาสตร์และเน้นกระบวนการคิดตามแนวทางการศึกษาชั้นเรียน
+                                        (Lesson Study) และวิธีการแบบเปิด (Open Approach)</p>
+                                    <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed"
+                                        data-toggle="collapse" href="#sSCiUSCollapse" aria-expanded="false"
+                                        aria-controls="collapseContent"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/.Second slide-->
             </div>
+            <!--/.Slides-->
         </div>
-        <div class="row">
-            <div class="col-4">
-                <div class="view overlay zoom z-depth-1">
-                    <a href="../file/post/41/attachment/_20200117160335_S__1310732.jpg">
-                        <img src="../static/images/course/2_s_normal<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
-                        <div class="mask flex-center rgba-orange-light">
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="view overlay zoom z-depth-1">
-                    <a href="../file/post/41/attachment/_20200117160335_S__1310732.jpg">
-                        <img src="../static/images/course/2_s_sems<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
-                        <div class="mask flex-center rgba-orange-light">
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="view overlay zoom z-depth-1">
-                    <a href="../file/post/41/attachment/_20200117160335_S__1310732.jpg">
-                        <img src="../static/images/course/2_s_scius<?php if(isDarkMode()) echo "_d";?>.jpg" class="img-fluid">
-                        <div class="mask flex-center rgba-orange-light">
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <!--/.Carousel Wrapper-->
+        <!-- New Course Style -->
+    </div>
     </div>
     <?php } ?>
     <?php if (getConfig('indexpg_showLatestNews', 'bool', $conn)) { ?>
     <div class="indexNews">
         <div class="container">
-            <h1 id="news" name="news" class="font-weight-bold"><a href="../category/news-1"><img
-                        src="../static/images/element/header/news.png" class="img-fluid"></a>
-                <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../post/create"
-                    class="btn btn-sm btn-info"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
-            </h1>
             <div class="row">
-                <div class="col-12 col-md-8">
+                <div class="col-md-8 col-xl-9">
+                    <h1 id="news" name="news" class="font-weight-bold"><a href="../category/news-1"><img
+                                src="../static/images/element/header/news.png" class="img-fluid"></a>
+                        <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><a href="../post/create"
+                            class="btn btn-sm bg-smd"><i class="fas fa-plus"></i> เขียนข่าวใหม่</a><?php } ?>
+                    </h1>
+
                     <?php   $query = "SELECT * FROM `post` WHERE hide = 0 AND type = 'news' ORDER by pin DESC, time DESC limit 6";
                         $result = mysqli_query($conn, $query);
                         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
@@ -326,7 +441,7 @@
                                 </h5>
                                 <h6>
                                     <?php foreach (explode(",", $row['tags']) as $s) { ?>
-                                    <a href="../post/?tags=<?php echo $s; ?>"><span
+                                    <a href="../category/news-1-<?php echo $s; ?>"><span
                                             class="badge badge-smd z-depth-0"><?php echo $s; ?></span></a>
                                     <?php } ?>
                                 </h6>
@@ -338,12 +453,14 @@
                         <div class="card hoverable">
                             <?php if ($row['cover'] != null) { ?><img class="card-img-top"
                                 src="<?php echo $row['cover']; ?>"><?php } ?>
-                                <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><div class="card-body text-white p-2"><a
-                            href="<?php echo $row['hotlink']; ?>" target="_blank"><?php echo $row['title']; ?></a>
-                            <a href="../post/edit-<?php echo $row['id']; ?>"><i class="fas fa-edit text-success"></i></a> <a
-                            onclick='
+                            <?php if (isLogin() && isPermission('isNewsReporter', $conn)) { ?><div
+                                class="card-body text-white p-2"><a href="<?php echo $row['hotlink']; ?>"
+                                    target="_blank"><?php echo $row['title']; ?></a>
+                                <a href="../post/edit-<?php echo $row['id']; ?>"><i
+                                        class="fas fa-edit text-success"></i></a> <a
+                                    onclick='
                                     swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../post/delete.php?id=<?php echo $row["id"]; ?>";}});'>
-                            <i class="fas fa-trash-alt text-danger"></i></a></div><?php } ?>
+                                    <i class="fas fa-trash-alt text-danger"></i></a></div><?php } ?>
                         </div>
                     </a>
                     <p class="mb-3">
@@ -354,21 +471,17 @@
                         <div class="font-weight-bold">อ่านเพิ่มเติม <i class="fas fa-location-arrow"></i></div>
                     </a>
                 </div>
-                <div class="col-md-4">
-                    <div class="mb-1">
-                        <h4 class="font-weight-bold">รายงานสถานการณ์ โควิด-19</h4>
-                        <iframe src="https://covid19.th-stat.com/th/share/dashboard" width="100%" height="350" frameborder="0"></iframe>
+                <div class="col-md-4 col-xl-3">
+                    <div class="d-none d-md-block card mt-3 mb-3 float-center">
+                        <img class="card-img-top"
+                            src="../static/images/management/Secondary-Hotline<?php if(isDarkMode()) echo "_d";?>.jpg" />
                     </div>
                     <div class="d-none d-xl-block fb-page mb-3" data-href="https://www.facebook.com/SMD.KKU"
-                        data-tabs="timeline" data-width="500" data-height="850" data-small-header="false"
+                        data-tabs="timeline" data-width="300" data-height="550" data-small-header="false"
                         data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
                         <blockquote cite="https://www.facebook.com/SMD.KKU" class="fb-xfbml-parse-ignore"><a
                                 href="https://www.facebook.com/SMD.KKU">สาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา
                                 (มอดินแดง)</a></blockquote>
-                    </div>
-                    <div class="mb-3">
-                        <iframe src="https://ptb.discordapp.com/widget?id=700717529068470353&theme=dark" width="100%"
-                            height="500" allowtransparency="true" frameborder="0" class="z-depth-3"></iframe>
                     </div>
                     <div class="card mb-3">
                         <div class="hoverable view">
@@ -427,11 +540,13 @@
                             <div class="col-6 col-md-12"><a href="//th.kku.ac.th" target="_blank"><img class="img-fluid"
                                         src="../static/images/element/kkumenu-min.png" alt="KKU"></a></div>
                             <div class="col-6 col-md-12"><a href="//ednet.kku.ac.th" target="_blank"><img
-                                        class="img-fluid" src="../static/images/element/edmenu-min.png" alt="ED"></a></div>
+                                        class="img-fluid" src="../static/images/element/edmenu-min.png" alt="ED"></a>
+                            </div>
                             <div class="col-6 col-md-12"><a href="//kkumail.com" target="_blank"><img class="img-fluid"
                                         src="../static/images/element/mailmenu-min.png" alt="KKU Mail"></a></div>
                             <div class="col-6 col-md-12"><a href="//home.kku.ac.th/account/satit" target="_blank"><img
-                                        class="img-fluid" src="../static/images/element/netmenu-min.png" alt="KKU Net"></a>
+                                        class="img-fluid" src="../static/images/element/netmenu-min.png"
+                                        alt="KKU Net"></a>
                             </div>
                             <div class="col-6 col-md-12"><a href="//edoffice.kku.ac.th" target="_blank"><img
                                         class="img-fluid" src="../static/images/element/edofficemenu-min.png"
@@ -444,14 +559,13 @@
     </div>
     <?php } ?>
 
-
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
     <script>
         window.fbAsyncInit = function () {
             FB.init({
                 xfbml: true,
-                version: 'v6.0'
+                version: 'v7.0'
             });
         };
 
@@ -465,38 +579,11 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <!-- Your customer chat code -->
-    <div class="fb-customerchat" attribution=setup_tool page_id="908697645917311" theme_color="#0473ff"
+    <!-- Your Chat Plugin code -->
+    <div class="fb-customerchat" attribution=setup_tool page_id="908697645917311"
         logged_in_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม" logged_out_greeting="ติดต่อสอบถามข้อมูลเพิ่มเติม">
     </div>
-    <script>
-        $(window).on('resize', function () {
-            setTimeout(function () {
-                CMSSpace.changeFBPagePlugin()
-            }, 500);
-        });
 
-        $(window).on('load', function () {
-            setTimeout(function () {
-                CMSSpace.changeFBPagePlugin()
-            }, 1500);
-        });
-        CMSSpace.changeFBPagePlugin = function () {
-            //getting parent box width
-            var container_width = (Number($('.fb-column').width()) - Number($('.fb-column').css('padding-left')
-                .replace("px", ""))).toFixed(0);
-            //getting parent box height
-            var container_height = (Number($('.fb-column').height()) - (Number($('.fb-column-header').height()) +
-                Number($('.fb-column-   header').css('margin-bottom').replace("px", "")) + Number(($(
-                    '.fb-column').css('padding-top').replace("px", "") * 2)))).toFixed(0);
-            if (!isNaN(container_width) && !isNaN(container_height)) {
-                $(".fb-page").attr("data-width", container_width).attr("data-height", container_height);
-            }
-            if (typeof FB !== 'undefined') {
-                FB.XFBML.parse();
-            }
-        }
-    </script>
     <?php require '../global/popup.php'; ?>
     <?php require '../global/footer.php'; ?>
 
@@ -518,7 +605,6 @@
                 document.getElementById("container").style.paddingTop = "19px";
 
                 stick = false;
-
             }
         });
     </script>
