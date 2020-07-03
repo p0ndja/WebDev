@@ -46,15 +46,17 @@
                 <br><a style="color: white" href="#" class="disabled"> SMD Shop </a>
             </div>
             <div class="col-md-3">
-                <div class="d-block d-md-none mb-1"></div>
-                <a href="https://www.web-stat.com">
-                    <img alt="Web-Stat web statistics" src="https://wts.one/6s/3/1941813.gif">
-                </a>
+                <a class="btn-floating btn-sm btn-info" href="https://www.facebook.com/SMD.KKU" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://www.facebook.com/SMD.KKU" target="_blank" style="color: white">SMD.KKU</a><br>
+                <a class="btn-floating btn-sm blue" href="https://www.facebook.com/wearesmd" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://www.facebook.com/wearesmd" target="_blank" style="color: white">WE ARE SMD</a><br>
+                <a class="btn-floating btn-sm pink" href="https://www.instagram.com/wearesmd" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://www.instagram.com/wearesmd" target="_blank" style="color: white">WE ARE SMD</a>
             </div>
         </div>
         <hr>
         <div class="row">
             <div class="col-12 text-center">
+                <a href="https://www.web-stat.com">
+                    <img alt="Web-Stat web statistics" src="https://wts.one/6s/3/1941813.gif" class="mb-1">
+                </a>
                 <h6 style="color: white;">Copyright 2019 - 2020 &copy; The demonstration school of Khon Kaen University (Mo Din Daeng). All Right Reserved.</h6>
                 <h6 style="color: white;">Made with ❤ by <a href="../pages/about.php">PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka</a></h6>
             </div>
@@ -84,6 +86,8 @@
     $(document).ready(function () {
         $('.mdb-select').materialSelect();
         $('[data-toggle="tooltip"]').tooltip();
+        $('.btn-floating').unbind('click');
+        $('.fixed-action-btn').unbind('click');
     });
 
     $('.dropdown-menu').find('form').click(function (e) {
@@ -93,7 +97,23 @@
     if ($(document.body).height() < $(window).height()) {
         $('#footer').attr('style', 'position: fixed!important; bottom: 0px;');
     }
+
+    $('.carouselCourse').on('slide.bs.carousel', function(e) {
+        $('#pNormalCollapse').collapse('hide');
+        $('#pJEMSCollapse').collapse('hide');
+        $('#sNormalCollapse').collapse('hide');
+        $('#sSEMSCollapse').collapse('hide');
+        $('#sSCiUSCollapse').collapse('hide');
+    });
+
+    $('.carouselsmoothanimated').on('slide.bs.carousel', function(e) {
+        $(this).find('.carousel-inner').animate({
+            height: $(e.relatedTarget).height()
+        }, 500);
+    });
 </script>
+
+<div id="fb-root"></div><script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v7.0&appId=2529205720433288&autoLogAppEvents=1" nonce="2UGIjGvo"></script>
 
 <?php $_SESSION['isDarkProfile'] = 0; ?>
 <?php isWebsiteClose($conn); ?>
