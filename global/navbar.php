@@ -72,13 +72,20 @@
     </ul>
 
     <ul class="nav navbar-nav nav-flex-icons ml-auto">
-        <form action="../search/" method="POST" class="form-inline">
-            <div class="md-form my-0">
-                <input method="POST" class="form-control" type="text" placeholder="Search ID (Ex. 604019)"
-                    aria-label="Search ID (Ex. 604019)" id="search" name="search"
-                    value="<?php if (isset($_POST['search'])) echo $_POST['search']; ?>">
-            </div>
-        </form>
+        <li class="nav-item">
+            <?php if(!isset($_SESSION['dark_mode'])) $_SESSION['dark_mode'] = false; ?>
+            <?php if ($_SESSION['dark_mode'] == true) { ?><a href="../global/darkmode.php" class="nav-link"><i class="fas fa-sun"></i></a></a>
+            <?php } else { ?><a href="../global/darkmode.php" class="nav-link"><i class="far fa-moon"></i></a><?php } ?>
+        </li>
+        <li class="nav-item">
+            <form action="../search/" method="POST" class="form-inline">
+                <div class="md-form my-0">
+                    <input method="POST" class="form-control" type="text" placeholder="Search ID (Ex. 604019)"
+                        aria-label="Search ID (Ex. 604019)" id="search" name="search"
+                        value="<?php if (isset($_POST['search'])) echo $_POST['search']; ?>">
+                </div>
+            </form>
+        </li>
         <?php if (isLogin()) { ?>
         <div class="d-lg-block d-none">
         <li class="nav-item dropdown">
@@ -100,16 +107,14 @@
                     <a class="dropdown-item" href="#"> ผลการเช็คชื่อ <i class="fas fa-calendar-check"></i></a>
                 <?php } ?>
 
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../admin/"> แก้ไขข้อมูลส่วนตัว <i class="fas fa-user-tie"></i></a>
+
                 <?php if (isPermission('isAdmin', $conn)) { ?>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-secondary" href="../admin/"> ส่วนของแอดมิน <i class="fas fa-user-tie"></i></a>
                 <?php } ?>
 
-                <div class="dropdown-divider"></div>
-                    <?php if(!isset($_SESSION['dark_mode'])) $_SESSION['dark_mode'] = false; ?>
-                    <?php if ($_SESSION['dark_mode'] == true) { ?><a class="dropdown-item" href="../global/darkmode.php"> เปลี่ยนเป็นโหมดสว่าง <i class="far fa-lightbulb"></i></a>
-                    <?php } else { ?><a class="dropdown-item" href="../global/darkmode.php"> เปลี่ยนเป็นโหมดมืด <i class="fas fa-lightbulb"></i></a><?php } ?>
-                
                 <div class="dropdown-divider"></div>
                 <button class="dropdown-item text-danger" id="logoutBtn">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></button>
             </div>
