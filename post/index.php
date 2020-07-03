@@ -112,7 +112,7 @@
                                 <i class="fas fa-trash-alt text-danger"></i></a><?php } ?>
                         </h5>
                         <h6><?php foreach (explode(",", $row['tags']) as $s) { ?>
-                            <a href="../category/<?php echo $_GET['category'] . "-" . $_GET['page'] . "-" . $s; ?>"><span
+                            <a href="../category/<?php echo $row['type'] . "-1-" . $s; ?>"><span
                                     class="badge badge-smd z-depth-0"><?php echo $s; ?></span></a>
                             <?php } ?>
                         </h6>
