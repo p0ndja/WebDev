@@ -216,7 +216,7 @@
     ?>
     <div class="container" id="container" style="padding-top: 88px">
         <img id="bg_dump" style="display: none;">
-        <form method="post" action="../profile/save.php" enctype="multipart/form-data">
+        <form method="post" action="../profile/save.php" enctype="multipart/form-data" id="mainProfileForm">
             <div class="card w-100 mb-3">
                 <div class="card-body">
                     <h6><b>Background Image: </b>
@@ -310,7 +310,10 @@
             </div>
             <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
                 <input class="d-none" id="isDark" name="isDark" value="0"></input>
-                <input type="submit" class="btn btn-success" align="left" name="edit_submit" value="บันทึก"></input>
+                <a class="btn-floating btn-lg green" href="javascript:{}" onclick="document.getElementById('mainProfileForm').submit();">
+                    <input class="d-none" id="edit_submit" name="edit_submit" value="บันทึก"></input>
+                    <i class="fas fa-save"></i>
+                </a>
             </div>
         </form>
     </div>

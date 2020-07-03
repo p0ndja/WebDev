@@ -135,7 +135,9 @@
         </div>
         <?php if(isThisMyID($id, $conn)) { ?>
             <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
-                <a class="btn btn-warning" align="left" href="./edit">แก้ไข</a>
+                <a class="btn-floating btn-lg red" href="./edit">
+                    <i class="fas fa-pencil-alt"></i>
+                </a>
             </div>
         <?php } ?>
     </div>
