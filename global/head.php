@@ -23,6 +23,7 @@
     <link href="../static/css/fonts_morkhor.css" rel="stylesheet">
     <link href="../static/css/fonts_anakotmai.css" rel="stylesheet">
     <link href="../static/css/dark-mode.css" rel="stylesheet">
+    <link href="../static/css/widthme.css" rel="stylesheet">
     
     <!-- Bootstrap -->
     <script src="../static/js/1.16.0-popper.min.js"></script>
