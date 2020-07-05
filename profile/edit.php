@@ -15,10 +15,8 @@
 
         $profile_background = getProfileData($id, 'background', $conn);
         
-        if (getProfileData($id, 'background', $conn) == null) {
-            if (!$_SESSION['dark_mode']) $profile_background = "../static/images/background/bg_light_pastel.jpg";
-            else $profile_background = "../static/images/background/bg_dark_resize.jpg";
-        }
+        if (getProfileData($id, 'background', $conn) == null)
+            $profile_background = "../static/images/background/bg_light_pastel.jpg";
 
         $profile_displayText = getProfileData($id, 'greetings', $conn);
 
@@ -228,8 +226,10 @@
                 <div class="col mb-3">
                     <div class="row">
                         <div class="col-12 col-md-3">
-                            <img src="<?php echo $profile_image; ?>" class="w-100 mb-3" alt="Profile" id="profile_preview">
-                            <input type="file" name="profile_upload" id="profile_upload" class="form-control-file validate mb-3" accept="image/png, image/jpeg">
+                            <div class="card">
+                            <img src="<?php echo $profile_image; ?>" class="card-img-top" alt="Profile" id="profile_preview">
+                            <div class="card-body"><input type="file" name="profile_upload" id="profile_upload" class="form-control-file validate" accept="image/png, image/jpeg"></div>
+                            </div>
                         </div>
                         <div class="col-12 col-md-9">
                             <?php echo generateInfoCard($id, $conn); ?>
@@ -404,6 +404,11 @@
             }
         }
     </script>
+    
+    <?php if (isDarkMode()) { ?>
+        <script>toastr.warning("Darkmode ถูกปิดใช้งาน เพื่อเพิ่มความเที่ยงตรงในการแต่งโปรไฟล์");</script>
+    <?php } ?>
+    
     <?php require '../global/popup.php'; ?>
     <?php require '../global/footer.php'; ?>
 </body>
