@@ -6,47 +6,36 @@
     function convertIDtoSubject($id){ 
         if ($id >= 1 && $id <= 5) {
             return "ภาษาไทย";
-        } else if ($id >= 6 && $id <= 13) {
+        } else if ($id >= 6 && $id <= 15) {
             return "คณิตศาสตร์";
-        } else if ($id >= 14 && $id <= 36) {
-            return "วิทยาศาสตร์";
-        } else if ($id == 28 || $id == 29) {
+        } else if ($id == 29 || $id == 30) {
             return "เทคโนโลยี";
-        } else if ($id >= 37 && $id <= 39) {
+        } else if ($id >= 16 && $id <= 33) {
+            return "วิทยาศาสตร์";
+        } else if ($id >= 34 && $id <= 36) {
             return "การงานอาชีพ";
-        } else if (($id >= 40 && $id <= 49) || $id == 52) {
+        } else if (($id >= 37 && $id <= 45) || $id == 48) {
             return "ภาษาอังกฤษ";
-        } else if ($id == 50 || $id == 51) {
+        } else if ($id == 46 || $id == 47) {
             return "จีน / ญี่ปุ่น";
-        } else if ($id >= 53 && $id <= 59) {
+        } else if ($id >= 49 && $id <= 55) {
             return "สังคมศึกษา";
-        } else if ($id == 60 || $id == 63) {
+        } else if ($id == 56 || $id == 59) {
             return "ดนตรี - นาฏศิลป์";
-        } else if ($id == 61 || $id == 62) {
+        } else if ($id == 57 || $id == 58) {
             return "ศิลปะ";
-        } else if ($id >= 64 && $id <= 67) {
+        } else if ($id >= 60 && $id <= 63) {
             return "สุขศึกษา - พลศึกษา";
-        } else if ($id == 68) {
+        } else if ($id == 64) {
             return "แนะแนว";
-        } else if ($id >= 69 && $id <= 73) {
+        } else if ($id >= 65 && $id <= 69) {
             return "";
         } else {
             return "ERR";
         }
     }
 
-    function method($id) {
-        if ($id == 68 || ($id <= 53 && $id >= 57 && $id != 55) || $id == 42 || $id == 46 || $id == 37 || $id == 28 || $id == 20 || $id == 1) return "Discord";
-        else return "zoom";
-    }
-
-    function isOnlineDate($date, $grade) {
-        if ($grade >= 400 && ($date == "Tue" || $date == "Thu" || $date == "Fri")) return true;
-        if ($grade < 400 && ($date == "Mon" || $date == "Wed")) return true;
-        else return false;
-    }
-
-    $q = "SELECT * FROM `timeTable`";
+    $q = "SELECT * FROM `timetable_2563`";
     $r = mysqli_query($conn, $q);
 
     $arr = array();
@@ -58,10 +47,13 @@
             if ($row[$day] != null) {
                 $dd = explode("_", $day);
                 foreach (explode("|", $row[$day]) as $s) {
-                    $arr["class"][$dd[0]][$dd[1]][$s]["teacher"] = $row['name'];
+                    if (empty($arr["class"][$dd[0]][$dd[1]][$s]["teacher"])) 
+                        $arr["class"][$dd[0]][$dd[1]][$s]["teacher"] = $row['name'];
+                    else 
+                        $arr["class"][$dd[0]][$dd[1]][$s]["teacher"] .= " / " . $row['name'];
+
                     $arr["class"][$dd[0]][$dd[1]][$s]["subject"] = convertIDtoSubject($row['id']);
-                    $arr["class"][$dd[0]][$dd[1]][$s]["method"] = method($row['id']);
-                    $arr["class"][$dd[0]][$dd[1]][$s]["isOnlineDate"] = isOnlineDate($dd[0], $s);
+                    
                 }
             }
         }
