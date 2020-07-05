@@ -53,7 +53,7 @@
                 ปฏิทิน </a>
             <div class="dropdown-menu dropdown-smd" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#"> ปฏิทินโรงเรียน </a>
-                <a class="dropdown-item" href="../calendar"> ตารางเรียน </a>
+                <a class="dropdown-item" href="../timetable/"> ตารางเรียน </a>
                 <a class="dropdown-item" href="https://www.facebook.com/SMD.KKU/posts/2526062130856857"> ตารางสอบ </a>
             </div>
         </li>

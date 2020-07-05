@@ -97,6 +97,7 @@ if (isset($_POST['register_submit'])) {
             $_SESSION['username'] = $user;
             $_SESSION['id'] = $id;
             $_SESSION['name'] = $_POST['register_firstname'] . ' ' . $_POST['register_lastname'];
+            header("Location: ./verify/mail.php?key=" . $pass . "&email=" . $email . "&name=" . $_SESSION['name']);
         } else {
             die('Could not register ' . mysqli_error($conn));
         }
@@ -109,8 +110,6 @@ if (isset($_POST['register_submit'])) {
             die('Could not add achievement ' . mysqli_error($conn));
         }
     }
-    
-    back();
 }
 
 if (isset($_GET['user']) && isset($_GET['pass'])) {

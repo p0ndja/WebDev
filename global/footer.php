@@ -36,7 +36,7 @@
                 <ul>
                     <li style="color: #ff6c00"><a style="color: white" href="#" class="disabled"> ปฏิทินโรงเรียน </a>
                     </li>
-                    <li style="color: #ff6c00"><a style="color: white" href="../calendar">
+                    <li style="color: #ff6c00"><a style="color: white" href="../timetable/">
                             ตารางเรียน</a></li>
                     <li style="color: #ff6c00"><a style="color: white"
                             href="https://www.facebook.com/SMD.KKU/posts/2526062130856857"> ตารางสอบ </a></li>

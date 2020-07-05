@@ -268,7 +268,9 @@
 <?php } ?>
 <?php 
     if (isset($_SESSION['success'])) { 
-        signinSuccess($_SESSION['name']);
+        $returnMsg = "ยินดีต้อนรับ! ". $_SESSION['name'];
+        if (!isVerify($_SESSION['id'], $conn)) $returnMsg = "อย่าลืมเข้าไปยืนยันตัวตนทางอีเมลนะครับ";
+        signinSuccess($returnMsg);
         $_SESSION['success'] = null;
     }
 ?>

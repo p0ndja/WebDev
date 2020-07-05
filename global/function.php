@@ -109,6 +109,10 @@
             if (mysqli_num_rows($result) > 0) return true;
             return false;
         }
+
+        function isVerify($id, $conn) {
+            return getUserdata('604019', 'isEmailVerify', $conn);
+        }
 ?>
 <?php
 
@@ -385,7 +389,7 @@
     <script>
     swal({
         title: "เข้าสู่ระบบสำเร็จ",
-        text: "ยินดีต้อนรับ! <?php echo $name; ?>",
+        text: "<?php echo $name; ?>",
         icon: "success"
     });
     </script>
