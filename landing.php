@@ -101,7 +101,7 @@
 <body>
     <header id="header">
         <div class="overlay"></div>
-        <video playsinline="playsinline" autoplay="autoplay" muted="muted">
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" id="video">
             <source src="static/images/element/landing.mp4" type="video/mp4">
         </video>
         <div class="container h-100 d-none d-lg-block" id="container">
@@ -134,6 +134,11 @@
     if (is_mobile == true) {
         window.location = "./home";
     }
+    var aud = document.getElementById("video");
+    aud.onended = function() {
+    window.location = "./home";
+};
+
  });
     </script>
 </body>
