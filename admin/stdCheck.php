@@ -20,31 +20,33 @@
                 <div class="col-12 col-md-5">
                     <div class="card card-body card-text">
                         <h1 class="text-center font-weight-bold text-smd">ใบเช็คชื่อ</h1>
-                        <div class="select-outline">
-                            <select class="mdb-select md-form type" id="grade" name="grade" required>
-                                <option value="1">มัธยมศึกษาปีที่ 1</option>
-                                <option value="2">มัธยมศึกษาปีที่ 2</option>
-                                <option value="3">มัธยมศึกษาปีที่ 3</option>
-                                <option value="4">มัธยมศึกษาปีที่ 4</option>
-                                <option value="5">มัธยมศึกษาปีที่ 5</option>
-                                <option value="6">มัธยมศึกษาปีที่ 6</option>
-                            </select>
-                            <label class="mdb-main-label">ระดับชั้น</label>
-                        </div>
-                        <div class="select-outline">
-                            <select class="mdb-select md-form type" id="class" name="class" required>
-                                <option value="1" id="c1">ห้อง 1</option>
-                                <option value="2">ห้อง 2</option>
-                                <option value="3">ห้อง 3</option>
-                                <option value="4">ห้อง 4</option>
-                            </select>
-                            <label class="mdb-main-label">ห้อง</label>
+                        <div class="form-row text-center justify-content-center">
+                            <label for="grade" class="col-form-label col-md-auto">ระดับชั้น </label>
+                            <div class="align-items-center col-md-auto d-flex">
+                                <select class="form-control" id="grade" name="grade">
+                                    <option value="1">มัธยมศึกษาปีที่ 1</option>
+                                    <option value="2">มัธยมศึกษาปีที่ 2</option>
+                                    <option value="3">มัธยมศึกษาปีที่ 3</option>
+                                    <option value="4">มัธยมศึกษาปีที่ 4</option>
+                                    <option value="5">มัธยมศึกษาปีที่ 5</option>
+                                    <option value="6">มัธยมศึกษาปีที่ 6</option>
+                                </select>
+                            </div>
+                            <label for="class" class="col-form-label col-md-auto">ห้อง </label>
+                            <div class=" align-items-center col-md-auto d-flex">
+                                <select class="form-control" id="class" name="class">
+                                    <option value="1">ห้อง 1</option>
+                                    <option value="2">ห้อง 2</option>
+                                    <option value="3">ห้อง 3</option>
+                                    <option value="4">ห้อง 4</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="md-form">
                             <input placeholder="กรุณาเลือกวัน" type="text" id="date-picker-example"
                                 class="form-control datepicker"
                                 <?php if (isset($_GET['date'])) echo 'value="' . $_GET['date'] . '"'; else echo 'value="' . curDate() . '"'; ?>>
-                            <label for="date-picker-example" class="text-primary">วัน</label>
+                            <label for="date-picker-example" class="text-primary">วันที่ / Date</label>
                         </div>
                         <div class="btn-group" role="group">
                             <a class="btn btn-warning btn-lg z-depth-0" id="btn_query" name="btn_query"><i class="fas fa-download"></i> ดึงข้อมูล</a>
