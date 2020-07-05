@@ -167,6 +167,7 @@ create table user (
    grade INT NOT NULL,
    class INT NOT NULL,
    email TEXT,
+   isEmailVerify BOOLEAN DEFAULT false,
    isAdmin BOOLEAN DEFAULT false,
    isTeacher BOOLEAN DEFAULT false,
    isNewsReporter BOOLEAN DEFAULT false,

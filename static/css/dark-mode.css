@@ -47,6 +47,10 @@
     background-color: #1c1c1c;
 }
 
+[data-theme="dark"] .modal-content {
+    background-color: #0e0e0e;
+}
+
 [data-theme="dark"] .card-body-cascade {
     background-color: #1c1c1c !important;
 }

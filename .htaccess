@@ -19,6 +19,8 @@ RewriteRule ^search/$ global/search.php
 
 RewriteRule ^storage/(.*)-(.*)/(.*)$ file/$1/attachment/$2/$3
 
+RewriteRule ^timetable/([0-9]+)-([0-9]+)$ student/timetable.php?grade=$1&class=$2 [L]
+RewriteRule ^timetable/$ student/timetable.php
 RewriteRule ^p/(.*)$ pages/$1.php
 RewriteRule ^a/(.*)$ admin/$1.php
 RewriteRule ^s/(.*)$ student/$1.php
