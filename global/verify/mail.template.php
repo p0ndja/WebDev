@@ -10,8 +10,8 @@ require '../../static/PHPMailer/SMTP.php';
 // Form details
 $email_to = $_GET['email'];
 
-$fullname = "WE ARE SMD"; // required
-$email_from = "wearesmd@gmail.com"; // required
+$fullname = "<<NAME SENDER HERE>>"; // required
+$email_from = "<<EMAIL SENDER HERE>>"; // required
 $subject = "สวัสดี! " . $_GET['name']; // required
 $message = "กรุณายืนยันตัวตนเพื่อปลดล็อกการใช้งานฟังก์ชั่นบางอย่างในเว็บไซต์"; // required
 
@@ -35,8 +35,8 @@ try {
     $mail->isHTML(true);
     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = '<<EMAIL HERE>>';                     // SMTP username
-    $mail->Password   = '<<PASSWORD HERE>>';                               // SMTP password
+    $mail->Username   = '<<EMAIL SENDER HERE>>';                     // SMTP username
+    $mail->Password   = '<<PASSWORD SENDER HERE>>';                               // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
