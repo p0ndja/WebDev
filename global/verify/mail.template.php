@@ -50,7 +50,17 @@ try {
     $mail->Body    = $email_message;
 
     $mail->send();
-    die("SEND");
+    if (isset($_GET['method'])) {
+        if ($_GET['method'] == "reg") {
+            header("Location: ../../home");    
+        } else if ($_GET['method'] == "changeEmail") {
+            //Something could be happen here next day...
+            $_SESSION['swal_warning'] = "คุณได้ทำการเปลี่ยนแปลงอีเมล";
+            $_SESSION['swal_warning_msg'] = "อย่าลืมเข้าไปยืนยันตัวตนด้วยอีเมลใหม่ด้วยนะครับ";
+        }
+    } else {
+        echo "SUCCESS";
+    }
 } catch (Exception $e) {
     die("ERROR! Mailer Error: $mail->ErrorInfo");
 }

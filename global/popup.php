@@ -267,11 +267,24 @@
 
 <?php } ?>
 <?php 
-    if (isset($_SESSION['success'])) { 
-        $returnMsg = "ยินดีต้อนรับ! ". $_SESSION['name'];
-        if (!isVerify($_SESSION['id'], $conn)) $returnMsg = "อย่าลืมเข้าไปยืนยันตัวตนทางอีเมลนะครับ";
-        signinSuccess($returnMsg);
-        $_SESSION['success'] = null;
+    if (isset($_SESSION['swal_error']) && isset($_SESSION['swal_error_msg'])) { 
+        errorSwal($_SESSION['swal_error'],$_SESSION['swal_error_msg']);
+        $_SESSION['swal_error'] = null;
+        $_SESSION['swal_error_msg'] = null;
+    }
+?>
+<?php 
+    if (isset($_SESSION['swal_warning']) && isset($_SESSION['swal_warning_msg'])) { 
+        warningSwal($_SESSION['swal_warning'],$_SESSION['swal_warning_msg']);
+        $_SESSION['swal_warning'] = null;
+        $_SESSION['swal_warning_msg'] = null;
+    }
+?>
+<?php 
+    if (isset($_SESSION['swal_success'])) { 
+        successSwal($_SESSION['swal_success'],$_SESSION['swal_success_msg']);
+        $_SESSION['swal_success'] = null;
+        $_SESSION['swal_success_msg'] = null;
     }
 ?>
 <?php if (isset($_SESSION['error'])) { ?>

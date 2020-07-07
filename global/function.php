@@ -384,11 +384,28 @@
             });
     </script>
 <?php } ?>
-
-<?php function signinSuccess($name) { ?>
+<?php function warningSwal($title,$name) { ?>
     <script>
     swal({
-        title: "เข้าสู่ระบบสำเร็จ",
+        title: "<?php echo $title; ?>",
+        text: "<?php echo $name; ?>",
+        icon: "warning"
+    });
+    </script>
+<?php } ?>
+<?php function errorSwal($title,$name) { ?>
+    <script>
+    swal({
+        title: "<?php echo $title; ?>",
+        text: "<?php echo $name; ?>",
+        icon: "error"
+    });
+    </script>
+<?php } ?>
+<?php function successSwal($title,$name) { ?>
+    <script>
+    swal({
+        title: "<?php echo $title; ?>",
         text: "<?php echo $name; ?>",
         icon: "success"
     });
