@@ -20,12 +20,13 @@ This is our first website project, if there's something which is not prefectly. 
 
 # Technical Zone
 
-#### Connect.php
+### Configuration
 -----------------
-สำหรับไฟล์ **'/global/connect.php'** จะไม่มีอยู่ในโฟลเดอร์นั้นเพราะว่าเรื่องความลับของข้อมูลที่เปิดเผยไม่ได้ เอาเป็นว่าให้สร้างเองตาม Template ด้านล่างนี้นะครับ
+
+สำหรับไฟล์ **'/global/connect.php'** จะไม่มีอยู่ในโฟลเดอร์นั้นเพราะว่าเรื่องความลับของข้อมูลที่เปิดเผยไม่ได้ โดยให้เราแก้ไขจากไฟล์ **'/global/connect.template.php'** นะครับ หรือไม่ก็ให้สร้างเองตาม Template ด้านล่างนี้นะครับ
 
 For the **'/global/connect.php'** file. There's a secret on the database information, so I can't show you here,
-but you follow this template:
+but you can follow the template in **'/global/connect.template.php'** or this template below:
 
 ```
 <?php
@@ -56,128 +57,116 @@ but you follow this template:
 ?>
 ```
 
-#### SQL Structure
+และสำหรับไฟล์ **'/global/verify/mail.php'** ที่เป็นไฟล์สำหรับระบบส่งอีเมล ให้แก้ไขจากไฟล์ **'/global/verify/mail.template.php'** นะครับหรือตาม Template ด้านล่าง
+
+And for the **'/global/verify/mail.php'**, the mail system file, You need to create this file from the template in **'/global/verify/mail.template.php'** or the following template:
+```
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require '../../static/PHPMailer/PHPMailer.php'; // Only file you REALLY need
+require '../../static/PHPMailer/Exception.php'; // If you want to debug
+require '../../static/PHPMailer/SMTP.php';
+
+// Form details
+$email_to = $_GET['email'];
+
+$fullname = "<<NAME SENDER HERE>>"; // required
+$email_from = "<<EMAIL SENDER HERE>>"; // required
+$subject = "สวัสดี! " . $_GET['name']; // required
+$message = "กรุณายืนยันตัวตนเพื่อปลดล็อกการใช้งานฟังก์ชั่นบางอย่างในเว็บไซต์"; // required
+
+$email_message = file_get_contents('email.html');
+$email_message = str_replace("{{name}}", $_GET['name'], $email_message);
+$email_message = str_replace("{{key}}", $_GET['key'], $email_message);
+$email_message = str_replace("{{email}}", $_GET['email'], $email_message);
+
+// No need to set headers here
+
+// Replace the mail() function with PHPMailer
+
+$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+
+try {
+    //Server settings
+    $mail->CharSet = "UTF-8";
+    $mail->Encoding = 'base64';
+    $mail->SMTPDebug = 0;                      // Enable verbose debug output
+    $mail->isSMTP();                                            // Send using SMTP
+    $mail->isHTML(true);
+    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->Username   = '<<EMAIL SENDER HERE>>';                     // SMTP username
+    $mail->Password   = '<<PASSWORD SENDER HERE>>';                               // SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+    //Recipients
+    $mail->setFrom($email_from, 'WE ARE SMD');
+    $mail->addAddress($email_to, $fullname);     // Add the recipient
+
+    //Content
+    $mail->isHTML(true);                         // Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $email_message;
+
+    $mail->send();
+    if (isset($_GET['method'])) {
+        if ($_GET['method'] == "reg") {
+            header("Location: ../../home");    
+        } else if ($_GET['method'] == "changeEmail") {
+            //Something could be happen here next day...
+            $_SESSION['swal_warning'] = "คุณได้ทำการเปลี่ยนแปลงอีเมล";
+            $_SESSION['swal_warning_msg'] = "อย่าลืมเข้าไปยืนยันตัวตนด้วยอีเมลใหม่ด้วยนะครับ";
+        }
+    } else {
+        echo "SUCCESS";
+    }
+} catch (Exception $e) {
+    die("ERROR! Mailer Error: $mail->ErrorInfo");
+}
+?>
+```
+
+### SQL Structure
 -----------------
-สำหรับ SQL Structure ของตัวเว็บไซด์ จะปรากฎในชื่อไฟล์ 'template.sql' นะครับ // The template file for SQL Structure is named 'template.sql'
+สำหรับ SQL Structure ของตัวเว็บไซด์ จะปรากฎในชื่อไฟล์ 'template.sql' นะครับ // The template file for SQL Structure is named 'template.sql' (Config,Achievement,User,Profile,Post)
 เพียงแค่ Import เข้า Database ก็สามารถใช้งานได้เลยครับ // What you need just import that template file into your database.
-
-หรือตามโค้ตด้านล่างไปใช้ในการ Generate Table ได้เลยครับ // Or just use code below to generate table.
-
+#### Post Structure
 ```
-create table achievement (
-	id INT NOT NULL,
-	page404 BOOLEAN DEFAULT false,
-	betaTester BOOLEAN DEFAULT false,
-	WebDevTycoon BOOLEAN DEFAULT false,
-	the4thFloor BOOLEAN DEFAULT false,
-	Xmas BOOLEAN DEFAULT false,
-	PRIMARY KEY ( id )
-);
-
-create table config(
-	id INT NOT NULL AUTO_INCREMENT,
-	name LONGTEXT NOT NULL,
-	bool BOOLEAN,
-	title LONGTEXT,
-	description LONGTEXT,
-	haveVal BOOL DEFAULT FALSE,
-	val LONGTEXT,
-	valTitle LONGTEXT,
-	valDescription LONGTEXT,
-	PRIMARY KEY (id)
-);
-
-insert into config (name, bool) VALUES ('indexpg_showCarousel',true);
-insert into config (name, bool) VALUES ('indexpg_showLatestNews',true);
-insert into config (name, bool) VALUES ('indexpg_showCourse',true);
-insert into config (name, bool) VALUES ('indexpg_showPreviewGallery',true);
-insert into config (name, bool) VALUES ('indexpg_AlertMessage',false);
-insert into config (name, bool, haveVal, val) VALUES ('indexpg_Countdown',true,true,'Jan 1, 2020 00:00:00');
-insert into config (name, bool, haveVal, val) VALUES ('indexpg_videoHeader',true,true,'../static/images/element/thumbnail2020-min.mp4');
-insert into config (name, bool, haveVal, val) VALUES ('global_Livestream',true,true,'https://pondja.com');
-insert into config (name, bool) VALUES ('global_snowEffect',true);
-insert into config (name, bool) VALUES ('global_override_checking_admin',false);
-insert into config (name, bool) VALUES ('global_userProfile',true);
-insert into config (name, bool) VALUES ('achi_achievementSystem',true);
-insert into config (name, bool) VALUES ('user_allowRegister',true);
-insert into config (name, bool) VALUES ('user_allowLogin',true);
-insert into config (name, bool) VALUES ('user_allowPostForum',true);
-insert into config (name, bool) VALUES ('user_profile_allowEdit_ProfilePic',true);
-insert into config (name, bool) VALUES ('user_profile_allowEdit_BackgroundPic',true);
-insert into config (name, bool) VALUES ('user_profile_allowEdit_Bio',true);
-insert into config (name, bool) VALUES ('user_profile_displayExperience',true);
-insert into config (name, bool) VALUES ('user_allowEditProfile',true);
-insert into config (name, bool, haveVal, val) VALUES ('global_categoryListThing',true,true,'news|order|announce|qa|advice|registration|personal|library|pta');
-insert into config (name, bool) VALUES ('global_temporaryClose', false);
-
-create table std_2563(
-   id INT NOT NULL AUTO_INCREMENT,
-   date TEXT NOT NULL,
-   PRIMARY KEY (id)
-);
-
-create table forum(
-	id INT NOT NULL,
-	title TEXT NOT NULL,
-	writer INT NOT NULL,
-	time TINYTEXT,
-	article LONGTEXT NOT NULL,
-	pin BOOL DEFAULT false,
-	type INT DEFAULT 1,
-	PRIMARY KEY (id)
-);
-
-create table post (
-   id INT NOT NULL AUTO_INCREMENT,
-   title TEXT NOT NULL,
-   writer INT NOT NULL,
-   time TINYTEXT NOT NULL,
-   article LONGTEXT NOT NULL,
-   cover TEXT DEFAULT NULL,
-   tags TEXT DEFAULT NULL,
-   hide BOOL DEFAULT false,
-   pin BOOL DEFAULT false,
-   attachment LONGTEXT DEFAULT NULL,
-   hotlink LONGTEXT DEFAULT NULL,
-   type TEXT,
-   PRIMARY KEY ( id )
-);
-
-create table profile (
-   id INT NOT NULL,
-   greetings LONGTEXT,
-   profile LONGTEXT,
-   background LONGTEXT,
-   graduation LONGTEXT DEFAULT NULL,
-   isDark BOOL DEFAULT FALSE,
-   tagPostID LONGTEXT DEFAULT NULL,
-   PRIMARY KEY ( id )
-);
-
-create table user (
-   id INT NOT NULL,
-   username TEXT NOT NULL,
-   password TEXT NOT NULL,
-   citizen_id BIGINT NOT NULL,
-   prefix VARCHAR(10) NOT NULL,
-   firstname TEXT NOT NULL,
-   lastname TEXT NOT NULL,
-   firstname_en TEXT NOT NULL,
-   lastname_en TEXT NOT NULL,
-   grade INT NOT NULL,
-   class INT NOT NULL,
-   email TEXT,
-   isEmailVerify BOOLEAN DEFAULT false,
-   isAdmin BOOLEAN DEFAULT false,
-   isTeacher BOOLEAN DEFAULT false,
-   isNewsReporter BOOLEAN DEFAULT false,
-   isForumEditor BOOLEAN DEFAULT false,
-   isRegistrator BOOLEAN DEFAULT false,
-   isTimetableDesigner BOOLEAN DEFAULT false,
-   isSubjectRegistrator BOOLEAN DEFAULT false,
-   PRIMARY KEY ( id )
-);
+pondjaco_smdkku
+└── post
+    ├── id<INT>
+    ├── title<TEXT>
+    ├── writer<INT>
+    ├── time<TIME>
+    ├── article<LONGTEXT>
+    ├── cover<TEXT:URL>
+    ├── category<TEXT>
+    ├── tags<TEXT>
+    ├── hide<BOOLEAN>
+    ├── pin<BOOLEAN>
+    ├── attachment<TEXT:URL>
+    ├── type<TEXT>
+    └── hotlink<TEXT:URL>
 ```
 
-ปล. ผมใช้ MySQL นะครับ
-P.S. I use MySQL.
+สำหรับ Forum จะแยก Database กับฐานข้อมูลหลักนะครับ // This for the Forum database, it's seperated from the main structure
+(ในอนาคตอาจมีการปรับ Structure ใหม่) // (WIP on re-structuring)
+#### Forum Structure [WIP]
+```
+pondjaco_smdkkuforum
+├── forum_properties
+│   ├── id<INT>
+│   ├── category<TEXT>
+│   ├── isPinned<BOOLEAN>
+│   └── isHidden<BOOLEAN>
+└── id_001/
+    ├── writer<INT>
+    ├── title<TEXT>
+    ├── message<LONGTEXT>
+    ├── timestamp<TIME>
+    └── attachment<FILE>
+```
