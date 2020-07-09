@@ -191,7 +191,7 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    <div class="md-form file-field mb-5">
+                    <div class="md-form file-field">
                         <div class="btn btn-primary btn-sm float-left">
                             <span><i class="fas fa-file-upload"></i> Browse</span>
                             <input type="file" name="cover" id="cover" class="validate" accept="image/*">
@@ -205,9 +205,8 @@
                             else $cover_src = "../static/images/default/default_post.jpg";
                         ?>
                         <img src=<?php echo $cover_src; ?> class=" img-fluid w-100" id="coverThumb">
-                        <hr>
                     </div>
-                    <div class="switch switch-warning mb-1">
+                    <div class="switch switch-warning">
                         <label>
                             <?php if ($hotlink != null) $b = "checked"; else $b = ""?>
                             <input type="checkbox" name="makeHotlink" id="makeHotlink" <?php echo $b; ?>>
@@ -217,7 +216,7 @@
                                 Hotlink</a>
                         </label>
                     </div>
-                    <div class="switch switch-warning mb-1">
+                    <div class="switch switch-warning">
                         <label>
                             <?php if ($hide) $b = "checked"; else $b = ""?>
                             <input type="checkbox" name="isHidden" id="isHidden" <?php echo $b; ?>>
@@ -226,7 +225,7 @@
                                 title="การเปิดค่านี้จะทำให้โพสต์นี้สามารถเข้าได้ผ่าน Link โดยตรงเท่านั้น (จะไม่แสดงรวมกับโพสต์อื่น ๆ ในหน้าหลักและหน้าอื่น ๆ)">ซ่อนโพสต์</a>
                         </label>
                     </div>
-                    <div class="switch switch-warning mb-1">
+                    <div class="switch switch-warning">
                         <label>
                             <?php if ($pinned) $b = "checked"; else $b = ""?>
                             <input type="checkbox" name="pinned" <?php echo $b; ?>>
@@ -241,12 +240,8 @@
                         placeholder="Enter URL Here" value="<?php echo $hotlink; ?>">                    
                     <div id="hotlinkHiddenZone" name="hotlinkHiddenZone"
                         <?php if ($hotlink != null) echo 'style="display: none"'; else echo 'style="display: block"'; ?>>
-                        <div class="form-group mb-4 mt-5">
-                            <label for="article">
-                                <h3 class="font-weight-bold">เนื้อข่าว / Article</h3>
-                            </label>
+                        <div class="form-group mb-4 mt-3">
                             <textarea class="summernote" id="article" name="article"></textarea>
-                            <hr>
                         </div>
                         <div class="md-form file-field mb-3">
                             <div class="btn btn-primary btn-sm float-left">

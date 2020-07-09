@@ -3,11 +3,6 @@ require '../global/connect.php';
 
 if (isset($_POST['post_submit']) || isset($_POST['post_update'])) {
     $id = $_SESSION['id'];
-    $query = "SELECT * FROM `post` WHERE id = '$id'";
-    $result = mysqli_query($conn, $query);
-    if (!$result)
-        die('Could not get data: '.mysqli_error($conn));
-
     $title = $_POST['title'];
     $article = $_POST['article'];
     $writer = $id;
