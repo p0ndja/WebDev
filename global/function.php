@@ -23,96 +23,139 @@
         return mysqli_query($conn, "UPDATE `$sql` SET `$col` = $val WHERE `$key` = '$key_val'");
     }
 
-        function getConfig($name, $col, $conn) {
-            return getAnySQL('config', $col, 'name', $name, $conn);
-        }  
-        //getConfig('indexpg_showCarousel', 'bool', $conn);
+    function getConfig($name, $col, $conn) {
+        return getAnySQL('config', $col, 'name', $name, $conn);
+    }  
+    //getConfig('indexpg_showCarousel', 'bool', $conn);
 
-        function saveConfig($name, $col, $val, $conn) {
-            if (saveAnySQL('config', $col, $val, 'name', $name, $conn)) return true;
-            return false;
-        }
-        //saveConfig('indexpg_showCarousel', 'bool', true, $conn);
-        function getUserdata($id, $data, $conn) {
-            return getAnySQL('user', $data, 'id', $id, $conn);
-        }
-        //getUserdata('604019', 'username', $conn);
+    function saveConfig($name, $col, $val, $conn) {
+        if (saveAnySQL('config', $col, $val, 'name', $name, $conn)) return true;
+        return false;
+    }
+    //saveConfig('indexpg_showCarousel', 'bool', true, $conn);
+    function getUserdata($id, $data, $conn) {
+        return getAnySQL('user', $data, 'id', $id, $conn);
+    }
+    //getUserdata('604019', 'username', $conn);
 
-        function saveUserdata($id, $data, $val, $conn) {
-            if (saveAnySQL('user', $data, $val, 'id', $id, $conn)) return true;
-            return false;
-        }
-        //saveUserdata('604019', 'username', 'PondJaTH', $conn);
+    function saveUserdata($id, $data, $val, $conn) {
+        if (saveAnySQL('user', $data, $val, 'id', $id, $conn)) return true;
+        return false;
+    }
+    //saveUserdata('604019', 'username', 'PondJaTH', $conn);
 
-        function getPostdata($id, $data, $conn) {
-            return getAnySQL('post', $data, 'id', $id, $conn);
-        }
-        //getPostdata('1', 'article', $conn);
+    function getPostdata($id, $data, $conn) {
+        return getAnySQL('post', $data, 'id', $id, $conn);
+    }
+    //getPostdata('1', 'article', $conn);
 
-        function savePostdata($id, $data, $val, $conn) {
-            if (saveAnySQL('post', $data, $val, 'id', $id, $conn)) return true;
-            return false;
-        }
-        //saveUserdata('604019', 'username', 'PondJaTH', $conn);
+    function savePostdata($id, $data, $val, $conn) {
+        if (saveAnySQL('post', $data, $val, 'id', $id, $conn)) return true;
+        return false;
+    }
+    //saveUserdata('604019', 'username', 'PondJaTH', $conn);
 
-        function getProfiledata($id, $data, $conn) {
-            return getAnySQL('profile', $data, 'id', $id, $conn);
-        }
-        //getProfiledata('604019', 'profile', $conn);
+    function getProfiledata($id, $data, $conn) {
+        return getAnySQL('profile', $data, 'id', $id, $conn);
+    }
+    //getProfiledata('604019', 'profile', $conn);
 
-        function saveProfiledata($id, $data, $val, $conn) {
-            if (saveAnySQL('profile', $data, $val, 'id', $id, $conn)) return true;
-            return false;
-        }
-        //saveProfiledata('604019', 'profile', '...', $conn);
+    function saveProfiledata($id, $data, $val, $conn) {
+        if (saveAnySQL('profile', $data, $val, 'id', $id, $conn)) return true;
+        return false;
+    }
+    //saveProfiledata('604019', 'profile', '...', $conn);
 
-        function getAchievementdata($id, $data, $conn) {
-            return getAnySQL('achievement', $data, 'id', $id, $conn);
-        }
-        //getAchidata('604019', 'page404', $conn);
+    function getAchievementdata($id, $data, $conn) {
+        return getAnySQL('achievement', $data, 'id', $id, $conn);
+    }
+    //getAchidata('604019', 'page404', $conn);
 
-        function saveAchimentdata($id, $data, $val, $conn) {
-            if (saveAnySQL('achievement', $data, $val, 'id', $id, $conn)) return true;
-            return false;
-        }
-        //saveAchidata('604019', 'page404', '...', $conn);
+    function saveAchimentdata($id, $data, $val, $conn) {
+        if (saveAnySQL('achievement', $data, $val, 'id', $id, $conn)) return true;
+        return false;
+    }
+    //saveAchidata('604019', 'page404', '...', $conn);
 
-        function getStdCheckdata($id, $data, $conn) {
-            return getAnySQL('std_2563_checktest', $data, 'id', $id, $conn);
-        }
+    function getStdCheckdata($id, $data, $conn) {
+        return getAnySQL('std_2563_checktest', $data, 'id', $id, $conn);
+    }
 
-        function saveStdCheckdata($id, $data, $val, $conn) {
-            if (saveAnySQL('std_2563_checktest', $data, $val, 'id', $id, $conn)) return true;
-            return false;
-        }
+    function saveStdCheckdata($id, $data, $val, $conn) {
+        if (saveAnySQL('std_2563_checktest', $data, $val, 'id', $id, $conn)) return true;
+        return false;
+    }
 
-        function saveStdCheckdataWholeClass($grade, $class, $date, $val, $conn) {
-            return mysqli_query($conn, "UPDATE `std_2563_checktest` SET `$date` = $val WHERE `grade` = '$grade' AND `class` = '$class'");
-        }
+    function saveStdCheckdataWholeClass($grade, $class, $date, $val, $conn) {
+        return mysqli_query($conn, "UPDATE `std_2563_checktest` SET `$date` = $val WHERE `grade` = '$grade' AND `class` = '$class'");
+    }
 
-        function getProfilePicture($id, $conn) {
-            $_array = getProfiledata($id,'profile',$conn);
-            if ($_array != null) return $_array;
-            else return '../static/images/default.png';
-        }
+    function getProfilePicture($id, $conn) {
+        $_array = getProfiledata($id,'profile',$conn);
+        if ($_array != null) return $_array;
+        else return '../static/images/default.png';
+    }
 
-        function isValidUserID($id, $conn) {
-            $query = "SELECT * FROM `user` WHERE id = '$id'";
-            $result = mysqli_query($conn, $query);
-            if (mysqli_num_rows($result) > 0) return true;
-            return false;
-        }
+    function isValidUserID($id, $conn) {
+        $query = "SELECT * FROM `user` WHERE id = '$id'";
+        $result = mysqli_query($conn, $query);
+        if (mysqli_num_rows($result) > 0) return true;
+        return false;
+    }
 
-        function isValidPostID($id, $conn) {
-            $query = "SELECT * FROM `post` WHERE id = '$id'";
-            $result = mysqli_query($conn, $query);
-            if (mysqli_num_rows($result) > 0) return true;
-            return false;
-        }
+    function isValidForumID($id, $connForum) {
+        $query = "SELECT * FROM `id_$id`";
+        $result = mysqli_query($connForum, $query);
+        if (mysqli_num_rows($result) > 0) return true;
+        return false;
+    }
 
-        function isVerify($id, $conn) {
-            return getUserdata('604019', 'isEmailVerify', $conn);
-        }
+    function isValidPostID($id, $conn) {
+        $query = "SELECT * FROM `post` WHERE id = '$id'";
+        $result = mysqli_query($conn, $query);
+        if (mysqli_num_rows($result) > 0) return true;
+        return false;
+    }
+
+    function isVerify($id, $conn) {
+        return getUserdata('604019', 'isEmailVerify', $conn);
+    }
+
+
+
+    function getForumPropertiesSQL($sql, $val, $key, $key_val, $conn) {
+        return mysqli_fetch_array(mysqli_query($conn, "SELECT `$val` from `$sql` WHERE $key = '$key_val'"), MYSQLI_ASSOC)[$val];
+    }
+
+    function saveForumPropertiesSQL($sql, $col, $val, $key, $key_val, $conn) {
+        return mysqli_query($conn, "UPDATE `$sql` SET `$col` = $val WHERE `$key` = '$key_val'");
+    }
+
+    function getForumDataSQL($sql, $val, $conn) {
+        return mysqli_fetch_array(mysqli_query($conn, "SELECT `$val` from `$sql`"), MYSQLI_ASSOC)[$val];
+    }
+
+    function saveForumDataSQL($sql, $col, $val, $conn) {
+        return mysqli_query($conn, "UPDATE `$sql` SET `$col` = $val WHERE `$key` = '$key_val'");
+    }
+
+    function getForumProperties($id, $data, $connForum) {
+        return getForumPropertiesSQL('forum_properties', $data, 'id', $id, $connForum);
+    }
+
+    function getForumData($id, $data, $connForum) {
+        return getForumDataSQL('id_' . $id, $data, $connForum);
+    }
+
+    function saveForumProperties($id, $data, $val, $connForum) {
+        if (saveForumPropertiesSQL('forum_properties', $data, $val, 'id', $id, $connForum)) return true;
+        return false;
+    }
+
+    function saveForumData($id, $data, $val, $connForum) {
+        if (saveForumDataSQL('id_' . $id, $data, $val, $connForum)) return true;
+        return false;
+    }
 ?>
 <?php
 
@@ -264,6 +307,18 @@
         } else {
             return "<div class='display-4'>" . strtoupper($category);
         }
+    }
+
+    function generateForumTopic($topic) {
+        $main = '<span class="badge %color% z-depth-0">%title%</span>';
+        if ($topic == "general") $main = str_replace("%title%", "พูดคุยทั่วไป", str_replace("%color%", "badge-smd", $main));
+        else if ($topic == "knowledge") $main = str_replace("%title%", "รอบรู้เรื่องเรียน", str_replace("%color%", "badge-info", $main));
+        else if ($topic == "alumni") $main = str_replace("%title%", "ศิษย์เก่า", str_replace("%color%", "red darken-4", $main));
+        else if ($topic == "marketplace") $main = str_replace("%title%", "ตลาดนัด SMD", str_replace("%color%", "badge-success", $main));
+        else if ($topic == "bugreport") $main = str_replace("%title%", "แจ้งปัญหาการใช้งาน", str_replace("%color%", "purple", $main));
+        else if ($topic == "suggestion") $main = str_replace("%title%", "เสนอแนะ", str_replace("%color%", "indigo", $main));
+        else if ($topic == "updatelog") $main = str_replace("%title%", "อัพเดทเว็บไซต์", str_replace("%color%", "pink lighten-1", $main));
+        return $main;
     }
 
     function isDarkMode() {
