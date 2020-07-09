@@ -88,15 +88,15 @@
         $('[data-toggle="tooltip"]').tooltip();
         $('.btn-floating').unbind('click');
         $('.fixed-action-btn').unbind('click');
+
+        if ($(document.body).height() < $(window).height()) {
+            $('#footer').attr('style', 'position: fixed!important; bottom: 0px;');
+        }
     });
 
     $('.dropdown-menu').find('form').click(function (e) {
         e.stopPropagation();
     });
-
-    if ($(document.body).height() < $(window).height()) {
-        $('#footer').attr('style', 'position: fixed!important; bottom: 0px;');
-    }
 
     $('.carouselCourse').on('slide.bs.carousel', function(e) {
         $('#pNormalCollapse').collapse('hide');
