@@ -251,6 +251,21 @@
                     <div class="col-md-4" style="float:left">
                         <div class="card card-cascade wider mb-2">
                             <div class="view view-cascade">
+                                <img class="card-img-top" src="../static/images/course/temp/32372968_1702243213177844_8687341048659181568_o.jpg"
+                                    alt="Card image cap">
+                            </div>
+                            <div class="card-body card-body-cascade">
+                                <div class="card-text">
+                                    <a class="btn-floating blue" href="https://www.facebook.com/SMD.KKU" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://www.facebook.com/SMD.KKU" target="_blank">SMD.KKU</a><br>
+                                    <a class="btn-floating green" href="tel:043202044"><i class="fas fa-phone"></i></a><a href="tel:043202044">(+66) 043202044</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" style="float:left">
+                        <div class="card card-cascade wider mb-2">
+                            <div class="view view-cascade">
                                 <img class="card-img-top"
                                     src="../static/images/course/temp/32262798_1702255009843331_7907980895921897472_o.jpg"
                                     alt="Card image cap">
@@ -258,6 +273,7 @@
                                     <div class="mask rgba-white-slight"></div>
                                 </a>
                             </div>
+                            
                             <div class="card-body card-body-cascade">
                                 <h4 class="card-title">หลักสูตรปกติ</h4>
                                 <h5><span class="badge badge-smd z-depth-0">มัธยมศึกษาตอนต้น</span></h5>
@@ -293,21 +309,6 @@
                                     <a class="btn btn-flat text-smd p-1 my-1 mr-0 mml-1 collapsed"
                                         data-toggle="collapse" href="#pJEMSCollapse" aria-expanded="false"
                                         aria-controls="collapseContent"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4" style="float:left">
-                        <div class="card card-cascade wider mb-2">
-                            <div class="view view-cascade">
-                                <img class="card-img-top" src="../static/images/course/temp/32372968_1702243213177844_8687341048659181568_o.jpg"
-                                    alt="Card image cap">
-                            </div>
-                            <div class="card-body card-body-cascade">
-                                <div class="card-text">
-                                    <a class="btn-floating blue" href="https://www.facebook.com/SMD.KKU" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://www.facebook.com/SMD.KKU" target="_blank">SMD.KKU</a><br>
-                                    <a class="btn-floating green" href="tel:043202044"><i class="fas fa-phone"></i></a><a href="tel:043202044">(+66) 043202044</a>
                                 </div>
                             </div>
                         </div>
