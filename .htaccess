@@ -6,6 +6,10 @@ RewriteRule ^post/([0-9]+)$ post/?id=$1
 RewriteRule ^post/create$ post/edit.php
 RewriteRule ^post/edit-([0-9]+)$ post/edit.php?id=$1
 
+RewriteRule ^threads/([0-9]+)$ forum/index.php?id=$1
+RewriteRule ^threads/create$ forum/edit.php
+RewriteRule ^threads/edit-([0-9]+)-([0-9]+)$ forum/edit.php?id=$1&comment=$2
+
 RewriteRule ^category/(.*)-([0-9]+)-(.*)$ post/index.php?category=$1&page=$2&tags=$3 [L]
 RewriteRule ^category/(.*)-([0-9]+)$ post/index.php?category=$1&page=$2
 
@@ -25,6 +29,9 @@ RewriteRule ^p/(.*)$ pages/$1.php
 RewriteRule ^a/(.*)$ admin/$1.php
 RewriteRule ^s/(.*)$ student/$1.php
 RewriteRule ^d/(.*)$ zdemo/$1.php
+
+RewriteRule ^register/$ pages/register.php
+RewriteRule ^login/$ pages/login.php
 
 RewriteRule ^api/(.*)$ global/api/$1.php
 
