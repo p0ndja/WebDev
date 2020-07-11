@@ -147,13 +147,17 @@
     .text-smd {
         color: #fc6504 !important;
     }
-
+    
+    ul.dropdown-lr {
+        width: 300px;
+    }
+    
     p,
     li,
     ul,
     table,
     blockquote {
-        color: #595b60 !important;
+        color: #606060 !important;
     }
 
     .dropdown .dropdown-menu.dropdown-smd .dropdown-item:hover,

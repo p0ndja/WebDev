@@ -1,16 +1,167 @@
 <?php require '../global/connect.php'; ?>
 
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 
 <head>
     <?php require '../global/head.php'; ?>
     <script type="text/javascript">
         $(function () {
+
+            $.ajax({
+                url: 'https://api.github.com/emojis',
+                async: false
+            }).then(function (data) {
+                window.emojis = Object.keys(data);
+                window.emojiUrls = data;
+            });;
             $('.summernote').summernote({
-                height: 500,
+                placeholder: "เขียนการตอบกลับของคุณ...",
+                minHeight: 200,
+                fontNames: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman', 'MorKhor',
+                    'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun',
+                    'Kanit', 'anakotmai'
+                ],
+                fontNamesIgnoreCheck: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman',
+                    'MorKhor',
+                    'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun',
+                    'Kanit', 'anakotmai'
+                ],
+                codemirror: { // codemirror options
+                    theme: 'monokai'
+                },
+                callbacks: {
+                    onImageUpload: function (files, editor, welEditable) {
+                        sendPicFile(files[0], this);
+                    },
+                    onFileUpload: function (file) {
+                        sendRawFile(file[0]);
+                    },
+                    onChange: function (contents) {
+                        if (contents.length < 12) {
+                            $(':input[type="submit"]').prop('disabled', true);
+                        } else {
+                            $(':input[type="submit"]').prop('disabled', false);
+                        }
+                    }
+                },
+                toolbar: [
+                    ['misc', ['undo', 'redo']],
+                    ['style', ['style', 'height', 'fontname', 'fontsize']],
+                    ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript',
+                        'subscript', 'clear'
+                    ]],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video', 'hr', 'file']],
+                    ['view', ['fullscreen', 'codeview', 'help']],
+                ],
+                hint: {
+                    match: /:([\-+\w]+)$/,
+                    search: function (keyword, callback) {
+                        callback($.grep(emojis, function (item) {
+                            return item.indexOf(keyword) === 0;
+                        }));
+                    },
+                    template: function (item) {
+                        var content = emojiUrls[item];
+                        return '<img src="' + content + '" width="20" /> :' + item + ':';
+                    },
+                    content: function (item) {
+                        var url = emojiUrls[item];
+                        if (url) {
+                            return $('<img />').attr('src', url).css('width', 20)[0];
+                        }
+                        return '';
+                    }
+                }
             });
-            $('.summernote').summernote('code', '<?php echo $article; ?>');
+
+            function sendRawFile(file) {
+                let data = new FormData();
+                data.append("file", file);
+                $.ajax({
+                    data: data,
+                    type: "POST",
+                    url: "../forum/upload.php", //Your own back-end uploader
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    xhr: function () { //Handle progress upload
+                        let myXhr = $.ajaxSettings.xhr();
+                        if (myXhr.upload) myXhr.upload.addEventListener('progress',
+                            progressHandlingFunction, false);
+                        return myXhr;
+                    },
+                    success: function (reponse) {
+                        let listMimeImg = ['image/png', 'image/jpeg', 'image/webp', 'image/gif',
+                            'image/svg'
+                        ];
+                        let listMimeAudio = ['audio/mpeg', 'audio/ogg'];
+                        let listMimeVideo = ['video/mpeg', 'video/mp4', 'video/webm'];
+                        let elem;
+
+                        if (listMimeImg.indexOf(file.type) > -1) {
+                            //Picture
+                            $('.summernote').summernote('editor.insertImage', reponse.filename);
+                        } else if (listMimeAudio.indexOf(file.type) > -1) {
+                            //Audio
+                            elem = document.createElement("audio");
+                            elem.setAttribute("src", reponse.filename);
+                            elem.setAttribute("controls", "controls");
+                            elem.setAttribute("preload", "metadata");
+                            $('.summernote').summernote('editor.insertNode', elem);
+                        } else if (listMimeVideo.indexOf(file.type) > -1) {
+                            //Video
+                            elem = document.createElement("video");
+                            elem.setAttribute("src", reponse.filename);
+                            elem.setAttribute("controls", "controls");
+                            elem.setAttribute("preload", "metadata");
+                            $('.summernote').summernote('editor.insertNode', elem);
+                        } else {
+                            //Other file type
+                            elem = document.createElement("a");
+                            let linkText = document.createTextNode(file.name);
+                            elem.appendChild(linkText);
+                            elem.title = file.name;
+                            elem.href = reponse.filename;
+                            $('.summernote').summernote('editor.insertNode', elem);
+                        }
+
+                    }
+                });
+            }
+
+            function progressHandlingFunction(e) {
+                if (e.lengthComputable) {
+                    //Log current progress
+                    console.log((e.loaded / e.total * 100) + '%');
+
+                    //Reset progress on complete
+                    if (e.loaded === e.total) {
+                        console.log("Upload finished.");
+                    }
+                }
+            }
+
+            function sendPicFile(file, el) {
+                data = new FormData();
+                data.append("file", file);
+                $.ajax({
+                    data: data,
+                    type: "POST",
+                    url: "../forum/upload.php",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (url) {
+                        $(el).summernote('editor.insertImage', url);
+                    }
+                });
+            }
+
+            //$('.summernote').summernote('code', '<!?php echo $article; ?>');
         });
     </script>
 </head>
@@ -21,211 +172,167 @@
         <?php require '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
-        <div style="padding-top:10px"></div>
-        <?php if (!isset($_GET['post'])) { ?>
-        <!-- Classic tabs -->
-        <div class="classic-tabs mx-2 mb-3">
+        <?php if (!isset($_GET['id'])) { ?>
+        <?php $category = ""; if(isset($_GET['category'])) $category = $_GET['category']; ?>
+        <div class="text-right">
+        <a href="../threads/create" class="btn bg-smd"><i class="fas fa-plus"></i> สร้างโพสต์ใหม่!</a>
+        </div>
+        <table class="table table-sm table-hover bg-white" id="forumTable">
+            <thead class="table table-sm thead-dark">
+                <tr>
+                    <th scope="col" style="width: 40%">
+                        <center>หัวข้อ</center>
+                    </th>
+                    <th scope="col" style="width: 16%">
+                        <center>ประเภท</center>
+                    </th>
+                    <th scope="col" style="width: 22%">
+                        <center>ผู้โพสต์</center>
+                    </th>
+                    <th scope="col" style="width: 22%">
+                        <center>ข้อความล่าสุด</center>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    $query = "SELECT * FROM `forum_properties` ORDER BY id DESC";
+                    $result = mysqli_query($connForum, $query);
+                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                        $IDD = $row['ID'];
+                        $query2 = "SELECT * FROM `id_$IDD` ORDER BY id LIMIT 1";
+                        $result2 = mysqli_query($connForum, $query2);
+                        $title =""; $time=""; $writer= ""; $tag = $row['category']; $lastreply = null;
+                        while ($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
+                            $title = $row2['title'];
+                            $time = $row2['timestamp'];
+                            $writer = $row2['writer'];
+                        }
 
-            <ul class="nav tabs-orange" id="tab-orange" role="tablist">
-                <?php if (isLogin()) { ?>
-                <li class="nav-item">
-                    <a class="nav-link waves-light"
-                        id="post-orange" data-toggle="tab" href="#post" role="tab" aria-controls="post"
-                        aria-selected="false"><i class="fas fa-plus fa-2x pb-2" aria-hidden="true"></i><br>Post</a>
-                </li>
+                        $query3 = "SELECT * FROM `id_$IDD` WHERE id != 1 ORDER BY id DESC LIMIT 1";
+                        $result3 = mysqli_query($connForum, $query3);
+                        while ($row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC)) {
+                            $lastreply = $row3['writer'];
+                        }
+                ?>
+                <tr class="table-pointer" style="cursor: pointer;"
+                    onclick="window.location='../threads/<?php echo $IDD;?>';">
+                    <td><?php echo $title . '<br>' . $time; ?></td>
+                    <td>
+                        <center><h6><?php echo generateForumTopic($tag); ?></h6></center>
+                    </td>
+                    <td>
+                        <center><?php echo getUserdata($writer, 'firstname', $conn) . ' ' . getUserdata($writer, 'lastname', $conn); ?><br>(<?php echo $writer; ?>)</center>
+                    </td>
+                    <td>
+                        <center><?php if ($lastreply != null) echo getUserdata($lastreply, 'firstname', $conn) . ' ' . getUserdata($lastreply, 'lastname', $conn) . '<br>(' . $lastreply . ')'; else echo '-'; ?></center>
+                    </td>
+                </tr>
                 <?php } ?>
-                <li class="nav-item">
-                    <a class="nav-link waves-light active show" id="announcement-orange" data-toggle="tab"
-                        href="#announcement" role="tab" aria-controls="announcement" aria-selected="true"><i
-                            class="fas fa-user-tie fa-2x pb-2"></i><br>Announcement</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-light" id="pupil-orange" data-toggle="tab" href="#pupil" role="tab"
-                        aria-controls="pupil" aria-selected="false"><i class="fas fa-user fa-2x pb-2"
-                            aria-hidden="true"></i><br>Student</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-light" id="alumni-orange" data-toggle="tab" href="#alumni" role="tab"
-                        aria-controls="alumni" aria-selected="false"><i class="fas fa-user-graduate fa-2x pb-2"
-                            aria-hidden="true"></i><br>Alumni</a>
-                </li>
-            </ul>
+            </tbody>
+        </table>
+        <?php } else { ?>
+        <?php
+            $id = $_GET['id'];
+            $title = ""; $tags = ""; $article = ""; $attached = null; $hide = false; $type = "news"; $pinned = false;
+            if (isset($_GET['id']) && isValidForumID($_GET['id'], $connForum)) {
+                    $postID = $_GET['id'];
+                    
+                    $query = "SELECT * FROM `id_$postID` INNER JOIN `forum_properties` ON $postID = `forum_properties`.id";
+                    $result = mysqli_query($connForum, $query);
+                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                        $writer = $row['writer'];
+                        $article = $row['message'];
+                        $title = $row['title'];
+                        $time = $row['timestamp'];
+                        $hide = $row['isHidden'];
+                        $pinned = $row['isPinned'];
+                        $delete = $row['isDelete'];
+                        $type = $row['category'];
+                        $comment_id = $row['id'];
 
-            <div class="tab-content card" id="tab-orange">
-                <div class="tab-pane fade active show" id="announcement" role="tabpanel"
-                    aria-labelledby="announcement-orange">
-                    <div class="table-responsive text-nowrap">
-                        <table class="table table-sm table-hover">
-                            <thead class="table table-sm thead-dark">
-                                <tr>
-                                    <th scope="col" style="width: 50%">
-                                        <center>หัวข้อ</center>
-                                    </th>
-                                    <th scope="col" style="width: 14%">
-                                        <center>ประเภท</center>
-                                    </th>
-                                    <th scope="col" style="width: 18%">
-                                        <center>ผู้โพสต์</center>
-                                    </th>
-                                    <th scope="col" style="width: 18%">
-                                        <center>ข้อความล่าสุด</center>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <?php }?>
-                            <?php
-            if (isset($_GET['post'])) {
-                $postID = $_GET['post'];
-                $query = "SELECT * FROM `forum` WHERE id = $postID";
-            } else {
-                $query = "SELECT * FROM `forum` ORDER by time DESC LIMIT 10";
-            }
-
-            $result = mysqli_query($conn, $query);
-            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                $postID = $row['id'];
-                $article = $row['article'];
-                $title = $row['title'];
-                $writer = $row['writer'];
-                $time = $row['time'];
-                $tags = $row['tags'];
-                $pin = $row['pin'];
-                $type = $row['type'];
-
-                $querypi = "SELECT * FROM `profile` WHERE id = $writer";
-                $resultpi = mysqli_query($conn, $querypi);
-                while ($rowpi = mysqli_fetch_array($resultpi, MYSQLI_ASSOC)) {
-                    $writer_pic = $rowpi['profile'];
-                }
-
-                $querywn = "SELECT * FROM `user` WHERE id = $writer";
-                $resultwn = mysqli_query($conn, $querywn);
-                while ($rowwn = mysqli_fetch_array($resultwn, MYSQLI_ASSOC)) {
-                    $writer_user = $rowwn['username'];
-                    $writer_name = $rowwn['firstname']  . ' ' . $rowwn['lastname'];
-                }
-        ?>
-                            <?php if (isset($_GET['post'])) { ?>
-                            <div class="card mb-4">
-                                <div class="card-header bg-dark text-white">
-                                    <h4 style="color: #ffffff"><?php echo $title . ' '; ?><span
-                                            class="badge badge-success z-depth-0"><?php echo $tags; ?></span></h4>
+                        $article = str_replace('%deletebyadmin%', '<div class="alert alert-danger" role="alert">ข้อความนี้ถูกลบโดยผู้ดูแลระบบ</div>', str_replace('%deletebyuser%', '<div class="alert alert-warning" role="alert">ข้อความนี้ถูกลบโดยผู้โพสต์</div>', $article))
+            ?>
+        <div class="card mb-4">
+            <?php if ($comment_id == 1) { ?>
+            <div class="card-header text-white grey darken-4">
+                <h4><?php echo $title . ' ' . generateForumTopic($type); ?> </h4>
+            </div>
+            <?php } ?>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-3 mb-3">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-5 col-md-12">
+                                    <img src="<?php echo getProfilePicture($writer, $conn); ?>"
+                                        alt="Profile of User <?php echo $writer; ?>" class="card-img-top">
                                 </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 col-md-3 grey lighten-2">
-                                            <div class="row">
-                                                <div class="col-4 col-md-12">
-                                                    <img src="<?php echo $writer_pic; ?>" alt="Profile"
-                                                        class="img-fluid">
-                                                </div>
-                                                <div class="col-8 col-md-12">
-                                                    <p>
-                                                        <a href="../profile/<?php echo $writer; ?>">
-                                                            <center>
-                                                                <?php echo $writer_name . '<br>(' . $writer_user . ')'; ?>
-                                                            </center>
-                                                        </a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-9 grey lighten-3">
-                                            <p class="card-text"><?php echo $article; ?></p>
-                                        </div>
+                                <div class="col-7 col-md-12">
+                                    <div class="card-body">
+                                        <a href="../profile/<?php echo $writer; ?>">
+                                            <center>
+                                                <?php echo getUserdata($writer, 'firstname', $conn) . ' ' . getUserdata($writer, 'lastname', $conn); ?>
+                                                <br>(<?php echo $writer; ?>)
+                                            </center>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                            <?php } else { ?>
-
-                            <tbody>
-                                <tr class="table-pointer" style="cursor: pointer;"
-                                    onclick="window.location='./?post=<?php echo $postID;?>';">
-                                    <td><?php echo $title; ?><br><?php echo $time; ?></td>
-                                    <td>
-                                        <center><?php echo $tags; ?></center>
-                                    </td>
-                                    <td>
-                                        <center><?php echo $writer_name . '<br>' . '(' . $writer_user . ')'; ?></center>
-                                    </td>
-                                    <td>
-                                        <center>-</center>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <?php } ?>
-                            <?php } ?>
-                            <?php if (!isset($_GET['post'])) { ?>
-                        </table>
+                        </div>
                     </div>
-                </div>
-                <div class="tab-pane fade" id="pupil" role="tabpanel" aria-labelledby="pupil-orange">
-                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-                        aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate
-                        velit esse
-                        quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-                    </p>
-                </div>
-                <div class="tab-pane fade" id="alumni" role="tabpanel" aria-labelledby="alumni-orange">
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-                        deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
-                        provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et
-                        dolorum fuga.
-                        Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis
-                        est
-                        eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis
-                        voluptas
-                        assumenda est, omnis dolor repellendus. </p>
-                </div>
-                <?php
-                    if (isLogin()) {
-                        date_default_timezone_set('Asia/Bangkok'); $date = date('Y-m-d H:i:s', time());
-                        $profile_name = $_SESSION['name'];
-                        $profile_id = $_SESSION['id'];
-                        $profile_image = getProfilePicture($profile_id, $conn);
-                        $_SESSION['time'] = $date;
-                    
-                ?>
-                <div class="tab-pane fade" id="post" role="tabpanel" aria-labelledby="post-orange">
-                    <form method="POST" action="../forum/save.php" enctype="multipart/form-data">
-                        <h5 style="color: white">
-                            <div class="input-group flex-nowrap mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="addon-title">หัวข้อ</span>
-                                </div>
-                                <input type="text" class="form-control" id="title" name="title" aria-label="title"
-                                    aria-describedby="addon-title" required>
-                            </div>
-                        </h5>
-                        <div class="form-group">
-                            <textarea class="summernote" id="article" name="article"></textarea>
+                    <div class="col-12 col-md-9">
+                        <div class="card-text">
+                            <p><?php echo $article; ?></p>
+                            <hr>
+                            <div style="color: #949494"><?php echo $time; ?>
+                                <?php if (($writer == $_SESSION['id'] || isPermission('isForumEditor', $conn)) && !$delete) { ?>
+                                <a href='#' class='text-danger' onclick='
+                                    swal({title: "ลบความคิดเห็นนี้หรือไม่ ?",text: "หลังจากที่ลบแล้ว จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../forum/delete.php?method=<?php if ($writer == $_SESSION["id"]) echo "user"; else if (isPermission("isForumEditor", $conn)) echo "admin"; ?>&thread=<?php echo $postID; ?>&comment=<?php echo $row["id"]; ?>";}});'><i class='fas fa-trash-alt'></i></a> <?php } ?></div>
                         </div>
-                        <div class="input-group flex-nowrap">
-                            <div class="md-form input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text md-addon" id="addon-tags">แท็ก / Tags</span>
-                                </div>
-                                <input type="text" class="form-control" id="tags" name="tags"
-                                    placeholder="ใช้สำหรับแท็กหัวข้อเรื่องของข่าว / สามารถแท็กได้มากกว่า 1 หัวข้อโดยใช้เครื่องหมาย Comma (,) คั่น"
-                                    aria-label="Tags" aria-describedby="addon-tags">
-                            </div>
-                        </div>
-                        <div class="row justify-content-end">
-                            <h6>เขียนโดย <?php echo $profile_name; ?> เมื่อ <?php echo $date . ' ' ?>
-                                <input type="submit" class="btn btn-success" value="บันทึก"></input>
-                            </h6>
-                        </div>
-                    </form>
-                </div>
-                    <?php } ?>
-            </div>
+                    </div>
 
+                </div>
+            </div>
         </div>
         <?php } ?>
+        <?php if (isLogin()) { ?>
+        <form method="POST" action="../forum/reply.php?threads=<?php echo $_GET['id']; ?>"
+            enctype="multipart/form-data">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-md-3 mb-3 order-1 order-md-0">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-md-12 d-none d-md-block">
+                                        <img src="<?php echo getProfilePicture($_SESSION['id'], $conn); ?>"
+                                            alt="Profile of User <?php echo $_SESSION['id']; ?>" class="card-img-top">
+                                    </div>
+                                    <div class="col-12 col-md-12">
+                                        <button type="submit" class="btn btn-success btn-block" name="forum_reply"
+                                            id="forum_reply" disabled><i
+                                                class="fas fa-reply"></i> ตอบกลับ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-9 order-0 order-md-1">
+                            <div class="card-text">
+                                <div class="form-group mb-4 mt-3"><textarea class="summernote" id="article"
+                                        name="article"></textarea></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <?php } ?>
+        <?php } ?>
+        <?php } ?>
     </div>
+    <?php require '../global/popup.php'; ?>
+    <?php require '../global/footer.php'; ?>
 </body>
-
-<?php require '../global/footer.php' ?>
-<?php require '../global/popup.php'; ?>
 
 </html>
