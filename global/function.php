@@ -16,10 +16,12 @@
     }
 
     function getAnySQL($sql, $val, $key, $key_val, $conn) {
+        if ($sql == null || $val == null || $key == null || $key_val == null || $conn == null) return false;
         return mysqli_fetch_array(mysqli_query($conn, "SELECT `$val` from `$sql` WHERE $key = '$key_val'"), MYSQLI_ASSOC)[$val];
     }
 
     function saveAnySQL($sql, $col, $val, $key, $key_val, $conn) {
+        if ($sql == null || $key == null || $key_val == null || $conn == null) return false;
         return mysqli_query($conn, "UPDATE `$sql` SET `$col` = $val WHERE `$key` = '$key_val'");
     }
 
@@ -419,7 +421,7 @@
             buttons: true,
             dangerMode: true}).then((willDelete) => { 
                 if (willDelete) { 
-                    window.location = "../global/logout.php";
+                    window.location = "../global/auth/logout.php";
                 }
             });
 </script>
