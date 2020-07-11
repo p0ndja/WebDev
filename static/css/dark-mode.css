@@ -116,12 +116,13 @@
 [data-theme="dark"] ul,
 [data-theme="dark"] table,
 [data-theme="dark"] blockquote {
-    color: #bbbbbb !important;
+    color: #dddddd !important;
 }
 
 [data-theme="dark"] .table-hover tbody tr:hover td,
 [data-theme="dark"] .table-hover tbody tr:hover th {
-    background-color: white;
+    background-color: #1c1c1c;
+    color: white;
 }
 
 

@@ -108,7 +108,7 @@
                 <?php } ?>
 
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../admin/"> แก้ไขข้อมูลส่วนตัว <i class="fas fa-user-tie"></i></a>
+                <a class="dropdown-item" href="../profile/edit"> แก้ไขข้อมูลส่วนตัว <i class="fas fa-user-tie"></i></a>
 
                 <?php if (isPermission('isAdmin', $conn)) { ?>
                     <div class="dropdown-divider"></div>
@@ -126,7 +126,29 @@
                 <?php echo $_SESSION['name']; ?></a>
                     </div>
         <?php } else { ?>
-            <button class="btn btn-md btn-rounded peach-gradient text-dark font-weight-bold" data-toggle="modal" data-target="#login">Login</button>
+            <a class="btn btn-md btn-rounded peach-gradient text-dark font-weight-bold d-block d-lg-none" href="../login/">Login</a>
+            <li class="nav-item dropdown position-static d-none d-lg-block">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                <div class="dropdown-menu dropdown-menu-left dropdown-menu-md-right">
+                    <form method="post" action="../global/auth/login.php" enctype="multipart/form-data">
+                        <div class="md-form form-sm mb-5">
+                            <i class="fas fa-user prefix"></i>
+                            <input type="text" name="login_username" id="login_username"
+                                class="form-control form-control-sm validate" required style="color: black !important;">
+                            <label for="login_username">Username</label>
+                        </div>
+                        <div class="md-form form-sm mb-4">
+                            <i class="fas fa-lock prefix"></i>
+                            <input type="password" name="login_password" id="login_password"
+                                class="form-control form-control-sm validate" required style="color: black !important;">
+                            <label for="login_password">Password</label>
+                        </div>
+                        <input type="hidden" name="method" value="loginNav">
+                        <button class="btn btn-block bg-smd" type="submit" name="login_submit">Login</button>
+                        <div class="text-center"><a href="#" class="text-danger">ลืมรหัสผ่านหรอ?</a> <a href="../register/" class="text-smd">หรือสมัครเข้าใช้งาน!</a></div>
+                    </form>
+                </div>
+            </li>
         <?php } ?>
     </ul>
 </div>

@@ -1,5 +1,5 @@
 <?php
-    require '../global/connect.php';
+    require '../../global/connect.php';
 
     //กรณี Login
 if (isset($_POST['login_submit'])) {
@@ -14,6 +14,7 @@ if (isset($_POST['login_submit'])) {
     //ถ้าไม่เจอ User นี้ จะ return เป็น 0
     if (mysqli_num_rows($result) == 0) {
         $_SESSION['error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
+        header("Location: ../../login/");
     } else {
         //ปกติค่านี้ ถ้าเจอในฐานข้อมูลจะ return ออกมา > 0
         //ตั้งค่าข้อมูลต่าง ๆ ของ User ใส่ SESSION
@@ -26,9 +27,15 @@ if (isset($_POST['login_submit'])) {
         $_SESSION['swal_success'] = "เข้าสู่ระบบสำเร็จ";
         if (isVerify($_SESSION['id'], $conn)) $_SESSION['swal_success_msg'] = "ยินดีต้อนรับ! " . $_SESSION['name'];
         else $_SESSION['swal_success_msg'] = "อย่าลืมเข้าไปยืนยันตัวตนทางอีเมลนะครับ";
-    }
 
-    back();
+        if (isset($_POST['method'])) {
+            if ($_POST['method'] == "loginPage") header("Location: ../../home");
+            else if ($_POST['method'] == "loginNav") back();
+            else header("Location: ../../home");
+        } else {
+            back();
+        }
+    }
 }
 
     //กรณี Register
@@ -59,8 +66,10 @@ if (isset($_POST['register_submit'])) {
     //กรณีมีข้อมูลอยู่แล้ว จะ return ค่าเป็น 1
     if (mysqli_num_rows($result1) == 1) {
         $_SESSION['error'] = "มีชื่อผู้ใช้นี้อยู่แล้ว";
+        header("Location: ../../register/");
     } else if (mysqli_num_rows($result2) == 1) {
-        $_SESSION['error'] = "รหัสบัตรประชาชนนี้ ได้ทำการสมัครสมาชิกอยู่แล้ว";
+        $_SESSION['error'] = "รหัสบัตรประชาชนนี้เคยใช้ในการสมัครเข้าใช้งานไปแล้ว";
+        header("Location: ../../register/");
     } else {
 
         $finaldir = null;
@@ -140,11 +149,11 @@ if (isset($_GET['user']) && isset($_GET['pass'])) {
                 $_SESSION['swal_success'] = "เข้าสู่ระบบสำเร็จ";
                 if (isVerify($_SESSION['id'], $conn)) $_SESSION['swal_success_msg'] = "ยินดีต้อนรับ! " . $_SESSION['name'];
                 else $_SESSION['swal_success_msg'] = "อย่าลืมเข้าไปยืนยันตัวตนทางอีเมลนะครับ";
-                home();
+                header("Location: ../../home");
             } else if ($_GET['method'] == "email") {
                 $_SESSION['swal_success'] = "ยืนยันอีเมลสำเร็จ";
                 $_SESSION['swal_success_msg'] = "ยินดีต้อนรับ! " . $_SESSION['name'];
-                home();
+                header("Location: ../../home");
             }
         } else {
             echo "ACCEPT";
