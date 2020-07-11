@@ -31,6 +31,11 @@
     <script src="../static/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="../static/js/mdb.min.js"></script>
 
+    <!-- Bootstrap-Table -->
+    <link rel="stylesheet" href="../static/bootstrap-table/bootstrap-table.min.css">
+    <script src="../static/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../static/bootstrap-table/locale/bootstrap-table-en-US.min.js"></script>
+
     <!-- Summernote -->
     <link href="../static/summernote/summernote-bs4.min.css" rel="stylesheet">
     <script src="../static/summernote/summernote-bs4.min.js"></script>
