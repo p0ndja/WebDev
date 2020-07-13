@@ -378,7 +378,7 @@
         icon: "error"
     }).then(function () {
         <?php $_SESSION['error'] = "กรุณาเข้าสู่ระบบก่อนดำเนินการต่อ"; ?>
-        window.location = "../home";
+        window.location = "../login/";
     });
 </script>
 <?php die(); }} ?>
@@ -392,9 +392,6 @@
         title: "ACCESS DENIED",
         text: "You don't have enough permission!",
         icon: "warning"
-    }).then(function () {
-        <?php $_SESSION['error'] = "กรุณาเข้าสู่ระบบก่อนดำเนินการต่อ"; ?>
-        window.location = "../home";
     });
 </script>
 <?php die(); return false;}
