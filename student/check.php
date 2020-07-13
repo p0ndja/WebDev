@@ -140,7 +140,7 @@
     <script>
         $('input.thisisawholeclasscheck[type="checkbox"]').click(function (e) {
             $.ajax({
-                url: "stdCheck_save",
+                url: "../student/check_save.php",
                 type: "POST",
                 //pass data like this 
                 data: {
@@ -177,7 +177,7 @@
         //On check checkbox
         $('input.thisisastudentcheck[type="checkbox"]').on('change', function (e) {
             $.ajax({
-                url: "stdCheck_save",
+                url: "../student/check_save.php",
                 type: "POST",
                 //pass data like this 
                 data: {
@@ -189,9 +189,9 @@
                 success: function (data) {
                     if (data) {
                         if (e.target.checked) {
-                            toastr.success("รหัสนักเรียน: " + e.target.checked + e.target.name + " <br>สถานะ: เข้าเรียน");
+                            toastr.success("รหัสนักเรียน: " + e.target.name  + "<br>สถานะ: เข้าเรียน");
                         } else {
-                            toastr.warning("รหัสนักเรียน: "  + e.target.checked + e.target.name + " <br>สถานะ: ไม่เข้าเรียน");
+                            toastr.warning("รหัสนักเรียน: "  + e.target.name + "<br>สถานะ: ไม่เข้าเรียน");
                         }
                     } else {
                         toastr.error("ERROR - พบข้อผิดพลาด<br>ไม่สามารถปรับค่า '" + e.target.name + "' ได้<br>กรุณาแจ้ง Webmaster");
