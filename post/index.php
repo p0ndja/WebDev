@@ -124,15 +124,15 @@
                     <hr>
                     <p class="card-text"><?php echo $row['article']; ?></p>
                     <?php } ?>
-                    <?php if ($row['attachment'] != null) { $aa = 0;?>
+                    <?php if ($row['attachment'] != null) { $n_attach = 0;?>
                     <hr>
                     <h5 class="font-weight-bold">ไฟล์แนบท้าย</h5>
-                    <?php foreach (explode(",", $row['attachment']) as $a) { $aa++;?>
+                    <?php foreach (explode(",", $row['attachment']) as $attach_split) { $n_attach++;?>
                     <li><a href="<?php echo $a; ?>"
-                            target="_blank"><?php echo str_replace("../file/post/" . $_GET['id'] . "/" . "attachment/", "", $a); ?></a>
+                            target="_blank"><?php echo str_replace("../file/post/" . $_GET['id'] . "/" . "attachment/", "", $attach_split); ?></a>
                     </li>
                     <?php } ?>
-                    <?php if ($aa == 1 && strpos($row['attachment'], ".pdf")) { ?>
+                    <?php if ($n_attach == 1 && strpos($row['attachment'], ".pdf")) { ?>
                     <iframe src="../static/pdf.js/web/viewer.html?file=<?php echo '../../' .  $row['attachment']; ?>" width="100%" height="750"></iframe>
                     <?php } ?>
                     <?php } ?>
