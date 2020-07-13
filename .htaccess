@@ -9,7 +9,8 @@ RewriteRule ^post/edit-([0-9]+)$ post/edit.php?id=$1
 RewriteRule ^threads/([0-9]+)$ forum/index.php?id=$1
 RewriteRule ^threads/error$ forum/error.php
 RewriteRule ^threads/create$ forum/edit.php
-RewriteRule ^threads/edit-([0-9]+)-([0-9]+)$ forum/edit.php?id=$1&comment=$2
+RewriteRule ^threads/edit-([0-9]+)-([0-9]+)$ forum/edit.php?id=$1&comment=$2 [L]
+RewriteRule ^threads/edit-([0-9]+)$ forum/edit.php?id=$1&comment=1
 
 RewriteRule ^category/(.*)-([0-9]+)-(.*)$ post/index.php?category=$1&page=$2&tags=$3 [L]
 RewriteRule ^category/(.*)-([0-9]+)$ post/index.php?category=$1&page=$2

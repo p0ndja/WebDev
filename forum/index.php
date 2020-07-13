@@ -292,7 +292,7 @@
                             <hr>
                             <div style="color: #949494"><?php echo $time; ?>
                                 <?php if (($writer == $_SESSION['id'] || isPermission('isForumEditor', $conn)) && !$delete) { ?>
-                                    <?php if (isPermission('isForumEditor', $conn)) {?><a href="../forum/edit.php?id=<?php echo $postID; ?>&comment=<?php echo $row["id"]; ?>"><i class="fas fa-edit text-success"></i></a><?php } ?>
+                                    <?php if (isPermission('isForumEditor', $conn)) {?><a href="../threads/edit-<?php echo $postID; ?>-<?php echo $row["id"]; ?>"><i class="fas fa-edit text-success"></i></a><?php } ?>
                                 <a href='#' class='text-danger' onclick='
                                     swal({title: "ลบความคิดเห็นนี้หรือไม่ ?",text: "หลังจากที่ลบแล้ว จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../forum/delete.php?method=<?php if ($writer == $_SESSION["id"]) echo "user"; else if (isPermission("isForumEditor", $conn)) echo "admin"; ?>&thread=<?php echo $postID; ?>&comment=<?php echo $row["id"]; ?>";}});'><i class='fas fa-trash-alt'></i></a> <?php } ?></div>
                         </div>
