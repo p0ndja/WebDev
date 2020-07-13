@@ -63,26 +63,26 @@ create table forum(
 
 create table post (
    id INT NOT NULL AUTO_INCREMENT,
-   title TEXT NOT NULL,
+   title TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
    writer INT NOT NULL,
    time TINYTEXT NOT NULL,
-   article LONGTEXT NOT NULL,
+   article LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
    cover TEXT DEFAULT NULL,
-   tags TEXT DEFAULT NULL,
+   tags TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
    hide BOOL DEFAULT false,
    pin BOOL DEFAULT false,
-   attachment LONGTEXT DEFAULT NULL,
-   hotlink LONGTEXT DEFAULT NULL,
+   attachment LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+   hotlink LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
    type TEXT,
    PRIMARY KEY ( id )
 );
 
 create table profile (
    id INT NOT NULL,
-   greetings LONGTEXT,
+   greetings LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci ,
    profile LONGTEXT,
    background LONGTEXT,
-   graduation LONGTEXT DEFAULT NULL,
+   graduation LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
    isDark BOOL DEFAULT FALSE,
    tagPostID LONGTEXT DEFAULT NULL,
    PRIMARY KEY ( id )
@@ -98,9 +98,9 @@ create table user (
    lastname TEXT NOT NULL,
    firstname_en TEXT NOT NULL,
    lastname_en TEXT NOT NULL,
-   grade INT NOT NULL,
-   class INT NOT NULL,
-   email TEXT,
+   grade INT DEFAULT NULL,
+   class INT DEFAULT NULL,
+   email TEXT DEFAULT NULL,
    isEmailVerify BOOLEAN DEFAULT false,
    isAdmin BOOLEAN DEFAULT false,
    isTeacher BOOLEAN DEFAULT false,
