@@ -178,7 +178,7 @@
         <a href="../threads/create" class="btn bg-smd"><i class="fas fa-plus"></i> สร้างโพสต์ใหม่!</a>
         </div>
         <table class="table table-sm table-hover bg-white" id="forumTable">
-            <thead class="table table-sm thead-dark">
+            <thead class="table table-sm bg-smd">
                 <tr>
                     <th scope="col" style="width: 40%">
                         <center>หัวข้อ</center>
@@ -196,7 +196,7 @@
             </thead>
             <tbody>
                 <?php
-                    $query = "SELECT * FROM `forum_properties` ORDER BY id DESC";
+                    $query = "SELECT * FROM `forum_properties` ORDER BY isPinned DESC, id DESC";
                     $result = mysqli_query($connForum, $query);
                     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                         $IDD = $row['ID'];
@@ -207,6 +207,8 @@
                             $title = $row2['title'];
                             $time = $row2['timestamp'];
                             $writer = $row2['writer'];
+                            $isThisPostMainCommentWasDeleted = $row2['isDelete'];
+                            $isThisPostWasHide = $row['isHidden'];
                         }
 
                         $query3 = "SELECT * FROM `id_$IDD` WHERE id != 1 ORDER BY id DESC LIMIT 1";
@@ -214,10 +216,9 @@
                         while ($row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC)) {
                             $lastreply = $row3['writer'];
                         }
-                ?>
-                <tr class="table-pointer" style="cursor: pointer;"
-                    onclick="window.location='../threads/<?php echo $IDD;?>';">
-                    <td><?php echo $title . '<br>' . $time; ?></td>
+                ?>                
+                <tr class="table-pointer <?php if (($isThisPostMainCommentWasDeleted || $isThisPostWasHide) && !isPermission("isForumEditor", $conn)) echo "d-none"; else if ($isThisPostMainCommentWasDeleted && isPermission("isForumEditor", $conn)) echo "table-danger font-italic text-dark"; else if ($isThisPostWasHide) echo "table-info font-italic text-dark"; else echo "table-normal"; ?>" style="cursor: pointer;" onclick="window.location='../threads/<?php echo $IDD;?>';">
+                    <td><?php if ($row['isPinned']) echo '<div class="font-weight-bold"><span class="badge red"><i class="fas fa-thumbtack"></i></span> '; else echo "<div>";?> <?php echo $title; if ($isThisPostWasHide && isPermission("isForumEditor", $conn)) echo " <span class='badge badge-info'>โพสต์นี้ถูกซ่อน</span>"; else if ($isThisPostMainCommentWasDeleted && isPermission("isForumEditor", $conn)) echo " <span class='badge badge-danger'>โพสต์นี้ถูกลบ</span>"; echo '</div>' . $time; ?></td>
                     <td>
                         <center><h6><?php echo generateForumTopic($tag); ?></h6></center>
                     </td>
@@ -251,10 +252,14 @@
                         $type = $row['category'];
                         $comment_id = $row['id'];
 
+                        $isThisPostMainCommentWasDeleted = $row['isDelete'];
+                        $isThisPostWasHide = $row['isHidden'];
+
                         $article = str_replace('%deletebyadmin%', '<div class="alert alert-danger" role="alert">ข้อความนี้ถูกลบโดยผู้ดูแลระบบ</div>', str_replace('%deletebyuser%', '<div class="alert alert-warning" role="alert">ข้อความนี้ถูกลบโดยผู้โพสต์</div>', $article))
             ?>
         <div class="card mb-4">
-            <?php if ($comment_id == 1) { ?>
+            <?php if ($comment_id == 1) {
+                if ($isThisPostMainCommentWasDeleted) { $_SESSION['forum_error'] = $article; header("Location: ../threads/error"); } ?>
             <div class="card-header text-white grey darken-4">
                 <h4><?php echo $title . ' ' . generateForumTopic($type); ?> </h4>
             </div>
@@ -287,6 +292,7 @@
                             <hr>
                             <div style="color: #949494"><?php echo $time; ?>
                                 <?php if (($writer == $_SESSION['id'] || isPermission('isForumEditor', $conn)) && !$delete) { ?>
+                                    <?php if (isPermission('isForumEditor', $conn)) {?><a href="../forum/edit.php?id=<?php echo $postID; ?>&comment=<?php echo $row["id"]; ?>"><i class="fas fa-edit text-success"></i></a><?php } ?>
                                 <a href='#' class='text-danger' onclick='
                                     swal({title: "ลบความคิดเห็นนี้หรือไม่ ?",text: "หลังจากที่ลบแล้ว จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../forum/delete.php?method=<?php if ($writer == $_SESSION["id"]) echo "user"; else if (isPermission("isForumEditor", $conn)) echo "admin"; ?>&thread=<?php echo $postID; ?>&comment=<?php echo $row["id"]; ?>";}});'><i class='fas fa-trash-alt'></i></a> <?php } ?></div>
                         </div>

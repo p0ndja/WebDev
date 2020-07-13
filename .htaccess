@@ -7,6 +7,7 @@ RewriteRule ^post/create$ post/edit.php
 RewriteRule ^post/edit-([0-9]+)$ post/edit.php?id=$1
 
 RewriteRule ^threads/([0-9]+)$ forum/index.php?id=$1
+RewriteRule ^threads/error$ forum/error.php
 RewriteRule ^threads/create$ forum/edit.php
 RewriteRule ^threads/edit-([0-9]+)-([0-9]+)$ forum/edit.php?id=$1&comment=$2
 
