@@ -19,6 +19,7 @@ RewriteRule ^darkmode/$ pages/darkmode.php
 RewriteRule ^profile/$ profile/index.php
 RewriteRule ^profile/([0-9]+)$ profile/?id=$1
 RewriteRule ^profile/edit$ profile/edit.php
+RewriteRule ^profile/edit-([0-9]+)$ profile/edit.php?id=$1
 
 RewriteRule ^search/$ global/search.php
 

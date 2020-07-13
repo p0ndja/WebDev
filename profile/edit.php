@@ -12,6 +12,9 @@
     <?php require '../global/head.php'; ?>
     <?php
         $id = $_SESSION['id'];
+        if (isPermission('isAdmin', $conn) && isset($_GET['id']) && isValidUserID($_GET['id'], $conn))
+            $id = $_GET['id'];
+        
 
         $profile_background = getProfileData($id, 'background', $conn);
         
@@ -21,6 +24,10 @@
         $profile_displayText = getProfileData($id, 'greetings', $conn);
 
         $_SESSION['isDarkProfile'] = getProfileData($id, 'isDark', $conn);
+                    
+        $profile_image = getProfilePicture($id, $conn);
+
+        $profile_greets = getProfileData($id, 'greetings', $conn);
     ?>
 
     <script type="text/javascript">
@@ -157,7 +164,7 @@
             function sendPicFile(file, el) {
                 data = new FormData();
                 data.append("file", file);
-                data.append("userID", '<?php echo $_SESSION['id'] ?>')
+                data.append("userID", '<?php echo $id; ?>')
                 $.ajax({
                     data: data,
                     type: "POST",
@@ -207,20 +214,10 @@
         role="navigation">
         <?php require '../global/navbar.php'; ?>
     </nav>
-    <?php if (isset($_GET['id']) || (isset($_SESSION['id']))) {
-            $id = $_SESSION['id'];
-        
-            $profile_achi = "";
-                    
-            $profile_image = getProfilePicture($id, $conn);
-
-            $profile_greets = getProfileData($id, 'greetings', $conn);
-
-    }
-    ?>
     <div class="container" id="container" style="padding-top: 88px">
         <img id="bg_dump" style="display: none;">
         <form method="post" action="../profile/save.php" enctype="multipart/form-data" id="mainProfileForm">
+            <input type="hidden" name="id" id="id" value=<?php echo $id; ?>>
             <div class="card w-100 mb-3">
                 <div class="card-body">
                     <h6><b>Background Image: </b>
@@ -266,7 +263,7 @@
                                 <div class="row mt-1">
                                     <div class="col">
                                         <input type="text" class="form-control" name="grapri" id="grapri" rows="1"
-                                            value="<?php echo $graduation[0]; ?>"
+                                            value="<?php if (!empty($graduation[0])) echo $graduation[0]; ?>"
                                             placeholder="ระดับประถมศึกษา | สามารถเว้นว่างไว้ได้"></input>
                                         <h5><span class="badge badge-primary">ระดับประถมศึกษา</span></h5>
                                     </div>
@@ -275,7 +272,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <input type="text" class="form-control" name="grasecj" id="grasec1" rows="1"
-                                            value="<?php echo $graduation[1]; ?>"
+                                            value="<?php if (!empty($graduation[1])) echo $graduation[1]; ?>"
                                             placeholder="ระดับมัธยมศึกษาตอนต้น | สามารถเว้นว่างไว้ได้"></input>
                                         <h5><span class="badge badge-primary">ระดับมัธยมศึกษาตอนต้น</span></h5>
                                     </div>
@@ -284,7 +281,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <input type="text" class="form-control" name="grasecs" id="grasecs" rows="1"
-                                            value="<?php echo $graduation[2]; ?>"
+                                            value="<?php if (!empty($graduation[2])) echo $graduation[2]; ?>"
                                             placeholder="ระดับมัธยมศึกษาตอนปลาย | สามารถเว้นว่างไว้ได้"></input>
                                         <h5><span class="badge badge-primary">ระดับมัธยมศึกษาตอนปลาย</span></h5>
                                     </div>
@@ -396,7 +393,7 @@
                         url: "profile_upload.php",
                         type: "POST",
                         data: {
-                            "userID": <?php echo $_SESSION['id']; ?>,
+                            "userID": <?php echo $id; ?>,
                             "image": response
                         },
                         success: function (data) {

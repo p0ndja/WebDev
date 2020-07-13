@@ -11,12 +11,11 @@
     }
 
     if (isset($_POST['edit_submit'])) {
-        $id = $_SESSION['id'];
+        $id = $_POST['id'];
         $query = "SELECT * FROM `profile` WHERE id = '$id'";
         $result = mysqli_query($conn, $query);
         if (! $result) die('Could not get data: ' . mysqli_error($conn));
 
-        $user = $_SESSION['username'];
         $text = $_POST['text'];
 
         $graduatearray = $_POST['grapri'] . "|" . $_POST['grasecj'] . "|" . $_POST['grasecs'];
