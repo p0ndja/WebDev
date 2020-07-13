@@ -27,10 +27,10 @@
         $(function () {
             $.ajax({
                 url: 'https://api.github.com/emojis',
-                async: false 
-                }).then(function(data) {
+                async: false
+            }).then(function (data) {
                 window.emojis = Object.keys(data);
-                window.emojiUrls = data; 
+                window.emojiUrls = data;
             });;
             $('.summernote').summernote({
                 minHeight: 500,
@@ -38,7 +38,8 @@
                     'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun',
                     'Kanit', 'anakotmai'
                 ],
-                fontNamesIgnoreCheck: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman', 'MorKhor',
+                fontNamesIgnoreCheck: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman',
+                    'MorKhor',
                     'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun',
                     'Kanit', 'anakotmai'
                 ],
@@ -46,17 +47,19 @@
                     theme: 'monokai'
                 },
                 callbacks: {
-                    onImageUpload: function(files, editor, welEditable) {
+                    onImageUpload: function (files, editor, welEditable) {
                         sendPicFile(files[0], this);
                     },
-                    onFileUpload: function(file) {
+                    onFileUpload: function (file) {
                         sendRawFile(file[0]);
                     }
                 },
                 toolbar: [
                     ['misc', ['undo', 'redo']],
                     ['style', ['style', 'height', 'fontname', 'fontsize']],
-                    ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript','subscript', 'clear']],
+                    ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript',
+                        'subscript', 'clear'
+                    ]],
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['table', ['table']],
@@ -66,20 +69,20 @@
                 hint: {
                     match: /:([\-+\w]+)$/,
                     search: function (keyword, callback) {
-                    callback($.grep(emojis, function (item) {
-                        return item.indexOf(keyword)  === 0;
-                    }));
+                        callback($.grep(emojis, function (item) {
+                            return item.indexOf(keyword) === 0;
+                        }));
                     },
                     template: function (item) {
-                    var content = emojiUrls[item];
-                    return '<img src="' + content + '" width="20" /> :' + item + ':';
+                        var content = emojiUrls[item];
+                        return '<img src="' + content + '" width="20" /> :' + item + ':';
                     },
                     content: function (item) {
-                    var url = emojiUrls[item];
-                    if (url) {
-                        return $('<img />').attr('src', url).css('width', 20)[0];
-                    }
-                    return '';
+                        var url = emojiUrls[item];
+                        if (url) {
+                            return $('<img />').attr('src', url).css('width', 20)[0];
+                        }
+                        return '';
                     }
                 }
             });
@@ -94,44 +97,47 @@
                     cache: false,
                     contentType: false,
                     processData: false,
-                    xhr: function() { //Handle progress upload
+                    xhr: function () { //Handle progress upload
                         let myXhr = $.ajaxSettings.xhr();
-                        if (myXhr.upload) myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
+                        if (myXhr.upload) myXhr.upload.addEventListener('progress',
+                            progressHandlingFunction, false);
                         return myXhr;
                     },
-                    success: function(reponse) {
-                            let listMimeImg = ['image/png', 'image/jpeg', 'image/webp', 'image/gif', 'image/svg'];
-                            let listMimeAudio = ['audio/mpeg', 'audio/ogg'];
-                            let listMimeVideo = ['video/mpeg', 'video/mp4', 'video/webm'];
-                            let elem;
+                    success: function (reponse) {
+                        let listMimeImg = ['image/png', 'image/jpeg', 'image/webp', 'image/gif',
+                            'image/svg'
+                        ];
+                        let listMimeAudio = ['audio/mpeg', 'audio/ogg'];
+                        let listMimeVideo = ['video/mpeg', 'video/mp4', 'video/webm'];
+                        let elem;
 
-                            if (listMimeImg.indexOf(file.type) > -1) {
-                                //Picture
-                                $('.summernote').summernote('editor.insertImage', reponse.filename);
-                            } else if (listMimeAudio.indexOf(file.type) > -1) {
-                                //Audio
-                                elem = document.createElement("audio");
-                                elem.setAttribute("src", reponse.filename);
-                                elem.setAttribute("controls", "controls");
-                                elem.setAttribute("preload", "metadata");
-                                $('.summernote').summernote('editor.insertNode', elem);
-                            } else if (listMimeVideo.indexOf(file.type) > -1) {
-                                //Video
-                                elem = document.createElement("video");
-                                elem.setAttribute("src", reponse.filename);
-                                elem.setAttribute("controls", "controls");
-                                elem.setAttribute("preload", "metadata");
-                                $('.summernote').summernote('editor.insertNode', elem);
-                            } else {
-                                //Other file type
-                                elem = document.createElement("a");
-                                let linkText = document.createTextNode(file.name);
-                                elem.appendChild(linkText);
-                                elem.title = file.name;
-                                elem.href = reponse.filename;
-                                $('.summernote').summernote('editor.insertNode', elem);
-                            }
-                        
+                        if (listMimeImg.indexOf(file.type) > -1) {
+                            //Picture
+                            $('.summernote').summernote('editor.insertImage', reponse.filename);
+                        } else if (listMimeAudio.indexOf(file.type) > -1) {
+                            //Audio
+                            elem = document.createElement("audio");
+                            elem.setAttribute("src", reponse.filename);
+                            elem.setAttribute("controls", "controls");
+                            elem.setAttribute("preload", "metadata");
+                            $('.summernote').summernote('editor.insertNode', elem);
+                        } else if (listMimeVideo.indexOf(file.type) > -1) {
+                            //Video
+                            elem = document.createElement("video");
+                            elem.setAttribute("src", reponse.filename);
+                            elem.setAttribute("controls", "controls");
+                            elem.setAttribute("preload", "metadata");
+                            $('.summernote').summernote('editor.insertNode', elem);
+                        } else {
+                            //Other file type
+                            elem = document.createElement("a");
+                            let linkText = document.createTextNode(file.name);
+                            elem.appendChild(linkText);
+                            elem.title = file.name;
+                            elem.href = reponse.filename;
+                            $('.summernote').summernote('editor.insertNode', elem);
+                        }
+
                     }
                 });
             }
@@ -151,7 +157,7 @@
             function sendPicFile(file, el) {
                 data = new FormData();
                 data.append("file", file);
-                data.append("userID",'<?php echo $_SESSION['id'] ?>')
+                data.append("userID", '<?php echo $_SESSION['id'] ?>')
                 $.ajax({
                     data: data,
                     type: "POST",
@@ -159,7 +165,7 @@
                     cache: false,
                     contentType: false,
                     processData: false,
-                    success: function(url) {
+                    success: function (url) {
                         $(el).summernote('editor.insertImage', url);
                     }
                 });
@@ -227,8 +233,10 @@
                     <div class="row">
                         <div class="col-12 col-md-3">
                             <div class="card">
-                            <img src="<?php echo $profile_image; ?>" class="card-img-top" alt="Profile" id="profile_preview">
-                            <div class="card-body"><input type="file" name="profile_upload" id="profile_upload" class="form-control-file validate" accept="image/png, image/jpeg"></div>
+                                <img src="<?php echo $profile_image; ?>" class="card-img-top" alt="Profile"
+                                    id="profile_preview">
+                                <div class="card-body"><input type="file" name="profile_upload" id="profile_upload"
+                                        class="form-control-file validate" accept="image/png, image/jpeg"><input type="hidden" id="profile_final" name="profile_final" value="<?php echo $profile_image; ?>"></div>
                             </div>
                         </div>
                         <div class="col-12 col-md-9">
@@ -252,32 +260,35 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                            <?php $graduation = array(); $i = 0; foreach(explode("|", getProfiledata($id, 'graduation', $conn)) as $eachgra) {  $graduation[$i] = $eachgra;  $i++; } ?>
+                                <?php $graduation = array(); $i = 0; foreach(explode("|", getProfiledata($id, 'graduation', $conn)) as $eachgra) {  $graduation[$i] = $eachgra;  $i++; } ?>
                                 <h2>ประวัติการศึกษา</h2>
                                 <i>สามารถเว้นว่างไว้ได้ (การเว้นว่างจะไม่แสดงผลในรายการนั้น ๆ)</i>
                                 <div class="row mt-1">
                                     <div class="col">
                                         <input type="text" class="form-control" name="grapri" id="grapri" rows="1"
-                                            value="<?php echo $graduation[0]; ?>" placeholder="ระดับประถมศึกษา | สามารถเว้นว่างไว้ได้"></input>
+                                            value="<?php echo $graduation[0]; ?>"
+                                            placeholder="ระดับประถมศึกษา | สามารถเว้นว่างไว้ได้"></input>
                                         <h5><span class="badge badge-primary">ระดับประถมศึกษา</span></h5>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <input type="text" class="form-control" name="grasecj" id="grasec1" rows="1"
-                                            value="<?php echo $graduation[1]; ?>" placeholder="ระดับมัธยมศึกษาตอนต้น | สามารถเว้นว่างไว้ได้"></input>
+                                            value="<?php echo $graduation[1]; ?>"
+                                            placeholder="ระดับมัธยมศึกษาตอนต้น | สามารถเว้นว่างไว้ได้"></input>
                                         <h5><span class="badge badge-primary">ระดับมัธยมศึกษาตอนต้น</span></h5>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <input type="text" class="form-control" name="grasecs" id="grasecs" rows="1"
-                                            value="<?php echo $graduation[2]; ?>" placeholder="ระดับมัธยมศึกษาตอนปลาย | สามารถเว้นว่างไว้ได้"></input>
+                                            value="<?php echo $graduation[2]; ?>"
+                                            placeholder="ระดับมัธยมศึกษาตอนปลาย | สามารถเว้นว่างไว้ได้"></input>
                                         <h5><span class="badge badge-primary">ระดับมัธยมศึกษาตอนปลาย</span></h5>
                                     </div>
-                                
+
                                 </div>
                             </div>
                         </div>
@@ -291,12 +302,19 @@
                                         if ($s != null) { 
                                             $i++; 
                                             if ($i <= 5) { ?>
-                                            <hr>
-                                            <div class="d-flex flex-nowrap">
-                                                <div class="flex-grow-1"><h5><a href="../post/<?php echo "$s"?>"><?php echo getPostdata($s, 'title', $conn); ?></a></h5></div>
-                                                <div class="text-nowrap"><?php echo str_replace("-", "/", substr(getPostdata($s, 'time', $conn), 0, -9)); ?></div>
-                                            </div>
-                                            <?php if (getPostdata($s, 'cover', $conn) != null) {?><img src="<?php echo getPostdata($s, 'cover', $conn); ?>" class="img-fluid"/><?php } ?>
+                                <hr>
+                                <div class="d-flex flex-nowrap">
+                                    <div class="flex-grow-1">
+                                        <h5><a
+                                                href="../post/<?php echo "$s"?>"><?php echo getPostdata($s, 'title', $conn); ?></a>
+                                        </h5>
+                                    </div>
+                                    <div class="text-nowrap">
+                                        <?php echo str_replace("-", "/", substr(getPostdata($s, 'time', $conn), 0, -9)); ?>
+                                    </div>
+                                </div>
+                                <?php if (getPostdata($s, 'cover', $conn) != null) {?><img
+                                    src="<?php echo getPostdata($s, 'cover', $conn); ?>" class="img-fluid" /><?php } ?>
                                 <?php       }
                                         }
                                     } 
@@ -310,7 +328,8 @@
             </div>
             <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
                 <input class="d-none" id="isDark" name="isDark" value="0"></input>
-                <a class="btn-floating btn-lg green" href="javascript:{}" onclick="document.getElementById('mainProfileForm').submit();">
+                <a class="btn-floating btn-lg green" href="javascript:{}"
+                    onclick="document.getElementById('mainProfileForm').submit();">
                     <input class="d-none" id="edit_submit" name="edit_submit" value="บันทึก"></input>
                     <i class="fas fa-save"></i>
                 </a>
@@ -318,14 +337,79 @@
         </form>
     </div>
 
+    <div id="uploadimageModal" class="modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Upload & Crop Image</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div id="image_demo" style="width:100%; margin-top:30px"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success crop_image">Crop & Upload Image</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        document.getElementById("profile_upload").onchange = function () {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                document.getElementById("profile_preview").src = e.target.result;
-            };
-            reader.readAsDataURL(this.files[0]);
-        };
+        $(document).ready(function () {
+            $image_crop = $('#image_demo').croppie({
+                enableExif: true,
+                viewport: {
+                    width: 325,
+                    height: 325,
+                    type: 'square' //circle
+                },
+                boundary: {
+                    width: 333,
+                    height: 333
+                }
+            });
+
+            $('#profile_upload').on('change', function () {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $image_crop.croppie('bind', {
+                        url: event.target.result
+                    }).then(function () {
+                        console.log('jQuery bind complete');
+                    });
+                }
+                reader.readAsDataURL(this.files[0]);
+                $('#uploadimageModal').modal('show');
+            });
+
+            $('.crop_image').click(function (event) {
+                $image_crop.croppie('result', {
+                    type: 'canvas',
+                    size: 'viewport'
+                }).then(function (response) {
+                    $.ajax({
+                        url: "profile_upload.php",
+                        type: "POST",
+                        data: {
+                            "userID": <?php echo $_SESSION['id']; ?>,
+                            "image": response
+                        },
+                        success: function (data) {
+                            $('#uploadimageModal').modal('hide');
+                            $('#profile_preview').attr('src',data);
+                            $('#profile_final').val(data);
+                            console.log($('#profile_final').val());
+                        }
+                    });
+                })
+            });
+
+        });
 
         document.getElementById("background_upload").onchange = function () {
             var reader = new FileReader();
@@ -404,11 +488,13 @@
             }
         }
     </script>
-    
+
     <?php if (isDarkMode()) { ?>
-        <script>toastr.warning("Darkmode ถูกปิดใช้งาน เพื่อเพิ่มความเที่ยงตรงในการแต่งโปรไฟล์");</script>
+    <script>
+        toastr.warning("Darkmode ถูกปิดใช้งาน เพื่อเพิ่มความเที่ยงตรงในการแต่งโปรไฟล์");
+    </script>
     <?php } ?>
-    
+
     <?php require '../global/popup.php'; ?>
     <?php require '../global/footer.php'; ?>
 </body>

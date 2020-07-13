@@ -1,6 +1,15 @@
 <?php 
     require '../global/connect.php';
 
+    function generateRandomS($length = 16) {
+        $characters = md5(time());
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $randomString;
+    }
+
     if (isset($_POST['edit_submit'])) {
         $id = $_SESSION['id'];
         $query = "SELECT * FROM `profile` WHERE id = '$id'";
@@ -12,34 +21,15 @@
 
         $graduatearray = $_POST['grapri'] . "|" . $_POST['grasecj'] . "|" . $_POST['grasecs'];
 
-        $re = mysqli_query($conn, "UPDATE `profile` set greetings = '$text', graduation = '$graduatearray' WHERE id = $id");
-        if (! $re) die('Could not update text: ' . mysqli_error($conn));
+        $finalProfile = $_POST['profile_final'];
 
-        if(isset($_FILES['profile_upload']) && $_FILES['profile_upload']['name'] != ""){
-            if ($_FILES['profile_upload']['name']) {
-                if (!$_FILES['profile_upload']['error']) {
-                    $name = "Avatar";
-                    $ext = explode('.', $_FILES['profile_upload']['name']);
-                    $filename = $name . '.' . $ext[1];
-        
-                    if (!file_exists('../file/profile/'. $id .'/')) {
-                        mkdir('../file/profile/'. $id .'/');
-                    }
-        
-                    $destination = '../file/profile/'. $id .'/' . $filename; //change this directory
-                    $location = $_FILES["profile_upload"]["tmp_name"];
-                    move_uploaded_file($location, $destination);
-                    $finalFile = '../file/profile/'. $id .'/' . $filename;//change this URL
-                    $r = mysqli_query($conn, "UPDATE `profile` SET profile = '$finalFile' WHERE id = $id");
-                    if (! $r) die("Could not set profile: " . mysqli_error($conn));
-                }
-            }
-        }
+        $re = mysqli_query($conn, "UPDATE `profile` set greetings = '$text', graduation = '$graduatearray', profile = '$finalProfile' WHERE id = $id");
+        if (! $re) die('Could not update text: ' . mysqli_error($conn));
 
         if(isset($_FILES['background_upload']) && $_FILES['background_upload']['name'] != ""){
             if ($_FILES['background_upload']['name']) {
                 if (!$_FILES['background_upload']['error']) {
-                    $name = "Background";
+                    $name = "Background_" . generateRandomS(32);
                     $ext = explode('.', $_FILES['background_upload']['name']);
                     $filename = $name . '.' . $ext[1];
         
