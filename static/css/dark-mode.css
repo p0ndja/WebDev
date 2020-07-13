@@ -119,9 +119,8 @@
     color: #dddddd !important;
 }
 
-[data-theme="dark"] .table-hover tbody tr:hover td,
-[data-theme="dark"] .table-hover tbody tr:hover th {
-    background-color: #1c1c1c;
+
+[data-theme="dark"] .table-hover tr:hover{
     color: white;
 }
 
