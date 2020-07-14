@@ -18,9 +18,10 @@ RewriteRule ^category/(.*)-([0-9]+)$ post/index.php?category=$1&page=$2
 RewriteRule ^darkmode/$ pages/darkmode.php
 
 RewriteRule ^profile/$ profile/index.php
-RewriteRule ^profile/([0-9]+)$ profile/?id=$1
 RewriteRule ^profile/edit$ profile/edit.php
 RewriteRule ^profile/edit-([0-9]+)$ profile/edit.php?id=$1
+RewriteRule ^profile/([0-9]+)$ profile/?id=$1 [L]
+RewriteRule ^id/(.*)$ profile/?user=$1 [L]
 
 RewriteRule ^search/$ global/search.php
 
@@ -33,12 +34,16 @@ RewriteRule ^a/(.*)$ admin/$1.php
 RewriteRule ^s/(.*)$ student/$1.php
 RewriteRule ^d/(.*)$ zdemo/$1.php
 
+RewriteRule ^user/([0-9]+)$ admin/user.php?id=$1 [L]
+RewriteRule ^user/$ admin/user.php
+RewriteRule ^config/$ admin/config.php
+
 RewriteRule ^register/$ pages/register.php
 RewriteRule ^login/$ pages/login.php
 
 RewriteRule ^api/(.*)$ global/api/$1.php
 
-RewriteRule ^logout/$ global/logout.php
+RewriteRule ^logout/$ global/auth/logout.php
 
 RewriteRule ^discord https://discord.gg/Xfcex7C
 RewriteRule ^discord/chem https://discord.gg/dHBsput
