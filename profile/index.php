@@ -9,6 +9,7 @@
     <?php
         $id;
         if (isset($_GET['id'])) $id = $_GET['id'];
+        else if (isset($_GET['user'])) $id = getUserID($_GET['user'], 'username', $conn);
         else if (isset($_SESSION['id'])) $id = $_SESSION['id'];
         else needLogin();
 
