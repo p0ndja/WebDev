@@ -72,6 +72,26 @@ if (isset($_POST['register_submit'])) {
         header("Location: ../../register/");
     } else {
 
+        $role = $_POST['register_type'];
+
+        if ($role != "student") {
+
+            $grade = null;
+            $class = null;
+
+            $query_getID = "SELECT `id` FROM `user` WHERE role = '$role' ORDER BY id DESC";
+            $result_getID = mysqli_query($conn, $query_getID);
+            $lastID = mysqli_fetch_array($result_getID, MYSQLI_ASSOC)['id'];
+            while(mysqli_num_rows(mysqli_query($conn, "SELECT `id` FROM `user` WHERE role = '$role' AND id = $lastID ORDER BY id DESC")) > 0) {
+                $lastID++;
+            }
+            $id = $lastID;
+
+        }
+
+        $childID = null;
+        if ($role == "parent") $childID = $_POST['register_childID'];
+
         $finaldir = null;
         if(isset($_FILES['upload']) && $_FILES['upload']['name'] != "") {
             if ($_FILES['upload']['name']) {
@@ -92,7 +112,7 @@ if (isset($_POST['register_submit'])) {
             }
         }
         
-        $query_final = "INSERT INTO `user` (id, username, password, citizen_id, prefix, firstname, lastname, firstname_en, lastname_en, email, grade, class) VALUES ($id, '$user', '$pass', $citizen_id, '$prefix', '$firstname', '$lastname', '$firstname_en', '$lastname_en', '$email', $grade, $class)";
+        $query_final = "INSERT INTO `user` (id, username, password, citizen_id, prefix, firstname, lastname, firstname_en, lastname_en, email, role) VALUES ($id, '$user', '$pass', $citizen_id, '$prefix', '$firstname', '$lastname', '$firstname_en', '$lastname_en', '$email', '$role')";
         $result_final = mysqli_query($conn, $query_final);
 
         $query_achi = "INSERT INTO `achievement` (id) VALUES ($id)";
@@ -101,17 +121,7 @@ if (isset($_POST['register_submit'])) {
         $query_profile = "INSERT INTO `profile` (id, profile) VALUES ($id, '$finaldir')";
         $result_profile = mysqli_query($conn, $query_profile);
 
-        //แสดงค่ากลับหาผู้ใช้
-        if ($result_final) {
-            $_SESSION['error'] = null;
-            $_SESSION['swal_success'] = "สมัครผู้ใช้งานสำเร็จ";
-            $_SESSION['swal_success_msg'] = "อย่าลืมเข้าไปยืนยันตัวตนทางอีเมลนะครับ";
-            $_SESSION['username'] = $user;
-            $_SESSION['id'] = $id;
-            $_SESSION['name'] = $_POST['register_firstname'] . ' ' . $_POST['register_lastname'];
-            header("Location: ./verify/mail.php?key=" . $pass . "&email=" . $email . "&name=" . $_SESSION['name'] . "&method=reg");
-        } else {
-            die('Could not register ' . mysqli_error($conn));
+        if (! $result_final) {
         }
 
         if (! $result_profile) {
@@ -120,6 +130,33 @@ if (isset($_POST['register_submit'])) {
 
         if (! $result_achi) {
             die('Could not add achievement ' . mysqli_error($conn));
+        }
+
+        //แสดงค่ากลับหาผู้ใช้
+        if (! $result_final) {
+            die('Could not register ' . mysqli_error($conn));
+        } else {
+            if ($role == "student") {
+                $query_class = "UPDATE `user` SET grade = '$grade', class = '$class'";
+                $result_class = mysqli_query($conn, $query_class);
+                if (! $result_class) {
+                    die('Could not add parent ID ' . mysqli_error($conn));
+                }
+            } else if ($role == "parent") {
+                $query_parentID = "UPDATE `user` SET parentID = '$childID'";
+                $result_parentID = mysqli_query($conn, $query_parentID);
+                if (! $result_parentID) {
+                    die('Could not add parent ID ' . mysqli_error($conn));
+                }
+            }
+
+            $_SESSION['error'] = null;
+            $_SESSION['swal_success'] = "สมัครผู้ใช้งานสำเร็จ";
+            $_SESSION['swal_success_msg'] = "อย่าลืมเข้าไปยืนยันตัวตนทางอีเมลนะครับ";
+            $_SESSION['username'] = $user;
+            $_SESSION['id'] = $id;
+            $_SESSION['name'] = $_POST['register_firstname'] . ' ' . $_POST['register_lastname'];
+            header("Location: ../verify/mail.php?key=" . $pass . "&email=" . $email . "&name=" . $_SESSION['name'] . "&method=reg");
         }
     }
 }

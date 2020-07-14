@@ -1,7 +1,7 @@
 <?php require '../global/connect.php'; ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 
 <head>
     <?php require '../global/head.php'; ?>
@@ -12,7 +12,7 @@
         role="navigation">
         <?php require '../global/navbar.php'; ?>
     </nav>
-    <?php if (isLogin()) home(); ?>
+    <?php if (isLogin() || !getConfig('user_allowRegister', 'bool', $conn)) home(); ?>
     <div class="container" id="container" style="padding-top: 88px">
         <div class="card mb-3">
             <form method="post" action="../global/auth/login.php" enctype="multipart/form-data">
@@ -112,17 +112,19 @@
                         <div class="md-form form-sm">
                             <i class="fas fa-user prefix"></i>
                             <input type="text" name="register_childID" id="register_childID"
-                                class="form-control form-control-sm validate" required>
+                                class="form-control form-control-sm validate">
                             <label for="register_childID">คุณเป็นผู้ปกครองของ... (กรุณากรอกรหัสนักเรียน)*</label>
                         </div>
                     </div>
-                    <div id="studentZone" style="display: none;">
+                    <div id="alumniZone" style="display: none;">
                         <div class="md-form form-sm mb-1">
                             <i class="fas fa-user prefix"></i>
                             <input type="text" name="register_id" id="register_id"
                                 class="form-control form-control-sm validate">
                             <label for="register_id">เลขประจำตัวนักเรียน*</label>
                         </div>
+                    </div>
+                    <div id="studentZone" style="display: none;">
                         <div class="form-inline">
                             <div class="form-row">
                                 <label for="register_grade" class="col-form-label col-md-auto">ระดับชั้น*</label>
@@ -187,11 +189,18 @@
         $("#register_type").change(function () {
             if ($(this).val() == "student") {
                 $('#studentZone').css('display', 'block');
+                $('#alumniZone').css('display', 'block');
+                $('#parentZone').css('display', 'none');
+            } else if ($(this).val() == "alumni") {
+                $('#alumniZone').css('display', 'block');
+                $('#studentZone').css('display', 'none');
                 $('#parentZone').css('display', 'none');
             } else if ($(this).val() == "parent") {
+                $('#alumniZone').css('display', 'none');
                 $('#parentZone').css('display', 'block');
                 $('#studentZone').css('display', 'none');
             } else {
+                $('#alumniZone').css('display', 'none');
                 $('#studentZone').css('display', 'none');
                 $('#parentZone').css('display', 'none');
             }
