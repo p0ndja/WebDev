@@ -45,6 +45,11 @@
         return false;
     }
     //saveUserdata('604019', 'username', 'PondJaTH', $conn);
+    
+    function getUserID($input, $method, $conn) {
+        return getAnySQL('user', 'id', $method, $input, $conn);
+    }
+    //getUserdata('604019', 'username', $conn);
 
     function getPostdata($id, $data, $conn) {
         return getAnySQL('post', $data, 'id', $id, $conn);
@@ -178,6 +183,11 @@
         else return $profile_prefix . getUserdata($id, 'firstname', $conn) . ' ' . getUserdata($id, 'lastname', $conn);
     }
 
+    function getUserIDTag($id, $conn) {
+        if (!isValidUserID($id, $conn)) return false;
+        return getUserdata($id, 'username', $conn). '#' . $id;
+    }
+
     function generateInfoCard($id, $conn) {
     
         $profile_grade = getUserdata($id, 'grade', $conn);
@@ -188,10 +198,14 @@
         else $profile_class = "ปกติ";
         
         if (checkPermission('isAdmin', $id, $conn)) $profile_class_detail = "<strong class='font-weight-bold text-danger'>แอดมิน</strong><br>";
-        else if (checkPermission('isTeacher', $id, $conn)) $profile_class_detail = "<strong class='font-weight-bold text-smd'>อาจารย์</strong><br>";
-        else if ($profile_grade > 6) $profile_class_detail = "<strong>ศิษย์เก่า</strong><br>";
-        else if ($profile_grade >= 1 && $profile_grade <= 6) $profile_class_detail = "<strong>ระดับชั้น</strong> " . $profile_grade . "/" . $profile_room . " (" . $profile_class . ")<br>";
+        else if (getRole($id, $conn) == "teacher") $profile_class_detail = "<strong class='font-weight-bold text-smd'>อาจารย์</strong><br>";
+        else if (getRole($id, $conn) == "alumni") $profile_class_detail = "<strong>ศิษย์เก่า</strong><br>";
+        else if (getRole($id, $conn) == "parent") $profile_class_detail = "<strong>ผู้ปกครอง</strong><br>";
+        else if (getRole($id, $conn) == "student" && ($profile_grade >= 1 && $profile_grade <= 6)) $profile_class_detail = "<strong>ระดับชั้น</strong> " . $profile_grade . "/" . $profile_room . " (" . $profile_class . ")<br>";
         else $profile_class_detail = "";
+
+        $id_prefix = "รหัสผู้ใช้";
+        if (getRole($id, $conn) == "student") $id_prefix = "รหัสนักเรียน";
 
         $profile_email = getUserdata($id, 'email', $conn);
         if ($profile_email != null) {
@@ -200,7 +214,7 @@
 
         $d_th = getDisplayName($id, "TH", $conn);
         $d_en = getDisplayName($id, "EN", $conn);
-        return '<h1 class="text-smd font-weight-bold">' . $d_th . '</h1><h4>' . $d_en . '</h4><hr><p><strong>รหัสนักเรียน</strong> ' . $id . '<br>' .$profile_class_detail . $profile_email . '</p>';
+        return '<h1 class="text-smd font-weight-bold">' . $d_th . '</h1><h4>' . $d_en . '</h4><hr><p><strong>'.$id_prefix.'</strong> ' . $id . '<br>' .$profile_class_detail . $profile_email . '</p>';
     }
 
     function generateAchievementCard($id, $conn) {
@@ -223,6 +237,23 @@
         } else {
             return false;
         }
+    }
+
+    function getRole($id, $conn) {
+        return getUserdata($id, 'role', $conn);
+    }
+
+    function countGrade($grade, $conn) {
+        $query = "SELECT `grade` FROM `user` WHERE role = 'student' AND grade = $grade";
+        $result = mysqli_query($conn, $query);
+        return mysqli_num_rows($result);
+    }
+
+    function countRole($role, $conn) {
+        $query = "SELECT `role` FROM `user` WHERE role = '$role' AND isAdmin != true";
+        if ($role == "admin") $query = "SELECT `role` FROM `user` WHERE role = '$role' OR isAdmin = true"; 
+        $result = mysqli_query($conn, $query);
+        return mysqli_num_rows($result);
     }
 
     function getClientIP() {
@@ -418,7 +449,7 @@
             buttons: true,
             dangerMode: true}).then((willDelete) => { 
                 if (willDelete) { 
-                    window.location = "../global/auth/logout.php";
+                    window.location = "../logout/";
                 }
             });
 </script>
