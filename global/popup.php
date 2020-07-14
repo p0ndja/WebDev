@@ -47,15 +47,16 @@
 
                 <?php if (isPermission('isTeacher', $conn)) { ?>
                 <hr>
-                    <a class="dropdown-item" href="../a/stdCheck"> ระบบเช็คชื่อ <i class="fas fa-calendar-check"></i></a>
+                    <a class="dropdown-item" href="../s/check"> ระบบเช็คชื่อ <i class="fas fa-calendar-check"></i></a>
                 <?php } else { ?>
                     <a class="dropdown-item" href="#"> ผลการเช็คชื่อ <i class="fas fa-calendar-check"></i></a>
                 <?php } ?>
-
                 <?php if (isPermission('isAdmin', $conn)) { ?>
-                <hr>
-                <a class="dropdown-item text-secondary" href="../admin/"> ส่วนของแอดมิน <i
-                        class="fas fa-user-tie"></i></a>
+                    <hr>
+                    <a class="dropdown-item text-secondary" href="../a/config"> Server Settings <i class="fas fa-user-tie"></i></a>
+                    <a class="dropdown-item text-secondary" href="../a/user"> User Management <i class="fas fa-user-tie"></i></a>
+                    <a class="dropdown-item text-secondary" href="../a/#" disabled> Forum Administrator <i class="fas fa-user-tie"></i></a>
+                    <a class="dropdown-item text-secondary" href="../a/#" disabled> News Editorial <i class="fas fa-user-tie"></i></a>
                 <?php } ?>
                 <hr>
 
@@ -64,7 +65,7 @@
                 <?php } else { ?><a class="dropdown-item" href="../global/darkmode.php"> เปลี่ยนเป็นโหมดมืด <i class="fas fa-lightbulb"></i></a><?php } ?>
                 
                 <hr>
-                <a class="dropdown-item text-danger" href="../global/auth/logout.php">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></a>
+                <a class="dropdown-item text-danger" href="../logout/">ออกจากระบบ <i class="fas fa-sign-out-alt"></i></a>
             </div>
         </div>
     </div>
@@ -101,7 +102,7 @@
             buttons: true,
             dangerMode: true}).then((willDelete) => { 
                 if (willDelete) { 
-                    window.location = "../global/auth/logout.php";
+                    window.location = "../logout/";
                 }
             });
     });
