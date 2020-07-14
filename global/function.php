@@ -27,7 +27,7 @@
 
     function getConfig($name, $col, $conn) {
         return getAnySQL('config', $col, 'name', $name, $conn);
-    }  
+    }
     //getConfig('indexpg_showCarousel', 'bool', $conn);
 
     function saveConfig($name, $col, $val, $conn) {
@@ -45,7 +45,7 @@
         return false;
     }
     //saveUserdata('604019', 'username', 'PondJaTH', $conn);
-    
+
     function getUserID($input, $method, $conn) {
         return getAnySQL('user', 'id', $method, $input, $conn);
     }
@@ -189,14 +189,14 @@
     }
 
     function generateInfoCard($id, $conn) {
-    
+
         $profile_grade = getUserdata($id, 'grade', $conn);
 
         $profile_room = getUserdata($id, 'class', $conn);
         if ($profile_room == 1) $profile_class = "EMSP";
         else if ($profile_room == 5) $profile_class = "วมว.";
         else $profile_class = "ปกติ";
-        
+
         if (checkPermission('isAdmin', $id, $conn)) $profile_class_detail = "<strong class='font-weight-bold text-danger'>แอดมิน</strong><br>";
         else if (getRole($id, $conn) == "teacher") $profile_class_detail = "<strong class='font-weight-bold text-smd'>อาจารย์</strong><br>";
         else if (getRole($id, $conn) == "alumni") $profile_class_detail = "<strong>ศิษย์เก่า</strong><br>";
@@ -227,7 +227,7 @@
             $profile_achi .= '<a class="material-tooltip-main" data-toggle="tooltip" title="The 4th Floor (RARE)"><img src="../static/images/achievement/stair.png" alt="The 4th Floor (RARE)" width="50" class="justify-content-center"></a>&nbsp;';
         if (getAchievementdata($id, 'Xmas', $conn))
             $profile_achi .= '<a class="material-tooltip-main" data-toggle="tooltip" title="Merry Christmas~ (UNCOMMON)"><img src="../static/images/achievement/xmas_resize.png" alt="Merry Christmas~ (UNCOMMON)" width="50" class="justify-content-center"></a>&nbsp;';
-        
+
             return $profile_achi;
     }
 
@@ -251,7 +251,7 @@
 
     function countRole($role, $conn) {
         $query = "SELECT `role` FROM `user` WHERE role = '$role' AND isAdmin != true";
-        if ($role == "admin") $query = "SELECT `role` FROM `user` WHERE role = '$role' OR isAdmin = true"; 
+        if ($role == "admin") $query = "SELECT `role` FROM `user` WHERE role = '$role' OR isAdmin = true";
         $result = mysqli_query($conn, $query);
         return mysqli_num_rows($result);
     }
@@ -313,7 +313,7 @@
     }
 
     function removeCategory($category, $conn) {
-        
+
     }
 
     function listCategory($conn) {
@@ -359,7 +359,7 @@
         else return false;
     }
 
-    
+
     function generateOpenGraphMeta($conn) {
         $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         if (strpos($current_url, "/post")) {
@@ -377,7 +377,19 @@
         <title><?php echo $title;?> | โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
         <meta property="og:description" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
             <?php }
-        } else { ?>
+        } else if (strpos($current_url, "/profile/") || strpos($current_url, "/id/")) {
+          if ((isset($_GET['id']) && isValidUserID($_GET['id'], $conn)) || (isset($_GET['user']) && getUserID($_GET['user'], 'username', $conn)) ) {
+            $id = isset($_GET['id']) ? $_GET['id'] : getUserID($_GET['user'], 'username', $conn);
+              $cover = getProfilePicture($id, $conn);
+              $title = getUserdata($id, 'firstname', $conn) . ' ' . getUserdata($id, 'lastname', $conn) . ' ('. $id .')';
+            ?>
+            <meta property="og:image" content="<?php echo $cover; ?>" />
+            <meta property="og:title" content="โปรไฟล์ของ <?php echo $title;?>" />
+            <title>โปรไฟล์ของ <?php echo $title;?> | โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
+            <meta property="og:description" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
+        <?php } ?>
+
+        <?php } else { ?>
         <meta property="og:image" content="../static/images/default/thumbnail.jpg" />
         <meta property="og:title" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
         <title>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
@@ -399,7 +411,7 @@
     }
 ?>
 
-<?php 
+<?php
     function needLogin() {
     if (!isLogin()) {?>
 <script>
@@ -414,7 +426,7 @@
 </script>
 <?php die(); }} ?>
 
-<?php 
+<?php
     function needPermission($perm, $conn) {
     if (!isset($_SESSION['id']) || !isLogin()) { needLogin(); die(); return false; }
     if (!getUserdata($_SESSION['id'], $perm, $conn) && !getUserdata($_SESSION['id'], 'isAdmin', $conn)) { ?>
@@ -429,13 +441,13 @@
         return true;
     }
 ?>
-<?php function back() {    
+<?php function back() {
     if (isset($_SERVER["HTTP_REFERER"])) {
         header("Location: " . $_SERVER["HTTP_REFERER"]);
     } else {
         home();
     }
-    die(); 
+    die();
     } ?>
 <?php function home() {
     header("Location: ../home");
@@ -447,8 +459,8 @@
             text: "คุณต้องการออกจากระบบหรือไม่?",
             icon: "warning",
             buttons: true,
-            dangerMode: true}).then((willDelete) => { 
-                if (willDelete) { 
+            dangerMode: true}).then((willDelete) => {
+                if (willDelete) {
                     window.location = "../logout/";
                 }
             });
@@ -462,8 +474,8 @@
             text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",
             icon: "warning",
             buttons: true,
-            dangerMode: true}).then((willDelete) => { 
-                if (willDelete) { 
+            dangerMode: true}).then((willDelete) => {
+                if (willDelete) {
                     window.location = "../post/delete.php?id=<?php echo $id; ?>";
                 }
             });
@@ -499,7 +511,7 @@
 <?php function debug($message) { echo $message; } ?>
 
 <?php
-    function isWebsiteClose($conn) {        
+    function isWebsiteClose($conn) {
         if (getConfig('global_temporaryClose', 'bool', $conn))
             if (!isPermission('isAdmin', $conn))
                 header("Location: ../p/close");
