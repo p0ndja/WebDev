@@ -221,6 +221,8 @@
     <?php if (getConfig('indexpg_showCourse', 'bool', $conn)) { ?>
     <div class="container mb-5 mt-5">
         <!-- New Course Style -->
+        
+        <!-- TODO: Make CourseCarousel Friendly Support on Mobile -->
         <!--Carousel Wrapper-->
         <div id="multi-item-example" class="carousel carouselCourse slide carousel-multi-item" data-ride="carousel">
 

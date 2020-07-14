@@ -1,6 +1,6 @@
 <?php require('../global/connect.php'); ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 
 <head>
     <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">

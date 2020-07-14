@@ -1,6 +1,6 @@
 <?php require '../global/connect.php'; ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 
 <head>
     <?php require '../global/head.php'; ?>
