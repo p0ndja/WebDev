@@ -26,14 +26,14 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal fixed-top scrolling-navbar" id="nav"
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-normal" id="nav"
         role="navigation">
         <?php require '../global/navbar.php'; ?>
     </nav>
-    <div class="container" id="container" style="padding-top: 88px">
+    <div class="container" id="container">
         <div class="card mb-3">
             <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/eKJa2K7ehBo" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" src="https://embed.restream.io/player/index.html?token=ab24145b90666a9196b7228c31ff3520" width="100%" height="100%" frameborder="0" allowfullscreen></iframe><p>Powered by <a href="https://restream.io">Restream.io</a></p>
             </div>
         </div>
     </div>
