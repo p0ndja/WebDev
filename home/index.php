@@ -3,7 +3,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th" prefix="og:http://ogp.me/ns#">
 
 <head>
     <style>
