@@ -148,7 +148,7 @@
                         </div>
                         <input type="hidden" name="method" value="loginNav">
                         <button class="btn btn-block bg-smd" type="submit" name="login_submit">Login</button>
-                        <div class="text-center"><a href="#" class="text-danger">ลืมรหัสผ่านหรอ?</a> <a href="../register/" class="text-smd">หรือสมัครเข้าใช้งาน!</a></div>
+                        <div class="text-center"><a class="text-danger" href="../forgetpw/">ลืมรหัสผ่านหรอ?</a> <a href="../register/" class="text-smd">หรือสมัครเข้าใช้งาน!</a></div>
                     </form>
                 </div>
             </li>
