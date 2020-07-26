@@ -389,6 +389,7 @@
 
     function generateOpenGraphMeta($conn) {
         $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        
         if (strpos($current_url, "/post")) {
             //Mean you're currently browsing in post page
             if (isset($_GET['id']) && isValidPostID($_GET['id'], $conn)) {
@@ -396,7 +397,7 @@
                 $title = getPostdata($postID, 'title', $conn);
                 $cover = getPostdata($postID, 'cover', $conn);
                 if ($cover == null) {
-                    $cover = "../static/images/default/thumbnail.jpg";
+                    $cover = $_SERVER['HTTP_HOST'] . "/static/images/default/thumbnail.jpg";
                 }
                 ?>
         <meta property="og:image" content="<?php echo $cover; ?>" />
@@ -417,12 +418,13 @@
         <?php } ?>
 
         <?php } else { ?>
-        <meta property="og:image" content="../static/images/default/thumbnail.jpg" />
+        <meta property="og:image" content="<?php echo $_SERVER['HTTP_HOST']; ?>/static/images/default/thumbnail.jpg" />
         <meta property="og:title" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
         <title>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
         <meta property="og:description" content="123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002 โทรศัพท์ / โทรสาร 043202044" />
         <?php } ?>
-        <link rel="image_src" href="../static/images/logo/smdlogo.jpg" />
+        <meta name="twitter:card" content="summary"></meta>
+        <link rel="image_src" href="<?php echo $_SERVER['HTTP_HOST']; ?>/static/images/logo/smdlogo.jpg" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="<?php echo $current_url; ?>" />
         <meta property="fb:app_id" content="129081655091085" />
