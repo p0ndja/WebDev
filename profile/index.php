@@ -9,11 +9,14 @@
     <?php
         $id;
         if (isset($_GET['id'])) $id = $_GET['id'];
-        else if (isset($_GET['user'])) $id = getUserID($_GET['user'], 'username', $conn);
         else if (isset($_SESSION['id'])) $id = $_SESSION['id'];
         else needLogin();
 
-        if (!isValidUserID($id, $conn)) back();
+        if (!isValidUserID($id, $conn)) {
+            if (isValidUserID( getUserID($_GET['id'], 'username', $conn) , $conn))
+                $id = getUserID($_GET['id'], 'username', $conn);
+            else back();
+        }
 
         $profile_background = getProfileData($id, 'background', $conn);
         $profile_image = getProfilePicture($id, $conn);

@@ -151,13 +151,21 @@
     ul.dropdown-lr {
         width: 300px;
     }
+
+    .carouselEventPreview  p {
+        color: white !important;
+    }
+
+    .carousel-caption {
+        background-color: rgba(0,0,0,0.36) !important;
+    }
     
     p,
     li,
     ul,
     table,
     blockquote {
-        color: #606060 !important;
+        color: #606060;
     }
 
     .dropdown .dropdown-menu.dropdown-smd .dropdown-item:hover,

@@ -357,7 +357,7 @@
                                     <!-- isAdmin -->
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="perm_isAdmin" name="perm[]" value="isAdmin"
-                                            <?php if(isPermission('isAdmin', $conn)) echo "checked "; ?>>
+                                            <?php if(checkPermission('isAdmin', $id, $conn)) echo "checked "; ?>>
                                         <label class="form-check-label" for="perm_isAdmin">Administrator
                                             <a class="material-tooltip-main" data-html="true" data-toggle="tooltip"
                                                 title="✔ ทำได้ทุกอย่าง<br>✔ Override ทุกสิทธิ์"><i
@@ -367,7 +367,7 @@
                                     <!-- isTeacher -->
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="perm_isTeacher" name="perm[]" value="isTeacher"
-                                            <?php if(isPermission('isTeacher', $conn)) echo "checked "; if(isPermission('isAdmin', $conn)) echo "disabled "; ?>>
+                                            <?php if(checkPermission('isTeacher', $id, $conn)) echo "checked "; if(checkPermission('isAdmin', $id, $conn)) echo "disabled "; ?>>
                                         <label class="form-check-label" for="perm_isTeacher">Teacher
                                             <a class="material-tooltip-main" data-html="true" data-toggle="tooltip"
                                                 title="✔ สามารถเข้าหน้าที่เกี่ยวข้องกับอาจารย์ได้"><i
@@ -377,7 +377,7 @@
                                     <!-- isNewsReporter -->
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="perm_isNewsReporter" name="perm[]" value="isNewsReporter"
-                                            <?php if(isPermission('isNewsReporter', $conn)) echo "checked "; if(isPermission('isAdmin', $conn)) echo "disabled ";  ?>>
+                                            <?php if(checkPermission('isNewsReporter', $id, $conn)) echo "checked "; if(checkPermission('isAdmin', $id, $conn)) echo "disabled ";  ?>>
                                         <label class="form-check-label" for="perm_isNewsReporter">Newsreporter
                                             <a class="material-tooltip-main" data-html="true" data-toggle="tooltip"
                                                 title="✔ สามารถสร้าง/แก้ไข/ลบโพสต์ได้ (/post)"><i
@@ -387,7 +387,7 @@
                                     <!-- isForumEditor -->
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="perm_isForumEditor" name="perm[]" value="isForumEditor"
-                                            <?php if(isPermission('isForumEditor', $conn)) echo "checked "; if(isPermission('isAdmin', $conn)) echo "disabled ";  ?>>
+                                            <?php if(checkPermission('isForumEditor', $id, $conn)) echo "checked "; if(checkPermission('isAdmin', $id, $conn)) echo "disabled ";  ?>>
                                         <label class="form-check-label" for="perm_isForumEditor">Forum Editor
                                             <a class="material-tooltip-main" data-html="true" data-toggle="tooltip"
                                                 title="✔ สามารถสร้าง/แก้ไข/ลบโพสต์ในฟอรั่มได้ (/forum)"><i
@@ -397,20 +397,20 @@
                                     <!-- isRegistrator -->
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="perm_isRegistrator" name="perm[]" value="isRegistrator"
-                                            <?php if(isPermission('isRegistrator', $conn)) echo "checked "; if(isPermission('isAdmin', $conn)) echo "disabled ";  ?>>
+                                            <?php if(checkPermission('isRegistrator', $id, $conn)) echo "checked "; if(checkPermission('isAdmin', $id, $conn)) echo "disabled ";  ?>>
                                         <label class="form-check-label" for="perm_isRegistrator">Registrator</label>
                                     </div>
                                     <!-- isSubjectRegistrator -->
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="perm_isSubjectRegistrator" name="perm[]" value="isSubjectRegistrator"
-                                            <?php if(isPermission('isSubjectRegistrator', $conn)) echo "checked "; if(isPermission('isAdmin', $conn)) echo "disabled ";  ?>>
+                                            <?php if(checkPermission('isSubjectRegistrator', $id, $conn)) echo "checked "; if(checkPermission('isAdmin', $id, $conn)) echo "disabled ";  ?>>
                                         <label class="form-check-label" for="perm_isSubjectRegistrator">Subject
                                             Registrator</label>
                                     </div>
                                     <!-- isTimetableDesigner -->
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="perm_isTimetableDesigner" name="perm[]" value="isTimetableDesigner"
-                                            <?php if(isPermission('isTimetableDesigner', $conn)) echo "checked "; if(isPermission('isAdmin', $conn)) echo "disabled ";  ?>>
+                                            <?php if(checkPermission('isTimetableDesigner', $id, $conn)) echo "checked "; if(checkPermission('isAdmin', $id, $conn)) echo "disabled ";  ?>>
                                         <label class="form-check-label" for="perm_isTimetableDesigner">Timetable
                                             Designer
                                             <a class="material-tooltip-main" data-html="true" data-toggle="tooltip"

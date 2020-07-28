@@ -134,7 +134,7 @@
     <?php if (getConfig('indexpg_showCarousel', 'bool', $conn)) { ?>
     <div class="container-fluid course-bg">
         <div class="container mb-3" id="container">
-            <div id="carousel" class="carousel carouselsmoothanimated slide carousel-fade z-depth-1" data-ride="carousel" data-interval="5000">
+            <div id="carousel" class="carousel carouselsmoothanimated carouselEventPreview slide carousel-fade z-depth-1" data-ride="carousel" data-interval="5000">
                 <ol class="carousel-indicators">
                     <li data-target="#carousel" data-slide-to="0" class="active"></li>
                     <li data-target="#carousel" data-slide-to="1"></li>
@@ -149,59 +149,71 @@
                         <img src="https://cdn.discordapp.com/attachments/700717666540978266/701164374064365638/SMD_OLS_1.jpg"
                             class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                            <h5>SMD Online School</h5>
-                            <p>สามารถเข้าร่วมได้ที่ Discord : <a href="https://smd.pondja.com/discord"
-                                    style="color:yellow;" class="font-weight-bold">SMD Online School</a></p>
+                            <div class="carousel-caption-text">
+                                <h5>SMD Online School</h5>
+                                <p>สามารถเข้าร่วมได้ที่ Discord : <a href="https://smd.pondja.com/discord"
+                                        style="color:yellow;" class="font-weight-bold">SMD Online School</a></p>
+                            </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="https://cdn.discordapp.com/attachments/601788363313512480/642620653115277322/slider_1.jpg"
                             class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                            <h5>พิธีไหว้ครู</h5>
-                            <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 28 มิถุนายน 2561</p>
+                            <div class="carousel-caption-text">
+                                <h5>พิธีไหว้ครู</h5>
+                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 28 มิถุนายน 2561</p>
+                            </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="https://cdn.discordapp.com/attachments/601788363313512480/642621390935293952/slider_2.jpg"
                             class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                            <h5>
-                                <p class="text-dark">กิจกรรมพาน้องไปวัด</p>
-                            </h5>
-                            <p class="text-dark">ณ ศูนย์ปฏิบัติธรรมสวนเวฬุวัน จ.ขอนแก่น วันที่ 1-5 พฤษภาคม 2561</p>
+                            <div class="carousel-caption-text">
+                                <h5>กิจกรรมพาน้องไปวัด</h5>
+                                <p>ณ ศูนย์ปฏิบัติธรรมสวนเวฬุวัน จ.ขอนแก่น วันที่ 1-5 พฤษภาคม 2561</p>
+                            </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="https://cdn.discordapp.com/attachments/601788363313512480/642626173565927425/slider_4.jpg"
                             class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                            <h5>กิจกรรมพาน้องไปวัด</h5>
-                            <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 29 เมษายน 2561</p>
+                            <div class="carousel-caption-text">
+                                <h5>กิจกรรมพาน้องไปวัด</h5>
+                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 29 เมษายน 2561</p>
+                            </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="https://cdn.discordapp.com/attachments/601788363313512480/642622165350481930/slider_3.jpg"
                             class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                            <h5>กิจกรรมวันสงกรานต์</h5>
-                            <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 10 เมษายน 2561</p>
+                            <div class="carousel-caption-text">
+                                <h5>กิจกรรมวันสงกรานต์</h5>
+                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 10 เมษายน 2561</p>
+                            </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="https://cdn.discordapp.com/attachments/601788363313512480/642628541145546762/slider_5.jpg"
                             class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                            <h5>กิจกรรมสัมมนาและส่งเสริมศักยภาพความเป็นผู้นำของคณะกรรมการนักเรียนประจำปีการศึกษา
-                                2562</h5>
-                            <p>ณ เขื่อนจุฬาภรณ์ ต.ทุ่งลุยลาย จ.ชัยภูมิ วันที่ 25-27 พฤษภาคม 2562</p>
+                            <div class="carousel-caption-text">
+                                <h5>กิจกรรมสัมมนาและส่งเสริมศักยภาพความเป็นผู้นำของคณะกรรมการนักเรียนประจำปีการศึกษา
+                                    2562</h5>
+                                <p>ณ เขื่อนจุฬาภรณ์ ต.ทุ่งลุยลาย จ.ชัยภูมิ วันที่ 25-27 พฤษภาคม 2562</p>
+                            </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="../static/images/default/default_carousel.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                            <h5>Carousel Guide</h5>
-                            <p>ขนาดรูปที่แนะนำ: 1400(W) x 600(H)</p>
+                            <div class="carousel-caption-text">
+                                <h5>Carousel Guide</h5>
+                                <p>ขนาดรูปที่แนะนำ: 1400(W) x 600(H)</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -219,7 +231,10 @@
     </div>
     <?php } ?>
     <?php if (getConfig('indexpg_showCourse', 'bool', $conn)) { ?>
-    <div class="container mb-5 mt-5">
+    <div class="d-block d-md-none container mt-5 mb-5">
+        <div class="alert alert-dark">/* ปิดไม่ให้เห็น Course Carousel ชั่วคราวบนมือถือ */</div>
+    </div>
+    <div class="d-none d-md-block container mb-5 mt-5">
         <!-- New Course Style -->
         
         <!-- TODO: Make CourseCarousel Friendly Support on Mobile -->
@@ -452,7 +467,7 @@
                         </div>
                     </div>
                     <?php } else { // Case post is a hotlink ?>
-                    <a href="<?php echo $row['hotlink']; ?>" target="_blank">
+                        <?php if ($row['hotlink'] != '#') { ?><a href="<?php echo $row['hotlink']; ?>" target="_blank"><?php } ?>
                         <div class="card hoverable">
                             <?php if ($row['cover'] != null) { ?><img class="card-img-top"
                                 src="<?php echo $row['cover']; ?>"><?php } ?>
@@ -465,7 +480,7 @@
                                     swal({title: "ลบข่าวหรือไม่ ?",text: "หลังจากที่ลบแล้ว ข่าวนี้จะไม่สามารถกู้คืนได้!",icon: "warning",buttons: true,dangerMode: true}).then((willDelete) => { if (willDelete) { window.location = "../post/delete.php?id=<?php echo $row["id"]; ?>";}});'>
                                     <i class="fas fa-trash-alt text-danger"></i></a></div><?php } ?>
                         </div>
-                    </a>
+                        <?php if ($row['hotlink'] != '#') { ?></a`><?php } ?>
                     <p class="mb-3">
                     </p>
                     <?php } ?>

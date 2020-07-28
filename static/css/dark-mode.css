@@ -108,7 +108,7 @@
 [data-theme="dark"] h4,
 [data-theme="dark"] h5,
 [data-theme="dark"] span {
-    color: white !important;
+    color: white;
 }
 
 [data-theme="dark"] p,
@@ -131,7 +131,7 @@
 [data-theme="dark"] .carousel h4,
 [data-theme="dark"] .carousel h5,
 [data-theme="dark"] .carousel p {
-    color: white !important;
+    color: white;
 }
 
 [data-theme="dark"] .navbar {

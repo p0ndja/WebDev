@@ -105,18 +105,12 @@
             <source src="static/images/element/landing.mp4" type="video/mp4">
         </video>
         <div class="container h-100 d-none d-lg-block" id="container">
-            <div class="d-flex h-100 text-center align-items-center">
+            <div class="d-flex h-100 text-center align-items-end">
                 <div class="w-100 text-white">
-                    <div class="mb-5 mt-5"><br></div>
-                    <div class="mb-5 mt-5"><br></div>
-                    <div class="mb-5 mt-5"><br></div>
-                    <div class="mb-5 mt-5"><br></div>
-                    <div class="mb-5 mt-5"><br></div>
-                    <div class="mb-5 mt-5"><br></div>
-                    <div class="mb-5 mt-5"><br></div>
-                    <div class="mb-5 mt-5"><br></div>
                     <div class="animated fadeIn">
-                    <a class="btn btn-lg btn-outline-light" href="./home">เข้าสู่เว็บไซต์ | Go Website</a>
+                        <div style="padding-bottom: 25px;">
+                            <a class="btn btn-lg btn-outline-light" href="./home">เข้าสู่เว็บไซต์ | Enter Website</a>
+                        </div>
                     </div>
                 </div>
             </div>
