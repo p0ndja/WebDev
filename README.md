@@ -9,18 +9,18 @@ This 'WebDev' project is base on **HTML, PHP, CSS, JavaScript, SQL Computer lang
 This is our first website project, if there's something which is not prefectly. Feel free to create a pull request to us.
 
 
-#### **This project has a 'GNU General Public License v3.0', please keep in mind that you'll need to opensource your edited code if you using our code.**
+**This project has a 'GNU General Public License v3.0', please keep in mind that you'll need to opensource your edited code if you using our code.**
 
 ![Image](https://me.pondja.com/img/Annotation%202019-11-29%20114539.jpg) ![Image](https://me.pondja.com/img/Annotation%202019-11-29%20115148.jpg) ![Image](https://me.pondja.com/img/Annotation%202019-11-29%20115227.jpg)
 
 # Live Demo: [https://smd.pondja.com](https://smd.pondja.com)
 
 
-#### PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka
+**PondJaᵀᴴ & ˢᵖᵉᶜᵗᵉʳRisaka**
 
 # Technical Zone
 
-### Configuration
+**Configuration**
 -----------------
 
 สำหรับไฟล์ **'/global/connect.php'** จะไม่มีอยู่ในโฟลเดอร์นั้นเพราะว่าเรื่องความลับของข้อมูลที่เปิดเผยไม่ได้ โดยให้เราแก้ไขจากไฟล์ **'/global/connect.template.php'** นะครับ หรือไม่ก็ให้สร้างเองตาม Template ด้านล่างนี้นะครับ
@@ -130,11 +130,11 @@ try {
 ?>
 ```
 
-### SQL Structure
+**SQL Structure**
 -----------------
 สำหรับ SQL Structure ของตัวเว็บไซด์ จะปรากฎในชื่อไฟล์ 'template.sql' นะครับ // The template file for SQL Structure is named 'template.sql' (Config,Achievement,User,Profile,Post)
 เพียงแค่ Import เข้า Database ก็สามารถใช้งานได้เลยครับ // What you need just import that template file into your database.
-#### Post Structure
+**Post Structure**
 ```
 pondjaco_smdkku
 └── post
@@ -155,7 +155,7 @@ pondjaco_smdkku
 
 สำหรับ Forum จะแยก Database กับฐานข้อมูลหลักนะครับ // This for the Forum database, it's seperated from the main structure
 (ในอนาคตอาจมีการปรับ Structure ใหม่) // (WIP on re-structuring)
-#### Forum Structure [WIP]
+**Forum Structure [WIP]**
 ```
 pondjaco_smdkkuforum
 ├── forum_properties
