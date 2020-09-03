@@ -139,7 +139,7 @@
         </div>
         <?php if(isThisMyID($id, $conn) || isPermission('isAdmin', $conn)) { ?>
             <div class="fixed-action-btn" style="bottom: 40px; right: 30px;">
-                <a class="btn-floating btn-lg red" href="./edit<?php if (isPermission('isAdmin', $conn) && !isThisMyID($id, $conn)) echo '-' . $id; ?>">
+                <a class="btn-floating btn-lg red" href="../profile/edit<?php if (isPermission('isAdmin', $conn) && !isThisMyID($id, $conn)) echo '-' . $id; ?>">
                     <i class="fas fa-pencil-alt"></i>
                 </a>
             </div>

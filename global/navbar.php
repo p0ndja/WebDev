@@ -4,7 +4,7 @@
             <script>document.body.removeAttribute("data-theme")</script>
 <?php   } ?>
 <?php   $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; 
-        if ((strpos($current_url, "/profile") !== false)) {
+        if ((strpos($current_url, "/profile") !== false) || (strpos($current_url, "/id") !== false)) {
             if ((isset($_SESSION['isDarkProfile']) && $_SESSION['isDarkProfile'])) { ?>
             <script>document.body.setAttribute("data-theme", "dark")</script>
         <?php } else { ?>
