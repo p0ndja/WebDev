@@ -117,6 +117,14 @@
             height: $(e.relatedTarget).height()
         }, 500);
     });
+
+    $('input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], input[type=date], input[type=time], textarea').each(function (element, i) {
+        if ((element.value !== undefined && element.value.length > 0) || $(this).attr('placeholder') !== undefined) {
+            $(this).siblings('label').addClass('active');
+        } else {
+            $(this).siblings('label').removeClass('active');
+        }});
+    $('input[type=email]').val('test').siblings('label').addClass('active');
 </script>
 
 <div id="fb-root"></div><script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v7.0&appId=2529205720433288&autoLogAppEvents=1" nonce="2UGIjGvo"></script>
