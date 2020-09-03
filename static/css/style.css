@@ -211,13 +211,13 @@
         border-top: 1px solid #9ea2a2 !important;
     }
 
-    .indexNews {
-        background-color: white;
-    }
-
     .bg-smd {
         background-color: #fc6504;
         color: white;
+    }
+
+    .indexNews {
+        background-color: white;
     }
 
     body {
@@ -257,7 +257,7 @@
 
     /* https://cdn.discordapp.com/attachments/636478500206936094/696627513681772595/bg_light.jpg */
     .navbar {
-        background-image: url('../images/background/bg_normal_new_new.jpg');
+        background-image: url('../images/background/bg_normal_new_new-min.jpg');
         background-repeat: no-repeat;
         background-size: 100%;
     }
@@ -279,8 +279,8 @@
         background-color: #fc6504 !important;
     }
 
-    .course-bg {
-        background-image: url('https://cdn.discordapp.com/attachments/387191314552455192/696622897602625626/test.jpg');
+    .carousel-bg {
+        background-image: url('../images/background/carousel.jpg');
         width: 100%;
         background-position: center;
         background-repeat: no-repeat;
@@ -289,7 +289,7 @@
 
     @media only screen and (max-width: 768px) {
         .navbar {
-            background-image: url('../images/background/bg_normal_new_new.jpg');
+            background-image: url('../images/background/bg_normal_new_new-min.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             background-position: fixed;

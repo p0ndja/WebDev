@@ -14,10 +14,11 @@
         }
         body {
             background-color:#000000 !important;
-            background-image: url('https://cdn.discordapp.com/attachments/636478500206936094/702438313549758514/movie-theater-04.jpg');
+            background-image: url('../static/images/background/theater.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: bottom center;
+            background-size: 100% auto;
         }
         [data-theme="dark"] body {
             background-color: #000000 !important;
