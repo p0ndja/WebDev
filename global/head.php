@@ -1,10 +1,10 @@
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Accept-Encoding" content="gzip, compress, br">
+    <meta http-equiv="Cache-Control" content="max-age=31536000">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Athiti|Bai+Jamjuree|Chakra+Petch|Charm|Charmonman|Chonburi|Fahkwang|Itim|K2D|Kanit|KoHo|Kodchasan|Krub|Maitree|Mali|Mitr|Niramit|Pattaya|Pridi|Prompt|Sarabun|Sriracha|Srisakdi|Taviraj|Thasadith|Trirong&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Charmonman|Kanit|Sarabun&display=swap" rel="stylesheet">
 
     <!-- Webcustom -->
     <link rel="shortcut icon" href="../static/images/logo/favicon.ico" type="image/x-icon">
@@ -21,14 +21,13 @@
     <!-- Custom Style -->
     <link href="../static/css/style.css" rel="stylesheet">
     <link href="../static/css/fonts_morkhor.css" rel="stylesheet">
-    <link href="../static/css/fonts_anakotmai.css" rel="stylesheet">
     <link href="../static/css/dark-mode.css" rel="stylesheet">
     <link href="../static/css/widthme.css" rel="stylesheet">
     
     <!-- Bootstrap -->
-    <script src="../static/js/1.16.0-popper.min.js"></script>
-    <script src="../static/js/jquery-3.5.1.min.js"></script>
-    <script src="../static/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/1.16.0-popper.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="../static/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="../static/js/mdb.min.js"></script>
 
     <!-- Bootstrap-Table -->
@@ -41,13 +40,6 @@
     <script src="../static/summernote/summernote-bs4.min.js"></script>
     <script src="../static/summernote/summernote-file.js"></script>
 
-    <!-- include codemirror (codemirror.css, codemirror.js, xml.js, formatting.js) -->
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css">
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.css">
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js"></script>
-    
     <!-- SweetAlert -->
     <script src="../static/js/sweetalert.min.js"></script>
     
@@ -55,9 +47,10 @@
     <link rel="stylesheet" href="../static/croppie/croppie.css" />
     <script src="../static/croppie/croppie.js"></script>
 
-    <!-- Dropzone -->
-    <script src="../static/dropzone/dropzone.js"></script>
-    
+    <!-- Progressive Image -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/progressive-image.js/dist/progressive-image.css">
+    <script src="https://cdn.jsdelivr.net/npm/progressive-image.js/dist/progressive-image.js"></script>
+
     <!-- Fontawesome -->
     <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet" />
 

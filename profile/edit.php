@@ -41,18 +41,9 @@
             });;
             $('.summernote').summernote({
                 minHeight: 500,
-                fontNames: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman', 'MorKhor',
-                    'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun',
-                    'Kanit', 'anakotmai'
-                ],
-                fontNamesIgnoreCheck: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman',
-                    'MorKhor',
-                    'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun',
-                    'Kanit', 'anakotmai'
-                ],
-                codemirror: { // codemirror options
-                    theme: 'monokai'
-                },
+                fontNames: ['Helvetica', 'Times New Roman', 'MorKhor','Charmonman','Sarabun','Kanit'],
+                fontNamesIgnoreCheck: ['Helvetica', 'Times New Roman', 'MorKhor','Charmonman','Sarabun','Kanit'],
+
                 callbacks: {
                     onImageUpload: function (files, editor, welEditable) {
                         sendPicFile(files[0], this);

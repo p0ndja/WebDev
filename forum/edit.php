@@ -35,18 +35,9 @@
             });;
             $('.summernote').summernote({
                 minHeight: 500,
-                fontNames: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman', 'MorKhor',
-                    'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun',
-                    'Kanit', 'anakotmai'
-                ],
-                fontNamesIgnoreCheck: ['Arial', 'Courier New', 'Helvetica', 'Tahoma', 'Times New Roman',
-                    'MorKhor',
-                    'Charmonman', 'Srisakdi', 'Chonburi', 'Itim', 'Trirong', 'Niramit', 'Sarabun',
-                    'Kanit', 'anakotmai'
-                ],
-                codemirror: { // codemirror options
-                    theme: 'monokai'
-                },
+                fontNames: ['Helvetica', 'Times New Roman', 'MorKhor','Charmonman','Sarabun','Kanit'],
+                fontNamesIgnoreCheck: ['Helvetica', 'Times New Roman', 'MorKhor','Charmonman','Sarabun','Kanit'],
+
                 callbacks: {
                     onImageUpload: function (files, editor, welEditable) {
                         sendPicFile(files[0], this);
@@ -206,8 +197,7 @@
                             <?php //TODO: CHECK IF ADMIN ?>
                             <div class="switch switch-warning mb-1">
                                 <label>
-                                    <?php if ($hide) $b = "checked"; else $b = ""?>
-                                    <input type="checkbox" name="isHidden" id="isHidden" <?php echo $b; ?>>
+                                    <input type="checkbox" name="isHidden" id="isHidden" <?php if ($hide) echo "checked"; ?>>
                                     <span class="lever"></span>
                                     <a class="material-tooltip-main" data-toggle="tooltip"
                                         title="การเปิดค่านี้จะทำให้โพสต์นี้สามารถเข้าได้ผ่าน Link โดยตรงเท่านั้น (จะไม่แสดงรวมกับโพสต์อื่น ๆ ในหน้าหลักและหน้าอื่น ๆ)">ซ่อนโพสต์</a>
@@ -215,8 +205,7 @@
                             </div>
                             <div class="switch switch-warning mb-1">
                                 <label>
-                                    <?php if ($pinned) $b = "checked"; else $b = ""?>
-                                    <input type="checkbox" name="pinned" <?php echo $b; ?>>
+                                    <input type="checkbox" name="pinned" <?php if ($pinned) echo "checked"; ?>>
                                     <span class="lever"></span>
                                     <a class="material-tooltip-main" data-toggle="tooltip"
                                         title="การเปิดค่านี้จะเป็นการปักหมุดโพสต์นี้ไว้บนสุด (เรียงตามลำดับการอัพเดทของโพสต์ปักหมุดด้วย)">ปักหมุดโพสต์</a>
