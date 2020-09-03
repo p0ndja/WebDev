@@ -20,6 +20,8 @@
                     $type = getPostdata($postID, 'type', $conn);
                     $_SESSION['temp_cover'] = $cover;
                     $_POST['attached_before'] = $attached; 
+            } else {
+                $_SESSION['temp_cover'] = null;
             }
     ?>
     <script type="text/javascript">
