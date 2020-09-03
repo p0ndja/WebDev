@@ -278,6 +278,34 @@
         date_default_timezone_set('Asia/Bangkok'); return date('Y-m-d H:i:s', time());
     }
 
+    function image_resize($file_name, $width, $height, $crop=FALSE) {
+        list($wid, $ht) = getimagesize($file_name);
+        $r = $wid / $ht;
+        if ($crop) {
+           if ($wid > $ht) {
+              $wid = ceil($wid-($width*abs($r-$width/$height)));
+           } else {
+              $ht = ceil($ht-($ht*abs($r-$w/$h)));
+           }
+           $new_width = $width;
+           $new_height = $height;
+        } else {
+           if ($width/$height > $r) {
+              $new_width = $height*$r;
+              $new_height = $height;
+           } else {
+              $new_height = $width/$r;
+              $new_width = $width;
+           }
+        }
+        $source = imagecreatefromjpeg($file_name);
+        $dst = imagecreatetruecolor($new_width, $new_height);
+        imagecopyresampled($dst, $source, 0, 0, 0, 0, $new_width, $new_height, $wid, $ht);
+
+        $file = imagejpeg($dst, $file_name . "_thumbnail.jpg");
+        return $file;
+    }
+
     function base64($f, $user, $type) {
         $name=$f['name'];
         $name_file=$f['name'];
@@ -397,34 +425,45 @@
                 $title = getPostdata($postID, 'title', $conn);
                 $cover = getPostdata($postID, 'cover', $conn);
                 if ($cover == null) {
-                    $cover = $_SERVER['HTTP_HOST'] . "/static/images/default/thumbnail.jpg";
+                    list($ogwidth, $ogheight, $ogtype, $ogattr) = getimagesize("../static/images/default/thumbnail.jpg");
+                    $cover = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . "/static/images/default/thumbnail.jpg";
+                } else {
+                    list($ogwidth, $ogheight, $ogtype, $ogattr) = getimagesize($cover);
+                    $cover = str_replace("..", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'], $cover);
                 }
                 ?>
-        <meta property="og:image" content="<?php echo $cover; ?>" />
-        <meta property="og:title" content="<?php echo $title;?>" />
-        <title><?php echo $title;?> | โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
-        <meta property="og:description" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
+    <meta property="og:image" content="<?php echo $cover; ?>" />
+    <meta property="og:image:width" content="<?php echo $ogwidth; ?>" />
+    <meta property="og:image:height" content="<?php echo $ogheight; ?>" />
+    <meta property="og:title" content="<?php echo $title;?>" />
+    <title><?php echo $title;?> | โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
+    <meta property="og:description" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
+    <link rel="image_src" href="<?php echo $cover; ?>" />
             <?php }
-        } else if (strpos($current_url, "/profile/") || strpos($current_url, "/id/")) {
-          if ((isset($_GET['id']) && isValidUserID($_GET['id'], $conn)) || (isset($_GET['user']) && getUserID($_GET['user'], 'username', $conn)) ) {
-            $id = isset($_GET['id']) ? $_GET['id'] : getUserID($_GET['user'], 'username', $conn);
-              $cover = getProfilePicture($id, $conn);
-              $title = getUserdata($id, 'firstname', $conn) . ' ' . getUserdata($id, 'lastname', $conn) . ' ('. $id .')';
+
+        } else if ((strpos($current_url, "/profile/") || strpos($current_url, "/id/")) && isset($_GET['id'])) {
+            if (isValidUserID($_GET['id'], $conn) || isValidUserID(getUserID($_GET['id'], 'username', $conn), $conn)) {
+                $id = isValidUserID($_GET['id'], $conn) ? $_GET['id'] : getUserID($_GET['id'], 'username', $conn);
+                $cover = getProfilePicture($id, $conn);
+                $title = getUserdata($id, 'firstname', $conn) . ' ' . getUserdata($id, 'lastname', $conn) . ' ('. $id .')';
+                $cover = str_replace("..", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'], $cover);
             ?>
-            <meta property="og:image" content="<?php echo $cover; ?>" />
-            <meta property="og:title" content="โปรไฟล์ของ <?php echo $title;?>" />
-            <title>โปรไฟล์ของ <?php echo $title;?> | โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
-            <meta property="og:description" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
+            
+    <meta property="og:image" content="<?php echo $cover; ?>" />
+    <meta property="og:title" content="โปรไฟล์ของ <?php echo $title;?>" />
+    <title>โปรไฟล์ของ <?php echo $title;?> | โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
+    <meta property="og:description" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
+    <link rel="image_src" href="<?php echo $cover; ?>" />
         <?php } ?>
 
         <?php } else { ?>
-        <meta property="og:image" content="<?php echo $_SERVER['HTTP_HOST']; ?>/static/images/default/thumbnail.jpg" />
+        <meta property="og:image" content="<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST']; ?>/static/images/default/thumbnail.jpg" />
         <meta property="og:title" content="โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)" />
         <title>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ฝ่ายมัธยมศึกษา (มอดินแดง)</title>
         <meta property="og:description" content="123 มหาวิทยาลัยขอนแก่น โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น ถนนมิตรภาพ ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40002 โทรศัพท์ / โทรสาร 043202044" />
+        <link rel="image_src" href="<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST']; ?>/static/images/logo/smdlogo.jpg" />
         <?php } ?>
         <meta name="twitter:card" content="summary"></meta>
-        <link rel="image_src" href="<?php echo $_SERVER['HTTP_HOST']; ?>/static/images/logo/smdlogo.jpg" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="<?php echo $current_url; ?>" />
         <meta property="fb:app_id" content="129081655091085" />
