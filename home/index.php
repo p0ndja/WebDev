@@ -47,16 +47,6 @@
             z-index: 1;
         }
 
-        @media (pointer: coarse) and (hover: none) {
-            header {
-                background: url('../static/images/element/thumbnail2020.mp4') black no-repeat center center scroll;
-            }
-
-            header video {
-                display: url('../static/images/element/thumbnail2020.mp4');
-            }
-        }
-
         html,
         body,
         header,
@@ -100,16 +90,17 @@
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" style="filter: blur(4px);
   -webkit-filter: blur(4px);">
-            <source src="../static/images/element/thumbnail2020.mp4" type="video/mp4">
+            <source src="../static/images/element/thumbnail2020-min.webm" type="video/webm">
+            <source src="../static/images/element/thumbnail2020-min.mp4" type="video/mp4">
         </video>
         <div class="container h-100">
             <div class="d-flex h-100 text-center align-items-center">
                 <div class="w-100 text-white">
                     <div class="d-none d-md-block">
-                        <img src="../static/images/logo/logokku_t_w_b.png" class="img-fluid" style="width: 10%">
+                        <img src="../static/images/logo/logokku_t_w_b.png" class="img-fluid" style="width: 10%" alt="KKU Logo">
                     </div>
                     <div class="d-block d-md-none">
-                        <img src="../static/images/logo/logokku_t_w_b.png" class="img-fluid" style="width: 25%">
+                        <img src="../static/images/logo/logokku_t_w_b.png" class="img-fluid" style="width: 25%" alt="KKU Logo">
                     </div>
                     <h2 class="display-4 d-none d-md-block">โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น</h2>
                     <h1 class="d-block d-md-none">โรงเรียนสาธิต<br>มหาวิทยาลัยขอนแก่น</h1>
@@ -131,91 +122,63 @@
 </nav>
 
 <body>
-    <?php if (getConfig('indexpg_showCarousel', 'bool', $conn)) { ?>
-    <div class="container-fluid course-bg">
+    <?php 
+        $path = "../static/images/carousel/";
+        if (!file_exists($path))
+            mkdir($path);
+        
+        $count = 0;
+        $files = glob($path . "*.{jpg,png,gif}", GLOB_BRACE);
+        if ($files)
+            $count = count($files);
+    ?>
+    <?php if (getConfig('indexpg_showCarousel', 'bool', $conn) && $count > 0) { ?>
+    <div class="container-fluid carousel-bg">
         <div class="container mb-3" id="container">
             <div id="carousel" class="carousel carouselsmoothanimated carouselEventPreview slide carousel-fade z-depth-1" data-ride="carousel" data-interval="5000">
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel" data-slide-to="1"></li>
-                    <li data-target="#carousel" data-slide-to="2"></li>
-                    <li data-target="#carousel" data-slide-to="3"></li>
-                    <li data-target="#carousel" data-slide-to="4"></li>
-                    <li data-target="#carousel" data-slide-to="5"></li>
-                    <li data-target="#carousel" data-slide-to="6"></li>
+                    <?php 
+                    for ($i = 0; $i < $count; $i++) {
+                        echo "<li data-target='#carousel' data-slide-to='$i'";
+                        if ($i == 0) echo " class='active'></li>";
+                        else echo "></li>";
+                    }
+                    ?>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="https://cdn.discordapp.com/attachments/700717666540978266/701164374064365638/SMD_OLS_1.jpg"
-                            class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                            <div class="carousel-caption-text">
-                                <h5>SMD Online School</h5>
-                                <p>สามารถเข้าร่วมได้ที่ Discord : <a href="https://smd.pondja.com/discord"
-                                        style="color:yellow;" class="font-weight-bold">SMD Online School</a></p>
+                    <?php for ($i = 0; $i < $count; $i++) { 
+                        $picPath = $files[$i];
+                        $picName = explode(".", str_replace("../static/images/carousel/", "", $picPath));
+
+                        $line = array();
+                        $txtFile = "../static/images/carousel/$picName[0].txt";
+                        
+                        if (file_exists($txtFile)) {
+                            $file = fopen("../static/images/carousel/$picName[0].txt", "r");
+                            while(!feof($file)) {
+                                array_push($line, fgets($file));
+                                # do same stuff with the $line
+                            }
+                            fclose($file);
+                        }
+                    ?>
+                        <div class="carousel-item <?php if ($i == 0) echo 'active'; ?>">
+                            <img src="<?php echo $picPath; ?>" class="d-block w-100" <?php if ($line != null) { echo "alt='$line[0]'"; }?>>
+                            <?php if ($line != null) { ?>
+                            <div class="carousel-caption d-none d-md-block animated fadeInDown">
+                                <div class="carousel-caption-text">
+                                    <h5><?php echo $line[0]; ?></h5>
+                                    <p>
+                                    <?php for($o = 1; $o < count($line); $o++) {
+                                        echo $line[$o] . "<br>";
+                                    } ?>
+                                    </p>
+                                </div>
                             </div>
+                        <?php } ?>
                         </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://cdn.discordapp.com/attachments/601788363313512480/642620653115277322/slider_1.jpg"
-                            class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                            <div class="carousel-caption-text">
-                                <h5>พิธีไหว้ครู</h5>
-                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 28 มิถุนายน 2561</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://cdn.discordapp.com/attachments/601788363313512480/642621390935293952/slider_2.jpg"
-                            class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                            <div class="carousel-caption-text">
-                                <h5>กิจกรรมพาน้องไปวัด</h5>
-                                <p>ณ ศูนย์ปฏิบัติธรรมสวนเวฬุวัน จ.ขอนแก่น วันที่ 1-5 พฤษภาคม 2561</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://cdn.discordapp.com/attachments/601788363313512480/642626173565927425/slider_4.jpg"
-                            class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                            <div class="carousel-caption-text">
-                                <h5>กิจกรรมพาน้องไปวัด</h5>
-                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 29 เมษายน 2561</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://cdn.discordapp.com/attachments/601788363313512480/642622165350481930/slider_3.jpg"
-                            class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                            <div class="carousel-caption-text">
-                                <h5>กิจกรรมวันสงกรานต์</h5>
-                                <p>ณ โรงเรียนสาธิตฯ (มอดินแดง) วันที่ 10 เมษายน 2561</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://cdn.discordapp.com/attachments/601788363313512480/642628541145546762/slider_5.jpg"
-                            class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                            <div class="carousel-caption-text">
-                                <h5>กิจกรรมสัมมนาและส่งเสริมศักยภาพความเป็นผู้นำของคณะกรรมการนักเรียนประจำปีการศึกษา
-                                    2562</h5>
-                                <p>ณ เขื่อนจุฬาภรณ์ ต.ทุ่งลุยลาย จ.ชัยภูมิ วันที่ 25-27 พฤษภาคม 2562</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../static/images/default/default_carousel.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block animated fadeInDown">
-                            <div class="carousel-caption-text">
-                                <h5>Carousel Guide</h5>
-                                <p>ขนาดรูปที่แนะนำ: 1400(W) x 600(H)</p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
+                    
                 </div>
                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -234,190 +197,191 @@
     <div class="d-block d-md-none container mt-5 mb-5">
         <div class="alert alert-dark">/* ปิดไม่ให้เห็น Course Carousel ชั่วคราวบนมือถือ */</div>
     </div>
-    <div class="d-none d-md-block container mb-5 mt-5">
-        <!-- New Course Style -->
-        
-        <!-- TODO: Make CourseCarousel Friendly Support on Mobile -->
-        <!--Carousel Wrapper-->
-        <div id="multi-item-example" class="carousel carouselCourse slide carousel-multi-item" data-ride="carousel">
+    <div class="d-none d-md-block container-fluid course-bg">
+        <div class="container">
+            <!-- New Course Style -->
+            <!-- TODO: Make CourseCarousel Friendly Support on Mobile -->
+            <!--Carousel Wrapper-->
+            <div id="multi-item-example" class="carousel carouselCourse slide carousel-multi-item" data-ride="carousel">
 
-            <div class="d-none">
-                <!--Controls-->
-                <div class="controls-top">
-                    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i
-                            class="fas fa-chevron-left"></i></a>
-                    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-                            class="fas fa-chevron-right"></i></a>
+                <div class="d-none">
+                    <!--Controls-->
+                    <div class="controls-top">
+                        <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i
+                                class="fas fa-chevron-left"></i></a>
+                        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+                                class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <!--/.Controls-->
                 </div>
-                <!--/.Controls-->
+
+                <!--Indicators-->
+                <ol class="carousel-indicators">
+                    <li data-target="#multi-item-example" data-slide-to="0" class="active"
+                        style="background-color: #fc6504"></li>
+                    <li data-target="#multi-item-example" data-slide-to="1" style="background-color: #fc6504"></li>
+
+                </ol>
+                <!--/.Indicators-->
+
+                <!--Slides-->
+                <div class="carousel-inner" role="listbox">
+                    <!--First slide-->
+                    <div class="carousel-item active">
+                        <div class="col-md-4" style="float:left">
+                            <div class="card card-cascade wider mb-2">
+                                <div class="view view-cascade">
+                                    <img class="card-img-top" src="../static/images/course/temp/32372968_1702243213177844_8687341048659181568_o.jpg"
+                                        alt="Card image cap">
+                                </div>
+                                <div class="card-body card-body-cascade">
+                                    <div class="card-text">
+                                        <a class="btn-floating blue" href="https://www.facebook.com/SMD.KKU" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://www.facebook.com/SMD.KKU" target="_blank">SMD.KKU</a><br>
+                                        <a class="btn-floating green" href="tel:043202044"><i class="fas fa-phone"></i></a><a href="tel:043202044">(+66) 043202044</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" style="float:left">
+                            <div class="card card-cascade wider mb-2">
+                                <div class="view view-cascade">
+                                    <img class="card-img-top"
+                                        src="../static/images/course/temp/32262798_1702255009843331_7907980895921897472_o.jpg"
+                                        alt="Card image cap">
+                                    <a href="#!">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+                                
+                                <div class="card-body card-body-cascade">
+                                    <h4 class="card-title">หลักสูตรปกติ</h4>
+                                    <h5><span class="badge badge-smd z-depth-0">มัธยมศึกษาตอนต้น</span></h5>
+                                    <div class="collapse-content">
+                                        <p class="card-text collapse" id="pNormalCollapse">
+                                            มีเป้าหมายเพื่อให้นักเรียนมีความรู้พื้นฐานและทักษะการคิดที่จำเป็นในการดำเนินชีวิต
+                                            ใช้เทคโนโลยีเพื่อการสื่อสาร รู้และเข้าใจตนเองตลอดจนสังคมตระหนักถึงความเป็นพลโลก
+                                        </p>
+                                        <a class="btn btn-flat text-smd p-1 my-1 mr-0 mml-1 collapsed"
+                                            data-toggle="collapse" href="#pNormalCollapse" aria-expanded="false"
+                                            aria-controls="collapseContent"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" style="float:left">
+                            <div class="card card-cascade wider mb-2">
+                                <div class="view view-cascade">
+                                    <img class="card-img-top"
+                                        src="../static/images/course/temp/32266858_1702256239843208_898557860412129280_o.jpg"
+                                        alt="Card image cap">
+                                </div>
+                                <div class="card-body card-body-cascade">
+                                    <h4 class="card-title">หลักสูตร JEMS</h4>
+                                    <h5><span class="badge badge-smd z-depth-0">มัธยมศึกษาตอนต้น</span></h5>
+                                    <div class="collapse-content">
+                                        <p class="card-text collapse" id="pJEMSCollapse">
+                                            มีเป้าหมายเพื่อให้ผู้เรียนมีความรู้และทักษะการคิดที่จำเป็นในการดำเนินชีวิต
+                                            มีทักษะกระบวนการทางวิทยาศาสตร์ - คณิตศาสตร์ เชื่อมโยงและบูรณาการณศาสตร์
+                                            เพื่อสร้างชิ้นงาน / โครงงาน ใช้เทคโนโลยีและภาษาอังกฤษในการสื่อสารและสืบค้น
+                                            รู้และเข้าใจตนเองตลอดจนสังคม ตระหนักถึงความเป็นพลโลก</p>
+                                        <a class="btn btn-flat text-smd p-1 my-1 mr-0 mml-1 collapsed"
+                                            data-toggle="collapse" href="#pJEMSCollapse" aria-expanded="false"
+                                            aria-controls="collapseContent"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.First slide-->
+
+                    <!--Second slide-->
+                    <div class="carousel-item">
+
+                        <div class="col-md-4" style="float:left">
+                            <div class="card card-cascade wider mb-2">
+                                <div class="view view-cascade">
+                                    <img class="card-img-top"
+                                        src="../static/images/course/temp/32463135_1702250333177132_5636889996108496896_o.jpg"
+                                        alt="Card image cap">
+                                </div>
+                                <div class="card-body card-body-cascade">
+                                    <h4 class="card-title">หลักสูตรปกติ</h4>
+                                    <h5><span class="badge red z-depth-0">มัธยมศึกษาตอนปลาย</span></h5>
+                                    <div class="collapse-content">
+                                        <p class="card-text collapse" id="sNormalCollapse">
+                                            มีเป้าหมายเพื่อให้นักเรียนมีความรู้พื้นฐานและทักษะการคิด
+                                            มีทักษะกระบวนการทางวิทยาศาสตร์ - คณิตศาสตร์ ใช้เทคโนโลยีเพื่อการสื่อสาร
+                                            นักเรียนมีเป้าหมายในการศึกษาต่อและประกอบอาชีพตามความถนัดและความสนใจ
+                                            รู้และเข้าใจตนเอง ตลอดจนสังคม ตระหนักถึงความเป็นพลโลก</p>
+                                        <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed"
+                                            data-toggle="collapse" href="#sNormalCollapse" aria-expanded="false"
+                                            aria-controls="collapseContent"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" style="float:left">
+                            <div class="card card-cascade wider mb-2">
+                                <div class="view view-cascade">
+                                    <img class="card-img-top"
+                                        src="../static/images/course/temp/32377662_1702248076510691_8551041704629633024_o.jpg"
+                                        alt="Card image cap">
+                                </div>
+                                <div class="card-body card-body-cascade">
+                                    <h4 class="card-title">หลักสูตร SEMS</h4>
+                                    <h5><span class="badge red z-depth-0">มัธยมศึกษาตอนปลาย</span></h5>
+                                    <div class="collapse-content">
+                                        <p class="card-text collapse" id="sSEMSCollapse">
+                                            มีเป้าหมายเพื่อให้นักเรียนมีความรู้พื้นฐาน มีทักษะการคิด
+                                            มุ่งเน้นทักษะปฏิบัติการทางวิทยาศาสตร์ขั้นสูง ใช้ทักษะกระบวนการทางวิทยาศาสตร์ -
+                                            คณิตศาสตร์ เชื่อมโยงและบูรณาการณศาสตร์ เพื่อสร้างชิ้นงาน / โครงงาน
+                                            ใช้เทคโนโลยีและภาษาอังกฤษในการสื่อสารและสืบค้น มุ่งเน้นการพัฒนาทักษะภาษาอังกฤษ
+                                            เพื่อรองรับการเข้าสู่มาตรฐานระดับนานาชาติ รู้และเข้าใจตนเองตลอดจนสังคม
+                                            ตระหนักถึงความเป็นพลโลก</p>
+                                        <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed"
+                                            data-toggle="collapse" href="#sSEMSCollapse" aria-expanded="false"
+                                            aria-controls="collapseContent"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" style="float:left">
+                            <div class="card card-cascade wider mb-2">
+                                <div class="view view-cascade">
+                                    <img class="card-img-top"
+                                        src="../static/images/course/temp/32414071_1702251376510361_873323149431668736_o.jpg"
+                                        alt="Card image cap">
+                                </div>
+                                <div class="card-body card-body-cascade">
+                                    <h4 class="card-title">หลักสูตร วมว.</h4>
+                                    <h5><span class="badge red z-depth-0">มัธยมศึกษาตอนปลาย</span></h5>
+                                    <div class="collapse-content">
+                                        <p class="card-text collapse" id="sSCiUSCollapse">
+                                            เพื่อสนับสนุนการขยายฐานกำลังคนนักวิจัยด้านวิทยาศาสตร์และเทคโนโลยีที่มีศักยภาพตั้งแต่ระดับมัธยมศึกษาตอนปลาย
+                                            โดยมีจุดเน้นด้านวิทยาศาสตร์ธรรมชาติ วิทยาศาสตร์ประยุกต์
+                                            เทคโนโลยีชีวภาพและเทคโนโลยีการเกษตร
+                                            โดยการจัดการเรียนการสอนที่มุ่งเน้นทักษะกระบวนการทางวิทยาศาสตร์
+                                            ผ่านโครงงานและงานวิจัยทางวิทยาศาสตร์และเน้นกระบวนการคิดตามแนวทางการศึกษาชั้นเรียน
+                                            (Lesson Study) และวิธีการแบบเปิด (Open Approach)</p>
+                                        <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed"
+                                            data-toggle="collapse" href="#sSCiUSCollapse" aria-expanded="false"
+                                            aria-controls="collapseContent"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.Second slide-->
+                </div>
+                <!--/.Slides-->
             </div>
-
-            <!--Indicators-->
-            <ol class="carousel-indicators">
-                <li data-target="#multi-item-example" data-slide-to="0" class="active"
-                    style="background-color: #fc6504"></li>
-                <li data-target="#multi-item-example" data-slide-to="1" style="background-color: #fc6504"></li>
-
-            </ol>
-            <!--/.Indicators-->
-
-            <!--Slides-->
-            <div class="carousel-inner" role="listbox">
-                <!--First slide-->
-                <div class="carousel-item active">
-                    <div class="col-md-4" style="float:left">
-                        <div class="card card-cascade wider mb-2">
-                            <div class="view view-cascade">
-                                <img class="card-img-top" src="../static/images/course/temp/32372968_1702243213177844_8687341048659181568_o.jpg"
-                                    alt="Card image cap">
-                            </div>
-                            <div class="card-body card-body-cascade">
-                                <div class="card-text">
-                                    <a class="btn-floating blue" href="https://www.facebook.com/SMD.KKU" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://www.facebook.com/SMD.KKU" target="_blank">SMD.KKU</a><br>
-                                    <a class="btn-floating green" href="tel:043202044"><i class="fas fa-phone"></i></a><a href="tel:043202044">(+66) 043202044</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4" style="float:left">
-                        <div class="card card-cascade wider mb-2">
-                            <div class="view view-cascade">
-                                <img class="card-img-top"
-                                    src="../static/images/course/temp/32262798_1702255009843331_7907980895921897472_o.jpg"
-                                    alt="Card image cap">
-                                <a href="#!">
-                                    <div class="mask rgba-white-slight"></div>
-                                </a>
-                            </div>
-                            
-                            <div class="card-body card-body-cascade">
-                                <h4 class="card-title">หลักสูตรปกติ</h4>
-                                <h5><span class="badge badge-smd z-depth-0">มัธยมศึกษาตอนต้น</span></h5>
-                                <div class="collapse-content">
-                                    <p class="card-text collapse" id="pNormalCollapse">
-                                        มีเป้าหมายเพื่อให้นักเรียนมีความรู้พื้นฐานและทักษะการคิดที่จำเป็นในการดำเนินชีวิต
-                                        ใช้เทคโนโลยีเพื่อการสื่อสาร รู้และเข้าใจตนเองตลอดจนสังคมตระหนักถึงความเป็นพลโลก
-                                    </p>
-                                    <a class="btn btn-flat text-smd p-1 my-1 mr-0 mml-1 collapsed"
-                                        data-toggle="collapse" href="#pNormalCollapse" aria-expanded="false"
-                                        aria-controls="collapseContent"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4" style="float:left">
-                        <div class="card card-cascade wider mb-2">
-                            <div class="view view-cascade">
-                                <img class="card-img-top"
-                                    src="../static/images/course/temp/32266858_1702256239843208_898557860412129280_o.jpg"
-                                    alt="Card image cap">
-                            </div>
-                            <div class="card-body card-body-cascade">
-                                <h4 class="card-title">หลักสูตร JEMS</h4>
-                                <h5><span class="badge badge-smd z-depth-0">มัธยมศึกษาตอนต้น</span></h5>
-                                <div class="collapse-content">
-                                    <p class="card-text collapse" id="pJEMSCollapse">
-                                        มีเป้าหมายเพื่อให้ผู้เรียนมีความรู้และทักษะการคิดที่จำเป็นในการดำเนินชีวิต
-                                        มีทักษะกระบวนการทางวิทยาศาสตร์ - คณิตศาสตร์ เชื่อมโยงและบูรณาการณศาสตร์
-                                        เพื่อสร้างชิ้นงาน / โครงงาน ใช้เทคโนโลยีและภาษาอังกฤษในการสื่อสารและสืบค้น
-                                        รู้และเข้าใจตนเองตลอดจนสังคม ตระหนักถึงความเป็นพลโลก</p>
-                                    <a class="btn btn-flat text-smd p-1 my-1 mr-0 mml-1 collapsed"
-                                        data-toggle="collapse" href="#pJEMSCollapse" aria-expanded="false"
-                                        aria-controls="collapseContent"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/.First slide-->
-
-                <!--Second slide-->
-                <div class="carousel-item">
-
-                    <div class="col-md-4" style="float:left">
-                        <div class="card card-cascade wider mb-2">
-                            <div class="view view-cascade">
-                                <img class="card-img-top"
-                                    src="../static/images/course/temp/32463135_1702250333177132_5636889996108496896_o.jpg"
-                                    alt="Card image cap">
-                            </div>
-                            <div class="card-body card-body-cascade">
-                                <h4 class="card-title">หลักสูตรปกติ</h4>
-                                <h5><span class="badge red z-depth-0">มัธยมศึกษาตอนปลาย</span></h5>
-                                <div class="collapse-content">
-                                    <p class="card-text collapse" id="sNormalCollapse">
-                                        มีเป้าหมายเพื่อให้นักเรียนมีความรู้พื้นฐานและทักษะการคิด
-                                        มีทักษะกระบวนการทางวิทยาศาสตร์ - คณิตศาสตร์ ใช้เทคโนโลยีเพื่อการสื่อสาร
-                                        นักเรียนมีเป้าหมายในการศึกษาต่อและประกอบอาชีพตามความถนัดและความสนใจ
-                                        รู้และเข้าใจตนเอง ตลอดจนสังคม ตระหนักถึงความเป็นพลโลก</p>
-                                    <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed"
-                                        data-toggle="collapse" href="#sNormalCollapse" aria-expanded="false"
-                                        aria-controls="collapseContent"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4" style="float:left">
-                        <div class="card card-cascade wider mb-2">
-                            <div class="view view-cascade">
-                                <img class="card-img-top"
-                                    src="../static/images/course/temp/32377662_1702248076510691_8551041704629633024_o.jpg"
-                                    alt="Card image cap">
-                            </div>
-                            <div class="card-body card-body-cascade">
-                                <h4 class="card-title">หลักสูตร SEMS</h4>
-                                <h5><span class="badge red z-depth-0">มัธยมศึกษาตอนปลาย</span></h5>
-                                <div class="collapse-content">
-                                    <p class="card-text collapse" id="sSEMSCollapse">
-                                        มีเป้าหมายเพื่อให้นักเรียนมีความรู้พื้นฐาน มีทักษะการคิด
-                                        มุ่งเน้นทักษะปฏิบัติการทางวิทยาศาสตร์ขั้นสูง ใช้ทักษะกระบวนการทางวิทยาศาสตร์ -
-                                        คณิตศาสตร์ เชื่อมโยงและบูรณาการณศาสตร์ เพื่อสร้างชิ้นงาน / โครงงาน
-                                        ใช้เทคโนโลยีและภาษาอังกฤษในการสื่อสารและสืบค้น มุ่งเน้นการพัฒนาทักษะภาษาอังกฤษ
-                                        เพื่อรองรับการเข้าสู่มาตรฐานระดับนานาชาติ รู้และเข้าใจตนเองตลอดจนสังคม
-                                        ตระหนักถึงความเป็นพลโลก</p>
-                                    <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed"
-                                        data-toggle="collapse" href="#sSEMSCollapse" aria-expanded="false"
-                                        aria-controls="collapseContent"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4" style="float:left">
-                        <div class="card card-cascade wider mb-2">
-                            <div class="view view-cascade">
-                                <img class="card-img-top"
-                                    src="../static/images/course/temp/32414071_1702251376510361_873323149431668736_o.jpg"
-                                    alt="Card image cap">
-                            </div>
-                            <div class="card-body card-body-cascade">
-                                <h4 class="card-title">หลักสูตร วมว.</h4>
-                                <h5><span class="badge red z-depth-0">มัธยมศึกษาตอนปลาย</span></h5>
-                                <div class="collapse-content">
-                                    <p class="card-text collapse" id="sSCiUSCollapse">
-                                        เพื่อสนับสนุนการขยายฐานกำลังคนนักวิจัยด้านวิทยาศาสตร์และเทคโนโลยีที่มีศักยภาพตั้งแต่ระดับมัธยมศึกษาตอนปลาย
-                                        โดยมีจุดเน้นด้านวิทยาศาสตร์ธรรมชาติ วิทยาศาสตร์ประยุกต์
-                                        เทคโนโลยีชีวภาพและเทคโนโลยีการเกษตร
-                                        โดยการจัดการเรียนการสอนที่มุ่งเน้นทักษะกระบวนการทางวิทยาศาสตร์
-                                        ผ่านโครงงานและงานวิจัยทางวิทยาศาสตร์และเน้นกระบวนการคิดตามแนวทางการศึกษาชั้นเรียน
-                                        (Lesson Study) และวิธีการแบบเปิด (Open Approach)</p>
-                                    <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed"
-                                        data-toggle="collapse" href="#sSCiUSCollapse" aria-expanded="false"
-                                        aria-controls="collapseContent"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/.Second slide-->
-            </div>
-            <!--/.Slides-->
+            <!--/.Carousel Wrapper-->
+            <!-- New Course Style -->
         </div>
-        <!--/.Carousel Wrapper-->
-        <!-- New Course Style -->
     </div>
     </div>
     <?php } ?>
