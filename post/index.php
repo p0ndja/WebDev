@@ -128,7 +128,7 @@
                     <hr>
                     <h5 class="font-weight-bold">ไฟล์แนบท้าย</h5>
                     <?php foreach (explode(",", $row['attachment']) as $attach_split) { $n_attach++;?>
-                    <li><a href="<?php echo $a; ?>"
+                    <li><a href="<?php echo $attach_split; ?>"
                             target="_blank"><?php echo str_replace("../file/post/" . $_GET['id'] . "/" . "attachment/", "", $attach_split); ?></a>
                     </li>
                     <?php } ?>

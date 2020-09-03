@@ -13,7 +13,6 @@
         <?php require '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
-<?php echo $_SERVER['HTTP_HOST']; ?>
     </div>
 <?php require '../global/popup.php'; ?>
 <?php require '../global/footer.php'; ?>

@@ -61,14 +61,11 @@
                             <?php
 $cor = mysqli_query($conn, "SELECT * FROM `config` WHERE title LIKE '%[Global]%'");
 while($get_config = mysqli_fetch_array($cor, MYSQLI_ASSOC)) {
-$b = $get_config['bool'];
-if ($b == true) $b = ' checked';
-else $b = ' ';
                 ?>
                             <!-- Material checked -->
                             <div class="switch switch-warning mb-1 ">
                                 <label>
-                                    <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
+                                    <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php if($get_config['bool']) echo "checked"; ?>>
                                     <span class="lever">
                                     </span>
                                     <a class="material-tooltip-main" data-toggle="tooltip"
@@ -96,14 +93,11 @@ else $b = ' ';
                             <?php
 $cor = mysqli_query($conn, "SELECT * FROM `config` WHERE title LIKE '%[Achievement]%'");
 while($get_config = mysqli_fetch_array($cor, MYSQLI_ASSOC)) {
-$b = $get_config['bool'];
-if ($b == true) $b = ' checked';
-else $b = ' ';
                         ?>
                             <!-- Material checked -->
                             <div class="switch switch-warning mb-1 ">
                                 <label>
-                                    <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
+                                    <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php if($get_config['bool']) echo "checked"; ?>>
                                     <span class="lever">
                                     </span>
                                     <a class="material-tooltip-main" data-toggle="tooltip"
@@ -131,14 +125,11 @@ else $b = ' ';
                             <?php
 $cor = mysqli_query($conn, "SELECT * FROM `config` WHERE title LIKE '%[Home]%'");
 while($get_config = mysqli_fetch_array($cor, MYSQLI_ASSOC)) {
-$b = $get_config['bool'];
-if ($b == true) $b = ' checked';
-else $b = ' ';
 ?>
                             <!-- Material checked -->
                             <div class="switch switch-warning mb-1 ">
                                 <label>
-                                    <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
+                                    <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php if($get_config['bool']) echo "checked"; ?>>
                                     <span class="lever">
                                     </span>
                                     <a class="material-tooltip-main" data-toggle="tooltip"
@@ -166,14 +157,11 @@ else $b = ' ';
                             <?php
 $cor = mysqli_query($conn, "SELECT * FROM `config` WHERE title LIKE '%[User]%'");
 while($get_config = mysqli_fetch_array($cor, MYSQLI_ASSOC)) {
-$b = $get_config['bool'];
-if ($b == true) $b = ' checked';
-else $b = ' ';
 ?>
                             <!-- Material checked -->
                             <div class="switch switch-warning mb-1 ">
                                 <label>
-                                    <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php echo $b; ?>>
+                                    <input type="checkbox" name="<?php echo $get_config['name'];?>" <?php if($get_config['bool']) echo "checked"; ?>>
                                     <span class="lever">
                                     </span>
                                     <a class="material-tooltip-main" data-toggle="tooltip"

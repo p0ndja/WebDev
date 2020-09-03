@@ -1,4 +1,8 @@
 <?php require('global/connect.php'); ?>
+
+<?php   if(isset($_SESSION['isVisitedLandingPage'])) header("Location: ./home/");
+        else     $_SESSION['isVisitedLandingPage'] = true;
+?>
 <!DOCTYPE html>
 <html lang="th">
 
@@ -119,23 +123,19 @@
     </header>
     <script>
     $( document ).ready(function() {      
-    var is_mobile = false;
+        var is_mobile = false;
 
-    if( $('#container').css('display')=='none') {
-        is_mobile = true;       
-    }
+        if ($('#container').css('display') == 'none') 
+            is_mobile = true;       
+        
 
-    if (is_mobile == true) {
-        window.location = "./home";
-    }
-    var aud = document.getElementById("video");
-    aud.onended = function() {
-    window.location = "./home";
-};
-
- });
+        if (is_mobile == true)
+            window.location = "./home";
+        
+        document.getElementById("video").onended = function() {
+            window.location = "./home";
+        };
+    });
     </script>
 </body>
-
-
 </html>
