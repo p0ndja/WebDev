@@ -1,10 +1,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Accept-Encoding" content="gzip, compress, br">
-    <meta http-equiv="Cache-Control" content="max-age=31536000">
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Charmonman|Kanit|Sarabun&display=swap" rel="stylesheet">
 
     <!-- Webcustom -->
     <link rel="shortcut icon" href="../static/images/logo/favicon.ico" type="image/x-icon">
@@ -20,9 +17,9 @@
     
     <!-- Custom Style -->
     <link href="../static/css/style.css" rel="stylesheet">
-    <link href="../static/css/fonts_morkhor.css" rel="stylesheet">
     <link href="../static/css/dark-mode.css" rel="stylesheet">
     <link href="../static/css/widthme.css" rel="stylesheet">
+    <link href="../static/font/font.css" rel="stylesheet">
     
     <!-- Bootstrap -->
     <script type="text/javascript" src="../static/js/1.16.0-popper.min.js"></script>
