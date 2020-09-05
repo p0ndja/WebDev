@@ -164,6 +164,7 @@
                     ?>
                         <div class="carousel-item <?php if ($i == 0) echo 'active'; ?>">
                             <img src="<?php echo $picPath; ?>" class="d-block w-100" <?php if ($line != null) { echo "alt='$line[0]'"; }?>>
+                            <!-- style="-webkit-mask-image: -webkit-gradient(linear, left 50%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))" -->
                             <?php if ($line != null) { ?>
                             <div class="carousel-caption d-none d-md-block animated fadeInDown">
                                 <div class="carousel-caption-text">
