@@ -161,6 +161,7 @@
         background-color: rgba(0,0,0,0.5) !important;
     }
     
+    /*
     p,
     li,
     ul,
@@ -168,6 +169,7 @@
     blockquote {
         color: #606060;
     }
+    */
 
     .dropdown .dropdown-menu.dropdown-smd .dropdown-item:hover,
     .dropdown .dropdown-menu.dropdown-smd .dropdown-item:active,
