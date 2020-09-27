@@ -20,6 +20,14 @@
     <link href="../static/css/dark-mode.css" rel="stylesheet">
     <link href="../static/css/widthme.css" rel="stylesheet">
     <link href="../static/font/font.css" rel="stylesheet">
+
+    <!-- MDBootstarp Module -->
+    <link href="../static/css/modules/accordion-extended.min.css" rel="stylesheet">
+    <link href="../static/css/modules/animations-extended.min.css" rel="stylesheet">
+    <link href="../static/css/modules/charts.min.css" rel="stylesheet">
+    <link href="../static/css/modules/lightbox.min.css" rel="stylesheet">
+    <link href="../static/css/modules/megamenu.min.css" rel="stylesheet">
+    <link href="../static/css/modules/parallax.min.css" rel="stylesheet">
     
     <!-- Bootstrap -->
     <script type="text/javascript" src="../static/js/1.16.0-popper.min.js"></script>
