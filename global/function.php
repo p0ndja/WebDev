@@ -125,10 +125,8 @@
     }
 
     function isVerify($id, $conn) {
-        return getUserdata('604019', 'isEmailVerify', $conn);
+        return getUserdata($id, 'isEmailVerify', $conn);
     }
-
-
 
     function getForumPropertiesSQL($sql, $val, $key, $key_val, $conn) {
         return mysqli_fetch_array(mysqli_query($conn, "SELECT `$val` from `$sql` WHERE $key = '$key_val'"), MYSQLI_ASSOC)[$val];
