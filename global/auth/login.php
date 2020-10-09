@@ -137,13 +137,13 @@ if (isset($_POST['register_submit'])) {
             die('Could not register ' . mysqli_error($conn));
         } else {
             if ($role == "student") {
-                $query_class = "UPDATE `user` SET grade = '$grade', class = '$class'";
+                $query_class = "UPDATE `user` SET grade = '$grade', class = '$class' WHERE id = $id";
                 $result_class = mysqli_query($conn, $query_class);
                 if (! $result_class) {
                     die('Could not add parent ID ' . mysqli_error($conn));
                 }
             } else if ($role == "parent") {
-                $query_parentID = "UPDATE `user` SET parentID = '$childID'";
+                $query_parentID = "UPDATE `user` SET parentID = '$childID' WHERE id = $id";
                 $result_parentID = mysqli_query($conn, $query_parentID);
                 if (! $result_parentID) {
                     die('Could not add parent ID ' . mysqli_error($conn));
