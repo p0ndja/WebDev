@@ -101,18 +101,18 @@
 
                             if (listMimeImg.indexOf(file.type) > -1) {
                                 //Picture
-                                $('.summernote').summernote('editor.insertImage', reponse.filename);
+                                $('.summernote').summernote('editor.insertImage', reponse);
                             } else if (listMimeAudio.indexOf(file.type) > -1) {
                                 //Audio
                                 elem = document.createElement("audio");
-                                elem.setAttribute("src", reponse.filename);
+                                elem.setAttribute("src", reponse);
                                 elem.setAttribute("controls", "controls");
                                 elem.setAttribute("preload", "metadata");
                                 $('.summernote').summernote('editor.insertNode', elem);
                             } else if (listMimeVideo.indexOf(file.type) > -1) {
                                 //Video
                                 elem = document.createElement("video");
-                                elem.setAttribute("src", reponse.filename);
+                                elem.setAttribute("src", reponse);
                                 elem.setAttribute("controls", "controls");
                                 elem.setAttribute("preload", "metadata");
                                 $('.summernote').summernote('editor.insertNode', elem);
@@ -122,7 +122,7 @@
                                 let linkText = document.createTextNode(file.name);
                                 elem.appendChild(linkText);
                                 elem.title = file.name;
-                                elem.href = reponse.filename;
+                                elem.href = reponse;
                                 $('.summernote').summernote('editor.insertNode', elem);
                             }
                         

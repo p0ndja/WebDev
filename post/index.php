@@ -69,9 +69,6 @@
                 if ($c == "~") {
                     $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND hide = 0 ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
                     $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%' AND hide = 0";
-                } else if (strpos($t,"hidden") === false) {
-                    $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND type = '$category' AND hide = 0 ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
-                    $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%' AND hide = 0";
                 } else if (startsWith($t, "@") && isValidUserID(str_replace("@", "", trim($_GET['tags'])),$conn)) {
                     $query = "SELECT * FROM `post` WHERE tags LIKE '%$t%' AND hide = 0 ORDER by pin DESC, time DESC limit {$start_id}, {$news_per_page}";
                     $query_count = "SELECT `id` FROM `post` WHERE tags LIKE '%$t%' AND hide = 0";
@@ -157,7 +154,7 @@
         </div>
         <div class="mb-3"></div>
         <?php if (!isset($_GET['id'])) {
-            if ($c > 0) { ?>
+            if ($c > 0 && $c > $news_per_page) { ?>
         <hr>
         <?php
             $total = mysqli_num_rows(mysqli_query($conn, $query_count));
@@ -184,7 +181,7 @@
                 </li>
             </ul>
         </nav>
-        <?php } else { ?>
+        <?php } else if ($c == 0) { ?>
             <h4 class="text-center"><i>ไม่พบข้อมูล</i></h4>
         <?php }
      } ?>
