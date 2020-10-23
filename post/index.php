@@ -43,7 +43,6 @@
     ?>
 
     <div class="container" id="container" style="padding-top: 88px">
-        
         <?php if(!isset($_GET['id'])) {
             if (isset($_GET['tags']) && startsWith($_GET['tags'] ,"@")) { ?>
                 <div class='display-5'>โพสต์ที่เกี่ยวข้องกับ '<?php echo getUserdata(str_replace("@", "", trim($_GET['tags'])), 'firstname', $conn) . ' ' . getUserdata(str_replace("@", "", trim($_GET['tags'])), 'lastname', $conn) . " (". str_replace("@", "", trim($_GET['tags'])) .")"; ?>'
@@ -84,7 +83,7 @@
             $c = 0;
 
             $result = mysqli_query($conn, $query); ?>
-        <?php if (!isset($_GET['id'])) { ?><div class="card-columns"><?php } ?>
+        <?php if (!isset($_GET['id'])) { ?><div class="card-columns"><?php } else {?><a onclick="window.history.back();" class="float-left"><i class="fas fa-arrow-left"></i> ย้อนกลับ</a><br><?php } ?>
             <?php while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { $c++; ?>
             <?php if (getPostdata($row['id'], 'hotlink', $conn) == null) { ?>
             <div class="card hoverable mb-3">
