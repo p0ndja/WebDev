@@ -17,8 +17,7 @@
             <div class="md-form form-lg">
                 <i class="fas fa-search prefix"></i>
                 <input value="<?php if (isset($_POST['search'])) echo $_POST['search']; ?>" type="text" id="search"
-                    class="form-control form-control-lg" name="search">
-                <label for="search">Search</label>
+                    class="form-control form-control-lg" name="search" placeholder="Type something to search and enter!">
             </div>
         </form></h1>
         <hr>
