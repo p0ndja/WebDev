@@ -165,7 +165,7 @@
     <div class="container" id="container" style="padding-top: 88px">
         <?php if (!isset($_GET['id'])) { ?>
         <?php $category = ""; if(isset($_GET['category'])) $category = $_GET['category']; ?>
-        <div class="text-right">
+        <div class="float-right">
         <a href="../threads/create" class="btn bg-smd"><i class="fas fa-plus"></i> สร้างโพสต์ใหม่!</a>
         </div>
         <table class="table table-sm table-hover bg-white" id="forumTable">
@@ -248,6 +248,7 @@
 
                         $article = str_replace('%deletebyadmin%', '<div class="alert alert-danger" role="alert">ข้อความนี้ถูกลบโดยผู้ดูแลระบบ</div>', str_replace('%deletebyuser%', '<div class="alert alert-warning" role="alert">ข้อความนี้ถูกลบโดยผู้โพสต์</div>', $article))
             ?>
+                <a onclick="window.history.back();" class="float-left"><i class="fas fa-arrow-left"></i> ย้อนกลับ</a><br>
         <div class="card mb-4">
             <?php if ($comment_id == 1) {
                 if ($isThisPostMainCommentWasDeleted) { $_SESSION['forum_error'] = $article; header("Location: ../threads/error"); } ?>
