@@ -30,7 +30,7 @@ if (isset($_POST['forum_submit']) || isset($_POST['forum_update'])) {
         if (!$result_final) die('Could not post '.mysqli_error($connForum));
         $topic = mysqli_insert_id($connForum);
 
-        $query_create_table = "CREATE TABLE IF NOT EXISTS `id_$topic` (id INT NOT NULL AUTO_INCREMENT, writer INT NOT NULL, title TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, message LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, timestamp TEXT NOT NULL, isDelete BOOLEAN NOT NULL DEFAULT FALSE, PRIMARY KEY (id))";
+        $query_create_table = "CREATE TABLE IF NOT EXISTS `id_$topic` (id INT NOT NULL AUTO_INCREMENT, writer INT NOT NULL, title TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, message LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, isDelete BOOLEAN NOT NULL DEFAULT FALSE, PRIMARY KEY (id))";
         $result_table = mysqli_query($connForum, $query_create_table);
         if (!$result_table) die('Could not post '.mysqli_error($connForum));
         $query_data = "INSERT INTO `id_$topic` (writer, title, message, timestamp) VALUES ($id, '$title', '$article', '$time')";
