@@ -276,32 +276,55 @@
         date_default_timezone_set('Asia/Bangkok'); return date('Y-m-d H:i:s', time());
     }
 
-    function image_resize($file_name, $width, $height, $crop=FALSE) {
-        list($wid, $ht) = getimagesize($file_name);
-        $r = $wid / $ht;
-        if ($crop) {
-           if ($wid > $ht) {
-              $wid = ceil($wid-($width*abs($r-$width/$height)));
-           } else {
-              $ht = ceil($ht-($ht*abs($r-$w/$h)));
-           }
-           $new_width = $width;
-           $new_height = $height;
-        } else {
-           if ($width/$height > $r) {
-              $new_width = $height*$r;
-              $new_height = $height;
-           } else {
-              $new_height = $width/$r;
-              $new_width = $width;
-           }
-        }
-        $source = imagecreatefromjpeg($file_name);
-        $dst = imagecreatetruecolor($new_width, $new_height);
-        imagecopyresampled($dst, $source, 0, 0, 0, 0, $new_width, $new_height, $wid, $ht);
+    function createThumbnail($path) {
+        $dir = pathinfo($path, PATHINFO_DIRNAME);
+        $nam = pathinfo($path, PATHINFO_FILENAME);
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
 
-        $file = imagejpeg($dst, $file_name . "_thumbnail.jpg");
-        return $file;
+        list($wid, $ht) = getimagesize($path);
+        return imageResize($wid/10, "$dir/$nam.thumbnail", $path);
+    }
+
+    function imageResize($newWidth, $targetFile, $originalFile) {
+
+        $info = getimagesize($originalFile);
+        $mime = $info['mime'];
+    
+        switch ($mime) {
+                case 'image/jpeg':
+                        $image_create_func = 'imagecreatefromjpeg';
+                        $image_save_func = 'imagejpeg';
+                        $new_image_ext = 'jpg';
+                        break;
+    
+                case 'image/png':
+                        $image_create_func = 'imagecreatefrompng';
+                        $image_save_func = 'imagepng';
+                        $new_image_ext = 'png';
+                        break;
+    
+                case 'image/gif':
+                        $image_create_func = 'imagecreatefromgif';
+                        $image_save_func = 'imagegif';
+                        $new_image_ext = 'gif';
+                        break;
+    
+                default: 
+                        throw new Exception('Unknown image type.');
+        }
+    
+        $img = $image_create_func($originalFile);
+        list($width, $height) = getimagesize($originalFile);
+    
+        $newHeight = (int) floor(($height / $width) * $newWidth);
+        $newWidth = (int) floor($newWidth);
+        $tmp = imagecreatetruecolor($newWidth, $newHeight);
+        imagecopyresampled($tmp, $img, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+    
+        if (file_exists($targetFile)) {
+                unlink($targetFile);
+        }
+        return $image_save_func($tmp, "$targetFile.$new_image_ext");
     }
 
     function base64($f, $user, $type) {
