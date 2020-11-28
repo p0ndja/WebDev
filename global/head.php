@@ -28,6 +28,12 @@
     <link href="../static/css/modules/lightbox.min.css" rel="stylesheet">
     <link href="../static/css/modules/megamenu.min.css" rel="stylesheet">
     <link href="../static/css/modules/parallax.min.css" rel="stylesheet">
+
+    <!-- Flipbook StyleSheet -->
+    <link href="../static/dflip/css/dflip.min.css" rel="stylesheet" type="text/css">
+    <!-- Icons Stylesheet -->
+    <link href="../static/dflip/css/themify-icons.min.css" rel="stylesheet" type="text/css">
+
     
     <!-- Bootstrap -->
     <script type="text/javascript" src="../static/js/1.16.0-popper.min.js"></script>

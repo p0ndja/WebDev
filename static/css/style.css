@@ -2,6 +2,10 @@
         scroll-behavior: smooth;
     }
 
+    .ti-angle-left, .ti-angle-right{
+        color: #fc6504 !important;
+    }
+
     .sf-snow-flake {
         position: fixed;
         top: -20px;
