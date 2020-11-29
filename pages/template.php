@@ -13,7 +13,7 @@
         <?php require '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
-        <a onclick="javascript:void window.open('https://www.pondja.com/','1606564880393','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;">test</a>
+        <a onclick="javascript:void window.open('../pages/flipbook_loader.php?file=<?php echo $_GET['file']?>','1606564880393','width=800,height=600,toolbar=0,menubar=0,location=0,status=0,scrollbars=1,resizable=0,left=0,top=0');return false;">test</a>
     </div>
 <?php require '../global/popup.php'; ?>
 <?php require '../global/footer.php'; ?>
