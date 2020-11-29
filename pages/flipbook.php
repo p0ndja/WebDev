@@ -13,7 +13,7 @@
         <?php require '../global/navbar.php'; ?>
     </nav>
     <div class="container" id="container" style="padding-top: 88px">
-        <a onclick="javascript:void window.open('https://www.pondja.com/','1606564880393','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;">test</a>
+        <div class="_df_book" height="800" webgl="true" backgroundcolor="transparent" source="KEPT.pdf" id="df_manual_book"></div>
     </div>
 <?php require '../global/popup.php'; ?>
 <?php require '../global/footer.php'; ?>
