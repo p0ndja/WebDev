@@ -38,7 +38,7 @@
                 <div class="card-footer">
                     <div class="d-flex justify-content-between">
                         <div class="align-self-center">
-                            <a href="#" class="text-danger">ลืมรหัสผ่านหรอ?</a> หรือ <a href="../register/" class="text-smd">สมัครเข้าใช้งานที่นี่!</a>
+                            <a href="../forgetpw/" class="text-danger">ลืมรหัสผ่านหรอ?</a> หรือ <a href="../register/" class="text-smd">สมัครเข้าใช้งานที่นี่!</a>
                         </div>
                         <div>
                             <input class="btn btn-success" type="submit" name="login_submit" value="ล็อกอิน"></input>

@@ -1,7 +1,52 @@
 <?php declare(strict_types=1);
+
+    class User{
+        private $id;
+        private $username;
+        private $name;
+        public function __construct($id, $username, $name) {
+            $this->name = $name;
+            $this->username = $username;
+            $this->id = $id;
+        }
+        public function getID() {
+            return $this->id;
+        }
+        public function getName() {
+            return $this->name;
+        }
+        public function setName($name) {
+            $this->name = $name;
+        }
+        public function getUsername() {
+            return $this->username;
+        }
+    }
+    
     function isLogin() {
         if (isset($_SESSION['id'])) return true;
         return false;
+    }
+
+    function userLogin($user, $pass, $conn) {
+        if ($stmt = $conn -> prepare('SELECT id, username, password, firstname, lastname FROM `user` WHERE username = ? AND password = ?')) {
+            $stmt->bind_param('ss', $user, $pass);
+            $stmt->execute();
+            $stmt->store_result();
+            
+            if ($stmt->num_rows > 0) {
+    
+                $stmt->bind_result($id, $username, $password, $firstname, $lastname);
+                $stmt->fetch();
+                
+                session_regenerate_id();
+                $user = new User($id, $username, "$firstname $lastname");
+                return $user;
+            }
+            $stmt->free_result();
+            $stmt->close();
+        }
+        return 0;
     }
 
     function isPermission($perm, $conn) {

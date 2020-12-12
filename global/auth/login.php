@@ -5,36 +5,48 @@
 if (isset($_POST['login_submit'])) {
     $user = $_POST['login_username'];
     $pass = $_POST['login_password']; $md5_pass = md5($pass);
-
-    //ดึงข้อมูลมาเช็คว่า $User ที่ตั้งรหัสผ่านเป็น $Pass มีในระบบรึเปล่า
-    $query = "SELECT * FROM `user` WHERE (username = '$user' OR id = '$user') AND (password = '$md5_pass' OR citizen_id = '$pass')";
-    $result = mysqli_query($conn, $query);
-    if (!$result) die('Could not get data: ' . mysqli_error($conn));
-
-    //ถ้าไม่เจอ User นี้ จะ return เป็น 0
-    if (mysqli_num_rows($result) == 0) {
-        $_SESSION['error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
+    
+    if (!isset($_POST['login_username'], $_POST['login_password'])) {
+        $_SESSION['error'] = "กรุณากรอกชื่อผู้ใช้งานและรหัสผ่านให้ครบถ้วน";
         header("Location: ../../login/");
-    } else {
-        //ปกติค่านี้ ถ้าเจอในฐานข้อมูลจะ return ออกมา > 0
-        //ตั้งค่าข้อมูลต่าง ๆ ของ User ใส่ SESSION
-        $_SESSION['id'] = mysqli_fetch_array($result, MYSQLI_ASSOC)['id'];
-        $_SESSION['real_id'] = $_SESSION['id'];
-        $_SESSION['username'] = getUserdata($_SESSION['id'], 'username', $conn);
-        $_SESSION['name'] = getUserdata($_SESSION['id'], 'firstname', $conn) . ' ' . getUserdata($_SESSION['id'], 'lastname', $conn);
-        $_SESSION['shortname'] = getUserdata($_SESSION['id'], 'firstname', $conn);
+    }
 
-        $_SESSION['swal_success'] = "เข้าสู่ระบบสำเร็จ";
-        if (isVerify($_SESSION['id'], $conn)) $_SESSION['swal_success_msg'] = "ยินดีต้อนรับ! " . $_SESSION['name'];
-        else $_SESSION['swal_success_msg'] = "อย่าลืมเข้าไปยืนยันตัวตนทางอีเมลนะครับ";
+    if($loginResult = userLogin($user, $md5_pass, $conn)) {
+        //User found and match with password (function in global/function.php)
+        session_regenerate_id();
+        $_SESSION['id'] = $loginResult->getID();
+        $_SESSION['real_id'] = $loginResult->getID();
+        $_SESSION['username'] = $loginResult->getUsername();
+        $_SESSION['name'] = $loginResult->getName();
+        $_SESSION['userData'] = $loginResult;
+
+        if ($_GET['method'] == "email") {
+            $_SESSION['swal_success'] = "ยืนยันอีเมลสำเร็จ";
+            $_SESSION['swal_success_msg'] = "ยินดีต้อนรับ! " . $_SESSION['name'];
+            header("Location: ../../home/");
+        }
 
         if (isset($_POST['method'])) {
-            if ($_POST['method'] == "loginPage") header("Location: ../../home");
-            else if ($_POST['method'] == "loginNav") back();
-            else header("Location: ../../home");
+            $_SESSION['swal_success'] = "เข้าสู่ระบบสำเร็จ";
+            if (isVerify($_SESSION['id'], $conn)) $_SESSION['swal_success_msg'] = "ยินดีต้อนรับ! " . $_SESSION['name'];
+            else $_SESSION['swal_success_msg'] = "อย่าลืมเข้าไปยืนยันตัวตนทางอีเมลนะครับ";
+            
+            if ($_POST['method'] == "loginPage") {
+                header("Location: ../../home/");
+            } else if ($_POST['method'] == "loginNav") {
+                back();
+            } else {
+                header("Location: ../../home/");
+            }
         } else {
+            $_SESSION['swal_success'] = "เข้าสู่ระบบสำเร็จ";
+            $_SESSION['swal_success_msg'] = "ยินดีต้อนรับ! " . $_SESSION['name'];    
             back();
         }
+
+    } else {
+        $_SESSION['error'] = "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง";
+        header("Location: ../../login/");
     }
 }
 
@@ -160,41 +172,37 @@ if (isset($_POST['register_submit'])) {
         }
     }
 }
-
 if (isset($_GET['user']) && isset($_GET['pass'])) {
     $user = $_GET['user'];
     $pass = $_GET['pass']; $md5_pass = md5($pass);
 
-    //ดึงข้อมูลมาเช็คว่า $User ที่ตั้งรหัสผ่านเป็น $Pass มีในระบบรึเปล่า
-    $query = "SELECT * FROM `user` WHERE (username = '$user' OR id = '$user') AND (password = '$md5_pass' OR password = '$pass' OR citizen_id = '$pass')";
-    $result = mysqli_query($conn, $query);
-    if (!$result) die('Could not get data: ' . mysqli_error($conn));
+    if($loginResult = userLogin($user, $md5_pass, $conn)) {
+        //User found and match with password (function in global/function.php)
+        session_regenerate_id();
+        $_SESSION['id'] = $loginResult->getID();
+        $_SESSION['real_id'] = $loginResult->getID();
+        $_SESSION['username'] = $loginResult->getUsername();
+        $_SESSION['name'] = $loginResult->getName();
 
-    //ถ้าไม่เจอ User นี้ จะ return เป็น 0
-    if (mysqli_num_rows($result) == 0) {
-        echo "WRONG PASSWORD";
-        return false;
-    } else {
-        $_SESSION['id'] = mysqli_fetch_array($result, MYSQLI_ASSOC)['id'];
-        $_SESSION['real_id'] = $_SESSION['id'];
-        $_SESSION['username'] = getUserdata($_SESSION['id'], 'username', $conn);
-        $_SESSION['name'] = getUserdata($_SESSION['id'], 'firstname', $conn) . ' ' . getUserdata($_SESSION['id'], 'lastname', $conn);
-        $_SESSION['shortname'] = getUserdata($_SESSION['id'], 'firstname', $conn);
-        
         if (isset($_GET['method'])) {
             if ($_GET['method'] == "normal") {
                 $_SESSION['swal_success'] = "เข้าสู่ระบบสำเร็จ";
                 if (isVerify($_SESSION['id'], $conn)) $_SESSION['swal_success_msg'] = "ยินดีต้อนรับ! " . $_SESSION['name'];
                 else $_SESSION['swal_success_msg'] = "อย่าลืมเข้าไปยืนยันตัวตนทางอีเมลนะครับ";
-                header("Location: ../../home");
+                header("Location: ../../home/");
             } else if ($_GET['method'] == "email") {
                 $_SESSION['swal_success'] = "ยืนยันอีเมลสำเร็จ";
                 $_SESSION['swal_success_msg'] = "ยินดีต้อนรับ! " . $_SESSION['name'];
-                header("Location: ../../home");
+                header("Location: ../../home/");
+            } else if ($_GET['method'] == "reset") {
+                header("Location: ../../resetpassword/");
             }
         } else {
-            echo "ACCEPT";
+            echo "Accept! Welcome $id";
         }
+
+    } else {
+        echo "Wrong Username / Password or Missing argument to login";
     }
 }
 ?>

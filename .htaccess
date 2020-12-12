@@ -40,7 +40,8 @@ RewriteRule ^config/$ admin/config.php
 
 RewriteRule ^register/$ pages/register.php
 RewriteRule ^login/$ pages/login.php
-RewriteRule ^forgetpw/$ user/resetpassword.php
+RewriteRule ^forgetpw/$ pages/password_forget.php
+RewriteRule ^resetpw/$ pages/password_reset.php
 
 RewriteRule ^api/(.*)$ global/api/$1.php
 
