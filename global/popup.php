@@ -11,14 +11,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                <img src="https://repository-images.githubusercontent.com/216790969/da52a000-7792-11ea-997b-7503371435f0"
+                <img src="https://cdn.discordapp.com/attachments/601788363313512480/815977561179815936/da52a000-7792-11ea-997b-7503371435f0.jpg"
                     class="img-fluid w-100 d-flex justify-content-center mb-3 z-depth-2">
                 <div class="modal-text">
-                    <p class="text-center">ทางผู้พัฒนาขอความร่วมมือจากผู้เข้าชมเว็บไซต์ทุก ๆ ท่าน ร่วมตอบแบบสอบถามความพึงพอใจในการใช้งานเว็บไซต์ <a href="https://smd.pondja.com">smd.pondja.com</a> / <a href="https://smd.p0nd.ga">smd.p0nd.ga</a></p>
-                    <a href="https://forms.gle/HfxaWmjVGKjARUR18" target="_blank" class="text-center text-smd"><h1 class="animated infinite pulse">ตอบแบบสอบถาม</h1></a>
+                    <p>ทางผู้พัฒนาขอขอบคุณทุกท่านที่ให้ความสนใจกับเว็บไซต์ใหม่ของเรา <a href="https://smd.pondja.com">smd.pondja.com</a> ที่พัฒนาโดย <a href="https://smd.pondja.com/about/">ศิษย์เก่า SMD รุ่น 36 และทีมงาน</a> อย่างไรก็ตาม เว็บไซต์นี้จะไม่ถูกนำไปใช้จริง โดยทางโรงเรียนเลือกที่จะใช้ <a href="https://smd.satit.kku.ac.th">smd.satit.kku.ac.th</a> เป็นเว็บไซต์ใหม่ของโรงเรียน
+                     แม้ว่าเว็บไซต์นี้จะไม่ได้ไปต่อก็ตาม แต่ก็เป็นหนึ่งในแรงบันดาลใจและแรงผลักดันในการพัฒนางานให้แก่ผู้พัฒนาต่อไป<hr>ขอบคุณครับ<br>PondJa<sup>TH</sup>
+                    </p>
                 </div>
             </div>
             <div class="modal-footer">
+                <a href="https://github.com/p0ndja/WebDev/" class="btn btn-md btn-black">View on GitHub <i class="fab fa-github"></i></a>
                 <a class="btn btn-md btn-warning" data-dismiss="modal">ปิดหน้าต่าง</a>
             </div>
         </div>

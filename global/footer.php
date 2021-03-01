@@ -89,6 +89,7 @@
         $('[data-toggle="tooltip"]').tooltip();
         $('.btn-floating').unbind('click');
         $('.fixed-action-btn').unbind('click');
+        $('#announcementPopup').modal('show');
     });
 
     if ($(document.body).height() < $(window).height()) {
@@ -104,6 +105,7 @@
             $('#footer').removeAttr('style');
         }
     });
+    
 
     $('.dropdown-menu').find('form').click(function (e) {
         e.stopPropagation();
