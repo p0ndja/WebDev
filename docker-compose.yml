@@ -35,8 +35,6 @@ services:
     image: mysql:8.0
     container_name: smd_db
     restart: unless-stopped
-    ports:
-      - "3306:3306"
     environment:
       MYSQL_DATABASE: ${DB_SCHEMA}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
