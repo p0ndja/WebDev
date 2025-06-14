@@ -1,0 +1,6 @@
+mysql-connector-python
+urllib3
+rich
+requests
+pyyaml
+dotenv

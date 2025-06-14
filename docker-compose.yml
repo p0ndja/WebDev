@@ -1,0 +1,57 @@
+services:
+  smd_web:
+    build:
+      context: .
+      dockerfile: Dockerfile-php
+    container_name: smd_web
+    restart: unless-stopped
+    labels:
+      # Traefik configuration
+      - "traefik.enable=true"
+      # HTTP configuration for localhost
+      - "traefik.http.routers.smd-http.rule=Host(`smd.localhost`)"
+      - "traefik.http.routers.smd-http.entrypoints=web"
+      - "traefik.http.services.smd-service.loadbalancer.server.port=80"
+      # HTTPS configuration for external domain
+      - "traefik.http.routers.smd-https.rule=Host(`smd.pondja.com`)"
+      - "traefik.http.routers.smd-https.entrypoints=websecure"
+      - "traefik.http.routers.smd-https.tls=true"
+      - "traefik.http.routers.smd-https.tls.certresolver=myresolver"
+      - "traefik.http.routers.smd-https.service=smd-service"
+      # Explicitly tell Traefik which network to use
+      - "traefik.docker.network=traefik_network"
+    volumes:
+      - ./web:/var/www/html
+      - ./file:/var/www/html/file
+      - ./apache-vhost.conf:/etc/apache2/sites-available/000-default.conf
+      - ./conf.php:/var/www/html/global/conf.php
+    depends_on:
+      - smd_db
+    networks:
+      - traefik_network
+      - smd_network
+
+  smd_db:
+    image: mysql:8.0
+    container_name: smd_db
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_SCHEMA}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - smd_db_data:/var/lib/mysql
+    networks:
+      - smd_network
+
+networks:
+  traefik_network:
+    external: true
+  smd_network:
+    driver: bridge
+
+volumes:
+  smd_db_data:
