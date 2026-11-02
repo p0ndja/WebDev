@@ -1,4 +1,4 @@
-FROM php:8.2-apache
+FROM php:8.2.35-apache
 ARG timezone=Asia/Bangkok
 ENV TZ $timezone
 ENV LANG C.UTF-8
@@ -25,6 +25,8 @@ COPY ./web /var/www/html/
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
+
+RUN echo "session.upload_progress.enabled=0" > /usr/local/etc/php/conf.d/zz-hardening.ini
 
 # Expose port 80 only (Traefik handles SSL)
 EXPOSE 80
